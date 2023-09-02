@@ -209,7 +209,9 @@ class StatusesRepositoryImpl(
                     e.printStackTrace()
                 }
             }
-            return statuses
+            return statuses.also { list ->
+                list.sortByDescending { status -> status.dateModified }
+            }
         }
         return emptyList()
     }
