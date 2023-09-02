@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.repository
 
 import android.net.Uri
-import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.model.Country
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
@@ -22,7 +21,6 @@ import com.simplified.wsstatussaver.model.StatusType
 interface Repository {
     suspend fun statuses(type: StatusType): List<Status>
     suspend fun savedStatuses(type: StatusType): List<Status>
-    suspend fun isStatusSaved(status: Status): Boolean
     suspend fun saveStatus(status: Status, saveName: String?): Uri?
     suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri>
     suspend fun deleteStatus(status: Status): Boolean
@@ -40,8 +38,6 @@ class RepositoryImpl(
     override suspend fun statuses(type: StatusType): List<Status> = statusesRepository.statuses(type)
 
     override suspend fun savedStatuses(type: StatusType): List<Status> = statusesRepository.savedStatuses(type)
-
-    override suspend fun isStatusSaved(status: Status): Boolean = statusesRepository.isSaved(status)
 
     override suspend fun saveStatus(status: Status, saveName: String?): Uri? = statusesRepository.save(status, saveName)
 

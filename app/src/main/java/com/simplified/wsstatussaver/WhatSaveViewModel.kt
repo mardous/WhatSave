@@ -106,10 +106,6 @@ class WhatSaveViewModel(
         savedLiveDataMap[type]?.postValue(repository.savedStatuses(type))
     }
 
-    fun isSaved(status: Status): LiveData<Boolean> = liveData(IO) {
-        emit(repository.isStatusSaved(status))
-    }
-
     fun saveStatus(status: Status, saveName: String? = null): LiveData<SaveResult> = liveData(IO) {
         emit(SaveResult(isSaving = true))
         val result = repository.saveStatus(status, saveName)

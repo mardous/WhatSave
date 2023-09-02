@@ -39,7 +39,6 @@ interface StatusesRepository {
     suspend fun statuses(type: StatusType): List<Status>
     suspend fun savedStatuses(type: StatusType): List<Status>
     suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>>
-    suspend fun isSaved(status: Status): Boolean
     suspend fun save(status: Status, saveName: String?): Uri?
     suspend fun save(statuses: List<Status>): Map<Status, Uri>
     suspend fun delete(status: Status): Boolean
@@ -88,8 +87,6 @@ class StatusesRepositoryImpl(
 
     override suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>> =
         statusDao.savedStatuses(type.ordinal)
-
-    override suspend fun isSaved(status: Status): Boolean = statusDao.statusSaved(status.path, status.name)
 
     override suspend fun save(status: Status, saveName: String?): Uri? {
         if (status.path.isEmpty()) {

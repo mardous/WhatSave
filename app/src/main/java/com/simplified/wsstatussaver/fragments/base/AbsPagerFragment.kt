@@ -206,19 +206,17 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
     override fun onSaveStatusClick(status: Status) {
         requestContext { context ->
-            viewModel.isSaved(status).observe(viewLifecycleOwner) { isSaved ->
-                if (isSaved) {
-                    MaterialAlertDialogBuilder(context)
-                        .setTitle(R.string.save_again_title)
-                        .setMessage(R.string.you_saved_this_status_previously)
-                        .setPositiveButton(R.string.save_action) { _, _ ->
-                            saveStatus(status)
-                        }
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show()
-                } else {
-                    saveStatus(status)
-                }
+            if (status.isSaved) {
+                MaterialAlertDialogBuilder(context)
+                    .setTitle(R.string.save_again_title)
+                    .setMessage(R.string.you_saved_this_status_previously)
+                    .setPositiveButton(R.string.save_action) { _, _ ->
+                        saveStatus(status)
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+            } else {
+                saveStatus(status)
             }
         }
     }
