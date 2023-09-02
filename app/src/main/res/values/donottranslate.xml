@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">WhatSave</string>
+    <string name="app_name_long" translatable="false">WhatSave: Status Saver</string>
+    <string name="mardous" translatable="false">Christians Martínez Alvarado</string>
+    <string name="transition_toolbar" translatable="false">toolbar_transition</string>
+</resources>

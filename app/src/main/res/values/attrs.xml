@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="iconColor" format="reference"/>
+    <attr name="rectSelector" format="reference"/>
+    <attr name="toolbarPopupTheme" format="reference"/>
+    <declare-styleable name="BorderCircleView">
+        <attr name="color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="IconImageView">
+        <attr format="reference|color" name="iconViewColor"/>
+    </declare-styleable>
+    <declare-styleable name="ToolView">
+        <attr format="string" name="toolName"/>
+        <attr format="string" name="toolDescription"/>
+        <attr format="reference" name="toolIcon"/>
+    </declare-styleable>
+    <declare-styleable name="EmptyView">
+        <attr format="string" name="ev_emptyTitleText"/>
+        <attr format="string" name="ev_emptySubtitleText"/>
+        <attr format="string" name="ev_emptyActionText"/>
+        <attr format="string" name="ev_noWATitleText"/>
+        <attr format="string" name="ev_noWASubtitleText"/>
+        <attr format="string" name="ev_noWAActionText"/>
+    </declare-styleable>
+</resources>

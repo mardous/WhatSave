@@ -1,0 +1,28 @@
+[
+  {
+    "name": "WhatsApp Messenger",
+    "package": "com.whatsapp",
+    "directories": [
+      "/WhatsApp/Media/.Statuses/",
+      "/Android/media/com.whatsapp/WhatsApp/Media/.Statuses/"
+    ],
+    "official": true
+  },
+  {
+    "name": "WhatsApp Business",
+    "package": "com.whatsapp.w4b",
+    "directories": [
+      "/WhatsApp Business/Media/.Statuses/",
+      "/Android/media/com.whatsapp.w4b/WhatsApp Business/Media/.Statuses/"
+    ],
+    "official": true
+  },
+  {
+    "name": "OGWhatsApp",
+    "package": "com.gbwhatsapp3",
+    "directories": [
+      "/OGWhatsApp/Media/.Statuses/",
+      "/Android/media/com.gbwhatsapp3/OGWhatsApp/Media/.Statuses/"
+    ]
+  }
+]

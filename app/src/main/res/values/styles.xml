@@ -1,0 +1,26 @@
+<resources>
+    <!-- WIDGETS STYLES -->
+    <style name="MaterialButtonStyle" parent="Widget.Material3.Button">
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">?attr/colorControlNormal</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:paddingTop">@dimen/button_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/button_padding_vertical</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Widget.Material3.Toolbar">
+        <item name="android:transitionName">@string/transition_toolbar</item>
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="popupTheme">?toolbarPopupTheme</item>
+        <item name="titleMarginStart">16dp</item>
+        <item name="buttonGravity">center_vertical</item>
+    </style>
+
+    <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView"/>
+
+    <style name="ShapeAppearanceOverlay.Circular" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+</resources>

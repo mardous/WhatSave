@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/dialog_preferred_padding_small">
+
+    <LinearLayout
+        android:id="@+id/app_version"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/default_item_margin"
+        android:paddingBottom="@dimen/default_item_margin"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:orientation="vertical"
+        android:background="?rectSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceCaption"
+            android:text="@string/app_name_long"/>
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            tools:text="Version 1.0.0"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/default_item_margin"
+        android:paddingBottom="@dimen/default_item_margin"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:orientation="vertical"
+        android:background="?rectSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceCaption"
+            android:text="@string/author_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            android:text="@string/mardous"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fork_on_github"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/default_item_margin"
+        android:paddingBottom="@dimen/default_item_margin"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:orientation="vertical"
+        android:background="?rectSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceCaption"
+            android:text="@string/fork_on_github_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            android:text="@string/fork_on_github_summary"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingTop="@dimen/default_item_margin"
+        android:paddingBottom="@dimen/default_item_margin"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding"
+        android:orientation="vertical"
+        android:background="?rectSelector">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceCaption"
+            android:text="@string/contact_title"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceBody2"
+            android:text="@string/contact_summary"/>
+
+    </LinearLayout>
+
+</LinearLayout>

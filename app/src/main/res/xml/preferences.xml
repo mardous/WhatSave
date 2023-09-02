@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/settings_interface">
+
+        <ListPreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/night_mode_title"
+            android:entries="@array/night_mode_titles"
+            android:entryValues="@array/night_mode_values"
+            android:defaultValue="auto"
+            app:useSimpleSummaryProvider="true"
+            android:key="night_mode"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch_no_title"
+            android:title="@string/just_black_theme_title"
+            android:defaultValue="false"
+            android:key="just_black_theme"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/settings_statuses">
+
+        <com.simplified.wsstatussaver.preferences.StoragePreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/statuses_location_title"
+            android:summary="@string/statuses_location_summary"
+            android:key="statuses_location"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/require_save_name"
+            android:summary="@string/require_save_name_summary"
+            android:defaultValue="false"
+            android:key="require_save_name"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/exclude_old_statuses_title"
+            android:summary="@string/exclude_old_statuses_summary"
+            android:defaultValue="false"
+            android:key="exclude_old_statuses"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/exclude_saved_statuses_title"
+            android:summary="@string/exclude_saved_statuses_summary"
+            android:defaultValue="false"
+            android:key="exclude_saved_statuses"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/quick_deletion_title"
+            android:summary="@string/quick_deletion_summary"
+            android:defaultValue="false"
+            android:key="quick_deletion"/>
+
+        <com.simplified.wsstatussaver.preferences.DefaultClientPreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/default_client_title"
+            android:summary="@string/default_client_summary"
+            android:key="default_client"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/settings_other">
+
+        <ListPreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/long_press_action_title"
+            android:entries="@array/long_press_action_titles"
+            android:entryValues="@array/long_press_action_values"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="multi-selection"
+            android:key="long_press_action"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/whatsapp_icon_title"
+            android:summary="@string/whatsapp_icon_summary"
+            android:defaultValue="false"
+            android:key="whatsapp_icon"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/advanced">
+
+        <ListPreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/language_name"
+            android:entries="@array/pref_language_entries"
+            android:entryValues="@array/pref_language_values"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="auto"
+            android:key="language_name"/>
+
+    </PreferenceCategory>
+</PreferenceScreen>

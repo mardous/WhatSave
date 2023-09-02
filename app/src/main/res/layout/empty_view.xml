@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2023 Christians Martínez Alvarado
+  ~
+  ~ Licensed under the GNU General Public License v3
+  ~
+  ~ This is free software: you can redistribute it and/or modify it under
+  ~ the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/emptyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/empty_view_content_padding"
+        android:paddingEnd="@dimen/empty_view_content_padding"
+        android:textAlignment="gravity"
+        android:textAppearance="?textAppearanceBodyLarge"
+        android:textColor="?android:textColorPrimary"
+        tools:text="@string/wa_is_not_installed_title"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/emptyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/empty_view_content_padding"
+        android:paddingEnd="@dimen/empty_view_content_padding"
+        android:textAlignment="gravity"
+        android:textAppearance="?textAppearanceBodyMedium"
+        android:textColor="?android:textColorSecondary"
+        tools:text="@string/this_application_will_not_work"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/emptyButton"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="?android:textColorPrimary"
+        tools:text="@string/install_wa_action"/>
+
+</LinearLayout>

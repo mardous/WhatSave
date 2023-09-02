@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.WhatSave" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fontFamily">@font/manrope</item>
+        <item name="fontFamily">@font/manrope</item>
+        <item name="android:windowBackground">?colorSurface</item>
+        <item name="android:colorBackground">?colorSurface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
+        <item name="iconColor">@color/material_dynamic_tertiary60</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
+        <item name="homeAsUpIndicator">@drawable/ic_keyboard_backspace_24dp</item>
+        <item name="toolbarPopupTheme">@style/ToolbarPopupTheme</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationStyle</item>
+        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+        <item name="preferenceCategoryStyle">@style/MaterialPreferenceCategory</item>
+    </style>
+</resources>

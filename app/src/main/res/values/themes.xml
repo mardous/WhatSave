@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.WhatSave" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:fontFamily">@font/manrope</item>
+        <item name="fontFamily">@font/manrope</item>
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorSecondary">@color/primary_color_dark</item>
+        <item name="colorOnPrimary">@color/md_white_1000</item>
+        <item name="colorOnSecondary">@color/md_white_1000</item>
+        <item name="colorSurface">@color/surface_color_adaptive</item>
+        <item name="elevationOverlayColor">@color/md_grey_500</item>
+        <item name="android:windowBackground">?colorSurface</item>
+        <item name="android:colorBackground">?colorSurface</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="iconColor">?android:colorControlNormal</item>
+        <item name="rectSelector">@drawable/rect_selector</item>
+        <item name="popupMenuBackground">@drawable/popupmenu_background</item>
+        <item name="homeAsUpIndicator">@drawable/ic_keyboard_backspace_24dp</item>
+        <item name="toolbarPopupTheme">@style/ToolbarPopupTheme</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
+        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+        <item name="bottomNavigationStyle">@style/BottomNavigationStyle</item>
+        <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+        <item name="preferenceCategoryStyle">@style/MaterialPreferenceCategory</item>
+    </style>
+
+    <style name="Theme.WhatSave" parent="Base.Theme.WhatSave"/>
+
+    <style name="Theme.WhatSave.Black">
+        <item name="colorSurface">@color/surface_color_black</item>
+        <item name="android:windowBackground">?colorSurface</item>
+        <item name="elevationOverlayAccentColor">@color/md_black_1000</item>
+        <item name="dividerColor">@color/divider_color_black</item>
+    </style>
+
+    <style name="Theme.WhatSave.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="android:statusBarColor">@color/surface_color_adaptive</item>
+        <item name="android:navigationBarColor">@color/surface_color_adaptive</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">?isLightTheme</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">?isLightTheme</item>
+    </style>
+
+    <style name="ToolbarPopupTheme" parent="ThemeOverlay.Material3.Light"/>
+
+    <style name="AlertDialogTheme" parent="MaterialAlertDialogTheme">
+        <item name="colorBackgroundFloating">@color/surface_color_adaptive</item>
+        <item name="dialogCornerRadius">@dimen/m3_dialog_corner_radius</item>
+    </style>
+
+    <style name="MaterialAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog"/>
+
+    <style name="MaterialPreferenceCategory" parent="Preference.Category.Material">
+        <item name="allowDividerAbove">false</item>
+        <item name="allowDividerBelow">false</item>
+    </style>
+
+</resources>

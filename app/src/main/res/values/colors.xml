@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theming -->
+    <color name="surface_color_light">#fafafa</color>
+    <color name="surface_color_dark">#151414</color>
+    <color name="surface_color_black">#000000</color>
+    <color name="surface_color_adaptive">@color/surface_color_light</color>
+    <color name="primary_color">@color/md_red_A400</color>
+    <color name="primary_color_dark">@color/md_red_A700</color>
+    <color name="divider_color_black">#262629</color>
+
+    <!-- Launcher Icon -->
+    <color name="ic_launcher_background">#F44336</color>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?listPreferredItemHeightSmall"
+    android:background="?selectableItemBackground"
+    android:paddingTop="@dimen/default_item_margin_medium"
+    android:paddingBottom="@dimen/default_item_margin_medium"
+    android:paddingStart="@dimen/default_item_margin_large"
+    android:paddingEnd="@dimen/default_item_margin_medium"
+    android:descendantFocusability="beforeDescendants">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/ic_client_default"
+        tools:ignore="ContentDescription"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_item_margin_medium"
+        android:layout_marginEnd="@dimen/default_item_margin"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@+id/check"
+        tools:text="Client name"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAppearance="?textAppearanceBody2"
+        android:textColor="?android:textColorSecondary"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="@+id/name"
+        tools:text="@string/client_info"/>
+
+    <com.google.android.material.radiobutton.MaterialRadioButton
+        android:id="@+id/check"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:checked="true"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
