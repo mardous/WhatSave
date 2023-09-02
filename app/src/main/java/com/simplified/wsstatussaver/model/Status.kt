@@ -13,14 +13,10 @@
  */
 package com.simplified.wsstatussaver.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-import org.koin.core.component.KoinComponent
-
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-open class Status constructor(
+open class Status(
     val type: StatusType,
     val name: String,
     val path: String,
@@ -28,7 +24,7 @@ open class Status constructor(
     val size: Long,
     val clientPackage: String?,
     val isSaved: Boolean
-) : KoinComponent {
+) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
