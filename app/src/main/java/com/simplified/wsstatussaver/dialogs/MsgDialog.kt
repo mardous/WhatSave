@@ -25,13 +25,13 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.CountryAdapter
 import com.simplified.wsstatussaver.databinding.DialogMsgBinding
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.model.Country
-import com.simplified.wsstatussaver.WhatSaveViewModel
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import java.net.URLEncoder
 
@@ -145,6 +145,6 @@ class MsgDialog : DialogFragment(), ICountryCallback {
             }
             return number
         }
-        return null
+        return number
     }
 }
