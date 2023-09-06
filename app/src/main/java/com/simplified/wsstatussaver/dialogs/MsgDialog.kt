@@ -143,8 +143,8 @@ class MsgDialog : DialogFragment(), ICountryCallback {
                 }
                 return null
             }
-            return number
+            return "${country.getFormattedCode()}$number"
         }
-        return number
+        return "${country.getFormattedCode()}$number"
     }
 }
