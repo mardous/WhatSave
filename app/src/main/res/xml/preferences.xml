@@ -105,5 +105,21 @@
             android:defaultValue="auto"
             android:key="language_name"/>
 
+        <ListPreference
+            android:layout="@layout/list_item_view"
+            android:title="@string/auto_update_title"
+            android:entries="@array/update_mode_titles"
+            android:entryValues="@array/update_mode_values"
+            app:useSimpleSummaryProvider="true"
+            android:defaultValue="every_day"
+            android:key="update_search_mode"/>
+
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/only_wifi_title"
+            android:summary="@string/only_wifi_summary"
+            android:defaultValue="false"
+            android:key="update_only_wifi"/>
+
     </PreferenceCategory>
 </PreferenceScreen>

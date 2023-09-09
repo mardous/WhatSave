@@ -19,6 +19,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -44,6 +46,20 @@ fun Context.openWeb(url: String) {
     startActivitySafe(Intent(Intent.ACTION_VIEW, url.toUri()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 }
 
+fun Context.installPackage(uri: Uri) {
+    val intent = Intent(Intent.ACTION_VIEW).apply {
+        setDataAndType(uri, "application/vnd.android.package-archive")
+        if (hasN()) {
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
+        } else {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+    }
+    startActivitySafe(intent)
+}
+
 fun Context.openGooglePlay(appPackage: String = packageName) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackage"))
     if (intent.resolveActivity(packageManager) != null) {
@@ -65,6 +81,21 @@ fun Context.doIHavePermissions(vararg permissions: String): Boolean {
         }
     }
     return true
+}
+
+@Suppress("DEPRECATION")
+fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    if (hasM()) {
+        val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork)
+        if (networkCapabilities != null) {
+            return if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                true
+            } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
+        }
+    }
+    val networkInfo = cm.activeNetworkInfo
+    return networkInfo != null && networkInfo.isConnected && (!requestOnlyWifi || networkInfo.type == ConnectivityManager.TYPE_WIFI)
 }
 
 @Suppress("DEPRECATION")
@@ -132,14 +163,23 @@ internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent
     }
 }
 
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.M)
+fun hasM() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.N)
 fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
+fun hasO() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.R)
 fun hasR() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
+
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
+fun hasS() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
 fun hasT() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU

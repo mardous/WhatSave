@@ -83,4 +83,27 @@
     <string name="system_default">Predet. del sistema</string>
     <string name="language_name">Idioma</string>
     <string name="advanced">Avanzado</string>
+    <string name="auto_update_title">Búsqueda auto. de actualización</string>
+    <string name="every_day">Diariamente</string>
+    <string name="weekly">Semanalmente</string>
+    <string name="every_fifteen_days">Cada quince días</string>
+    <string name="monthly">Mensualmente</string>
+    <string name="never">Nunca</string>
+    <string name="only_wifi_title">Solo en Wi-Fi</string>
+    <string name="only_wifi_summary">Buscar actualizaciones solo cuando se haya conectado al Wi-Fi.</string>
+    <string name="install_update_title">Instalar actualización</string>
+    <string name="the_app_update_is_ready_to_be_installed">La actualización de la app está lista para instalarse</string>
+    <string name="the_app_is_up_to_date">Estás usando la versión más reciente de la app.</string>
+    <string name="install_action">Instalar</string>
+    <string name="do_not_install">No instalar</string>
+    <string name="install_permission_request">Para instalar la actualización automáticamente,
+        debe concedernos el permiso necesario en la siguiente pantalla. Si no desea hacerlo, podrá instalar
+        la actualización manualmente buscando el archivo descargado en la carpeta \"Descargas\".</string>
+    <string name="the_app_was_upgraded">La app se actualizó a la versión %s.</string>
+    <string name="the_download_has_started">La descarga ha iniciado.</string>
+    <string name="update_title">Actualización disponible</string>
+    <string name="release_date">Fecha de lanzamiento: %s</string>
+    <string name="download_size">Tamaño de la descarga: %s</string>
+    <string name="more_info_action">Más info.</string>
+    <string name="download_action">Descargar</string>
 </resources>

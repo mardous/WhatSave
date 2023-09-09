@@ -29,6 +29,22 @@
         <item>delete</item>
     </string-array>
 
+    <string-array name="update_mode_titles">
+        <item>@string/every_day</item>
+        <item>@string/weekly</item>
+        <item>@string/every_fifteen_days</item>
+        <item>@string/monthly</item>
+        <item>@string/never</item>
+    </string-array>
+
+    <string-array name="update_mode_values">
+        <item>every_day</item>
+        <item>weekly</item>
+        <item>every_fifteen_days</item>
+        <item>monthly</item>
+        <item>never</item>
+    </string-array>
+
     <string-array name="pref_language_entries">
         <item>@string/system_default</item>
         <item>English</item>

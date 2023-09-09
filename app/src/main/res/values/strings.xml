@@ -107,4 +107,27 @@
     <string name="select_a_country_title">Select a country</string>
     <string name="system_default">System default</string>
     <string name="language_name">Language</string>
+    <string name="auto_update_title">Auto. update search</string>
+    <string name="every_day">Every day</string>
+    <string name="weekly">Weekly</string>
+    <string name="every_fifteen_days">Every fifteen days</string>
+    <string name="monthly">Monthly</string>
+    <string name="never">Never</string>
+    <string name="only_wifi_title">Only Wi-Fi</string>
+    <string name="only_wifi_summary">Search for updates only when Wi-Fi is connected.</string>
+    <string name="install_update_title">Install update</string>
+    <string name="the_app_update_is_ready_to_be_installed">The app update is ready to be installed</string>
+    <string name="the_app_is_up_to_date">The app is up-to-date.</string>
+    <string name="install_action">Install</string>
+    <string name="do_not_install">Don\'t install</string>
+    <string name="install_permission_request">In order to install the update automatically,
+        you must grant us the necessary permission on the following screen. If you do not wish to do so,
+        you can always install the update yourself by searching for the downloaded file in the \"Downloads\" folder.</string>
+    <string name="the_app_was_upgraded">The application was upgraded to version %s.</string>
+    <string name="the_download_has_started">The download has started.</string>
+    <string name="update_title">Update available</string>
+    <string name="release_date">Release date: %s</string>
+    <string name="download_size">Download size: %s</string>
+    <string name="more_info_action">More info.</string>
+    <string name="download_action">Download</string>
 </resources>

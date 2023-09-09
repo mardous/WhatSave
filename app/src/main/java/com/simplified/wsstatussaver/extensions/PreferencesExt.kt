@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.extensions
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Build
-import androidx.annotation.StringDef
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
@@ -62,33 +61,58 @@ fun SharedPreferences.isWhatsappIcon() = getBoolean(PREFERENCE_WHATSAPP_ICON, fa
 
 fun SharedPreferences.isQuickDeletion() = getBoolean(PREFERENCE_QUICK_DELETION, false)
 
+fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH_MODE, UpdateSearchMode.EVERY_DAY)
+
+fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIFI, false)
+
+var SharedPreferences.lastUpdateSearch: Long
+    get() = getLong(PREFERENCE_LAST_UPDATE_SEARCH, -1)
+    set(value) = edit {
+        putLong(PREFERENCE_LAST_UPDATE_SEARCH, value)
+    }
+
+var SharedPreferences.lastUpdateId: Long
+    get() = getLong(PREFERENCE_LAST_UPDATE_ID, -1)
+    set(value) = edit {
+        putLong(PREFERENCE_LAST_UPDATE_ID, value)
+    }
+
 var SharedPreferences.defaultClientPackageName: String?
     get() = getString(PREFERENCE_DEFAULT_CLIENT, null)
     set(packageName) = edit {
         putString(PREFERENCE_DEFAULT_CLIENT, packageName)
     }
 
-@Retention(AnnotationRetention.SOURCE)
-@StringDef(NightMode.VALUE_NO, NightMode.VALUE_YES)
-annotation class NightMode {
+var SharedPreferences.lastVersionCode
+    get() = getInt(PREFERENCE_LAST_VERSION_CODE, -1)
+    set(value) = edit {
+        putInt(PREFERENCE_LAST_VERSION_CODE, value)
+    }
+
+class NightMode {
     companion object {
         const val VALUE_YES = "yes"
         const val VALUE_NO = "no"
     }
 }
 
-@Retention(AnnotationRetention.SOURCE)
-@StringDef(
-    LongPressAction.VALUE_MULTI_SELECTION, LongPressAction.VALUE_PREVIEW,
-    LongPressAction.VALUE_SAVE, LongPressAction.VALUE_SHARE, LongPressAction.VALUE_DELETE
-)
-annotation class LongPressAction {
+class LongPressAction {
     companion object {
         const val VALUE_MULTI_SELECTION = "multi-selection"
         const val VALUE_PREVIEW = "preview"
         const val VALUE_SAVE = "save"
         const val VALUE_SHARE = "share"
         const val VALUE_DELETE = "delete"
+    }
+}
+
+class UpdateSearchMode {
+    companion object {
+        const val EVERY_DAY = "every_day"
+        const val WEEKLY = "weekly"
+        const val EVERY_FIFTEEN_DAYS = "every_fifteen_days"
+        const val MONTHLY = "monthly"
+        const val NEVER = "never"
     }
 }
 
@@ -105,3 +129,8 @@ const val PREFERENCE_EXCLUDE_SAVED_STATUSES = "exclude_saved_statuses"
 const val PREFERENCE_EXCLUDE_OLD_STATUSES = "exclude_old_statuses"
 const val PREFERENCE_QUICK_DELETION = "quick_deletion"
 const val PREFERENCE_DEFAULT_CLIENT = "default_client"
+const val PREFERENCE_UPDATE_SEARCH_MODE = "update_search_mode"
+const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
+const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
+const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
+const val PREFERENCE_LAST_VERSION_CODE = "last_version_code"

@@ -13,13 +13,19 @@
  */
 package com.simplified.wsstatussaver
 
+import android.app.DownloadManager
 import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import androidx.lifecycle.*
 import com.simplified.wsstatussaver.extensions.getMediaStoreUris
+import com.simplified.wsstatussaver.extensions.getUri
+import com.simplified.wsstatussaver.extensions.lastUpdateId
+import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Country
@@ -30,12 +36,17 @@ import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.repository.Repository
 import com.simplified.wsstatussaver.storage.Storage
 import com.simplified.wsstatussaver.storage.StorageDevice
+import com.simplified.wsstatussaver.update.*
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import okhttp3.OkHttpClient
+import java.io.File
 import java.util.*
 
 class WhatSaveViewModel(
     private val repository: Repository,
+    private val updateService: UpdateService,
     private val mediator: WAMediator,
     private val storage: Storage
 ) : ViewModel() {
@@ -138,6 +149,51 @@ class WhatSaveViewModel(
         if (uris.isNotEmpty()) {
             emit(MediaStore.createDeleteRequest(context.contentResolver, uris))
         }
+    }
+
+    fun getUpdateState(context: Context): LiveData<UpdateState> = liveData(IO + ioHandler) {
+        if (context.isDownloadingAnUpdate()) {
+            emit(UpdateState(false))
+        } else {
+            val localUpdateUri = context.getInstallableUpdateUri()
+            if (localUpdateUri != null) {
+                /*
+                 * We originally downloaded the APK into the public "Downloads" directory
+                 * as we want to give the user the ability to easily find and install it
+                 * on their own. However, to carry out the automatic installation on our part,
+                 * we must copy it to our internal directory.
+                 */
+                val uri = context.contentResolver.openInputStream(localUpdateUri)?.use { sourceStream ->
+                    val cacheFile = File(context.cacheDir, "Latest.apk")
+                    if (!cacheFile.exists() || cacheFile.delete()) cacheFile.createNewFile()
+                    cacheFile.outputStream().use { destStream ->
+                        sourceStream.copyTo(destStream)
+                    }
+                    cacheFile.getUri()
+                }
+                emit(UpdateState(false, uri))
+            } else {
+                emit(UpdateState(context.isAbleToUpdate()))
+            }
+        }
+    }
+
+    fun getLatestRelease(): LiveData<GitHubRelease> = liveData(IO + ioHandler) {
+        emit(updateService.latestRelease(DEFAULT_USER, DEFAULT_REPO))
+    }
+
+    fun downloadRelease(context: Context, release: GitHubRelease) = viewModelScope.launch(IO + ioHandler) {
+        val releasePackage = release.downloads.firstOrNull { it.isApk }
+        if (releasePackage != null) {
+            val downloadManager = context.getSystemService<DownloadManager>()
+            if (downloadManager != null) {
+                context.preferences().lastUpdateId = downloadManager.enqueue(releasePackage.getDownloadRequest(context))
+            }
+        }
+    }
+
+    private val ioHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e("WhatSave", "Exception occurred during execution of a coroutine", throwable)
     }
 }
 

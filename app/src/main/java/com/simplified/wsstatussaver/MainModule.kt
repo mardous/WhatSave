@@ -18,10 +18,25 @@ import com.simplified.wsstatussaver.database.StatusDatabase
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.repository.*
 import com.simplified.wsstatussaver.storage.Storage
+import com.simplified.wsstatussaver.update.provideDefaultCache
+import com.simplified.wsstatussaver.update.provideOkHttp
+import com.simplified.wsstatussaver.update.provideUpdateService
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.bind
 import org.koin.dsl.module
+
+private val networkModule = module {
+    factory {
+        provideDefaultCache()
+    }
+    factory {
+        provideOkHttp(get(), get())
+    }
+    single {
+        provideUpdateService(get())
+    }
+}
 
 private val dataModule = module {
     single {
@@ -59,8 +74,8 @@ private val statusesModule = module {
 
 private val viewModelModule = module {
     viewModel {
-        WhatSaveViewModel(get(), get(), get())
+        WhatSaveViewModel(get(), get(), get(), get())
     }
 }
 
-val appModules = listOf(dataModule, managerModule, statusesModule, viewModelModule)
+val appModules = listOf(networkModule, dataModule, managerModule, statusesModule, viewModelModule)

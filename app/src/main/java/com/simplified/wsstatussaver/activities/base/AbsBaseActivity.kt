@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver.activities.base
 
 import android.Manifest
+import android.annotation.TargetApi
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -26,10 +27,10 @@ import android.os.Looper
 import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.net.toUri
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
@@ -49,13 +50,14 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     private var hadPermissions = false
     private var lastThemeUpdate: Long = -1
+    private var wasRequestingInstallPackages = false
 
     private lateinit var windowInsetsController: WindowInsetsControllerCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(getGeneralThemeRes())
         super.onCreate(savedInstanceState)
-        hadPermissions = hasPermissions()
+        hadPermissions = hasStoragePermissions()
         lastThemeUpdate = System.currentTimeMillis()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
 
@@ -81,18 +83,22 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        if (!hasPermissions()) {
-            requestPermissions()
+        if (!hasStoragePermissions()) {
+            requestStoragePermissions()
         }
     }
 
     override fun onResume() {
         super.onResume()
-        val hasPermissions = hasPermissions()
-        if (hasPermissions != hadPermissions) {
-            hadPermissions = hasPermissions
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if (hasM()) {
+            val hasPermissions = hasStoragePermissions()
+            if (hasPermissions != hadPermissions) {
+                hadPermissions = hasPermissions
                 onHasPermissionsChanged()
+            }
+            if (wasRequestingInstallPackages) {
+                onHasPermissionsChanged(true)
+                wasRequestingInstallPackages = false
             }
         }
         if (preferences().themeChanged(lastThemeUpdate)) {
@@ -118,39 +124,53 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         permissionsChangeListeners.remove(listener)
     }
 
-    private fun onHasPermissionsChanged() {
-        for (listener in permissionsChangeListeners) {
+    protected open fun onHasPermissionsChanged(isPackagesPermission: Boolean = false) {
+        if (!isPackagesPermission) for (listener in permissionsChangeListeners) {
             listener?.onHasPermissionsChangeListener()
         }
     }
 
-    private fun requestPermissions() {
+    private fun requestStoragePermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.permissions_denied_title)
                 .setMessage(R.string.permission_request_android_r)
                 .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int ->
                     startActivityForResultSafe(
-                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION),
-                        PERMISSION_REQUEST_R
-                    ) { e, _ ->
-                        Toast.makeText(this@AbsBaseActivity, e.toString(), Toast.LENGTH_SHORT).show()
-                    }
+                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION), PERMISSION_REQUEST_STORAGE_R
+                    )
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                 .show()
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(permissionsToRequest, PERMISSION_REQUEST)
+            requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
         }
     }
 
-    private fun hasPermissions(): Boolean {
-        return doIHavePermissions(*permissionsToRequest)
+    @Suppress("DEPRECATION")
+    @TargetApi(Build.VERSION_CODES.O)
+    protected fun requestInstallPackagesPermission() {
+        if (hasO()) {
+            if (!hasInstallPackagesPermission()) {
+                startActivityForResult(
+                    Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+                        data = "package:$packageName".toUri()
+                    },
+                    PERMISSION_REQUEST_INSTALL_PACKAGES
+                )
+                wasRequestingInstallPackages = true
+            }
+        }
     }
+
+    @TargetApi(Build.VERSION_CODES.O)
+    protected fun hasInstallPackagesPermission() = !hasO() || packageManager.canRequestPackageInstalls()
+
+    private fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST) {
+        if (requestCode == PERMISSION_REQUEST_STORAGE) {
             for (grantResult in grantResults) {
                 if (grantResult != PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.shouldShowRequestPermissionRationale(
@@ -162,7 +182,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                         MaterialAlertDialogBuilder(this)
                             .setTitle(R.string.permissions_denied_title)
                             .setMessage(R.string.permissions_denied_message)
-                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int -> requestPermissions() }
+                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int -> requestStoragePermissions() }
                             .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                             .setCancelable(false)
                             .show()
@@ -191,7 +211,8 @@ abstract class AbsBaseActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val PERMISSION_REQUEST = 100
-        private const val PERMISSION_REQUEST_R = 101
+        private const val PERMISSION_REQUEST_STORAGE = 100
+        private const val PERMISSION_REQUEST_STORAGE_R = 101
+        private const val PERMISSION_REQUEST_INSTALL_PACKAGES = 102
     }
 }

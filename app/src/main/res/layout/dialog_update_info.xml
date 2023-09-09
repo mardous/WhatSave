@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2023 Christians Martínez Alvarado
+  ~
+  ~ Licensed under the GNU General Public License v3
+  ~
+  ~ This is free software: you can redistribute it and/or modify it under
+  ~ the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:overScrollMode="@integer/overScrollMode">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="?dialogPreferredPadding"
+        android:paddingStart="?dialogPreferredPadding"
+        android:paddingEnd="?dialogPreferredPadding">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/version_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle1"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="v1.0.2"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/version_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle1"
+            app:layout_constraintTop_toBottomOf="@+id/version_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@tools:sample/lorem/random"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="2dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle1"
+            app:layout_constraintTop_toBottomOf="@+id/version_info"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Release date: Sep. 7, 2023"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/download_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="2dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle1"
+            app:layout_constraintTop_toBottomOf="@+id/release_date"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Download size: 3.42 MB"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
