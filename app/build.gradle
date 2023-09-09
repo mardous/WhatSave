@@ -32,7 +32,7 @@ android {
 
         applicationId namespace
         versionCode 102
-        versionName "1.0.2"
+        versionName "1.1.0"
     }
 
     def signingProperties = getProperties('keystore.properties')
