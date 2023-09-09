@@ -4,9 +4,11 @@ A simple application that allows you to save WhatsApp statuses (image and video)
 
 #### Basic Features:
 This application is really basic; here its features:
-* Android 11 support
+* Android 13 support
+* Material You on Android 12+
 * Preview and save files
 * Night mode
+* Black theme
 * No ADs
 * No watermark
 * It's free!
