@@ -13,4 +13,6 @@ This application is really basic; here its features:
 
 #### License details
 
-The licence for this repository is a [GNU General Public License, Version 3.0](http://www.gnu.org/licenses/#GPL). Please see the [LICENSE](LICENSE.md) file for full reference.
+WhatSave is licensed under the [GNU General Public License, Version 3.0](http://www.gnu.org/licenses/#GPL). Any fork of this project is requested to maintain the same license as per the law.
+
+Please see the [LICENSE](LICENSE.md) file for full reference.
