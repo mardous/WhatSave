@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.8.20'
+        kotlin_version = '1.9.0'
         kotlin_coroutines_version = '1.6.4'
         lifecycle_version = '2.6.1'
         navigation_version = '2.6.0'
@@ -12,11 +12,13 @@ buildscript {
         core_version = '1.10.1'
     }
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.4.0"
+        classpath "com.android.tools.build:gradle:8.0.2"
+        classpath 'com.google.gms:google-services:4.3.15'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -24,7 +26,7 @@ buildscript {
 }
 
 plugins {
-    id 'com.google.devtools.ksp' version '1.8.20-1.0.11' apply false
+    id 'com.google.devtools.ksp' version '1.9.0-1.0.12' apply false
 }
 
 task clean(type: Delete) {

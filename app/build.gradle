@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-parcelize'
     id 'com.google.devtools.ksp'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 def getProperties(String fileName) {
@@ -62,6 +64,7 @@ android {
         }
     }
     buildFeatures {
+        buildConfig true
         dataBinding true
         viewBinding true
     }
@@ -119,6 +122,13 @@ dependencies {
     implementation("com.google.android.material:material:$mdc_version") {
         exclude module: 'viewpager2'
     }
+
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:26.6.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-config'
+    implementation 'com.google.firebase:firebase-database:20.2.2'
 
     def koin_version = '3.4.0'
     implementation "io.insert-koin:koin-core:$koin_version"
