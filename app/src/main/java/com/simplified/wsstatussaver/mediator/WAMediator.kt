@@ -19,7 +19,6 @@ import android.content.pm.PackageManager
 import android.util.Log
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.extensions.defaultClientPackageName
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
