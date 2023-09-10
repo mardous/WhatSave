@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver
 
 import androidx.room.Room
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.simplified.wsstatussaver.database.StatusDatabase
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.repository.*
@@ -25,6 +26,14 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.bind
 import org.koin.dsl.module
+
+private val firebaseModule = module {
+    single {
+        FirebaseRemoteConfig.getInstance().apply {
+            setDefaultsAsync(R.xml.remote_config_defaults)
+        }
+    }
+}
 
 private val networkModule = module {
     factory {
@@ -78,4 +87,4 @@ private val viewModelModule = module {
     }
 }
 
-val appModules = listOf(networkModule, dataModule, managerModule, statusesModule, viewModelModule)
+val appModules = listOf(firebaseModule, networkModule, dataModule, managerModule, statusesModule, viewModelModule)
