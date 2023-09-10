@@ -18,10 +18,10 @@ import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import androidx.lifecycle.*
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.simplified.wsstatussaver.extensions.getMediaStoreUris
 import com.simplified.wsstatussaver.extensions.getUri
 import com.simplified.wsstatussaver.extensions.lastUpdateId
@@ -40,7 +40,6 @@ import com.simplified.wsstatussaver.update.*
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
 import java.io.File
 import java.util.*
 
@@ -193,7 +192,7 @@ class WhatSaveViewModel(
     }
 
     private val ioHandler = CoroutineExceptionHandler { _, throwable ->
-        Log.e("WhatSave", "Exception occurred during execution of a coroutine", throwable)
+        FirebaseCrashlytics.getInstance().recordException(throwable)
     }
 }
 
