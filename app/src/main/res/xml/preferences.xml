@@ -111,7 +111,7 @@
             android:entries="@array/update_mode_titles"
             android:entryValues="@array/update_mode_values"
             app:useSimpleSummaryProvider="true"
-            android:defaultValue="every_day"
+            android:defaultValue="weekly"
             android:key="update_search_mode"/>
 
         <SwitchPreferenceCompat

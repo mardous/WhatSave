@@ -61,7 +61,7 @@ fun SharedPreferences.isWhatsappIcon() = getBoolean(PREFERENCE_WHATSAPP_ICON, fa
 
 fun SharedPreferences.isQuickDeletion() = getBoolean(PREFERENCE_QUICK_DELETION, false)
 
-fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH_MODE, UpdateSearchMode.EVERY_DAY)
+fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
 
 fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIFI, false)
 
