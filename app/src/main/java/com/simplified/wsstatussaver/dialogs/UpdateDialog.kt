@@ -24,6 +24,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.DialogUpdateInfoBinding
 import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.logUpdateRequest
 import com.simplified.wsstatussaver.update.GitHubRelease
 
 class UpdateDialog : DialogFragment() {
@@ -44,9 +45,11 @@ class UpdateDialog : DialogFragment() {
                 .setCancelable(false)
                 .setPositiveButton(R.string.download_action) { _: DialogInterface, _: Int ->
                     context?.openWeb(release.getDownloadUrl())
+                    requireContext().logUpdateRequest(release.name, true)
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int ->
                     release.setIgnored(requireContext())
+                    requireContext().logUpdateRequest(release.name, false)
                 }
                 .setNeutralButton(R.string.more_info_action) { _: DialogInterface, _: Int ->
                     context?.openWeb(release.url)

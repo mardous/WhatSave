@@ -35,6 +35,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.simplified.wsstatussaver.getApp
+import com.simplified.wsstatussaver.logUrlView
 import java.io.Serializable
 import kotlin.reflect.KClass
 
@@ -43,6 +44,7 @@ typealias ContextConsumer = (Context) -> Unit
 typealias ViewConsumer = (View) -> Unit
 
 fun Context.openWeb(url: String) {
+    logUrlView(url)
     startActivitySafe(Intent(Intent.ACTION_VIEW, url.toUri())
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 }

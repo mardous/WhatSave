@@ -17,8 +17,9 @@ import android.os.Bundle
 import android.view.View
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
-import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.dialogs.MsgDialog
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.logToolView
 
 class ToolFragment : BaseFragment(R.layout.fragment_tool) {
 
@@ -29,6 +30,7 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentToolBinding.bind(view)
         _binding!!.msgANumber.setOnClickListener {
+            requireContext().logToolView("MsgDialog", "Message a number")
             MsgDialog().show(childFragmentManager, "SEND_MSG")
         }
         statusesActivity.setSupportActionBar(binding.toolbar)

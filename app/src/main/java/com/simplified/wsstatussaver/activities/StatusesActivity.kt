@@ -58,7 +58,9 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
         }
 
         checkVersionCode()
-        searchUpdate()
+        if (savedInstanceState == null) {
+            searchUpdate()
+        }
     }
 
     private fun checkVersionCode() {
@@ -70,6 +72,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
 
+            logAppUpgrade(lastVersionCode, currentVersionCode)
             preferences().lastVersionCode = currentVersionCode
         }
     }
