@@ -13,16 +13,11 @@
  */
 package com.simplified.wsstatussaver.update
 
-import android.app.DownloadManager.Request
 import android.content.Context
 import android.content.pm.PackageManager.NameNotFoundException
-import android.net.Uri
-import android.os.Environment
 import android.os.Parcelable
 import androidx.core.content.edit
-import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
-import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.toFileSize
@@ -30,8 +25,6 @@ import io.github.g00fy2.versioncompare.Version
 import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.*
-
-data class UpdateState(val isAbleToSearch: Boolean, val installableUpdate: Uri? = null)
 
 @Parcelize
 class GitHubRelease(
@@ -47,8 +40,6 @@ class GitHubRelease(
     val body: String,
     @SerializedName("prerelease")
     val isPrerelease: Boolean,
-    @SerializedName("author")
-    val author: ReleaseAuthor,
     @SerializedName("assets")
     val downloads: List<ReleaseAsset>
 ) : Parcelable {
@@ -65,7 +56,7 @@ class GitHubRelease(
         return false
     }
 
-    fun isIgnored(context: Context): Boolean {
+    private fun isIgnored(context: Context): Boolean {
         return context.preferences().getString(IGNORED_RELEASE, null) == tag
     }
 
@@ -84,9 +75,12 @@ class GitHubRelease(
                 updateVersionName = updateVersionName.substring(1)
             }
             return Version(updateVersionName) > Version(installedVersionName)
-        } catch (ignored: NameNotFoundException) {}
+        } catch (ignored: NameNotFoundException) {
+        }
         return true // assume true
     }
+
+    fun getDownloadUrl() = downloads.first { it.isApk }.downloadUrl
 
     fun getDownloadSize(): String? {
         val assetSize = downloads.firstOrNull { it.isApk }
@@ -104,16 +98,6 @@ class GitHubRelease(
 }
 
 @Parcelize
-class ReleaseAuthor(
-    @SerializedName("login")
-    val name: String,
-    @SerializedName("html_url")
-    val url: String,
-    @SerializedName("avatar_url")
-    val avatarUrl: String
-) : Parcelable
-
-@Parcelize
 class ReleaseAsset(
     @SerializedName("name")
     val name: String,
@@ -126,15 +110,9 @@ class ReleaseAsset(
     @SerializedName("browser_download_url")
     val downloadUrl: String
 ) : Parcelable {
+
     val isApk: Boolean
         get() = contentType == APK_MIME_TYPE
-
-    fun getDownloadRequest(context: Context) = Request(downloadUrl.toUri())
-        .setMimeType(APK_MIME_TYPE)
-        .setTitle(name)
-        .setDescription("${context.getString(R.string.app_name)} Update")
-        .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, name)
-        .setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
 
     companion object {
         const val APK_MIME_TYPE = "application/vnd.android.package-archive"

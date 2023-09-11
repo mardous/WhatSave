@@ -71,12 +71,6 @@ var SharedPreferences.lastUpdateSearch: Long
         putLong(PREFERENCE_LAST_UPDATE_SEARCH, value)
     }
 
-var SharedPreferences.lastUpdateId: Long
-    get() = getLong(PREFERENCE_LAST_UPDATE_ID, -1)
-    set(value) = edit {
-        putLong(PREFERENCE_LAST_UPDATE_ID, value)
-    }
-
 var SharedPreferences.defaultClientPackageName: String?
     get() = getString(PREFERENCE_DEFAULT_CLIENT, null)
     set(packageName) = edit {
@@ -132,5 +126,4 @@ const val PREFERENCE_DEFAULT_CLIENT = "default_client"
 const val PREFERENCE_UPDATE_SEARCH_MODE = "update_search_mode"
 const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
 const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
-const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
 const val PREFERENCE_LAST_VERSION_CODE = "last_version_code"

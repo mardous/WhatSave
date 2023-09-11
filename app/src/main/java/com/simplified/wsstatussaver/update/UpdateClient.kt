@@ -13,23 +13,15 @@
  */
 package com.simplified.wsstatussaver.update
 
-import android.app.DownloadManager
 import android.content.Context
-import android.database.Cursor
-import android.net.Uri
-import androidx.core.content.getSystemService
-import androidx.core.net.toUri
 import com.google.gson.GsonBuilder
 import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.extensions.*
-import com.simplified.wsstatussaver.getApp
-import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.File
 import java.util.concurrent.TimeUnit
 
 private fun logInterceptor(): Interceptor {
@@ -55,21 +47,12 @@ private fun headerInterceptor(context: Context): Interceptor {
     }
 }
 
-fun provideDefaultCache(): Cache? {
-    val cacheDir = File(getApp().cacheDir.absolutePath, "/okhttp-caches/")
-    if (cacheDir.mkdirs() || cacheDir.isDirectory) {
-        return Cache(cacheDir, 1024 * 1024 * 10)
-    }
-    return null
-}
-
-fun provideOkHttp(context: Context, cache: Cache): OkHttpClient {
+fun provideOkHttp(context: Context): OkHttpClient {
     return OkHttpClient.Builder()
         .addNetworkInterceptor(logInterceptor())
         .addInterceptor(headerInterceptor(context))
         .connectTimeout(1, TimeUnit.SECONDS)
         .readTimeout(1, TimeUnit.SECONDS)
-        .cache(cache)
         .build()
 }
 
@@ -86,50 +69,6 @@ fun provideUpdateService(client: OkHttpClient): UpdateService {
     return retrofit.create(UpdateService::class.java)
 }
 
-private fun Context.getDownloadQuery(): Cursor? {
-    val lastUpdateId = preferences().lastUpdateId
-    if (lastUpdateId != -1L) {
-        return getSystemService<DownloadManager>()?.query(
-            DownloadManager.Query()
-                .setFilterById(lastUpdateId)
-        )
-    }
-    return null
-}
-
-private fun Cursor.isDownloading(): Boolean {
-    val index = getColumnIndex(DownloadManager.COLUMN_STATUS)
-    if (index == -1) return false
-    val status = getInt(index)
-    return status == DownloadManager.STATUS_PENDING || status == DownloadManager.STATUS_RUNNING
-}
-
-private fun Cursor.getLocalUri(): Uri? {
-    val index = getColumnIndex(DownloadManager.COLUMN_LOCAL_URI)
-    if (index == -1) return null
-    val localUri = getString(index)
-    if (!localUri.isNullOrEmpty()) {
-        return localUri.toUri()
-    }
-    return null
-}
-
-fun Context.isDownloadingAnUpdate(): Boolean {
-    return getDownloadQuery().use { downloadQuery ->
-        if (downloadQuery != null && downloadQuery.moveToFirst()) {
-            downloadQuery.isDownloading()
-        } else false
-    }
-}
-
-fun Context.getInstallableUpdateUri(): Uri? {
-    return getDownloadQuery().use { downloadQuery ->
-        if (downloadQuery != null && downloadQuery.moveToFirst()) {
-            downloadQuery.getLocalUri()
-        } else null
-    }
-}
-
 fun Context.isAbleToUpdate(): Boolean {
     val minElapsedMillis = when (preferences().getUpdateSearchMode()) {
         UpdateSearchMode.EVERY_DAY -> TimeUnit.DAYS.toMillis(1)
@@ -143,19 +82,6 @@ fun Context.isAbleToUpdate(): Boolean {
         return isOnline(preferences().isUpdateOnlyWifi())
     }
     return false
-}
-
-fun Context.appUpgraded() {
-    preferences().lastVersionCode = getApp().versionCode
-    removeUpdate()
-}
-
-fun Context.removeUpdate() {
-    val lastUpdateId = preferences().lastUpdateId
-    if (lastUpdateId != -1L) {
-        getSystemService<DownloadManager>()?.remove(lastUpdateId)
-    }
-    preferences().lastUpdateId = -1L
 }
 
 const val DEFAULT_USER = "mardous"

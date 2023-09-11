@@ -43,21 +43,8 @@ typealias ContextConsumer = (Context) -> Unit
 typealias ViewConsumer = (View) -> Unit
 
 fun Context.openWeb(url: String) {
-    startActivitySafe(Intent(Intent.ACTION_VIEW, url.toUri()).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-}
-
-fun Context.installPackage(uri: Uri) {
-    val intent = Intent(Intent.ACTION_VIEW).apply {
-        setDataAndType(uri, "application/vnd.android.package-archive")
-        if (hasN()) {
-            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            putExtra(Intent.EXTRA_NOT_UNKNOWN_SOURCE, true)
-        } else {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        }
-    }
-    startActivitySafe(intent)
+    startActivitySafe(Intent(Intent.ACTION_VIEW, url.toUri())
+        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
 }
 
 fun Context.openGooglePlay(appPackage: String = packageName) {
@@ -109,7 +96,7 @@ inline fun <reified T : Serializable> Bundle.serializable(key: String, clazz: KC
 
 @Suppress("DEPRECATION")
 @Throws(PackageManager.NameNotFoundException::class)
-fun PackageManager.packageInfo(packageName: String = getApp().packageName): PackageInfo? =
+fun PackageManager.packageInfo(packageName: String = getApp().packageName): PackageInfo =
     if (hasT()) {
         getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
     } else getPackageInfo(packageName, 0)
@@ -169,17 +156,11 @@ fun hasM() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.N)
 fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
-@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O)
-fun hasO() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
-
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.R)
 fun hasR() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R
-
-@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.S)
-fun hasS() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.TIRAMISU)
 fun hasT() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU

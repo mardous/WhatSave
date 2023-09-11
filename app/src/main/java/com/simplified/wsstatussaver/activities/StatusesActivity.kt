@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.activities
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -28,15 +27,14 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
-import com.simplified.wsstatussaver.extensions.installPackage
 import com.simplified.wsstatussaver.extensions.lastVersionCode
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.getApp
+import com.simplified.wsstatussaver.logAppUpgrade
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.mediator.getLaunchIntent
-import com.simplified.wsstatussaver.update.appUpgraded
-import com.simplified.wsstatussaver.update.removeUpdate
+import com.simplified.wsstatussaver.update.isAbleToUpdate
 import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -60,44 +58,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
         }
 
         checkVersionCode()
-        if (savedInstanceState == null) {
-            checkUpdateState()
-        }
-    }
-
-    private fun checkUpdateState() {
-        viewModel.getUpdateState(this).observe(this) { state ->
-            if (state.isAbleToSearch) {
-                viewModel.getLatestRelease().observe(this) { release ->
-                    val dialogFragment = supportFragmentManager.findFragmentByTag("UPDATE_FOUND")
-                    if (dialogFragment == null && release.isDownloadable(this)) {
-                        UpdateDialog.create(release).show(supportFragmentManager, "UPDATE_FOUND")
-                    }
-                }
-            } else if (state.installableUpdate != null) {
-                if (hasInstallPackagesPermission()) {
-                    MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.install_update_title)
-                        .setMessage(R.string.the_app_update_is_ready_to_be_installed)
-                        .setPositiveButton(R.string.install_action) { _: DialogInterface, _: Int ->
-                            installPackage(state.installableUpdate)
-                        }
-                        .setNegativeButton(R.string.do_not_install) { _: DialogInterface, _: Int ->
-                            removeUpdate()
-                        }
-                        .show()
-                } else {
-                    MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.install_update_title)
-                        .setMessage(R.string.install_permission_request)
-                        .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int ->
-                            requestInstallPackagesPermission()
-                        }
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show()
-                }
-            }
-        }
+        searchUpdate()
     }
 
     private fun checkVersionCode() {
@@ -109,14 +70,17 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
                 .setPositiveButton(android.R.string.ok, null)
                 .show()
 
-            appUpgraded()
+            preferences().lastVersionCode = currentVersionCode
         }
     }
 
-    override fun onHasPermissionsChanged(isPackagesPermission: Boolean) {
-        super.onHasPermissionsChanged(isPackagesPermission)
-        if (isPackagesPermission) {
-            checkUpdateState()
+    private fun searchUpdate() {
+        if (isAbleToUpdate()) {
+            viewModel.getLatestUpdate().observe(this) { updateInfo ->
+                if (updateInfo.isDownloadable(this)) {
+                    UpdateDialog.create(updateInfo).show(supportFragmentManager, "UPDATE_FOUND")
+                }
+            }
         }
     }
 

@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.activities.base
 
 import android.Manifest
-import android.annotation.TargetApi
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -30,7 +29,6 @@ import android.view.View
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.net.toUri
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
@@ -50,7 +48,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     private var hadPermissions = false
     private var lastThemeUpdate: Long = -1
-    private var wasRequestingInstallPackages = false
 
     private lateinit var windowInsetsController: WindowInsetsControllerCompat
 
@@ -96,10 +93,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                 hadPermissions = hasPermissions
                 onHasPermissionsChanged()
             }
-            if (wasRequestingInstallPackages) {
-                onHasPermissionsChanged(true)
-                wasRequestingInstallPackages = false
-            }
         }
         if (preferences().themeChanged(lastThemeUpdate)) {
             // hack to prevent java.lang.RuntimeException: Performing pause of activity that is not resumed
@@ -124,8 +117,8 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         permissionsChangeListeners.remove(listener)
     }
 
-    protected open fun onHasPermissionsChanged(isPackagesPermission: Boolean = false) {
-        if (!isPackagesPermission) for (listener in permissionsChangeListeners) {
+    private fun onHasPermissionsChanged() {
+        for (listener in permissionsChangeListeners) {
             listener?.onHasPermissionsChangeListener()
         }
     }
@@ -146,25 +139,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
             requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
         }
     }
-
-    @Suppress("DEPRECATION")
-    @TargetApi(Build.VERSION_CODES.O)
-    protected fun requestInstallPackagesPermission() {
-        if (hasO()) {
-            if (!hasInstallPackagesPermission()) {
-                startActivityForResult(
-                    Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
-                        data = "package:$packageName".toUri()
-                    },
-                    PERMISSION_REQUEST_INSTALL_PACKAGES
-                )
-                wasRequestingInstallPackages = true
-            }
-        }
-    }
-
-    @TargetApi(Build.VERSION_CODES.O)
-    protected fun hasInstallPackagesPermission() = !hasO() || packageManager.canRequestPackageInstalls()
 
     private fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
 
@@ -213,6 +187,5 @@ abstract class AbsBaseActivity : AppCompatActivity() {
     companion object {
         private const val PERMISSION_REQUEST_STORAGE = 100
         private const val PERMISSION_REQUEST_STORAGE_R = 101
-        private const val PERMISSION_REQUEST_INSTALL_PACKAGES = 102
     }
 }

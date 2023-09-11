@@ -16,22 +16,17 @@ package com.simplified.wsstatussaver.dialogs
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.os.BundleCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogUpdateInfoBinding
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.update.GitHubRelease
-import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class UpdateDialog : DialogFragment() {
-
-    private val viewModel: WhatSaveViewModel by activityViewModel()
 
     private var _binding: DialogUpdateInfoBinding? = null
     private val binding get() = _binding!!
@@ -48,8 +43,7 @@ class UpdateDialog : DialogFragment() {
                 .setView(binding.root)
                 .setCancelable(false)
                 .setPositiveButton(R.string.download_action) { _: DialogInterface, _: Int ->
-                    viewModel.downloadRelease(requireContext(), release)
-                    Toast.makeText(requireContext(), R.string.the_download_has_started, Toast.LENGTH_SHORT).show()
+                    context?.openWeb(release.getDownloadUrl())
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int ->
                     release.setIgnored(requireContext())
