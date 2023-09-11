@@ -22,11 +22,12 @@ import com.google.gson.reflect.TypeToken
 import com.simplified.wsstatussaver.extensions.defaultClientPackageName
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.logDefaultClient
 import com.simplified.wsstatussaver.model.StatusType
-import java.io.BufferedReader
+import com.simplified.wsstatussaver.recordException
 import java.io.IOException
 import java.io.InputStream
-import java.io.InputStreamReader
+import java.nio.charset.StandardCharsets
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -44,15 +45,15 @@ class WAMediator internal constructor(private val context: Context) {
             context.assets.open("clients.json").use { stream: InputStream? ->
                 if (stream != null) {
                     gson.fromJson<List<WAClient>>(
-                        BufferedReader(InputStreamReader(stream, "UTF-8")),
-                        object : TypeToken<List<WAClient?>?>() {}.type
+                        stream.bufferedReader(StandardCharsets.UTF_8),
+                        object : TypeToken<List<WAClient>>() {}.type
                     ).onEach { it.toCompleteClient(context, packageManager) }
                 } else {
                     emptyList()
                 }
             }
         } catch (e: IOException) {
-            Log.e(TAG, "Failed to load default clients: $e")
+            recordException(e)
             emptyList()
         }
     }
@@ -83,6 +84,7 @@ class WAMediator internal constructor(private val context: Context) {
     }
 
     fun setDefaultClient(client: WAClient?) {
+        context.logDefaultClient(client?.packageName ?: "cleared")
         preferences.defaultClientPackageName = client?.packageName
     }
 
@@ -120,7 +122,8 @@ class WAMediator internal constructor(private val context: Context) {
             return false
 
         try {
-            return packageManager.packageInfo(client.packageName!!) != null
+            packageManager.packageInfo(client.packageName!!)
+            return true
         } catch (ignored: PackageManager.NameNotFoundException) {
             Log.i(TAG, "Package ${client.packageName} is not installed")
         }
