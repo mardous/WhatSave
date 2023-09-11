@@ -94,7 +94,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
         super.onDismiss(dialog)
     }
 
-    private class Adapter constructor(private val context: Context, private val mediator: WAMediator) :
+    private class Adapter(private val context: Context, private val mediator: WAMediator) :
         RecyclerView.Adapter<Adapter.ViewHolder>() {
 
         private val layoutInflater = LayoutInflater.from(context)
