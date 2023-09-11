@@ -27,7 +27,7 @@ internal typealias WAClientFilter = (WAClient) -> Boolean
 internal fun WAClient.toCompleteClient(context: Context, packageManager: PackageManager = context.packageManager) {
     try {
         val packageInfo = packageManager.packageInfo(this.packageName!!)
-        val applicationInfo = packageInfo!!.applicationInfo
+        val applicationInfo = packageInfo.applicationInfo
         if (appIcon == null) {
             appIcon = applicationInfo.loadIcon(packageManager)
         }

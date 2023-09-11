@@ -42,10 +42,10 @@ class App : Application() {
     }
 
     val versionName: String
-        get() = packageManager.packageInfo()?.versionName ?: "0"
+        get() = packageManager.packageInfo().versionName ?: "0"
 
     val versionCode: Int
-        get() = packageManager.packageInfo()?.versionCode() ?: 0
+        get() = packageManager.packageInfo().versionCode()
 
     companion object {
         internal lateinit var instance: App
