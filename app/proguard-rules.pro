@@ -60,6 +60,11 @@
 -keep class org.jaudiotagger.** { *; }
 -keep class org.jcodec.** { *; }
 
+#Gson
+-keep class com.google.gson.reflect.TypeToken
+-keep class * extends com.google.gson.reflect.TypeToken
+-keep public class * implements java.lang.reflect.Type
+
 -keepclassmembers enum * { *; }
 -keepattributes *Annotation*, Signature, Exception
 -keepnames class androidx.navigation.fragment.NavHostFragment
