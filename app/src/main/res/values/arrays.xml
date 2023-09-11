@@ -55,7 +55,7 @@
     <string-array name="pref_language_values">
         <item>auto</item>
         <item>en</item>
-        <item>es-ES</item>
+        <item>es</item>
         <item>es-US</item>
     </string-array>
 
