@@ -15,6 +15,8 @@ package com.simplified.wsstatussaver
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
@@ -32,6 +34,10 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        // Disable Analytics/Crashlytics for debug builds
+        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(!BuildConfig.DEBUG)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
 
         startKoin {
             androidContext(this@App)
