@@ -73,8 +73,8 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
                 .show()
 
             logAppUpgrade(lastVersionCode, currentVersionCode)
-            preferences().lastVersionCode = currentVersionCode
         }
+        preferences().lastVersionCode = currentVersionCode
     }
 
     private fun searchUpdate() {
