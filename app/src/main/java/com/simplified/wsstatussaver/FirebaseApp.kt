@@ -13,74 +13,56 @@
  */
 package com.simplified.wsstatussaver
 
-import android.content.Context
-import androidx.core.os.bundleOf
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.FirebaseAnalytics.Event
+import com.google.firebase.analytics.FirebaseAnalytics.Param
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import com.google.firebase.crashlytics.ktx.crashlytics
+import com.google.firebase.ktx.Firebase
 
+private val firebaseAnalytics: FirebaseAnalytics by lazy { Firebase.analytics }
+private val firebaseCrashlytics: FirebaseCrashlytics by lazy { Firebase.crashlytics }
 
-private val ANALYTICS_ENABLED = !BuildConfig.DEBUG
-
-fun Context.logToolView(clazz: String, name: String) {
-    if (!ANALYTICS_ENABLED) {
-        return
-    }
-
-    val bundle = bundleOf(
-        FirebaseAnalytics.Param.SCREEN_CLASS to clazz,
-        FirebaseAnalytics.Param.SCREEN_NAME to name
-    )
-    FirebaseAnalytics.getInstance(this)
-        .logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
+fun setAnalyticsEnabled(enabled: Boolean) {
+    firebaseAnalytics.setAnalyticsCollectionEnabled(!BuildConfig.DEBUG && enabled)
+    firebaseCrashlytics.setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG && enabled)
 }
 
-fun Context.logUpdateRequest(newVersion: String, accepted: Boolean) {
-    if (!ANALYTICS_ENABLED) {
-        return
+fun logToolView(clazz: String, name: String) {
+    firebaseAnalytics.logEvent(Event.SCREEN_VIEW) {
+        param(Param.SCREEN_CLASS, clazz)
+        param(Param.SCREEN_NAME, name)
     }
-
-    val bundle = bundleOf(
-        "new_version" to newVersion,
-        "user_accepted" to accepted
-    )
-    FirebaseAnalytics.getInstance(this)
-        .logEvent("request_app_update", bundle)
 }
 
-fun Context.logAppUpgrade(oldVersion: Int, newVersion: Int) {
-    if (!ANALYTICS_ENABLED) {
-        return
+fun logUpdateRequest(newVersion: String, accepted: Boolean) {
+    firebaseAnalytics.logEvent("request_app_update") {
+        param("new_version", newVersion)
+        param("user_accepted", accepted.toString())
     }
-
-    val bundle = bundleOf(
-        "old_version_code" to oldVersion,
-        "new_version_code" to newVersion
-    )
-    FirebaseAnalytics.getInstance(this)
-        .logEvent("apply_app_update", bundle)
 }
 
-fun Context.logDefaultClient(packageName: String) {
-    if (!ANALYTICS_ENABLED) {
-        return
+fun logAppUpgrade(oldVersion: Int, newVersion: Int) {
+    firebaseAnalytics.logEvent("apply_app_update") {
+        param("old_version_code", oldVersion.toString())
+        param("new_version_code", newVersion.toString())
     }
-
-    FirebaseAnalytics.getInstance(this)
-        .logEvent("select_default_client", bundleOf("client_id" to packageName))
 }
 
-fun Context.logUrlView(url: String) {
-    if (!ANALYTICS_ENABLED) {
-        return
+fun logDefaultClient(packageName: String) {
+    firebaseAnalytics.logEvent("select_default_client") {
+        param("client_id", packageName)
     }
+}
 
-    FirebaseAnalytics.getInstance(this)
-        .logEvent("open_url", bundleOf("url" to url))
+fun logUrlView(url: String) {
+    firebaseAnalytics.logEvent("open_url") {
+        param("url", url)
+    }
 }
 
 fun recordException(throwable: Throwable) {
-    if (!ANALYTICS_ENABLED) {
-        return
-    }
-    FirebaseCrashlytics.getInstance().recordException(throwable)
+    firebaseCrashlytics.recordException(throwable)
 }

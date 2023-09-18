@@ -45,11 +45,11 @@ class UpdateDialog : DialogFragment() {
                 .setCancelable(false)
                 .setPositiveButton(R.string.download_action) { _: DialogInterface, _: Int ->
                     context?.openWeb(release.getDownloadUrl())
-                    requireContext().logUpdateRequest(release.name, true)
+                    logUpdateRequest(release.name, true)
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int ->
                     release.setIgnored(requireContext())
-                    requireContext().logUpdateRequest(release.name, false)
+                    logUpdateRequest(release.name, false)
                 }
                 .setNeutralButton(R.string.more_info_action) { _: DialogInterface, _: Int ->
                     context?.openWeb(release.url)

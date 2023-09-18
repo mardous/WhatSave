@@ -30,7 +30,7 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentToolBinding.bind(view)
         _binding!!.msgANumber.setOnClickListener {
-            requireContext().logToolView("MsgDialog", "Message a number")
+            logToolView("MsgDialog", "Message a number")
             MsgDialog().show(childFragmentManager, "SEND_MSG")
         }
         statusesActivity.setSupportActionBar(binding.toolbar)

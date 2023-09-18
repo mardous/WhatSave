@@ -84,7 +84,7 @@ class WAMediator internal constructor(private val context: Context) {
     }
 
     fun setDefaultClient(client: WAClient?) {
-        context.logDefaultClient(client?.packageName ?: "cleared")
+        logDefaultClient(client?.packageName ?: "cleared")
         preferences.defaultClientPackageName = client?.packageName
     }
 
