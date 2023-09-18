@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:minHeight="?listPreferredItemHeightSmall"
             android:gravity="center_vertical"
-            android:inputType="text|textLongMessage|textMultiLine"
+            android:inputType="text|textAutoCorrect|textCapSentences|textLongMessage|textMultiLine"
             tools:ignore="Autofill"/>
 
     </com.google.android.material.textfield.TextInputLayout>
