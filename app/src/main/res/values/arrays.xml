@@ -48,8 +48,8 @@
     <string-array name="pref_language_entries">
         <item>@string/system_default</item>
         <item>English</item>
-        <item>Español (España)</item>
-        <item>Español (América Latina)</item>
+        <item>Spanish (Spain)</item>
+        <item>Spanish (Latin America)</item>
         <item>Russian</item>
     </string-array>
 
