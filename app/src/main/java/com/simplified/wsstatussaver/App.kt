@@ -15,12 +15,7 @@ package com.simplified.wsstatussaver
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
-import com.simplified.wsstatussaver.extensions.packageInfo
-import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.versionCode
+import com.simplified.wsstatussaver.extensions.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -36,8 +31,7 @@ class App : Application() {
         instance = this
 
         // Disable Analytics/Crashlytics for debug builds
-        FirebaseAnalytics.getInstance(this).setAnalyticsCollectionEnabled(!BuildConfig.DEBUG)
-        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
+        setAnalyticsEnabled(preferences().isAnalyticsEnabled())
 
         startKoin {
             androidContext(this@App)

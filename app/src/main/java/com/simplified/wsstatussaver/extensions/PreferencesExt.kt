@@ -65,6 +65,14 @@ fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH
 
 fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIFI, false)
 
+fun SharedPreferences.isAnalyticsEnabled() = getBoolean(PREFERENCE_ANALYTICS_ENABLED, true)
+
+var SharedPreferences.privacyPolicyAccepted: Boolean
+    get() = getBoolean(PREFERENCE_PRIVACY_POLICY_ACCEPTED, false)
+    set(value) = edit {
+        putBoolean(PREFERENCE_PRIVACY_POLICY_ACCEPTED, value)
+    }
+
 var SharedPreferences.lastUpdateSearch: Long
     get() = getLong(PREFERENCE_LAST_UPDATE_SEARCH, -1)
     set(value) = edit {
@@ -127,3 +135,5 @@ const val PREFERENCE_UPDATE_SEARCH_MODE = "update_search_mode"
 const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
 const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
 const val PREFERENCE_LAST_VERSION_CODE = "last_version_code"
+const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
+const val PREFERENCE_PRIVACY_POLICY_ACCEPTED = "privacy_policy_accepted"

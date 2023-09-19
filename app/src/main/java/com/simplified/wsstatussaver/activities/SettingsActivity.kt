@@ -32,6 +32,7 @@ import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
+import com.simplified.wsstatussaver.setAnalyticsEnabled
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -161,6 +162,11 @@ class SettingsActivity : AbsBaseActivity() {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageName))
                 }
                 activity?.recreate()
+                true
+            }
+
+            findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->
+                setAnalyticsEnabled((newValue as Boolean))
                 true
             }
         }

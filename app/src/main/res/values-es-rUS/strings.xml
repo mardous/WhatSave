@@ -91,6 +91,8 @@
     <string name="quick_deletion_summary">Permite eliminar estados guardados sin mostrar una ventana de confirmación. No recomendado.</string>
     <string name="default_client_title">Cliente predeterminado</string>
     <string name="default_client_summary">Si tienes varios clientes de WhatsApp instalados, puedes elegir desde cuál cargar los estados.</string>
+    <string name="analytics_enabled_title">Envíar estadísticas de uso</string>
+    <string name="analytics_enabled_summary">Cuando esto está activado, WhatSave puede enviar estadísticas de uso anónimas que nos ayudan a comprender cómo los usuarios usan la app.</string>
     <string name="about_label">Acerca de…</string>
     <string name="version_x">Versión %s</string>
     <string name="author_title">Autor</string>
@@ -124,4 +126,5 @@
     <string name="download_size">Tamaño de la descarga: %s</string>
     <string name="download_action">Descargar</string>
     <string name="more_info_action">Más info.</string>
+    <string name="privacy_and_terms">Términos y privacidad</string>
 </resources>

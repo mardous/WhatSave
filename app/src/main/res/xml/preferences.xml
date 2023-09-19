@@ -121,5 +121,13 @@
             android:defaultValue="false"
             android:key="update_only_wifi"/>
 
+        <SwitchPreferenceCompat
+            android:layout="@layout/list_item_view_switch"
+            android:title="@string/analytics_enabled_title"
+            android:summary="@string/analytics_enabled_summary"
+            android:defaultValue="true"
+            android:key="analytics_enabled"/>
+
     </PreferenceCategory>
+
 </PreferenceScreen>
