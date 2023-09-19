@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.activities
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -66,12 +65,7 @@ class SettingsActivity : AbsBaseActivity() {
         return false
     }
 
-    class SettingsFragment : PreferenceFragmentCompat(), SharedPreferences.OnSharedPreferenceChangeListener {
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            context?.preferences()?.registerOnSharedPreferenceChangeListener(this)
-        }
+    class SettingsFragment : PreferenceFragmentCompat() {
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             addPreferencesFromResource(R.xml.preferences)
@@ -80,11 +74,6 @@ class SettingsActivity : AbsBaseActivity() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
             invalidatePreferences()
-        }
-
-        override fun onDestroyView() {
-            context?.preferences()?.unregisterOnSharedPreferenceChangeListener(this)
-            super.onDestroyView()
         }
 
         override fun onDisplayPreferenceDialog(preference: Preference) {
@@ -100,12 +89,6 @@ class SettingsActivity : AbsBaseActivity() {
                 }
             }
             super.onDisplayPreferenceDialog(preference)
-        }
-
-        override fun onSharedPreferenceChanged(p0: SharedPreferences?, keys: String?) {
-            if (PREFERENCE_COLOR_THEME == keys) {
-                themeChanged()
-            }
         }
 
         private fun themeChanged() {

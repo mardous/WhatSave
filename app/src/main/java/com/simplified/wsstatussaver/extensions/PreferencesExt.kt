@@ -114,7 +114,6 @@ class UpdateSearchMode {
 
 const val PREFERENCE_NIGHT_MODE = "night_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
-const val PREFERENCE_COLOR_THEME = "color_theme"
 const val PREFERENCE_THEME_CHANGED = "theme_changed"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"
 const val PREFERENCE_LONG_PRESS_ACTION = "long_press_action"
