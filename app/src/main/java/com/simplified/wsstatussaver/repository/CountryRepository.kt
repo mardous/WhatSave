@@ -19,6 +19,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.model.Country
+import java.io.InputStream
 import java.util.*
 
 interface CountryRepository {
@@ -36,10 +37,12 @@ class CountryRepositoryImpl(private val context: Context) :
 
     override suspend fun allCountries(): List<Country> {
         if (countries == null) {
-            countries = context.assets.open("countries.json").use {
+            countries = context.assets.open("countries.json").use<InputStream, List<Country>?> {
                 it.bufferedReader().readText().let { content ->
                     Gson().fromJson(content, object : TypeToken<List<Country>>() {}.type)
                 }
+            }?.sortedBy {
+                it.displayName
             }
             if (countries == null) {
                 countries = arrayListOf()

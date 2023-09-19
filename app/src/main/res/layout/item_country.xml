@@ -22,33 +22,42 @@
     android:paddingEnd="?dialogPreferredPadding"
     android:background="?rectSelector">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_front_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="64dp"/>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/countryCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
+        android:maxEms="3"
         android:ellipsize="end"
+        android:paddingEnd="16dp"
         android:textAppearance="?textAppearanceBody1"
         android:textColor="?android:textColorSecondary"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="+58"/>
+        app:layout_constraintEnd_toEndOf="@+id/guideline_front_margin"
+        tools:text="@tools:sample/lorem/random"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/countryName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:maxLines="1"
         android:ellipsize="end"
         android:textAppearance="?textAppearanceBody1"
         android:textColor="@color/selectable_text_color"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/countryCode"
-        tools:text="Venezuela • VE"/>
+        app:layout_constraintStart_toEndOf="@+id/guideline_front_margin"
+        app:layout_constraintEnd_toStartOf="@+id/checkIcon"
+        tools:text="@tools:sample/lorem/random"/>
 
     <ImageView
         android:id="@+id/checkIcon"
