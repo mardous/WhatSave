@@ -24,7 +24,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.shape.MaterialShapeDrawable
-import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.*
 import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.databinding.ActivitySettingsBinding
 import com.simplified.wsstatussaver.extensions.*
@@ -32,7 +32,6 @@ import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
-import com.simplified.wsstatussaver.setAnalyticsEnabled
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -115,56 +114,47 @@ class SettingsActivity : AbsBaseActivity() {
         }
 
         fun invalidatePreferences() {
-            val nightMode = findPreference<Preference>(PREFERENCE_NIGHT_MODE)
-            if (nightMode != null) {
-                nightMode.onPreferenceChangeListener =
-                    Preference.OnPreferenceChangeListener { _: Preference?, o: Any? ->
-                        AppCompatDelegate.setDefaultNightMode(getDefaultDayNightMode(o as String?))
-                        themeChanged()
-                        true
-                    }
-            }
-
-            val justBlackTheme = findPreference<SwitchPreferenceCompat>(PREFERENCE_JUST_BLACK_THEME)
-            if (justBlackTheme != null) {
-                justBlackTheme.isEnabled = justBlackTheme.context.isNightModeEnabled
-                justBlackTheme.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, _ ->
+            findPreference<Preference>(PREFERENCE_NIGHT_MODE)
+                ?.setOnPreferenceChangeListener { _: Preference?, newValue: Any? ->
+                    val themeName = newValue as String
+                    AppCompatDelegate.setDefaultNightMode(getDefaultDayNightMode(themeName))
+                    logThemeSelected(themeName)
                     themeChanged()
                     true
                 }
-            }
-
-            val longPressAction = findPreference<Preference>(PREFERENCE_LONG_PRESS_ACTION)
-            if (longPressAction != null) {
-                longPressAction.onPreferenceChangeListener =
-                    Preference.OnPreferenceChangeListener { _: Preference?, o: Any ->
-                        val actionName = o as String
-                        if (LongPressAction.VALUE_DELETE == actionName) {
-                            Toast.makeText(
-                                requireContext(),
-                                R.string.statuses_deletion_is_not_permitted,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
+            findPreference<SwitchPreferenceCompat>(PREFERENCE_JUST_BLACK_THEME)
+                ?.apply {
+                    isEnabled = requireContext().isNightModeEnabled
+                    setOnPreferenceChangeListener { _, _ ->
+                        themeChanged()
                         true
                     }
-            }
-
-            if (hasR()) {
-                findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = false
-            }
-
+                }
+            findPreference<Preference>(PREFERENCE_LONG_PRESS_ACTION)
+                ?.setOnPreferenceChangeListener { _: Preference?, o: Any ->
+                    val actionName = o as String
+                    if (LongPressAction.VALUE_DELETE == actionName) {
+                        Toast.makeText(
+                            requireContext(),
+                            R.string.statuses_deletion_is_not_permitted,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    logLongPressActionSelected(actionName)
+                    true
+                }
+            findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = !hasR()
             findPreference<Preference>(PREFERENCE_LANGUAGE)?.setOnPreferenceChangeListener { _, newValue ->
-                val languageName = newValue as? String
+                val languageName = newValue as String
                 if (languageName == "auto") {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
                 } else {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageName))
                 }
+                logLanguageSelected(languageName)
                 activity?.recreate()
                 true
             }
-
             findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->
                 setAnalyticsEnabled((newValue as Boolean))
                 true
