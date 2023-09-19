@@ -15,7 +15,7 @@ package com.simplified.wsstatussaver.extensions
 
 import android.content.Intent
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
@@ -47,4 +47,12 @@ fun Fragment.requestView(consumer: ViewConsumer) {
  */
 fun Fragment.startActivitySafe(intent: Intent?, onError: ExceptionConsumer? = null) {
     intent.doWithIntent(onError) { startActivity(it) }
+}
+
+fun Fragment.showToast(messageRes: Int, duration: Int = Toast.LENGTH_SHORT) {
+    context?.showToast(messageRes, duration)
+}
+
+fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
+    context?.showToast(message, duration)
 }

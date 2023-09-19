@@ -24,7 +24,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,6 +34,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.databinding.ItemClientBinding
+import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
 import org.koin.android.ext.android.inject
@@ -102,13 +102,9 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
         private var clients: List<WAClient> = ArrayList()
         private var defaultClient: WAClient? by Delegates.observable(mediator.getDefaultClient()) { _: KProperty<*>, _: WAClient?, client: WAClient? ->
             mediator.setDefaultClient(client)
-            if (client == null) {
-                Toast.makeText(context, R.string.default_client_cleared, Toast.LENGTH_SHORT).show()
-            } else Toast.makeText(
-                context,
-                context.getString(R.string.x_is_the_default_client_now, client.getLabel(context)),
-                Toast.LENGTH_SHORT
-            ).show()
+            if (client == null)
+                context.showToast(R.string.default_client_cleared)
+            else context.showToast(context.getString(R.string.x_is_the_default_client_now, client.getLabel(context)))
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

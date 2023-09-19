@@ -19,7 +19,6 @@ import android.content.DialogInterface
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -96,9 +95,9 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                Toast.makeText(context, R.string.deletion_success, Toast.LENGTH_SHORT).show()
+                showToast(R.string.deletion_success)
             } else {
-                Toast.makeText(context, R.string.deletion_failed, Toast.LENGTH_SHORT).show()
+                showToast(R.string.deletion_failed)
             }
         }
 

@@ -17,7 +17,6 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.core.text.isDigitsOnly
 import androidx.core.util.Predicate
@@ -29,6 +28,7 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.CountryAdapter
 import com.simplified.wsstatussaver.databinding.DialogMsgBinding
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
+import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.model.Country
@@ -108,7 +108,7 @@ class MsgDialog : DialogFragment(), ICountryCallback {
         val country = viewModel.getSelectedCountry() ?: return
         val phoneNumber = getFormattedPhoneNumber(country, binding.phoneNumber.text?.toString())
         if (phoneNumber == null) {
-            Toast.makeText(requireContext(), R.string.phone_number_invalid, Toast.LENGTH_SHORT).show()
+            showToast(R.string.phone_number_invalid)
             return
         }
 

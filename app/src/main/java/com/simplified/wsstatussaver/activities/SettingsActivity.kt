@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.activities
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.preference.Preference
@@ -117,11 +116,7 @@ class SettingsActivity : AbsBaseActivity() {
                 ?.setOnPreferenceChangeListener { _: Preference?, o: Any ->
                     val actionName = o as String
                     if (LongPressAction.VALUE_DELETE == actionName) {
-                        Toast.makeText(
-                            requireContext(),
-                            R.string.statuses_deletion_is_not_permitted,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        showToast(R.string.statuses_deletion_is_not_permitted)
                     }
                     logLongPressActionSelected(actionName)
                     true

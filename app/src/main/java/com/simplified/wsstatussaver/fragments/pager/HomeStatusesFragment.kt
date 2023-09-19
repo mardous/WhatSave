@@ -16,15 +16,14 @@ package com.simplified.wsstatussaver.fragments.pager
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
-import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
 import org.koin.android.ext.android.inject
 
 /**
@@ -99,7 +98,7 @@ class HomeStatusesFragment : AbsPagerFragment(),
     override fun onEmptyViewButtonClick() {
         if (mediator.isAnyWhatsappInstalled()) {
             startActivitySafe(mediator.getWhatsAppLaunchIntent()) { e, _ ->
-                Toast.makeText(requireContext(), getString(R.string.could_not_open_wa, e), Toast.LENGTH_SHORT).show()
+                showToast(getString(R.string.could_not_open_wa, e))
             }
         } else {
             requestContext { context -> context.openGooglePlay("com.whatsapp") }
