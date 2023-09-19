@@ -44,13 +44,6 @@ fun logUpdateRequest(newVersion: String, accepted: Boolean) {
     }
 }
 
-fun logAppUpgrade(oldVersion: Int, newVersion: Int) {
-    firebaseAnalytics.logEvent("apply_app_update") {
-        param("old_version_code", oldVersion.toString())
-        param("new_version_code", newVersion.toString())
-    }
-}
-
 fun logDefaultClient(packageName: String) {
     firebaseAnalytics.logEvent("select_default_client") {
         param("client_id", packageName)

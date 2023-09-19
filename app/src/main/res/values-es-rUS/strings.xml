@@ -120,7 +120,6 @@
     <string name="only_wifi_title">Solo en Wi-Fi</string>
     <string name="only_wifi_summary">Buscar actualizaciones solo cuando esté disponible el Wi-Fi.</string>
     <string name="the_app_is_up_to_date">La app está actualizada</string>
-    <string name="the_app_was_upgraded">La app se actualizó a la versión %s</string>
     <string name="update_title">Actualización disponible</string>
     <string name="release_date">Fecha de publicación: %s</string>
     <string name="download_size">Tamaño de la descarga: %s</string>

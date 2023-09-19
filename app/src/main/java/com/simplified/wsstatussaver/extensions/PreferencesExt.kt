@@ -85,12 +85,6 @@ var SharedPreferences.defaultClientPackageName: String?
         putString(PREFERENCE_DEFAULT_CLIENT, packageName)
     }
 
-var SharedPreferences.lastVersionCode
-    get() = getInt(PREFERENCE_LAST_VERSION_CODE, -1)
-    set(value) = edit {
-        putInt(PREFERENCE_LAST_VERSION_CODE, value)
-    }
-
 class NightMode {
     companion object {
         const val VALUE_YES = "yes"
@@ -134,6 +128,5 @@ const val PREFERENCE_DEFAULT_CLIENT = "default_client"
 const val PREFERENCE_UPDATE_SEARCH_MODE = "update_search_mode"
 const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
 const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
-const val PREFERENCE_LAST_VERSION_CODE = "last_version_code"
 const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
 const val PREFERENCE_PRIVACY_POLICY_ACCEPTED = "privacy_policy_accepted"

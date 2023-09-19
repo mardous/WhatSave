@@ -20,7 +20,6 @@ import android.view.MenuItem
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
@@ -28,12 +27,9 @@ import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.PrivacyDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
-import com.simplified.wsstatussaver.extensions.lastVersionCode
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.privacyPolicyAccepted
 import com.simplified.wsstatussaver.extensions.whichFragment
-import com.simplified.wsstatussaver.getApp
-import com.simplified.wsstatussaver.logAppUpgrade
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.mediator.getLaunchIntent
 import com.simplified.wsstatussaver.update.isAbleToUpdate
@@ -59,30 +55,10 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
             navigationView.setupWithNavController(navController)
         }
 
-        if (!checkVersionCode()) {
-            checkPrivacyAccepted()
-        }
+        checkPrivacyAccepted()
         if (savedInstanceState == null) {
             searchUpdate()
         }
-    }
-
-    private fun checkVersionCode(): Boolean {
-        val currentVersionCode = getApp().versionCode
-        val lastVersionCode = preferences().lastVersionCode
-        if ((lastVersionCode != -1) && currentVersionCode > lastVersionCode) {
-            MaterialAlertDialogBuilder(this)
-                .setMessage(getString(R.string.the_app_was_upgraded, getApp().versionName))
-                .setPositiveButton(android.R.string.ok, null)
-                .show().also {
-                    it.setOnDismissListener { checkPrivacyAccepted() }
-                }
-
-            logAppUpgrade(lastVersionCode, currentVersionCode)
-            return true
-        }
-        preferences().lastVersionCode = currentVersionCode
-        return false
     }
 
     private fun searchUpdate() {

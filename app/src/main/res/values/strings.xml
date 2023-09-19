@@ -119,7 +119,6 @@
     <string name="only_wifi_title">Only Wi-Fi</string>
     <string name="only_wifi_summary">Search for updates only when Wi-Fi is connected.</string>
     <string name="the_app_is_up_to_date">The app is up-to-date</string>
-    <string name="the_app_was_upgraded">The app was upgraded to version %s</string>
     <string name="update_title">Update available</string>
     <string name="release_date">Release date: %s</string>
     <string name="download_size">Download size: %s</string>

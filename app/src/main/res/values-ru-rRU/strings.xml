@@ -119,7 +119,6 @@
     <string name="only_wifi_title">Только по Wi-Fi</string>
     <string name="only_wifi_summary">Искать обновления только при подключении Wi-Fi.</string>
     <string name="the_app_is_up_to_date">Приложение актуально</string>
-    <string name="the_app_was_upgraded">Приложение обновлено до версии %s</string>
     <string name="update_title">Доступно обновление</string>
     <string name="release_date">Дата выхода: %s</string>
     <string name="download_size">Размер загрузки: %s</string>
