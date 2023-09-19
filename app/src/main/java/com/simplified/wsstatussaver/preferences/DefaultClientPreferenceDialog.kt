@@ -32,11 +32,11 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.databinding.ItemClientBinding
 import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
-import com.simplified.wsstatussaver.WhatSaveViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.properties.Delegates
@@ -106,7 +106,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
                 Toast.makeText(context, R.string.default_client_cleared, Toast.LENGTH_SHORT).show()
             } else Toast.makeText(
                 context,
-                context.getString(R.string.x_is_the_default_client_now, client.appName),
+                context.getString(R.string.x_is_the_default_client_now, client.getLabel(context)),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -117,9 +117,9 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val client = clients[position]
-            holder.icon?.setImageDrawable(client.appIcon)
-            holder.name?.text = client.appName
-            holder.description?.text = client.appDescription
+            holder.icon?.setImageDrawable(client.getIcon(context))
+            holder.name?.text = client.getLabel(context)
+            holder.description?.text = client.getDescription(context)
             holder.check?.isChecked = client == defaultClient
         }
 

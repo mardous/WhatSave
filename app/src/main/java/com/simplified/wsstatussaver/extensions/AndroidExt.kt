@@ -29,6 +29,7 @@ import android.view.View
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
@@ -119,6 +120,8 @@ fun Intent?.toChooser(title: CharSequence? = null): Intent? {
     if (this == null) return null
     return Intent.createChooser(this, title)
 }
+
+fun String.formatted() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
 fun RecyclerView.Adapter<*>?.isNullOrEmpty(): Boolean = this == null || this.itemCount == 0
 

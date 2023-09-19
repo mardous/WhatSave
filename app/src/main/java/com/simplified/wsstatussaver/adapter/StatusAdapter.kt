@@ -17,7 +17,6 @@
 package com.simplified.wsstatussaver.adapter
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.*
 import android.view.View.OnLongClickListener
 import android.widget.ImageView
@@ -101,7 +100,7 @@ open class StatusAdapter(
                 val client = mediator.getClientForPackage(status.clientPackage)
                 if (client != null) {
                     holder.clientIcon.isVisible = true
-                    holder.clientIcon.setImageDrawable(client.appIcon)
+                    holder.clientIcon.setImageDrawable(client.getIcon(activity))
                 }
             }
         }

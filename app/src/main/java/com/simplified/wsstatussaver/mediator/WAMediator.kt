@@ -44,10 +44,10 @@ class WAMediator internal constructor(private val context: Context) {
         try {
             context.assets.open("clients.json").use { stream: InputStream? ->
                 if (stream != null) {
-                    gson.fromJson<List<WAClient>>(
+                    gson.fromJson(
                         stream.bufferedReader(StandardCharsets.UTF_8),
                         object : TypeToken<List<WAClient>>() {}.type
-                    ).onEach { it.toCompleteClient(context, packageManager) }
+                    )
                 } else {
                     emptyList()
                 }

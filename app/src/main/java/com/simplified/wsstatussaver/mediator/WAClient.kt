@@ -13,9 +13,15 @@
  */
 package com.simplified.wsstatussaver.mediator
 
+import android.content.Context
+import android.content.pm.PackageInfo
 import android.graphics.drawable.Drawable
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.extensions.formatted
+import com.simplified.wsstatussaver.extensions.packageInfo
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -32,9 +38,37 @@ data class WAClient(
     var statusesDirectories: List<String>? = null,
     @Expose
     @SerializedName("official")
-    var isOfficialClient: Boolean = false) {
+    var isOfficialClient: Boolean = false
+) {
 
-    var appIcon: Drawable? = null
-    var appName: CharSequence? = null
-    var appDescription: CharSequence? = null
+    fun getIcon(context: Context): Drawable? {
+        return resolvePackageValue(context) {
+            it?.applicationInfo?.loadIcon(context.packageManager) ?: getDrawable(context, R.drawable.ic_client_default)
+        }
+    }
+
+    fun getLabel(context: Context): CharSequence? {
+        return resolvePackageValue(context) {
+            it?.applicationInfo?.loadLabel(context.packageManager) ?: name
+        }
+    }
+
+    fun getDescription(context: Context): CharSequence {
+        val messageRes = if (isOfficialClient) R.string.client_info else R.string.client_info_not_official
+        val versionName = resolvePackageValue(context) {
+            it?.versionName ?: context.getString(R.string.client_info_unknown)
+        }
+        return context.getString(messageRes, versionName).formatted()
+    }
+
+    private fun <T> resolvePackageValue(context: Context, resolver: (PackageInfo?) -> T): T? {
+        if (packageName.isNullOrEmpty()) {
+            return null
+        }
+        val packageInfo = runCatching { context.packageManager.packageInfo(packageName!!) }
+        if (packageInfo.isSuccess) {
+            return resolver(packageInfo.getOrThrow())
+        }
+        return resolver(null)
+    }
 }
