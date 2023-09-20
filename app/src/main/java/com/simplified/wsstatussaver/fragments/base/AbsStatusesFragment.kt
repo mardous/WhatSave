@@ -43,7 +43,7 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
     private lateinit var tabLayoutMediator: TabLayoutMediator
     protected var pagerAdapter: PagerAdapter? = null
     protected var currentType: StatusType
-        get() = StatusType.values().first { type -> type.ordinal == binding.viewPager.currentItem }
+        get() = StatusType.entries.first { type -> type.ordinal == binding.viewPager.currentItem }
         set(type) {
             binding.viewPager.currentItem = type.ordinal
         }

@@ -31,7 +31,7 @@ private fun Status.getSaveName(i: String?, delta: Int = 0): String {
     return saveName
 }
 
-fun Int.asStatusType() = StatusType.values().first { it.ordinal == this }
+fun Int.asStatusType() = StatusType.entries.first { it.ordinal == this }
 
 fun Status.toStatusEntity(saveName: String?, delta: Int = 0) = StatusEntity(
     type = type.ordinal,

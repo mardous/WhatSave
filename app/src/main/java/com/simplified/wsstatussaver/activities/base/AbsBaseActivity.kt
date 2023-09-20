@@ -167,9 +167,10 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                             .setMessage(R.string.permissions_denied_message)
                             .setPositiveButton(R.string.open_settings_action) { _: DialogInterface, _: Int ->
                                 startActivity(
-                                    Intent()
-                                        .setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                                        .setData(Uri.fromParts("package", packageName, null))
+                                    Intent().apply {
+                                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                                        data = Uri.fromParts("package", packageName, null)
+                                    }
                                 )
                             }
                             .setNeutralButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
