@@ -27,6 +27,7 @@
 -dontwarn java.lang.invoke.*
 -dontwarn **$$Lambda$*
 -dontwarn javax.annotation.**
+-dontwarn com.google.android.datatransport.runtime.ForcedSender
 
 # RetroFit
 -dontwarn retrofit.**
