@@ -31,11 +31,6 @@ import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleEventObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.simplified.wsstatussaver.getApp
 import com.simplified.wsstatussaver.logUrlView
 import java.io.Serializable
@@ -133,26 +128,6 @@ fun Intent?.toChooser(title: CharSequence? = null): Intent? {
 }
 
 fun String.formatted() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)
-
-fun RecyclerView.Adapter<*>?.isNullOrEmpty(): Boolean = this == null || this.itemCount == 0
-
-fun ViewPager2.doOnPageSelected(lifecycleOwner: LifecycleOwner, onSelected: (position: Int) -> Unit) {
-    val lifecycle = lifecycleOwner.lifecycle
-    if (lifecycle.currentState == Lifecycle.State.DESTROYED) return
-    val callback = object : ViewPager2.OnPageChangeCallback() {
-        override fun onPageSelected(position: Int) {
-            onSelected(position)
-        }
-    }
-    registerOnPageChangeCallback(callback)
-    lifecycle.addObserver(object : LifecycleEventObserver {
-        override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-            if (event == Lifecycle.Event.ON_DESTROY) {
-                unregisterOnPageChangeCallback(callback)
-            }
-        }
-    })
-}
 
 internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent) -> Unit) {
     if (this == null) {

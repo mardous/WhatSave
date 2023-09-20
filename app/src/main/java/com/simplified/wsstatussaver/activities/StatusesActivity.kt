@@ -27,9 +27,11 @@ import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.PrivacyDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
+import com.simplified.wsstatussaver.extensions.currentFragment
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.privacyPolicyAccepted
 import com.simplified.wsstatussaver.extensions.whichFragment
+import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.mediator.getLaunchIntent
 import com.simplified.wsstatussaver.update.isAbleToUpdate
@@ -99,7 +101,10 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
-        // TODO Call IScrollable interface
+        val currentFragment = currentFragment(R.id.main_container)
+        if (currentFragment is AbsStatusesFragment) {
+            currentFragment.onScrollToTop()
+        }
     }
 }
 

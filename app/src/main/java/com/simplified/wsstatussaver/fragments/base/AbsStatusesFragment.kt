@@ -26,6 +26,7 @@ import com.simplified.wsstatussaver.adapter.PagerAdapter
 import com.simplified.wsstatussaver.databinding.FragmentStatusesBinding
 import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.doOnPageSelected
+import com.simplified.wsstatussaver.extensions.findCurrentFragment
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.model.StatusType
@@ -89,6 +90,10 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
     }
 
     override fun onScrollToTop() {
+        val currentFragment = binding.viewPager.findCurrentFragment(childFragmentManager)
+        if (currentFragment is AbsPagerFragment) {
+            currentFragment.onScrollToTop()
+        }
     }
 
     internal fun getViewPager() = binding.viewPager
