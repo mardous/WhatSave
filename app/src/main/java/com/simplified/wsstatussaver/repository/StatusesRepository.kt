@@ -29,6 +29,7 @@ import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
+import com.simplified.wsstatussaver.recordException
 import com.simplified.wsstatussaver.storage.Storage
 import java.io.File
 import java.io.FileInputStream
@@ -205,8 +206,8 @@ class StatusesRepositoryImpl(
                             }
                         }
                     }
-                } catch (e: SecurityException) {
-                    e.printStackTrace()
+                } catch (e: Throwable) {
+                    recordException(e)
                 }
             }
             return statuses.also { list ->
@@ -229,7 +230,7 @@ class StatusesRepositoryImpl(
             if (result.isSuccess) {
                 result.getOrThrow()
             } else {
-                result.exceptionOrNull()?.printStackTrace()
+                result.exceptionOrNull()?.let { recordException(it) }
                 null
             }
         }
