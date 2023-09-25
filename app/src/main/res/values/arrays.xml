@@ -51,6 +51,7 @@
         <item>Spanish (Spain)</item>
         <item>Spanish (Latin America)</item>
         <item>French</item>
+        <item>Hindi</item>
         <item>Russian</item>
     </string-array>
 
@@ -60,6 +61,7 @@
         <item>es</item>
         <item>es-419</item>
         <item>fr</item>
+        <item>hi</item>
         <item>ru</item>
     </string-array>
 
