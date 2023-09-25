@@ -50,6 +50,7 @@
         <item>English</item>
         <item>Spanish (Spain)</item>
         <item>Spanish (Latin America)</item>
+        <item>French</item>
         <item>Russian</item>
     </string-array>
 
@@ -58,6 +59,7 @@
         <item>en</item>
         <item>es</item>
         <item>es-419</item>
+        <item>fr</item>
         <item>ru</item>
     </string-array>
 
