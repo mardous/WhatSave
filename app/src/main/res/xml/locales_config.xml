@@ -11,4 +11,5 @@
     <locale android:name="kk"/>
     <locale android:name="pt-BR"/>
     <locale android:name="ru"/>
+    <locale android:name="ta"/>
 </locale-config>

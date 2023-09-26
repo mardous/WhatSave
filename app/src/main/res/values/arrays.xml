@@ -58,6 +58,7 @@
         <item>Kazakh</item>
         <item>Portuguese (Brazil)</item>
         <item>Russian</item>
+        <item>Tamil</item>
     </string-array>
 
     <string-array name="pref_language_values">
@@ -73,6 +74,7 @@
         <item>kk</item>
         <item>pt-BR</item>
         <item>ru</item>
+        <item>ta</item>
     </string-array>
 
 </resources>
