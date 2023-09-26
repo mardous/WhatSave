@@ -51,9 +51,9 @@
     <string name="statuses_deletion_is_not_permitted">ध्यान रखें कि केवल सहेजे गए स्टेटस को ही हटाया जा सकता है</string>
     <string name="deletion_success">विलोपन सफलता.</string>
     <string name="deletion_failed">हटाना विफल रहा.</string>
-    <string name="permission_request_android_r"> एंड्रॉइड ओएस नीतियों के कारण, आपको हमें अपने डिवाइस में फ़ाइलों को प्रबंधित करने की अनुमति देनी होगी।\nयह अनुमति केवल व्हाट्सएप से स्टेटस फ़ाइलों को सूचीबद्ध करने के लिए आवश्यक है। हम इस अनुमति का उपयोग आपके फ़ोन में समझदार डेटा तक पहुँचने या यहाँ तक कि आपके निजी डेटा तक पहुँचने के लिए नहीं करते हैं।</string>
+    <string name="permission_request_android_r">एंड्रॉइड ओएस नीतियों के कारण, आपको हमें अपने डिवाइस में फ़ाइलों को प्रबंधित करने की अनुमति देनी होगी।\nयह अनुमति केवल व्हाट्सएप से स्टेटस फ़ाइलों को सूचीबद्ध करने के लिए आवश्यक है। हम इस अनुमति का उपयोग आपके फ़ोन में समझदार डेटा तक पहुँचने या यहाँ तक कि आपके निजी डेटा तक पहुँचने के लिए नहीं करते हैं।</string>
     <string name="permissions_denied_title">अनुमतियाँ अस्वीकृत</string>
-    <string name="permissions_denied_message"> आपको आवश्यक अनुमतियाँ देनी होंगी।\n\nयह एप्लिकेशन इन अनुमतियों के बिना सही ढंग से काम नहीं करेगा।</string>
+    <string name="permissions_denied_message">आपको आवश्यक अनुमतियाँ देनी होंगी।\n\nयह एप्लिकेशन इन अनुमतियों के बिना सही ढंग से काम नहीं करेगा।</string>
     <string name="grant_action">अनुदान</string>
     <string name="open_settings_action">खुली सेटिंग</string>
     <string name="there_is_not_an_app_available_to_open_this_x">इस %s को खोलने के लिए कोई ऐप उपलब्ध नहीं है</string>

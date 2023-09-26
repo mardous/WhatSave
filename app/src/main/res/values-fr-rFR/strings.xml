@@ -82,7 +82,7 @@
     <string name="exclude_old_statuses_title">Exclure les anciens statuts</string>
     <string name="exclude_old_statuses_summary">Si vous consultez d\'anciens statuts dans cette application.</string>
     <string name="exclude_saved_statuses_title">Exclure les statuts enregistres</string>
-    <string name="exclude_saved_statuses_summary">S\'ils sont actives, les statuts enregistres n\'apparaitront pas sur la page principale. Ils seront accessibles uniquement depuis la page &quot;Enregistres&quot;.</string>
+    <string name="exclude_saved_statuses_summary">S\'ils sont actives, les statuts enregistres n\'apparaitront pas sur la page principale. Ils seront accessibles uniquement depuis la page \"Enregistres\".</string>
     <string name="multi_selection_title">Multi-selection</string>
     <string name="long_press_action_title">Action de pression longue</string>
     <string name="whatsapp_icon_title">Petite icone WhatsApp</string>
