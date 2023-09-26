@@ -29,7 +29,7 @@
     <string name="x_selected">%d выбрана</string>
     <string name="please_enter_a_name_for_the_saved_file">Калі ласка, увядзіце імя для захаванага файла:</string>
     <string name="new_file_name">Новае імя файла</string>
-    <string name="x_is_the_default_client_now">%s зараз з&apos;яўляецца стандартным кліентам.</string>
+    <string name="x_is_the_default_client_now">%s зараз з\'яўляецца стандартным кліентам.</string>
     <string name="default_client_cleared">Кліент па змаўчанні ачышчаны.</string>
     <string name="client_info"><![CDATA[Версія <b>%s</b> (афіцыйны кліент)]]></string>
     <string name="client_info_not_official"><![CDATA[Версія <b>%s</b> (неафіцыйны кліент)]]></string>
