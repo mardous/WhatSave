@@ -48,6 +48,7 @@
     <string-array name="pref_language_entries">
         <item>@string/system_default</item>
         <item>Belarusian</item>
+        <item>Dutch</item>
         <item>English</item>
         <item>Spanish (Spain)</item>
         <item>Spanish (Latin America)</item>
@@ -61,6 +62,7 @@
     <string-array name="pref_language_values">
         <item>auto</item>
         <item>be</item>
+        <item>nl-NL</item>
         <item>en</item>
         <item>es</item>
         <item>es-419</item>
