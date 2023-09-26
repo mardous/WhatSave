@@ -56,6 +56,7 @@
         <item>Hindi</item>
         <item>Italian</item>
         <item>Kazakh</item>
+        <item>Portuguese (Brazil)</item>
         <item>Russian</item>
     </string-array>
 
@@ -70,6 +71,7 @@
         <item>hi</item>
         <item>it</item>
         <item>kk</item>
+        <item>pt-BR</item>
         <item>ru</item>
     </string-array>
 
