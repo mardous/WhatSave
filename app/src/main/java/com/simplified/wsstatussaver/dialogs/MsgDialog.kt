@@ -17,9 +17,8 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import androidx.core.net.toUri
-import androidx.core.text.isDigitsOnly
-import androidx.core.util.Predicate
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -28,12 +27,15 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.CountryAdapter
 import com.simplified.wsstatussaver.databinding.DialogMsgBinding
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
+import com.simplified.wsstatussaver.extensions.encodedUrl
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.model.Country
+import io.michaelrocks.libphonenumber.android.NumberParseException
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import java.net.URLEncoder
 
 class MsgDialog : DialogFragment(), ICountryCallback {
 
@@ -41,9 +43,11 @@ class MsgDialog : DialogFragment(), ICountryCallback {
     private val binding get() = _binding!!
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
+    private val phoneNumberUtil: PhoneNumberUtil by inject()
 
     private var adapter: CountryAdapter? = null
     private var countriesDialog: Dialog? = null
+    private var numberFormatTextWatcher: PhoneNumberFormattingTextWatcher? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogMsgBinding.inflate(layoutInflater)
@@ -80,9 +84,15 @@ class MsgDialog : DialogFragment(), ICountryCallback {
         viewModel.getCountriesObservable().observe(this) {
             adapter?.countries = it
         }
-        viewModel.getSelectedCountryObservable().observe(this) {
-            binding.phoneNumberInputLayout.prefixText = it.getId()
-            adapter?.selectedCode = it.isoCode
+        viewModel.getSelectedCountryObservable().observe(this) { country ->
+            numberFormatTextWatcher?.let { textWatcher ->
+                binding.phoneNumber.removeTextChangedListener(textWatcher)
+            }
+            numberFormatTextWatcher = PhoneNumberFormattingTextWatcher(country.isoCode).also { textWatcher ->
+                binding.phoneNumber.addTextChangedListener(textWatcher)
+            }
+            binding.phoneNumberInputLayout.prefixText = country.getId()
+            adapter?.selectedCode = country.isoCode
         }
     }
 
@@ -104,47 +114,33 @@ class MsgDialog : DialogFragment(), ICountryCallback {
             .create()
     }
 
+    private fun formatInput(input: String?, country: Country): String? {
+        val number = try {
+            phoneNumberUtil.parse(input, country.isoCode)
+        } catch (e: NumberParseException) {
+            null
+        }
+        if (number == null || !phoneNumberUtil.isValidNumberForRegion(number, country.isoCode)) {
+            return null
+        }
+        return phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.E164)
+    }
+
     private fun sendMessage(dialog: Dialog) {
+        val entered = binding.phoneNumber.text?.toString()
         val country = viewModel.getSelectedCountry() ?: return
-        val phoneNumber = getFormattedPhoneNumber(country, binding.phoneNumber.text?.toString())
-        if (phoneNumber == null) {
+        val formattedNumber = formatInput(entered, country)
+        if (formattedNumber == null) {
             showToast(R.string.phone_number_invalid)
             return
         }
-
-        var message = binding.message.text?.toString()
-        if (!message.isNullOrBlank()) {
-            message = kotlin.runCatching { URLEncoder.encode(message, "UTF-8") }.getOrNull()
+        val encodedMessage = binding.message.text?.toString()?.encodedUrl()
+        val apiRequest = StringBuilder("https://api.whatsapp.com/send?phone=")
+        apiRequest.append(formattedNumber)
+        if (!encodedMessage.isNullOrBlank()) {
+            apiRequest.append("&text=").append(encodedMessage)
         }
-
-        val sb = StringBuilder("https://api.whatsapp.com/send?phone=")
-        sb.append(phoneNumber)
-        if (!message.isNullOrBlank()) {
-            sb.append("&text=").append(message)
-        }
-
-        startActivitySafe(Intent(Intent.ACTION_VIEW, sb.toString().toUri()))
+        startActivitySafe(Intent(Intent.ACTION_VIEW, apiRequest.toString().toUri()))
         dialog.dismiss()
-    }
-
-    private fun getFormattedPhoneNumber(country: Country, number: String?): String? {
-        if (number.isNullOrBlank() || !number.isDigitsOnly()) {
-            return null
-        }
-        if (country.format != null) {
-            val predicate = Predicate<String> { input -> country.format.count { it == 'X' } == input.length }
-            if (!predicate.test(number)) {
-                if (number.length >= 2) {
-                    val trimmed = number.substring(1)
-                    if (predicate.test(trimmed)) {
-                        return "${country.getFormattedCode()}$trimmed"
-                    }
-                    return null
-                }
-                return null
-            }
-            return "${country.getFormattedCode()}$number"
-        }
-        return "${country.getFormattedCode()}$number"
     }
 }

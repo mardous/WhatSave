@@ -20,6 +20,7 @@ import com.simplified.wsstatussaver.repository.*
 import com.simplified.wsstatussaver.storage.Storage
 import com.simplified.wsstatussaver.update.provideOkHttp
 import com.simplified.wsstatussaver.update.provideUpdateService
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.bind
@@ -46,6 +47,9 @@ private val dataModule = module {
 }
 
 private val managerModule = module {
+    single {
+        PhoneNumberUtil.createInstance(androidContext())
+    }
     single {
         WAMediator(androidContext())
     }

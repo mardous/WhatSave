@@ -34,6 +34,8 @@ import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
 import com.simplified.wsstatussaver.logUrlView
 import java.io.Serializable
+import java.io.UnsupportedEncodingException
+import java.net.URLEncoder
 import kotlin.reflect.KClass
 
 typealias ExceptionConsumer = (Throwable, activityNotFound: Boolean) -> Unit
@@ -128,6 +130,12 @@ fun Intent?.toChooser(title: CharSequence? = null): Intent? {
 }
 
 fun String.formatted() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)
+
+fun String.encodedUrl(charset: String = "UTF-8") = try {
+    URLEncoder.encode(this, charset)
+} catch (e: UnsupportedEncodingException) {
+    null
+}
 
 internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent) -> Unit) {
     if (this == null) {
