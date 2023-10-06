@@ -59,7 +59,8 @@
     <string name="permissions_denied_message">Devi concedere le autorizzazioni richieste.\n\nQuesta applicazione non funzionerà correttamente senza queste autorizzazioni.</string>
     <string name="grant_action">Concessione</string>
     <string name="open_settings_action">Apri le impostazioni</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">Non è disponibile un\'app per aprire questo %s</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">Non è disponibile un\'app per aprire questo video</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">Non è disponibile un\'app per aprire questa immagine</string>
     <string name="play_store_is_not_installed">Play Store non è installato.</string>
     <string name="action_settings">Impostazioni</string>
     <string name="settings_interface">Interfaccia</string>
@@ -120,7 +121,7 @@
     <string name="only_wifi_summary">Cerca gli aggiornamenti solo quando il Wi-Fi è connesso.</string>
     <string name="the_app_is_up_to_date">L\'app è aggiornata</string>
     <string name="update_title">Aggiornamento disponibile</string>
-    <string name="release_date">Date di rilascio</string>
+    <string name="release_date">Date di rilascio: %s</string>
     <string name="download_size">Dimensione download: %s</string>
     <string name="download_action">Scaricamento</string>
     <string name="more_info_action">Ulteriori informazioni.</string>

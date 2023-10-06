@@ -58,7 +58,8 @@
         правильно без этих разрешений.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Открыть настройки</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">Не существует приложения, позволяющего открыть этот %s.</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">Не существует приложения, позволяющего открыть это видео.</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">Не существует приложения, позволяющего открыть это изображение.</string>
     <string name="play_store_is_not_installed">Play Store не установлен.</string>
     <string name="action_settings">Настройки</string>
     <string name="settings_interface">Интерфейс</string>

@@ -59,7 +59,8 @@
     <string name="permissions_denied_message">தேவையான அனுமதிகளை நீங்கள் வழங்க வேண்டும்.\n\nஇந்த அனுமதிகள் இல்லாமல் இந்த பயன்பாடு சரியாக இயங்காது.</string>
     <string name="grant_action">மானியம்</string>
     <string name="open_settings_action">அமைப்புகளைத் திறக்கவும்</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">இந்த %sஐத் திறக்க ஒரு பயன்பாடு இல்லை</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">இந்த வீடியோவைத் திறக்க ஆப்ஸ் எதுவும் இல்லை.</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">இந்தப் படத்தைத் திறக்க ஆப்ஸ் எதுவும் இல்லை.</string>
     <string name="play_store_is_not_installed">Play Store நிறுவப்படவில்லை.</string>
     <string name="action_settings">அமைப்புகள்</string>
     <string name="settings_interface">இடைமுகம்</string>

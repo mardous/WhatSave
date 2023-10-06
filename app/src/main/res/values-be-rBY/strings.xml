@@ -59,7 +59,8 @@
     <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы.\n\nБез гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Адкрыйце налады</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">Няма даступнай праграмы для адкрыцця гэтага %s</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">Няма даступнай праграмы для адкрыцця гэтага відэа</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">Няма даступнай праграмы для адкрыцця гэтага відарыса</string>
     <string name="play_store_is_not_installed">Play Store не ўсталяваны.</string>
     <string name="action_settings">Налады</string>
     <string name="settings_interface">Інтэрфейс</string>

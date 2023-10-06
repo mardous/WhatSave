@@ -192,11 +192,11 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             startActivitySafe(status.toPreviewIntent(context)) { _: Throwable, activityNotFound: Boolean ->
                 if (activityNotFound) {
                     requestView { view ->
-                        Snackbar.make(
-                            view, getString(
-                                R.string.there_is_not_an_app_available_to_open_this_x, getString(status.type.nameRes)
-                            ), Snackbar.LENGTH_LONG
-                        ).show()
+                        val messageRes = when {
+                            status.isVideo -> R.string.there_is_not_an_app_available_to_open_this_video
+                            else -> R.string.there_is_not_an_app_available_to_open_this_image
+                        }
+                        Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show()
                     }
                 }
             }

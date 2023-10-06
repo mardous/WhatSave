@@ -58,7 +58,8 @@
         correctly without these permissions.</string>
     <string name="grant_action">Grant</string>
     <string name="open_settings_action">Open settings</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">There is not an app available to open this %s</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">There is not an app available to open this video</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">There is not an app available to open this image</string>
     <string name="play_store_is_not_installed">Play Store isn\'t installed.</string>
     <string name="action_settings">Settings</string>
     <string name="settings_interface">Interface</string>
