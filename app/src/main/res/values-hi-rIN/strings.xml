@@ -49,6 +49,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">यह सहेजी गई स्थिति स्थायी रूप से हटा दी जाएगी.\n\nक्या आप निश्चित हैं?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d सहेजी गई स्थितियाँ स्थायी रूप से हटा दी जाएंगी।\n\nक्या आप निश्चित हैं?</string>
     <string name="statuses_deletion_is_not_permitted">ध्यान रखें कि केवल सहेजे गए स्टेटस को ही हटाया जा सकता है</string>
+    <string name="deleting_please_wait">हटाया जा रहा है, कृपया प्रतीक्षा करें…</string>
     <string name="deletion_success">विलोपन सफलता.</string>
     <string name="deletion_failed">हटाना विफल रहा.</string>
     <string name="permission_request_android_r">एंड्रॉइड ओएस नीतियों के कारण, आपको हमें अपने डिवाइस में फ़ाइलों को प्रबंधित करने की अनुमति देनी होगी।\nयह अनुमति केवल व्हाट्सएप से स्टेटस फ़ाइलों को सूचीबद्ध करने के लिए आवश्यक है। हम इस अनुमति का उपयोग आपके फ़ोन में समझदार डेटा तक पहुँचने या यहाँ तक कि आपके निजी डेटा तक पहुँचने के लिए नहीं करते हैं।</string>

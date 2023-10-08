@@ -49,6 +49,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">Бұл сақталған күй біржола жойылады.\n\nСіз сенімдісіз бе?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d сақталған күй біржола жойылады.\n\nСіз сенімдісіз бе?</string>
     <string name="statuses_deletion_is_not_permitted">Тек сақталған күйлерді жоя алатынын ескеріңіз</string>
+    <string name="deleting_please_wait">Жойылуда, күте тұрыңыз…</string>
     <string name="deletion_success">Жою сәтті болды.</string>
     <string name="deletion_failed">Жою сәтсіз аяқталды.</string>
     <string name="permission_request_android_r">Android ОЖ саясаттарына байланысты құрылғыңыздағы файлдарды басқаруға рұқсат беруіңіз керек.\nБұл рұқсат тек WhatsApp-тан күй файлдарын тізуге қажет. Біз бұл рұқсатты телефоныңыздағы маңызды деректерге немесе тіпті жеке деректеріңізге қол жеткізу үшін пайдаланбаймыз.</string>

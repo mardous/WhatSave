@@ -48,6 +48,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">This saved status will be permanently deleted.\n\nAre you sure?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d saved statuses will be permanently deleted.\n\nAre you sure?</string>
     <string name="statuses_deletion_is_not_permitted">Take into account that can delete only saved statuses</string>
+    <string name="deleting_please_wait">Deleting, please wait…</string>
     <string name="deletion_success">Deletion success.</string>
     <string name="deletion_failed">Deletion failed.</string>
     <string name="permission_request_android_r">Due to Android OS policies, you must grant us permission to manage

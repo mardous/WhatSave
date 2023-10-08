@@ -49,6 +49,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">இந்தச் சேமிக்கப்பட்ட நிலை நிரந்தரமாக நீக்கப்படும்.\n\nநிச்சயமா?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d சேமிக்கப்பட்ட நிலைகள் நிரந்தரமாக நீக்கப்படும்.\n\nநிச்சயமா?</string>
     <string name="statuses_deletion_is_not_permitted">சேமிக்கப்பட்ட நிலைகளை மட்டுமே நீக்க முடியும் என்பதை கணக்கில் எடுத்துக் கொள்ளுங்கள்</string>
+    <string name="deleting_please_wait">நீக்குகிறது, காத்திருக்கவும்…</string>
     <string name="deletion_success">நீக்குதல் வெற்றி.</string>
     <string name="deletion_failed">நீக்குவதில் தோல்வி.</string>
     <string name="permission_request_android_r">Android OS கொள்கைகளின் காரணமாக, உங்கள் சாதனத்தில்

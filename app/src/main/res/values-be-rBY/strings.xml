@@ -49,6 +49,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">Гэты захаваны статус будзе выдалены назаўсёды.\n\nВы ўпэўнены?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d захаваных статусаў будуць выдалены назаўсёды.\n\nВы ўпэўнены?</string>
     <string name="statuses_deletion_is_not_permitted">Улічыце, што выдаляць можна толькі захаваныя статусы</string>
+    <string name="deleting_please_wait">Выдаленне, пачакайце…</string>
     <string name="deletion_success">Паспяховае выдаленне.</string>
     <string name="deletion_failed">Не атрымалася выдаліць.</string>
     <string name="permission_request_android_r">У адпаведнасці з палітыкай АС Android вы павінны даць нам дазвол на

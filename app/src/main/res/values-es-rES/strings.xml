@@ -40,6 +40,7 @@
     <string name="delete_saved_status_title">Eliminar estado guardado</string>
     <string name="this_saved_status_will_be_permanently_deleted">Este estado guardado será eliminado permanentemente.\n\n¿Estás seguro?</string>
     <string name="statuses_deletion_is_not_permitted">Tenga en cuenta: solo puede eliminar estados guardados</string>
+    <string name="deleting_please_wait">Eliminando, por favor espere…</string>
     <string name="deletion_success">Eliminación exitosa.</string>
     <string name="deletion_failed">Eliminación fallida.</string>
     <string name="permissions_denied_title">Permisos denegados</string>
