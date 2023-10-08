@@ -123,6 +123,7 @@
     <string name="download_size">Жүктеп алу өлшемі: %s</string>
     <string name="download_action">Жүктеп алу</string>
     <string name="more_info_action">Қосымша ақпарат.</string>
+    <string name="downloading_update">WhatSave жаңартуы жүктелуде</string>
     <string name="privacy_and_terms">Құпиялық және шарттар</string>
 
 </resources>

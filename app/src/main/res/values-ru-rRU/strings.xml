@@ -126,5 +126,6 @@
     <string name="download_size">Размер загрузки: %s</string>
     <string name="download_action">Скачать</string>
     <string name="more_info_action">Больше информации</string>
+    <string name="downloading_update">Загрузка обновления WhatSave</string>
     <string name="privacy_and_terms">Конфиденциальность и условия</string>
 </resources>

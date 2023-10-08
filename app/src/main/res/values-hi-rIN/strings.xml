@@ -123,5 +123,6 @@
     <string name="download_size">डाउनलोड आकार: %s</string>
     <string name="download_action">डाउनलोड करना</string>
     <string name="more_info_action">और जानकारी।</string>
+    <string name="downloading_update">अपडेट डाउनलोड हो रहा है</string>
     <string name="privacy_and_terms">गोपनीयता और शर्तें</string>
 </resources>

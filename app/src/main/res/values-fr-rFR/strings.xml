@@ -126,5 +126,6 @@
     <string name="download_size">Taille du telechargement: %s</string>
     <string name="download_action">Telecharger</string>
     <string name="more_info_action">Plus d\'informations.</string>
+    <string name="downloading_update">Téléchargement de la mise à jour WhatSave</string>
     <string name="privacy_and_terms">Confidentialite et conditions</string>
 </resources>

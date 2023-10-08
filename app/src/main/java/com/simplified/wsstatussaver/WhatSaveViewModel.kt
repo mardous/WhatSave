@@ -13,13 +13,17 @@
  */
 package com.simplified.wsstatussaver
 
+import android.app.DownloadManager
 import android.app.PendingIntent
 import android.content.Context
 import android.os.Build
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
+import androidx.core.content.getSystemService
 import androidx.lifecycle.*
 import com.simplified.wsstatussaver.extensions.getMediaStoreUris
+import com.simplified.wsstatussaver.extensions.lastUpdateId
+import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Country
@@ -148,6 +152,20 @@ class WhatSaveViewModel(
 
     fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + ioHandler) {
         emit(updateService.latestRelease(DEFAULT_USER, DEFAULT_REPO))
+    }
+
+    fun downloadUpdate(context: Context, release: GitHubRelease) = viewModelScope.launch(IO + ioHandler) {
+        val downloadRequest = release.getDownloadRequest(context)
+        if (downloadRequest != null) {
+            val downloadManager = context.getSystemService<DownloadManager>()
+            if (downloadManager != null) {
+                val lastUpdateId = context.preferences().lastUpdateId
+                if (lastUpdateId != -1L) {
+                    downloadManager.remove(lastUpdateId)
+                }
+                context.preferences().lastUpdateId = downloadManager.enqueue(downloadRequest)
+            }
+        }
     }
 
     private val ioHandler = CoroutineExceptionHandler { _, throwable ->

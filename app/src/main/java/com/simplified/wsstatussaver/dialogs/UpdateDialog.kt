@@ -22,15 +22,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogUpdateInfoBinding
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.logUpdateRequest
 import com.simplified.wsstatussaver.update.GitHubRelease
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class UpdateDialog : DialogFragment() {
 
     private var _binding: DialogUpdateInfoBinding? = null
     private val binding get() = _binding!!
+    private val viewModel by activityViewModel<WhatSaveViewModel>()
 
     private lateinit var release: GitHubRelease
 
@@ -44,7 +47,8 @@ class UpdateDialog : DialogFragment() {
                 .setView(binding.root)
                 .setCancelable(false)
                 .setPositiveButton(R.string.download_action) { _: DialogInterface, _: Int ->
-                    context?.openWeb(release.getDownloadUrl())
+                    viewModel.downloadUpdate(requireContext(), release)
+                    showToast(R.string.downloading_update)
                     logUpdateRequest(release.name, true)
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int ->

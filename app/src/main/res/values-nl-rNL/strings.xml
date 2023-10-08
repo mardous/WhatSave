@@ -126,5 +126,6 @@
     <string name="download_size">Downloadgrootte: %s</string>
     <string name="download_action">Downloaden</string>
     <string name="more_info_action">Meer informatie.</string>
+    <string name="downloading_update">WhatSave-update downloaden</string>
     <string name="privacy_and_terms">Privacy en voorwaarden</string>
 </resources>
