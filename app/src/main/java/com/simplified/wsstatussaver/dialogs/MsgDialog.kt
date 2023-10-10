@@ -31,6 +31,7 @@ import com.simplified.wsstatussaver.extensions.encodedUrl
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
+import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Country
 import io.michaelrocks.libphonenumber.android.NumberParseException
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
@@ -44,6 +45,7 @@ class MsgDialog : DialogFragment(), ICountryCallback {
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
     private val phoneNumberUtil: PhoneNumberUtil by inject()
+    private val mediator: WAMediator by inject()
 
     private var adapter: CountryAdapter? = null
     private var countriesDialog: Dialog? = null
@@ -140,7 +142,14 @@ class MsgDialog : DialogFragment(), ICountryCallback {
         if (!encodedMessage.isNullOrBlank()) {
             apiRequest.append("&text=").append(encodedMessage)
         }
-        startActivitySafe(Intent(Intent.ACTION_VIEW, apiRequest.toString().toUri()))
+        val intent = Intent(Intent.ACTION_VIEW, apiRequest.toString().toUri())
+        val whatsappClient = mediator.getDefaultClientOrAny()
+        if (whatsappClient != null) {
+            intent.setPackage(whatsappClient.packageName)
+        }
+        startActivitySafe(intent) { _: Throwable, activityNotFound: Boolean ->
+            if (activityNotFound) showToast(R.string.wa_is_not_installed_title)
+        }
         dialog.dismiss()
     }
 }
