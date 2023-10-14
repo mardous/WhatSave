@@ -94,7 +94,7 @@
     <string name="default_client_title">Cliente predeterminado</string>
     <string name="default_client_summary">Si tienes varios clientes de WhatsApp instalados, puedes elegir desde cuál cargar los estados.</string>
     <string name="analytics_enabled_title">Envíar estadísticas de uso</string>
-    <string name="analytics_enabled_summary">Cuando esto está activado, WhatSave puede enviar estadísticas de uso anónimas que nos ayudan a comprender cómo los usuarios usan la app.</string>
+    <string name="analytics_enabled_summary">Cuando esto está activado, WhatSave puede envíar estadísticas de uso anónimas que nos ayudan a comprender cómo los usuarios usan la app.</string>
     <string name="about_label">Acerca de…</string>
     <string name="version_x">Versión %s</string>
     <string name="author_title">Autor</string>
