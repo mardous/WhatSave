@@ -53,7 +53,7 @@ class CountryAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val country = countries[position]
         holder.codeView.text = country.getFormattedCode()
-        holder.nameView.text = country.getFormattedName()
+        holder.nameView.text = country.displayName
         holder.checkView.isVisible = country.isoCode == selectedCode
     }
 

@@ -52,7 +52,6 @@
         android:maxLines="1"
         android:ellipsize="end"
         android:textAppearance="?textAppearanceBody1"
-        android:textColor="@color/selectable_text_color"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline_front_margin"

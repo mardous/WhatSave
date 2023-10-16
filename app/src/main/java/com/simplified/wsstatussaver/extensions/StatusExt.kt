@@ -24,6 +24,7 @@ import com.simplified.wsstatussaver.model.StatusType
 import java.io.File
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.text.SimpleDateFormat.getDateTimeInstance
 import java.util.*
 
 val STATUS_NAME_INVALID_CHARS: CharSequence = "?:\"*|/\\<>"
@@ -32,12 +33,15 @@ val fileDateFormat: DateFormat by lazy {
     SimpleDateFormat("MMM_d_yyyy_HH.mm.ss", Locale.ENGLISH)
 }
 
-val statusDateFormat: DateFormat by lazy {
-    SimpleDateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+@Suppress("DEPRECATION")
+fun Status.getFormattedDate(context: Context): String {
+    val date = Date(dateModified)
+    val resLocale = when {
+        hasN() -> context.resources.configuration.locales[0]
+        else -> context.resources.configuration.locale
+    }
+    return getDateTimeInstance(DateFormat.DEFAULT, DateFormat.SHORT, resLocale).format(date)
 }
-
-val Status.formattedDate: String
-    get() = statusDateFormat.format(Date(dateModified))
 
 /**
  * Generates and returns a new save name depending on the

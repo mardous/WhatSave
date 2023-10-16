@@ -47,18 +47,34 @@
 
     <string-array name="pref_language_entries">
         <item>@string/system_default</item>
+        <item>Belarusian</item>
+        <item>Dutch</item>
         <item>English</item>
         <item>Spanish (Spain)</item>
         <item>Spanish (Latin America)</item>
+        <item>French</item>
+        <item>Hindi</item>
+        <item>Italian</item>
+        <item>Kazakh</item>
+        <item>Portuguese (Brazil)</item>
         <item>Russian</item>
+        <item>Tamil</item>
     </string-array>
 
     <string-array name="pref_language_values">
         <item>auto</item>
+        <item>be</item>
+        <item>nl-NL</item>
         <item>en</item>
         <item>es</item>
         <item>es-419</item>
+        <item>fr</item>
+        <item>hi</item>
+        <item>it</item>
+        <item>kk</item>
+        <item>pt-BR</item>
         <item>ru</item>
+        <item>ta</item>
     </string-array>
 
 </resources>

@@ -28,6 +28,4 @@ class Country internal constructor(
     fun getId(): String = String.format("%s %s", isoCode, getFormattedCode())
 
     fun getFormattedCode() = String.format("+%d", code)
-
-    fun getFormattedName() = String.format("%s • %s", displayName, isoCode)
 }

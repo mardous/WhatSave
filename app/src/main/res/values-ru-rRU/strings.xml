@@ -48,6 +48,7 @@
     <string name="this_saved_status_will_be_permanently_deleted">Этот сохраненный статус будет удален без возможности восстановления.\n\nВы уверены?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d сохраненных статусов будут удалены без возможности восстановления.\n\nВы уверены?</string>
     <string name="statuses_deletion_is_not_permitted">Учтите, что удалять можно только сохраненные статусы.</string>
+    <string name="deleting_please_wait">Удаление, подождите…</string>
     <string name="deletion_success">Удаление успешно.</string>
     <string name="deletion_failed">Удаление не удалось.</string>
     <string name="permission_request_android_r">В соответствии с политиками ОС Android вы должны предоставить нам разрешение на управление
@@ -58,7 +59,8 @@
         правильно без этих разрешений.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Открыть настройки</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">Не существует приложения, позволяющего открыть этот %s.</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">Не существует приложения, позволяющего открыть это видео.</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">Не существует приложения, позволяющего открыть это изображение.</string>
     <string name="play_store_is_not_installed">Play Store не установлен.</string>
     <string name="action_settings">Настройки</string>
     <string name="settings_interface">Интерфейс</string>
@@ -124,5 +126,6 @@
     <string name="download_size">Размер загрузки: %s</string>
     <string name="download_action">Скачать</string>
     <string name="more_info_action">Больше информации</string>
+    <string name="downloading_update">Загрузка обновления WhatSave</string>
     <string name="privacy_and_terms">Конфиденциальность и условия</string>
 </resources>

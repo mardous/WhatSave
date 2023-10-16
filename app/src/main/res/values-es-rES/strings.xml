@@ -40,12 +40,14 @@
     <string name="delete_saved_status_title">Eliminar estado guardado</string>
     <string name="this_saved_status_will_be_permanently_deleted">Este estado guardado será eliminado permanentemente.\n\n¿Estás seguro?</string>
     <string name="statuses_deletion_is_not_permitted">Tenga en cuenta: solo puede eliminar estados guardados</string>
+    <string name="deleting_please_wait">Eliminando, por favor espere…</string>
     <string name="deletion_success">Eliminación exitosa.</string>
     <string name="deletion_failed">Eliminación fallida.</string>
     <string name="permissions_denied_title">Permisos denegados</string>
     <string name="grant_action">Conceder</string>
     <string name="open_settings_action">Abrir ajustes</string>
-    <string name="there_is_not_an_app_available_to_open_this_x">No hay una app disponible para abrir este/a %s</string>
+    <string name="there_is_not_an_app_available_to_open_this_video">No hay una app disponible para abrir este vídeo</string>
+    <string name="there_is_not_an_app_available_to_open_this_image">No hay una app disponible para abrir esta imagen</string>
     <string name="play_store_is_not_installed">Play Store no está instalado.</string>
     <string name="action_settings">Ajustes</string>
     <string name="settings_interface">Interfaz</string>
@@ -73,7 +75,7 @@
     <string name="whatsapp_icon_summary">Muestra debajo de los estados un pequeño icono para identificar desde cuál cliente se cargó un estado.</string>
     <string name="quick_deletion_title">Eliminación rápida</string>
     <string name="analytics_enabled_title">Compartir estadísticas de uso</string>
-    <string name="analytics_enabled_summary">Cuando esta opción está activada, WhatSave puede enviar estadísticas de
+    <string name="analytics_enabled_summary">Cuando esta opción está activada, WhatSave puede envíar estadísticas de
         uso anónimas que nos ayudan a entender cómo los usuarios utilizan la aplicación.</string>
     <string name="about_label">Acerca de…</string>
     <string name="version_x">Versión %s</string>
@@ -100,5 +102,6 @@
     <string name="download_size">Tamaño de la descarga: %s</string>
     <string name="download_action">Descargar</string>
     <string name="more_info_action">Más info.</string>
+    <string name="downloading_update">Descargando actualización de WhatSave</string>
     <string name="privacy_and_terms">Términos y privacidad</string>
 </resources>

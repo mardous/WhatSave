@@ -86,7 +86,7 @@ open class StatusAdapter(
         }
 
         if (holder.date != null && holder.date.isVisible) {
-            holder.date.text = status.formattedDate
+            holder.date.text = status.getFormattedDate(activity)
         }
 
         if (holder.state != null && holder.state.isVisible) {

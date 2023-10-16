@@ -13,11 +13,15 @@
  */
 package com.simplified.wsstatussaver.update
 
+import android.app.DownloadManager
 import android.content.Context
 import android.content.pm.PackageManager.NameNotFoundException
+import android.os.Environment
 import android.os.Parcelable
 import androidx.core.content.edit
+import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
+import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.toFileSize
@@ -80,11 +84,22 @@ class GitHubRelease(
         return true // assume true
     }
 
-    fun getDownloadUrl() = downloads.first { it.isApk }.downloadUrl
-
     fun getDownloadSize(): String? {
         val assetSize = downloads.firstOrNull { it.isApk }
         return assetSize?.size?.toFileSize()
+    }
+
+    fun getDownloadRequest(context: Context): DownloadManager.Request? {
+        val apkAsset = downloads.firstOrNull { it.isApk }
+        if (apkAsset != null) {
+            return DownloadManager.Request(apkAsset.downloadUrl.toUri())
+                .setTitle(apkAsset.name)
+                .setDescription(context.getString(R.string.downloading_update))
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, apkAsset.name)
+                .setMimeType(ReleaseAsset.APK_MIME_TYPE)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        }
+        return null
     }
 
     fun getFormattedDate(): String? {
