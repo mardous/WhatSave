@@ -15,24 +15,24 @@
 
 <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
-        android:font="@font/manrope_extralight"
-        android:fontWeight="200" />
+        app:font="@font/manrope_extralight"
+        app:fontWeight="200" />
     <font
-        android:font="@font/manrope_light"
-        android:fontWeight="300" />
+        app:font="@font/manrope_light"
+        app:fontWeight="300" />
     <font
-        android:font="@font/manrope_regular"
-        android:fontWeight="400" />
+        app:font="@font/manrope_regular"
+        app:fontWeight="400" />
     <font
-        android:font="@font/manrope_medium"
-        android:fontWeight="500" />
+        app:font="@font/manrope_medium"
+        app:fontWeight="500" />
     <font
-        android:font="@font/manrope_semibold"
-        android:fontWeight="600" />
+        app:font="@font/manrope_semibold"
+        app:fontWeight="600" />
     <font
-        android:font="@font/manrope_bold"
-        android:fontWeight="700" />
+        app:font="@font/manrope_bold"
+        app:fontWeight="700" />
     <font
-        android:font="@font/manrope_extrabold"
-        android:fontWeight="800" />
+        app:font="@font/manrope_extrabold"
+        app:fontWeight="800" />
 </font-family>
