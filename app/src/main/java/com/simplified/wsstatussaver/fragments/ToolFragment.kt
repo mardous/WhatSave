@@ -15,6 +15,8 @@ package com.simplified.wsstatussaver.fragments
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.doOnPreDraw
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
 import com.simplified.wsstatussaver.dialogs.MsgDialog
@@ -34,6 +36,16 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
             MsgDialog().show(childFragmentManager, "SEND_MSG")
         }
         statusesActivity.setSupportActionBar(binding.toolbar)
+
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+        enterTransition = MaterialFadeThrough().addTarget(binding.container)
+        reenterTransition = MaterialFadeThrough().addTarget(binding.container)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        hideBottomBar(false)
     }
 
     override fun onDestroyView() {

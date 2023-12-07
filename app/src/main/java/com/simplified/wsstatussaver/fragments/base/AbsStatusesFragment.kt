@@ -17,9 +17,11 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.doOnPreDraw
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.activities.setupWhatsAppMenuItem
 import com.simplified.wsstatussaver.adapter.PagerAdapter
@@ -67,6 +69,11 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
                     mediator.attach()
                 }
         }
+
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+        enterTransition = MaterialFadeThrough().addTarget(binding.viewPager)
+        reenterTransition = MaterialFadeThrough().addTarget(binding.viewPager)
 
         statusesActivity.setSupportActionBar(binding.toolbar)
         statusesActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
