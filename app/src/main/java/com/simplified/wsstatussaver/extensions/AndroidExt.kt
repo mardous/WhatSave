@@ -73,6 +73,14 @@ fun Context.doIHavePermissions(vararg permissions: String): Boolean {
     return true
 }
 
+fun Context.openSettings(action: String, packageName: String? = this.packageName) {
+    val intent = Intent(action)
+    if (!packageName.isNullOrEmpty()) {
+        intent.data = Uri.fromParts("package", packageName, null)
+    }
+    startActivitySafe(intent)
+}
+
 @Suppress("DEPRECATION")
 fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

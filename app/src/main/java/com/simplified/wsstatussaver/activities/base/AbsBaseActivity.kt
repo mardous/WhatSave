@@ -18,7 +18,6 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -166,12 +165,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                             .setTitle(R.string.permissions_denied_title)
                             .setMessage(R.string.permissions_denied_message)
                             .setPositiveButton(R.string.open_settings_action) { _: DialogInterface, _: Int ->
-                                startActivity(
-                                    Intent().apply {
-                                        action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                                        data = Uri.fromParts("package", packageName, null)
-                                    }
-                                )
+                                openSettings(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                             }
                             .setNeutralButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                             .setCancelable(false)
