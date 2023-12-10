@@ -187,43 +187,37 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onPreviewStatusClick(status: Status) {
-        requestContext { context ->
-            startActivitySafe(status.toPreviewIntent(context)) { _: Throwable, activityNotFound: Boolean ->
-                if (activityNotFound) {
-                    requestView { view ->
-                        val messageRes = when {
-                            status.isVideo -> R.string.there_is_not_an_app_available_to_open_this_video
-                            else -> R.string.there_is_not_an_app_available_to_open_this_image
-                        }
-                        Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show()
+    override fun onPreviewStatusClick(status: Status) = requestContext { context ->
+        startActivitySafe(status.toPreviewIntent(context)) { _: Throwable, activityNotFound: Boolean ->
+            if (activityNotFound) {
+                requestView { view ->
+                    val messageRes = when {
+                        status.isVideo -> R.string.there_is_not_an_app_available_to_open_this_video
+                        else -> R.string.there_is_not_an_app_available_to_open_this_image
                     }
+                    Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show()
                 }
             }
         }
     }
 
-    override fun onSaveStatusClick(status: Status) {
-        requestContext { context ->
-            if (status.isSaved) {
-                MaterialAlertDialogBuilder(context)
-                    .setTitle(R.string.save_again_title)
-                    .setMessage(R.string.you_saved_this_status_previously)
-                    .setPositiveButton(R.string.save_action) { _, _ ->
-                        saveStatus(status)
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
-            } else {
-                saveStatus(status)
-            }
+    override fun onSaveStatusClick(status: Status) = requestContext { context ->
+        if (status.isSaved) {
+            MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.save_again_title)
+                .setMessage(R.string.you_saved_this_status_previously)
+                .setPositiveButton(R.string.save_action) { _, _ ->
+                    saveStatus(status)
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        } else {
+            saveStatus(status)
         }
     }
 
-    override fun onShareStatusClick(status: Status) {
-        requestContext { context ->
-            startActivitySafe(status.toShareIntent(context).toChooser(getString(R.string.share_with)))
-        }
+    override fun onShareStatusClick(status: Status) = requestContext { context ->
+        startActivitySafe(status.toShareIntent(context).toChooser(getString(R.string.share_with)))
     }
 
     @SuppressLint("CheckResult")
@@ -245,53 +239,47 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
     protected abstract fun onEmptyViewButtonClick()
 
-    private fun processSaveResult(result: SaveResult) {
-        requestView { view ->
-            if (result.isSaving) {
-                Snackbar.make(view, R.string.saving_status, Snackbar.LENGTH_SHORT).show()
-            } else {
-                if (result.isSuccess) {
-                    if (result.saved == 1) {
-                        Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.open_action) {
-                                onPreviewStatusClick(result.statuses.single())
-                            }
-                            .show()
-                    } else {
-                        Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
-                            .setAction(R.string.share_action) {
-                                startActivitySafe(result.statuses.toShareIntent(requireContext()))
-                            }
-                            .show()
-                    }
-                    loadStatuses()
+    private fun processSaveResult(result: SaveResult) = requestView { view ->
+        if (result.isSaving) {
+            Snackbar.make(view, R.string.saving_status, Snackbar.LENGTH_SHORT).show()
+        } else {
+            if (result.isSuccess) {
+                if (result.saved == 1) {
+                    Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.open_action) {
+                            onPreviewStatusClick(result.statuses.single())
+                        }
+                        .show()
                 } else {
-                    Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
+                        .setAction(R.string.share_action) {
+                            startActivitySafe(result.statuses.toShareIntent(requireContext()))
+                        }
+                        .show()
                 }
-            }
-            statusAdapter?.isSavingContent = result.isSaving
-        }
-    }
-
-    protected fun processDeletionResult(result: DeletionResult) {
-        requestView { view ->
-            if (result.isDeleting) {
-                Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
-            } else if (result.isSuccess) {
-                Snackbar.make(view, R.string.deletion_success, Snackbar.LENGTH_SHORT).show()
                 loadStatuses()
             } else {
-                Snackbar.make(view, R.string.deletion_failed, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
             }
+        }
+        statusAdapter?.isSavingContent = result.isSaving
+    }
+
+    protected fun processDeletionResult(result: DeletionResult) = requestView { view ->
+        if (result.isDeleting) {
+            Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
+        } else if (result.isSuccess) {
+            Snackbar.make(view, R.string.deletion_success, Snackbar.LENGTH_SHORT).show()
+            loadStatuses()
+        } else {
+            Snackbar.make(view, R.string.deletion_failed, Snackbar.LENGTH_SHORT).show()
         }
     }
 
-    protected fun loadStatuses() {
-        requestView {
-            binding.emptyView.isVisible = false
-            binding.swipeRefreshLayout.isRefreshing = true
-            onLoadStatuses(statusType)
-        }
+    protected fun loadStatuses() = requestView {
+        binding.emptyView.isVisible = false
+        binding.swipeRefreshLayout.isRefreshing = true
+        onLoadStatuses(statusType)
     }
 
     companion object {
