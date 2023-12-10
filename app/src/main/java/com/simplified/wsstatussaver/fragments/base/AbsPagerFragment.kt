@@ -251,18 +251,19 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                 Snackbar.make(view, R.string.saving_status, Snackbar.LENGTH_SHORT).show()
             } else {
                 if (result.isSuccess) {
-                    val message = getString(R.string.saved_x_statuses, result.saved)
-                    val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
                     if (result.saved == 1) {
-                        snackBar.setAction(R.string.open_action) {
-                            onPreviewStatusClick(result.statuses.single())
-                        }
+                        Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT)
+                            .setAction(R.string.open_action) {
+                                onPreviewStatusClick(result.statuses.single())
+                            }
+                            .show()
                     } else {
-                        snackBar.setAction(R.string.share_action) {
-                            startActivitySafe(result.statuses.toShareIntent(requireContext()))
-                        }
+                        Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
+                            .setAction(R.string.share_action) {
+                                startActivitySafe(result.statuses.toShareIntent(requireContext()))
+                            }
+                            .show()
                     }
-                    snackBar.show()
                     loadStatuses()
                 } else {
                     Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
