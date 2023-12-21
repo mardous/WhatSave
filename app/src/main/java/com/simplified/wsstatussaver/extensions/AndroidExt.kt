@@ -137,7 +137,7 @@ fun Intent?.toChooser(title: CharSequence? = null): Intent? {
     return Intent.createChooser(this, title)
 }
 
-fun String.formatted() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)
+fun String.formattedAsHtml() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)
 
 fun String.encodedUrl(charset: String = "UTF-8") = try {
     URLEncoder.encode(this, charset)

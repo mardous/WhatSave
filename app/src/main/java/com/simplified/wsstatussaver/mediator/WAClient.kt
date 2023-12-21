@@ -20,7 +20,7 @@ import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.formatted
+import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.packageInfo
 
 /**
@@ -58,7 +58,7 @@ data class WAClient(
         val versionName = resolvePackageValue(context) {
             it?.versionName ?: context.getString(R.string.client_info_unknown)
         }
-        return context.getString(messageRes, versionName).formatted()
+        return context.getString(messageRes, versionName).formattedAsHtml()
     }
 
     private fun <T> resolvePackageValue(context: Context, resolver: (PackageInfo?) -> T): T? {
