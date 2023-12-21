@@ -1,4 +1,4 @@
-## WhatSave: WhatsApp Status Saver
+## WhatSave: Status Saver
 
 ![Screenshots](./art/art.jpg?raw=true)
 

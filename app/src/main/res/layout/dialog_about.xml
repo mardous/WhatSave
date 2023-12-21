@@ -40,7 +40,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textAppearance="?textAppearanceCaption"
-            android:text="@string/app_name_long"/>
+            android:text="@string/app_name"/>
 
         <TextView
             android:id="@+id/version"
