@@ -53,9 +53,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">WhatsApp-қа кіріп, бірнеше мәртебелерді жүктеп алу керек</string>
     <string name="wa_is_not_installed_title">WhatsApp орнатылмаған</string>
     <string name="this_application_will_not_work">Бұл қолданба жұмыс істемейді</string>
-    <string name="install_wa_action">WhatsApp орнатыңыз</string>
-    <string name="open_wa_action">WhatsApp қолданбасын ашыңыз</string>
-    <string name="could_not_open_wa">WhatsApp ашу мүмкін болмады (%s)</string>
     <string name="launch_x_client">%s іске қосыңыз</string>
     <string name="delete_action">Жою</string>
     <string name="delete_saved_status_title">Сақталған күйді жою</string>

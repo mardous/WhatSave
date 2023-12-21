@@ -53,9 +53,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">आपको WhatsApp पर जाकर कुछ स्टेटस डाउनलोड करने चाहिए</string>
     <string name="wa_is_not_installed_title">व्हाट्सएप इंस्टॉल नहीं है</string>
     <string name="this_application_will_not_work">यह एप्लिकेशन काम नहीं करेगा</string>
-    <string name="install_wa_action">व्हाट्सएप इंस्टॉल करें</string>
-    <string name="open_wa_action">व्हाट्सएप खोलें</string>
-    <string name="could_not_open_wa">व्हाट्सएप नहीं खुल सका (%s)</string>
     <string name="launch_x_client">%s लॉन्च करें</string>
     <string name="delete_action">मिटाना</string>
     <string name="delete_saved_status_title">सहेजी गई स्थिति हटाएँ</string>

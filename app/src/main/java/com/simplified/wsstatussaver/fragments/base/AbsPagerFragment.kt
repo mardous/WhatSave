@@ -87,10 +87,6 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             }.also { newStatusAdapter ->
                 statusAdapter = newStatusAdapter
             }
-
-            emptyButton.setOnClickListener {
-                onEmptyViewButtonClick()
-            }
         }
 
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
@@ -236,8 +232,6 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     protected abstract fun onLoadStatuses(type: StatusType)
-
-    protected abstract fun onEmptyViewButtonClick()
 
     private fun processSaveResult(result: SaveResult) = requestView { view ->
         if (result.isSaving) {

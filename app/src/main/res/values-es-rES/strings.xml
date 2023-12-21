@@ -46,9 +46,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">Abra WhatsApp y descargue algunos estados</string>
     <string name="wa_is_not_installed_title">No ha instalado WhatsApp</string>
     <string name="this_application_will_not_work">La aplicación no funcionará</string>
-    <string name="install_wa_action">Instalar WhatsApp</string>
-    <string name="open_wa_action">Iniciar WhatsApp</string>
-    <string name="could_not_open_wa">Ha sido imposible abrir WhatsApp (%s)</string>
     <string name="launch_x_client">Iniciar %s</string>
     <string name="delete_action">Eliminar</string>
     <string name="delete_saved_status_title">Eliminar estado guardado</string>

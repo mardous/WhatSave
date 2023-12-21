@@ -48,11 +48,9 @@ class HomeStatusesFragment : AbsPagerFragment(),
         if (mediator.isAnyWhatsappInstalled()) {
             binding.emptyTitle.text = getString(R.string.no_x_statuses_title, getString(statusType.nameRes))
             binding.emptyText.text = getString(R.string.you_should_open_wa_and_download_some_statuses)
-            binding.emptyButton.text = getString(R.string.open_wa_action)
         } else {
             binding.emptyTitle.text = getString(R.string.wa_is_not_installed_title)
             binding.emptyText.text = getString(R.string.this_application_will_not_work)
-            binding.emptyButton.text = getString(R.string.install_wa_action)
         }
     }
 
@@ -95,13 +93,4 @@ class HomeStatusesFragment : AbsPagerFragment(),
         viewModel.loadStatuses(type)
     }
 
-    override fun onEmptyViewButtonClick() {
-        if (mediator.isAnyWhatsappInstalled()) {
-            startActivitySafe(mediator.getWhatsAppLaunchIntent()) { e, _ ->
-                showToast(getString(R.string.could_not_open_wa, e))
-            }
-        } else {
-            requestContext { context -> context.openGooglePlay("com.whatsapp") }
-        }
-    }
 }

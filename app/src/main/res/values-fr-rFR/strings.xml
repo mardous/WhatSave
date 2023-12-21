@@ -53,9 +53,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">Vous devriez aller sur WhatsApp et telecharger certains statuts</string>
     <string name="wa_is_not_installed_title">WhatsApp n\'est pas installe</string>
     <string name="this_application_will_not_work">Cette application ne fonctionnera pas</string>
-    <string name="install_wa_action">Installer WhatsApp</string>
-    <string name="open_wa_action">Ouvrez WhatsApp</string>
-    <string name="could_not_open_wa">Impossible d\'ouvrir WhatsApp (%s)</string>
     <string name="launch_x_client">Lancer %s</string>
     <string name="delete_action">Supprimer</string>
     <string name="delete_saved_status_title">Supprimer le statut enregistre</string>

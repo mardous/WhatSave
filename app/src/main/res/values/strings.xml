@@ -53,9 +53,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">You should go to WhatsApp and download some statuses</string>
     <string name="wa_is_not_installed_title">WhatsApp isn\'t installed</string>
     <string name="this_application_will_not_work">This application won\'t work</string>
-    <string name="install_wa_action">Install WhatsApp</string>
-    <string name="open_wa_action">Open WhatsApp</string>
-    <string name="could_not_open_wa">Couldn\'t open WhatsApp (%s)</string>
     <string name="launch_x_client">Launch %s</string>
     <string name="delete_action">Delete</string>
     <string name="delete_saved_status_title">Delete saved status</string>

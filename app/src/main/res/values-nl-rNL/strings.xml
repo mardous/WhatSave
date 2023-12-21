@@ -53,9 +53,6 @@
     <string name="you_should_open_wa_and_download_some_statuses">Je moet naar WhatsApp gaan en enkele statussen downloaden</string>
     <string name="wa_is_not_installed_title">WhatsApp is niet geïnstalleerd</string>
     <string name="this_application_will_not_work">Deze applicatie werkt niet</string>
-    <string name="install_wa_action">WhatsApp installeren</string>
-    <string name="open_wa_action">WhatsApp openen</string>
-    <string name="could_not_open_wa">Kan WhatsApp niet openen (%s)</string>
     <string name="launch_x_client">Start %s</string>
     <string name="delete_action">Verwijderen</string>
     <string name="delete_saved_status_title">Verwijder de opgeslagen status</string>

@@ -35,7 +35,6 @@ class SavedStatusesFragment : AbsPagerFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.emptyTitle.text = getString(R.string.no_saved_statuses_title, getString(statusType.nameRes))
         binding.emptyText.text = getString(R.string.save_some_statuses)
-        binding.emptyButton.text = getString(R.string.lets_go)
 
         viewModel.getSavedStatuses(statusType).observe(viewLifecycleOwner) { statuses ->
             statusAdapter?.statuses = statuses
@@ -92,7 +91,4 @@ class SavedStatusesFragment : AbsPagerFragment() {
         viewModel.loadSavedStatuses(type)
     }
 
-    override fun onEmptyViewButtonClick() {
-        findActivityNavController(R.id.main_container).navigate(R.id.homeFragment)
-    }
 }
