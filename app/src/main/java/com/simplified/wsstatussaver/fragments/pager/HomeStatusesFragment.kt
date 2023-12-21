@@ -77,7 +77,7 @@ class HomeStatusesFragment : AbsPagerFragment(),
         super.onDestroyView()
     }
 
-    override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String) {
+    override fun onSharedPreferenceChanged(preferences: SharedPreferences, key: String?) {
         when (key) {
             PREFERENCE_DEFAULT_CLIENT,
             PREFERENCE_STATUSES_LOCATION,
