@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2023 Christians Martínez Alvarado
+  ~
+  ~ Licensed under the GNU General Public License v3
+  ~
+  ~ This is free software: you can redistribute it and/or modify it under
+  ~ the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  -->
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.Material3.CardView.Filled"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:checkable="true"
+    app:shapeAppearanceOverlay="?shapeAppearanceCornerExtraLarge"
+    app:cardBackgroundColor="?colorPrimaryFixed">
+
+    <com.google.android.material.materialswitch.MaterialSwitch
+        android:id="@+id/switchWidget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="24dp"
+        android:paddingHorizontal="20dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textAppearance="?textAppearanceHeadline6"
+        android:textColor="?colorOnPrimaryFixed"
+        tools:text="@tools:sample/lorem/random"/>
+
+</com.google.android.material.card.MaterialCardView>

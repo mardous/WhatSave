@@ -25,4 +25,8 @@
         <attr format="string" name="toolDescription"/>
         <attr format="reference" name="toolIcon"/>
     </declare-styleable>
+    <declare-styleable name="SwitchWithContainer">
+        <attr format="string" name="android:text"/>
+        <attr format="boolean" name="android:checked"/>
+    </declare-styleable>
 </resources>
