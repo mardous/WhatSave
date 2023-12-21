@@ -22,6 +22,8 @@
         <item name="android:fontFamily">@font/manrope</item>
         <item name="fontFamily">@font/manrope</item>
         <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryFixed">@color/primary_color_fixed</item>
+        <item name="colorOnPrimaryFixed">@color/primary_color_fixed_on</item>
         <item name="colorSecondary">@color/primary_color_dark</item>
         <item name="colorOnPrimary">@color/md_white_1000</item>
         <item name="colorOnSecondary">@color/md_white_1000</item>

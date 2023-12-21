@@ -20,6 +20,8 @@
     <color name="surface_color_black">#000000</color>
     <color name="surface_color_adaptive">@color/surface_color_light</color>
     <color name="primary_color">@color/md_red_A400</color>
+    <color name="primary_color_fixed">#fcd6c9</color>
+    <color name="primary_color_fixed_on">#351811</color>
     <color name="primary_color_dark">@color/md_red_A700</color>
     <color name="divider_color_black">#262629</color>
 
