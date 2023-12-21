@@ -109,6 +109,17 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
 
     override fun onSupportNavigateUp(): Boolean =
         findNavController(R.id.main_container).navigateUp()
+
+    override fun onDestroy() {
+        findNavController(R.id.main_container).removeOnDestinationChangedListener(this)
+        super.onDestroy()
+    }
+
+    private fun hideBottomBar(hide: Boolean) {
+        if (hide) navigationView.hide() else navigationView.show()
+        val contentPadding = if (!hide) resources.getDimensionPixelSize(R.dimen.bottom_nav_height) else 0
+        contentView.updatePadding(bottom = contentPadding)
+    }
 }
 
 fun Menu.setupWhatsAppMenuItem(activity: FragmentActivity) {
