@@ -86,12 +86,10 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (hasM()) {
-            val hasPermissions = hasStoragePermissions()
-            if (hasPermissions != hadPermissions) {
-                hadPermissions = hasPermissions
-                onHasPermissionsChanged()
-            }
+        val hasPermissions = hasStoragePermissions()
+        if (hasPermissions != hadPermissions) {
+            hadPermissions = hasPermissions
+            onHasPermissionsChanged()
         }
         if (preferences().themeChanged(lastThemeUpdate)) {
             // hack to prevent java.lang.RuntimeException: Performing pause of activity that is not resumed

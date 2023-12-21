@@ -91,14 +91,12 @@ fun Context.isNotificationListener(): Boolean {
 }
 
 fun Context.doIHavePermissions(vararg permissions: String): Boolean {
-    when {
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> return Environment.isExternalStorageManager()
-        Build.VERSION.SDK_INT >= Build.VERSION_CODES.M -> {
-            for (permission in permissions) {
-                if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false
-                }
-            }
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        return Environment.isExternalStorageManager()
+    }
+    for (permission in permissions) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            return false
         }
     }
     return true
@@ -112,19 +110,15 @@ fun Context.openSettings(action: String, packageName: String? = this.packageName
     startActivitySafe(intent)
 }
 
-@Suppress("DEPRECATION")
 fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    if (hasM()) {
-        val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork)
-        if (networkCapabilities != null) {
-            return if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-                true
-            } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
-        }
+    val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork)
+    if (networkCapabilities != null) {
+        return if (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+            true
+        } else networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) && !requestOnlyWifi
     }
-    val networkInfo = cm.activeNetworkInfo
-    return networkInfo != null && networkInfo.isConnected && (!requestOnlyWifi || networkInfo.type == ConnectivityManager.TYPE_WIFI)
+    return false
 }
 
 @Suppress("DEPRECATION")
@@ -136,7 +130,6 @@ inline fun <reified T : Serializable> Bundle.serializable(key: String, clazz: KC
         if (clazz.isInstance(deserialized)) (deserialized as T) else null
     }
 
-@Suppress("DEPRECATION")
 @Throws(PackageManager.NameNotFoundException::class)
 fun PackageManager.packageInfo(packageName: String = getApp().packageName): PackageInfo =
     if (hasT()) {
@@ -188,9 +181,6 @@ internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent
     }
 }
 
-@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.M)
-fun hasM() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
-
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.N)
 fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
@@ -198,7 +188,7 @@ fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 fun hasOMR1() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.P)
-fun hasP() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
+fun hasP() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q
