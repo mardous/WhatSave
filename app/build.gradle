@@ -26,12 +26,12 @@ static def getProperty(@Nullable Properties properties, String name) {
 }
 
 android {
-    compileSdk 33
+    compileSdk 34
     namespace "com.simplified.wsstatussaver"
 
     defaultConfig {
-        minSdk 21
-        targetSdk 33
+        minSdk 23
+        targetSdk 34
 
         applicationId namespace
         versionCode 109
