@@ -44,6 +44,10 @@ private val dataModule = module {
     factory {
         get<StatusDatabase>().statusDao()
     }
+
+    factory {
+        get<StatusDatabase>().messageDao()
+    }
 }
 
 private val managerModule = module {
@@ -68,7 +72,11 @@ private val statusesModule = module {
     } bind StatusesRepository::class
 
     single {
-        RepositoryImpl(get(), get())
+        MessageRepositoryImpl(get())
+    } bind MessageRepository::class
+
+    single {
+        RepositoryImpl(get(), get(), get())
     } bind Repository::class
 }
 

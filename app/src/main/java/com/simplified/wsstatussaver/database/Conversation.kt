@@ -13,11 +13,21 @@
  */
 package com.simplified.wsstatussaver.database
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import android.os.Parcelable
+import androidx.room.ColumnInfo
+import kotlinx.parcelize.Parcelize
 
-@Database(entities = [StatusEntity::class, MessageEntity::class], version = 2, exportSchema = false)
-abstract class StatusDatabase : RoomDatabase() {
-    abstract fun statusDao(): StatusDao
-    abstract fun messageDao(): MessageDao
+@Parcelize
+class Conversation(
+    val name: String,
+    @ColumnInfo(name = "message_count")
+    val messageCount: Int,
+    @ColumnInfo(name = "latest_message")
+    val latestMessage: String,
+    @ColumnInfo(name = "latest_message_time")
+    val latestMessageTime: Long
+) : Parcelable {
+
+    val id: Long
+        get() = name.hashCode().toLong()
 }

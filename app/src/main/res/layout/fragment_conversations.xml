@@ -12,57 +12,51 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   -->
-
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        app:liftOnScroll="true">
+        android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?collapsingToolbarLayoutLargeStyle"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:title="@string/tools_label"/>
+            android:layout_height="?collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="?homeAsUpIndicator"
+                app:title="@string/conversations_title"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:overScrollMode="@integer/overScrollMode"
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <include
+            android:id="@+id/conversations_content"
+            layout="@layout/conversations_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.simplified.wsstatussaver.views.ToolView
-                android:id="@+id/msg_a_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_round_message_24dp"
-                app:toolName="@string/msg_a_number"
-                app:toolDescription="@string/msg_a_number_description"/>
-
-            <com.simplified.wsstatussaver.views.ToolView
-                android:id="@+id/message_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_subject_24dp"
-                app:toolName="@string/message_view"
-                app:toolDescription="@string/message_view_description"/>
-
-        </LinearLayout>
+            android:layout_height="match_parent"/>
 
     </androidx.core.widget.NestedScrollView>
 

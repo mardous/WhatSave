@@ -11,13 +11,20 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.database
+package com.simplified.wsstatussaver.extensions
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import org.ocpsoft.prettytime.PrettyTime
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
 
-@Database(entities = [StatusEntity::class, MessageEntity::class], version = 2, exportSchema = false)
-abstract class StatusDatabase : RoomDatabase() {
-    abstract fun statusDao(): StatusDao
-    abstract fun messageDao(): MessageDao
+fun Long.time(): String {
+    val date = Date(this)
+    val minElapsedHours = TimeUnit.HOURS.toMillis(1)
+    if ((System.currentTimeMillis() - this) >= minElapsedHours) {
+        return SimpleDateFormat.getDateTimeInstance().format(date)
+    }
+    return prettyTime()
 }
+
+fun Long.prettyTime(): String = PrettyTime().format(Date(this))

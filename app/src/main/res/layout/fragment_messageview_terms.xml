@@ -16,7 +16,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -32,37 +32,46 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:title="@string/tools_label"/>
+            app:navigationIcon="?homeAsUpIndicator"
+            app:title="@string/message_view"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:paddingTop="16dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="72dp">
 
-            <com.simplified.wsstatussaver.views.ToolView
-                android:id="@+id/msg_a_number"
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@android:id/text1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_round_message_24dp"
-                app:toolName="@string/msg_a_number"
-                app:toolDescription="@string/msg_a_number_description"/>
+                android:layout_height="match_parent"
+                android:paddingBottom="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/continue_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@tools:sample/lorem/random[2]"/>
 
-            <com.simplified.wsstatussaver.views.ToolView
-                android:id="@+id/message_view"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/continue_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_subject_24dp"
-                app:toolName="@string/message_view"
-                app:toolDescription="@string/message_view_description"/>
+                android:textColor="?colorOnPrimary"
+                android:text="@string/accept_and_continue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 

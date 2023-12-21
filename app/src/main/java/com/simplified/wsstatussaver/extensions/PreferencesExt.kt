@@ -49,6 +49,42 @@ fun getDefaultDayNightMode(nightMode: String?): Int {
 
 fun SharedPreferences.isJustBlack() = getBoolean(PREFERENCE_JUST_BLACK_THEME, false)
 
+fun SharedPreferences.blacklistedSenders(): Set<String>? = getStringSet(BLACKLISTED_MESSAGE_SENDERS, null)
+
+fun SharedPreferences.blacklistMessageSender(name: String) {
+    var namesSet = getStringSet(BLACKLISTED_MESSAGE_SENDERS, null)
+    if (namesSet == null) {
+        edit { putStringSet(BLACKLISTED_MESSAGE_SENDERS, hashSetOf(name)) }
+    } else {
+        namesSet = namesSet.toMutableSet()
+        namesSet.add(name)
+        edit { putStringSet(BLACKLISTED_MESSAGE_SENDERS, namesSet) }
+    }
+}
+
+fun SharedPreferences.whitelistMessageSender(name: String) {
+    var namesSet = getStringSet(BLACKLISTED_MESSAGE_SENDERS, null)
+    if (namesSet == null) {
+        edit { putStringSet(BLACKLISTED_MESSAGE_SENDERS, hashSetOf(name)) }
+    } else {
+        namesSet = namesSet.toMutableSet()
+        namesSet.remove(name)
+        edit { putStringSet(BLACKLISTED_MESSAGE_SENDERS, namesSet) }
+    }
+}
+
+fun SharedPreferences.isBlacklistedMessageSender(name: String): Boolean {
+    val namesSet = getStringSet(BLACKLISTED_MESSAGE_SENDERS, emptySet())
+    if (namesSet.isNullOrEmpty()) return false
+    return namesSet.contains(name)
+}
+
+var SharedPreferences.isMessageViewEnabled
+    get() = getBoolean(PREFERENCE_ENABLE_MESSAGE_VIEW, false)
+    set(value) = edit {
+        putBoolean(PREFERENCE_ENABLE_MESSAGE_VIEW, value)
+    }
+
 fun SharedPreferences.isRequireSaveName() = getBoolean(PREFERENCE_REQUIRE_SAVE_NAME, false)
 
 fun SharedPreferences.isExcludeOldStatuses() = getBoolean(PREFERENCE_EXCLUDE_OLD_STATUSES, false)
@@ -136,3 +172,5 @@ const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
 const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
 const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
 const val PREFERENCE_PRIVACY_POLICY_ACCEPTED = "privacy_policy_accepted"
+const val BLACKLISTED_MESSAGE_SENDERS = "blacklisted_message_senders"
+const val PREFERENCE_ENABLE_MESSAGE_VIEW = "enable_message_view"

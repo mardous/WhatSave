@@ -14,6 +14,9 @@
 package com.simplified.wsstatussaver.repository
 
 import android.net.Uri
+import androidx.lifecycle.LiveData
+import com.simplified.wsstatussaver.database.Conversation
+import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.model.Country
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
@@ -28,11 +31,18 @@ interface Repository {
     suspend fun allCountries(): List<Country>
     suspend fun defaultCountry(): Country
     fun defaultCountry(country: Country)
+    fun listConversations(): LiveData<List<Conversation>>
+    fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>>
+    suspend fun insertMessage(message: MessageEntity): Long
+    suspend fun removeMessage(message: MessageEntity)
+    suspend fun deleteConversation(sender: Conversation)
+    suspend fun clearMessages()
 }
 
 class RepositoryImpl(
     private val statusesRepository: StatusesRepository,
-    private val countryRepository: CountryRepository
+    private val countryRepository: CountryRepository,
+    private val messageRepository: MessageRepository
 ) : Repository {
 
     override suspend fun statuses(type: StatusType): List<Status> = statusesRepository.statuses(type)
@@ -54,4 +64,17 @@ class RepositoryImpl(
 
     override fun defaultCountry(country: Country) = countryRepository.defaultCountry(country)
 
+    override fun listConversations(): LiveData<List<Conversation>> = messageRepository.listConversations()
+
+    override fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>> {
+        return messageRepository.listMessages(sender.name)
+    }
+
+    override suspend fun insertMessage(message: MessageEntity) = messageRepository.insertMessage(message)
+
+    override suspend fun removeMessage(message: MessageEntity) = messageRepository.removeMessage(message)
+
+    override suspend fun deleteConversation(sender: Conversation) = messageRepository.deleteConversation(sender.name)
+
+    override suspend fun clearMessages() = messageRepository.clearMessages()
 }

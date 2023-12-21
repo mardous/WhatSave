@@ -15,6 +15,14 @@
 
 <resources>
 
+    <string-array name="message_view_terms">
+        <item>@string/message_view_term_1</item>
+        <item>@string/message_view_term_2</item>
+        <item>@string/message_view_term_3</item>
+        <item>@string/message_view_term_4</item>
+        <item>@string/message_view_term_5</item>
+    </string-array>
+
     <string-array name="night_mode_titles">
         <item>@string/night_mode_yes</item>
         <item>@string/night_mode_no</item>

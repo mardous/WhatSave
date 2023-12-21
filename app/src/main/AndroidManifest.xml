@@ -50,6 +50,24 @@
                 android:resource="@xml/provider_paths"/>
         </provider>
 
+        <service
+            android:label="@string/received_messages_listener"
+            android:name=".service.MessageCatcherService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService"/>
+            </intent-filter>
+            <meta-data
+                android:name="android.service.notification.default_filter_types"
+                android:value="conversations">
+            </meta-data>
+            <meta-data
+                android:name="android.service.notification.disabled_filter_types"
+                android:value="ongoing|silent">
+            </meta-data>
+        </service>
+
         <!-- For auto-storage of locale on Android 12 and lower -->
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"

@@ -82,4 +82,5 @@
 -keep class com.simplified.wsstatussaver.mediator.WAClient { *; }
 -keep class com.simplified.wsstatussaver.model.** { *; }
 -keep class com.simplified.wsstatussaver.update.** { *; }
+-keep class com.simplified.wsstatussaver.service.** { *; }
 -keep class com.google.android.material.bottomsheet.** { *; }

@@ -13,17 +13,33 @@
  */
 package com.simplified.wsstatussaver.fragments
 
+import android.app.Activity
+import android.app.KeyguardManager
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.getSystemService
 import androidx.core.view.doOnPreDraw
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
 import com.simplified.wsstatussaver.dialogs.MsgDialog
+import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
+import com.simplified.wsstatussaver.extensions.isNotificationListener
+import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.logToolView
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class ToolFragment : BaseFragment(R.layout.fragment_tool) {
+
+    private val viewModel: WhatSaveViewModel by activityViewModel()
+    private val keyguardManager: KeyguardManager by lazy { requireContext().getSystemService()!! }
+    private lateinit var credentialsRequestLauncher: ActivityResultLauncher<Intent>
 
     private var _binding: FragmentToolBinding? = null
     private val binding get() = _binding!!
@@ -31,11 +47,24 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentToolBinding.bind(view)
-        _binding!!.msgANumber.setOnClickListener {
+        binding.msgANumber.setOnClickListener {
             logToolView("MsgDialog", "Message a number")
             MsgDialog().show(childFragmentManager, "SEND_MSG")
         }
+        binding.messageView.setOnClickListener {
+            if (requireContext().isNotificationListener()) {
+                openMessageView()
+            } else {
+                findNavController().navigate(R.id.messageViewTermsFragment)
+            }
+        }
+
         statusesActivity.setSupportActionBar(binding.toolbar)
+        credentialsRequestLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                viewModel.unlockMessageView()
+            }
+        }
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
@@ -43,9 +72,23 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         reenterTransition = MaterialFadeThrough().addTarget(binding.container)
     }
 
-    override fun onResume() {
-        super.onResume()
-        hideBottomBar(false)
+    @Suppress("DEPRECATION")
+    private fun openMessageView() {
+        viewModel.getMessageViewLockObservable().observe(viewLifecycleOwner) { isUnlocked ->
+            if (isUnlocked || !preferences().isMessageViewEnabled) {
+                findNavController().navigate(R.id.conversationsFragment)
+            } else {
+                val credentialsRequestIntel = keyguardManager.createConfirmDeviceCredentialIntent(
+                    getString(R.string.message_view),
+                    getString(R.string.confirm_device_credentials)
+                )
+                if (credentialsRequestIntel != null) {
+                    credentialsRequestLauncher.launch(credentialsRequestIntel)
+                } else {
+                    viewModel.unlockMessageView()
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

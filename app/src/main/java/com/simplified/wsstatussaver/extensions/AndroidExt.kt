@@ -14,7 +14,9 @@
 package com.simplified.wsstatussaver.extensions
 
 import android.app.Activity
+import android.app.NotificationManager
 import android.content.ActivityNotFoundException
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -25,17 +27,22 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.service.notification.NotificationListenerService
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.ChecksSdkIntAtLeast
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
 import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
 import com.simplified.wsstatussaver.logUrlView
+import com.simplified.wsstatussaver.service.MessageCatcherService
 import java.io.Serializable
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
+import java.util.*
 import kotlin.reflect.KClass
 
 typealias ExceptionConsumer = (Throwable, activityNotFound: Boolean) -> Unit
@@ -57,6 +64,30 @@ fun Context.openGooglePlay(appPackage: String = packageName) {
         return
     }
     startActivitySafe(Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$appPackage".toUri()))
+}
+
+fun Context.bindNotificationListener(): Boolean {
+    if (isNotificationListener()) {
+        if (hasN()) {
+            return try {
+                NotificationListenerService.requestRebind(ComponentName(this, MessageCatcherService::class.java))
+                true
+            } catch (_: Throwable) {
+                false
+            }
+        }
+        return true
+    }
+    return false
+}
+
+fun Context.isNotificationListener(): Boolean {
+    if (!hasOMR1()) {
+        return NotificationManagerCompat.getEnabledListenerPackages(this).contains(packageName)
+    }
+    val componentName = ComponentName(this, MessageCatcherService::class.java)
+    val notificationManager = getSystemService<NotificationManager>()
+    return notificationManager?.isNotificationListenerAccessGranted(componentName) == true
 }
 
 fun Context.doIHavePermissions(vararg permissions: String): Boolean {
@@ -162,6 +193,12 @@ fun hasM() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.N)
 fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O_MR1)
+fun hasOMR1() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1
+
+@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.P)
+fun hasP() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.P;
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.Q)
 fun hasQ() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q

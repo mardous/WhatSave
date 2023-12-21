@@ -21,6 +21,9 @@ import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
 import androidx.lifecycle.*
+import com.simplified.wsstatussaver.database.Conversation
+import com.simplified.wsstatussaver.database.MessageEntity
+import com.simplified.wsstatussaver.extensions.blacklistMessageSender
 import com.simplified.wsstatussaver.extensions.getMediaStoreUris
 import com.simplified.wsstatussaver.extensions.lastUpdateId
 import com.simplified.wsstatussaver.extensions.preferences
@@ -58,11 +61,19 @@ class WhatSaveViewModel(
     private val countries = MutableLiveData<List<Country>>()
     private val selectedCountry = MutableLiveData<Country>()
 
+    private val unlockMessageView = MutableLiveData(false)
+
     override fun onCleared() {
         super.onCleared()
         liveDataMap.clear()
         savedLiveDataMap.clear()
     }
+
+    fun unlockMessageView() {
+        unlockMessageView.value = true
+    }
+
+    fun getMessageViewLockObservable(): LiveData<Boolean> = unlockMessageView
 
     fun getInstalledClients(): LiveData<List<WAClient>> = installedClients
 
@@ -140,6 +151,23 @@ class WhatSaveViewModel(
         emit(DeletionResult(isDeleting = true))
         val result = repository.deleteStatuses(statuses)
         emit(DeletionResult(statuses = statuses, deleted = result))
+    }
+
+    fun messageSenders(): LiveData<List<Conversation>> =
+        repository.listConversations()
+
+    fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>> =
+        repository.receivedMessages(sender)
+
+    fun deleteConversation(sender: Conversation, addToBlacklist: Boolean = false) = viewModelScope.launch(IO) {
+        repository.deleteConversation(sender)
+        if (addToBlacklist) {
+            getApp().preferences().blacklistMessageSender(sender.name)
+        }
+    }
+
+    fun deleteAllMessages() = viewModelScope.launch(IO) {
+        repository.clearMessages()
     }
 
     @RequiresApi(Build.VERSION_CODES.R)

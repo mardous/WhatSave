@@ -11,13 +11,11 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.database
+package com.simplified.wsstatussaver.interfaces
 
-import androidx.room.Database
-import androidx.room.RoomDatabase
+import com.simplified.wsstatussaver.database.Conversation
 
-@Database(entities = [StatusEntity::class, MessageEntity::class], version = 2, exportSchema = false)
-abstract class StatusDatabase : RoomDatabase() {
-    abstract fun statusDao(): StatusDao
-    abstract fun messageDao(): MessageDao
+interface IConversationCallback {
+    fun onConversationClick(conversation: Conversation)
+    fun onConversationLongClick(conversation: Conversation)
 }

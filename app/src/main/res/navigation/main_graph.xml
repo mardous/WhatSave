@@ -34,4 +34,23 @@
         android:name="com.simplified.wsstatussaver.fragments.ToolFragment"
         android:label="ToolsFragment"/>
 
+    <fragment
+        android:id="@+id/conversationsFragment"
+        android:name="com.simplified.wsstatussaver.fragments.messageview.ConversationListFragment"
+        android:label="ConversationListFragment"/>
+
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.simplified.wsstatussaver.fragments.messageview.ConversationDetailFragment"
+        android:label="ConversationDetailFragment">
+        <argument
+            android:name="extra_conversation"
+            app:argType="com.simplified.wsstatussaver.database.Conversation"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/messageViewTermsFragment"
+        android:name="com.simplified.wsstatussaver.fragments.messageview.MessageViewTermsFragment"
+        android:label="MessageViewTerms"/>
+
 </navigation>
