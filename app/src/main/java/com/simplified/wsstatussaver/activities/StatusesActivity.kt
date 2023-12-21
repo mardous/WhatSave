@@ -17,7 +17,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.FrameLayout
+import androidx.core.view.updatePadding
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
@@ -27,10 +32,7 @@ import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.PrivacyDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
-import com.simplified.wsstatussaver.extensions.currentFragment
-import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.privacyPolicyAccepted
-import com.simplified.wsstatussaver.extensions.whichFragment
+import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.mediator.getLaunchIntent
@@ -41,19 +43,23 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedListener {
+class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedListener,
+    NavController.OnDestinationChangedListener {
 
     private val viewModel by viewModel<WhatSaveViewModel>()
+    private lateinit var contentView: FrameLayout
     private lateinit var navigationView: NavigationBarView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        contentView = findViewById(R.id.main_container)
         navigationView = findViewById(R.id.navigation_view)
         navigationView.setOnItemReselectedListener(this)
 
         val navController = whichFragment<NavHostFragment>(R.id.main_container)?.navController
         if (navController != null) {
+            navController.addOnDestinationChangedListener(this)
             navigationView.setupWithNavController(navController)
         }
 
@@ -98,6 +104,15 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
+        when (destination.id) {
+            R.id.homeFragment,
+            R.id.savedFragment,
+            R.id.toolsFragment -> hideBottomBar(false)
+            else -> hideBottomBar(true)
+        }
     }
 
     override fun onNavigationItemReselected(item: MenuItem) {
