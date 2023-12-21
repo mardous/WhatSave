@@ -106,6 +106,9 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
             currentFragment.onScrollToTop()
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean =
+        findNavController(R.id.main_container).navigateUp()
 }
 
 fun Menu.setupWhatsAppMenuItem(activity: FragmentActivity) {
