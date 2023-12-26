@@ -52,6 +52,7 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
             findNavController().navigate(R.id.messageFragment)
         }
         binding.messageView.setOnClickListener {
+            logToolView("ConversationListFragment", "Message view")
             if (requireContext().isNotificationListener()) {
                 openMessageView()
             } else {
