@@ -15,12 +15,8 @@ package com.simplified.wsstatussaver.extensions
 
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.Color
-import android.util.TypedValue
-import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.core.content.ContextCompat
+import com.google.android.material.color.MaterialColors
 import com.simplified.wsstatussaver.R
 
 val Context.isNightModeEnabled: Boolean
@@ -31,25 +27,8 @@ val Context.isNightModeEnabled: Boolean
 fun Context.getGeneralThemeRes(): Int =
     if (isNightModeEnabled && preferences().isJustBlack()) R.style.Theme_WhatSave_Black else R.style.Theme_WhatSave
 
-fun Context.resolveColorAttr(@AttrRes colorAttr: Int, @ColorInt fallback: Int = Color.TRANSPARENT): Int {
-    val resolvedAttr = resolveThemeAttr(colorAttr)
-    // resourceId is used if it's a ColorStateList, and data if it's a color reference or a hex color
-    val colorRes =
-        if (resolvedAttr.resourceId != 0) {
-            resolvedAttr.resourceId
-        } else {
-            resolvedAttr.data
-        }
-    try {
-        return ContextCompat.getColor(this, colorRes)
-    } catch (_: Resources.NotFoundException) {
-    }
-    return fallback
-}
+fun Context.primaryColor() =
+    MaterialColors.getColor(this, com.google.android.material.R.attr.colorPrimary, Color.TRANSPARENT)
 
-private fun Context.resolveThemeAttr(@AttrRes attrRes: Int) =
-    TypedValue().apply { theme.resolveAttribute(attrRes, this, true) }
-
-fun Context.primaryColor() = resolveColorAttr(com.google.android.material.R.attr.colorPrimary)
 fun Context.surfaceColor(fallback: Int = Color.TRANSPARENT) =
-    resolveColorAttr(com.google.android.material.R.attr.colorSurface, fallback)
+    MaterialColors.getColor(this, com.google.android.material.R.attr.colorSurface, fallback)

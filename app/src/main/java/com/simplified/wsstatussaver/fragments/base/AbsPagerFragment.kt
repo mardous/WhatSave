@@ -77,7 +77,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         val binding = FragmentStatusesPageBinding.bind(view)
         _binding = StatusesPageBinding(binding).apply {
             swipeRefreshLayout.setOnRefreshListener(this@AbsPagerFragment)
-            swipeRefreshLayout.setColorSchemeColors(view.context.resolveColorAttr(androidx.appcompat.R.attr.colorPrimary))
+            swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())
 
             recyclerView.setPadding(resources.displayMetrics.density.toInt() * 4)
             recyclerView.layoutManager =

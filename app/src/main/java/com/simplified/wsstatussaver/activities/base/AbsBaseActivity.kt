@@ -56,7 +56,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         lastThemeUpdate = System.currentTimeMillis()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
 
-        val navigationBarColor = resolveColorAttr(com.google.android.material.R.attr.colorSurface)
+        val navigationBarColor = surfaceColor()
         onSetupSystemBars(navigationBarColor, navigationBarColor)
     }
 
