@@ -25,7 +25,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
     app:shapeAppearanceOverlay="?shapeAppearanceCornerExtraLarge"
-    app:cardBackgroundColor="?colorErrorContainer">
+    app:cardBackgroundColor="?colorSurfaceContainerHigh">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
