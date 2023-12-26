@@ -27,7 +27,7 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
-import com.simplified.wsstatussaver.dialogs.MsgDialog
+import com.simplified.wsstatussaver.fragments.message.MessageFragment
 import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
 import com.simplified.wsstatussaver.extensions.isNotificationListener
 import com.simplified.wsstatussaver.extensions.preferences
@@ -48,8 +48,8 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentToolBinding.bind(view)
         binding.msgANumber.setOnClickListener {
-            logToolView("MsgDialog", "Message a number")
-            MsgDialog().show(childFragmentManager, "SEND_MSG")
+            logToolView("MessageFragment", "Message a number")
+            findNavController().navigate(R.id.messageFragment)
         }
         binding.messageView.setOnClickListener {
             if (requireContext().isNotificationListener()) {

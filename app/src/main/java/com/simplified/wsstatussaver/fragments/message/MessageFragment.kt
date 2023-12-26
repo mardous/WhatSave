@@ -11,25 +11,30 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.dialogs
+package com.simplified.wsstatussaver.fragments.message
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.View
 import androidx.core.net.toUri
-import androidx.fragment.app.DialogFragment
+import androidx.core.view.doOnPreDraw
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.CountryAdapter
-import com.simplified.wsstatussaver.databinding.DialogMsgBinding
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
+import com.simplified.wsstatussaver.databinding.FragmentMessageANumberBinding
 import com.simplified.wsstatussaver.extensions.encodedUrl
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Country
@@ -38,9 +43,9 @@ import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class MsgDialog : DialogFragment(), ICountryCallback {
+class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICountryCallback {
 
-    private var _binding: DialogMsgBinding? = null
+    private var _binding: MessageBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
@@ -51,57 +56,37 @@ class MsgDialog : DialogFragment(), ICountryCallback {
     private var countriesDialog: Dialog? = null
     private var numberFormatTextWatcher: PhoneNumberFormattingTextWatcher? = null
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        _binding = DialogMsgBinding.inflate(layoutInflater)
-        setupDialogView()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = MessageBinding(FragmentMessageANumberBinding.bind(view))
+        postponeEnterTransition()
+        enterTransition = MaterialFadeThrough().addTarget(binding.container)
+        reenterTransition = MaterialFadeThrough().addTarget(binding.container)
+        view.doOnPreDraw { startPostponedEnterTransition() }
+
         createCountriesDialog()
-        observeLiveData()
-        return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.msg_a_number)
-            .setView(binding.root)
-            .setPositiveButton(R.string.send_action, null)
-            .setNegativeButton(android.R.string.cancel, null)
-            .create().also { dialog ->
-                dialog.setOnShowListener {
-                    dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener {
-                        sendMessage(dialog)
-                    }
-                    viewModel.loadCountries()
-                    viewModel.loadSelectedCountry()
-                }
-            }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    override fun onCountryClick(country: Country) {
-        viewModel.setSelectedCountry(country)
-        countriesDialog?.dismiss()
-    }
-
-    private fun observeLiveData() {
-        viewModel.getCountriesObservable().observe(this) {
+        statusesActivity.setSupportActionBar(binding.toolbar)
+        binding.phoneInputLayout.setEndIconOnClickListener {
+            countriesDialog?.show()
+        }
+        binding.sendButton.setOnClickListener {
+            sendMessage()
+        }
+        viewModel.getCountriesObservable().observe(viewLifecycleOwner) {
             adapter?.countries = it
         }
-        viewModel.getSelectedCountryObservable().observe(this) { country ->
+        viewModel.getSelectedCountryObservable().observe(viewLifecycleOwner) { country ->
             numberFormatTextWatcher?.let { textWatcher ->
                 binding.phoneNumber.removeTextChangedListener(textWatcher)
             }
             numberFormatTextWatcher = PhoneNumberFormattingTextWatcher(country.isoCode).also { textWatcher ->
                 binding.phoneNumber.addTextChangedListener(textWatcher)
             }
-            binding.phoneNumberInputLayout.prefixText = country.getId()
+            binding.phoneInputLayout.prefixText = country.getId()
             adapter?.selectedCode = country.isoCode
         }
-    }
-
-    private fun setupDialogView() {
-        binding.phoneNumberInputLayout.setEndIconOnClickListener {
-            countriesDialog?.show()
-        }
+        viewModel.loadCountries()
+        viewModel.loadSelectedCountry()
     }
 
     private fun createCountriesDialog() {
@@ -116,19 +101,23 @@ class MsgDialog : DialogFragment(), ICountryCallback {
             .create()
     }
 
-    private fun formatInput(input: String?, country: Country): String? {
-        val number = try {
-            phoneNumberUtil.parse(input, country.isoCode)
-        } catch (e: NumberParseException) {
-            null
-        }
-        if (number == null || !phoneNumberUtil.isValidNumberForRegion(number, country.isoCode)) {
-            return null
-        }
-        return phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.E164)
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateMenu(menu, menuInflater)
+        menu.removeItem(R.id.action_settings)
+        menu.removeItem(R.id.action_about)
     }
 
-    private fun sendMessage(dialog: Dialog) {
+    override fun onCountryClick(country: Country) {
+        viewModel.setSelectedCountry(country)
+        countriesDialog?.dismiss()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    private fun sendMessage() {
         val entered = binding.phoneNumber.text?.toString()
         val country = viewModel.getSelectedCountry() ?: return
         val formattedNumber = formatInput(entered, country)
@@ -150,6 +139,18 @@ class MsgDialog : DialogFragment(), ICountryCallback {
         startActivitySafe(intent) { _: Throwable, activityNotFound: Boolean ->
             if (activityNotFound) showToast(R.string.wa_is_not_installed_title)
         }
-        dialog.dismiss()
+        findNavController().popBackStack()
+    }
+
+    private fun formatInput(input: String?, country: Country): String? {
+        val number = try {
+            phoneNumberUtil.parse(input, country.isoCode)
+        } catch (e: NumberParseException) {
+            null
+        }
+        if (number == null || !phoneNumberUtil.isValidNumberForRegion(number, country.isoCode)) {
+            return null
+        }
+        return phoneNumberUtil.format(number, PhoneNumberUtil.PhoneNumberFormat.E164)
     }
 }

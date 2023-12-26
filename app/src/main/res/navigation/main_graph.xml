@@ -35,6 +35,11 @@
         android:label="ToolsFragment"/>
 
     <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.simplified.wsstatussaver.fragments.message.MessageFragment"
+        android:label="MessageFragment"/>
+
+    <fragment
         android:id="@+id/conversationsFragment"
         android:name="com.simplified.wsstatussaver.fragments.messageview.ConversationListFragment"
         android:label="ConversationListFragment"/>
