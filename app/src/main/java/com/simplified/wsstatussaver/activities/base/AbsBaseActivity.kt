@@ -125,9 +125,8 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                 }
                 .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                 .show()
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        } else
             requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
-        }
     }
 
     private fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
