@@ -44,5 +44,4 @@
     <dimen name="default_item_margin">8dp</dimen>
 
     <dimen name="status_item_margin">4dp</dimen>
-    <dimen name="status_item_image_height">156dp</dimen>
 </resources>
