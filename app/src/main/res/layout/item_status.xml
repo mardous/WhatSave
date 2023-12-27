@@ -13,65 +13,66 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/status_item_margin"
-    android:orientation="vertical"
     android:background="?rectSelector">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/status_item_image_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:scaleType="centerCrop"
         app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:src="@tools:sample/avatars"/>
 
+    <ImageView
+        android:id="@+id/client_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:src="@drawable/ic_client_default"
+        tools:ignore="ContentDescription"/>
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/client_icon">
 
-        <LinearLayout
-            android:layout_width="0dp"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:orientation="vertical">
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceSubtitle2"
+            tools:text="Abr. 22, 2022 10:42"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textAppearance="?textAppearanceSubtitle2"
-                tools:text="Abr. 22, 2022 10:42"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/state"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:textAppearance="?textAppearanceCaption"
-                tools:text="Saved"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/client_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="8dp"
-            tools:src="@drawable/ic_client_default"
-            tools:ignore="ContentDescription"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceCaption"
+            tools:text="Saved"/>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
