@@ -50,13 +50,6 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
-            android:title="@string/require_save_name"
-            android:summary="@string/require_save_name_summary"
-            android:defaultValue="false"
-            android:key="require_save_name"/>
-
-        <SwitchPreferenceCompat
-            android:layout="@layout/list_item_view_switch"
             android:title="@string/exclude_old_statuses_title"
             android:summary="@string/exclude_old_statuses_summary"
             android:defaultValue="false"

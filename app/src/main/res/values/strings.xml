@@ -41,8 +41,6 @@
     <string name="status_saved">Saved</string>
     <string name="action_select_all">Select all</string>
     <string name="x_selected">%d selected</string>
-    <string name="please_enter_a_name_for_the_saved_file">Please, enter a name for the saved file:</string>
-    <string name="new_file_name">New file name</string>
     <string name="x_is_the_default_client_now">%s is the default client now.</string>
     <string name="default_client_cleared">Default client cleared.</string>
     <string name="client_info"><![CDATA[Version <b>%s</b> (official client)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">No</string>
     <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Just Black</string>
-    <string name="require_save_name">Enter save name manually</string>
-    <string name="require_save_name_summary">Request entering a name for each saved status. If disabled, all saved statuses with have a name based in the current time.</string>
     <string name="statuses_location_title">Statuses location</string>
     <string name="statuses_location_summary">Location where statuses should be found. You should change this setting only if the app is unable to load statuses from the default location.</string>
     <string name="statuses_location_device">Device</string>

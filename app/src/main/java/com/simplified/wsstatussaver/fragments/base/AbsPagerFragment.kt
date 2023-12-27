@@ -218,16 +218,8 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
     @SuppressLint("CheckResult")
     private fun saveStatus(status: Status) {
-        if (preferences().isRequireSaveName()) {
-            context?.requestStatusName(getNewSaveName()) { entered ->
-                viewModel.saveStatus(status, entered).observe(viewLifecycleOwner) {
-                    processSaveResult(it)
-                }
-            }
-        } else {
-            viewModel.saveStatus(status).observe(viewLifecycleOwner) {
-                processSaveResult(it)
-            }
+        viewModel.saveStatus(status).observe(viewLifecycleOwner) {
+            processSaveResult(it)
         }
     }
 

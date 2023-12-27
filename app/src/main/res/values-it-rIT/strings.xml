@@ -41,8 +41,6 @@
     <string name="status_saved">Salvato</string>
     <string name="action_select_all">Seleziona tutto</string>
     <string name="x_selected">%d selezionato</string>
-    <string name="please_enter_a_name_for_the_saved_file">Per favore, inserisci un nome per il file salvato:</string>
-    <string name="new_file_name">Nuovo nome file</string>
     <string name="x_is_the_default_client_now">%s è ora il client predefinito.</string>
     <string name="default_client_cleared">Client predefinito cancellato.</string>
     <string name="client_info"><![CDATA[Versione <b>%s</b> (client ufficiale)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">NO</string>
     <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Solo nero</string>
-    <string name="require_save_name">Inserisci manualmente il nome di salvataggio</string>
-    <string name="require_save_name_summary">Richiedi l\'inserimento di un nome per ogni stato salvato. Se disabilitato, tutti gli stati salvati avranno un nome basato sull\'ora corrente.</string>
     <string name="statuses_location_title">Posizione degli stati</string>
     <string name="statuses_location_summary">Posizione in cui dovrebbero essere trovati gli stati. Dovresti modificare questa impostazione solo se l\'app non è in grado di caricare gli stati dalla posizione predefinita.</string>
     <string name="statuses_location_device">Dispositivo</string>

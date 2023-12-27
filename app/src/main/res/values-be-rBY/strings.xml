@@ -41,8 +41,6 @@
     <string name="status_saved">Захавана</string>
     <string name="action_select_all">Абраць усё</string>
     <string name="x_selected">%d выбрана</string>
-    <string name="please_enter_a_name_for_the_saved_file">Калі ласка, увядзіце імя для захаванага файла:</string>
-    <string name="new_file_name">Новае імя файла</string>
     <string name="x_is_the_default_client_now">%s зараз з\'яўляецца стандартным кліентам.</string>
     <string name="default_client_cleared">Кліент па змаўчанні ачышчаны.</string>
     <string name="client_info"><![CDATA[Версія <b>%s</b> (афіцыйны кліент)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">няма</string>
     <string name="night_mode_auto">Аўто.</string>
     <string name="just_black_theme_title">Проста чорны</string>
-    <string name="require_save_name">Увядзіце імя захавання ўручную</string>
-    <string name="require_save_name_summary">Запыт уводу імя для кожнага захаванага стану. Калі выключана, усе захаваныя статусы маюць назву, заснаваную на бягучы час.</string>
     <string name="statuses_location_title">Размяшчэнне статусаў</string>
     <string name="statuses_location_summary">Месца, дзе павінны знаходзіцца статусы. Вы павінны змяніць гэты параметр, толькі калі праграма не можа загружаць статусы са стандартнага месцазнаходжання.</string>
     <string name="statuses_location_device">прылада</string>

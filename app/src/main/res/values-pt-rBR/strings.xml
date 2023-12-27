@@ -41,8 +41,6 @@
     <string name="status_saved">Salvou</string>
     <string name="action_select_all">Selecionar tudo</string>
     <string name="x_selected">%d selecionado</string>
-    <string name="please_enter_a_name_for_the_saved_file">Por favor, insira um nome para o arquivo salvo:</string>
-    <string name="new_file_name">Novo nome de arquivo</string>
     <string name="x_is_the_default_client_now">%s é o cliente padrão agora.</string>
     <string name="default_client_cleared">Cliente padrão desmarcado.</string>
     <string name="client_info"><![CDATA[Versão <b>%s</b> (cliente oficial)]]></string>
@@ -81,8 +79,6 @@
     <string name="night_mode_no">Não</string>
     <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Apenas preto</string>
-    <string name="require_save_name">Insira o nome salvo manualmente</string>
-    <string name="require_save_name_summary">Solicite a inserção de um nome para cada status salvo. Se desativado, todos os status salvos terão um nome baseado na hora atual.</string>
     <string name="statuses_location_title">Localização dos status</string>
     <string name="statuses_location_summary">Local onde os status devem ser encontrados. Você deverá alterar essa configuração somente se o aplicativo não conseguir carregar status do local padrão.</string>
     <string name="statuses_location_device">Dispositivo</string>

@@ -40,8 +40,6 @@
     <string name="status_saved">Сохранено</string>
     <string name="action_select_all">Выбрать все</string>
     <string name="x_selected">%d выбрано</string>
-    <string name="please_enter_a_name_for_the_saved_file">Пожалуйста, введите имя сохраненного файла:</string>
-    <string name="new_file_name">Новое имя файла</string>
     <string name="x_is_the_default_client_now">%s теперь является клиентом по умолчанию.</string>
     <string name="default_client_cleared">Клиент по умолчанию удален.</string>
     <string name="client_info"><![CDATA[Версия <b>%s</b> (официальный клиент)]]></string>
@@ -83,8 +81,6 @@
     <string name="night_mode_no">Нет</string>
     <string name="night_mode_auto">Авто.</string>
     <string name="just_black_theme_title">Просто черный</string>
-    <string name="require_save_name">Введите имя сохранения вручную</string>
-    <string name="require_save_name_summary">Запросить ввод имени для каждого сохраненного статуса. Если этот параметр отключен, все сохраненные статусы будут иметь имя, основанное на текущем времени.</string>
     <string name="statuses_location_title">Расположение статусов</string>
     <string name="statuses_location_summary">Место, где должны быть найдены статусы. Вам следует изменить этот параметр только в том случае, если приложение не может загружать статусы из местоположения по умолчанию.</string>
     <string name="statuses_location_device">Устройство</string>

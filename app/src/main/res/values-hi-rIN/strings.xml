@@ -41,8 +41,6 @@
     <string name="status_saved">बचाया</string>
     <string name="action_select_all">सबका चयन करें</string>
     <string name="x_selected">%d चयनित</string>
-    <string name="please_enter_a_name_for_the_saved_file">कृपया, सहेजी गई फ़ाइल के लिए एक नाम दर्ज करें:</string>
-    <string name="new_file_name">नया फ़ाइल नाम</string>
     <string name="x_is_the_default_client_now">%s अब डिफ़ॉल्ट क्लाइंट है.</string>
     <string name="default_client_cleared">डिफ़ॉल्ट क्लाइंट साफ़ किया गया.</string>
     <string name="client_info"><![CDATA[संस्करण <b>%s</b> (आधिकारिक ग्राहक)]]></string>
@@ -81,8 +79,6 @@
     <string name="night_mode_no">नहीं</string>
     <string name="night_mode_auto">ऑटो.</string>
     <string name="just_black_theme_title">बस काला</string>
-    <string name="require_save_name">मैन्युअल रूप से सहेजा गया नाम दर्ज करें</string>
-    <string name="require_save_name_summary">प्रत्येक सहेजी गई स्थिति के लिए एक नाम दर्ज करने का अनुरोध करें। यदि अक्षम किया गया है, तो सभी सहेजी गई स्थितियों का वर्तमान समय के आधार पर एक नाम होगा।</string>
     <string name="statuses_location_title">स्थितियाँ स्थान</string>
     <string name="statuses_location_summary">वह स्थान जहाँ स्थितियाँ मिलनी चाहिए। आपको यह सेटिंग केवल तभी बदलनी चाहिए जब ऐप डिफ़ॉल्ट स्थान से स्टेटस लोड करने में असमर्थ हो।</string>
     <string name="statuses_location_device">उपकरण</string>

@@ -39,7 +39,6 @@
     <string name="status_saved">Guardado</string>
     <string name="action_select_all">Seleccionar todo</string>
     <string name="x_selected">%d seleccionado(s)</string>
-    <string name="new_file_name">Nuevo nombre de archivo</string>
     <string name="default_client_cleared">Sin cliente predeterminado.</string>
     <string name="client_info_unknown">No se ha cargado la info. del cliente.</string>
     <string name="no_x_statuses_title">Sin estados de %s</string>
@@ -68,8 +67,6 @@
     <string name="night_mode_yes">Sí</string>
     <string name="night_mode_no">No</string>
     <string name="night_mode_auto">Automático</string>
-    <string name="require_save_name">Ingresar nombre de guardado manualmente</string>
-    <string name="require_save_name_summary">Solicitar un nombre para cada estado guardado. Si se desactiva, todos los estados guardados tendrán un nombre generado en base a la hora actual.</string>
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>
     <string name="statuses_location_device">Dispositivo</string>

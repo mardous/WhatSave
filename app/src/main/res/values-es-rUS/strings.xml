@@ -41,8 +41,6 @@
     <string name="status_saved">Guardado</string>
     <string name="action_select_all">Seleccionar todo</string>
     <string name="x_selected">%d seleccionado(s)</string>
-    <string name="please_enter_a_name_for_the_saved_file">Por favor, ingrese un nombre para el archivo guardado:</string>
-    <string name="new_file_name">Nombre del archivo nuevo</string>
     <string name="x_is_the_default_client_now">%s es el cliente predeterminado ahora.</string>
     <string name="default_client_cleared">Se limpió el cliente predeterminado.</string>
     <string name="client_info"><![CDATA[Versión <b>%s</b> (cliente oficial)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">No</string>
     <string name="night_mode_auto">Automático</string>
     <string name="just_black_theme_title">Completamente negro</string>
-    <string name="require_save_name">Ingresar nombre de guardado manualmente</string>
-    <string name="require_save_name_summary">Solicitar un nombre para cada estado guardado. Si se desactiva, todos los estados guardados tendrán un nombre generado en base a la hora actual.</string>
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>
     <string name="statuses_location_device">Dispositivo</string>

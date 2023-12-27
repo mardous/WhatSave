@@ -41,8 +41,6 @@
     <string name="status_saved">Enregistre</string>
     <string name="action_select_all">Tout selectionner</string>
     <string name="x_selected">%d selectionne</string>
-    <string name="please_enter_a_name_for_the_saved_file">Veuillez saisir un nom pour le fichier enregistre :</string>
-    <string name="new_file_name">Nouveau nom de fichier</string>
     <string name="x_is_the_default_client_now">%s est desormais le client par defaut.</string>
     <string name="default_client_cleared">Client par defaut efface.</string>
     <string name="client_info"><![CDATA[Version <b>%s</b> (client officiel)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">Non</string>
     <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Juste noir</string>
-    <string name="require_save_name">Entrez manuellement le nom de sauvegarde</string>
-    <string name="require_save_name_summary">Demandez la saisie d\'un nom pour chaque statut enregistre. S\'ils sont desactives, tous les statuts enregistres ont un nom base sur l\'heure actuelle.</string>
     <string name="statuses_location_title">Localisation des statuts</string>
     <string name="statuses_location_summary">Emplacement ou les statuts doivent etre trouves. Vous ne devez modifier ce parametre que si l\'application ne parvient pas a charger les statuts a partir de l\'emplacement par defaut.</string>
     <string name="statuses_location_device">Appareil</string>

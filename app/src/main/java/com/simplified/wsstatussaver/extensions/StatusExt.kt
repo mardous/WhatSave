@@ -27,8 +27,6 @@ import java.text.SimpleDateFormat
 import java.text.SimpleDateFormat.getDateTimeInstance
 import java.util.*
 
-val STATUS_NAME_INVALID_CHARS: CharSequence = "?:\"*|/\\<>"
-
 val fileDateFormat: DateFormat by lazy {
     SimpleDateFormat("MMM_d_yyyy_HH.mm.ss", Locale.ENGLISH)
 }

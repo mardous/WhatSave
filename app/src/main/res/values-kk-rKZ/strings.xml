@@ -41,8 +41,6 @@
     <string name="status_saved">Сақталды</string>
     <string name="action_select_all">Барлығын таңдаңыз</string>
     <string name="x_selected">%d таңдалды</string>
-    <string name="please_enter_a_name_for_the_saved_file">Сақталған файлдың атын енгізіңіз:</string>
-    <string name="new_file_name">Жаңа файл атауы</string>
     <string name="x_is_the_default_client_now">%s қазір әдепкі клиент болып табылады.</string>
     <string name="default_client_cleared">Әдепкі клиент тазартылды.</string>
     <string name="client_info"><![CDATA[<b>%s</b> нұсқасы (ресми клиент)]]></string>
@@ -81,8 +79,6 @@
     <string name="night_mode_no">Жоқ</string>
     <string name="night_mode_auto">Автоматты.</string>
     <string name="just_black_theme_title">Тек Қара</string>
-    <string name="require_save_name">Сақтау атын қолмен енгізіңіз</string>
-    <string name="require_save_name_summary">Әрбір сақталған күй үшін атау енгізуді сұраңыз. Өшірілген болса, барлық сақталған күйлердің ағымдағы уақытқа негізделген атауы болады.</string>
     <string name="statuses_location_title">Күйлердің орналасуы</string>
     <string name="statuses_location_summary">Күйлерді табу керек орын. Бұл параметрді қолданба күйлерді әдепкі орыннан жүктей алмаса ғана өзгертуіңіз керек.</string>
     <string name="statuses_location_device">Құрылғы</string>

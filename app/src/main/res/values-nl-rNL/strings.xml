@@ -41,8 +41,6 @@
     <string name="status_saved">Opgeslagen</string>
     <string name="action_select_all">Selecteer alles</string>
     <string name="x_selected">%d geselecteerd</string>
-    <string name="please_enter_a_name_for_the_saved_file">Voer een naam in voor het opgeslagen bestand:</string>
-    <string name="new_file_name">Nieuwe bestandsnaam</string>
     <string name="x_is_the_default_client_now">%s is nu de standaardclient.</string>
     <string name="default_client_cleared">Standaardclient gewist.</string>
     <string name="client_info"><![CDATA[Versie <b>%s</b> (officiële client)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">Nee</string>
     <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Gewoon zwart</string>
-    <string name="require_save_name">Voer de opgeslagen naam handmatig in</string>
-    <string name="require_save_name_summary">Verzoek om een naam in te voeren voor elke opgeslagen status. Indien uitgeschakeld, hebben alle opgeslagen statussen een naam gebaseerd op de huidige tijd.</string>
     <string name="statuses_location_title">Statussen locatie</string>
     <string name="statuses_location_summary">Locatie waar statussen moeten worden gevonden. U moet deze instelling alleen wijzigen als de app geen statussen kan laden vanaf de standaardlocatie.</string>
     <string name="statuses_location_device">Apparaat</string>

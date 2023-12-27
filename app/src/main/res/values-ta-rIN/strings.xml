@@ -41,8 +41,6 @@
     <string name="status_saved">சேமிக்கப்பட்டது</string>
     <string name="action_select_all">அனைத்தையும் தெரிவுசெய்</string>
     <string name="x_selected">%d தேர்ந்தெடுக்கப்பட்டது</string>
-    <string name="please_enter_a_name_for_the_saved_file">சேமித்த கோப்பிற்கான பெயரை உள்ளிடவும்:</string>
-    <string name="new_file_name">புதிய கோப்பு பெயர்</string>
     <string name="x_is_the_default_client_now">%s இப்போது இயல்புநிலை கிளையன்ட்.</string>
     <string name="default_client_cleared">இயல்புநிலை கிளையன்ட் அழிக்கப்பட்டது.</string>
     <string name="client_info"><![CDATA[பதிப்பு <b>%s</b> (அதிகாரப்பூர்வ கிளையன்ட்)]]></string>
@@ -84,8 +82,6 @@
     <string name="night_mode_no">இல்லை</string>
     <string name="night_mode_auto">ஆட்டோ.</string>
     <string name="just_black_theme_title">வெறும் கருப்பு</string>
-    <string name="require_save_name">சேமி பெயரை கைமுறையாக உள்ளிடவும்</string>
-    <string name="require_save_name_summary">சேமிக்கப்பட்ட ஒவ்வொரு நிலைக்கும் ஒரு பெயரை உள்ளிடுமாறு கோரவும். முடக்கப்பட்டிருந்தால், சேமிக்கப்பட்ட அனைத்து நிலைகளும் தற்போதைய நேரத்தை அடிப்படையாகக் கொண்ட பெயரைக் கொண்டிருக்கும்.</string>
     <string name="statuses_location_title">நிலைகள் இடம்</string>
     <string name="statuses_location_summary">நிலைகளைக் கண்டறிய வேண்டிய இடம். ஆப்ஸால் இயல்புநிலை இடத்திலிருந்து நிலைகளை ஏற்ற முடியவில்லை என்றால் மட்டுமே இந்த அமைப்பை மாற்ற வேண்டும்.</string>
     <string name="statuses_location_device">சாதனம்</string>
