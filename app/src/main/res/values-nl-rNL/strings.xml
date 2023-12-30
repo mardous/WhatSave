@@ -61,10 +61,8 @@
     <string name="deleting_please_wait">Bezig met verwijderen, even geduld…</string>
     <string name="deletion_success">Succes met verwijderen.</string>
     <string name="deletion_failed">Verwijderen is mislukt.</string>
-    <string name="permission_request_android_r">Vanwege het Android OS-beleid moet je ons toestemming geven om bestanden
-        op je apparaat te beheren.\nDeze toestemming is alleen vereist voor het weergeven van statusbestanden van WhatsApp.
-        We gebruiken deze toestemming niet voor toegang tot gevoelige gegevens op uw telefoon of zelfs voor toegang tot
-        uw privégegevens.</string>
+    <string name="permission_request_android_r">Vanwege het Android OS-beleid moet u ons toestemming geven voor toegang tot bestanden op uw apparaat.
+        \nDeze toestemming is alleen vereist voor het weergeven van statusbestanden van WhatsApp.</string>
     <string name="permissions_denied_title">Machtigingen geweigerd</string>
     <string name="permissions_denied_message">U moet de vereiste machtigingen verlenen.\n\nDeze applicatie werkt niet correct zonder deze machtigingen.</string>
     <string name="grant_action">Studiebeurs</string>

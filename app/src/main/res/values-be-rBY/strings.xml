@@ -36,7 +36,8 @@
     <string name="saved_successfully">Паспяхова захавана.</string>
     <string name="saved_x_statuses">Захавана %d стану</string>
     <string name="save_again_title">Зноў захаваць?</string>
-    <string name="you_saved_this_status_previously">Вы захавалі гэты статус раней.\n\nЖадаеце захаваць яго зноў?</string>
+    <string name="you_saved_this_status_previously">Вы захавалі гэты статус раней.
+        \nЖадаеце захаваць яго зноў?</string>
     <string name="status_unsaved">Незахавана</string>
     <string name="status_saved">Захавана</string>
     <string name="action_select_all">Абраць усё</string>

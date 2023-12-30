@@ -61,7 +61,8 @@
     <string name="deleting_please_wait">Жойылуда, күте тұрыңыз…</string>
     <string name="deletion_success">Жою сәтті болды.</string>
     <string name="deletion_failed">Жою сәтсіз аяқталды.</string>
-    <string name="permission_request_android_r">Android ОЖ саясаттарына байланысты құрылғыңыздағы файлдарды басқаруға рұқсат беруіңіз керек.\nБұл рұқсат тек WhatsApp-тан күй файлдарын тізуге қажет. Біз бұл рұқсатты телефоныңыздағы маңызды деректерге немесе тіпті жеке деректеріңізге қол жеткізу үшін пайдаланбаймыз.</string>
+    <string name="permission_request_android_r">Android ОЖ саясаттарына байланысты құрылғыңыздағы файлдарға кіруге рұқсат беруіңіз керек.
+        \nБұл рұқсат тек WhatsApp-тан күй файлдарын тізімдеу үшін қажет.</string>
     <string name="permissions_denied_title">Рұқсаттар қабылданбады</string>
     <string name="permissions_denied_message">Қажетті рұқсаттарды беруіңіз керек.\n\nБұл қолданба осы рұқсаттарсыз дұрыс жұмыс істемейді.</string>
     <string name="grant_action">Грант</string>

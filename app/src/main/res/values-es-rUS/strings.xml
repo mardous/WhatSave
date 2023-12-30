@@ -61,10 +61,8 @@
     <string name="deleting_please_wait">Eliminando, espere un momento…</string>
     <string name="deletion_success">Eliminación exitosa.</string>
     <string name="deletion_failed">Eliminación fallida.</string>
-    <string name="permission_request_android_r">Debido a las políticas del sistema Android, debes concedernos el
-        permiso para acceder a los archivos del dispositivo.\nEste permiso solo se requiere para listar los archivos
-        de estados de WhatsApp. No lo usaremos para acceder a datos sensibles o a tu información privada en este
-        dispositivo.</string>
+    <string name="permission_request_android_r">Debido a las políticas del sistema Android, debes concedernos el permiso para acceder a los archivos del dispositivo.
+        \nEste permiso solo se requiere para listar los archivos de estados de WhatsApp.</string>
     <string name="permissions_denied_title">Permisos denegados</string>
     <string name="permissions_denied_message">Debes conceder los permisos necesarios.\n\nEsta aplicación no
         funcionará correctamente sin esos permisos.</string>

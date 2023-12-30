@@ -61,10 +61,8 @@
     <string name="deleting_please_wait">Eliminazione in corso, attendere…</string>
     <string name="deletion_success">Eliminazione riuscita.</string>
     <string name="deletion_failed">Eliminazione non riuscita.</string>
-    <string name="permission_request_android_r">A causa delle politiche del sistema operativo Android, devi concederci
-        l\'autorizzazione per gestire i file nel tuo dispositivo.\nQuesta autorizzazione è richiesta solo per
-        elencare i file di stato da WhatsApp. Non utilizziamo questa autorizzazione per accedere a dati sensibili nel
-        tuo telefono e nemmeno per accedere ai tuoi dati privati.</string>
+    <string name="permission_request_android_r">A causa delle politiche del sistema operativo Android, devi concederci l\'autorizzazione per accedere ai file nel tuo dispositivo.
+        \nQuesta autorizzazione è richiesta solo per elencare i file di stato da WhatsApp.</string>
     <string name="permissions_denied_title">Autorizzazioni negate</string>
     <string name="permissions_denied_message">Devi concedere le autorizzazioni richieste.\n\nQuesta applicazione non funzionerà correttamente senza queste autorizzazioni.</string>
     <string name="grant_action">Concessione</string>

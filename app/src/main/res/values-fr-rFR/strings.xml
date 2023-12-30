@@ -61,10 +61,8 @@
     <string name="deleting_please_wait">Suppression, veuillez patienter…</string>
     <string name="deletion_success">Succes de la suppression.</string>
     <string name="deletion_failed">La suppression a echoue.</string>
-    <string name="permission_request_android_r">En raison des politiques du systeme d\'exploitation Android,
-        vous devez nous accorder l\'autorisation de gerer les fichiers sur votre appareil.\nCette autorisation est
-        requise uniquement pour repertorier les fichiers d\'etat de WhatsApp. Nous n\'utilisons pas cette autorisation
-        pour acceder aux donnees sensibles de votre telephone ni meme pour acceder a vos donnees privees.</string>
+    <string name="permission_request_android_r">En raison des politiques du système d\'exploitation Android, vous devez nous accorder l\'autorisation d\'accéder aux fichiers de votre appareil.
+        \nCette autorisation est requise uniquement pour répertorier les fichiers de statuts de WhatsApp.</string>
     <string name="permissions_denied_title">Autorisations refusees</string>
     <string name="permissions_denied_message">Vous devez accorder les autorisations requises.\n\nCette application ne fonctionnera pas correctement sans ces autorisations.</string>
     <string name="grant_action">Accorder</string>

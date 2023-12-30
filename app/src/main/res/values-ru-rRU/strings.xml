@@ -60,9 +60,8 @@
     <string name="deleting_please_wait">Удаление, подождите…</string>
     <string name="deletion_success">Удаление успешно.</string>
     <string name="deletion_failed">Удаление не удалось.</string>
-    <string name="permission_request_android_r">В соответствии с политиками ОС Android вы должны предоставить нам разрешение на управление
-        файлы на вашем устройстве.\nЭто разрешение требуется только для просмотра файлов статусов из WhatsApp. Мы не используем
-        это разрешение на доступ к конфиденциальным данным на вашем телефоне или даже к вашим личным данным.</string>
+    <string name="permission_request_android_r">В соответствии с политиками ОС Android вы должны предоставить нам разрешение на доступ к файлам на вашем устройстве.
+        \nЭто разрешение требуется только для просмотра файлов статусов из WhatsApp.</string>
     <string name="permissions_denied_title">Разрешения отклонены</string>
     <string name="permissions_denied_message">Вы должны предоставить необходимые разрешения.\n\nЭто приложение не будет работать.
         правильно без этих разрешений.</string>

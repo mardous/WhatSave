@@ -96,11 +96,9 @@ dependencies {
     //https://developer.android.com/jetpack/androidx/versions
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.core:core-splashscreen:1.0.1"
-    implementation 'androidx.annotation:annotation:1.7.0'
+    implementation 'androidx.annotation:annotation:1.7.1'
     implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation('androidx.fragment:fragment-ktx:1.6.2') {
-        exclude module: 'loader'
-    }
+    implementation('androidx.fragment:fragment-ktx:1.6.2')
 
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
@@ -110,8 +108,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    implementation 'androidx.room:room-ktx:2.6.0'
-    ksp 'androidx.room:room-compiler:2.6.0'
+    implementation 'androidx.room:room-ktx:2.6.1'
+    ksp 'androidx.room:room-compiler:2.6.1'
 
     implementation 'androidx.loader:loader:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -120,12 +118,10 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "androidx.preference:preference-ktx:$preference_version"
-    implementation("com.google.android.material:material:$mdc_version") {
-        exclude module: 'viewpager2'
-    }
+    implementation("com.google.android.material:material:$mdc_version")
 
     //Firebase
-    implementation platform('com.google.firebase:firebase-bom:32.5.0')
+    implementation platform('com.google.firebase:firebase-bom:32.7.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-config-ktx'

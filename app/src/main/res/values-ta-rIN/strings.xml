@@ -61,10 +61,8 @@
     <string name="deleting_please_wait">நீக்குகிறது, காத்திருக்கவும்…</string>
     <string name="deletion_success">நீக்குதல் வெற்றி.</string>
     <string name="deletion_failed">நீக்குவதில் தோல்வி.</string>
-    <string name="permission_request_android_r">Android OS கொள்கைகளின் காரணமாக, உங்கள் சாதனத்தில்
-        கோப்புகளை நிர்வகிக்க எங்களுக்கு அனுமதி வழங்க வேண்டும்.\nWhatsApp இலிருந்து நிலை கோப்புகளை
-        பட்டியலிடுவதற்கு மட்டுமே இந்த அனுமதி தேவை. உங்கள் ஃபோனில் உள்ள விவேகமான தரவை அணுகுவதற்கு
-        அல்லது உங்கள் தனிப்பட்ட தரவை அணுகுவதற்கு இந்த அனுமதியை நாங்கள் பயன்படுத்த மாட்டோம்.</string>
+    <string name="permission_request_android_r">Android OS கொள்கைகள் காரணமாக, உங்கள் சாதனத்தில் உள்ள கோப்புகளை அணுக எங்களுக்கு அனுமதி வழங்க வேண்டும்.
+        \nவாட்ஸ்அப்பில் இருந்து ஸ்டேட்டஸ் கோப்புகளை பட்டியலிடுவதற்கு மட்டுமே இந்த அனுமதி தேவை.</string>
     <string name="permissions_denied_title">அனுமதி மறுக்கப்பட்டது</string>
     <string name="permissions_denied_message">தேவையான அனுமதிகளை நீங்கள் வழங்க வேண்டும்.\n\nஇந்த அனுமதிகள் இல்லாமல் இந்த பயன்பாடு சரியாக இயங்காது.</string>
     <string name="grant_action">மானியம்</string>

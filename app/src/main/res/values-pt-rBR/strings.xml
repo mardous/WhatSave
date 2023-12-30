@@ -61,7 +61,8 @@
     <string name="deleting_please_wait">Excluindo, aguarde…</string>
     <string name="deletion_success">Sucesso na exclusão.</string>
     <string name="deletion_failed">Falha na exclusão.</string>
-    <string name="permission_request_android_r">Devido às políticas do sistema operacional Android, você deve nos conceder permissão para gerenciar arquivos no seu dispositivo.\nEssa permissão é necessária apenas para listar arquivos de status do WhatsApp. Não usamos essa permissão para acessar dados confidenciais em seu telefone ou mesmo acessar seus dados privados.</string>
+    <string name="permission_request_android_r">Devido às políticas do sistema operacional Android, você deve nos conceder permissão para acessar os arquivos no seu dispositivo.
+        \nEsta permissão é necessária para listar arquivos de status do WhatsApp.</string>
     <string name="permissions_denied_title">Permissões negadas</string>
     <string name="permissions_denied_message">Você deve conceder as permissões necessárias.\n\nEste aplicativo não funcionará corretamente sem essas permissões.</string>
     <string name="grant_action">Conceder</string>
