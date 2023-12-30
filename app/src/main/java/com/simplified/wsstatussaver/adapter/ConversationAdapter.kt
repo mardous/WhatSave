@@ -41,7 +41,7 @@ class ConversationAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val conversation = conversations[position - 1]
+        val conversation = conversations[position]
         holder.name?.text = conversation.name
         holder.message?.text = conversation.latestMessage
         holder.time?.text = conversation.latestMessageTime.prettyTime()
