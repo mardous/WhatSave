@@ -106,11 +106,11 @@
     <string name="fork_on_github_title">Fork en GitHub</string>
     <string name="fork_on_github_summary">Ver, clonar o descargar el código fuente.</string>
     <string name="legal_notices">Avisos legales</string>
-    <string name="message_view_is_disabled">Mensajes rápidos no está activado</string>
+    <string name="message_view_is_disabled">Vista rápida no está activado</string>
     <string name="you_wont_be_able_to_see_messages_here">No serás capaz de ver mensajes de WhatsApp recibidos o recuperados.</string>
-    <string name="message_view">Mensajes rápidos</string>
+    <string name="message_view">Vista rápida</string>
     <string name="received_messages_listener">Supervisor de mensajes recibidos</string>
-    <string name="confirm_device_credentials">Debes confirmar tus credenciales para acceder a Mensajes rápidos.</string>
+    <string name="confirm_device_credentials">Debes confirmar tus credenciales para acceder a Vista rápida.</string>
     <string name="conversations_title">Conversaciones</string>
     <string name="messages_from_x">Mensajes de %s</string>
     <string name="message_view_description">Lee mensajes recuperados o recibidos sin que tus contactos lo sepan.</string>
@@ -119,9 +119,9 @@
     <string name="message_view_term_3">Solo las notificaciones emitidas por WhatsApp serán procesadas. Los mensajes se guardarán solo en este dispositivo.</string>
     <string name="message_view_term_4">Los mensajes que sus contactos le envíen mientras esté desconectado no serán guardados, ya que el dispositivo no llegará a recibir una notificación de WhatsApp.</string>
     <string name="message_view_term_5">Recuerde que WhatSave es de código abierto, por lo que siempre puede revisar su funcionamiento interno para comprobar que su privacidad no se ve comprometida.</string>
-    <string name="use_message_view">Usar Mensajes rápidos</string>
-    <string name="disable_message_view_title">Desactivar Mensajes rápidos</string>
-    <string name="disable_message_view_confirmation">Al desactivar Mensajes rápidos, todos los mensajes guardados serán eliminados. ¿Continuar?</string>
+    <string name="use_message_view">Usar Vista rápida</string>
+    <string name="disable_message_view_title">Desactivar Vista rápida</string>
+    <string name="disable_message_view_confirmation">Al desactivar Vista rápida, todos los mensajes guardados serán eliminados. ¿Continuar?</string>
     <string name="delete_conversation_title">Eliminar conversación</string>
     <string name="delete_conversation_confirmation">Esto eliminará todos los mensajes de esta conversación.</string>
     <string name="delete_message_title">Eliminar mensaje</string>
@@ -135,7 +135,7 @@
     <string name="yes_action">Sí</string>
     <string name="no_action">No</string>
     <string name="accept_and_continue">Aceptar y continuar</string>
-    <string name="msg_a_number">Enviar un mensaje a un número</string>
+    <string name="msg_a_number">Mensaje a un número</string>
     <string name="msg_a_number_description">Inicia una conversación con alguien que no está en tu lista de contactos, usando solo su número.</string>
     <string name="phone_number_invalid">El número no es válido</string>
     <string name="phone_number_label">Número</string>
