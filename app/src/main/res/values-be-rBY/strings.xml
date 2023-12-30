@@ -36,8 +36,7 @@
     <string name="saved_successfully">Паспяхова захавана.</string>
     <string name="saved_x_statuses">Захавана %d стану</string>
     <string name="save_again_title">Зноў захаваць?</string>
-    <string name="you_saved_this_status_previously">Вы захавалі гэты статус раней.
-        \nЖадаеце захаваць яго зноў?</string>
+    <string name="you_saved_this_status_previously">Вы захавалі гэты статус раней. Жадаеце захаваць яго зноў?</string>
     <string name="status_unsaved">Незахавана</string>
     <string name="status_saved">Захавана</string>
     <string name="action_select_all">Абраць усё</string>
@@ -56,18 +55,15 @@
     <string name="delete_action">Выдаліць</string>
     <string name="delete_saved_status_title">Выдаліць захаваны статус</string>
     <string name="delete_saved_statuses_title">Выдаліць захаваныя статусы</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Гэты захаваны статус будзе выдалены назаўсёды.\n\nВы ўпэўнены?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d захаваных статусаў будуць выдалены назаўсёды.\n\nВы ўпэўнены?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Гэты захаваны статус будзе выдалены назаўсёды.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d захаваных статусаў будуць выдалены назаўсёды.</string>
     <string name="statuses_deletion_is_not_permitted">Улічыце, што выдаляць можна толькі захаваныя статусы</string>
     <string name="deleting_please_wait">Выдаленне, пачакайце…</string>
     <string name="deletion_success">Паспяховае выдаленне.</string>
     <string name="deletion_failed">Не атрымалася выдаліць.</string>
-    <string name="permission_request_android_r">У адпаведнасці з палітыкай АС Android вы павінны даць нам дазвол на
-        кіраванне файламі на вашай прыладзе.\nГэты дазвол патрабуецца толькі для пераліку файлаў статусаў з WhatsApp.
-        Мы не выкарыстоўваем гэты дазвол для доступу да разумных даных у вашым тэлефоне або нават для доступу да вашых
-        асабістых даных.</string>
+    <string name="permission_request_android_r">У адпаведнасці з палітыкай АС Android вы павінны даць нам дазвол на доступ да файлаў на вашай прыладзе. Гэты дазвол патрабуецца толькі для пераліку файлаў статусаў з WhatsApp.</string>
     <string name="permissions_denied_title">У дазволе адмоўлена</string>
-    <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы.\n\nБез гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
+    <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы. Без гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Адкрыйце налады</string>
     <string name="there_is_not_an_app_available_to_open_this_video">Няма даступнай праграмы для адкрыцця гэтага відэа</string>

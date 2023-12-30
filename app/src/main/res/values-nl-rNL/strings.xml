@@ -36,7 +36,7 @@
     <string name="saved_successfully">Met succes opgeslagen.</string>
     <string name="saved_x_statuses">%d statussen opgeslagen</string>
     <string name="save_again_title">Opnieuw opslaan?</string>
-    <string name="you_saved_this_status_previously">Je hebt deze status eerder opgeslagen.\n\nWil je deze opnieuw opslaan?</string>
+    <string name="you_saved_this_status_previously">Je hebt deze status eerder opgeslagen. Wil je deze opnieuw opslaan?</string>
     <string name="status_unsaved">Niet opgeslagen</string>
     <string name="status_saved">Opgeslagen</string>
     <string name="action_select_all">Selecteer alles</string>
@@ -55,16 +55,15 @@
     <string name="delete_action">Verwijderen</string>
     <string name="delete_saved_status_title">Verwijder de opgeslagen status</string>
     <string name="delete_saved_statuses_title">Verwijder opgeslagen statussen</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Deze opgeslagen status wordt definitief verwijderd.\n\nWeet je het zeker?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d opgeslagen statussen worden permanent verwijderd.\n\nWeet je het zeker?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Deze opgeslagen status wordt definitief verwijderd.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d opgeslagen statussen worden permanent verwijderd.</string>
     <string name="statuses_deletion_is_not_permitted">Houd er rekening mee dat alleen opgeslagen statussen kunnen worden verwijderd</string>
     <string name="deleting_please_wait">Bezig met verwijderen, even geduld…</string>
     <string name="deletion_success">Succes met verwijderen.</string>
     <string name="deletion_failed">Verwijderen is mislukt.</string>
-    <string name="permission_request_android_r">Vanwege het Android OS-beleid moet u ons toestemming geven voor toegang tot bestanden op uw apparaat.
-        \nDeze toestemming is alleen vereist voor het weergeven van statusbestanden van WhatsApp.</string>
+    <string name="permission_request_android_r">Vanwege het Android OS-beleid moet u ons toestemming geven voor toegang tot bestanden op uw apparaat. Deze toestemming is alleen vereist voor het weergeven van statusbestanden van WhatsApp.</string>
     <string name="permissions_denied_title">Machtigingen geweigerd</string>
-    <string name="permissions_denied_message">U moet de vereiste machtigingen verlenen.\n\nDeze applicatie werkt niet correct zonder deze machtigingen.</string>
+    <string name="permissions_denied_message">U moet de vereiste machtigingen verlenen. Deze applicatie werkt niet correct zonder deze machtigingen.</string>
     <string name="grant_action">Studiebeurs</string>
     <string name="open_settings_action">Open instellingen</string>
     <string name="there_is_not_an_app_available_to_open_this_video">Er is geen app beschikbaar om deze video te openen</string>

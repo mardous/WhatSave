@@ -36,7 +36,7 @@
     <string name="saved_successfully">Salvo com sucesso.</string>
     <string name="saved_x_statuses">%d status salvos</string>
     <string name="save_again_title">Salvar novamente?</string>
-    <string name="you_saved_this_status_previously">Você salvou esse status antes.\n\nDeseja salvá-lo novamente?</string>
+    <string name="you_saved_this_status_previously">Você salvou esse status antes. Deseja salvá-lo novamente?</string>
     <string name="status_unsaved">Não salvo</string>
     <string name="status_saved">Salvou</string>
     <string name="action_select_all">Selecionar tudo</string>
@@ -55,16 +55,15 @@
     <string name="delete_action">Excluir</string>
     <string name="delete_saved_status_title">Excluir status salvo</string>
     <string name="delete_saved_statuses_title">Excluir status salvos</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Este status salvo será excluído permanentemente.\n\nTem certeza?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d status salvos serão excluídos permanentemente.\n\nTem certeza?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Este status salvo será excluído permanentemente.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d status salvos serão excluídos permanentemente.</string>
     <string name="statuses_deletion_is_not_permitted">Leve em consideração que só é possível excluir status salvos</string>
     <string name="deleting_please_wait">Excluindo, aguarde…</string>
     <string name="deletion_success">Sucesso na exclusão.</string>
     <string name="deletion_failed">Falha na exclusão.</string>
-    <string name="permission_request_android_r">Devido às políticas do sistema operacional Android, você deve nos conceder permissão para acessar os arquivos no seu dispositivo.
-        \nEsta permissão é necessária para listar arquivos de status do WhatsApp.</string>
+    <string name="permission_request_android_r">Devido às políticas do sistema operacional Android, você deve nos conceder permissão para acessar os arquivos no seu dispositivo. Esta permissão é necessária para listar arquivos de status do WhatsApp.</string>
     <string name="permissions_denied_title">Permissões negadas</string>
-    <string name="permissions_denied_message">Você deve conceder as permissões necessárias.\n\nEste aplicativo não funcionará corretamente sem essas permissões.</string>
+    <string name="permissions_denied_message">Você deve conceder as permissões necessárias. Este aplicativo não funcionará corretamente sem essas permissões.</string>
     <string name="grant_action">Conceder</string>
     <string name="open_settings_action">Abrir configurações</string>
     <string name="there_is_not_an_app_available_to_open_this_video">Não há um aplicativo disponível para abrir este vídeo</string>

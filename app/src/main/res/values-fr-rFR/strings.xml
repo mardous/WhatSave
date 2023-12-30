@@ -53,18 +53,17 @@
     <string name="this_application_will_not_work">Cette application ne fonctionnera pas</string>
     <string name="launch_x_client">Lancer %s</string>
     <string name="delete_action">Supprimer</string>
-    <string name="delete_saved_status_title">Supprimer le statut enregistre</string>
-    <string name="delete_saved_statuses_title">Supprimer les statuts enregistres</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Ce statut enregistre sera definitivement supprime.\n\nEtes-vous sur?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d statuts enregistres seront definitivement supprimes.\n\nEtes-vous sur?</string>
+    <string name="delete_saved_status_title">Supprimer le fichier</string>
+    <string name="delete_saved_statuses_title">Supprimer les fichiers</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Ce fichier sera supprimé définitivement.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d fichiers seront supprimés définitivement.</string>
     <string name="statuses_deletion_is_not_permitted">Tenez compte du fait que seuls les statuts enregistres peuvent etre supprimes</string>
     <string name="deleting_please_wait">Suppression, veuillez patienter…</string>
     <string name="deletion_success">Succes de la suppression.</string>
     <string name="deletion_failed">La suppression a echoue.</string>
-    <string name="permission_request_android_r">En raison des politiques du système d\'exploitation Android, vous devez nous accorder l\'autorisation d\'accéder aux fichiers de votre appareil.
-        \nCette autorisation est requise uniquement pour répertorier les fichiers de statuts de WhatsApp.</string>
+    <string name="permission_request_android_r">En raison des politiques du système d\'exploitation Android, vous devez nous accorder l\'autorisation d\'accéder aux fichiers de votre appareil. Cette autorisation est requise uniquement pour répertorier les fichiers de statuts de WhatsApp.</string>
     <string name="permissions_denied_title">Autorisations refusees</string>
-    <string name="permissions_denied_message">Vous devez accorder les autorisations requises.\n\nCette application ne fonctionnera pas correctement sans ces autorisations.</string>
+    <string name="permissions_denied_message">Vous devez accorder les autorisations requises. Cette application ne fonctionnera pas correctement sans ces autorisations.</string>
     <string name="grant_action">Accorder</string>
     <string name="open_settings_action">Ouvrir les parametres</string>
     <string name="there_is_not_an_app_available_to_open_this_video">Il n\'y a pas d\'application disponible pour ouvrir cette vidéo</string>

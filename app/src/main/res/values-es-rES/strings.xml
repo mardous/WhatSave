@@ -34,7 +34,7 @@
     <string name="saved_successfully">Guardado satisfactoriamente.</string>
     <string name="saved_x_statuses">Guardados %d estados</string>
     <string name="save_again_title">¿Guardar nuevamente?</string>
-    <string name="you_saved_this_status_previously">Ya has guardado este estado antes.\n\n¿Quieres guardarlo nuevamente?</string>
+    <string name="you_saved_this_status_previously">Este estado ya ha sido guardado previamente</string>
     <string name="status_unsaved">No guardado</string>
     <string name="status_saved">Guardado</string>
     <string name="action_select_all">Seleccionar todo</string>
@@ -48,7 +48,7 @@
     <string name="launch_x_client">Iniciar %s</string>
     <string name="delete_action">Eliminar</string>
     <string name="delete_saved_status_title">Eliminar estado guardado</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Este estado guardado será eliminado permanentemente.\n\n¿Estás seguro?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Este estado guardado será eliminado permanentemente</string>
     <string name="statuses_deletion_is_not_permitted">Tenga en cuenta: solo puede eliminar estados guardados</string>
     <string name="deleting_please_wait">Eliminando, por favor espere…</string>
     <string name="deletion_success">Eliminación exitosa.</string>

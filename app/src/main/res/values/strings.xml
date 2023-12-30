@@ -36,7 +36,7 @@
     <string name="saved_successfully">Saved successfully.</string>
     <string name="saved_x_statuses">Saved %d statuses</string>
     <string name="save_again_title">Save again?</string>
-    <string name="you_saved_this_status_previously">You saved this status before.\n\nDo you want to save it again?</string>
+    <string name="you_saved_this_status_previously">You saved this status before. Do you want to save it again?</string>
     <string name="status_unsaved">Unsaved</string>
     <string name="status_saved">Saved</string>
     <string name="action_select_all">Select all</string>
@@ -55,17 +55,15 @@
     <string name="delete_action">Delete</string>
     <string name="delete_saved_status_title">Delete saved status</string>
     <string name="delete_saved_statuses_title">Delete saved statuses</string>
-    <string name="this_saved_status_will_be_permanently_deleted">This saved status will be permanently deleted.\n\nAre you sure?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d saved statuses will be permanently deleted.\n\nAre you sure?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">This saved status will be permanently deleted.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d saved statuses will be permanently deleted.</string>
     <string name="statuses_deletion_is_not_permitted">Take into account that can delete only saved statuses</string>
     <string name="deleting_please_wait">Deleting, please wait…</string>
     <string name="deletion_success">Deletion success.</string>
     <string name="deletion_failed">Deletion failed.</string>
-    <string name="permission_request_android_r">Due to Android OS policies, you must grant us permission to access files in your device.
-        \nThis permission is required only for listing statuses files from WhatsApp.</string>
+    <string name="permission_request_android_r">Due to Android OS policies, you must grant us permission to access files in your device. This permission is required only for listing statuses files from WhatsApp.</string>
     <string name="permissions_denied_title">Permissions denied</string>
-    <string name="permissions_denied_message">You must grant required permissions.\n\nThis application won\'t work
-        correctly without these permissions.</string>
+    <string name="permissions_denied_message">You must grant required permissions. This application won\'t work correctly without these permissions.</string>
     <string name="grant_action">Grant</string>
     <string name="open_settings_action">Open settings</string>
     <string name="there_is_not_an_app_available_to_open_this_video">There is not an app available to open this video</string>
@@ -125,8 +123,7 @@
     <string name="message_view_term_5">Remember that WhatSave is an open-source app, so you can always review its internal workings to ensure your privacy is not compromised.</string>
     <string name="use_message_view">Use Message view</string>
     <string name="disable_message_view_title">Disable Message view</string>
-    <string name="disable_message_view_confirmation">When you deactivate Message view, all saved messages here will be deleted.
-        \n\nAre you sure?</string>
+    <string name="disable_message_view_confirmation">When you deactivate Message view, all saved messages here will be deleted. Are you sure?</string>
     <string name="delete_conversation_title">Delete conversation</string>
     <string name="delete_conversation_confirmation">This will delete all messages from this conversation.</string>
     <string name="delete_message_title">Delete message</string>

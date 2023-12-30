@@ -36,7 +36,7 @@
     <string name="saved_successfully">வெற்றிகரமாக சேமிக்கப்பட்டது.</string>
     <string name="saved_x_statuses">%d நிலைகள் சேமிக்கப்பட்டன</string>
     <string name="save_again_title">மீண்டும் சேமிக்கவா?</string>
-    <string name="you_saved_this_status_previously">இந்த நிலையை முன்பே சேமித்துள்ளீர்கள்.\n\nமீண்டும் சேமிக்க விரும்புகிறீர்களா?</string>
+    <string name="you_saved_this_status_previously">இந்த நிலையை முன்பே சேமித்துள்ளீர்கள். மீண்டும் சேமிக்க விரும்புகிறீர்களா?</string>
     <string name="status_unsaved">சேமிக்கப்படவில்லை</string>
     <string name="status_saved">சேமிக்கப்பட்டது</string>
     <string name="action_select_all">அனைத்தையும் தெரிவுசெய்</string>
@@ -55,16 +55,15 @@
     <string name="delete_action">அழி</string>
     <string name="delete_saved_status_title">சேமித்த நிலையை நீக்கு</string>
     <string name="delete_saved_statuses_title">சேமித்த நிலைகளை நீக்கவும்</string>
-    <string name="this_saved_status_will_be_permanently_deleted">இந்தச் சேமிக்கப்பட்ட நிலை நிரந்தரமாக நீக்கப்படும்.\n\nநிச்சயமா?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d சேமிக்கப்பட்ட நிலைகள் நிரந்தரமாக நீக்கப்படும்.\n\nநிச்சயமா?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">இந்தச் சேமிக்கப்பட்ட நிலை நிரந்தரமாக நீக்கப்படும். நிச்சயமா?</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d சேமிக்கப்பட்ட நிலைகள் நிரந்தரமாக நீக்கப்படும். நிச்சயமா?</string>
     <string name="statuses_deletion_is_not_permitted">சேமிக்கப்பட்ட நிலைகளை மட்டுமே நீக்க முடியும் என்பதை கணக்கில் எடுத்துக் கொள்ளுங்கள்</string>
     <string name="deleting_please_wait">நீக்குகிறது, காத்திருக்கவும்…</string>
     <string name="deletion_success">நீக்குதல் வெற்றி.</string>
     <string name="deletion_failed">நீக்குவதில் தோல்வி.</string>
-    <string name="permission_request_android_r">Android OS கொள்கைகள் காரணமாக, உங்கள் சாதனத்தில் உள்ள கோப்புகளை அணுக எங்களுக்கு அனுமதி வழங்க வேண்டும்.
-        \nவாட்ஸ்அப்பில் இருந்து ஸ்டேட்டஸ் கோப்புகளை பட்டியலிடுவதற்கு மட்டுமே இந்த அனுமதி தேவை.</string>
+    <string name="permission_request_android_r">Android OS கொள்கைகள் காரணமாக, உங்கள் சாதனத்தில் உள்ள கோப்புகளை அணுக எங்களுக்கு அனுமதி வழங்க வேண்டும். வாட்ஸ்அப்பில் இருந்து ஸ்டேட்டஸ் கோப்புகளை பட்டியலிடுவதற்கு மட்டுமே இந்த அனுமதி தேவை.</string>
     <string name="permissions_denied_title">அனுமதி மறுக்கப்பட்டது</string>
-    <string name="permissions_denied_message">தேவையான அனுமதிகளை நீங்கள் வழங்க வேண்டும்.\n\nஇந்த அனுமதிகள் இல்லாமல் இந்த பயன்பாடு சரியாக இயங்காது.</string>
+    <string name="permissions_denied_message">தேவையான அனுமதிகளை நீங்கள் வழங்க வேண்டும். இந்த அனுமதிகள் இல்லாமல் இந்த ஆப் சரியாக இயங்காது.</string>
     <string name="grant_action">மானியம்</string>
     <string name="open_settings_action">அமைப்புகளைத் திறக்கவும்</string>
     <string name="there_is_not_an_app_available_to_open_this_video">இந்த வீடியோவைத் திறக்க ஆப்ஸ் எதுவும் இல்லை.</string>

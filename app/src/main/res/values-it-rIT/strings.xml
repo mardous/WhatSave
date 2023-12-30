@@ -36,7 +36,7 @@
     <string name="saved_successfully">Salvato con successo.</string>
     <string name="saved_x_statuses">%d stati salvati</string>
     <string name="save_again_title">Salvare di nuovo?</string>
-    <string name="you_saved_this_status_previously">Hai salvato questo stato in precedenza.\n\nVuoi salvarlo di nuovo?</string>
+    <string name="you_saved_this_status_previously">Hai salvato questo stato in precedenza. Vuoi salvarlo di nuovo?</string>
     <string name="status_unsaved">Non salvato</string>
     <string name="status_saved">Salvato</string>
     <string name="action_select_all">Seleziona tutto</string>
@@ -55,16 +55,15 @@
     <string name="delete_action">Eliminare</string>
     <string name="delete_saved_status_title">Elimina lo stato salvato</string>
     <string name="delete_saved_statuses_title">Elimina gli stati salvati</string>
-    <string name="this_saved_status_will_be_permanently_deleted">Questo stato salvato verrà eliminato definitivamente.\n\nSei sicuro?</string>
-    <string name="x_saved_statuses_will_be_permanently_deleted">%d stati salvati verranno eliminati definitivamente.\n\nSei sicuro?</string>
+    <string name="this_saved_status_will_be_permanently_deleted">Questo stato salvato verrà eliminato definitivamente.</string>
+    <string name="x_saved_statuses_will_be_permanently_deleted">%d stati salvati verranno eliminati definitivamente.</string>
     <string name="statuses_deletion_is_not_permitted">Tieni presente che è possibile eliminare solo gli stati salvati</string>
     <string name="deleting_please_wait">Eliminazione in corso, attendere…</string>
     <string name="deletion_success">Eliminazione riuscita.</string>
     <string name="deletion_failed">Eliminazione non riuscita.</string>
-    <string name="permission_request_android_r">A causa delle politiche del sistema operativo Android, devi concederci l\'autorizzazione per accedere ai file nel tuo dispositivo.
-        \nQuesta autorizzazione è richiesta solo per elencare i file di stato da WhatsApp.</string>
+    <string name="permission_request_android_r">A causa delle politiche del sistema operativo Android, devi concederci l\'autorizzazione per accedere ai file nel tuo dispositivo. Questa autorizzazione è richiesta solo per elencare i file di stato da WhatsApp.</string>
     <string name="permissions_denied_title">Autorizzazioni negate</string>
-    <string name="permissions_denied_message">Devi concedere le autorizzazioni richieste.\n\nQuesta applicazione non funzionerà correttamente senza queste autorizzazioni.</string>
+    <string name="permissions_denied_message">Devi concedere le autorizzazioni richieste. Questa applicazione non funzionerà correttamente senza queste autorizzazioni.</string>
     <string name="grant_action">Concessione</string>
     <string name="open_settings_action">Apri le impostazioni</string>
     <string name="there_is_not_an_app_available_to_open_this_video">Non è disponibile un\'app per aprire questo video</string>
