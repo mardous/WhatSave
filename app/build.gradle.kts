@@ -113,7 +113,6 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
-    implementation("com.google.firebase:firebase-config-ktx")
 
     val koinVersion = "3.4.0"
     implementation("io.insert-koin:koin-core:$koinVersion")
