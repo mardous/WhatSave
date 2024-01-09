@@ -62,12 +62,6 @@
 #-dontwarn
 #-ignorewarnings
 
-#Jaudiotagger
--dontwarn org.jaudiotagger.**
--dontwarn org.jcodec.**
--keep class org.jaudiotagger.** { *; }
--keep class org.jcodec.** { *; }
-
 #Gson
 -keep class com.google.gson.reflect.TypeToken
 -keep class * extends com.google.gson.reflect.TypeToken
