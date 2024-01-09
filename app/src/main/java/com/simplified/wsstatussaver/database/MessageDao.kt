@@ -32,9 +32,9 @@ interface MessageDao {
 
     @Query("SELECT received_from AS name," +
             "COUNT(message_id) AS message_count," +
-            "MAX(message_content) AS latest_message," +
+            "message_content AS latest_message," +
             "MAX(received_time) AS latest_message_time " +
-            "FROM received_messages GROUP BY received_from ORDER BY received_time DESC")
+            "FROM received_messages GROUP BY received_from ORDER BY latest_message_time DESC")
     fun queryConversations(): LiveData<List<Conversation>>
 
     @Query("SELECT * FROM received_messages WHERE received_from = :sender ORDER BY received_time DESC")
