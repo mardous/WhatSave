@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -94,7 +93,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_settings -> {
-                startActivity(Intent(this, SettingsActivity::class.java))
+                findNavController(R.id.main_container).navigate(R.id.settingsFragment)
                 return true
             }
 

@@ -11,21 +11,24 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.activities
+package com.simplified.wsstatussaver.fragments
 
 import android.os.Bundle
-import android.view.MenuItem
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.core.view.doOnPreDraw
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.*
-import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
-import com.simplified.wsstatussaver.databinding.ActivitySettingsBinding
+import com.simplified.wsstatussaver.databinding.FragmentSettingsBinding
 import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
@@ -34,21 +37,22 @@ import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class SettingsActivity : AbsBaseActivity() {
+class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val binding = ActivitySettingsBinding.inflate(layoutInflater)
-        binding.appBar.statusBarForeground = MaterialShapeDrawable.createWithElevationOverlay(this)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentSettingsBinding.bind(view)
+        postponeEnterTransition()
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
+        view.doOnPreDraw { startPostponedEnterTransition() }
+        binding.appBar.statusBarForeground = MaterialShapeDrawable.createWithElevationOverlay(requireContext())
+        statusesActivity.setSupportActionBar(binding.toolbar)
 
         var settingsFragment: SettingsFragment? = whichFragment(R.id.settings_container)
         if (settingsFragment == null) {
             settingsFragment = SettingsFragment()
-            supportFragmentManager.beginTransaction()
+            childFragmentManager.beginTransaction()
                 .replace(R.id.settings_container, settingsFragment)
                 .commit()
         } else {
@@ -56,12 +60,9 @@ class SettingsActivity : AbsBaseActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            onBackPressedDispatcher.onBackPressed()
-            return true
-        }
-        return false
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateMenu(menu, menuInflater)
+        menu.clear()
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {

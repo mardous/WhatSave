@@ -58,4 +58,8 @@
         android:name="com.simplified.wsstatussaver.fragments.messageview.MessageViewTermsFragment"
         android:label="MessageViewTerms"/>
 
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.simplified.wsstatussaver.fragments.SettingsFragment"
+        android:label="SettingsFragment"/>
 </navigation>
