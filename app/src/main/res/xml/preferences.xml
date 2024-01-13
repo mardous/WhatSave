@@ -23,6 +23,7 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_mode_night_24dp"
             android:title="@string/night_mode_title"
             android:entries="@array/night_mode_titles"
             android:entryValues="@array/night_mode_values"
@@ -44,12 +45,14 @@
 
         <com.simplified.wsstatussaver.preferences.StoragePreference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_storage_24dp"
             android:title="@string/statuses_location_title"
             android:summary="@string/statuses_location_summary"
             android:key="statuses_location"/>
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
+            android:icon="@drawable/ic_access_time_filled_24dp"
             android:title="@string/exclude_old_statuses_title"
             android:summary="@string/exclude_old_statuses_summary"
             android:defaultValue="false"
@@ -57,6 +60,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
+            android:icon="@drawable/ic_save_alt_24dp"
             android:title="@string/exclude_saved_statuses_title"
             android:summary="@string/exclude_saved_statuses_summary"
             android:defaultValue="false"
@@ -64,6 +68,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
+            android:icon="@drawable/ic_delete_24dp"
             android:title="@string/quick_deletion_title"
             android:summary="@string/quick_deletion_summary"
             android:defaultValue="false"
@@ -83,6 +88,7 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_touch_app_24dp"
             android:title="@string/long_press_action_title"
             android:entries="@array/long_press_action_titles"
             android:entryValues="@array/long_press_action_values"
@@ -105,6 +111,7 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_translate_24dp"
             android:title="@string/language_name"
             android:entries="@array/pref_language_entries"
             android:entryValues="@array/pref_language_values"
@@ -114,6 +121,7 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_update_24dp"
             android:title="@string/auto_update_title"
             android:entries="@array/update_mode_titles"
             android:entryValues="@array/update_mode_values"
@@ -123,6 +131,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
+            android:icon="@drawable/ic_wifi_24dp"
             android:title="@string/only_wifi_title"
             android:summary="@string/only_wifi_summary"
             android:defaultValue="false"
@@ -130,6 +139,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
+            android:icon="@drawable/ic_tips_and_updates_24dp"
             android:title="@string/analytics_enabled_title"
             android:summary="@string/analytics_enabled_summary"
             android:defaultValue="true"
