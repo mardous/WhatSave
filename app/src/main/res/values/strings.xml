@@ -98,8 +98,7 @@
     <string name="default_client_title">Default client</string>
     <string name="default_client_summary">If you have multiple WhatsApp clients installed, you can select the one from which to load statuses.</string>
     <string name="analytics_enabled_title">Send usage statistics</string>
-    <string name="analytics_enabled_summary">When this is enabled, WhatSave may send anonymous usage statistics that
-        help us understand how users use the app.</string>
+    <string name="analytics_enabled_summary">When this is enabled, WhatSave may send anonymous usage statistics that help us understand how users use the app.</string>
     <string name="about_label">About</string>
     <string name="version_x">Version %s</string>
     <string name="author_title">Author</string>

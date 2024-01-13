@@ -97,8 +97,7 @@
     <string name="default_client_title">Клиент по умолчанию</string>
     <string name="default_client_summary">Если у вас установлено несколько клиентов WhatsApp, вы можете выбрать тот, из которого нужно загружать статусы.</string>
     <string name="analytics_enabled_title">Отправлять статистику использования</string>
-    <string name="analytics_enabled_summary">Когда эта функция включена, WhatSave может отправлять анонимную статистику
-        использования, которая помогает нам понять, как пользователи используют приложение..</string>
+    <string name="analytics_enabled_summary">Когда эта функция включена, WhatSave может отправлять анонимную статистику использования, которая помогает нам понять, как пользователи используют приложение..</string>
     <string name="about_label">О</string>
     <string name="version_x">Версия %s</string>
     <string name="author_title">Автор</string>
