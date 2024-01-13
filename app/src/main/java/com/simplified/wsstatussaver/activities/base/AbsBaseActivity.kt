@@ -19,8 +19,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.provider.Settings
 import android.view.MenuItem
 import android.view.View
@@ -83,11 +81,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         if (hasPermissions != hadPermissions) {
             hadPermissions = hasPermissions
             onHasPermissionsChanged()
-        }
-        if (preferences().themeChanged(lastThemeUpdate)) {
-            // hack to prevent java.lang.RuntimeException: Performing pause of activity that is not resumed
-            // makes sure recreate() is called right after and not in onResume()
-            Handler(Looper.getMainLooper()).post { recreate() }
         }
     }
 

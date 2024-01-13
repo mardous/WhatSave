@@ -25,16 +25,6 @@ fun Context.preferences(): SharedPreferences = PreferenceManager.getDefaultShare
 
 fun Fragment.preferences() = requireContext().preferences()
 
-fun SharedPreferences.themeChanged(lastThemeChanged: Long): Boolean {
-    return getLong(PREFERENCE_THEME_CHANGED, -1) > lastThemeChanged
-}
-
-fun SharedPreferences.markThemeChanged() {
-    edit {
-        putLong(PREFERENCE_THEME_CHANGED, System.currentTimeMillis())
-    }
-}
-
 fun SharedPreferences.getDefaultDayNightMode() = getDefaultDayNightMode(getString(PREFERENCE_NIGHT_MODE, null))
 
 fun getDefaultDayNightMode(nightMode: String?): Int {
@@ -154,7 +144,6 @@ class UpdateSearchMode {
 
 const val PREFERENCE_NIGHT_MODE = "night_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
-const val PREFERENCE_THEME_CHANGED = "theme_changed"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"
 const val PREFERENCE_LONG_PRESS_ACTION = "long_press_action"
 const val PREFERENCE_LANGUAGE = "language_name"

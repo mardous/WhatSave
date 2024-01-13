@@ -90,25 +90,19 @@ class SettingsActivity : AbsBaseActivity() {
             super.onDisplayPreferenceDialog(preference)
         }
 
-        private fun themeChanged() {
-            activity?.preferences()?.markThemeChanged()
-            activity?.recreate()
-        }
-
         fun invalidatePreferences() {
             findPreference<Preference>(PREFERENCE_NIGHT_MODE)
                 ?.setOnPreferenceChangeListener { _: Preference?, newValue: Any? ->
                     val themeName = newValue as String
                     AppCompatDelegate.setDefaultNightMode(getDefaultDayNightMode(themeName))
                     logThemeSelected(themeName)
-                    themeChanged()
                     true
                 }
             findPreference<SwitchPreferenceCompat>(PREFERENCE_JUST_BLACK_THEME)
                 ?.apply {
                     isEnabled = requireContext().isNightModeEnabled
                     setOnPreferenceChangeListener { _, _ ->
-                        themeChanged()
+                        requireActivity().recreate()
                         true
                     }
                 }
@@ -130,7 +124,6 @@ class SettingsActivity : AbsBaseActivity() {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageName))
                 }
                 logLanguageSelected(languageName)
-                activity?.recreate()
                 true
             }
             findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->
