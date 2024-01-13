@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.mediator
 
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
 import com.google.gson.GsonBuilder
@@ -107,14 +106,6 @@ class WAMediator internal constructor(private val context: Context) {
     fun getSavedStatusesClients(statusType: StatusType): List<WAClient> {
         val savedClient = WAClient(statusesDirectories = listOf(statusType.savesDirectory.absolutePath))
         return listOf(savedClient)
-    }
-
-    fun getWhatsAppLaunchIntent(): Intent? {
-        var installedClient = getDefaultClient()
-        if (installedClient == null) {
-            installedClient = getAnyInstalledClient()
-        }
-        return installedClient?.getLaunchIntent(packageManager)
     }
 
     private fun isInstalled(client: WAClient): Boolean {
