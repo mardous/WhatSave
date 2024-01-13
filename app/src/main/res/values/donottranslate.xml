@@ -15,6 +15,6 @@
 
 <resources>
     <string name="app_name" translatable="false">WhatSave</string>
-    <string name="mardous" translatable="false">Christians Martínez Alvarado</string>
+    <string name="developer_name" translatable="false">Droids\' Anatomy</string>
     <string name="transition_toolbar" translatable="false">toolbar_transition</string>
 </resources>

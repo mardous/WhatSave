@@ -80,7 +80,7 @@
             android:maxLines="2"
             android:ellipsize="end"
             android:textAppearance="?textAppearanceBody2"
-            android:text="@string/mardous"/>
+            android:text="@string/developer_name"/>
 
     </LinearLayout>
 
