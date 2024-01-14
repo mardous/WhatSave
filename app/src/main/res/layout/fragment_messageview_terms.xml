@@ -39,7 +39,7 @@
                 android:layout_height="?actionBarSize"
                 app:layout_collapseMode="pin"
                 app:navigationIcon="?homeAsUpIndicator"
-                tools:title="@string/message_view"/>
+                app:title="@string/message_view"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
