@@ -247,7 +247,7 @@ class StatusesRepositoryImpl(
                 val statusSaveFile = File(destDirectory, status.saveName)
                 if (!statusSaveFile.exists() && statusSaveFile.createNewFile()) {
                     statusSaveFile.outputStream().use { os ->
-                        inputStream.copyTo(os, 1024)
+                        inputStream.copyTo(os, SAVE_BUFFER_SIZE)
                     }
                     return statusSaveFile.getUri()
                 }
@@ -274,7 +274,7 @@ class StatusesRepositoryImpl(
             if (uri != null) {
                 stream = resolver.openOutputStream(uri)
                 if (stream != null) {
-                    inputStream.copyTo(stream, 1024)
+                    inputStream.copyTo(stream, SAVE_BUFFER_SIZE)
                 }
                 resolver.notifyChange(contentUri, null)
             }
@@ -296,5 +296,9 @@ class StatusesRepositoryImpl(
                 MediaScannerConnection.scanFile(context, files, null, null)
             }
         }
+    }
+
+    companion object {
+        private const val SAVE_BUFFER_SIZE = 2048
     }
 }
