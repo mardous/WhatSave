@@ -16,13 +16,14 @@ package com.simplified.wsstatussaver.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.simplified.wsstatussaver.model.StatusType
 
 @Entity(tableName = "saved_statuses")
 class StatusEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
     @ColumnInfo(name = "status_type")
-    val type: Int,
+    val type: StatusType,
     @ColumnInfo(name = "original_name")
     val name: String,
     @ColumnInfo(name = "original_path")

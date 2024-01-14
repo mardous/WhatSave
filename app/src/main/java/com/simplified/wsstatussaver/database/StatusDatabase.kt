@@ -15,13 +15,25 @@ package com.simplified.wsstatussaver.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.simplified.wsstatussaver.model.StatusType
 
 @Database(entities = [StatusEntity::class, MessageEntity::class], version = 2, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class StatusDatabase : RoomDatabase() {
     abstract fun statusDao(): StatusDao
     abstract fun messageDao(): MessageDao
+}
+
+class Converters {
+    @TypeConverter
+    fun fromStatusTypeToString(statusType: StatusType) = statusType.name
+
+    @TypeConverter
+    fun toStatusTypeFromString(str: String) = enumValueOf<StatusType>(str)
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {

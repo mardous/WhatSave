@@ -242,7 +242,7 @@ class StatusesRepositoryImpl(
             return saveQ(status, inputStream)
         }
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
-            val destDirectory = status.statusType().savesDirectory
+            val destDirectory = status.type.savesDirectory
             if (destDirectory.isDirectory || destDirectory.mkdirs()) {
                 val statusSaveFile = File(destDirectory, status.saveName)
                 if (!statusSaveFile.exists() && statusSaveFile.createNewFile()) {
@@ -258,12 +258,12 @@ class StatusesRepositoryImpl(
 
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun saveQ(status: StatusEntity, inputStream: FileInputStream): Uri? {
-        val contentUri = status.statusType().contentUri
+        val contentUri = status.type.contentUri
 
         val values = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, status.saveName)
-            put(MediaStore.MediaColumns.RELATIVE_PATH, status.statusType().relativePath)
-            put(MediaStore.MediaColumns.MIME_TYPE, status.statusType().mimeType)
+            put(MediaStore.MediaColumns.RELATIVE_PATH, status.type.relativePath)
+            put(MediaStore.MediaColumns.MIME_TYPE, status.type.mimeType)
         }
 
         var uri: Uri? = null
