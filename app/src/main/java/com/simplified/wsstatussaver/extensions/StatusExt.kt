@@ -134,12 +134,10 @@ fun StatusType.acceptFileName(fileName: String): Boolean = !fileName.startsWith(
 
 fun List<Status>.toShareIntent(context: Context): Intent {
     val types = HashSet<String>()
+    mapTo(types) { it.type.mimeType }
 
     val uris = ArrayList<Uri>()
-    for (status in this) {
-        types.add(status.type.mimeType)
-        uris.add(status.getActualUri(context))
-    }
+    mapTo(uris) { it.getActualUri(context) }
 
     val mimeType = if (types.size == 1) types.first() else "*/*"
     return Intent(Intent.ACTION_SEND_MULTIPLE)
