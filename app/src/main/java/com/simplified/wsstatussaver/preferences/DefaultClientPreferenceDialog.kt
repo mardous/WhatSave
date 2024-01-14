@@ -13,6 +13,7 @@
  */
 package com.simplified.wsstatussaver.preferences
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.DialogInterface.OnShowListener
@@ -26,14 +27,19 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
+import com.simplified.wsstatussaver.extensions.showToast
+import com.simplified.wsstatussaver.interfaces.IClientCallback
+import com.simplified.wsstatussaver.mediator.WAClient
 import com.simplified.wsstatussaver.mediator.WAMediator
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
+import kotlin.properties.Delegates
+import kotlin.reflect.KProperty
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
+class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientCallback {
 
     private var _binding: DialogRecyclerviewBinding? = null
     private val binding get() = _binding!!
@@ -43,11 +49,18 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
 
     private lateinit var clientAdapter: ClientAdapter
 
+    private var defaultClient: WAClient? by Delegates.observable(mediator.getDefaultClient()) { _: KProperty<*>, _: WAClient?, client: WAClient? ->
+        mediator.setDefaultClient(client)
+        if (client == null)
+            showToast(R.string.default_client_cleared)
+        else showToast(getString(R.string.x_is_the_default_client_now, client.getLabel(requireContext())))
+    }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogRecyclerviewBinding.inflate(layoutInflater)
         binding.empty.setText(R.string.installed_clients_empty)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = ClientAdapter(binding.root.context, mediator).apply {
+        binding.recyclerView.adapter = ClientAdapter(binding.root.context, this).apply {
             registerAdapterDataObserver(adapterDataObserver)
         }.also {
             clientAdapter = it
@@ -71,6 +84,17 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener {
             super.onChanged()
             binding.empty.isVisible = clientAdapter.itemCount == 0
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun clientClick(client: WAClient) {
+        defaultClient = client
+        defaultClient = if (client == defaultClient) null else client
+        clientAdapter.notifyDataSetChanged()
+    }
+
+    override fun checkModeForClient(client: WAClient): Int {
+        return if (client == defaultClient) IClientCallback.MODE_CHECKED else IClientCallback.MODE_UNCHECKED
     }
 
     override fun onShow(dialogInterface: DialogInterface) {

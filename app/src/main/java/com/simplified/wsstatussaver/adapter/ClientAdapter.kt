@@ -13,6 +13,7 @@
  */
 package com.simplified.wsstatussaver.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -20,27 +21,17 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.ItemClientBinding
-import com.simplified.wsstatussaver.extensions.showToast
+import com.simplified.wsstatussaver.interfaces.IClientCallback
 import com.simplified.wsstatussaver.mediator.WAClient
-import com.simplified.wsstatussaver.mediator.WAMediator
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
 
-class ClientAdapter(private val context: Context, private val mediator: WAMediator) :
+class ClientAdapter(private val context: Context, private val callback: IClientCallback) :
     RecyclerView.Adapter<ClientAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
-
     private var clients: List<WAClient> = ArrayList()
-    private var defaultClient: WAClient? by Delegates.observable(mediator.getDefaultClient()) { _: KProperty<*>, _: WAClient?, client: WAClient? ->
-        mediator.setDefaultClient(client)
-        if (client == null)
-            context.showToast(R.string.default_client_cleared)
-        else context.showToast(context.getString(R.string.x_is_the_default_client_now, client.getLabel(context)))
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemClientBinding.inflate(layoutInflater, parent, false))
@@ -51,11 +42,22 @@ class ClientAdapter(private val context: Context, private val mediator: WAMediat
         holder.icon?.setImageDrawable(client.getIcon(context))
         holder.name?.text = client.getLabel(context)
         holder.description?.text = client.getDescription(context)
-        holder.check?.isChecked = client == defaultClient
+        configureCheckIcon(holder, client)
+    }
+
+    private fun configureCheckIcon(holder: ViewHolder, client: WAClient) {
+        val checkMode = callback.checkModeForClient(client)
+        if (checkMode == IClientCallback.MODE_UNCHECKABLE) {
+            holder.check?.isVisible = false
+        } else {
+            holder.check?.isVisible = true
+            holder.check?.isChecked = checkMode == IClientCallback.MODE_CHECKED
+        }
     }
 
     override fun getItemCount(): Int = clients.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setClients(clients: List<WAClient>) {
         this.clients = clients
         notifyDataSetChanged()
@@ -74,8 +76,7 @@ class ClientAdapter(private val context: Context, private val mediator: WAMediat
 
         override fun onClick(view: View?) {
             val currentClient = clients[layoutPosition]
-            defaultClient = if (currentClient == defaultClient) null else currentClient
-            notifyDataSetChanged()
+            callback.clientClick(currentClient)
         }
     }
 }
