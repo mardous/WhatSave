@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver
 
 import androidx.room.Room
+import com.simplified.wsstatussaver.database.MIGRATION_1_2
 import com.simplified.wsstatussaver.database.StatusDatabase
 import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.repository.*
@@ -38,6 +39,7 @@ private val networkModule = module {
 private val dataModule = module {
     single {
         Room.databaseBuilder(androidContext(), StatusDatabase::class.java, "statuses.db")
+            .addMigrations(MIGRATION_1_2)
             .build()
     }
 
