@@ -23,15 +23,11 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.*
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
-import com.simplified.wsstatussaver.extensions.blacklistMessageSender
-import com.simplified.wsstatussaver.extensions.getMediaStoreUris
-import com.simplified.wsstatussaver.extensions.lastUpdateId
-import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.mediator.WAClient
-import com.simplified.wsstatussaver.mediator.WAMediator
+import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.model.Country
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
+import com.simplified.wsstatussaver.model.WaClient
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.repository.Repository
@@ -49,14 +45,13 @@ import java.util.*
 class WhatSaveViewModel(
     private val repository: Repository,
     private val updateService: UpdateService,
-    private val mediator: WAMediator,
     private val storage: Storage
 ) : ViewModel() {
 
     private val liveDataMap = newStatusesLiveDataMap()
     private val savedLiveDataMap = newStatusesLiveDataMap()
 
-    private val installedClients = MutableLiveData<List<WAClient>>()
+    private val installedClients = MutableLiveData<List<WaClient>>()
     private val storageDevices = MutableLiveData<List<StorageDevice>>()
     private val countries = MutableLiveData<List<Country>>()
     private val selectedCountry = MutableLiveData<Country>()
@@ -75,7 +70,7 @@ class WhatSaveViewModel(
 
     fun getMessageViewLockObservable(): LiveData<Boolean> = unlockMessageView
 
-    fun getInstalledClients(): LiveData<List<WAClient>> = installedClients
+    fun getInstalledClients(): LiveData<List<WaClient>> = installedClients
 
     fun getStorageDevices(): LiveData<List<StorageDevice>> = storageDevices
 
@@ -96,7 +91,7 @@ class WhatSaveViewModel(
     }
 
     fun loadClients() = viewModelScope.launch(IO) {
-        val result = mediator.getInstalledClients()
+        val result = getApp().getAllInstalledClients()
         installedClients.postValue(result)
     }
 

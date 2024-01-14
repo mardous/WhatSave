@@ -32,11 +32,11 @@ import com.simplified.wsstatussaver.adapter.CountryAdapter
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.databinding.FragmentMessageANumberBinding
 import com.simplified.wsstatussaver.extensions.encodedUrl
+import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
-import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Country
 import io.michaelrocks.libphonenumber.android.NumberParseException
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
@@ -50,7 +50,6 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
     private val phoneNumberUtil: PhoneNumberUtil by inject()
-    private val mediator: WAMediator by inject()
 
     private var adapter: CountryAdapter? = null
     private var countriesDialog: Dialog? = null
@@ -132,7 +131,7 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
             apiRequest.append("&text=").append(encodedMessage)
         }
         val intent = Intent(Intent.ACTION_VIEW, apiRequest.toString().toUri())
-        val whatsappClient = mediator.getDefaultClientOrAny()
+        val whatsappClient = requireContext().getPreferredClient()
         if (whatsappClient != null) {
             intent.setPackage(whatsappClient.packageName)
         }

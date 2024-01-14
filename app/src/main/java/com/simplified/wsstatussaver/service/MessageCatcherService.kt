@@ -22,7 +22,6 @@ import androidx.core.os.BundleCompat.getParcelable
 import androidx.core.os.BundleCompat.getParcelableArrayList
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.extensions.*
-import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.repository.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
@@ -35,7 +34,6 @@ import org.koin.core.component.inject
 
 class MessageCatcherService : NotificationListenerService(), KoinComponent {
 
-    private val mediator: WAMediator by inject()
     private val repository: Repository by inject()
     private val serviceScope = CoroutineScope(Job() + Main)
 
@@ -50,7 +48,7 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
         super.onNotificationPosted(sbn)
         if (sbn == null || !preferences().isMessageViewEnabled) return
         serviceScope.launch(IO) {
-            val client = mediator.getInstalledClients().firstOrNull { it.packageName == sbn.packageName }
+            val client = getClientIfInstalled(sbn.packageName)
             if (client != null) {
                 val extras = sbn.notification.extras
                 if (!isSelf(extras)) {

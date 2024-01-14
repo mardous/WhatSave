@@ -25,13 +25,13 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.simplified.wsstatussaver.databinding.ItemClientBinding
 import com.simplified.wsstatussaver.interfaces.IClientCallback
-import com.simplified.wsstatussaver.mediator.WAClient
+import com.simplified.wsstatussaver.model.WaClient
 
 class ClientAdapter(private val context: Context, private val callback: IClientCallback) :
     RecyclerView.Adapter<ClientAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
-    private var clients: List<WAClient> = ArrayList()
+    private var clients: List<WaClient> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(ItemClientBinding.inflate(layoutInflater, parent, false))
@@ -45,7 +45,7 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
         configureCheckIcon(holder, client)
     }
 
-    private fun configureCheckIcon(holder: ViewHolder, client: WAClient) {
+    private fun configureCheckIcon(holder: ViewHolder, client: WaClient) {
         val checkMode = callback.checkModeForClient(client)
         if (checkMode == IClientCallback.MODE_UNCHECKABLE) {
             holder.check?.isVisible = false
@@ -58,7 +58,7 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
     override fun getItemCount(): Int = clients.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setClients(clients: List<WAClient>) {
+    fun setClients(clients: List<WaClient>) {
         this.clients = clients
         notifyDataSetChanged()
     }

@@ -73,7 +73,6 @@
 -keep class * extends androidx.fragment.app.Fragment{}
 -keepnames class * extends android.os.Parcelable
 -keepnames class * extends java.io.Serializable
--keep class com.simplified.wsstatussaver.mediator.WAClient { *; }
 -keep class com.simplified.wsstatussaver.model.** { *; }
 -keep class com.simplified.wsstatussaver.update.** { *; }
 -keep class com.simplified.wsstatussaver.service.** { *; }

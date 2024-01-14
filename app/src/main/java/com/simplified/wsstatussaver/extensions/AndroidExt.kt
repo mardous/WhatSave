@@ -31,6 +31,7 @@ import android.service.notification.NotificationListenerService
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.ChecksSdkIntAtLeast
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
@@ -41,6 +42,7 @@ import com.simplified.wsstatussaver.logUrlView
 import com.simplified.wsstatussaver.service.MessageCatcherService
 import java.io.Serializable
 import java.io.UnsupportedEncodingException
+import java.net.URLDecoder
 import java.net.URLEncoder
 import java.util.*
 import kotlin.reflect.KClass
@@ -48,6 +50,8 @@ import kotlin.reflect.KClass
 typealias ExceptionConsumer = (Throwable, activityNotFound: Boolean) -> Unit
 typealias ContextConsumer = (Context) -> Unit
 typealias ViewConsumer = (View) -> Unit
+
+fun Context.getDrawableCompat(resId: Int) = AppCompatResources.getDrawable(this, resId)
 
 fun Context.openWeb(url: String) {
     logUrlView(url)
@@ -165,6 +169,12 @@ fun String.formattedAsHtml() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MO
 
 fun String.encodedUrl(charset: String = "UTF-8") = try {
     URLEncoder.encode(this, charset)
+} catch (e: UnsupportedEncodingException) {
+    null
+}
+
+fun String.decodedUrl(charset: String = "UTF-8") = try {
+    URLDecoder.decode(this, charset)
 } catch (e: UnsupportedEncodingException) {
     null
 }

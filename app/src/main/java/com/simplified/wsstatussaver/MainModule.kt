@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver
 import androidx.room.Room
 import com.simplified.wsstatussaver.database.MIGRATION_1_2
 import com.simplified.wsstatussaver.database.StatusDatabase
-import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.repository.*
 import com.simplified.wsstatussaver.storage.Storage
 import com.simplified.wsstatussaver.update.provideOkHttp
@@ -57,9 +56,6 @@ private val managerModule = module {
         PhoneNumberUtil.createInstance(androidContext())
     }
     single {
-        WAMediator(androidContext())
-    }
-    single {
         Storage(androidContext())
     }
 }
@@ -84,7 +80,7 @@ private val statusesModule = module {
 
 private val viewModelModule = module {
     viewModel {
-        WhatSaveViewModel(get(), get(), get(), get())
+        WhatSaveViewModel(get(), get(), get())
     }
 }
 

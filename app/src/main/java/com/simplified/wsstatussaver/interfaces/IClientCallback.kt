@@ -13,11 +13,11 @@
  */
 package com.simplified.wsstatussaver.interfaces
 
-import com.simplified.wsstatussaver.mediator.WAClient
+import com.simplified.wsstatussaver.model.WaClient
 
 interface IClientCallback {
-    fun clientClick(client: WAClient)
-    fun checkModeForClient(client: WAClient): Int
+    fun clientClick(client: WaClient)
+    fun checkModeForClient(client: WaClient): Int = MODE_UNCHECKABLE
 
     companion object {
         const val MODE_UNCHECKABLE = 0

@@ -34,10 +34,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
-import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Status
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -52,11 +49,10 @@ open class StatusAdapter(
     private var isSaveEnabled: Boolean,
     private var isDeleteEnabled: Boolean,
     isWhatsAppIconEnabled: Boolean
-) : RecyclerView.Adapter<StatusAdapter.ViewHolder>(), ActionMode.Callback, KoinComponent {
+) : RecyclerView.Adapter<StatusAdapter.ViewHolder>(), ActionMode.Callback {
 
     var actionMode: ActionMode? = null
     private val checked = ArrayList<Status>()
-    private val mediator: WAMediator by inject()
 
     var statuses: List<Status> by Delegates.observable(ArrayList()) { _: KProperty<*>, _: List<Status>, _: List<Status> ->
         notifyDataSetChanged()
@@ -97,7 +93,7 @@ open class StatusAdapter(
             holder.clientIcon.isVisible = false
             holder.clientIcon.setImageDrawable(null)
             if (isWhatsAppIconEnabled) {
-                val client = mediator.getClientForPackage(status.clientPackage)
+                val client = activity.getClientIfInstalled(status.clientPackage)
                 if (client != null) {
                     holder.clientIcon.isVisible = true
                     holder.clientIcon.setImageDrawable(client.getIcon(activity))

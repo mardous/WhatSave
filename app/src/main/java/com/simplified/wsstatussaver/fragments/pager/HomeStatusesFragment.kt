@@ -21,18 +21,13 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
-import com.simplified.wsstatussaver.mediator.WAMediator
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
-import org.koin.android.ext.android.inject
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class HomeStatusesFragment : AbsPagerFragment(),
-    SharedPreferences.OnSharedPreferenceChangeListener {
-
-    private val mediator: WAMediator by inject()
+class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,7 +40,7 @@ class HomeStatusesFragment : AbsPagerFragment(),
     }
 
     private fun updateWhatsAppState() {
-        if (mediator.isAnyWhatsappInstalled()) {
+        if (requireContext().hasWAInstalled()) {
             binding.emptyTitle.text = getString(R.string.no_x_statuses_title, getString(statusType.nameRes))
             binding.emptyText.text = getString(R.string.you_should_open_wa_and_download_some_statuses)
         } else {

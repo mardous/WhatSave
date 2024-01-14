@@ -27,14 +27,11 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
+import com.simplified.wsstatussaver.extensions.getDefaultClient
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.interfaces.IClientCallback
-import com.simplified.wsstatussaver.mediator.WAClient
-import com.simplified.wsstatussaver.mediator.WAMediator
-import org.koin.android.ext.android.inject
+import com.simplified.wsstatussaver.model.WaClient
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
-import kotlin.properties.Delegates
-import kotlin.reflect.KProperty
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -45,16 +42,9 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
     private val binding get() = _binding!!
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
-    private val mediator: WAMediator by inject()
 
     private lateinit var clientAdapter: ClientAdapter
-
-    private var defaultClient: WAClient? by Delegates.observable(mediator.getDefaultClient()) { _: KProperty<*>, _: WAClient?, client: WAClient? ->
-        mediator.setDefaultClient(client)
-        if (client == null)
-            showToast(R.string.default_client_cleared)
-        else showToast(getString(R.string.x_is_the_default_client_now, client.getLabel(requireContext())))
-    }
+    private var defaultClient: WaClient? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogRecyclerviewBinding.inflate(layoutInflater)
@@ -66,6 +56,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
             clientAdapter = it
         }
 
+        defaultClient = requireContext().getDefaultClient()
         viewModel.getInstalledClients().observe(this) { installedClients ->
             clientAdapter.setClients(installedClients)
         }
@@ -87,13 +78,17 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    override fun clientClick(client: WAClient) {
-        defaultClient = client
+    override fun clientClick(client: WaClient) {
         defaultClient = if (client == defaultClient) null else client
+        if (defaultClient == null) {
+            showToast(R.string.default_client_cleared)
+        } else {
+            showToast(getString(R.string.x_is_the_default_client_now, client.getLabel(requireContext())))
+        }
         clientAdapter.notifyDataSetChanged()
     }
 
-    override fun checkModeForClient(client: WAClient): Int {
+    override fun checkModeForClient(client: WaClient): Int {
         return if (client == defaultClient) IClientCallback.MODE_CHECKED else IClientCallback.MODE_UNCHECKED
     }
 

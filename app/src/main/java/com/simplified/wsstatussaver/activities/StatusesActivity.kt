@@ -33,10 +33,7 @@ import com.simplified.wsstatussaver.dialogs.PrivacyDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
-import com.simplified.wsstatussaver.mediator.WAMediator
-import com.simplified.wsstatussaver.mediator.getLaunchIntent
 import com.simplified.wsstatussaver.update.isAbleToUpdate
-import org.koin.android.ext.android.get
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -139,7 +136,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
 fun Menu.setupWhatsAppMenuItem(activity: FragmentActivity) {
     this.removeItem(R.id.action_launch_client)
 
-    val client = activity.get<WAMediator>().getDefaultClientOrAny()
+    val client = activity.getPreferredClient()
     if (client != null) {
         this.add(
             Menu.NONE, R.id.action_launch_client,
