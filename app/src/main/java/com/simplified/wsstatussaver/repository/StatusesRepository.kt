@@ -62,6 +62,8 @@ class StatusesRepositoryImpl(
 
     override suspend fun statuses(type: StatusType): StatusQueryResult {
         val statusList = arrayListOf<Status>()
+        val isExcludeOld = preferences.isExcludeOldStatuses()
+        val isExcludeSaved = preferences.isExcludeSavedStatuses()
         val installedClients = context.getAllInstalledClients()
         if (installedClients.isEmpty()) {
             return StatusQueryResult(ResultCode.NotInstalled)
@@ -85,12 +87,14 @@ class StatusesRepositoryImpl(
                 }
                 for (file in statusFiles) {
                     val fileName = file.name ?: continue
-                    val acceptOld = !preferences.isExcludeOldStatuses() || !file.isOldFile()
                     val client = WaClient.entries.firstOrNull {
                         statusesDir.uri.path?.contains(it.getSAFDirectoryPath()) == true
                     }
-                    if (type.acceptFileName(fileName) && acceptOld) {
+                    if (type.acceptFileName(fileName)) {
                         val isSaved = statusDao.statusSaved(file.uri, fileName)
+                        if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
+                            continue
+
                         statusList.add(Status(type, file.name, file.uri, file.lastModified(), file.length(), client?.packageName, isSaved))
                     }
                 }
@@ -102,9 +106,10 @@ class StatusesRepositoryImpl(
                     val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
                     if (!statuses.isNullOrEmpty()) for (file in statuses) {
                         val fileUri = file.toUri()
-                        val acceptOld = !preferences.isExcludeOldStatuses() || !file.isOldFile()
-                        if (!acceptOld) continue
                         val isSaved = statusDao.statusSaved(fileUri, file.name)
+                        if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
+                            continue
+
                         statusList.add(Status(type, file.name, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
                     }
                 }
