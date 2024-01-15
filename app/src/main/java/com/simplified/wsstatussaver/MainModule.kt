@@ -66,7 +66,7 @@ private val statusesModule = module {
     } bind CountryRepository::class
 
     single {
-        StatusesRepositoryImpl(androidContext(), get(), get(), get())
+        StatusesRepositoryImpl(androidContext(), get(), get())
     } bind StatusesRepository::class
 
     single {

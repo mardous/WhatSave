@@ -15,6 +15,7 @@ package com.simplified.wsstatussaver.extensions
 
 import android.net.Uri
 import androidx.core.content.FileProvider
+import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.App
 import com.simplified.wsstatussaver.getApp
 import java.io.File
@@ -25,9 +26,13 @@ import kotlin.math.pow
 
 fun File.getUri(): Uri = FileProvider.getUriForFile(getApp().applicationContext, App.getFileProviderAuthority(), this)
 
-fun File.isOlderThan(maxHours: Int): Boolean {
-    return (System.currentTimeMillis() - lastModified()) >= TimeUnit.HOURS.toMillis(maxHours.toLong())
+private fun Long.hasElapsedTwentyFourHours(): Boolean {
+    return (System.currentTimeMillis() - this) >= TimeUnit.HOURS.toMillis(24L)
 }
+
+fun DocumentFile.isOldFile() = lastModified().hasElapsedTwentyFourHours()
+
+fun File.isOldFile() = lastModified().hasElapsedTwentyFourHours()
 
 fun Long.toFileSize(): String {
     if (this <= 0) {

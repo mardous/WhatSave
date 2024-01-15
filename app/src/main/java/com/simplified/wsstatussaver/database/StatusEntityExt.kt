@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.database
 
 import com.simplified.wsstatussaver.model.Status
-import java.io.FileInputStream
 
 private fun Status.getSaveName(i: String?, delta: Int = 0): String {
     var saveName = i
@@ -33,11 +32,9 @@ private fun Status.getSaveName(i: String?, delta: Int = 0): String {
 fun Status.toStatusEntity(saveName: String?, delta: Int = 0) = StatusEntity(
     type = type,
     name = name,
-    origin = path,
+    origin = fileUri,
     dateModified = dateModified,
     size = size,
     client = clientPackage,
     saveName = getSaveName(saveName, delta)
 )
-
-fun StatusEntity.openInputStream() = FileInputStream(origin)

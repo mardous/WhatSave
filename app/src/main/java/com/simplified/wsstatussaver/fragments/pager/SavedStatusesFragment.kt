@@ -33,12 +33,8 @@ class SavedStatusesFragment : AbsPagerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.emptyTitle.text = getString(R.string.no_saved_statuses_title, getString(statusType.nameRes))
-        binding.emptyText.text = getString(R.string.save_some_statuses)
-
-        viewModel.getSavedStatuses(statusType).observe(viewLifecycleOwner) { statuses ->
-            statusAdapter?.statuses = statuses
-            binding.swipeRefreshLayout.isRefreshing = false
+        viewModel.getSavedStatuses(statusType).observe(viewLifecycleOwner) { result ->
+            data(result)
         }
     }
 

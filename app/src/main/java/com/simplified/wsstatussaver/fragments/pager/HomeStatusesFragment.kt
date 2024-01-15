@@ -17,7 +17,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
-import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
@@ -31,22 +30,11 @@ class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPrefe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getStatuses(statusType).observe(viewLifecycleOwner) { statuses ->
-            statusAdapter?.statuses = statuses
-            binding.swipeRefreshLayout.isRefreshing = false
+        viewModel.getStatuses(statusType).observe(viewLifecycleOwner) { result ->
+            data(result)
         }
 
         preferences().registerOnSharedPreferenceChangeListener(this)
-    }
-
-    private fun updateWhatsAppState() {
-        if (requireContext().hasWAInstalled()) {
-            binding.emptyTitle.text = getString(R.string.no_x_statuses_title, getString(statusType.nameRes))
-            binding.emptyText.text = getString(R.string.you_should_open_wa_and_download_some_statuses)
-        } else {
-            binding.emptyTitle.text = getString(R.string.wa_is_not_installed_title)
-            binding.emptyText.text = getString(R.string.this_application_will_not_work)
-        }
     }
 
     override fun onCreateAdapter(): StatusAdapter {
@@ -84,7 +72,6 @@ class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPrefe
     override fun onDeleteStatusClick(status: Status) {}
 
     override fun onLoadStatuses(type: StatusType) {
-        updateWhatsAppState()
         viewModel.loadStatuses(type)
     }
 

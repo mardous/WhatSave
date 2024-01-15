@@ -74,7 +74,7 @@ open class StatusAdapter(
         holder.itemView.isActivated = isItemSelected(status)
 
         if (holder.image != null) {
-            requestManager.load(status.path)
+            requestManager.load(status.fileUri)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .format(DecodeFormat.PREFER_RGB_565)
                 .centerCrop()

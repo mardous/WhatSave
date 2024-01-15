@@ -23,11 +23,12 @@ import androidx.core.content.getSystemService
 import androidx.lifecycle.*
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
-import com.simplified.wsstatussaver.extensions.*
-import com.simplified.wsstatussaver.model.Country
-import com.simplified.wsstatussaver.model.Status
-import com.simplified.wsstatussaver.model.StatusType
-import com.simplified.wsstatussaver.model.WaClient
+import com.simplified.wsstatussaver.extensions.blacklistMessageSender
+import com.simplified.wsstatussaver.extensions.getAllInstalledClients
+import com.simplified.wsstatussaver.extensions.lastUpdateId
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.model.*
+import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.repository.Repository
@@ -82,11 +83,11 @@ class WhatSaveViewModel(
 
     fun getSelectedCountry() = selectedCountry.value
 
-    fun getStatuses(type: StatusType): LiveData<List<Status>> {
+    fun getStatuses(type: StatusType): LiveData<StatusQueryResult> {
         return liveDataMap.getOrCreateLiveData(type)
     }
 
-    fun getSavedStatuses(type: StatusType): LiveData<List<Status>> {
+    fun getSavedStatuses(type: StatusType): LiveData<StatusQueryResult> {
         return savedLiveDataMap.getOrCreateLiveData(type)
     }
 
@@ -115,11 +116,19 @@ class WhatSaveViewModel(
     }
 
     fun loadStatuses(type: StatusType) = viewModelScope.launch(IO) {
-        liveDataMap[type]?.postValue(repository.statuses(type))
+        val liveData = liveDataMap[type]
+        if (liveData != null) {
+            liveData.postValue(liveData.value?.copy(code = ResultCode.Loading) ?: StatusQueryResult(ResultCode.Loading))
+            liveData.postValue(repository.statuses(type))
+        }
     }
 
     fun loadSavedStatuses(type: StatusType) = viewModelScope.launch(IO) {
-        savedLiveDataMap[type]?.postValue(repository.savedStatuses(type))
+        val liveData = liveDataMap[type]
+        if (liveData != null) {
+            liveData.postValue(liveData.value?.copy(code = ResultCode.Loading) ?: StatusQueryResult(ResultCode.Loading))
+            liveData.postValue(repository.savedStatuses(type))
+        }
     }
 
     fun saveStatus(status: Status, saveName: String? = null): LiveData<SaveResult> = liveData(IO) {
@@ -167,7 +176,7 @@ class WhatSaveViewModel(
 
     @RequiresApi(Build.VERSION_CODES.R)
     fun createDeleteRequest(context: Context, statuses: List<Status>): LiveData<PendingIntent> = liveData(IO) {
-        val uris = statuses.getMediaStoreUris(context)
+        val uris = statuses.map { it.fileUri }
         if (uris.isNotEmpty()) {
             emit(MediaStore.createDeleteRequest(context.contentResolver, uris))
         }
@@ -196,7 +205,7 @@ class WhatSaveViewModel(
     }
 }
 
-internal typealias StatusesLiveData = MutableLiveData<List<Status>>
+internal typealias StatusesLiveData = MutableLiveData<StatusQueryResult>
 internal typealias StatusesLiveDataMap = EnumMap<StatusType, StatusesLiveData>
 
 internal fun newStatusesLiveDataMap() = StatusesLiveDataMap(StatusType::class.java)
@@ -204,7 +213,7 @@ internal fun newStatusesLiveDataMap() = StatusesLiveDataMap(StatusType::class.ja
 internal fun StatusesLiveDataMap.getOrCreateLiveData(type: StatusType): StatusesLiveData {
     var liveData = this[type]
     if (liveData == null) {
-        liveData = StatusesLiveData(arrayListOf()).also {
+        liveData = StatusesLiveData(StatusQueryResult.Idle).also {
             this[type] = it
         }
     }

@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
@@ -102,6 +103,23 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
+    protected fun data(result: StatusQueryResult) {
+        statusAdapter?.statuses = result.statuses
+        binding.swipeRefreshLayout.isRefreshing = result.isLoading
+        if (result.code.titleRes != 0) {
+            binding.emptyTitle.text = getString(result.code.titleRes)
+            binding.emptyTitle.isVisible = true
+        } else {
+            binding.emptyTitle.isVisible = false
+        }
+        if (result.code.descriptionRes != 0) {
+            binding.emptyText.text = getString(result.code.descriptionRes)
+            binding.emptyText.isVisible = true
+        } else {
+            binding.emptyText.isVisible = false
+        }
+    }
+
     protected abstract fun onCreateAdapter(): StatusAdapter
 
     override fun onScrollToTop() {
@@ -143,7 +161,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             R.id.action_share -> {
                 requestContext { context ->
                     startActivitySafe(
-                        selection.toShareIntent(context).toChooser(getString(R.string.share_with))
+                        selection.toShareIntent().toChooser(getString(R.string.share_with))
                     )
                 }
             }
@@ -184,7 +202,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun onPreviewStatusClick(status: Status) = requestContext { context ->
-        startActivitySafe(status.toPreviewIntent(context)) { _: Throwable, activityNotFound: Boolean ->
+        startActivitySafe(status.toPreviewIntent()) { _: Throwable, activityNotFound: Boolean ->
             if (activityNotFound) {
                 requestView { view ->
                     val messageRes = when {
@@ -213,7 +231,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun onShareStatusClick(status: Status) = requestContext { context ->
-        startActivitySafe(status.toShareIntent(context).toChooser(getString(R.string.share_with)))
+        startActivitySafe(status.toShareIntent().toChooser(getString(R.string.share_with)))
     }
 
     @SuppressLint("CheckResult")
@@ -239,7 +257,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                 } else {
                     Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
                         .setAction(R.string.share_action) {
-                            startActivitySafe(result.statuses.toShareIntent(requireContext()))
+                            startActivitySafe(result.statuses.toShareIntent())
                         }
                         .show()
                 }

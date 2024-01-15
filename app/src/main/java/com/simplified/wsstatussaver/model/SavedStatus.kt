@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Christians Martínez Alvarado
+ * Copyright (C) 2024 Christians Martínez Alvarado
  *
  * Licensed under the GNU General Public License v3
  *
@@ -14,16 +14,21 @@
 package com.simplified.wsstatussaver.model
 
 import android.net.Uri
+import java.io.File
 
-/**
- * @author Christians Martínez Alvarado (mardous)
- */
-open class Status(
-    val type: StatusType,
-    val name: String?,
-    val fileUri: Uri,
-    val dateModified: Long,
-    val size: Long,
-    val clientPackage: String?,
-    val isSaved: Boolean
-)
+class SavedStatus(
+    type: StatusType,
+    name: String,
+    fileUri: Uri,
+    dateModified: Long,
+    size: Long,
+    private val path: String?
+) : Status(type, name, fileUri, dateModified, size, null, true) {
+
+    fun hasFile(): Boolean = !path.isNullOrBlank()
+
+    fun getFile(): File {
+        checkNotNull(path)
+        return File(path)
+    }
+}

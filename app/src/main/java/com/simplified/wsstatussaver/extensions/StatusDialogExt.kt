@@ -58,7 +58,7 @@ fun Context.showStatusOptions(
 
         Glide.with(this)
             .asBitmap()
-            .load(status.path)
+            .load(status.fileUri)
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
             .into(binding.image)

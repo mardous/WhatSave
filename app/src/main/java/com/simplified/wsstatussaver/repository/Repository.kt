@@ -19,11 +19,12 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.model.Country
 import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 
 interface Repository {
-    suspend fun statuses(type: StatusType): List<Status>
-    suspend fun savedStatuses(type: StatusType): List<Status>
+    suspend fun statuses(type: StatusType): StatusQueryResult
+    suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun saveStatus(status: Status, saveName: String?): Uri?
     suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri>
     suspend fun deleteStatus(status: Status): Boolean
@@ -45,9 +46,9 @@ class RepositoryImpl(
     private val messageRepository: MessageRepository
 ) : Repository {
 
-    override suspend fun statuses(type: StatusType): List<Status> = statusesRepository.statuses(type)
+    override suspend fun statuses(type: StatusType): StatusQueryResult = statusesRepository.statuses(type)
 
-    override suspend fun savedStatuses(type: StatusType): List<Status> = statusesRepository.savedStatuses(type)
+    override suspend fun savedStatuses(type: StatusType): StatusQueryResult = statusesRepository.savedStatuses(type)
 
     override suspend fun saveStatus(status: Status, saveName: String?): Uri? = statusesRepository.save(status, saveName)
 

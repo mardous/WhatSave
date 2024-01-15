@@ -13,6 +13,8 @@
  */
 package com.simplified.wsstatussaver.database
 
+import android.net.Uri
+import androidx.core.net.toUri
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverter
@@ -34,10 +36,30 @@ class Converters {
 
     @TypeConverter
     fun toStatusTypeFromString(str: String) = enumValueOf<StatusType>(str)
+
+    @TypeConverter
+    fun fromUriToString(uri: Uri) = uri.toString()
+
+    @TypeConverter
+    fun toUriFromString(str: String) = str.toUri()
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
     override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("DROP TABLE saved_statuses")
+        db.execSQL(
+            "CREATE TABLE saved_statuses (" +
+                    "status_id INTEGER NOT NULL, " +
+                    "status_type TEXT NOT NULL, " +
+                    "original_name TEXT, " +
+                    "original_uri TEXT NOT NULL, " +
+                    "original_date_modified INTEGER NOT NULL, " +
+                    "original_size INTEGER NOT NULL, " +
+                    "original_client TEXT, " +
+                    "save_name TEXT NOT NULL, " +
+                    "PRIMARY KEY(status_id))"
+        )
+
         db.execSQL(
             "CREATE TABLE received_messages (" +
                     "message_id INTEGER NOT NULL, " +
@@ -48,5 +70,4 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
                     "PRIMARY KEY(message_id))"
         )
     }
-
 }
