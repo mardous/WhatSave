@@ -22,8 +22,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.database.Conversation
-import com.simplified.wsstatussaver.extensions.prettyTime
+import com.simplified.wsstatussaver.extensions.time
 import com.simplified.wsstatussaver.interfaces.IConversationCallback
+import java.util.concurrent.TimeUnit
 
 class ConversationAdapter(
     private val context: Context,
@@ -44,7 +45,7 @@ class ConversationAdapter(
         val conversation = conversations[position]
         holder.name?.text = conversation.name
         holder.message?.text = conversation.latestMessage
-        holder.time?.text = conversation.latestMessageTime.prettyTime()
+        holder.time?.text = conversation.latestMessageTime.time(5, TimeUnit.DAYS)
     }
 
     override fun getItemCount(): Int = conversations.size

@@ -18,9 +18,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-fun Long.time(): String {
+fun Long.time(maxPrettyTime: Long = 1, maxPrettyTimeUnit: TimeUnit = TimeUnit.HOURS): String {
     val date = Date(this)
-    val minElapsedHours = TimeUnit.HOURS.toMillis(1)
+    val minElapsedHours = maxPrettyTimeUnit.toMillis(maxPrettyTime)
     if ((System.currentTimeMillis() - this) >= minElapsedHours) {
         return SimpleDateFormat.getDateTimeInstance().format(date)
     }
