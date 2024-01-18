@@ -21,6 +21,7 @@ import com.simplified.wsstatussaver.database.MessageEntity
 interface MessageRepository {
     fun listConversations(): LiveData<List<Conversation>>
     fun listMessages(sender: String): LiveData<List<MessageEntity>>
+    suspend fun hasMessage(message: MessageEntity): Boolean
     suspend fun insertMessage(message: MessageEntity): Long
     suspend fun removeMessage(message: MessageEntity)
     suspend fun deleteConversation(sender: String)
@@ -34,6 +35,8 @@ class MessageRepositoryImpl(private val messageDao: MessageDao) : MessageReposit
 
     override fun listMessages(sender: String): LiveData<List<MessageEntity>> =
         messageDao.queryMessages(sender)
+
+    override suspend fun hasMessage(message: MessageEntity): Boolean = messageDao.hasMessage(message.uuid)
 
     override suspend fun insertMessage(message: MessageEntity) =
         messageDao.insetMessage(message)

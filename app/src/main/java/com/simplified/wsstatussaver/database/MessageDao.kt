@@ -18,6 +18,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import java.util.*
 
 @Dao
 interface MessageDao {
@@ -26,6 +27,9 @@ interface MessageDao {
 
     @Delete
     fun removeMessage(messageEntity: MessageEntity)
+
+    @Query("SELECT EXISTS(SELECT * FROM received_messages WHERE uuid = :uuid)")
+    fun hasMessage(uuid: UUID): Boolean
 
     @Query("DELETE FROM received_messages WHERE received_from = :sender")
     fun deleteConversation(sender: String)

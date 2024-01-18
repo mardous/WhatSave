@@ -22,6 +22,7 @@ import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.simplified.wsstatussaver.model.StatusType
+import java.util.*
 
 @Database(entities = [StatusEntity::class, MessageEntity::class], version = 2, exportSchema = false)
 @TypeConverters(Converters::class)
@@ -42,6 +43,12 @@ class Converters {
 
     @TypeConverter
     fun toUriFromString(str: String) = str.toUri()
+
+    @TypeConverter
+    fun fromUUIDToString(id: UUID) = id.toString()
+
+    @TypeConverter
+    fun toUUIDFromString(str: String) = UUID.fromString(str)
 }
 
 val MIGRATION_1_2 = object : Migration(1, 2) {
@@ -63,6 +70,7 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
         db.execSQL(
             "CREATE TABLE received_messages (" +
                     "message_id INTEGER NOT NULL, " +
+                    "uuid TEXT NOT NULL, " +
                     "client_package TEXT, " +
                     "received_time INTEGER NOT NULL, " +
                     "received_from TEXT NOT NULL, " +
