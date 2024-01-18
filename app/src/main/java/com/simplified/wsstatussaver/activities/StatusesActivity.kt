@@ -29,7 +29,6 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
-import com.simplified.wsstatussaver.dialogs.PrivacyDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
@@ -59,7 +58,6 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
             navigationView.setupWithNavController(navController)
         }
 
-        checkPrivacyAccepted()
         if (savedInstanceState == null) {
             searchUpdate()
         }
@@ -72,12 +70,6 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
                     UpdateDialog.create(updateInfo).show(supportFragmentManager, "UPDATE_FOUND")
                 }
             }
-        }
-    }
-
-    private fun checkPrivacyAccepted() {
-        if (!preferences().privacyPolicyAccepted) {
-            PrivacyDialog().show(supportFragmentManager, "PRIVACY_AND_TERMS")
         }
     }
 
