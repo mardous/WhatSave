@@ -49,6 +49,7 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
  * @author Christians Martínez Alvarado (mardous)
  */
 abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
+    View.OnClickListener,
     OnRefreshListener,
     IScrollable,
     IPermissionChangeListener,
@@ -65,6 +66,9 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     private val statusesFragment: AbsStatusesFragment
         get() = parentFragment as AbsStatusesFragment
 
+    private val lastResult: StatusQueryResult?
+        get() = viewModel.getStatuses(statusType).value
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val arguments = arguments
@@ -75,8 +79,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = FragmentStatusesPageBinding.bind(view)
-        _binding = StatusesPageBinding(binding).apply {
+        _binding = StatusesPageBinding(FragmentStatusesPageBinding.bind(view)).apply {
             swipeRefreshLayout.setOnRefreshListener(this@AbsPagerFragment)
             swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())
 
@@ -98,6 +101,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             }
         }
 
+        binding.emptyButton.setOnClickListener(this)
         statusesFragment.getViewPager().doOnPageSelected(viewLifecycleOwner) {
             statusAdapter?.finishActionMode()
         }
@@ -117,6 +121,12 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             binding.emptyText.isVisible = true
         } else {
             binding.emptyText.isVisible = false
+        }
+        if (result.code.buttonTextRes != 0) {
+            binding.emptyButton.text = getString(result.code.buttonTextRes)
+            binding.emptyButton.isVisible = true
+        } else {
+            binding.emptyButton.isVisible = false
         }
     }
 
@@ -138,6 +148,23 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     override fun onStop() {
         super.onStop()
         statusesActivity.removePermissionsChangeListener(this)
+    }
+
+    override fun onClick(view: View) {
+        if (view == binding.emptyButton) {
+            val resultCode = lastResult?.code
+            if (resultCode != StatusQueryResult.ResultCode.Loading) {
+                when (resultCode) {
+                    StatusQueryResult.ResultCode.PermissionError -> requestPermission()
+                    StatusQueryResult.ResultCode.NotInstalled -> requireContext().openGooglePlay("com.whatsapp")
+                    StatusQueryResult.ResultCode.NoStatuses -> requireContext().getPreferredClient()?.let {
+                        startActivitySafe(it.getLaunchIntent(requireContext().packageManager))
+                    }
+
+                    else -> loadStatuses()
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {
