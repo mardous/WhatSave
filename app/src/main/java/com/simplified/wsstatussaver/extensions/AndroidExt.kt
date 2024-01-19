@@ -13,6 +13,7 @@
  */
 package com.simplified.wsstatussaver.extensions
 
+import android.annotation.TargetApi
 import android.app.Activity
 import android.app.NotificationManager
 import android.content.ActivityNotFoundException
@@ -26,7 +27,6 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.service.notification.NotificationListenerService
 import android.view.View
 import android.widget.Toast
@@ -94,16 +94,20 @@ fun Context.isNotificationListener(): Boolean {
     return notificationManager?.isNotificationListenerAccessGranted(componentName) == true
 }
 
+/**
+ * This method is used only on API 28 and bellow.
+ */
+@TargetApi(Build.VERSION_CODES.P)
 fun Context.doIHavePermissions(vararg permissions: String): Boolean {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-        return Environment.isExternalStorageManager()
-    }
-    for (permission in permissions) {
-        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-            return false
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+        for (permission in permissions) {
+            if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+                return false
+            }
         }
+        return true
     }
-    return true
+    return false
 }
 
 fun Context.openSettings(action: String, packageName: String? = this.packageName) {

@@ -15,7 +15,6 @@ package com.simplified.wsstatussaver.activities.base
 
 import android.Manifest
 import android.content.DialogInterface
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -106,20 +105,12 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         }
     }
 
-    private fun requestStoragePermissions() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.permissions_denied_title)
-                .setMessage(R.string.permission_request_android_r)
-                .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int ->
-                    startActivityForResultSafe(
-                        Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION), PERMISSION_REQUEST_STORAGE_R
-                    )
-                }
-                .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
-                .show()
-        } else
+    fun requestStoragePermissions(): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
+            return true
+        }
+        return false
     }
 
     private fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
@@ -164,6 +155,5 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     companion object {
         private const val PERMISSION_REQUEST_STORAGE = 100
-        private const val PERMISSION_REQUEST_STORAGE_R = 101
     }
 }
