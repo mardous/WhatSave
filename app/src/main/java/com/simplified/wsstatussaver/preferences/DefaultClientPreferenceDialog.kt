@@ -28,6 +28,7 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.extensions.getDefaultClient
+import com.simplified.wsstatussaver.extensions.setDefaultClient
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.interfaces.IClientCallback
 import com.simplified.wsstatussaver.model.WaClient
@@ -85,6 +86,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
         } else {
             showToast(getString(R.string.x_is_the_default_client_now, client.getLabel(requireContext())))
         }
+        requireContext().setDefaultClient(defaultClient)
         clientAdapter.notifyDataSetChanged()
     }
 
