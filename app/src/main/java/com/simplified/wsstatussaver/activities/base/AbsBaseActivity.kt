@@ -23,7 +23,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
@@ -120,11 +120,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         if (requestCode == PERMISSION_REQUEST_STORAGE) {
             for (grantResult in grantResults) {
                 if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(
-                            this,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        )
-                    ) {
+                    if (shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                         //User has denied from permission dialog
                         MaterialAlertDialogBuilder(this)
                             .setTitle(R.string.permissions_denied_title)
