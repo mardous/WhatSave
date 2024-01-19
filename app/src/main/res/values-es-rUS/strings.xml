@@ -51,7 +51,6 @@
     <string name="client_info"><![CDATA[Versión <b>%s</b>]]></string>
     <string name="client_info_unknown">No se pudo cargar la info. del cliente.</string>
     <string name="installed_clients_empty">No hay clientes de WhatsApp instalados.</string>
-    <string name="no_x_statuses_title">Sin estados de %s</string>
     <string name="you_should_open_wa_and_download_some_statuses">Deberías abrir WhatsApp y descargar algunos estados</string>
     <string name="wa_is_not_installed_title">WhatsApp no está instalado</string>
     <string name="this_application_will_not_work">Esta aplicación no funcionará</string>
@@ -65,7 +64,6 @@
     <string name="deleting_please_wait">Eliminando, espere un momento…</string>
     <string name="deletion_success">Eliminación exitosa.</string>
     <string name="deletion_failed">Eliminación fallida.</string>
-    <string name="permission_request_android_r">Debido a las políticas del sistema Android, debes concedernos el permiso para acceder a los archivos del dispositivo. Este permiso solo se requiere para listar los archivos de estados de WhatsApp.</string>
     <string name="permissions_denied_title">Permisos denegados</string>
     <string name="permissions_denied_message">Debes conceder los permisos necesarios. Esta aplicación no funcionará correctamente sin esos permisos.</string>
     <string name="grant_action">Conceder</string>

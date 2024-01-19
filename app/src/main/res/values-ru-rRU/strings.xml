@@ -47,7 +47,6 @@
     <string name="client_info"><![CDATA[Версия <b>%s</b>]]></string>
     <string name="client_info_unknown">Не удалось загрузить информацию о клиенте.</string>
     <string name="installed_clients_empty">Не установлены клиенты WhatsApp.</string>
-    <string name="no_x_statuses_title">Нет статусов %s</string>
     <string name="you_should_open_wa_and_download_some_statuses">Вам следует зайти в WhatsApp и скачать несколько статусов.</string>
     <string name="wa_is_not_installed_title">WhatsApp не установлен</string>
     <string name="this_application_will_not_work">Это приложение не будет работать</string>
@@ -61,7 +60,6 @@
     <string name="deleting_please_wait">Удаление, подождите…</string>
     <string name="deletion_success">Удаление успешно.</string>
     <string name="deletion_failed">Удаление не удалось.</string>
-    <string name="permission_request_android_r">В соответствии с политиками ОС Android вы должны предоставить нам разрешение на доступ к файлам на вашем устройстве. Это разрешение требуется только для просмотра файлов статусов из WhatsApp.</string>
     <string name="permissions_denied_title">Разрешения отклонены</string>
     <string name="permissions_denied_message">Вы должны предоставить необходимые разрешения. Это приложение не будет работать должным образом без этих разрешений.</string>
     <string name="grant_action">Грант</string>

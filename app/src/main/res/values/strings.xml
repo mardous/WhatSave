@@ -51,7 +51,6 @@
     <string name="client_info"><![CDATA[Version <b>%s</b>]]></string>
     <string name="client_info_unknown">Unable to load client info.</string>
     <string name="installed_clients_empty">There are not installed WhatsApp clients.</string>
-    <string name="no_x_statuses_title">No %s statuses</string>
     <string name="you_should_open_wa_and_download_some_statuses">You should go to WhatsApp and download some statuses</string>
     <string name="wa_is_not_installed_title">WhatsApp isn\'t installed</string>
     <string name="this_application_will_not_work">This application won\'t work</string>
@@ -65,7 +64,6 @@
     <string name="deleting_please_wait">Deleting, please wait…</string>
     <string name="deletion_success">Deletion success.</string>
     <string name="deletion_failed">Deletion failed.</string>
-    <string name="permission_request_android_r">Due to Android OS policies, you must grant us permission to access files in your device. This permission is required only for listing statuses files from WhatsApp.</string>
     <string name="permissions_denied_title">Permissions denied</string>
     <string name="permissions_denied_message">You must grant required permissions. This application won\'t work correctly without these permissions.</string>
     <string name="grant_action">Grant</string>

@@ -48,7 +48,6 @@
     <string name="client_info"><![CDATA[संस्करण <b>%s</b>]]></string>
     <string name="client_info_unknown">ग्राहक जानकारी लोड करने में असमर्थ.</string>
     <string name="installed_clients_empty">व्हाट्सएप क्लाइंट स्थापित नहीं हैं।</string>
-    <string name="no_x_statuses_title">\"%s\" प्रकार की कोई फ़ाइल नहीं है</string>
     <string name="you_should_open_wa_and_download_some_statuses">आपको WhatsApp पर जाकर कुछ स्टेटस डाउनलोड करने चाहिए</string>
     <string name="wa_is_not_installed_title">व्हाट्सएप इंस्टॉल नहीं है</string>
     <string name="this_application_will_not_work">यह एप्लिकेशन काम नहीं करेगा</string>
@@ -62,7 +61,6 @@
     <string name="deleting_please_wait">हटाया जा रहा है, कृपया प्रतीक्षा करें…</string>
     <string name="deletion_success">विलोपन सफलता.</string>
     <string name="deletion_failed">हटाना विफल रहा.</string>
-    <string name="permission_request_android_r">एएंड्रॉइड ओएस नीतियों के कारण, आपको हमें अपने डिवाइस में फ़ाइलों तक पहुंचने की अनुमति देनी होगी। यह अनुमति केवल व्हाट्सएप से स्टेटस फ़ाइलों को सूचीबद्ध करने के लिए आवश्यक है।</string>
     <string name="permissions_denied_title">अनुमतियाँ अस्वीकृत</string>
     <string name="permissions_denied_message">आपको आवश्यक अनुमतियाँ देनी होंगी. इन अनुमतियों के बिना यह एप्लिकेशन ठीक से काम नहीं करेगा.</string>
     <string name="grant_action">अनुदान</string>

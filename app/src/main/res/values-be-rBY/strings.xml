@@ -48,7 +48,6 @@
     <string name="client_info"><![CDATA[Версія <b>%s</b>]]></string>
     <string name="client_info_unknown">Немагчыма загрузіць інфармацыю пра кліента.</string>
     <string name="installed_clients_empty">Няма ўсталяваных кліентаў WhatsApp.</string>
-    <string name="no_x_statuses_title">Няма статусаў %s</string>
     <string name="you_should_open_wa_and_download_some_statuses">Вы павінны зайсці ў WhatsApp і загрузіць некалькі статусаў</string>
     <string name="wa_is_not_installed_title">WhatsApp не ўсталяваны</string>
     <string name="this_application_will_not_work">Гэта дадатак не будзе працаваць</string>
@@ -62,7 +61,6 @@
     <string name="deleting_please_wait">Выдаленне, пачакайце…</string>
     <string name="deletion_success">Паспяховае выдаленне.</string>
     <string name="deletion_failed">Не атрымалася выдаліць.</string>
-    <string name="permission_request_android_r">У адпаведнасці з палітыкай АС Android вы павінны даць нам дазвол на доступ да файлаў на вашай прыладзе. Гэты дазвол патрабуецца толькі для пераліку файлаў статусаў з WhatsApp.</string>
     <string name="permissions_denied_title">У дазволе адмоўлена</string>
     <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы. Без гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
     <string name="grant_action">Грант</string>

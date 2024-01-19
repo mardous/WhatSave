@@ -48,7 +48,6 @@
     <string name="client_info"><![CDATA[Version <b>%s</b>]]></string>
     <string name="client_info_unknown">Impossible de charger les informations client.</string>
     <string name="installed_clients_empty">Aucun client WhatsApp n\'est installe.</string>
-    <string name="no_x_statuses_title">Aucun statut %s</string>
     <string name="you_should_open_wa_and_download_some_statuses">Vous devriez aller sur WhatsApp et telecharger certains statuts</string>
     <string name="wa_is_not_installed_title">WhatsApp n\'est pas installe</string>
     <string name="this_application_will_not_work">Cette application ne fonctionnera pas</string>
@@ -62,7 +61,6 @@
     <string name="deleting_please_wait">Suppression, veuillez patienter…</string>
     <string name="deletion_success">Succes de la suppression.</string>
     <string name="deletion_failed">La suppression a echoue.</string>
-    <string name="permission_request_android_r">En raison des politiques du système d\'exploitation Android, vous devez nous accorder l\'autorisation d\'accéder aux fichiers de votre appareil. Cette autorisation est requise uniquement pour répertorier les fichiers de statuts de WhatsApp.</string>
     <string name="permissions_denied_title">Autorisations refusees</string>
     <string name="permissions_denied_message">Vous devez accorder les autorisations requises. Cette application ne fonctionnera pas correctement sans ces autorisations.</string>
     <string name="grant_action">Accorder</string>

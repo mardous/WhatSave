@@ -48,7 +48,6 @@
     <string name="client_info"><![CDATA[பதிப்பு <b>%s</b>]]></string>
     <string name="client_info_unknown">கிளையன்ட் தகவலை ஏற்ற முடியவில்லை.</string>
     <string name="installed_clients_empty">வாட்ஸ்அப் கிளையண்டுகள் நிறுவப்படவில்லை.</string>
-    <string name="no_x_statuses_title">%s நிலைகள் இல்லை</string>
     <string name="you_should_open_wa_and_download_some_statuses">நீங்கள் WhatsApp சென்று சில நிலைகளை பதிவிறக்க வேண்டும்</string>
     <string name="wa_is_not_installed_title">WhatsApp நிறுவப்படவில்லை</string>
     <string name="this_application_will_not_work">இந்த பயன்பாடு வேலை செய்யாது</string>
@@ -62,7 +61,6 @@
     <string name="deleting_please_wait">நீக்குகிறது, காத்திருக்கவும்…</string>
     <string name="deletion_success">நீக்குதல் வெற்றி.</string>
     <string name="deletion_failed">நீக்குவதில் தோல்வி.</string>
-    <string name="permission_request_android_r">Android OS கொள்கைகள் காரணமாக, உங்கள் சாதனத்தில் உள்ள கோப்புகளை அணுக எங்களுக்கு அனுமதி வழங்க வேண்டும். வாட்ஸ்அப்பில் இருந்து ஸ்டேட்டஸ் கோப்புகளை பட்டியலிடுவதற்கு மட்டுமே இந்த அனுமதி தேவை.</string>
     <string name="permissions_denied_title">அனுமதி மறுக்கப்பட்டது</string>
     <string name="permissions_denied_message">தேவையான அனுமதிகளை நீங்கள் வழங்க வேண்டும். இந்த அனுமதிகள் இல்லாமல் இந்த ஆப் சரியாக இயங்காது.</string>
     <string name="grant_action">மானியம்</string>
