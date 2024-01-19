@@ -72,5 +72,3 @@ fun Uri.isFromClient(client: WaClient): Boolean {
     }
     return false
 }
-
-fun String?.getClientForPackageName() = WaClient.entries.firstOrNull { it.packageName == this }
