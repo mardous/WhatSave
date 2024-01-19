@@ -30,7 +30,9 @@
     <string name="tools_label">औजार</string>
     <string name="no_saved_statuses_title">कोई फ़ाइल सहेजी नहीं गई</string>
     <string name="save_some_statuses">कुछ फ़ाइलें सहेजें</string>
-    <string name="lets_go">चल दर!</string>
+    <string name="install_wa_action">व्हाट्सएप इंस्टॉल करें</string>
+    <string name="open_wa_action">व्हाट्सएप खोलें</string>
+    <string name="could_not_open_wa">व्हाट्सएप नहीं खुल सका</string>
     <string name="saving_status">फ़ाइल सहेजी जा रही है…</string>
     <string name="failed_to_save">सहेजने में विफल.</string>
     <string name="saved_successfully">सफलतापूर्वक बचाया।</string>

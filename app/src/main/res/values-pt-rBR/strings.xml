@@ -30,7 +30,9 @@
     <string name="tools_label">Ferramentas</string>
     <string name="no_saved_statuses_title">Nenhum status de %s salvo</string>
     <string name="save_some_statuses">Salve alguns status</string>
-    <string name="lets_go">Vamos!</string>
+    <string name="install_wa_action">Instale o WhatsApp</string>
+    <string name="open_wa_action">Abra o WhatsApp</string>
+    <string name="could_not_open_wa">Não foi possível abrir o WhatsApp</string>
     <string name="saving_status">Salvando status…</string>
     <string name="failed_to_save">Falha ao salvar.</string>
     <string name="saved_successfully">Salvo com sucesso.</string>

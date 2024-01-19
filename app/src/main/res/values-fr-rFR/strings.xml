@@ -30,7 +30,9 @@
     <string name="tools_label">Outils</string>
     <string name="no_saved_statuses_title">Aucun statut %s enregistre</string>
     <string name="save_some_statuses">Enregistrer certains statuts</string>
-    <string name="lets_go">Allons-y!</string>
+    <string name="install_wa_action">Installer WhatsApp</string>
+    <string name="open_wa_action">Ouvrez WhatsApp</string>
+    <string name="could_not_open_wa">Impossible d\'ouvrir WhatsApp</string>
     <string name="saving_status">Statut d\'enregistrement…</string>
     <string name="failed_to_save">Echec de l\'enregistrement.</string>
     <string name="saved_successfully">Enregistre avec succes.</string>

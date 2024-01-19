@@ -30,7 +30,9 @@
     <string name="tools_label">கருவிகள்</string>
     <string name="no_saved_statuses_title">சேமிக்கப்பட்ட %s நிலைகள் இல்லை</string>
     <string name="save_some_statuses">சில நிலைகளைச் சேமிக்கவும்</string>
-    <string name="lets_go">போகலாம்!</string>
+    <string name="install_wa_action">வாட்ஸ்அப்பை நிறுவவும்</string>
+    <string name="open_wa_action">வாட்ஸ்அப்பைத் திறக்கவும்</string>
+    <string name="could_not_open_wa">வாட்ஸ்அப்பைத் திறக்க முடியவில்லை</string>
     <string name="saving_status">நிலையைச் சேமிக்கிறது…</string>
     <string name="failed_to_save">சேமிக்க முடியவில்லை.</string>
     <string name="saved_successfully">வெற்றிகரமாக சேமிக்கப்பட்டது.</string>

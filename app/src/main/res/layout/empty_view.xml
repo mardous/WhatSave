@@ -49,4 +49,13 @@
         android:textAppearance="?textAppearanceSubtitle2"
         tools:text="@string/this_application_will_not_work"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/emptyButton"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="?android:textColorPrimary"
+        tools:text="@string/install_wa_action"/>
+
 </LinearLayout>

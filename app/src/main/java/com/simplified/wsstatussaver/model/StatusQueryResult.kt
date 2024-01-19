@@ -7,13 +7,13 @@ data class StatusQueryResult(val code: ResultCode, val statuses: List<Status> = 
 
     val isLoading: Boolean get() = code == ResultCode.Loading
 
-    enum class ResultCode(@StringRes val titleRes: Int, @StringRes val descriptionRes: Int) {
-        Idle(0, 0),
-        Success(0, 0),
+    enum class ResultCode(@StringRes val titleRes: Int = 0, @StringRes val descriptionRes: Int = 0, @StringRes val buttonTextRes: Int = 0) {
+        Idle,
+        Success,
         Loading(R.string.loading, R.string.please_wait_a_second),
-        NotInstalled(R.string.wa_is_not_installed_title, R.string.this_application_will_not_work),
-        PermissionError(R.string.permissions_denied_title, R.string.could_not_load_statuses),
-        NoStatuses(R.string.no_statuses_title, R.string.you_should_open_wa_and_download_some_statuses)
+        NotInstalled(R.string.wa_is_not_installed_title, R.string.this_application_will_not_work, R.string.install_wa_action),
+        PermissionError(R.string.could_not_load_statuses, R.string.permissions_denied_title, R.string.grant_action),
+        NoStatuses(R.string.no_statuses_title, R.string.you_should_open_wa_and_download_some_statuses, R.string.open_wa_action)
     }
 
     companion object {

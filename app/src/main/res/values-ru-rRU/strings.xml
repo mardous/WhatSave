@@ -29,7 +29,9 @@
     <string name="tools_label">Инструменты</string>
     <string name="no_saved_statuses_title">Нет сохраненных статусов %s</string>
     <string name="save_some_statuses">Сохраните несколько статусов</string>
-    <string name="lets_go">Пойдем!</string>
+    <string name="install_wa_action">Установить WhatsApp</string>
+    <string name="open_wa_action">Открыть WhatsApp</string>
+    <string name="could_not_open_wa">Не удалось открыть WhatsApp</string>
     <string name="saving_status">Сохранение статуса…</string>
     <string name="failed_to_save">Не удалось сохранить.</string>
     <string name="saved_successfully">Успешно сохранено.</string>

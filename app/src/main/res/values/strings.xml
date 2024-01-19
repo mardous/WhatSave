@@ -30,7 +30,9 @@
     <string name="tools_label">Tools</string>
     <string name="no_saved_statuses_title">No saved %s statuses</string>
     <string name="save_some_statuses">Save some statuses</string>
-    <string name="lets_go">Let\'s go!</string>
+    <string name="install_wa_action">Install WhatsApp</string>
+    <string name="open_wa_action">Open WhatsApp</string>
+    <string name="could_not_open_wa">Could not open WhatsApp</string>
     <string name="saving_status">Saving status…</string>
     <string name="failed_to_save">Failed to save.</string>
     <string name="saved_successfully">Saved successfully.</string>

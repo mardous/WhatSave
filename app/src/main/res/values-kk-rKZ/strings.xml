@@ -30,7 +30,9 @@
     <string name="tools_label">Құралдар</string>
     <string name="no_saved_statuses_title">Сақталған %s күйі жоқ</string>
     <string name="save_some_statuses">Кейбір күйлерді сақтаңыз</string>
-    <string name="lets_go">Барайық!</string>
+    <string name="install_wa_action">WhatsApp орнатыңыз</string>
+    <string name="open_wa_action">WhatsApp қолданбасын ашыңыз</string>
+    <string name="could_not_open_wa">WhatsApp ашу мүмкін болмады</string>
     <string name="saving_status">Күй сақталуда…</string>
     <string name="failed_to_save">Сақталмады.</string>
     <string name="saved_successfully">Сәтті сақталды.</string>

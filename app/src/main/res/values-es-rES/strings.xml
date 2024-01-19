@@ -28,7 +28,9 @@
     <string name="tools_label">Herramientas</string>
     <string name="no_saved_statuses_title">No has guardado estados de %s</string>
     <string name="save_some_statuses">Guarda algunos estados</string>
-    <string name="lets_go">¡Vamos allá!</string>
+    <string name="install_wa_action">Instalar WhatsApp</string>
+    <string name="open_wa_action">Abrir WhatsApp</string>
+    <string name="could_not_open_wa">No hemos podido abrir WhatsApp</string>
     <string name="saving_status">Guardando estado…</string>
     <string name="failed_to_save">No se ha podido guardar.</string>
     <string name="saved_successfully">Guardado satisfactoriamente.</string>

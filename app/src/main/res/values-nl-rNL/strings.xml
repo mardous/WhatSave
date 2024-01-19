@@ -30,7 +30,9 @@
     <string name="tools_label">Hulpmiddelen</string>
     <string name="no_saved_statuses_title">Geen opgeslagen %s statussen</string>
     <string name="save_some_statuses">Bewaar enkele statussen</string>
-    <string name="lets_go">Laten we gaan!</string>
+    <string name="install_wa_action">WhatsApp installeren</string>
+    <string name="open_wa_action">WhatsApp openen</string>
+    <string name="could_not_open_wa">Kan WhatsApp niet openen</string>
     <string name="saving_status">Status opslaan…</string>
     <string name="failed_to_save">Kan niet opslaan.</string>
     <string name="saved_successfully">Met succes opgeslagen.</string>
