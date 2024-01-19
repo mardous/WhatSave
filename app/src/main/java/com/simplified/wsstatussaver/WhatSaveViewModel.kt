@@ -124,7 +124,7 @@ class WhatSaveViewModel(
     }
 
     fun loadSavedStatuses(type: StatusType) = viewModelScope.launch(IO) {
-        val liveData = liveDataMap[type]
+        val liveData = savedLiveDataMap[type]
         if (liveData != null) {
             liveData.postValue(liveData.value?.copy(code = ResultCode.Loading) ?: StatusQueryResult(ResultCode.Loading))
             liveData.postValue(repository.savedStatuses(type))
