@@ -28,7 +28,10 @@
     <string name="home_label">Estados</string>
     <string name="saved_label">Guardado</string>
     <string name="tools_label">Herramientas</string>
-    <string name="no_saved_statuses_title">Sin estados de %s guardados</string>
+    <string name="loading">Cargando</string>
+    <string name="please_wait_a_second">Por favor, espera un momento…</string>
+    <string name="could_not_load_statuses">No se pudieron cargar los estados</string>
+    <string name="no_statuses_title">Sin estados</string>
     <string name="save_some_statuses">Guarda algunos estados</string>
     <string name="install_wa_action">Instalar WhatsApp</string>
     <string name="open_wa_action">Abrir WhatsApp</string>

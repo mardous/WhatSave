@@ -28,7 +28,10 @@
     <string name="home_label">Statuses</string>
     <string name="saved_label">Saved</string>
     <string name="tools_label">Tools</string>
-    <string name="no_saved_statuses_title">No saved %s statuses</string>
+    <string name="loading">Loading</string>
+    <string name="please_wait_a_second">Please, wait a second…</string>
+    <string name="could_not_load_statuses">Couldn\'t load statuses</string>
+    <string name="no_statuses_title">No statuses</string>
     <string name="save_some_statuses">Save some statuses</string>
     <string name="install_wa_action">Install WhatsApp</string>
     <string name="open_wa_action">Open WhatsApp</string>
