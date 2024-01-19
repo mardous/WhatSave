@@ -45,8 +45,7 @@
     <string name="x_selected">%d தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="x_is_the_default_client_now">%s இப்போது இயல்புநிலை கிளையன்ட்.</string>
     <string name="default_client_cleared">இயல்புநிலை கிளையன்ட் அழிக்கப்பட்டது.</string>
-    <string name="client_info"><![CDATA[பதிப்பு <b>%s</b> (அதிகாரப்பூர்வ கிளையன்ட்)]]></string>
-    <string name="client_info_not_official"><![CDATA[பதிப்பு <b>%s</b> (அதிகாரப்பூர்வமற்ற கிளையன்ட்)]]></string>
+    <string name="client_info"><![CDATA[பதிப்பு <b>%s</b>]]></string>
     <string name="client_info_unknown">கிளையன்ட் தகவலை ஏற்ற முடியவில்லை.</string>
     <string name="installed_clients_empty">வாட்ஸ்அப் கிளையண்டுகள் நிறுவப்படவில்லை.</string>
     <string name="no_x_statuses_title">%s நிலைகள் இல்லை</string>

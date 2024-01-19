@@ -45,8 +45,7 @@
     <string name="x_selected">%d geselecteerd</string>
     <string name="x_is_the_default_client_now">%s is nu de standaardclient.</string>
     <string name="default_client_cleared">Standaardclient gewist.</string>
-    <string name="client_info"><![CDATA[Versie <b>%s</b> (officiële client)]]></string>
-    <string name="client_info_not_official"><![CDATA[Versie <b>%s</b> (niet-officiële client)]]></string>
+    <string name="client_info"><![CDATA[Versie <b>%s</b>]]></string>
     <string name="client_info_unknown">Kan klantinformatie niet laden.</string>
     <string name="installed_clients_empty">Er zijn geen geïnstalleerde WhatsApp-clients.</string>
     <string name="no_x_statuses_title">Geen %s statussen</string>

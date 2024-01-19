@@ -45,8 +45,7 @@
     <string name="x_selected">%d चयनित</string>
     <string name="x_is_the_default_client_now">%s अब डिफ़ॉल्ट क्लाइंट है.</string>
     <string name="default_client_cleared">डिफ़ॉल्ट क्लाइंट साफ़ किया गया.</string>
-    <string name="client_info"><![CDATA[संस्करण <b>%s</b> (आधिकारिक ग्राहक)]]></string>
-    <string name="client_info_not_official"><![CDATA[संस्करण <b>%s</b> (अनौपचारिक ग्राहक)]]></string>
+    <string name="client_info"><![CDATA[संस्करण <b>%s</b>]]></string>
     <string name="client_info_unknown">ग्राहक जानकारी लोड करने में असमर्थ.</string>
     <string name="installed_clients_empty">व्हाट्सएप क्लाइंट स्थापित नहीं हैं।</string>
     <string name="no_x_statuses_title">\"%s\" प्रकार की कोई फ़ाइल नहीं है</string>

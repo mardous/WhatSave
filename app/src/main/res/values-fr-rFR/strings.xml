@@ -45,8 +45,7 @@
     <string name="x_selected">%d selectionne</string>
     <string name="x_is_the_default_client_now">%s est desormais le client par defaut.</string>
     <string name="default_client_cleared">Client par defaut efface.</string>
-    <string name="client_info"><![CDATA[Version <b>%s</b> (client officiel)]]></string>
-    <string name="client_info_not_official"><![CDATA[Version <b>%s</b> (client non officiel)]]></string>
+    <string name="client_info"><![CDATA[Version <b>%s</b>]]></string>
     <string name="client_info_unknown">Impossible de charger les informations client.</string>
     <string name="installed_clients_empty">Aucun client WhatsApp n\'est installe.</string>
     <string name="no_x_statuses_title">Aucun statut %s</string>

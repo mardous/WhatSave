@@ -45,8 +45,7 @@
     <string name="x_selected">%d таңдалды</string>
     <string name="x_is_the_default_client_now">%s қазір әдепкі клиент болып табылады.</string>
     <string name="default_client_cleared">Әдепкі клиент тазартылды.</string>
-    <string name="client_info"><![CDATA[<b>%s</b> нұсқасы (ресми клиент)]]></string>
-    <string name="client_info_not_official"><![CDATA[<b>%s</b> нұсқасы (бейресми клиент)]]></string>
+    <string name="client_info"><![CDATA[<b>%s</b> нұсқасы]]></string>
     <string name="client_info_unknown">Клиент ақпаратын жүктеу мүмкін емес.</string>
     <string name="installed_clients_empty">WhatsApp клиенттері орнатылмаған.</string>
     <string name="no_x_statuses_title">%s күйі жоқ</string>

@@ -44,8 +44,7 @@
     <string name="x_selected">%d выбрано</string>
     <string name="x_is_the_default_client_now">%s теперь является клиентом по умолчанию.</string>
     <string name="default_client_cleared">Клиент по умолчанию удален.</string>
-    <string name="client_info"><![CDATA[Версия <b>%s</b> (официальный клиент)]]></string>
-    <string name="client_info_not_official"><![CDATA[Версия <b>%s</b> (неофициальный клиент)]]></string>
+    <string name="client_info"><![CDATA[Версия <b>%s</b>]]></string>
     <string name="client_info_unknown">Не удалось загрузить информацию о клиенте.</string>
     <string name="installed_clients_empty">Не установлены клиенты WhatsApp.</string>
     <string name="no_x_statuses_title">Нет статусов %s</string>
