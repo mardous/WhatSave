@@ -186,7 +186,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     override fun onMultiSelectionAction(item: MenuItem, selection: List<Status>) {
         when (item.itemId) {
             R.id.action_share -> {
-                requestContext { context ->
+                requestContext {
                     startActivitySafe(
                         selection.toShareIntent().toChooser(getString(R.string.share_with))
                     )
@@ -228,7 +228,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onPreviewStatusClick(status: Status) = requestContext { context ->
+    override fun onPreviewStatusClick(status: Status) = requestContext {
         startActivitySafe(status.toPreviewIntent()) { _: Throwable, activityNotFound: Boolean ->
             if (activityNotFound) {
                 requestView { view ->
@@ -257,7 +257,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onShareStatusClick(status: Status) = requestContext { context ->
+    override fun onShareStatusClick(status: Status) = requestContext {
         startActivitySafe(status.toShareIntent().toChooser(getString(R.string.share_with)))
     }
 
@@ -284,7 +284,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                 } else {
                     Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
                         .setAction(R.string.share_action) {
-                            startActivitySafe(result.statuses.toShareIntent())
+                            startActivitySafe(result.statuses.toShareIntent().toChooser(getString(R.string.share_with)))
                         }
                         .show()
                 }
