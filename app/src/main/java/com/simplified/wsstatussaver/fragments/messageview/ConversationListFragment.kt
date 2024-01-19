@@ -64,8 +64,8 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         _binding = ConversationsBinding(viewBinding)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(binding.container)
-        reenterTransition = MaterialFadeThrough().addTarget(binding.container)
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
 
         adapter = ConversationAdapter(requireContext(), arrayListOf(), this).also {
             it.registerAdapterDataObserver(adapterDataObserver)

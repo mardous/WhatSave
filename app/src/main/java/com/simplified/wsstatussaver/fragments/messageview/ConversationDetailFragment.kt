@@ -48,8 +48,8 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages) {
         _binding = FragmentMessagesBinding.bind(view)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(binding.container)
-        reenterTransition = MaterialFadeThrough().addTarget(binding.container)
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
 
         setupToolbar()
         setupRecyclerView()

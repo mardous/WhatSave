@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.fragments.binding
 import com.simplified.wsstatussaver.databinding.FragmentConversationsBinding
 
 class ConversationsBinding(binding: FragmentConversationsBinding) {
-    val container = binding.container
     val toolbar = binding.toolbar
     val switchWithContainer = binding.conversationsContent.switchView
     val recyclerView = binding.conversationsContent.recyclerView

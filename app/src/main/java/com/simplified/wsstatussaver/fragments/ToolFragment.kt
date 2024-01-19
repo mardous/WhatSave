@@ -69,8 +69,8 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(binding.container)
-        reenterTransition = MaterialFadeThrough().addTarget(binding.container)
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
     }
 
     @Suppress("DEPRECATION")

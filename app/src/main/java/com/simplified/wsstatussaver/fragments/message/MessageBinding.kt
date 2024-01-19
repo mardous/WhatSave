@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.fragments.message
 import com.simplified.wsstatussaver.databinding.FragmentMessageANumberBinding
 
 class MessageBinding(binding: FragmentMessageANumberBinding) {
-    val container = binding.container
     val appBar = binding.appBar
     val toolbar = binding.toolbar
     val collapsingToolbarLayout = binding.collapsingToolbarLayout

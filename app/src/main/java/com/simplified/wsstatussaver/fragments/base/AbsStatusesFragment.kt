@@ -72,8 +72,8 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(binding.viewPager)
-        reenterTransition = MaterialFadeThrough().addTarget(binding.viewPager)
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
 
         statusesActivity.setSupportActionBar(binding.toolbar)
         statusesActivity.onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
