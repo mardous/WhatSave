@@ -23,6 +23,7 @@ import com.simplified.wsstatussaver.extensions.blacklistedSenders
 import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.whitelistMessageSender
+import com.simplified.wsstatussaver.getApp
 
 class BlacklistedSenderDialog : DialogFragment() {
 
@@ -48,7 +49,7 @@ class BlacklistedSenderDialog : DialogFragment() {
         MaterialAlertDialogBuilder(requireContext())
             .setMessage(getString(R.string.remove_x_from_the_blacklist, name).formattedAsHtml())
             .setPositiveButton(R.string.yes_action) { _: DialogInterface, _: Int ->
-                preferences().whitelistMessageSender(name)
+                getApp().preferences().whitelistMessageSender(name)
             }
             .setNegativeButton(R.string.no_action, null)
             .show()
