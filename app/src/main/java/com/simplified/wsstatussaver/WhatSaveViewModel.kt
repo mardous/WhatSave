@@ -163,6 +163,10 @@ class WhatSaveViewModel(
     fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>> =
         repository.receivedMessages(sender)
 
+    fun deleteMessage(message: MessageEntity) = viewModelScope.launch(IO) {
+        repository.removeMessage(message)
+    }
+
     fun deleteConversation(sender: Conversation, addToBlacklist: Boolean = false) = viewModelScope.launch(IO) {
         repository.deleteConversation(sender)
         if (addToBlacklist) {

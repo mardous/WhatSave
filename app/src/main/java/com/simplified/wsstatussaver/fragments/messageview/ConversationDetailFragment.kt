@@ -13,6 +13,8 @@
  */
 package com.simplified.wsstatussaver.fragments.messageview
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -21,6 +23,7 @@ import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
@@ -28,10 +31,13 @@ import com.simplified.wsstatussaver.adapter.MessageAdapter
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.databinding.FragmentMessagesBinding
+import com.simplified.wsstatussaver.extensions.startActivitySafe
+import com.simplified.wsstatussaver.extensions.toChooser
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.interfaces.IMessageCallback
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages) {
+class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMessageCallback {
 
     private val arguments by navArgs<ConversationDetailFragmentArgs>()
     private val viewModel: WhatSaveViewModel by activityViewModel()
@@ -65,7 +71,7 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages) {
     }
 
     private fun setupRecyclerView() {
-        adapter = MessageAdapter(requireContext(), arrayListOf())
+        adapter = MessageAdapter(requireContext(), arrayListOf(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
@@ -75,6 +81,26 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages) {
         if (messages.isEmpty()) {
             findNavController().popBackStack()
         }
+    }
+
+    override fun onMessageClick(message: MessageEntity) {
+        startActivitySafe(
+            Intent(Intent.ACTION_SEND)
+                .setType("text/plain")
+                .putExtra(Intent.EXTRA_TEXT, message.content)
+                .toChooser(getString(R.string.share_with))
+        )
+    }
+
+    override fun onMessageLongClick(message: MessageEntity) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.delete_message_title)
+            .setMessage(R.string.delete_message_confirmation)
+            .setPositiveButton(R.string.yes_action) { _: DialogInterface, _: Int ->
+                viewModel.deleteMessage(message)
+            }
+            .setNegativeButton(R.string.no_action, null)
+            .show()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

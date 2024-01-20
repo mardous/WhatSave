@@ -23,10 +23,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.extensions.time
+import com.simplified.wsstatussaver.interfaces.IMessageCallback
 
 class MessageAdapter(
     private val context: Context,
-    private var messages: List<MessageEntity>
+    private var messages: List<MessageEntity>,
+    private val callback: IMessageCallback
 ) : RecyclerView.Adapter<MessageAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -47,16 +49,26 @@ class MessageAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnLongClickListener {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener,
+        View.OnLongClickListener {
         val message: TextView = itemView.findViewById(R.id.message)
         val time: TextView = itemView.findViewById(R.id.time)
 
+        private val currentMessage: MessageEntity?
+            get() = layoutPosition.let { position -> if (position > -1) messages[position] else null }
+
         init {
+            itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
         }
 
+        override fun onClick(v: View?) {
+            currentMessage?.let { callback.onMessageClick(it) }
+        }
+
         override fun onLongClick(v: View?): Boolean {
-            return false
+            currentMessage?.let { callback.onMessageLongClick(it) }
+            return true
         }
     }
 }
