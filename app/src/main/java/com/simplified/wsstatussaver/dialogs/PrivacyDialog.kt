@@ -14,13 +14,10 @@
 package com.simplified.wsstatussaver.dialogs
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.privacyPolicyAccepted
 
 class PrivacyDialog : DialogFragment() {
 
@@ -28,18 +25,13 @@ class PrivacyDialog : DialogFragment() {
         return MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.privacy_and_terms)
             .setMessage(getPrivacyContent())
-            .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
-                requireContext().preferences().privacyPolicyAccepted = true
-            }
-            .setNegativeButton(R.string.close_action) { _: DialogInterface, _: Int ->
-                requireActivity().finishAffinity()
-            }
+            .setPositiveButton(android.R.string.ok, null)
             .create()
     }
 
     private fun getPrivacyContent(): CharSequence {
-        return requireContext().assets.open("privacy.txt").use {
-            it.bufferedReader().readText()
-        }
+        return requireContext().assets.open("privacy.txt")
+            .bufferedReader()
+            .use { it.readText() }
     }
 }

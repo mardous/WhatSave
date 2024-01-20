@@ -91,10 +91,10 @@ fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIF
 
 fun SharedPreferences.isAnalyticsEnabled() = getBoolean(PREFERENCE_ANALYTICS_ENABLED, true)
 
-var SharedPreferences.privacyPolicyAccepted: Boolean
-    get() = getBoolean(PREFERENCE_PRIVACY_POLICY_ACCEPTED, false)
+var SharedPreferences.isShownOnboard: Boolean
+    get() = getBoolean(SHOULD_SHOW_ONBOARD, true)
     set(value) = edit {
-        putBoolean(PREFERENCE_PRIVACY_POLICY_ACCEPTED, value)
+        putBoolean(SHOULD_SHOW_ONBOARD, value)
     }
 
 var SharedPreferences.lastUpdateSearch: Long
@@ -142,6 +142,7 @@ class UpdateSearchMode {
     }
 }
 
+const val SHOULD_SHOW_ONBOARD = "should_show_onboard"
 const val PREFERENCE_NIGHT_MODE = "night_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"
@@ -157,6 +158,5 @@ const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
 const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
 const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
 const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
-const val PREFERENCE_PRIVACY_POLICY_ACCEPTED = "privacy_policy_accepted"
 const val BLACKLISTED_MESSAGE_SENDERS = "blacklisted_message_senders"
 const val PREFERENCE_ENABLE_MESSAGE_VIEW = "enable_message_view"

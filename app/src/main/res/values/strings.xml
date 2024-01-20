@@ -162,6 +162,13 @@
     <string name="download_action">Download</string>
     <string name="more_info_action">More info.</string>
     <string name="downloading_update">Downloading WhatSave update</string>
+    <string name="configure_permissions">You must configure some permissions before continuing. Please, select the clients from which you want to load statuses:</string>
+    <string name="storage_access_title">Storage access</string>
+    <string name="storage_access_description">Storage permission is required to access and save statuses in your device.</string>
+    <string name="permissions_granted_successfully">Permissions granted successfully.</string>
+    <string name="select_the_correct_location">Please, select the correct location.</string>
+    <string name="continue_action">Continue</string>
+    <string name="has_no_permissions_warning">Take into account that you won\'t be able to save statuses until you grant the required permissions.</string>
     <string name="grant_permissions">Grant permissions</string>
     <string name="privacy_and_terms">Privacy and terms</string>
 </resources>

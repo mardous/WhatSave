@@ -62,4 +62,10 @@
         android:id="@+id/settingsFragment"
         android:name="com.simplified.wsstatussaver.fragments.SettingsFragment"
         android:label="SettingsFragment"/>
+
+    <fragment
+        android:id="@+id/onboardFragment"
+        android:name="com.simplified.wsstatussaver.fragments.onboard.OnboardFragment"
+        android:label="OnboardFragment"/>
+
 </navigation>

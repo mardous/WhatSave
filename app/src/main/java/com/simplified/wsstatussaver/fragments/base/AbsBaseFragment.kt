@@ -22,9 +22,8 @@ import androidx.annotation.LayoutRes
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.fragment.findNavController
-import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.activities.StatusesActivity
+import com.simplified.wsstatussaver.extensions.hasQ
 
 abstract class BaseFragment @JvmOverloads constructor(@LayoutRes layoutRes: Int = 0) : Fragment(layoutRes),
     MenuProvider {
@@ -37,11 +36,10 @@ abstract class BaseFragment @JvmOverloads constructor(@LayoutRes layoutRes: Int 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.STARTED)
     }
 
-    protected fun requestPermission() {
-        if (!statusesActivity.requestStoragePermissions()) {
-            findNavController().navigate(R.id.onboardFragment)
-        }
-    }
+    protected fun hasStoragePermission() = statusesActivity.hasStoragePermissions()
+
+    protected fun requestPermission(isShowOnboard: Boolean = hasQ()) =
+        statusesActivity.requestStoragePermissions(isShowOnboard)
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {}
 

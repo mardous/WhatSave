@@ -25,6 +25,7 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.*
@@ -105,15 +106,18 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         }
     }
 
-    fun requestStoragePermissions(): Boolean {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+    fun requestStoragePermissions(isShowOnboard: Boolean = preferences().isShownOnboard): Boolean {
+        return if (isShowOnboard) {
+            preferences().isShownOnboard = false
+            findNavController(R.id.main_container).navigate(R.id.onboardFragment)
+            true
+        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
             requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
-            return true
-        }
-        return false
+            true
+        } else false
     }
 
-    private fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
+    fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
@@ -125,7 +129,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                         MaterialAlertDialogBuilder(this)
                             .setTitle(R.string.permissions_denied_title)
                             .setMessage(R.string.permissions_denied_message)
-                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int -> requestStoragePermissions() }
+                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int -> requestStoragePermissions(false) }
                             .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                             .setCancelable(false)
                             .show()
