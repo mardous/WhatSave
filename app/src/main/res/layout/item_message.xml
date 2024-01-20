@@ -13,37 +13,49 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    style="@style/Widget.Material3.CardView.Filled"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="?selectableItemBackground">
+    android:layout_marginTop="4dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="72dp">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:textAppearance="?textAppearanceListItemSecondary"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@tools:sample/lorem/random"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/time"
+    <LinearLayout
+        android:id="@+id/backgroundContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:textAppearance="?textAppearanceListItemSecondary"
-        android:textColor="?android:textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/message"
-        app:layout_constraintStart_toStartOf="@+id/message"
-        tools:text="6:36 a.m."/>
+        android:padding="16dp"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textAppearance="?textAppearanceListItem"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem/random"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="?textAppearanceListItemSecondary"
+            android:textColor="?android:textColorSecondary"
+            app:layout_constraintTop_toBottomOf="@+id/message"
+            app:layout_constraintStart_toStartOf="@+id/message"
+            tools:text="6:36 a.m."/>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
