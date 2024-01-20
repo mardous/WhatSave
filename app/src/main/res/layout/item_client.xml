@@ -65,15 +65,17 @@
         app:layout_constraintEnd_toEndOf="@+id/name"
         tools:text="@string/client_info"/>
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <ImageView
         android:id="@+id/check"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:clickable="false"
-        android:focusable="false"
+        android:scaleType="center"
+        android:alpha="0"
+        app:srcCompat="@drawable/ic_check_circle_24dp"
+        app:tint="?colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:checked="true"/>
+        tools:ignore="ContentDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

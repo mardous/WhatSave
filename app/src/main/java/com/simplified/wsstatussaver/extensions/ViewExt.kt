@@ -13,12 +13,14 @@
  */
 package com.simplified.wsstatussaver.extensions
 
+import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnStart
 import androidx.core.view.drawToBitmap
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -33,6 +35,17 @@ import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 
 private const val WHATSAVE_ANIM_TIME = 350L
+
+fun View.animateAlpha(value: Float) {
+    if (value == alpha)
+        return
+
+    val animator = ObjectAnimator.ofFloat(this, View.ALPHA, alpha, value)
+        .setDuration(WHATSAVE_ANIM_TIME)
+    animator.doOnStart { setLayerType(View.LAYER_TYPE_HARDWARE, null) }
+    animator.doOnEnd { setLayerType(View.LAYER_TYPE_NONE, null) }
+    animator.start()
+}
 
 /**
  * Potentially animate showing a [NavigationBarView].

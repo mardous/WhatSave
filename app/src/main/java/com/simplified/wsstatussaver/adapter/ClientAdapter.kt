@@ -19,11 +19,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.simplified.wsstatussaver.databinding.ItemClientBinding
+import com.simplified.wsstatussaver.extensions.animateAlpha
 import com.simplified.wsstatussaver.interfaces.IClientCallback
 import com.simplified.wsstatussaver.model.WaClient
 
@@ -51,7 +51,7 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
             holder.check?.isVisible = false
         } else {
             holder.check?.isVisible = true
-            holder.check?.isChecked = checkMode == IClientCallback.MODE_CHECKED
+            holder.check?.animateAlpha(if (checkMode == IClientCallback.MODE_CHECKED) 1f else 0.35f)
         }
     }
 
@@ -68,7 +68,7 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
         var icon: ImageView? = binding.icon
         var name: TextView? = binding.name
         var description: TextView? = binding.description
-        var check: RadioButton? = binding.check
+        var check: ImageView? = binding.check
 
         init {
             itemView.setOnClickListener(this)
