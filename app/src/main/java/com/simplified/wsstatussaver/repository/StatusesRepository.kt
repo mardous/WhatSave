@@ -124,9 +124,15 @@ class StatusesRepositoryImpl(
     override suspend fun savedStatuses(type: StatusType): StatusQueryResult {
         val statuses = arrayListOf<SavedStatus>()
         if (hasQ()) {
-            val projection = arrayOf(MediaColumns._ID, MediaColumns.DISPLAY_NAME, MediaColumns.DATE_MODIFIED, MediaColumns.SIZE)
-            val selection = "${MediaColumns.RELATIVE_PATH}=?"
-            val arguments = arrayOf(type.relativePath)
+            val projection = arrayOf(
+                MediaColumns._ID,
+                MediaColumns.DISPLAY_NAME,
+                MediaColumns.DATE_MODIFIED,
+                MediaColumns.SIZE,
+                MediaColumns.RELATIVE_PATH
+            )
+            val selection = "${MediaColumns.RELATIVE_PATH} LIKE ?"
+            val arguments = arrayOf("%${type.relativePath}%")
             contentResolver.query(type.contentUri, projection, selection, arguments, null).use { cursor ->
                 if (cursor != null && cursor.moveToFirst()) do {
                     val mediaUri = ContentUris.withAppendedId(type.contentUri, cursor.getLong(0))
