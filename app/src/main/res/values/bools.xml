@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ~ Copyright (C) 2023 Christians Martínez Alvarado
+  ~ Copyright (C) 2024 Christians Martínez Alvarado
   ~
   ~ Licensed under the GNU General Public License v3
   ~
@@ -14,7 +14,5 @@
   -->
 
 <resources>
-    <!-- Launcher Icon -->
-    <color name="ic_launcher_background">@color/md_indigo_500</color>
-    <bool name="allowBackup">false</bool>
+    <bool name="allowBackup">true</bool>
 </resources>
