@@ -14,9 +14,13 @@
   -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+      xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_blacklisted_senders"
         android:title="@string/blacklisted_senders"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_clear_messages"
+        android:title="@string/clear_messages"
         app:showAsAction="never"/>
 </menu>

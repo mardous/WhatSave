@@ -134,11 +134,19 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        if (menuItem.itemId == R.id.action_blacklisted_senders) {
-            BlacklistedSenderDialog().show(childFragmentManager, "BLACKLISTED_SENDER")
-            return true
+        when (menuItem.itemId) {
+            R.id.action_blacklisted_senders -> {
+                BlacklistedSenderDialog().show(childFragmentManager, "BLACKLISTED_SENDER")
+                return true
+            }
+
+            R.id.action_clear_messages -> {
+                viewModel.deleteAllMessages()
+                return true
+            }
+
+            else -> return super.onMenuItemSelected(menuItem)
         }
-        return super.onMenuItemSelected(menuItem)
     }
 
     override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {

@@ -136,6 +136,7 @@
     <string name="empty">Vacío</string>
     <string name="yes_action">Sí</string>
     <string name="no_action">No</string>
+    <string name="clear_messages">Limpiar mensajes</string>
     <string name="accept_and_continue">Aceptar y continuar</string>
     <string name="msg_a_number">Mensaje a un número</string>
     <string name="msg_a_number_description">Inicia una conversación con alguien que no está en tu lista de contactos, usando solo su número.</string>
