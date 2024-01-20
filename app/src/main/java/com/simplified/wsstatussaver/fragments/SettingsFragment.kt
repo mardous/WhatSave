@@ -116,6 +116,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                     logLongPressActionSelected(actionName)
                     true
                 }
+            findPreference<Preference>(PREFERENCE_STATUSES_LOCATION)?.isVisible = !hasQ()
             findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = !hasR()
             findPreference<Preference>(PREFERENCE_LANGUAGE)?.setOnPreferenceChangeListener { _, newValue ->
                 val languageName = newValue as String
