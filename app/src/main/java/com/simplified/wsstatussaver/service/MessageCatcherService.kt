@@ -31,7 +31,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import java.util.*
 
 class MessageCatcherService : NotificationListenerService(), KoinComponent {
 
@@ -59,25 +58,17 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
                     if (!senderName.isNullOrBlank() && !message.isNullOrBlank()) {
                         if (!preferences().isBlacklistedMessageSender(senderName)) {
                             val messageEntity = MessageEntity(
-                                uuid = createUUID(received, senderName, message),
                                 clientPackage = client.packageName,
                                 time = received,
                                 senderName = senderName,
                                 content = message
                             )
-                            if (!repository.hasMessage(messageEntity)) {
-                                repository.insertMessage(messageEntity)
-                            }
+                            repository.insertMessage(messageEntity)
                         }
                     }
                 }
             }
         }
-    }
-
-    private fun createUUID(vararg values: Any): UUID {
-        val str = values.joinToString(separator = "/")
-        return UUID.nameUUIDFromBytes(str.encodeToByteArray())
     }
 
     @Suppress("DEPRECATION")
