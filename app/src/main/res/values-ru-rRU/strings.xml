@@ -163,6 +163,7 @@
     <string name="more_info_action">Больше информации</string>
     <string name="downloading_update">Загрузка обновления WhatSave</string>
     <string name="configure_permissions">Перед продолжением вы должны настроить некоторые разрешения. Пожалуйста, выберите клиентов, от которых вы хотите загружать статусы:</string>
+    <string name="configure_permissions_before_q">Вы должны предоставить следующие требуемые разрешения перед продолжением:</string>
     <string name="storage_access_title">Доступ к хранилищу</string>
     <string name="storage_access_description">Требуется разрешение на доступ и сохранение статусов на вашем устройстве.</string>
     <string name="permissions_granted_successfully">Разрешения успешно предоставлены.</string>

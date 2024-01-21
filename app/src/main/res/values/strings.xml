@@ -164,6 +164,7 @@
     <string name="more_info_action">More info.</string>
     <string name="downloading_update">Downloading WhatSave update</string>
     <string name="configure_permissions">You must set certain permissions to continue. Please, select the clients from which you want to load statuses:</string>
+    <string name="configure_permissions_before_q">You must grant the following required permissions before continuing:</string>
     <string name="storage_access_title">Storage access</string>
     <string name="storage_access_description">The storage access permission is essential for loading and saving statuses.</string>
     <string name="permissions_granted_successfully">Permissions granted successfully.</string>

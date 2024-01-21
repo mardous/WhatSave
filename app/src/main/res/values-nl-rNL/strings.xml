@@ -164,6 +164,7 @@
     <string name="more_info_action">Meer informatie.</string>
     <string name="downloading_update">WhatSave-update downloaden</string>
     <string name="configure_permissions">Je moet enkele machtigingen configureren voordat je verder kunt gaan. Selecteer alsjeblieft de clients van waaruit je statussen wilt laden:</string>
+    <string name="configure_permissions_before_q">Je moet de volgende vereiste toestemmingen verlenen voordat je verder kunt gaan:</string>
     <string name="storage_access_title">Toegang tot opslag</string>
     <string name="storage_access_description">Toestemming voor toegang tot opslag is vereist om statussen op te slaan en te openen op je apparaat.</string>
     <string name="permissions_granted_successfully">Machtigingen succesvol verleend.</string>

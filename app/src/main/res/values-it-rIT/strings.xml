@@ -164,6 +164,7 @@
     <string name="more_info_action">Ulteriori informazioni.</string>
     <string name="downloading_update">Download dell\'aggiornamento WhatSave</string>
     <string name="configure_permissions">Devi configurare alcune autorizzazioni prima di continuare. Per favore, seleziona i client da cui desideri caricare gli stati:</string>
+    <string name="configure_permissions_before_q">Devi concedere i seguenti permessi richiesti prima di continuare:</string>
     <string name="storage_access_title">Accesso al archivio</string>
     <string name="storage_access_description">È necessario il permesso di accesso all\'archivio per accedere e salvare gli stati nel tuo dispositivo.</string>
     <string name="permissions_granted_successfully">Autorizzazioni concesse con successo.</string>

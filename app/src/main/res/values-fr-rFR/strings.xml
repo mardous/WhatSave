@@ -164,6 +164,7 @@
     <string name="more_info_action">Plus d\'informations.</string>
     <string name="downloading_update">Téléchargement de la mise à jour WhatSave</string>
     <string name="configure_permissions">Vous devez configurer certaines autorisations avant de continuer. Veuillez sélectionner les clients à partir desquels vous souhaitez charger les statuts :</string>
+    <string name="configure_permissions_before_q">Vous devez accorder les autorisations requises suivantes avant de continuer:</string>
     <string name="storage_access_title">Accès au stockage</string>
     <string name="storage_access_description">L\'autorisation d\'accès au stockage est nécessaire pour accéder et enregistrer les statuts sur votre appareil.</string>
     <string name="permissions_granted_successfully">Autorisations accordées avec succès.</string>

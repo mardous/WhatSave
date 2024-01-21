@@ -70,6 +70,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         _binding = OnboardBinding(FragmentOnboardBinding.bind(view))
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+            binding.permissionsLabel.setText(R.string.configure_permissions_before_q)
             binding.grantStorageButton.setOnClickListener(this)
         } else {
             clientAdapter = ClientAdapter(requireContext(), this)

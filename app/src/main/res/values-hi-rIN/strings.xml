@@ -164,6 +164,7 @@
     <string name="more_info_action">और जानकारी।</string>
     <string name="downloading_update">अपडेट डाउनलोड हो रहा है</string>
     <string name="configure_permissions">आगे बढ़ने से पहले आपको कुछ अनुमतियों को कॉन्फ़िगर करनी होगी। कृपया, उन क्लाइंट्स को चुनें जिनसे आप स्थितियाँ लोड करना चाहते हैं:</string>
+    <string name="configure_permissions_before_q">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।</string>
     <string name="storage_access_title">स्टोरेज एक्सेस</string>
     <string name="storage_access_description">स्थितियों को एक्सेस और सेव करने के लिए स्टोरेज अनुमति की आवश्यकता है।</string>
     <string name="permissions_granted_successfully">अनुमतियाँ सफलतापूर्वक प्रदान की गईं।</string>

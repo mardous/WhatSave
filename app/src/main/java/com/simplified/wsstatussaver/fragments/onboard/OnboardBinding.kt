@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.fragments.onboard
 import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
 
 class OnboardBinding(binding: FragmentOnboardBinding) {
+    val permissionsLabel = binding.permissionsLabel
     val recyclerView = binding.recyclerView
     val storagePermissionView = binding.storagePermissionView.root
     val grantStorageButton = binding.storagePermissionView.grantButton
