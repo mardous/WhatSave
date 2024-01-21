@@ -165,7 +165,7 @@
     <string name="downloading_update">Downloading WhatSave update</string>
     <string name="configure_permissions">You must configure some permissions before continuing. Please, select the clients from which you want to load statuses:</string>
     <string name="storage_access_title">Storage access</string>
-    <string name="storage_access_description">Storage permission is required to access and save statuses in your device.</string>
+    <string name="storage_access_description">The storage access permission is essential for loading and saving statuses.</string>
     <string name="permissions_granted_successfully">Permissions granted successfully.</string>
     <string name="select_the_correct_location">Please, select the correct location.</string>
     <string name="continue_action">Continue</string>
