@@ -16,11 +16,12 @@ package com.simplified.wsstatussaver.database
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "received_messages")
+@Entity(tableName = "received_messages", indices = [Index("received_time", "received_from", "message_content", unique = true)])
 data class MessageEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "message_id")
