@@ -164,6 +164,8 @@
     <string name="more_info_action">Más info.</string>
     <string name="downloading_update">Descargando actualización de WhatSave</string>
     <string name="configure_permissions">Debes configurar ciertos permisos para continuar. Por favor, seleccione los clientes desde los cuales quiere cargar estados para continuar:</string>
+    <string name="storage_access_title">Acceso al almacenamiento</string>
+    <string name="storage_access_description">El permiso de acceso al almacenamiento es esencial para cargar y guardar estados.</string>
     <string name="permissions_granted_successfully">Permisos concedidos correctamente.</string>
     <string name="select_the_correct_location">Por favor, elija la ubicación correcta.</string>
     <string name="continue_action">Continuar</string>
