@@ -4,14 +4,7 @@ local.properties
 private.properties
 /update
 .gradle
-/.idea/copyright
-/.idea/caches
-/.idea/libraries
-/.idea/modules
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+/.idea/
 .DS_Store
 /build
 /captures
