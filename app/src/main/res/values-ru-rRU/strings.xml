@@ -169,7 +169,10 @@
     <string name="permissions_granted_successfully">Разрешения успешно предоставлены.</string>
     <string name="select_the_correct_location">Пожалуйста, выберите правильное местоположение.</string>
     <string name="continue_action">Продолжить</string>
-    <string name="has_no_permissions_warning">Учтите, что вы не сможете сохранять статусы, пока не предоставите необходимые разрешения.</string>
+    <string name="revoke_permissions_title">Отозвать разрешения</string>
+    <string name="revoke_permissions_message"><![CDATA[Удаление этих разрешений приведет к тому, что это приложение не сможет загружать и сохранять статусы <b>%s</b>, пока вы снова не предоставите разрешения.]]></string>
+    <string name="revoke_action">Отозвать</string>
+    <string name="permissions_revoked_successfully">Разрешения успешно отозваны.</string>
     <string name="grant_permissions">Предоставить разрешения</string>
     <string name="privacy_and_terms">Конфиденциальность и условия</string>
 </resources>

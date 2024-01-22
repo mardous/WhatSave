@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">Permissões concedidas com sucesso.</string>
     <string name="select_the_correct_location">Por favor, selecione a localização correta.</string>
     <string name="continue_action">Continuar</string>
-    <string name="has_no_permissions_warning">Leve em consideração que você não conseguirá salvar status até conceder as permissões necessárias.</string>
+    <string name="revoke_permissions_title">Revogar permissões</string>
+    <string name="revoke_permissions_message"><![CDATA[Ao remover essas permissões, este aplicativo não poderá carregar e salvar os status de <b>%s</b> até que você conceda as permissões novamente.]]></string>
+    <string name="revoke_action">Revogar</string>
+    <string name="permissions_revoked_successfully">Permissões revogadas com sucesso.</string>
     <string name="grant_permissions">Conceder permissões</string>
     <string name="privacy_and_terms">Privacidade e termos</string>
 </resources>

@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">அனுமதிகள் வெற்றிகரமாக வழங்கப்பட்டன.</string>
     <string name="select_the_correct_location">தயவுசெய்து, சரியான இடத்தைத் தேர்ந்தெடுக்கவும்.</string>
     <string name="continue_action">தொடர்க</string>
-    <string name="has_no_permissions_warning">நிர்வாகிகளை வழுக்க வேண்டிய அனுமதிகளை நீங்கள் அளிக்கும் வரை, நீங்கள் நிச்சயமாகச் செயல்படும் என்று கொள்ளுங்கள்.</string>
+    <string name="revoke_permissions_title">அனுமதிகளை ரத்து செய்</string>
+    <string name="revoke_permissions_message"><![CDATA[இந்த அனுமதிகளை நீக்கி, இந்த பயன்பாட்டிற்கு <b>%s</b> நிலைகளை ஏற்றுத்தர மற்றும் சேமிக்க முடியாது என்றால் நீங்கள் மீண்டும் அனுமதிகளை வழங்குவதோடு இருக்கும்.]]></string>
+    <string name="revoke_action">ரத்து செய்</string>
+    <string name="permissions_revoked_successfully">அனுமதிகள் வெற்றிகரமாக ரத்து செய்யப்பட்டன.</string>
     <string name="grant_permissions">அனுமதிகளை அளிக்கு</string>
     <string name="privacy_and_terms">தனியுரிமை மற்றும் விதிமுறைகள்</string>
 </resources>

@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">Рұқсаттар сәтті берілді.</string>
     <string name="select_the_correct_location">Өтініш, дұрыс орнын таңдауыңыз.</string>
     <string name="continue_action">Жалғастыру</string>
-    <string name="has_no_permissions_warning">Ескертпе: Сіз талап етілген рұқсаттарды бергенге дейін статустарды сақтау мүмкін емесіз.</string>
+    <string name="revoke_permissions_title">Рұқсаттарды тастау</string>
+    <string name="revoke_permissions_message"><![CDATA[Бұл рұқсаттарды алып тастайымы, бұл қолданба <b>%s</b> статустарын жүктеу және сақтау мүмкін болмайды, сіз қайтадан рұқсат бергенге дейін.]]></string>
+    <string name="revoke_action">Тастау</string>
+    <string name="permissions_revoked_successfully">Рұқсаттар сәтті тасталды.</string>
     <string name="grant_permissions">Рұқсат беру</string>
     <string name="privacy_and_terms">Құпиялық және шарттар</string>
 </resources>

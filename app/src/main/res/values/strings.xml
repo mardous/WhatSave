@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">Permissions granted successfully.</string>
     <string name="select_the_correct_location">Please, select the correct location.</string>
     <string name="continue_action">Continue</string>
-    <string name="has_no_permissions_warning">Take into account that you won\'t be able to save statuses until you grant the required permissions.</string>
+    <string name="revoke_permissions_title">Revoke permissions</string>
+    <string name="revoke_permissions_message"><![CDATA[By removing these permissions, this app will not be able to load and save <b>%s</b> statuses until you grant the permissions again.]]></string>
+    <string name="revoke_action">Revoke</string>
+    <string name="permissions_revoked_successfully">Permissions revoked successfully.</string>
     <string name="grant_permissions">Grant permissions</string>
     <string name="privacy_and_terms">Privacy and terms</string>
 </resources>

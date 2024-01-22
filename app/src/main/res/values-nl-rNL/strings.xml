@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">Machtigingen succesvol verleend.</string>
     <string name="select_the_correct_location">Selecteer de juiste locatie.</string>
     <string name="continue_action">Doorgaan</string>
-    <string name="has_no_permissions_warning">Houd er rekening mee dat je statussen niet kunt opslaan totdat je de vereiste machtigingen hebt verleend.</string>
+    <string name="revoke_permissions_title">Rechten intrekken</string>
+    <string name="revoke_permissions_message"><![CDATA[Door deze rechten in te trekken, kan deze app de statussen van <b>%s</b> niet meer laden en opslaan totdat u de rechten opnieuw verleent.]]></string>
+    <string name="revoke_action">Intrekken</string>
+    <string name="permissions_revoked_successfully">Rechten succesvol ingetrokken.</string>
     <string name="grant_permissions">Machtigingen verlenen</string>
     <string name="privacy_and_terms">Privacy en voorwaarden</string>
 </resources>

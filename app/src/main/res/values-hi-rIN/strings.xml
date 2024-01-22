@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">अनुमतियाँ सफलतापूर्वक प्रदान की गईं।</string>
     <string name="select_the_correct_location">कृपया, सही स्थान का चयन करें।</string>
     <string name="continue_action">जारी रखें</string>
-    <string name="has_no_permissions_warning">ध्यान दें कि आप जरूरी अनुमतियाँ प्रदान नहीं करने तक स्थितियाँ सेव नहीं कर पाएंगे।</string>
+    <string name="revoke_permissions_title">अनुमतियाँ वापस लें</string>
+    <string name="revoke_permissions_message"><![CDATA[इन अनुमतियों को हटा कर, इस एप्लिकेशन को <b>%s</b> स्थितियों को लोड और सेव करने की क्षमता नहीं होगी जब तक आप फिर से अनुमतियाँ नहीं देते।]]></string>
+    <string name="revoke_action">वापस लें</string>
+    <string name="permissions_revoked_successfully">अनुमतियाँ सफलतापूर्वक वापस ली गईं।</string>
     <string name="grant_permissions">अनुमतियाँ प्रदान करें</string>
     <string name="privacy_and_terms">गोपनीयता और शर्तें</string>
 </resources>

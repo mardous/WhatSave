@@ -113,9 +113,24 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         return !hasStoragePermission()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun clientClick(client: WaClient) {
-        this.selectedClient = client
-        permissionRequest.launch(requireContext().getClientSAFIntent(client))
+        if (client.hasPermissions(requireContext())) {
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle(R.string.revoke_permissions_title)
+                .setMessage(getString(R.string.revoke_permissions_message, client.getLabel(requireContext())).formattedAsHtml())
+                .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->
+                    if (client.releasePermissions(requireContext())) {
+                        showToast(R.string.permissions_revoked_successfully)
+                        clientAdapter?.notifyDataSetChanged()
+                    }
+                }
+                .setNegativeButton(android.R.string.cancel, null)
+                .show()
+        } else {
+            this.selectedClient = client
+            permissionRequest.launch(requireContext().getClientSAFIntent(client))
+        }
     }
 
     override fun checkModeForClient(client: WaClient): Int {
@@ -144,7 +159,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
             binding.continueButton -> {
                 if (permissionsDenied()) {
                     MaterialAlertDialogBuilder(requireContext())
-                        .setMessage(R.string.has_no_permissions_warning)
+                        .setMessage(R.string.permissions_denied_message)
                         .setPositiveButton(R.string.continue_action) { _: DialogInterface, _: Int ->
                             findNavController().popBackStack()
                         }

@@ -170,7 +170,10 @@
     <string name="permissions_granted_successfully">Autorisations accordées avec succès.</string>
     <string name="select_the_correct_location">Veuillez sélectionner l\'emplacement correct.</string>
     <string name="continue_action">Continuer</string>
-    <string name="has_no_permissions_warning">Notez que vous ne pourrez pas enregistrer les statuts tant que vous n\'aurez pas accordé les autorisations requises.</string>
+    <string name="revoke_permissions_title">Révoquer les autorisations</string>
+    <string name="revoke_permissions_message"><![CDATA[En supprimant ces autorisations, cette application ne pourra pas charger et sauvegarder les statuts de <b>%s</b> jusqu'à ce que vous accordiez à nouveau les autorisations.]]></string>
+    <string name="revoke_action">Révoquer</string>
+    <string name="permissions_revoked_successfully">Autorisations révoquées avec succès.</string>
     <string name="grant_permissions">Accorder les autorisations</string>
     <string name="privacy_and_terms">Confidentialite et conditions</string>
 </resources>

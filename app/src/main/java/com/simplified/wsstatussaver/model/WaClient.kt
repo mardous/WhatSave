@@ -64,6 +64,18 @@ enum class WaClient(val displayName: String, val packageName: String) {
         return uriPermissions.any { it.isReadPermission && it.uri.isFromClient(this) }
     }
 
+    fun releasePermissions(context: Context): Boolean {
+        val uriPermissions = context.contentResolver.persistedUriPermissions
+        for (perm in uriPermissions) {
+            if (perm.uri.isFromClient(this)) {
+                val flags = Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
+                context.contentResolver.releasePersistableUriPermission(perm.uri, flags)
+                return true
+            }
+        }
+        return false
+    }
+
     fun getLaunchIntent(packageManager: PackageManager): Intent? {
         return packageManager.getLaunchIntentForPackage(packageName)
     }
