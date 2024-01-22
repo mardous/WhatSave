@@ -21,10 +21,14 @@ import com.bumptech.glide.Glide
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
-import com.simplified.wsstatussaver.extensions.*
-import com.simplified.wsstatussaver.model.Status
-import com.simplified.wsstatussaver.model.StatusType
+import com.simplified.wsstatussaver.extensions.hasR
+import com.simplified.wsstatussaver.extensions.isQuickDeletion
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.requestContext
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
+import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusQueryResult
+import com.simplified.wsstatussaver.model.StatusType
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -33,8 +37,14 @@ class SavedStatusesFragment : AbsPagerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getSavedStatuses(statusType).observe(viewLifecycleOwner) { result ->
-            data(result)
+        viewModel.getSavedStatuses(statusType).apply {
+            observe(viewLifecycleOwner) { result ->
+                data(result)
+            }
+        }.also { liveData ->
+            if (liveData.value == StatusQueryResult.Idle) {
+                onLoadStatuses(statusType)
+            }
         }
     }
 
@@ -47,11 +57,6 @@ class SavedStatusesFragment : AbsPagerFragment() {
             isDeleteEnabled = true,
             isWhatsAppIconEnabled = false
         )
-
-    override fun onStart() {
-        super.onStart()
-        loadStatuses()
-    }
 
     override fun onSaveStatusClick(status: Status) {
         // do nothing

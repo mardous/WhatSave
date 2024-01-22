@@ -137,7 +137,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun onRefresh() {
-        loadStatuses()
+        onLoadStatuses(statusType)
     }
 
     override fun onStart() {
@@ -161,7 +161,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                         startActivitySafe(it.getLaunchIntent(requireContext().packageManager))
                     }
 
-                    else -> loadStatuses()
+                    else -> onLoadStatuses(statusType)
                 }
             }
         }
@@ -180,7 +180,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun onHasPermissionsChangeListener() {
-        loadStatuses()
+        onLoadStatuses(statusType)
     }
 
     override fun onMultiSelectionAction(item: MenuItem, selection: List<Status>) {
@@ -288,7 +288,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                         }
                         .show()
                 }
-                loadStatuses()
+                onLoadStatuses(statusType)
             } else {
                 Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
             }
@@ -301,16 +301,10 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
         } else if (result.isSuccess) {
             Snackbar.make(view, R.string.deletion_success, Snackbar.LENGTH_SHORT).show()
-            loadStatuses()
+            onLoadStatuses(statusType)
         } else {
             Snackbar.make(view, R.string.deletion_failed, Snackbar.LENGTH_SHORT).show()
         }
-    }
-
-    protected fun loadStatuses() = requestView {
-        binding.emptyView.isVisible = false
-        binding.swipeRefreshLayout.isRefreshing = true
-        onLoadStatuses(statusType)
     }
 
     companion object {
