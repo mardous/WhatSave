@@ -86,6 +86,8 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         viewModel.getInstalledClients().observe(viewLifecycleOwner) {
             clientAdapter?.setClients(it)
         }
+
+        statusesActivity.addPermissionsChangeListener(this)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -161,6 +163,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     }
 
     override fun onDestroyView() {
+        statusesActivity.removePermissionsChangeListener(this)
         super.onDestroyView()
         _binding = null
     }
