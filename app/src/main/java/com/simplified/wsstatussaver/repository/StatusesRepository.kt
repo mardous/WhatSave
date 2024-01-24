@@ -13,8 +13,6 @@
  */
 package com.simplified.wsstatussaver.repository
 
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.ContentValues
@@ -100,7 +98,7 @@ class StatusesRepositoryImpl(
                 }
             }
         } else {
-            if (context.doIHavePermissions(READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE)) {
+            if (context.hasStoragePermissions()) {
                 for (client in installedClients) {
                     val directory = File(statusesLocationPath, client.getDirectoryPath())
                     val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
@@ -122,6 +120,9 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun savedStatuses(type: StatusType): StatusQueryResult {
+        if (!context.hasStoragePermissions()) {
+            return StatusQueryResult(ResultCode.PermissionError)
+        }
         val statuses = arrayListOf<SavedStatus>()
         if (hasQ()) {
             val projection = arrayOf(
@@ -143,9 +144,6 @@ class StatusesRepositoryImpl(
                 } while (cursor.moveToNext())
             }
         } else {
-            if (!context.doIHavePermissions(READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE)) {
-                return StatusQueryResult(ResultCode.PermissionError)
-            }
             val files = type.savesDirectory.listFiles { _, name -> type.acceptFileName(name) }
             if (files != null) for (file in files) {
                 statuses.add(SavedStatus(type, file.name, file.toUri(), file.lastModified(), file.length(), file.absolutePath))

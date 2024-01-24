@@ -69,25 +69,32 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         super.onViewCreated(view, savedInstanceState)
         _binding = OnboardBinding(FragmentOnboardBinding.bind(view))
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            binding.permissionsLabel.setText(R.string.configure_permissions_before_q)
-            binding.grantStorageButton.setOnClickListener(this)
-        } else {
-            clientAdapter = ClientAdapter(requireContext(), this)
-            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-            binding.recyclerView.adapter = clientAdapter
-            binding.recyclerView.isVisible = true
-            binding.storagePermissionView.isVisible = false
-        }
-
+        binding.grantStorageButton.setOnClickListener(this)
         binding.continueButton.setOnClickListener(this)
         binding.privacyPolicyButton.setOnClickListener(this)
+        setupClientPermissions()
+        setupGrantButtonIcon()
 
         viewModel.getInstalledClients().observe(viewLifecycleOwner) {
             clientAdapter?.setClients(it)
         }
 
         statusesActivity.addPermissionsChangeListener(this)
+    }
+
+    private fun setupGrantButtonIcon() {
+        val iconRes = if (hasStoragePermissions()) R.drawable.ic_round_check_24dp else R.drawable.ic_storage_24dp
+        binding.grantStorageButton.setIconResource(iconRes)
+    }
+
+    private fun setupClientPermissions() {
+        if (hasQ()) {
+            clientAdapter = ClientAdapter(requireContext(), this)
+            binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerView.adapter = clientAdapter
+        } else {
+            binding.clientPermissionView.isVisible = false
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -104,13 +111,6 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 showToast(R.string.select_the_correct_location, Toast.LENGTH_LONG)
             }
         }
-    }
-
-    private fun permissionsDenied(): Boolean {
-        if (hasQ()) {
-            return requireContext().hasNoPermissions()
-        }
-        return !hasStoragePermission()
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -141,23 +141,20 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     }
 
     override fun onHasPermissionsChangeListener() {
-        if (binding.storagePermissionView.isVisible) {
-            val iconRes = if (hasStoragePermission()) R.drawable.ic_round_check_24dp else R.drawable.ic_storage_24dp
-            binding.grantStorageButton.setIconResource(iconRes)
-        }
+        setupGrantButtonIcon()
     }
 
     override fun onClick(view: View) {
         when (view) {
             binding.grantStorageButton -> {
-                if (!hasStoragePermission()) {
-                    requestPermission(false)
+                if (!hasStoragePermissions()) {
+                    requestWithoutOnboard()
                 }
             }
 
             binding.privacyPolicyButton -> PrivacyDialog().show(childFragmentManager, "PRIVACY_POLICY")
             binding.continueButton -> {
-                if (permissionsDenied()) {
+                if (!hasPermissions()) {
                     MaterialAlertDialogBuilder(requireContext())
                         .setMessage(R.string.permissions_denied_message)
                         .setPositiveButton(R.string.continue_action) { _: DialogInterface, _: Int ->

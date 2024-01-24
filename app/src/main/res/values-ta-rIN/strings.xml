@@ -163,8 +163,9 @@
     <string name="download_action">பதிவிறக்க Tamil</string>
     <string name="more_info_action">மேலும் தகவல்.</string>
     <string name="downloading_update">WhatSave புதுப்பிப்பைப் பதிவிறக்குகிறது</string>
-    <string name="configure_permissions">தொழில்நுட்பத்தை தொகுக்க முந்தினர் சில அனுமதிகளை கட்டமைக்க வேண்டும். தயவுசெய்து, நீங்கள் புதிய நிலைகளை ஏற்ற விரும்பும் வாடிக்கையாளர்களை தேர்ந்தெடுங்கள்:</string>
-    <string name="configure_permissions_before_q">தொடர முன் நீங்கள் கேட்கப்படும் அனுமதிகளை அளிக்க வேண்டும்:</string>
+    <string name="special_permissions_title">சிறந்த அணுகல் அனுமதிகள்</string>
+    <string name="special_permissions_description">தயவுசெய்து, நீங்கள் புதிய நிலைகளை ஏற்ற விரும்பும் வாடிக்கையாளர்களை தேர்ந்தெடுங்கள்:</string>
+    <string name="storage_permission_label">தொடர முன் நீங்கள் கேட்கப்படும் அனுமதிகளை அளிக்க வேண்டும்:</string>
     <string name="storage_access_title">சேமிப்பு அணுகல்</string>
     <string name="storage_access_description">உங்கள் சாதனத்தில் நிலைகளை அணுக மற்றும் சேமிக்க அனுமதி தேவை.</string>
     <string name="permissions_granted_successfully">அனுமதிகள் வெற்றிகரமாக வழங்கப்பட்டன.</string>

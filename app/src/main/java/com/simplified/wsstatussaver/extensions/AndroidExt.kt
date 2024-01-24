@@ -13,8 +13,6 @@
  */
 package com.simplified.wsstatussaver.extensions
 
-import android.annotation.TargetApi
-import android.app.Activity
 import android.app.NotificationManager
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
@@ -94,20 +92,14 @@ fun Context.isNotificationListener(): Boolean {
     return notificationManager?.isNotificationListenerAccessGranted(componentName) == true
 }
 
-/**
- * This method is used only on API 28 and bellow.
- */
-@TargetApi(Build.VERSION_CODES.P)
 fun Context.doIHavePermissions(vararg permissions: String): Boolean {
-    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-        for (permission in permissions) {
-            if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
-                return false
-            }
+    if (permissions.isEmpty()) return false
+    for (permission in permissions) {
+        if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
+            return false
         }
-        return true
     }
-    return false
+    return true
 }
 
 fun Context.openSettings(action: String, packageName: String? = this.packageName) {
@@ -148,12 +140,6 @@ fun PackageInfo.versionCode() = PackageInfoCompat.getLongVersionCode(this).toInt
 
 fun Context.startActivitySafe(intent: Intent?, onError: ExceptionConsumer? = null) {
     intent.doWithIntent(onError) { startActivity(it) }
-}
-
-fun Context.startActivityForResultSafe(intent: Intent?, code: Int, onError: ExceptionConsumer? = null) {
-    if (this is Activity) {
-        intent.doWithIntent(onError) { startActivityForResult(it, code) }
-    }
 }
 
 fun Context.showToast(messageRes: Int, duration: Int = Toast.LENGTH_SHORT) {

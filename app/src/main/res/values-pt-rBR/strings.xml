@@ -163,8 +163,9 @@
     <string name="download_action">Download</string>
     <string name="more_info_action">Mais informações.</string>
     <string name="downloading_update">Baixando a atualização do WhatSave</string>
-    <string name="configure_permissions">Você precisa configurar algumas permissões antes de continuar. Por favor, selecione os clientes dos quais deseja carregar os status:</string>
-    <string name="configure_permissions_before_q">Você deve conceder as seguintes permissões necessárias antes de continuar:</string>
+    <string name="special_permissions_title">Permissões de acesso especial</string>
+    <string name="special_permissions_description">Por favor, selecione os clientes dos quais deseja carregar os status:</string>
+    <string name="storage_permission_label">Você deve conceder as seguintes permissões necessárias antes de continuar:</string>
     <string name="storage_access_title">Acesso ao armazenamento</string>
     <string name="storage_access_description">É necessário permissão para acessar e salvar status em seu dispositivo.</string>
     <string name="permissions_granted_successfully">Permissões concedidas com sucesso.</string>

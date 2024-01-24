@@ -25,7 +25,6 @@ import androidx.annotation.ColorInt
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.navigation.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.*
@@ -37,10 +36,6 @@ import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 abstract class AbsBaseActivity : AppCompatActivity() {
 
     private val permissionsChangeListeners: MutableList<IPermissionChangeListener?> = ArrayList()
-    private val permissionsToRequest = arrayOf(
-        Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE
-    )
 
     private var hadPermissions = false
     private var lastThemeUpdate: Long = -1
@@ -71,7 +66,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
         if (!hasStoragePermissions()) {
-            requestStoragePermissions()
+            requestPermissions(preferences().isShownOnboard)
         }
     }
 
@@ -106,22 +101,9 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         }
     }
 
-    fun requestStoragePermissions(isShowOnboard: Boolean = preferences().isShownOnboard): Boolean {
-        return if (isShowOnboard) {
-            preferences().isShownOnboard = false
-            findNavController(R.id.main_container).navigate(R.id.onboardFragment)
-            true
-        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
-            requestPermissions(permissionsToRequest, PERMISSION_REQUEST_STORAGE)
-            true
-        } else false
-    }
-
-    fun hasStoragePermissions() = doIHavePermissions(*permissionsToRequest)
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == PERMISSION_REQUEST_STORAGE) {
+        if (requestCode == STORAGE_PERMISSION_REQUEST) {
             for (grantResult in grantResults) {
                 if (grantResult != PackageManager.PERMISSION_GRANTED) {
                     if (shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -129,7 +111,9 @@ abstract class AbsBaseActivity : AppCompatActivity() {
                         MaterialAlertDialogBuilder(this)
                             .setTitle(R.string.permissions_denied_title)
                             .setMessage(R.string.permissions_denied_message)
-                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int -> requestStoragePermissions(false) }
+                            .setPositiveButton(R.string.grant_action) { _: DialogInterface, _: Int ->
+                                requestWithoutOnboard()
+                            }
                             .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int -> finish() }
                             .setCancelable(false)
                             .show()
@@ -151,9 +135,5 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         }
         hadPermissions = true
         onHasPermissionsChanged()
-    }
-
-    companion object {
-        private const val PERMISSION_REQUEST_STORAGE = 100
     }
 }

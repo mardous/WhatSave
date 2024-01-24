@@ -163,8 +163,9 @@
     <string name="download_action">Спампаваць</string>
     <string name="more_info_action">Дадатковая інфармацыя.</string>
     <string name="downloading_update">Спампоўка абнаўлення WhatSave</string>
-    <string name="configure_permissions">Перад тым як працягнуць, вы павінны сканфігураваць некаторыя дазволы. Калі ласка, выберыце кліентоў, з якіх вы хочаце загружаць статусы:</string>
-    <string name="configure_permissions_before_q">Вы павінны дазволіць наступныя патрэбныя дазволы перш, чым працягваць:</string>
+    <string name="special_permissions_title">Дазволы на спецыяльны доступ</string>
+    <string name="special_permissions_description">Калі ласка, выберыце кліентоў, з якіх вы хочаце загружаць статусы:</string>
+    <string name="storage_permission_label">Вы павінны дазволіць наступныя патрэбныя дазволы перш, чым працягваць:</string>
     <string name="storage_access_title">Доступ да памяці</string>
     <string name="storage_access_description">Дазвол на доступ да памяці неабходны для доступу і захавання статусаў на вашым прыладзе.</string>
     <string name="permissions_granted_successfully">Дазволы паспяхова прызначаны.</string>

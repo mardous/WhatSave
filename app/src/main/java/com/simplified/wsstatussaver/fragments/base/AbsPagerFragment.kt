@@ -155,7 +155,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             val resultCode = lastResult?.code
             if (resultCode != StatusQueryResult.ResultCode.Loading) {
                 when (resultCode) {
-                    StatusQueryResult.ResultCode.PermissionError -> requestPermission()
+                    StatusQueryResult.ResultCode.PermissionError -> requestPermissions()
                     StatusQueryResult.ResultCode.NotInstalled -> requireContext().openGooglePlay("com.whatsapp")
                     StatusQueryResult.ResultCode.NoStatuses -> requireContext().getPreferredClient()?.let {
                         startActivitySafe(it.getLaunchIntent(requireContext().packageManager))

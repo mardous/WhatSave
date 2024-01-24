@@ -163,8 +163,9 @@
     <string name="download_action">Жүктеп алу</string>
     <string name="more_info_action">Қосымша ақпарат.</string>
     <string name="downloading_update">WhatSave жаңартуы жүктелуде</string>
-    <string name="configure_permissions">Жалғастыруды жалғастыру үшін бірнеше рұқсаттарды теңшеу керек. Сіздің статустарын жүктеу үшін келесі клиенттерді таңдауыңызды сұрау едіміз:</string>
-    <string name="configure_permissions_before_q">Жалғастырудан бұрын келесі қажетті рұқсаттарды беруіңіз келеді:</string>
+    <string name="special_permissions_title">Арнайы кіру рұқсаттары</string>
+    <string name="special_permissions_description">Сіздің статустарын жүктеу үшін келесі клиенттерді таңдауыңызды сұрау едіміз:</string>
+    <string name="storage_permission_label">Жалғастырудан бұрын келесі қажетті рұқсаттарды беруіңіз келеді:</string>
     <string name="storage_access_title">Сақтау қолдану</string>
     <string name="storage_access_description">Сіздің құрылғыңыздағы статустарға қолдану және сақтау үшін сақтау рұқсаты қажет.</string>
     <string name="permissions_granted_successfully">Рұқсаттар сәтті берілді.</string>
