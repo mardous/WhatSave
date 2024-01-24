@@ -23,6 +23,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -80,6 +81,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         }
 
         statusesActivity.addPermissionsChangeListener(this)
+        getOnBackPressedDispatcher().addCallback(viewLifecycleOwner, onBackPressedCallback)
     }
 
     private fun setupGrantButtonIcon() {
@@ -118,7 +120,12 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         if (client.hasPermissions(requireContext())) {
             MaterialAlertDialogBuilder(requireContext())
                 .setTitle(R.string.revoke_permissions_title)
-                .setMessage(getString(R.string.revoke_permissions_message, client.getLabel(requireContext())).formattedAsHtml())
+                .setMessage(
+                    getString(
+                        R.string.revoke_permissions_message,
+                        client.getLabel(requireContext())
+                    ).formattedAsHtml()
+                )
                 .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->
                     if (client.releasePermissions(requireContext())) {
                         showToast(R.string.permissions_revoked_successfully)
@@ -154,17 +161,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
 
             binding.privacyPolicyButton -> PrivacyDialog().show(childFragmentManager, "PRIVACY_POLICY")
             binding.continueButton -> {
-                if (!hasPermissions()) {
-                    MaterialAlertDialogBuilder(requireContext())
-                        .setMessage(R.string.permissions_denied_message)
-                        .setPositiveButton(R.string.continue_action) { _: DialogInterface, _: Int ->
-                            findNavController().popBackStack()
-                        }
-                        .setNegativeButton(R.string.grant_permissions, null)
-                        .show()
-                    return
-                }
-                findNavController().popBackStack()
+                getOnBackPressedDispatcher().onBackPressed()
             }
         }
     }
@@ -178,5 +175,28 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         statusesActivity.removePermissionsChangeListener(this)
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun handleBackPress(): Boolean {
+        if (!hasPermissions()) {
+            MaterialAlertDialogBuilder(requireContext())
+                .setMessage(R.string.permissions_denied_message)
+                .setPositiveButton(R.string.continue_action) { _: DialogInterface, _: Int ->
+                    findNavController().popBackStack()
+                }
+                .setNegativeButton(R.string.grant_permissions, null)
+                .show()
+            return true
+        }
+        return false
+    }
+
+    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            if (!handleBackPress()) {
+                remove()
+                getOnBackPressedDispatcher().onBackPressed()
+            }
+        }
     }
 }

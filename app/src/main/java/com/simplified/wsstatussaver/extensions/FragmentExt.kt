@@ -70,6 +70,8 @@ fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     context?.showToast(message, duration)
 }
 
+fun Fragment.getOnBackPressedDispatcher() = requireActivity().onBackPressedDispatcher
+
 fun AppCompatActivity.currentFragment(navHostId: Int): Fragment? {
     val navHostFragment: NavHostFragment =
         supportFragmentManager.findFragmentById(navHostId) as NavHostFragment
