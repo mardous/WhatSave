@@ -39,16 +39,6 @@ fun Context.setDefaultClient(client: WaClient?) {
     preferences().defaultClientPackageName = client?.packageName
 }
 
-fun Context.hasAllPermissions(): Boolean {
-    return getAllInstalledClients().all { it.hasPermissions(this) }
-}
-
-fun Context.hasNoPermissions(): Boolean {
-    return getAllInstalledClients().none { it.hasPermissions(this) }
-}
-
-fun Context.hasWAInstalled() = getAllInstalledClients().isNotEmpty()
-
 fun Context.getAllInstalledClients() = WaClient.entries.filter { it.isInstalled(this) }
 
 fun Context.getClientIfInstalled(packageName: String?) =
