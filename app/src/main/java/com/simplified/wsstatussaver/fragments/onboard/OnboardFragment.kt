@@ -15,14 +15,11 @@ package com.simplified.wsstatussaver.fragments.onboard
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
-import android.app.Activity
-import android.content.ContentResolver
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -51,19 +48,19 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     private val binding get() = _binding!!
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
-    private val contentResolver: ContentResolver
-        get() = requireContext().contentResolver
 
     private lateinit var permissionRequest: ActivityResultLauncher<Intent>
     private var clientAdapter: ClientAdapter? = null
     private var selectedClient: WaClient? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        permissionRequest =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
-                if (result != null) takePermissions(result)
+        permissionRequest = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
+            if (result != null && selectedClient?.takePermissions(requireContext(), result) == true) {
+                clientAdapter?.notifyDataSetChanged()
             }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,22 +93,6 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
             binding.recyclerView.adapter = clientAdapter
         } else {
             binding.clientPermissionView.isVisible = false
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun takePermissions(result: ActivityResult) {
-        if (selectedClient != null && result.resultCode == Activity.RESULT_OK) {
-            val uri = result.data?.data ?: return
-            if (uri.isFromClient(selectedClient!!)) {
-                contentResolver.takePersistableUriPermission(
-                    uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                )
-                showToast(R.string.permissions_granted_successfully)
-                clientAdapter?.notifyDataSetChanged()
-            } else {
-                showToast(R.string.select_the_correct_location, Toast.LENGTH_LONG)
-            }
         }
     }
 

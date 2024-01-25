@@ -13,16 +13,20 @@
  */
 package com.simplified.wsstatussaver.extensions
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.storage.StorageManager
 import android.provider.DocumentsContract
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.annotation.RequiresApi
 import androidx.core.content.IntentCompat
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
+import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.logDefaultClient
 import com.simplified.wsstatussaver.model.WaClient
 
@@ -66,6 +70,22 @@ fun Uri.isFromClient(client: WaClient): Boolean {
         val lastPart = path.split(":")
         if (lastPart.size == 2) {
             return lastPart[1] == client.getSAFDirectoryPath()
+        }
+    }
+    return false
+}
+
+fun WaClient.takePermissions(context: Context, result: ActivityResult, isShowToast: Boolean = true): Boolean {
+    if (result.resultCode == Activity.RESULT_OK) {
+        val uri = result.data?.data ?: return false
+        if (uri.isFromClient(this)) {
+            context.contentResolver.takePersistableUriPermission(
+                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+            )
+            if (isShowToast) context.showToast(R.string.permissions_granted_successfully)
+            return true
+        } else {
+            if (isShowToast) context.showToast(R.string.select_the_correct_location, Toast.LENGTH_LONG)
         }
     }
     return false
