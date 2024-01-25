@@ -102,4 +102,9 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
         clientAdapter.unregisterAdapterDataObserver(adapterDataObserver)
         super.onDismiss(dialog)
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
