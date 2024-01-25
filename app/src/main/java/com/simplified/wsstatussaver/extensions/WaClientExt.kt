@@ -50,6 +50,11 @@ fun Context.getClientIfInstalled(packageName: String?) =
 
 fun Context.getPreferredClient() = getDefaultClient() ?: getAllInstalledClients().firstOrNull()
 
+fun List<WaClient>.getPreferred(context: Context): List<WaClient> {
+    val preferred = context.getDefaultClient()
+    return if (preferred == null) this else filter { it.packageName == preferred.packageName }
+}
+
 @RequiresApi(Build.VERSION_CODES.Q)
 fun Context.getClientSAFIntent(client: WaClient): Intent {
     val storageManager = getSystemService<StorageManager>()!!

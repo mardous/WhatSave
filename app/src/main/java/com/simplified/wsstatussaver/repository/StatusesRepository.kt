@@ -99,7 +99,7 @@ class StatusesRepositoryImpl(
             }
         } else {
             if (context.hasStoragePermissions()) {
-                for (client in installedClients) {
+                for (client in installedClients.getPreferred(context)) {
                     val directory = File(statusesLocationPath, client.getDirectoryPath())
                     val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
                     if (!statuses.isNullOrEmpty()) for (file in statuses) {
