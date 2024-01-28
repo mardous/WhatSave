@@ -69,5 +69,9 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
                     "message_content TEXT NOT NULL, " +
                     "PRIMARY KEY(message_id))"
         )
+
+        db.execSQL(
+            "CREATE UNIQUE INDEX messages_index ON received_messages (received_time, received_from, message_content)"
+        )
     }
 }

@@ -21,7 +21,10 @@ import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-@Entity(tableName = "received_messages", indices = [Index("received_time", "received_from", "message_content", unique = true)])
+@Entity(
+    tableName = "received_messages",
+    indices = [Index("received_time", "received_from", "message_content", unique = true, name = "messages_index")]
+)
 data class MessageEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "message_id")
