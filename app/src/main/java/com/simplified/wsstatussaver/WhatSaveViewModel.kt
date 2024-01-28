@@ -131,6 +131,13 @@ class WhatSaveViewModel(
         }
     }
 
+    fun reloadAll() {
+        StatusType.entries.forEach {
+            loadStatuses(it)
+            loadSavedStatuses(it)
+        }
+    }
+
     fun saveStatus(status: Status, saveName: String? = null): LiveData<SaveResult> = liveData(IO) {
         emit(SaveResult(isSaving = true))
         val result = repository.saveStatus(status, saveName)

@@ -180,7 +180,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun onHasPermissionsChangeListener() {
-        onLoadStatuses(statusType)
+        viewModel.reloadAll()
     }
 
     override fun onMultiSelectionAction(item: MenuItem, selection: List<Status>) {
@@ -288,7 +288,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                         }
                         .show()
                 }
-                onLoadStatuses(statusType)
+                viewModel.reloadAll()
             } else {
                 Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
             }
@@ -301,7 +301,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
         } else if (result.isSuccess) {
             Snackbar.make(view, R.string.deletion_success, Snackbar.LENGTH_SHORT).show()
-            onLoadStatuses(statusType)
+            viewModel.reloadAll()
         } else {
             Snackbar.make(view, R.string.deletion_failed, Snackbar.LENGTH_SHORT).show()
         }
