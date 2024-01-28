@@ -30,12 +30,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
+        android:paddingTop="28dp"
+        android:paddingBottom="28dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_speaker_notes_off_24dp"
             app:tint="?colorError"
@@ -61,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody1"
+            android:textAppearance="?textAppearanceBody2"
             android:textColor="?android:textColorSecondary"
             android:text="@string/you_wont_be_able_to_see_messages_here"
             app:layout_constraintTop_toBottomOf="@android:id/text1"
