@@ -47,4 +47,6 @@
 
     <dimen name="onboard_titles_vertical_padding">24dp</dimen>
     <dimen name="onboard_titles_horizontal_padding">24dp</dimen>
+    <dimen name="msg_a_number_padding_horizontal">16dp</dimen>
+    <dimen name="msg_a_number_padding_vertical">16dp</dimen>
 </resources>
