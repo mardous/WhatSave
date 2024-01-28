@@ -24,7 +24,13 @@ import com.simplified.wsstatussaver.R
 const val STORAGE_PERMISSION_REQUEST = 100
 
 fun getRequestedPermissions(): Array<String> =
-    mutableListOf(Manifest.permission.READ_EXTERNAL_STORAGE).apply {
+    mutableListOf<String>().apply {
+        if (hasT()) {
+            add(Manifest.permission.READ_MEDIA_IMAGES)
+            add(Manifest.permission.READ_MEDIA_VIDEO)
+        } else {
+            add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
         if (!hasQ()) {
             add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
