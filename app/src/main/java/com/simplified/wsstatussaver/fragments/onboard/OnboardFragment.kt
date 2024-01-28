@@ -24,8 +24,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
@@ -44,6 +46,7 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickListener, IClientCallback,
     IPermissionChangeListener {
 
+    private val args by navArgs<OnboardFragmentArgs>()
     private var _binding: OnboardBinding? = null
     private val binding get() = _binding!!
 
@@ -70,6 +73,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         binding.grantStorageButton.setOnClickListener(this)
         binding.continueButton.setOnClickListener(this)
         binding.privacyPolicyButton.setOnClickListener(this)
+        setupViews()
         setupClientPermissions()
         setupGrantButtonIcon()
 
@@ -79,6 +83,13 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
 
         statusesActivity.addPermissionsChangeListener(this)
         getOnBackPressedDispatcher().addCallback(viewLifecycleOwner, onBackPressedCallback)
+    }
+
+    private fun setupViews() {
+        if (args.isFromSettings) {
+            binding.subtitle.isVisible = false
+            binding.storagePermissionView.isGone = hasStoragePermissions()
+        }
     }
 
     private fun setupGrantButtonIcon() {

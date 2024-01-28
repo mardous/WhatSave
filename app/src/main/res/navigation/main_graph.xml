@@ -66,6 +66,11 @@
     <fragment
         android:id="@+id/onboardFragment"
         android:name="com.simplified.wsstatussaver.fragments.onboard.OnboardFragment"
-        android:label="OnboardFragment"/>
+        android:label="OnboardFragment">
+        <argument
+            android:name="isFromSettings"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
 
 </navigation>

@@ -13,12 +13,14 @@
  */
 package com.simplified.wsstatussaver.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.doOnPreDraw
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -116,8 +118,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                     logLongPressActionSelected(actionName)
                     true
                 }
-            findPreference<Preference>(PREFERENCE_STATUSES_LOCATION)?.isVisible = !hasQ()
-            findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = !hasR()
             findPreference<Preference>(PREFERENCE_LANGUAGE)?.setOnPreferenceChangeListener { _, newValue ->
                 val languageName = newValue as String
                 if (languageName == "auto") {
@@ -131,6 +131,21 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->
                 setAnalyticsEnabled((newValue as Boolean))
                 true
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                findPreference<Preference>(PREFERENCE_STATUSES_LOCATION)?.isVisible = false
+                findPreference<Preference>(PREFERENCE_DEFAULT_CLIENT)?.isVisible = false
+                findPreference<Preference>(PREFERENCE_GRANT_PERMISSIONS)?.apply {
+                    isVisible = true
+                    setOnPreferenceClickListener {
+                        findActivityNavController(R.id.main_container)
+                            .navigate(R.id.onboardFragment, bundleOf("isFromSettings" to true))
+                        true
+                    }
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = false
+                }
             }
         }
     }

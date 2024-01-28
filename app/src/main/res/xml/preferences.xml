@@ -80,6 +80,14 @@
             android:summary="@string/default_client_summary"
             android:key="default_client"/>
 
+        <Preference
+            android:layout="@layout/list_item_view"
+            android:title="@string/grant_permissions"
+            android:summary="@string/default_client_summary"
+            android:key="grant_permissions"
+            android:persistent="false"
+            app:isPreferenceVisible="false"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -43,6 +43,7 @@
                 android:text="@string/grant_permissions"/>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
@@ -62,13 +63,13 @@
             <include
                 android:id="@+id/storagePermissionView"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 layout="@layout/storage_permission_view"/>
 
             <include
                 android:id="@+id/clientPermissionView"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 layout="@layout/client_permission_view"/>
 
         </LinearLayout>
