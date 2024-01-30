@@ -208,22 +208,25 @@ class StatusesRepositoryImpl(
     }
 
     private fun execDeletion(status: SavedStatus, autoNotify: Boolean = true): Boolean {
-        val deletedRows = contentResolver.delete(status.fileUri, null, null)
-        if (deletedRows > 0) {
-            if (autoNotify) {
-                contentResolver.notifyChange(status.type.contentUri, null)
-            }
-            if (status.hasFile()) {
-                val file = status.getFile()
-                return if (file.exists()) {
-                    file.delete()
-                } else {
-                    true
-                }
-            }
-            return true
+        if (!context.hasStoragePermissions()) {
+            return false
         }
-        return false
+        val success = when {
+            hasQ() -> contentResolver.delete(status.fileUri, null, null) > 0
+            status.hasFile() -> {
+                val file = status.getFile()
+                if (!file.exists() || file.delete()) {
+                    contentResolver.delete(status.type.contentUri, "${MediaColumns.DATA}=?", arrayOf(status.getFilePath()))
+                    true
+                } else false
+            }
+            else -> false
+        }
+        if (success) {
+            if (autoNotify) contentResolver.notifyChange(status.type.contentUri, null)
+            if (!status.name.isNullOrEmpty()) statusDao.removeSave(status.name)
+        }
+        return success
     }
 
     private fun saveAndGetUri(status: StatusEntity): Uri? {

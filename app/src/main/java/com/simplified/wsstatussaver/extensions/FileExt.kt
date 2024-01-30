@@ -24,6 +24,14 @@ import java.util.concurrent.TimeUnit
 import kotlin.math.log10
 import kotlin.math.pow
 
+fun File.canonicalOrAbsolutePath(): String {
+    val canonical = runCatching { this.canonicalPath }
+    if (canonical.isFailure) {
+        return absolutePath
+    }
+    return canonical.getOrThrow()
+}
+
 fun File.getUri(): Uri = FileProvider.getUriForFile(getApp().applicationContext, App.getFileProviderAuthority(), this)
 
 private fun Long.hasElapsedTwentyFourHours(): Boolean {

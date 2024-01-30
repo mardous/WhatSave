@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver.model
 
 import android.net.Uri
+import com.simplified.wsstatussaver.extensions.canonicalOrAbsolutePath
 import java.io.File
 
 class SavedStatus(
@@ -30,5 +31,9 @@ class SavedStatus(
     fun getFile(): File {
         checkNotNull(path)
         return File(path)
+    }
+
+    fun getFilePath(): String {
+        return getFile().canonicalOrAbsolutePath()
     }
 }
