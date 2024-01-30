@@ -302,9 +302,11 @@ class StatusesRepositoryImpl(
 
     private fun scanSavedStatuses(statusType: StatusType) {
         if (!hasQ()) {
-            val files = statusType.savesDirectory.list { _, name -> name.endsWith(statusType.format) }
+            val files = statusType.savesDirectory.listFiles { _, name -> name.endsWith(statusType.format) }
+                ?.map { it.absolutePath }
+                ?.toTypedArray()
             if (!files.isNullOrEmpty()) {
-                MediaScannerConnection.scanFile(context, files, null, null)
+                MediaScannerConnection.scanFile(context, files, arrayOf(statusType.mimeType), null)
             }
         }
     }
