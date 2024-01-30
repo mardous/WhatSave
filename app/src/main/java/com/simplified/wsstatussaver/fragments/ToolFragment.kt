@@ -22,12 +22,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.getSystemService
 import androidx.core.view.doOnPreDraw
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
-import com.simplified.wsstatussaver.fragments.message.MessageFragment
 import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
 import com.simplified.wsstatussaver.extensions.isNotificationListener
 import com.simplified.wsstatussaver.extensions.preferences
@@ -64,6 +64,8 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         credentialsRequestLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
                 viewModel.unlockMessageView()
+            } else {
+                viewModel.getMessageViewLockObservable().removeObserver(credentialObserver)
             }
         }
 
@@ -73,21 +75,23 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         reenterTransition = MaterialFadeThrough().addTarget(view)
     }
 
-    @Suppress("DEPRECATION")
     private fun openMessageView() {
-        viewModel.getMessageViewLockObservable().observe(viewLifecycleOwner) { isUnlocked ->
-            if (isUnlocked || !preferences().isMessageViewEnabled) {
-                findNavController().navigate(R.id.conversationsFragment)
+        viewModel.getMessageViewLockObservable().observe(viewLifecycleOwner, credentialObserver)
+    }
+
+    @Suppress("DEPRECATION")
+    private val credentialObserver = Observer<Boolean> { isUnlocked ->
+        if (isUnlocked || !preferences().isMessageViewEnabled) {
+            findNavController().navigate(R.id.conversationsFragment)
+        } else {
+            val credentialsRequestIntel = keyguardManager.createConfirmDeviceCredentialIntent(
+                getString(R.string.message_view),
+                getString(R.string.confirm_device_credentials)
+            )
+            if (credentialsRequestIntel != null) {
+                credentialsRequestLauncher.launch(credentialsRequestIntel)
             } else {
-                val credentialsRequestIntel = keyguardManager.createConfirmDeviceCredentialIntent(
-                    getString(R.string.message_view),
-                    getString(R.string.confirm_device_credentials)
-                )
-                if (credentialsRequestIntel != null) {
-                    credentialsRequestLauncher.launch(credentialsRequestIntel)
-                } else {
-                    viewModel.unlockMessageView()
-                }
+                viewModel.unlockMessageView()
             }
         }
     }
