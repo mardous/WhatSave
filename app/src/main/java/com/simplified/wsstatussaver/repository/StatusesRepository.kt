@@ -196,15 +196,13 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun delete(statuses: List<Status>): Int {
-        val contentUris = statuses.filterIsInstance<SavedStatus>()
+        val deletedMessages = statuses.filterIsInstance<SavedStatus>()
             .filter { execDeletion(it, false) }
-            .map { it.type.contentUri }
-            .distinct()
-
+        val contentUris = deletedMessages.map { it.type.contentUri }.distinct()
         for (uri in contentUris) {
             context.contentResolver.notifyChange(uri, null)
         }
-        return contentUris.size
+        return deletedMessages.size
     }
 
     private fun execDeletion(status: SavedStatus, autoNotify: Boolean = true): Boolean {
