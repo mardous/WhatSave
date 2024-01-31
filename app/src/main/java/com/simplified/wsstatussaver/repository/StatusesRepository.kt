@@ -200,7 +200,7 @@ class StatusesRepositoryImpl(
             .filter { execDeletion(it, false) }
         val contentUris = deletedMessages.map { it.type.contentUri }.distinct()
         for (uri in contentUris) {
-            context.contentResolver.notifyChange(uri, null)
+            contentResolver.notifyChange(uri, null)
         }
         return deletedMessages.size
     }
@@ -280,7 +280,7 @@ class StatusesRepositoryImpl(
 
         var uri: Uri? = null
         var stream: OutputStream? = null
-        val resolver = context.contentResolver
+        val resolver = contentResolver
         try {
             uri = resolver.insert(contentUri, values)
             if (uri != null) {
