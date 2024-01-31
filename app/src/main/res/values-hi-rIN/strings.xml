@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">यह पहचानने के लिए कि यह किस ग्राहक से प्राप्त किया गया था, प्रत्येक स्थिति के नीचे एक छोटा आइकन प्रदर्शित करें।</string>
     <string name="quick_deletion_title">त्वरित विलोपन</string>
     <string name="quick_deletion_summary">पुष्टिकरण विंडो प्रदर्शित किए बिना सहेजी गई स्थितियों को हटाने की अनुमति देता है। सिफारिश नहीं की गई।</string>
+    <string name="review_permissions_title">अनुमतियों की समीक्षा करें</string>
+    <string name="review_permissions_summary">इंस्टॉल किए गए व्हाट्सएप क्लाइंट के लिए अनुमतियां दें या हटाएं।</string>
     <string name="default_client_title">डिफ़ॉल्ट क्लाइंट</string>
     <string name="default_client_summary">यदि आपके पास एकाधिक व्हाट्सएप क्लाइंट इंस्टॉल हैं, तो आप उनमें से एक का चयन कर सकते हैं जिसमें से स्टेटस लोड करना है।</string>
     <string name="analytics_enabled_title">उपयोग के आँकड़े भेजें</string>

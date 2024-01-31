@@ -96,6 +96,8 @@
     <string name="whatsapp_icon_summary">Muestra debajo de los estados un pequeño icono para identificar desde cuál cliente se cargó un estado.</string>
     <string name="quick_deletion_title">Eliminación rápida</string>
     <string name="quick_deletion_summary">Permite eliminar estados guardados sin mostrar una ventana de confirmación. No recomendado.</string>
+    <string name="review_permissions_title">Revisar permisos</string>
+    <string name="review_permissions_summary">Conceda o remueva los permisos para los clientes de WhatsApp instalados.</string>
     <string name="default_client_title">Cliente predeterminado</string>
     <string name="default_client_summary">Si tienes varios clientes de WhatsApp instalados, puedes elegir desde cuál cargar los estados.</string>
     <string name="analytics_enabled_title">Envíar estadísticas de uso</string>

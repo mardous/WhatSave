@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">எந்த வாடிக்கையாளரிடமிருந்து பெறப்பட்டது என்பதைக் கண்டறிய, ஒவ்வொரு நிலைக்கும் கீழே ஒரு சிறிய ஐகானைக் காண்பிக்கவும்.</string>
     <string name="quick_deletion_title">விரைவான நீக்கம்</string>
     <string name="quick_deletion_summary">உறுதிப்படுத்தல் சாளரத்தைக் காட்டாமல் சேமிக்கப்பட்ட நிலைகளை நீக்க அனுமதிக்கிறது. பரிந்துரைக்கப்படவில்லை.</string>
+    <string name="review_permissions_title">அனுமதிகளை மதிப்பாய்வு செய்யவும்</string>
+    <string name="review_permissions_summary">நிறுவப்பட்ட WhatsApp கிளையண்டுகளுக்கான அனுமதிகளை வழங்கவும் அல்லது அகற்றவும்</string>
     <string name="default_client_title">இயல்புநிலை கிளையன்ட்</string>
     <string name="default_client_summary">உங்களிடம் பல வாட்ஸ்அப் கிளையன்ட்கள் நிறுவப்பட்டிருந்தால், நிலைகளை ஏற்ற வேண்டிய ஒன்றைத் தேர்ந்தெடுக்கலாம்.</string>
     <string name="analytics_enabled_title">பயன்பாட்டு புள்ளிவிவரங்களை அனுப்பவும்</string>

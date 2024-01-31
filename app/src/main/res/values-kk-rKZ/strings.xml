@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Қай клиенттен алынғанын анықтау үшін әрбір күйдің астында шағын белгішені көрсетіңіз.</string>
     <string name="quick_deletion_title">Жылдам жою</string>
     <string name="quick_deletion_summary">Растау терезесін көрсетпей-ақ сақталған күйлерді жоюға мүмкіндік береді. Ұсынылмайды.</string>
+    <string name="review_permissions_title">Рұқсаттарды қарап шығу</string>
+    <string name="review_permissions_summary">Орнатылған WhatsApp клиенттеріне рұқсат беріңіз немесе алып тастаңыз.</string>
     <string name="default_client_title">Әдепкі клиент</string>
     <string name="default_client_summary">Егер сізде бірнеше WhatsApp клиенті орнатылған болса, күйлерді жүктейтін біреуін таңдауға болады.</string>
     <string name="analytics_enabled_title">Пайдалану статистикасын жіберіңіз</string>

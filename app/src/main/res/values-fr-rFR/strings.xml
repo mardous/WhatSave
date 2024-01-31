@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Affichez une petite icone sous chaque statut pour identifier de quel client il a ete obtenu.</string>
     <string name="quick_deletion_title">Suppression rapide</string>
     <string name="quick_deletion_summary">Permet la suppression des statuts enregistres sans afficher de fenetre de confirmation. Non recommande.</string>
+    <string name="review_permissions_title">Vérifier les autorisations</string>
+    <string name="review_permissions_summary">Accordez ou supprimez des autorisations pour les clients WhatsApp installés.</string>
     <string name="default_client_title">Client par defaut</string>
     <string name="default_client_summary">Si plusieurs clients WhatsApp sont installes, vous pouvez selectionner celui a partir duquel charger les statuts.</string>
     <string name="analytics_enabled_title">Envoyer des statistiques d\'utilisation</string>

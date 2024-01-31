@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Exiba um pequeno ícone abaixo de cada status para identificar de qual cliente ele foi obtido.</string>
     <string name="quick_deletion_title">Exclusão rápida</string>
     <string name="quick_deletion_summary">Permite a exclusão de status salvos sem exibir janela de confirmação. Não recomendado.</string>
+    <string name="review_permissions_title">Revise as permissões</string>
+    <string name="review_permissions_summary">Conceda ou remova permissões para clientes WhatsApp instalados.</string>
     <string name="default_client_title">Cliente padrão</string>
     <string name="default_client_summary">Se você tiver vários clientes WhatsApp instalados, poderá selecionar aquele para carregar os status.</string>
     <string name="analytics_enabled_title">Enviar estatísticas de uso</string>

@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Geef onder elke status een klein pictogram weer om aan te geven van welke klant deze is verkregen.</string>
     <string name="quick_deletion_title">Snelle verwijdering</string>
     <string name="quick_deletion_summary">Maakt het verwijderen van opgeslagen statussen mogelijk zonder een bevestigingsvenster weer te geven. Niet aangeraden.</string>
+    <string name="review_permissions_title">Machtigingen controleren</string>
+    <string name="review_permissions_summary">Verleen of verwijder rechten voor geïnstalleerde WhatsApp-clients.</string>
     <string name="default_client_title">Standaardklant</string>
     <string name="default_client_summary">Als je meerdere WhatsApp-clients hebt geïnstalleerd, kun je degene selecteren waaruit je de statussen wilt laden.</string>
     <string name="analytics_enabled_title">Gebruiksstatistieken verzenden</string>

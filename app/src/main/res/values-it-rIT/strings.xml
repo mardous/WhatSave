@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Visualizza una piccola icona sotto ogni stato per identificare da quale client è stato ottenuto.</string>
     <string name="quick_deletion_title">Cancellazione rapida</string>
     <string name="quick_deletion_summary">Permette la cancellazione degli stati salvati senza visualizzare una finestra di conferma. Non consigliato.</string>
+    <string name="review_permissions_title">Esaminare le autorizzazioni</string>
+    <string name="review_permissions_summary">Concedi o rimuovi le autorizzazioni per i client WhatsApp installati.</string>
     <string name="default_client_title">Cliente predefinito</string>
     <string name="default_client_summary">Se hai installato più client WhatsApp, puoi selezionare quello da cui caricare gli stati.</string>
     <string name="analytics_enabled_title">Invia statistiche di utilizzo</string>

@@ -97,6 +97,8 @@
     <string name="whatsapp_icon_summary">Адлюстроўвайце невялікі значок пад кожным статусам, каб вызначыць, ад якога кліента ён быў атрыманы.</string>
     <string name="quick_deletion_title">Хуткае выдаленне</string>
     <string name="quick_deletion_summary">Дазваляе выдаленне захаваных статусаў без адлюстравання акна пацверджання. Не рэкамендуецца.</string>
+    <string name="review_permissions_title">Агляд дазволаў</string>
+    <string name="review_permissions_summary">Давайце або выдаляйце дазволы для ўсталяваных кліентаў WhatsApp.</string>
     <string name="default_client_title">Кліент па змаўчанні</string>
     <string name="default_client_summary">Калі ў вас усталявана некалькі кліентаў WhatsApp, вы можаце выбраць той, з якога загружаць статусы.</string>
     <string name="analytics_enabled_title">Адправіць статыстыку выкарыстання</string>

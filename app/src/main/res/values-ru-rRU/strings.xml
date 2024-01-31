@@ -96,6 +96,8 @@
     <string name="whatsapp_icon_summary">Отобразите небольшой значок под каждым статусом, чтобы определить, от какого клиента он был получен.</string>
     <string name="quick_deletion_title">Быстрое удаление</string>
     <string name="quick_deletion_summary">Позволяет удалять сохраненные статусы без отображения окна подтверждения. Не рекомендуется.</string>
+    <string name="review_permissions_title">Просмотр разрешений</string>
+    <string name="review_permissions_summary">Предоставьте или удалите разрешения для установленных клиентов WhatsApp.</string>
     <string name="default_client_title">Клиент по умолчанию</string>
     <string name="default_client_summary">Если у вас установлено несколько клиентов WhatsApp, вы можете выбрать тот, из которого нужно загружать статусы.</string>
     <string name="analytics_enabled_title">Отправлять статистику использования</string>
