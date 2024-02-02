@@ -16,6 +16,6 @@ package com.simplified.wsstatussaver.interfaces
 import com.simplified.wsstatussaver.database.Conversation
 
 interface IConversationCallback {
-    fun onConversationClick(conversation: Conversation)
-    fun onConversationLongClick(conversation: Conversation)
+    fun conversationClick(conversation: Conversation)
+    fun conversationLongClick(conversation: Conversation)
 }

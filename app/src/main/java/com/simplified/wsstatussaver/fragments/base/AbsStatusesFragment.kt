@@ -96,10 +96,10 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
         _binding = null
     }
 
-    override fun onScrollToTop() {
+    override fun scrollToTop() {
         val currentFragment = binding.viewPager.findCurrentFragment(childFragmentManager)
         if (currentFragment is AbsPagerFragment) {
-            currentFragment.onScrollToTop()
+            currentFragment.scrollToTop()
         }
     }
 

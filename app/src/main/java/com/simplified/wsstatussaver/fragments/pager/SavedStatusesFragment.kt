@@ -58,11 +58,11 @@ class SavedStatusesFragment : AbsPagerFragment() {
             isWhatsAppIconEnabled = false
         )
 
-    override fun onSaveStatusClick(status: Status) {
+    override fun saveStatusClick(status: Status) {
         // do nothing
     }
 
-    override fun onDeleteStatusClick(status: Status) {
+    override fun deleteStatusClick(status: Status) {
         requestContext { context ->
             if (hasR()) {
                 viewModel.createDeleteRequest(requireContext(), listOf(status)).observe(viewLifecycleOwner) {

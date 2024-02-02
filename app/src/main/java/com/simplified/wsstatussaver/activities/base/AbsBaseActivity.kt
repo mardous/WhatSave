@@ -97,7 +97,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
 
     private fun onHasPermissionsChanged() {
         for (listener in permissionsChangeListeners) {
-            listener?.onHasPermissionsChangeListener()
+            listener?.permissionsStateChanged()
         }
     }
 

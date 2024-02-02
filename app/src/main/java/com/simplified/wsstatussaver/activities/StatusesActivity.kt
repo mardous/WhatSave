@@ -106,7 +106,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
     override fun onNavigationItemReselected(item: MenuItem) {
         val currentFragment = currentFragment(R.id.main_container)
         if (currentFragment is AbsStatusesFragment) {
-            currentFragment.onScrollToTop()
+            currentFragment.scrollToTop()
         }
     }
 

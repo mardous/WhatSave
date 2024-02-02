@@ -16,6 +16,6 @@ package com.simplified.wsstatussaver.interfaces
 import com.simplified.wsstatussaver.database.MessageEntity
 
 interface IMessageCallback {
-    fun onMessageClick(message: MessageEntity)
-    fun onMessageLongClick(message: MessageEntity)
+    fun messageClick(message: MessageEntity)
+    fun messageLongClick(message: MessageEntity)
 }

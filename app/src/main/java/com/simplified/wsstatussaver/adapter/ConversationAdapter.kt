@@ -76,11 +76,11 @@ class ConversationAdapter(
         }
 
         override fun onClick(view: View) {
-            callback.onConversationClick(currentItem)
+            callback.conversationClick(currentItem)
         }
 
         override fun onLongClick(v: View?): Boolean {
-            callback.onConversationLongClick(currentItem)
+            callback.conversationLongClick(currentItem)
             return true
         }
     }

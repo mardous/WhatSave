@@ -17,5 +17,5 @@ import android.view.MenuItem
 import com.simplified.wsstatussaver.model.Status
 
 interface IMultiStatusCallback : IStatusCallback {
-    fun onMultiSelectionAction(item: MenuItem, selection: List<Status>)
+    fun multiSelectionItemClick(item: MenuItem, selection: List<Status>)
 }

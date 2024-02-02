@@ -130,7 +130,7 @@ open class StatusAdapter(
         if (item.itemId == R.id.action_select_all) {
             checkAll()
         } else {
-            callback.onMultiSelectionAction(item, ArrayList(checked))
+            callback.multiSelectionItemClick(item, ArrayList(checked))
             finishActionMode()
         }
         return true
@@ -237,25 +237,25 @@ open class StatusAdapter(
                     }
 
                     LongPressAction.VALUE_PREVIEW -> {
-                        callback.onPreviewStatusClick(status)
+                        callback.previewStatusClick(status)
                         return true
                     }
 
                     LongPressAction.VALUE_SAVE -> {
                         if (isSaveEnabled) {
-                            callback.onSaveStatusClick(status)
+                            callback.saveStatusClick(status)
                         }
                         return true
                     }
 
                     LongPressAction.VALUE_SHARE -> {
-                        callback.onShareStatusClick(status)
+                        callback.shareStatusClick(status)
                         return true
                     }
 
                     LongPressAction.VALUE_DELETE -> {
                         if (isDeleteEnabled) {
-                            callback.onDeleteStatusClick(status)
+                            callback.deleteStatusClick(status)
                         }
                         return true
                     }

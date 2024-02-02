@@ -42,17 +42,17 @@ fun Context.showStatusOptions(
         binding.setupPreview(status)
         binding.setupSave(isSaveEnabled) {
             bottomSheetDialog.dismiss()
-            callback.onSaveStatusClick(status)
+            callback.saveStatusClick(status)
         }
         binding.setupDelete(isDeleteEnabled) {
             bottomSheetDialog.dismiss()
-            callback.onDeleteStatusClick(status)
+            callback.deleteStatusClick(status)
         }
         binding.setupListeners {
             bottomSheetDialog.dismiss()
             when (it) {
-                binding.shareAction -> callback.onShareStatusClick(status)
-                binding.image -> callback.onPreviewStatusClick(status)
+                binding.shareAction -> callback.shareStatusClick(status)
+                binding.image -> callback.previewStatusClick(status)
             }
         }
 

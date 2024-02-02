@@ -17,5 +17,5 @@ package com.simplified.wsstatussaver.interfaces
  * @author Christians Martínez Alvarado (mardous)
  */
 interface IPermissionChangeListener {
-    fun onHasPermissionsChangeListener()
+    fun permissionsStateChanged()
 }

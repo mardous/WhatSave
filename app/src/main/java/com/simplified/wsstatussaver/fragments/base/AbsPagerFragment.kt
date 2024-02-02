@@ -132,7 +132,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
     protected abstract fun onCreateAdapter(): StatusAdapter
 
-    override fun onScrollToTop() {
+    override fun scrollToTop() {
         binding.recyclerView.scrollToPosition(0)
     }
 
@@ -179,11 +179,11 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onHasPermissionsChangeListener() {
+    override fun permissionsStateChanged() {
         viewModel.reloadAll()
     }
 
-    override fun onMultiSelectionAction(item: MenuItem, selection: List<Status>) {
+    override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) {
         when (item.itemId) {
             R.id.action_share -> {
                 requestContext {
@@ -228,7 +228,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onPreviewStatusClick(status: Status) = requestContext {
+    override fun previewStatusClick(status: Status) = requestContext {
         startActivitySafe(status.toPreviewIntent()) { _: Throwable, activityNotFound: Boolean ->
             if (activityNotFound) {
                 requestView { view ->
@@ -242,7 +242,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onSaveStatusClick(status: Status) = requestContext { context ->
+    override fun saveStatusClick(status: Status) = requestContext { context ->
         if (status.isSaved) {
             MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.save_again_title)
@@ -257,7 +257,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun onShareStatusClick(status: Status) = requestContext {
+    override fun shareStatusClick(status: Status) = requestContext {
         startActivitySafe(status.toShareIntent().toChooser(getString(R.string.share_with)))
     }
 
@@ -278,7 +278,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                 if (result.saved == 1) {
                     Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT)
                         .setAction(R.string.open_action) {
-                            onPreviewStatusClick(result.statuses.single())
+                            previewStatusClick(result.statuses.single())
                         }
                         .show()
                 } else {

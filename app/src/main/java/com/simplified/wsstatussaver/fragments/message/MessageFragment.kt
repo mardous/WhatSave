@@ -106,7 +106,7 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
         menu.removeItem(R.id.action_about)
     }
 
-    override fun onCountryClick(country: Country) {
+    override fun countryClick(country: Country) {
         viewModel.setSelectedCountry(country)
         countriesDialog?.dismiss()
     }

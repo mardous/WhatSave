@@ -186,7 +186,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         buttonView.isChecked = isEnabled
     }
 
-    override fun onConversationClick(conversation: Conversation) {
+    override fun conversationClick(conversation: Conversation) {
         val arguments = ConversationDetailFragmentArgs.Builder(conversation)
             .build()
             .toBundle()
@@ -194,7 +194,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         findNavController().navigate(R.id.messagesFragment, arguments)
     }
 
-    override fun onConversationLongClick(conversation: Conversation) {
+    override fun conversationLongClick(conversation: Conversation) {
         val binding = DialogDeleteConversationBinding.inflate(layoutInflater)
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.delete_conversation_title)

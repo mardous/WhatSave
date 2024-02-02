@@ -63,11 +63,11 @@ class MessageAdapter(
         }
 
         override fun onClick(v: View?) {
-            currentMessage?.let { callback.onMessageClick(it) }
+            currentMessage?.let { callback.messageClick(it) }
         }
 
         override fun onLongClick(v: View?): Boolean {
-            currentMessage?.let { callback.onMessageLongClick(it) }
+            currentMessage?.let { callback.messageLongClick(it) }
             return true
         }
     }

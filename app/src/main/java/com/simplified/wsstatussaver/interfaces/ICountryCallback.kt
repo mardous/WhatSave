@@ -16,5 +16,5 @@ package com.simplified.wsstatussaver.interfaces
 import com.simplified.wsstatussaver.model.Country
 
 interface ICountryCallback {
-    fun onCountryClick(country: Country)
+    fun countryClick(country: Country)
 }

@@ -83,7 +83,7 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
         }
     }
 
-    override fun onMessageClick(message: MessageEntity) {
+    override fun messageClick(message: MessageEntity) {
         startActivitySafe(
             Intent(Intent.ACTION_SEND)
                 .setType("text/plain")
@@ -92,7 +92,7 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
         )
     }
 
-    override fun onMessageLongClick(message: MessageEntity) {
+    override fun messageLongClick(message: MessageEntity) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.delete_message_title)
             .setMessage(R.string.delete_message_confirmation)

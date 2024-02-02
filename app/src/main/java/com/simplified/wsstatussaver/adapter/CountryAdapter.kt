@@ -73,7 +73,7 @@ class CountryAdapter(
 
         override fun onClick(view: View) {
             val country = this.country ?: return
-            callback.onCountryClick(country)
+            callback.countryClick(country)
         }
     }
 }

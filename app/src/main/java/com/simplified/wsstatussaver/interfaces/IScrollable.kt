@@ -14,5 +14,5 @@
 package com.simplified.wsstatussaver.interfaces
 
 interface IScrollable {
-    fun onScrollToTop()
+    fun scrollToTop()
 }

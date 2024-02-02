@@ -70,7 +70,7 @@ class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPrefe
         }
     }
 
-    override fun onDeleteStatusClick(status: Status) {}
+    override fun deleteStatusClick(status: Status) {}
 
     override fun onLoadStatuses(type: StatusType) {
         viewModel.loadStatuses(type)
