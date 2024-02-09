@@ -3,5 +3,5 @@
 /huawei
 /google
 /release
-/debug/google-services.json
-/main/google-services.json
+/google-services.json
+/src/debug/google-services.json
