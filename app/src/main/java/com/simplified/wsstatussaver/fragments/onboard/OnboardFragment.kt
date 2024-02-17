@@ -14,10 +14,8 @@
 package com.simplified.wsstatussaver.fragments.onboard
 
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.content.DialogInterface
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -44,7 +42,6 @@ import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.model.WaClient
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-@TargetApi(Build.VERSION_CODES.Q)
 class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickListener, IClientCallback,
     IPermissionChangeListener {
 
@@ -132,7 +129,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 }
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
-        } else {
+        } else if (hasQ()) { // Just to remove the Lint warning
             this.selectedClient = client
             permissionRequest.launch(requireContext().getClientSAFIntent(client))
         }
