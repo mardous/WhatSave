@@ -15,10 +15,10 @@ package com.simplified.wsstatussaver.database
 
 import com.simplified.wsstatussaver.model.Status
 
-private fun Status.getSaveName(i: String?, delta: Int = 0): String {
+private fun Status.getSaveName(i: String?, timeMillis: Long, delta: Int = 0): String {
     var saveName = i
     if (saveName.isNullOrBlank()) {
-        return type.getDefaultSaveName(delta)
+        return type.getDefaultSaveName(timeMillis, delta)
     }
     if (!saveName.endsWith(type.format)) {
         saveName += type.format
@@ -29,12 +29,12 @@ private fun Status.getSaveName(i: String?, delta: Int = 0): String {
     return saveName
 }
 
-fun Status.toStatusEntity(saveName: String?, delta: Int = 0) = StatusEntity(
+fun Status.toStatusEntity(saveName: String?, timeMillis: Long = System.currentTimeMillis(), delta: Int = 0) = StatusEntity(
     type = type,
     name = name,
     origin = fileUri,
     dateModified = dateModified,
     size = size,
     client = clientPackage,
-    saveName = getSaveName(saveName, delta)
+    saveName = getSaveName(saveName, timeMillis, delta)
 )

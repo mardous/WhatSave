@@ -174,8 +174,9 @@ class StatusesRepositoryImpl(
         }
         val savedStatuses = HashMap<Status, Uri>()
         val unsavedStatuses = statuses.filterNot { it.isSaved }
+        val currentTimeMillis = System.currentTimeMillis()
         for ((i, status) in unsavedStatuses.withIndex()) {
-            val savable = status.toStatusEntity(null, i)
+            val savable = status.toStatusEntity(null, currentTimeMillis, i)
             val savedUri = saveAndGetUri(savable)
             if (savedUri != null) {
                 savedStatuses[status] = savedUri

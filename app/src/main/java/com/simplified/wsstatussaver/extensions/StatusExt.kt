@@ -42,7 +42,7 @@ fun Status.getFormattedDate(context: Context): String {
  * Generates and returns a new save name depending on the
  * given [StatusType] format and the current time.
  */
-fun getNewSaveName(type: StatusType? = null, timeMillis: Long = System.currentTimeMillis(), delta: Int = 0): String {
+fun getNewSaveName(type: StatusType? = null, timeMillis: Long, delta: Int): String {
     var saveName = String.format("Status_%s", fileDateFormat.format(Date(timeMillis)))
     if (delta > 0) {
         saveName += "-$delta"
