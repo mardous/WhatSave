@@ -21,20 +21,6 @@
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/dialog_preferred_padding_small">
 
-    <ImageView
-        android:id="@+id/share_app"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="8dp"
-        android:scaleType="center"
-        android:background="?roundSelector"
-        app:srcCompat="@drawable/ic_share_24dp"
-        app:tint="?colorControlNormal"
-        app:layout_constraintTop_toTopOf="@+id/app_version"
-        app:layout_constraintBottom_toBottomOf="@+id/app_version"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription"/>
-
     <LinearLayout
         android:id="@+id/app_version"
         android:layout_width="match_parent"
@@ -163,5 +149,19 @@
             android:text="@string/contact_summary"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/share_app"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:scaleType="center"
+        android:background="?roundSelector"
+        app:srcCompat="@drawable/ic_share_24dp"
+        app:tint="?colorControlNormal"
+        app:layout_constraintTop_toTopOf="@+id/app_version"
+        app:layout_constraintBottom_toBottomOf="@+id/app_version"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
