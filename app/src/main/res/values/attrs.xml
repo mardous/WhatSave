@@ -16,6 +16,7 @@
 <resources>
     <attr name="iconColor" format="reference"/>
     <attr name="rectSelector" format="reference"/>
+    <attr name="roundSelector" format="reference"/>
     <attr name="toolbarPopupTheme" format="reference"/>
     <declare-styleable name="IconImageView">
         <attr format="reference|color" name="iconViewColor"/>
