@@ -22,6 +22,8 @@
     <string name="save_action">Сохранять</string>
     <string name="share_action">Делиться</string>
     <string name="share_with">Поделиться с…</string>
+    <string name="share_app">Поделиться приложением</string>
+    <string name="app_share">Я приглашаю вас попробовать это интересное приложение: WhatSave. Загрузите его здесь: %s</string>
     <string name="open_action">Открыть</string>
     <string name="more_label">Более</string>
     <string name="home_label">Статусы</string>

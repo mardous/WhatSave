@@ -23,6 +23,8 @@
     <string name="save_action">Захаваць</string>
     <string name="share_action">падзяліцца</string>
     <string name="share_with">Падзяліцца з…</string>
+    <string name="share_app">Падзяліцца праграмай</string>
+    <string name="app_share">Я запрашаю вас паспрабаваць гэта цікавае прыкладанне: WhatSave. Спампуйце тут: %s</string>
     <string name="open_action">Адкрыты</string>
     <string name="more_label">больш</string>
     <string name="home_label">Статусы</string>

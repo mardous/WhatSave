@@ -23,6 +23,8 @@
     <string name="save_action">बचाना</string>
     <string name="share_action">शेयर करना</string>
     <string name="share_with">के साथ शेयर करें…</string>
+    <string name="share_app">ऐप शेयर करें</string>
+    <string name="app_share">यह दिलचस्प एप्लिकेशन आपको WA स्टेटस को सहेजने की अनुमति देता है। इसे यहां डाउनलोड करें: %s</string>
     <string name="open_action">खुला</string>
     <string name="more_label">अधिक</string>
     <string name="home_label">वे स्थितियां</string>

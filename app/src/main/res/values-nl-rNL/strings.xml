@@ -23,6 +23,8 @@
     <string name="save_action">Redden</string>
     <string name="share_action">Deel</string>
     <string name="share_with">Delen met…</string>
+    <string name="share_app">Deel app</string>
+    <string name="app_share">Ik nodig je uit om deze interessante app te proberen: WhatSave. Download het hier: %s</string>
     <string name="open_action">Open</string>
     <string name="more_label">Meer</string>
     <string name="home_label">Statussen</string>

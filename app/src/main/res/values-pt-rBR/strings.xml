@@ -23,6 +23,8 @@
     <string name="save_action">Salvar</string>
     <string name="share_action">Compartilhar</string>
     <string name="share_with">Compartilhar com…</string>
+    <string name="share_app">Compartilhe o aplicativo</string>
+    <string name="app_share">Convido você a experimentar este aplicativo interessante: WhatSave. Baixe aqui: %s</string>
     <string name="open_action">Abrir</string>
     <string name="more_label">Mais</string>
     <string name="home_label">Status</string>

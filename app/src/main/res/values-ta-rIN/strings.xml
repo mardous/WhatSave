@@ -23,6 +23,8 @@
     <string name="save_action">சேமிக்கவும்</string>
     <string name="share_action">பகிர்</string>
     <string name="share_with">பங்கு…</string>
+    <string name="share_app">பயன்பாட்டைப் பகிரவும்</string>
+    <string name="app_share">இந்த சுவாரஸ்யமான பயன்பாட்டை முயற்சிக்க உங்களை அழைக்கிறேன்: WhatSave. அதை இங்கே பதிவிறக்கவும்: %s</string>
     <string name="open_action">திற</string>
     <string name="more_label">மேலும்</string>
     <string name="home_label">நிலைகள்</string>

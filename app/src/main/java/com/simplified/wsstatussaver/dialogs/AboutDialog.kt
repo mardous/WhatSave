@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.dialogs
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -34,6 +35,9 @@ class AboutDialog : DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val binding = DialogAboutBinding.inflate(layoutInflater).apply {
             version.text = getString(R.string.version_x, getApp().versionName)
+            shareApp.setOnClickListener {
+                shareApp()
+            }
             appVersion.setOnClickListener {
                 context?.openWeb(GITHUB_RELEASES)
             }
@@ -62,9 +66,18 @@ class AboutDialog : DialogFragment() {
             .create()
     }
 
+    private fun shareApp() {
+        ShareCompat.IntentBuilder(requireContext())
+            .setChooserTitle(R.string.share_app)
+            .setText(getString(R.string.app_share, GITHUB_LATEST_RELEASE))
+            .setType("text/plain")
+            .startChooser()
+    }
+
     companion object {
         private const val MARDOUS_GITHUB = "https://www.github.com/mardous"
         private const val WHATSAVE_GITHUB = "$MARDOUS_GITHUB/WhatSave"
         private const val GITHUB_RELEASES = "$WHATSAVE_GITHUB/releases"
+        private const val GITHUB_LATEST_RELEASE = "$GITHUB_RELEASES/latest"
     }
 }
