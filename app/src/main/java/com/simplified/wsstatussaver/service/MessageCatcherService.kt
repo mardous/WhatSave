@@ -13,6 +13,7 @@
  */
 package com.simplified.wsstatussaver.service
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.Person
 import android.os.Bundle
@@ -31,6 +32,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import java.util.regex.Pattern
 
 class MessageCatcherService : NotificationListenerService(), KoinComponent {
 
@@ -53,7 +55,7 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
                 val extras = sbn.notification.extras
                 if (!isSelf(extras)) {
                     val received = sbn.notification.`when`
-                    val senderName = getSenderName(extras)
+                    val senderName = getGroupName(extras) ?: getSenderName(extras)
                     val message = extras.getString(Notification.EXTRA_TEXT)
                     if (!senderName.isNullOrBlank() && !message.isNullOrBlank()) {
                         if (!preferences().isBlacklistedMessageSender(senderName)) {
@@ -69,6 +71,23 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
                 }
             }
         }
+    }
+
+    @SuppressLint("InlinedApi")
+    private fun getGroupName(extras: Bundle): String? {
+        val conversationTitle = extras.getString(Notification.EXTRA_CONVERSATION_TITLE)
+        val isGroupConversation = extras.getBoolean(Notification.EXTRA_IS_GROUP_CONVERSATION)
+        if (conversationTitle.isNullOrBlank() || (hasP() && !isGroupConversation)) {
+            return null
+        }
+        try {
+            val matcher = GROUP_NAME_PATTERN.matcher(conversationTitle)
+            if (matcher.find()) {
+                val group = matcher.group(1)
+                return group?.trim()
+            }
+        } catch (_: Exception) {}
+        return conversationTitle.trim()
     }
 
     @Suppress("DEPRECATION")
@@ -97,5 +116,9 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
     override fun onDestroy() {
         super.onDestroy()
         serviceScope.cancel()
+    }
+
+    companion object {
+        private val GROUP_NAME_PATTERN = Pattern.compile("^(.*?)\\s*\\((\\d+\\s*\\w*)\\)")
     }
 }
