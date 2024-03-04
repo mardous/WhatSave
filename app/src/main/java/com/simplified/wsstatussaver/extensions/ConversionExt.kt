@@ -22,7 +22,7 @@ fun Long.time(maxPrettyTime: Long = 1, maxPrettyTimeUnit: TimeUnit = TimeUnit.HO
     val date = Date(this)
     val minElapsedHours = maxPrettyTimeUnit.toMillis(maxPrettyTime)
     if ((System.currentTimeMillis() - this) >= minElapsedHours) {
-        return SimpleDateFormat.getDateTimeInstance().format(date)
+        return SimpleDateFormat.getDateInstance(SimpleDateFormat.SHORT).format(date)
     }
     return prettyTime()
 }
