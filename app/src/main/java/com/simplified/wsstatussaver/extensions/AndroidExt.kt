@@ -70,15 +70,12 @@ fun Context.openGooglePlay(appPackage: String = packageName) {
 
 fun Context.bindNotificationListener(): Boolean {
     if (isNotificationListener()) {
-        if (hasN()) {
-            return try {
-                NotificationListenerService.requestRebind(ComponentName(this, MessageCatcherService::class.java))
-                true
-            } catch (_: Throwable) {
-                false
-            }
+        return try {
+            NotificationListenerService.requestRebind(ComponentName(this, MessageCatcherService::class.java))
+            true
+        } catch (_: Throwable) {
+            false
         }
-        return true
     }
     return false
 }
@@ -180,9 +177,6 @@ internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent
         }
     }
 }
-
-@ChecksSdkIntAtLeast(api = Build.VERSION_CODES.N)
-fun hasN() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
 
 @ChecksSdkIntAtLeast(api = Build.VERSION_CODES.O_MR1)
 fun hasOMR1() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1

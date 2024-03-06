@@ -22,9 +22,7 @@ import android.os.storage.StorageVolume
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
-import com.simplified.wsstatussaver.extensions.hasN
 import com.simplified.wsstatussaver.extensions.preferences
-import java.lang.reflect.Array
 import java.lang.reflect.InvocationTargetException
 
 /**
@@ -47,16 +45,8 @@ class Storage(context: Context) {
     fun getStorageVolumes(): List<StorageDevice> {
         val storageVolumes = arrayListOf<StorageDevice>()
         try {
-            if (hasN()) {
-                for (volume in storageManager.storageVolumes) {
-                    createStorageDevice(storageManager, volume)?.let { storageVolumes.add(it) }
-                }
-            } else {
-                val array = StorageManager::class.java.getDeclaredMethod("getVolumeList").invoke(storageManager)
-                val length = array?.let { Array.getLength(it) }
-                if (length != null) for (i in 0 until length) {
-                    createStorageDevice(storageManager, Array.get(array, i))?.let { storageVolumes.add(it) }
-                }
+            for (volume in storageManager.storageVolumes) {
+                createStorageDevice(volume)?.let { storageVolumes.add(it) }
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -92,29 +82,13 @@ class Storage(context: Context) {
 
     @SuppressLint("SoonBlockedPrivateApi")
     @Throws(NoSuchMethodException::class, InvocationTargetException::class, IllegalAccessException::class)
-    private fun createStorageDevice(storageManager: StorageManager, any: Any?): StorageDevice? {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (any is StorageVolume) {
-                return StorageDevice(
-                    any.directory!!.absolutePath, any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state
-                )
+    private fun createStorageDevice(any: Any?): StorageDevice? {
+        if (any is StorageVolume) {
+            val path = when {
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> any.directory?.absolutePath
+                else -> StorageVolume::class.java.getDeclaredMethod("getPath").invoke(any) as? String
             }
-        } else if (hasN()) {
-            if (any is StorageVolume) {
-                return StorageDevice(
-                    StorageVolume::class.java.getDeclaredMethod("getPath").invoke(any) as String,
-                    any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state
-                )
-            }
-        } else if (any != null) {
-            val path = any.javaClass.getDeclaredMethod("getPath").invoke(any) as String
-            val uuid = any.javaClass.getDeclaredMethod("getUuid").invoke(any) as String
-            val isEmulated = any.javaClass.getDeclaredMethod("isEmulated").invoke(any) as Boolean
-            val isRemovable = any.javaClass.getDeclaredMethod("isRemovable").invoke(any) as Boolean
-            val isPrimary = any.javaClass.getDeclaredMethod("isPrimary").invoke(any) as Boolean
-            val state = StorageManager::class.java.getMethod("getVolumeState", String::class.java)
-                .invoke(storageManager, path) as String
-            return StorageDevice(path, uuid, isRemovable, isPrimary, isEmulated, state)
+            return StorageDevice(path, any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state)
         }
         return null
     }

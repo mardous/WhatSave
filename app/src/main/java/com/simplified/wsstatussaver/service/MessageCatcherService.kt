@@ -41,7 +41,7 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
 
     override fun onListenerConnected() {
         super.onListenerConnected()
-        if (hasN() && !preferences().isMessageViewEnabled) {
+        if (!preferences().isMessageViewEnabled) {
             requestUnbind()
         }
     }
@@ -92,16 +92,13 @@ class MessageCatcherService : NotificationListenerService(), KoinComponent {
 
     @Suppress("DEPRECATION")
     private fun isSelf(extras: Bundle): Boolean {
-        if (hasN()) {
-            if (hasP()) {
-                val messagingUser = getParcelable(extras, Notification.EXTRA_MESSAGING_PERSON, Person::class.java)
-                return messagingUser?.name == extras.getString(Notification.EXTRA_TITLE)
-            } else {
-                val selfDisplayName = extras.getString(Notification.EXTRA_SELF_DISPLAY_NAME)
-                return selfDisplayName == extras.getString(Notification.EXTRA_TITLE)
-            }
+        if (hasP()) {
+            val messagingUser = getParcelable(extras, Notification.EXTRA_MESSAGING_PERSON, Person::class.java)
+            return messagingUser?.name == extras.getString(Notification.EXTRA_TITLE)
+        } else {
+            val selfDisplayName = extras.getString(Notification.EXTRA_SELF_DISPLAY_NAME)
+            return selfDisplayName == extras.getString(Notification.EXTRA_TITLE)
         }
-        return false
     }
 
     private fun getSenderName(extras: Bundle): String? {

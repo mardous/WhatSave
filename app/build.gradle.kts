@@ -21,7 +21,7 @@ android {
     namespace = "com.simplified.wsstatussaver"
 
     defaultConfig {
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
 
         applicationId = namespace
