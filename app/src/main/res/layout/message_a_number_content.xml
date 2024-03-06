@@ -56,7 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?listPreferredItemHeightSmall"
-            android:gravity="center_vertical"
+            android:gravity="top"
+            android:minLines="4"
+            android:maxLines="10"
             android:inputType="text|textAutoCorrect|textCapSentences|textLongMessage|textMultiLine"
             tools:ignore="Autofill"/>
 
