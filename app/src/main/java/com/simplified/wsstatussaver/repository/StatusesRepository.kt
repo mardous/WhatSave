@@ -77,11 +77,11 @@ class StatusesRepositoryImpl(
                     statusesDir = statusesDir?.findFile(".Statuses")
                 }
                 if (statusesDir == null || !statusesDir.isDirectory) {
-                    return StatusQueryResult(code = ResultCode.NoStatuses)
+                    continue
                 }
                 val statusFiles = statusesDir.listFiles()
                 if (statusFiles.isEmpty()) {
-                    return StatusQueryResult(code = ResultCode.NoStatuses)
+                    continue
                 }
                 for (file in statusFiles) {
                     val fileName = file.name ?: continue
