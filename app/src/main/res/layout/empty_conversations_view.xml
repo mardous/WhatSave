@@ -13,64 +13,40 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<com.google.android.material.card.MaterialCardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.Material3.CardView.Filled"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="8dp"
-    app:shapeAppearanceOverlay="?shapeAppearanceCornerExtraLarge"
-    app:cardBackgroundColor="?colorSurfaceContainerHigh">
+    android:paddingTop="28dp"
+    android:paddingStart="@dimen/empty_view_content_padding"
+    android:paddingEnd="@dimen/empty_view_content_padding">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@android:id/text1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:paddingTop="28dp"
-        android:paddingBottom="28dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp">
+        android:ellipsize="end"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceHeadline6"
+        tools:text="@string/message_view_is_disabled"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <ImageView
-            android:id="@+id/icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_speaker_notes_off_24dp"
-            app:tint="?colorError"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="ContentDescription"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@android:id/text2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceSubtitle2"
+        android:textColor="?android:textColorSecondary"
+        android:text="@string/you_wont_be_able_to_see_messages_here"
+        app:layout_constraintTop_toBottomOf="@android:id/text1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@android:id/text1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceHeadline6"
-            tools:text="@string/message_view_is_disabled"
-            app:layout_constraintTop_toBottomOf="@+id/icon"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@android:id/text2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            android:textColor="?android:textColorSecondary"
-            android:text="@string/you_wont_be_able_to_see_messages_here"
-            app:layout_constraintTop_toBottomOf="@android:id/text1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
