@@ -140,7 +140,7 @@ class StatusesRepositoryImpl(
                     val name = cursor.getString(1)
                     val dateModified = cursor.getLong(2)
                     val size = cursor.getLong(3)
-                    statuses.add(SavedStatus(type, name, mediaUri, dateModified, size, null))
+                    statuses.add(SavedStatus(type, name, mediaUri, dateModified * 1000, size, null))
                 } while (cursor.moveToNext())
             }
         } else {
