@@ -181,4 +181,5 @@
     <string name="permissions_revoked_successfully">Рұқсаттар сәтті тасталды.</string>
     <string name="grant_permissions">Рұқсат беру</string>
     <string name="privacy_and_terms">Құпиялық және шарттар</string>
+    <string name="privacy_notice">\"Жалғастыру\" түймесін басу арқылы сіз біздің Құпиялық саясаты мен пайдалану шарттарын оқып, қабылдадыңыз деп есептейміз.</string>
 </resources>

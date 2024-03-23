@@ -101,7 +101,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:text="@string/privacy_and_terms"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/agreementText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/continueButton"/>
 
@@ -114,8 +114,24 @@
         android:layout_marginEnd="16dp"
         android:textColor="?colorOnPrimary"
         android:text="@string/continue_action"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/agreementText"
         app:layout_constraintStart_toEndOf="@+id/privacyPolicyButton"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/agreementText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/onboard_titles_horizontal_padding"
+        android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
+        android:paddingBottom="16dp"
+        android:textAlignment="center"
+        android:textAppearance="?textAppearanceCaption"
+        android:text="@string/privacy_notice"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

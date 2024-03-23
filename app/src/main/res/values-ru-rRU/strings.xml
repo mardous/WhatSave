@@ -180,4 +180,5 @@
     <string name="permissions_revoked_successfully">Разрешения успешно отозваны.</string>
     <string name="grant_permissions">Предоставить разрешения</string>
     <string name="privacy_and_terms">Конфиденциальность и условия</string>
+    <string name="privacy_notice">Нажав \"Продолжить\", мы будем считать, что вы прочитали и приняли нашу Политику конфиденциальности и Условия использования.</string>
 </resources>

@@ -181,4 +181,5 @@
     <string name="permissions_revoked_successfully">அனுமதிகள் வெற்றிகரமாக ரத்து செய்யப்பட்டன.</string>
     <string name="grant_permissions">அனுமதிகளை அளிக்கு</string>
     <string name="privacy_and_terms">தனியுரிமை மற்றும் விதிமுறைகள்</string>
+    <string name="privacy_notice">\"தொடரவும்\" என்பதை அழுத்துவதன் மூலம், நீங்கள் எங்கள் தனியுரிமைக் கொள்கை மற்றும் பயன்பாட்டு விதிமுறைகளைப் படித்து ஏற்றுக்கொண்டதாகக் கருதுவோம்.</string>
 </resources>

@@ -91,6 +91,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     private fun setupViews() {
         if (args.isFromSettings) {
             binding.subtitle.isVisible = false
+            binding.agreementText.isVisible = false
             binding.storagePermissionView.isGone = hasStoragePermissions()
         }
     }

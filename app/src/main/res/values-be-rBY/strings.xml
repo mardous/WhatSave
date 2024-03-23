@@ -181,4 +181,5 @@
     <string name="permissions_revoked_successfully">Дазволы паспяхова аднятыя.</string>
     <string name="grant_permissions">Надаць дазволы</string>
     <string name="privacy_and_terms">Канфідэнцыяльнасць і ўмовы</string>
+    <string name="privacy_notice">Націскаючы \"Працягнуць\", мы будзем лічыць, што вы прачыталі і прынялі нашу Палітыку прыватнасці і Умовы выкарыстання.</string>
 </resources>

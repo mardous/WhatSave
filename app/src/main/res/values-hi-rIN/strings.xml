@@ -181,4 +181,5 @@
     <string name="permissions_revoked_successfully">अनुमतियाँ सफलतापूर्वक वापस ली गईं।</string>
     <string name="grant_permissions">अनुमतियाँ प्रदान करें</string>
     <string name="privacy_and_terms">गोपनीयता और शर्तें</string>
+    <string name="privacy_notice">\"जारी रखें\" दबाकर, हम मान लेंगे कि आपने हमारी गोपनीयता नीति और उपयोग की शर्तों को पढ़ लिया है और स्वीकार कर लिया है।</string>
 </resources>
