@@ -16,7 +16,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home_24dp"
+        android:icon="@drawable/ic_rounded_art_track_24"
         android:title="@string/home_label"/>
     <item
         android:id="@+id/savedFragment"
