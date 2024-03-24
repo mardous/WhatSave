@@ -110,7 +110,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
 
     //Firebase
-    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
     implementation("com.google.firebase:firebase-analytics-ktx")
     implementation("com.google.firebase:firebase-crashlytics-ktx")
 
@@ -118,18 +118,18 @@ dependencies {
     implementation("io.insert-koin:koin-core:$koinVersion")
     implementation("io.insert-koin:koin-android:$koinVersion")
 
-    val retrofitVersion = "2.9.0"
+    val retrofitVersion = "2.10.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("io.github.g00fy2:versioncompare:1.5.0")
-    implementation("io.michaelrocks:libphonenumber-android:8.13.25")
+    implementation("io.michaelrocks:libphonenumber-android:8.13.28")
     implementation("org.ocpsoft.prettytime:prettytime:5.0.4.Final")
 
     // Kotlin
-    val kotlinCoroutinesVersion = "1.7.3"
+    val kotlinCoroutinesVersion = "1.8.0"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutinesVersion")
 }
