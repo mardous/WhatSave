@@ -39,4 +39,10 @@
         <item name="preferenceCategoryStyle">@style/MaterialPreferenceCategory</item>
         <item name="collapsingToolbarLayoutLargeStyle">@style/CollapsingToolbarLargeStyle</item>
     </style>
+
+    <style name="Theme.WhatSave.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_splash</item>
+        <item name="windowSplashScreenAnimationDuration">800</item>
+    </style>
+
 </resources>
