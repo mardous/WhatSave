@@ -17,7 +17,7 @@ This application is really basic; here its features:
 * No ADs
 * No watermark
 * It's free!
-* 
+
 #### Disclaimer
 WhatsApp Inc. is owned by Meta Platforms, Inc.
 
