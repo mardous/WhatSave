@@ -87,7 +87,7 @@ class Storage(context: Context) {
                 Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> any.directory?.absolutePath
                 else -> StorageVolume::class.java.getDeclaredMethod("getPath").invoke(any) as? String
             }
-            return StorageDevice(path, any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state)
+            StorageDevice(path, any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state)
         }
         return result.getOrNull()
     }
