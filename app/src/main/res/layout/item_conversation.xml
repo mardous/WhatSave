@@ -22,16 +22,30 @@
     android:padding="16dp"
     android:background="?selectableItemBackground">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="center"
+        android:background="@color/md_white_1000"
+        android:backgroundTint="@color/icon_background_color"
+        app:srcCompat="@drawable/ic_person_24dp"
+        app:tint="@color/icon_tint_color"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circular"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:paddingEnd="16dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="?textAppearanceListItem"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/time"
         tools:text="@tools:sample/full_names"
         tools:ignore="RtlSymmetry"/>
