@@ -150,7 +150,7 @@ class StatusesRepositoryImpl(
             }
         }
         if (statuses.isEmpty()) {
-            return StatusQueryResult(ResultCode.NoStatuses)
+            return StatusQueryResult(ResultCode.NoSavedStatuses)
         }
         return StatusQueryResult(ResultCode.Success, statuses.sortedByDescending { it.dateModified })
     }

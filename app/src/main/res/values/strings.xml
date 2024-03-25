@@ -54,6 +54,7 @@
     <string name="client_info_unknown">Unable to load client info.</string>
     <string name="installed_clients_empty">There are not installed WhatsApp clients.</string>
     <string name="you_should_open_wa_and_download_some_statuses">You should go to WhatsApp and download some statuses</string>
+    <string name="there_may_be_no_saved_files">There may be no saved files</string>
     <string name="wa_is_not_installed_title">WhatsApp isn\'t installed</string>
     <string name="this_application_will_not_work">This application won\'t work</string>
     <string name="launch_x_client">Launch %s</string>
