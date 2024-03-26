@@ -26,17 +26,12 @@ import com.simplified.wsstatussaver.extensions.getDrawableCompat
 import com.simplified.wsstatussaver.extensions.isFromClient
 import com.simplified.wsstatussaver.extensions.packageInfo
 
-enum class WaClient(val displayName: String, val packageName: String) {
-    WhatsApp("WhatsApp", "com.whatsapp"),
-    Business("WhatsApp Business", "com.whatsapp.w4b"),
-    OGWhatsApp("OGWhatsApp", "com.gbwhatsapp3");
+enum class WaClient(val displayName: String, val packageName: String, private val iconRes: Int) {
+    WhatsApp("WhatsApp", "com.whatsapp", R.drawable.icon_wa),
+    Business("WhatsApp Business", "com.whatsapp.w4b", R.drawable.icon_business),
+    OGWhatsApp("OGWhatsApp", "com.gbwhatsapp3", R.drawable.icon_gb);
 
-    fun getIcon(context: Context): Drawable? {
-        return resolvePackageValue(context) {
-            it?.applicationInfo?.loadIcon(context.packageManager)
-                ?: context.getDrawableCompat(R.drawable.ic_client_default)
-        }
-    }
+    fun getIcon(context: Context): Drawable? = context.getDrawableCompat(iconRes)
 
     fun getLabel(context: Context): CharSequence? {
         return resolvePackageValue(context) { it?.applicationInfo?.loadLabel(context.packageManager) ?: name }

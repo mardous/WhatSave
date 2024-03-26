@@ -15,4 +15,6 @@
 <resources>
     <color name="icon_tint_color">@color/material_dynamic_primary50</color>
     <color name="icon_background_color">@color/material_dynamic_primary90</color>
+    <color name="client_icon_tint_color">@color/icon_tint_color</color>
+    <color name="client_icon_background_color">@color/icon_background_color</color>
 </resources>

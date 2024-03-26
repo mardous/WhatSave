@@ -27,6 +27,8 @@
 
     <color name="icon_tint_color">?colorControlNormal</color>
     <color name="icon_background_color">?colorSurfaceContainer</color>
+    <color name="client_icon_tint_color">#617F42</color>
+    <color name="client_icon_background_color">#CBEDA5</color>
 
     <!-- Launcher Icon -->
     <color name="ic_launcher_background">#D23227</color>

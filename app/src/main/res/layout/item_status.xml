@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/image"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/ic_client_default"
+        tools:src="@drawable/icon_wa"
         tools:ignore="ContentDescription"/>
 
     <LinearLayout

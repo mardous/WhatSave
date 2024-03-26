@@ -34,7 +34,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/ic_client_default"
+        tools:src="@drawable/icon_wa"
         tools:ignore="ContentDescription"/>
 
     <com.google.android.material.textview.MaterialTextView
