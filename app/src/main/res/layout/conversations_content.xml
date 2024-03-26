@@ -24,7 +24,7 @@
         android:id="@+id/switchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
+        android:paddingHorizontal="@dimen/switch_horizontal_padding"
         android:paddingTop="20dp"
         android:paddingBottom="8dp"
         android:text="@string/use_message_view"/>

@@ -33,6 +33,7 @@
 
     <dimen name="button_corner_radius">8dp</dimen>
     <dimen name="button_padding_vertical">10dp</dimen>
+    <dimen name="switch_horizontal_padding">16dp</dimen>
 
     <dimen name="toolbar_elevation">2dp</dimen>
 
