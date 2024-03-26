@@ -40,7 +40,7 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val client = clients[position]
         holder.icon?.setImageDrawable(client.getIcon(context))
-        holder.name?.text = client.getLabel(context)
+        holder.name?.text = client.displayName
         holder.description?.text = client.getDescription(context)
         configureCheckIcon(holder, client)
     }

@@ -119,7 +119,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 .setMessage(
                     getString(
                         R.string.revoke_permissions_message,
-                        client.getLabel(requireContext())
+                        client.displayName
                     ).formattedAsHtml()
                 )
                 .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->

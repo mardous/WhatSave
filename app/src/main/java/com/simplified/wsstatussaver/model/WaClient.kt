@@ -26,16 +26,17 @@ import com.simplified.wsstatussaver.extensions.getDrawableCompat
 import com.simplified.wsstatussaver.extensions.isFromClient
 import com.simplified.wsstatussaver.extensions.packageInfo
 
-enum class WaClient(val displayName: String, val packageName: String, private val iconRes: Int) {
-    WhatsApp("WhatsApp", "com.whatsapp", R.drawable.icon_wa),
-    Business("WhatsApp Business", "com.whatsapp.w4b", R.drawable.icon_business),
-    OGWhatsApp("OGWhatsApp", "com.gbwhatsapp3", R.drawable.icon_gb);
+enum class WaClient(
+    val displayName: String,
+    private val internalName: String,
+    val packageName: String,
+    private val iconRes: Int
+) {
+    WhatsApp("WA Messenger", "WhatsApp", "com.whatsapp", R.drawable.icon_wa),
+    Business("WA Business", "WhatsApp Business", "com.whatsapp.w4b", R.drawable.icon_business),
+    OGWhatsApp("OGWhatsApp", "OGWhatsApp", "com.gbwhatsapp3", R.drawable.icon_gb);
 
     fun getIcon(context: Context): Drawable? = context.getDrawableCompat(iconRes)
-
-    fun getLabel(context: Context): CharSequence? {
-        return resolvePackageValue(context) { it?.applicationInfo?.loadLabel(context.packageManager) ?: name }
-    }
 
     fun getDescription(context: Context): CharSequence {
         val versionName = resolvePackageValue(context) { it?.versionName }
@@ -76,12 +77,12 @@ enum class WaClient(val displayName: String, val packageName: String, private va
     }
 
     fun getDirectoryPath(): String {
-        return "$displayName/Media/.Statuses"
+        return "$internalName/Media/.Statuses"
     }
 
     @TargetApi(Build.VERSION_CODES.Q)
     fun getSAFDirectoryPath(): String {
-        return "Android/media/$packageName/$displayName/Media"
+        return "Android/media/$packageName/$internalName/Media"
     }
 
     private fun <T> resolvePackageValue(context: Context, resolver: (PackageInfo?) -> T): T? {

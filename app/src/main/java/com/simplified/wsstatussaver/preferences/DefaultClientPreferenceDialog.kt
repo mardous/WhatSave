@@ -84,7 +84,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
         if (defaultClient == null) {
             showToast(R.string.default_client_cleared)
         } else {
-            showToast(getString(R.string.x_is_the_default_client_now, client.getLabel(requireContext())))
+            showToast(getString(R.string.x_is_the_default_client_now, client.displayName))
         }
         requireContext().setDefaultClient(defaultClient)
         clientAdapter.notifyDataSetChanged()
