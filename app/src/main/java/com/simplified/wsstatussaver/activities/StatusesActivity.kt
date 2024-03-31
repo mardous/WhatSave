@@ -13,10 +13,14 @@
  */
 package com.simplified.wsstatussaver.activities
 
+import android.animation.ValueAnimator
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
+import androidx.annotation.ColorInt
 import androidx.core.view.updatePadding
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
@@ -24,13 +28,20 @@ import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.WHATSAVE_ANIM_TIME
+import com.simplified.wsstatussaver.extensions.currentFragment
+import com.simplified.wsstatussaver.extensions.getPreferredClient
+import com.simplified.wsstatussaver.extensions.hide
+import com.simplified.wsstatussaver.extensions.show
+import com.simplified.wsstatussaver.extensions.surfaceColor
+import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
 import com.simplified.wsstatussaver.update.isAbleToUpdate
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -45,12 +56,22 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
     private lateinit var contentView: FrameLayout
     private lateinit var navigationView: NavigationBarView
 
+    @ColorInt
+    private var navigationBarColor: Int = 0
+    private var navigationBarColorAnimator: ValueAnimator? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         contentView = findViewById(R.id.main_container)
         navigationView = findViewById(R.id.navigation_view)
         navigationView.setOnItemReselectedListener(this)
+
+        navigationBarColor = MaterialColors.getColor(
+            this,
+            com.google.android.material.R.attr.colorSurfaceContainer,
+            Color.BLACK
+        )
 
         val navController = whichFragment<NavHostFragment>(R.id.main_container)?.navController
         if (navController != null) {
@@ -119,9 +140,28 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
     }
 
     private fun hideBottomBar(hide: Boolean) {
-        if (hide) navigationView.hide() else navigationView.show()
+        if (hide) {
+            navigationView.hide()
+            animateNavigationBarColor(surfaceColor())
+        }else {
+            navigationView.show()
+            animateNavigationBarColor(navigationBarColor)
+        }
         val contentPadding = if (!hide) resources.getDimensionPixelSize(R.dimen.bottom_nav_height) else 0
         contentView.updatePadding(bottom = contentPadding)
+    }
+
+    private fun animateNavigationBarColor(color: Int) {
+        navigationBarColorAnimator?.cancel()
+        navigationBarColorAnimator = ValueAnimator
+            .ofArgb(window.navigationBarColor, color).apply {
+                duration = WHATSAVE_ANIM_TIME
+                interpolator = PathInterpolator(0.4f, 0f, 1f, 1f)
+                addUpdateListener { animation: ValueAnimator ->
+                    setNavigationBarColor(animation.animatedValue as Int)
+                }
+                start()
+            }
     }
 }
 

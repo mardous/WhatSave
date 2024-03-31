@@ -57,6 +57,10 @@ abstract class AbsBaseActivity : AppCompatActivity() {
     protected open fun onSetupSystemBars(@ColorInt statusBarColor: Int, @ColorInt navigationBarColor: Int) {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
         windowInsetsController.isAppearanceLightStatusBars = statusBarColor.isColorLight
+        setNavigationBarColor(navigationBarColor)
+    }
+
+    protected fun setNavigationBarColor(navigationBarColor: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             window.navigationBarColor = navigationBarColor
             windowInsetsController.isAppearanceLightNavigationBars = navigationBarColor.isColorLight

@@ -34,7 +34,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 
-private const val WHATSAVE_ANIM_TIME = 350L
+const val WHATSAVE_ANIM_TIME = 350L
 
 fun View.animateAlpha(value: Float) {
     if (value == alpha)
