@@ -38,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@android:id/title"
         app:tint="?attr/colorControlNormal"
-        tools:srcCompat="@drawable/ic_whatsapp_24dp"/>
+        tools:srcCompat="@drawable/ic_open_in_new_24dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@android:id/title"

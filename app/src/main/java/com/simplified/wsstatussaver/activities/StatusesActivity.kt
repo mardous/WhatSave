@@ -174,7 +174,7 @@ fun Menu.setupWhatsAppMenuItem(activity: FragmentActivity) {
             Menu.NONE, R.id.action_launch_client,
             Menu.FIRST, activity.getString(R.string.launch_x_client, client.displayName)
         )
-            .setIcon(R.drawable.ic_whatsapp_24dp)
+            .setIcon(R.drawable.ic_open_in_new_24dp)
             .setIntent(client.getLaunchIntent(activity.packageManager))
             .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM)
     }
