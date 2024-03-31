@@ -15,7 +15,7 @@
 
 <resources>
     <color name="surface_color_adaptive">@color/surface_color_dark</color>
-    <color name="primary_color">@color/md_red_A200</color>
-    <color name="primary_color_fixed">#F1C4B4</color>
-    <color name="primary_color_dark">@color/md_red_A400</color>
+    <color name="container_color_adaptive">@color/container_color_dark</color>
+    <color name="primary_color">#7DA556</color>
+    <color name="secondary_container_color">#375539</color>
 </resources>

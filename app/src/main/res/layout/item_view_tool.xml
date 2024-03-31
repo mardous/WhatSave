@@ -28,8 +28,8 @@
         android:layout_height="32dp"
         android:scaleType="fitCenter"
         android:padding="8dp"
-        app:tint="?colorControlNormal"
-        app:iconViewColor="?iconColor"
+        app:tint="?colorOnPrimary"
+        app:iconViewColor="?colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:src="@drawable/ic_round_message_24dp"/>

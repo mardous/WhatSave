@@ -27,12 +27,11 @@
         <item name="android:navigationBarColor">@android:color/black</item>
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="roundSelector">@drawable/round_selector</item>
-        <item name="iconColor">@color/material_dynamic_tertiary60</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="homeAsUpIndicator">@drawable/ic_keyboard_backspace_24dp</item>
         <item name="toolbarPopupTheme">@style/ToolbarPopupTheme</item>
-        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
-        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme.DynamicColors</item>
+        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme.DynamicColors</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationStyle</item>
         <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
@@ -40,9 +39,23 @@
         <item name="collapsingToolbarLayoutLargeStyle">@style/CollapsingToolbarLargeStyle</item>
     </style>
 
+    <style name="Theme.WhatSave.Black">
+        <item name="colorSurface">@color/surface_color_black</item>
+        <item name="android:windowBackground">?colorSurface</item>
+        <item name="elevationOverlayAccentColor">@color/md_black_1000</item>
+        <item name="dividerColor">@color/divider_color_black</item>
+    </style>
+
     <style name="Theme.WhatSave.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_splash</item>
         <item name="windowSplashScreenAnimationDuration">800</item>
     </style>
+
+    <style name="AlertDialogTheme.DynamicColors" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorBackgroundFloating">@color/container_color_adaptive</item>
+        <item name="dialogCornerRadius">@dimen/m3_dialog_corner_radius</item>
+    </style>
+
+    <style name="MaterialAlertDialogTheme.DynamicColors" parent="ThemeOverlay.Material3.MaterialAlertDialog"/>
 
 </resources>

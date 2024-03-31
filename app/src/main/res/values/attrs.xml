@@ -14,7 +14,6 @@
   -->
 
 <resources>
-    <attr name="iconColor" format="reference"/>
     <attr name="rectSelector" format="reference"/>
     <attr name="roundSelector" format="reference"/>
     <attr name="toolbarPopupTheme" format="reference"/>
