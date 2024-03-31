@@ -90,7 +90,7 @@ fun Context.isNotificationListener(): Boolean {
 }
 
 fun Context.doIHavePermissions(vararg permissions: String): Boolean {
-    if (permissions.isEmpty()) return false
+    if (permissions.isEmpty()) return true
     for (permission in permissions) {
         if (checkSelfPermission(permission) != PackageManager.PERMISSION_GRANTED) {
             return false

@@ -13,31 +13,36 @@
  */
 package com.simplified.wsstatussaver.extensions
 
-import android.Manifest
+import android.Manifest.permission.READ_EXTERNAL_STORAGE
+import android.Manifest.permission.READ_MEDIA_IMAGES
+import android.Manifest.permission.READ_MEDIA_VIDEO
+import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.model.RequestedPermissions
 
 const val STORAGE_PERMISSION_REQUEST = 100
 
-fun getRequestedPermissions(): Array<String> =
-    mutableListOf<String>().apply {
-        if (hasT()) {
-            add(Manifest.permission.READ_MEDIA_IMAGES)
-            add(Manifest.permission.READ_MEDIA_VIDEO)
-        } else {
-            add(Manifest.permission.READ_EXTERNAL_STORAGE)
-        }
-        if (!hasQ()) {
-            add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        }
-    }.toTypedArray()
+@SuppressLint("InlinedApi")
+fun getRequestedPermissions(): Array<RequestedPermissions> {
+    return arrayOf(
+        RequestedPermissions(1..Build.VERSION_CODES.P, WRITE_EXTERNAL_STORAGE),
+        RequestedPermissions(1..Build.VERSION_CODES.S_V2, READ_EXTERNAL_STORAGE),
+        RequestedPermissions(Build.VERSION_CODES.TIRAMISU, READ_MEDIA_IMAGES, READ_MEDIA_VIDEO)
+    )
+}
 
+fun getApplicablePermissions() = getRequestedPermissions()
+    .filter { it.isApplicable() }
+    .flatMap { it.permissions.asIterable() }
+    .toTypedArray()
 
-fun Context.hasStoragePermissions(): Boolean = doIHavePermissions(*getRequestedPermissions())
+fun Context.hasStoragePermissions(): Boolean = doIHavePermissions(*getApplicablePermissions())
 
 fun Context.hasSAFPermissions(): Boolean {
     return Build.VERSION.SDK_INT < Build.VERSION_CODES.Q || getAllInstalledClients().any { it.hasPermissions(this) }
@@ -51,7 +56,7 @@ fun FragmentActivity.requestWithOnboard() {
 }
 
 fun FragmentActivity.requestWithoutOnboard() {
-    requestPermissions(getRequestedPermissions(), STORAGE_PERMISSION_REQUEST)
+    requestPermissions(getApplicablePermissions(), STORAGE_PERMISSION_REQUEST)
 }
 
 fun FragmentActivity.requestPermissions(isShowOnboard: Boolean = false) {
