@@ -60,6 +60,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         super.onCreate(savedInstanceState)
         permissionRequest = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
             if (result != null && selectedClient?.takePermissions(requireContext(), result) == true) {
+                viewModel.reloadAll()
                 clientAdapter?.notifyDataSetChanged()
             }
         }
@@ -125,6 +126,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->
                     if (client.releasePermissions(requireContext())) {
                         showToast(R.string.permissions_revoked_successfully)
+                        viewModel.reloadAll()
                         clientAdapter?.notifyDataSetChanged()
                     }
                 }
@@ -145,6 +147,9 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
 
     override fun permissionsStateChanged(hasPermissions: Boolean) {
         setupGrantButtonIcon()
+        if (hasPermissions) {
+            viewModel.reloadAll()
+        }
     }
 
     override fun onClick(view: View) {
