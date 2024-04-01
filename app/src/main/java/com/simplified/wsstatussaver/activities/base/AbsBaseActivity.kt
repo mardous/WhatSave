@@ -79,7 +79,7 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         val hasPermissions = hasStoragePermissions()
         if (hasPermissions != hadPermissions) {
             hadPermissions = hasPermissions
-            onHasPermissionsChanged()
+            onHasPermissionsChanged(hasPermissions)
         }
     }
 
@@ -99,9 +99,9 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         permissionsChangeListeners.remove(listener)
     }
 
-    private fun onHasPermissionsChanged() {
+    private fun onHasPermissionsChanged(hasPermissions: Boolean) {
         for (listener in permissionsChangeListeners) {
-            listener?.permissionsStateChanged()
+            listener?.permissionsStateChanged(hasPermissions)
         }
     }
 
@@ -138,6 +138,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
             }
         }
         hadPermissions = true
-        onHasPermissionsChanged()
+        onHasPermissionsChanged(true)
     }
 }

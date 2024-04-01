@@ -143,7 +143,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         return IClientCallback.MODE_UNCHECKABLE
     }
 
-    override fun permissionsStateChanged() {
+    override fun permissionsStateChanged(hasPermissions: Boolean) {
         setupGrantButtonIcon()
     }
 

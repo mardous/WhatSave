@@ -179,7 +179,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun permissionsStateChanged() {
+    override fun permissionsStateChanged(hasPermissions: Boolean) {
         viewModel.reloadAll()
     }
 
