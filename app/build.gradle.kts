@@ -25,8 +25,8 @@ android {
         targetSdk = 34
 
         applicationId = namespace
-        versionCode = 109
-        versionName = "1.2.5"
+        versionCode = 110
+        versionName = "1.3.0"
     }
 
     signingConfigs {
