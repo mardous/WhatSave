@@ -54,6 +54,7 @@
     <string name="client_info_unknown">No se pudo cargar la info. del cliente.</string>
     <string name="installed_clients_empty">No hay clientes de WA instalados.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Deberías abrir WA y descargar algunos estados</string>
+    <string name="there_may_be_no_saved_files">Puede que no hayan archivos guardados</string>
     <string name="wa_is_not_installed_title">WA no está instalado</string>
     <string name="this_application_will_not_work">Esta aplicación no funcionará</string>
     <string name="launch_x_client">Lanzar %s</string>

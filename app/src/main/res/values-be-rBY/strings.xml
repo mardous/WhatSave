@@ -54,6 +54,7 @@
     <string name="client_info_unknown">Немагчыма загрузіць інфармацыю пра кліента.</string>
     <string name="installed_clients_empty">Няма ўсталяваных кліентаў WA.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Вы павінны зайсці ў WA і загрузіць некалькі статусаў</string>
+    <string name="there_may_be_no_saved_files">Магчыма, захаваныя файлы адсутнічаюць</string>
     <string name="wa_is_not_installed_title">WA не ўсталяваны</string>
     <string name="this_application_will_not_work">Гэта дадатак не будзе працаваць</string>
     <string name="launch_x_client">Запусціць %s</string>

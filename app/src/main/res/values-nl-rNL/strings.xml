@@ -54,6 +54,7 @@
     <string name="client_info_unknown">Kan klantinformatie niet laden.</string>
     <string name="installed_clients_empty">Er zijn geen geïnstalleerde WA-clients.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Je moet naar WA gaan en enkele statussen downloaden</string>
+    <string name="there_may_be_no_saved_files">Het kan zijn dat er geen opgeslagen bestanden zijn</string>
     <string name="wa_is_not_installed_title">WA is niet geïnstalleerd</string>
     <string name="this_application_will_not_work">Deze applicatie werkt niet</string>
     <string name="launch_x_client">Start %s</string>

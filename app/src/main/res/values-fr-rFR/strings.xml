@@ -54,6 +54,7 @@
     <string name="client_info_unknown">Impossible de charger les informations client.</string>
     <string name="installed_clients_empty">Aucun client WA n\'est installe.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Vous devriez aller sur WA et telecharger certains statuts</string>
+    <string name="there_may_be_no_saved_files">Il se peut qu\'il n\'y ait pas de fichiers enregistrés</string>
     <string name="wa_is_not_installed_title">WA n\'est pas installe</string>
     <string name="this_application_will_not_work">Cette application ne fonctionnera pas</string>
     <string name="launch_x_client">Lancer %s</string>
