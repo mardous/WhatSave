@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Couldn\'t load statuses</string>
     <string name="no_statuses_title">No statuses</string>
     <string name="save_some_statuses">Save some statuses</string>
-    <string name="install_wa_action">Install WA</string>
     <string name="open_wa_action">Open WA</string>
     <string name="could_not_open_wa">Could not open WA</string>
     <string name="saving_status">Saving status…</string>

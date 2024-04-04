@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Impossible de charger les statuts</string>
     <string name="no_statuses_title">Aucun statut</string>
     <string name="save_some_statuses">Enregistrer certains statuts</string>
-    <string name="install_wa_action">Installer WA</string>
     <string name="open_wa_action">Ouvrez WA</string>
     <string name="could_not_open_wa">Impossible d\'ouvrir WA</string>
     <string name="saving_status">Statut d\'enregistrement…</string>

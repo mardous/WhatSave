@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">நிலைகளை ஏற்ற முடியவில்லை</string>
     <string name="no_statuses_title">நிலைகள் இல்லை</string>
     <string name="save_some_statuses">சில நிலைகளைச் சேமிக்கவும்</string>
-    <string name="install_wa_action">வாட்ஸ்அப்பை நிறுவவும்</string>
     <string name="open_wa_action">வாட்ஸ்அப்பைத் திறக்கவும்</string>
     <string name="could_not_open_wa">வாட்ஸ்அப்பைத் திறக்க முடியவில்லை</string>
     <string name="saving_status">நிலையைச் சேமிக்கிறது…</string>

@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Статустарды жүктей алмайтынды</string>
     <string name="no_statuses_title">Статус жоқ</string>
     <string name="save_some_statuses">Кейбір күйлерді сақтаңыз</string>
-    <string name="install_wa_action">WA орнатыңыз</string>
     <string name="open_wa_action">WA қолданбасын ашыңыз</string>
     <string name="could_not_open_wa">WA ашу мүмкін болмады</string>
     <string name="saving_status">Күй сақталуда…</string>

@@ -34,7 +34,6 @@
     <string name="could_not_load_statuses">Не удалось загрузить статусы</string>
     <string name="no_statuses_title">Нет статусов</string>
     <string name="save_some_statuses">Сохраните несколько статусов</string>
-    <string name="install_wa_action">Установить WA</string>
     <string name="open_wa_action">Открыть WA</string>
     <string name="could_not_open_wa">Не удалось открыть WA</string>
     <string name="saving_status">Сохранение статуса…</string>

@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Impossibile caricare gli stati</string>
     <string name="no_statuses_title">Nessun stato</string>
     <string name="save_some_statuses">Salva alcuni stati</string>
-    <string name="install_wa_action">Installa WA</string>
     <string name="open_wa_action">Apri WA</string>
     <string name="could_not_open_wa">Impossibile aprire WA</string>
     <string name="saving_status">Salvataggio dello stato…</string>

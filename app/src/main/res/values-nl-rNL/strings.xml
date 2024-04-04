@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Statussen konden niet worden geladen</string>
     <string name="no_statuses_title">Geen statussen</string>
     <string name="save_some_statuses">Bewaar enkele statussen</string>
-    <string name="install_wa_action">WA installeren</string>
     <string name="open_wa_action">WA openen</string>
     <string name="could_not_open_wa">Kan WA niet openen</string>
     <string name="saving_status">Status opslaan…</string>

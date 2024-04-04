@@ -35,7 +35,6 @@
     <string name="could_not_load_statuses">Не ўдалося загрузіць статусы</string>
     <string name="no_statuses_title">Няма статусаў</string>
     <string name="save_some_statuses">Захавайце некалькі статусаў</string>
-    <string name="install_wa_action">Усталюйце WA</string>
     <string name="open_wa_action">Адкрыйце WA</string>
     <string name="could_not_open_wa">Немагчыма адкрыць WA</string>
     <string name="saving_status">Захаванне стану…</string>
