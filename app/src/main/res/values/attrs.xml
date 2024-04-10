@@ -14,6 +14,8 @@
   -->
 
 <resources>
+    <attr name="defaultIconColor" format="color"/>
+    <attr name="defaultIconBackgroundColor" format="color"/>
     <attr name="rectSelector" format="reference"/>
     <attr name="roundSelector" format="reference"/>
     <attr name="toolbarPopupTheme" format="reference"/>

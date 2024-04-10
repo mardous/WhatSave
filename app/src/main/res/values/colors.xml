@@ -29,8 +29,6 @@
     <color name="primary_color_fixed_on">#191C0E</color>
     <color name="divider_color_black">#262629</color>
 
-    <color name="icon_tint_color">?colorControlNormal</color>
-    <color name="icon_background_color">?colorSurfaceContainer</color>
     <color name="client_icon_tint_color">#617F42</color>
     <color name="client_icon_background_color">#CBEDA5</color>
 
