@@ -9,5 +9,4 @@ If you still do not wish to participate, you can disable this feature at any tim
 Any contributions or derivative works must be made and released under the terms of this license.
 
 Important Notice:
-WhatsApp Inc. is owned by Meta Platforms, Inc.
-This application and its developer are not related in any way to either of these two companies.
+This application and its developer do not have any relationship or agreement with other companies or trademarks.
