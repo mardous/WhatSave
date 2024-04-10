@@ -8,7 +8,7 @@ A simple application that allows you to save WA statuses (image and video).
 
 This application is really basic; here its features:
 
-* Android 13 support
+* Supports all Android versions starting from 7.0 Nougat
 * Material You on Android 12+
 * Preview and save files
 * Recover deleted messages
@@ -19,9 +19,7 @@ This application is really basic; here its features:
 * It's free!
 
 #### Disclaimer
-WhatsApp Inc. is owned by Meta Platforms, Inc.
-
-This application and its developer are not related in any way to either of these two companies.
+This application and its developer do not have any relationship or agreement with other companies or trademarks.
 
 #### License details
 
