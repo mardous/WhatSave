@@ -18,4 +18,6 @@
     <color name="container_color_adaptive">@color/container_color_dark</color>
     <color name="primary_color">#7DA556</color>
     <color name="secondary_container_color">#375539</color>
+
+    <color name="splash_logo_color">@color/surface_color_light</color>
 </resources>

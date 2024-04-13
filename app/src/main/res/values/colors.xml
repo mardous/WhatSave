@@ -34,4 +34,5 @@
 
     <!-- Launcher Icon -->
     <color name="ic_launcher_background">#D23227</color>
+    <color name="splash_logo_color">@color/surface_color_dark</color>
 </resources>
