@@ -133,8 +133,13 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 .setNegativeButton(android.R.string.cancel, null)
                 .show()
         } else if (hasQ()) { // Just to remove the Lint warning
-            this.selectedClient = client
-            permissionRequest.launch(requireContext().getClientSAFIntent(client))
+            MaterialAlertDialogBuilder(requireContext())
+                .setMessage(getString(R.string.saf_tutorial, client.getSAFDirectoryPath()).formattedAsHtml())
+                .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
+                    this.selectedClient = client
+                    permissionRequest.launch(requireContext().getClientSAFIntent(client))
+                }
+                .show()
         }
     }
 

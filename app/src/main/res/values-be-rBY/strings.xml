@@ -51,6 +51,7 @@
     <string name="default_client_cleared">Кліент па змаўчанні ачышчаны.</string>
     <string name="client_info"><![CDATA[Версія <b>%s</b>]]></string>
     <string name="client_info_unknown">Немагчыма загрузіць інфармацыю пра кліента.</string>
+    <string name="saf_tutorial"><![CDATA[На наступным экране пераканайцеся, што выбралі месцазнаходжанне \"<b>%s</b>\". Пасля завяршэння націсніце кнопку \"Выкарыстоўваць гэту папку\" унізе, каб пацвердзіць.]]></string>
     <string name="installed_clients_empty">Няма ўсталяваных кліентаў WA.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Вы павінны зайсці ў WA і загрузіць некалькі статусаў</string>
     <string name="there_may_be_no_saved_files">Магчыма, захаваныя файлы адсутнічаюць</string>

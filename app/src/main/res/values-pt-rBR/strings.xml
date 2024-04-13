@@ -51,6 +51,7 @@
     <string name="default_client_cleared">Cliente padrão desmarcado.</string>
     <string name="client_info"><![CDATA[Versão <b>%s</b>]]></string>
     <string name="client_info_unknown">Não foi possível carregar as informações do cliente.</string>
+    <string name="saf_tutorial"><![CDATA[Na próxima tela, certifique-se de selecionar o local \"<b>%s</b>\". Uma vez feito isso, pressione o botão \"Usar esta pasta\" na parte inferior para confirmar.]]></string>
     <string name="installed_clients_empty">Não há clientes WA instalados.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Você deve ir ao WA e baixar alguns status</string>
     <string name="there_may_be_no_saved_files">Pode ser que não haja arquivos salvos</string>
