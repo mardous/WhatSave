@@ -179,17 +179,26 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     }
 
     private fun handleBackPress(): Boolean {
+        // WORKAROUND: Sometimes the callback is executed even when the fragment has already
+        // been removed, which is why some users got IllegalStateException errors.
+        // For now, we only have to manually check the state of the fragment and cancel the
+        // callback by returning 'true' when it is not visible.
+        if (!isVisible) return true
         if (!hasPermissions()) {
             MaterialAlertDialogBuilder(requireContext())
                 .setMessage(R.string.permissions_denied_message)
                 .setPositiveButton(R.string.continue_action) { _: DialogInterface, _: Int ->
-                    findNavController().popBackStack()
+                    closeOnboard()
                 }
                 .setNegativeButton(R.string.grant_permissions, null)
                 .show()
             return true
         }
         return false
+    }
+
+    private fun closeOnboard() {
+        if (isVisible) findNavController().popBackStack()
     }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
