@@ -193,11 +193,11 @@ class WhatSaveViewModel(
         }
     }
 
-    fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + ioHandler) {
+    fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + SilentHandler) {
         emit(updateService.latestRelease(DEFAULT_USER, DEFAULT_REPO))
     }
 
-    fun downloadUpdate(context: Context, release: GitHubRelease) = viewModelScope.launch(IO + ioHandler) {
+    fun downloadUpdate(context: Context, release: GitHubRelease) = viewModelScope.launch(IO + SilentHandler) {
         val downloadRequest = release.getDownloadRequest(context)
         if (downloadRequest != null) {
             val downloadManager = context.getSystemService<DownloadManager>()
@@ -211,9 +211,7 @@ class WhatSaveViewModel(
         }
     }
 
-    private val ioHandler = CoroutineExceptionHandler { _, throwable ->
-        recordException(throwable)
-    }
+    private val SilentHandler = CoroutineExceptionHandler { _, _ -> }
 }
 
 internal typealias StatusesLiveData = MutableLiveData<StatusQueryResult>
