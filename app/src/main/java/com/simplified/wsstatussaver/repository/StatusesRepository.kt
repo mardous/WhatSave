@@ -21,10 +21,11 @@ import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
+import android.provider.DocumentsContract
+import android.provider.DocumentsContract.Document
 import android.provider.MediaStore.MediaColumns
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
-import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.database.*
 import com.simplified.wsstatussaver.extensions.*
@@ -68,33 +69,43 @@ class StatusesRepositoryImpl(
         }
         if (hasQ()) {
             val persistedPermissions = contentResolver.persistedUriPermissions
-            if (persistedPermissions.isEmpty()) {
+            if (!persistedPermissions.areValidPermissions()) {
                 return StatusQueryResult(code = ResultCode.PermissionError)
             }
+            val documentSelection = arrayOf(
+                Document.COLUMN_DOCUMENT_ID, //0
+                Document.COLUMN_DISPLAY_NAME, //1
+                Document.COLUMN_LAST_MODIFIED, //2
+                Document.COLUMN_SIZE //3
+            )
             for (permission in persistedPermissions) {
-                var statusesDir = DocumentFile.fromTreeUri(context, permission.uri)
-                if (statusesDir?.name != ".Statuses") {
-                    statusesDir = statusesDir?.findFile(".Statuses")
-                }
-                if (statusesDir == null || !statusesDir.isDirectory) {
+                if (!DocumentsContract.isTreeUri(permission.uri))
                     continue
-                }
-                val statusFiles = statusesDir.listFiles()
-                if (statusFiles.isEmpty()) {
-                    continue
-                }
-                for (file in statusFiles) {
-                    val fileName = file.name ?: continue
-                    val client = WaClient.entries.firstOrNull {
-                        statusesDir.uri.path?.contains(it.getSAFDirectoryPath()) == true
-                    }
-                    if (type.acceptFileName(fileName)) {
-                        val isSaved = statusDao.statusSaved(file.uri, fileName)
-                        if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
-                            continue
 
-                        statusList.add(Status(type, file.name, file.uri, file.lastModified(), file.length(), client?.packageName, isSaved))
-                    }
+                val client = WaClient.entries.firstOrNull {
+                    permission.uri.path?.contains(it.getSAFDirectoryPath()) == true
+                }
+                val documentUri = DocumentsContract.buildChildDocumentsUriUsingTree(
+                    permission.uri, DocumentsContract.getTreeDocumentId(permission.uri)
+                )
+                contentResolver.query(documentUri, documentSelection, null, null, null)?.use { cursor ->
+                    if (cursor.moveToFirst()) do {
+                        val id = cursor.getString(0)
+                        val fileName = cursor.getString(1)
+                        val lastModified = cursor.getLong(2)
+                        val size = cursor.getLong(3)
+                        val uri = DocumentsContract.buildChildDocumentsUriUsingTree(
+                            permission.uri, id
+                        )
+                        if (type.acceptFileName(fileName)) {
+                            val isOld = lastModified.hasElapsedTwentyFourHours()
+                            val isSaved = statusDao.statusSaved(uri, fileName)
+                            if ((isOld && isExcludeOld) || (isSaved && isExcludeSaved))
+                                continue
+
+                            statusList.add(Status(type, fileName, uri, lastModified, size, client?.packageName, isSaved))
+                        }
+                    } while (cursor.moveToNext())
                 }
             }
         } else {

@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.model
 import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
+import android.content.UriPermission
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
@@ -56,7 +57,10 @@ enum class WaClient(
     }
 
     fun hasPermissions(context: Context): Boolean {
-        val uriPermissions = context.contentResolver.persistedUriPermissions
+        return hasPermissions(context.contentResolver.persistedUriPermissions)
+    }
+
+    fun hasPermissions(uriPermissions: List<UriPermission>): Boolean {
         return uriPermissions.any { it.isReadPermission && it.uri.isFromClient(this) }
     }
 
@@ -82,7 +86,7 @@ enum class WaClient(
 
     @TargetApi(Build.VERSION_CODES.Q)
     fun getSAFDirectoryPath(): String {
-        return "Android/media/$packageName/$internalName/Media"
+        return "Android/media/$packageName/$internalName/Media/.Statuses"
     }
 
     private fun <T> resolvePackageValue(context: Context, resolver: (PackageInfo?) -> T): T? {

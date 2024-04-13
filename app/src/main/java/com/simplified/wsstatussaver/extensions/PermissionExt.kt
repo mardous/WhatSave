@@ -19,12 +19,14 @@ import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.UriPermission
 import android.os.Build
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.model.RequestedPermissions
+import com.simplified.wsstatussaver.model.WaClient
 
 const val STORAGE_PERMISSION_REQUEST = 100
 
@@ -41,6 +43,10 @@ fun getApplicablePermissions() = getRequestedPermissions()
     .filter { it.isApplicable() }
     .flatMap { it.permissions.asIterable() }
     .toTypedArray()
+
+fun List<UriPermission>.areValidPermissions(): Boolean {
+    return isNotEmpty() && WaClient.entries.any { client -> client.hasPermissions(this) }
+}
 
 fun Context.hasStoragePermissions(): Boolean = doIHavePermissions(*getApplicablePermissions())
 

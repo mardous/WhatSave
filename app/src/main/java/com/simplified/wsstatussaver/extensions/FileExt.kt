@@ -15,7 +15,6 @@ package com.simplified.wsstatussaver.extensions
 
 import android.net.Uri
 import androidx.core.content.FileProvider
-import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.App
 import com.simplified.wsstatussaver.getApp
 import java.io.File
@@ -34,11 +33,9 @@ fun File.canonicalOrAbsolutePath(): String {
 
 fun File.getUri(): Uri = FileProvider.getUriForFile(getApp().applicationContext, App.getFileProviderAuthority(), this)
 
-private fun Long.hasElapsedTwentyFourHours(): Boolean {
+fun Long.hasElapsedTwentyFourHours(): Boolean {
     return (System.currentTimeMillis() - this) >= TimeUnit.HOURS.toMillis(24L)
 }
-
-fun DocumentFile.isOldFile() = lastModified().hasElapsedTwentyFourHours()
 
 fun File.isOldFile() = lastModified().hasElapsedTwentyFourHours()
 
