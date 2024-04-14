@@ -38,7 +38,7 @@ class MessageAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val message = messages[position]
         holder.message.text = message.content
-        holder.time.text = message.time.time()
+        holder.time.text = message.time.time(useTimeFormat = true)
     }
 
     override fun getItemCount(): Int = messages.size
