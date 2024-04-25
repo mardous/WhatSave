@@ -312,24 +312,16 @@ class StatusesRepositoryImpl(
     }
 
     private fun saveAndGetUri(status: StatusEntity): Uri? {
-        return contentResolver.openInputStream(status.origin).use { stream ->
-            if (stream != null) {
-                val result = kotlin.runCatching {
-                    saveStatus(status, stream).also { saveUri ->
-                        if (saveUri != null) {
-                            statusDao.saveStatus(status)
-                        }
+        val result = runCatching {
+            contentResolver.openInputStream(status.origin)?.use { stream ->
+                saveStatus(status, stream).also { saveUri ->
+                    if (saveUri != null) {
+                        statusDao.saveStatus(status)
                     }
                 }
-
-                if (result.isSuccess) {
-                    result.getOrThrow()
-                } else {
-                    result.exceptionOrNull()?.let { recordException(it) }
-                    null
-                }
-            } else null
+            }
         }
+        return result.getOrNull()
     }
 
     @Throws(IOException::class)
