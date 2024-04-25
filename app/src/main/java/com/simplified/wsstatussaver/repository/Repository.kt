@@ -18,6 +18,7 @@ import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.model.Country
+import com.simplified.wsstatussaver.model.ShareData
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
@@ -25,6 +26,8 @@ import com.simplified.wsstatussaver.model.StatusType
 interface Repository {
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
+    suspend fun shareStatus(status: Status): ShareData
+    suspend fun shareStatuses(statuses: List<Status>): ShareData
     suspend fun saveStatus(status: Status, saveName: String?): Uri?
     suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri>
     suspend fun deleteStatus(status: Status): Boolean
@@ -49,6 +52,10 @@ class RepositoryImpl(
     override suspend fun statuses(type: StatusType): StatusQueryResult = statusesRepository.statuses(type)
 
     override suspend fun savedStatuses(type: StatusType): StatusQueryResult = statusesRepository.savedStatuses(type)
+
+    override suspend fun shareStatus(status: Status): ShareData = statusesRepository.share(status)
+
+    override suspend fun shareStatuses(statuses: List<Status>): ShareData = statusesRepository.share(statuses)
 
     override suspend fun saveStatus(status: Status, saveName: String?): Uri? = statusesRepository.save(status, saveName)
 

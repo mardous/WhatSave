@@ -21,13 +21,21 @@ import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.databinding.DialogProgressBinding
 import com.simplified.wsstatussaver.databinding.DialogStatusOptionsBinding
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 
 private typealias StatusBinding = DialogStatusOptionsBinding
 private typealias ViewCallback = (View) -> Unit
+
+fun Context.createProgressDialog(): Dialog {
+    val builder = MaterialAlertDialogBuilder(this)
+    val binding = DialogProgressBinding.inflate(LayoutInflater.from(builder.context))
+    return builder.setView(binding.root).setCancelable(false).create()
+}
 
 fun Context.showStatusOptions(
     status: Status,

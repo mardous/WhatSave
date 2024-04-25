@@ -31,6 +31,7 @@ import com.simplified.wsstatussaver.model.*
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
+import com.simplified.wsstatussaver.mvvm.ShareResult
 import com.simplified.wsstatussaver.repository.Repository
 import com.simplified.wsstatussaver.storage.Storage
 import com.simplified.wsstatussaver.storage.StorageDevice
@@ -136,6 +137,18 @@ class WhatSaveViewModel(
             loadStatuses(it)
             loadSavedStatuses(it)
         }
+    }
+
+    fun shareStatus(status: Status): LiveData<ShareResult> = liveData(IO) {
+        emit(ShareResult(isLoading = true))
+        val data = repository.shareStatus(status)
+        emit(ShareResult(data = data))
+    }
+
+    fun shareStatuses(statuses: List<Status>): LiveData<ShareResult> = liveData(IO) {
+        emit(ShareResult(isLoading = true))
+        val data = repository.shareStatuses(statuses)
+        emit(ShareResult(data = data))
     }
 
     fun saveStatus(status: Status, saveName: String? = null): LiveData<SaveResult> = liveData(IO) {

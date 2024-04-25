@@ -63,6 +63,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     protected lateinit var statusType: StatusType
     protected var statusAdapter: StatusAdapter? = null
 
+    private val progressDialog by lazy { requireContext().createProgressDialog() }
     private val statusesFragment: AbsStatusesFragment
         get() = parentFragment as AbsStatusesFragment
 
@@ -186,10 +187,15 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) {
         when (item.itemId) {
             R.id.action_share -> {
-                requestContext {
-                    startActivitySafe(
-                        selection.toShareIntent().toChooser(getString(R.string.share_with))
-                    )
+                viewModel.shareStatuses(selection).observe(viewLifecycleOwner) {
+                    if (it.isLoading) {
+                        progressDialog.show()
+                    } else {
+                        progressDialog.dismiss()
+                        if (it.isSuccess) {
+                            startActivitySafe(it.data.createIntent(requireContext()))
+                        }
+                    }
                 }
             }
 
@@ -258,7 +264,16 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun shareStatusClick(status: Status) = requestContext {
-        startActivitySafe(status.toShareIntent().toChooser(getString(R.string.share_with)))
+        viewModel.shareStatus(status).observe(viewLifecycleOwner) { result ->
+            if (result.isLoading) {
+                progressDialog.show()
+            } else {
+                progressDialog.dismiss()
+                if (result.isSuccess) {
+                    startActivitySafe(result.data.createIntent(requireContext()))
+                }
+            }
+        }
     }
 
     @SuppressLint("CheckResult")
@@ -283,9 +298,6 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
                         .show()
                 } else {
                     Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
-                        .setAction(R.string.share_action) {
-                            startActivitySafe(result.statuses.toShareIntent().toChooser(getString(R.string.share_with)))
-                        }
                         .show()
                 }
                 viewModel.reloadAll()

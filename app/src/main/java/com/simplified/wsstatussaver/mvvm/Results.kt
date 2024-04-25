@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver.mvvm
 
 import android.net.Uri
+import com.simplified.wsstatussaver.model.ShareData
 import com.simplified.wsstatussaver.model.Status
 
 data class DeletionResult(
@@ -46,4 +47,12 @@ data class SaveResult(
             return SaveResult(false, statuses, uris, uris.size)
         }
     }
+}
+
+data class ShareResult(
+    val isLoading: Boolean = false,
+    val data: ShareData = ShareData()
+) {
+    val isSuccess: Boolean
+        get() = data.hasData
 }

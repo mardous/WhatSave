@@ -15,14 +15,14 @@ package com.simplified.wsstatussaver.extensions
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.text.SimpleDateFormat.getDateTimeInstance
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 val fileDateFormat: DateFormat by lazy {
     SimpleDateFormat("MMM_d_yyyy_HH.mm.ss", Locale.ENGLISH)
@@ -63,27 +63,4 @@ fun Status.toPreviewIntent() =
         .setDataAndType(fileUri, type.mimeType)
         .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
-/**
- * Creates an [Intent] that can be used to share this status.
- */
-fun Status.toShareIntent() =
-    Intent(Intent.ACTION_SEND)
-        .putExtra(Intent.EXTRA_STREAM, fileUri)
-        .setType(type.mimeType)
-        .setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-
 fun StatusType.acceptFileName(fileName: String): Boolean = !fileName.startsWith(".") && fileName.endsWith(this.format)
-
-fun List<Status>.toShareIntent(): Intent {
-    val types = HashSet<String>()
-    mapTo(types) { it.type.mimeType }
-
-    val uris = ArrayList<Uri>()
-    mapTo(uris) { it.fileUri }
-
-    val mimeType = if (types.size == 1) types.first() else "*/*"
-    return Intent(Intent.ACTION_SEND_MULTIPLE)
-        .putExtra(Intent.EXTRA_STREAM, uris)
-        .setType(mimeType)
-        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-}
