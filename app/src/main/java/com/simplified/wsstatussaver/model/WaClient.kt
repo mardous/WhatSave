@@ -68,7 +68,8 @@ enum class WaClient(
         val uriPermissions = context.contentResolver.persistedUriPermissions
         for (perm in uriPermissions) {
             if (perm.uri.isFromClient(this)) {
-                val flags = Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
+                val flags =
+                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
                 context.contentResolver.releasePersistableUriPermission(perm.uri, flags)
                 return true
             }
@@ -80,8 +81,11 @@ enum class WaClient(
         return packageManager.getLaunchIntentForPackage(packageName)
     }
 
-    fun getDirectoryPath(): String {
-        return "$internalName/Media/.Statuses"
+    fun getDirectoryPath(): Array<String> {
+        return arrayOf(
+            "$internalName/Media/.Statuses",
+            "Android/media/$packageName/$internalName/Media/.Statuses"
+        )
     }
 
     @TargetApi(Build.VERSION_CODES.Q)

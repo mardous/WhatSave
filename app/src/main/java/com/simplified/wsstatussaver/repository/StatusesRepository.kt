@@ -113,15 +113,18 @@ class StatusesRepositoryImpl(
         } else {
             if (context.hasStoragePermissions()) {
                 for (client in installedClients.getPreferred(context)) {
-                    val directory = File(statusesLocationPath, client.getDirectoryPath())
-                    val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
-                    if (!statuses.isNullOrEmpty()) for (file in statuses) {
-                        val fileUri = file.getUri()
-                        val isSaved = statusDao.statusSaved(fileUri, file.name)
-                        if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
-                            continue
+                    for (path in client.getDirectoryPath()) {
+                        val directory = File(statusesLocationPath, path)
+                        if (!directory.isDirectory) continue
+                        val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
+                        if (!statuses.isNullOrEmpty()) for (file in statuses) {
+                            val fileUri = file.getUri()
+                            val isSaved = statusDao.statusSaved(fileUri, file.name)
+                            if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
+                                continue
 
-                        statusList.add(Status(type, file.name, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
+                            statusList.add(Status(type, file.name, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
+                        }
                     }
                 }
             }
