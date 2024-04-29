@@ -33,7 +33,23 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.createFastScroller
+import com.simplified.wsstatussaver.extensions.createProgressDialog
+import com.simplified.wsstatussaver.extensions.doOnPageSelected
+import com.simplified.wsstatussaver.extensions.getPreferredClient
+import com.simplified.wsstatussaver.extensions.hasR
+import com.simplified.wsstatussaver.extensions.isNullOrEmpty
+import com.simplified.wsstatussaver.extensions.isQuickDeletion
+import com.simplified.wsstatussaver.extensions.isVideo
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.primaryColor
+import com.simplified.wsstatussaver.extensions.requestContext
+import com.simplified.wsstatussaver.extensions.requestPermissions
+import com.simplified.wsstatussaver.extensions.requestView
+import com.simplified.wsstatussaver.extensions.serializable
+import com.simplified.wsstatussaver.extensions.showToast
+import com.simplified.wsstatussaver.extensions.startActivitySafe
+import com.simplified.wsstatussaver.extensions.toPreviewIntent
 import com.simplified.wsstatussaver.fragments.binding.StatusesPageBinding
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
@@ -43,7 +59,6 @@ import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
-import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
