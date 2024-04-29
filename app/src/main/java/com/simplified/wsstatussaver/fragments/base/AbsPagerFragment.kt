@@ -96,9 +96,8 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
 
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
+                viewModel.reloadAll()
                 showToast(R.string.deletion_success)
-            } else {
-                showToast(R.string.deletion_failed)
             }
         }
 
