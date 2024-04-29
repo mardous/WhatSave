@@ -43,6 +43,7 @@ import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
+import me.zhanghai.android.fastscroll.FastScrollerBuilder
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -92,6 +93,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             }.also { newStatusAdapter ->
                 statusAdapter = newStatusAdapter
             }
+            recyclerView.createFastScroller()
         }
 
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {

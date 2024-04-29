@@ -114,6 +114,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
             recycleChildrenOnDetach = true
         }
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.createFastScroller()
     }
 
     private fun updateEmptyView() {
