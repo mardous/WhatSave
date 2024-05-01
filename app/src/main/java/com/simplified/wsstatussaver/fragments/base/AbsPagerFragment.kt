@@ -108,7 +108,6 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             }.also { newStatusAdapter ->
                 statusAdapter = newStatusAdapter
             }
-            recyclerView.createFastScroller()
         }
 
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {

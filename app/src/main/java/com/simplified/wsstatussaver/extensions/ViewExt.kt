@@ -33,8 +33,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
-import com.simplified.wsstatussaver.R
-import me.zhanghai.android.fastscroll.FastScrollerBuilder
 
 const val WHATSAVE_ANIM_TIME = 350L
 
@@ -129,10 +127,6 @@ fun NavigationBarView.hide() {
 }
 
 fun RecyclerView.Adapter<*>?.isNullOrEmpty(): Boolean = this == null || this.itemCount == 0
-
-fun RecyclerView.createFastScroller() = FastScrollerBuilder(this)
-    .useMd2Style()
-    .build()
 
 fun ViewPager2.doOnPageSelected(lifecycleOwner: LifecycleOwner, onSelected: (position: Int) -> Unit) {
     val lifecycle = lifecycleOwner.lifecycle

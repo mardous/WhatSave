@@ -127,7 +127,6 @@ dependencies {
     implementation("io.github.g00fy2:versioncompare:1.5.0")
     implementation("io.michaelrocks:libphonenumber-android:8.13.28")
     implementation("org.ocpsoft.prettytime:prettytime:5.0.4.Final")
-    implementation("me.zhanghai.android.fastscroll:library:1.3.0")
 
     // Kotlin
     val kotlinCoroutinesVersion = "1.8.0"

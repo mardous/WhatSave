@@ -31,7 +31,6 @@ import com.simplified.wsstatussaver.adapter.MessageAdapter
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.databinding.FragmentMessagesBinding
-import com.simplified.wsstatussaver.extensions.createFastScroller
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.extensions.toChooser
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
@@ -75,7 +74,6 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
         adapter = MessageAdapter(requireContext(), arrayListOf(), this)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.createFastScroller()
     }
 
     private fun data(messages: List<MessageEntity>) {
