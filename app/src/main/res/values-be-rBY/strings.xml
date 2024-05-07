@@ -163,8 +163,6 @@
     <string name="only_wifi_summary">Шукайце абнаўленні толькі пры падключэнні да Wi-Fi.</string>
     <string name="the_app_is_up_to_date">Прыкладанне абноўлена</string>
     <string name="update_title">Абнаўленне даступна</string>
-    <string name="release_date">Дата выпуску: %s</string>
-    <string name="download_size">Памер спампоўкі: %s</string>
     <string name="download_action">Спампаваць</string>
     <string name="more_info_action">Дадатковая інфармацыя.</string>
     <string name="downloading_update">Спампоўка абнаўлення WhatSave</string>

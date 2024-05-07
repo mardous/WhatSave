@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2023 Christians Martínez Alvarado
   ~
   ~ Licensed under the GNU General Public License v3
@@ -12,8 +11,7 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   -->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,56 +23,89 @@
         android:layout_height="wrap_content"
         android:paddingTop="?dialogPreferredPadding"
         android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding">
+        android:paddingEnd="?dialogPreferredPadding"
+        android:paddingBottom="12dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceHeadline5"
+            android:text="@string/update_title"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/version_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_marginTop="4dp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceSubtitle1"
+            android:textAppearance="?textAppearanceHeadline6"
             android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_label"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="v1.0.2"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/version_info"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_marginStart="?dialogPreferredPadding"
+            android:layout_marginEnd="?dialogPreferredPadding"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceSubtitle1"
+            android:textAlignment="center"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:textColor="?android:textColorSecondary"
             app:layout_constraintTop_toBottomOf="@+id/version_name"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="@tools:sample/lorem/random"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:maxLines="3"
+            tools:text="@tools:sample/lorem/random" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/release_date"
+            android:id="@+id/version_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingVertical="2dp"
-            android:maxLines="1"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceSubtitle1"
+            android:gravity="center_vertical"
+            android:textAppearance="?textAppearanceSubtitle2"
+            android:textColor="?android:textColorSecondary"
             app:layout_constraintTop_toBottomOf="@+id/version_info"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Release date: Sep. 7, 2023"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@tools:sample/lorem" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/download_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingVertical="2dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceSubtitle1"
-            app:layout_constraintTop_toBottomOf="@+id/release_date"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/download_action"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="?dialogPreferredPadding"
+            android:layout_marginEnd="?dialogPreferredPadding"
+            android:text="@string/download_action"
+            app:icon="@drawable/ic_save_alt_24dp"
+            app:iconTint="?colorOnPrimary"
+            app:layout_constraintTop_toBottomOf="@+id/version_detail"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Download size: 3.42 MB"/>
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel_action"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@android:string/cancel"
+            app:layout_constraintTop_toBottomOf="@+id/download_action"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

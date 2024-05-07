@@ -163,8 +163,6 @@
     <string name="only_wifi_summary">வைஃபை இணைக்கப்பட்டிருக்கும் போது மட்டுமே புதுப்பிப்புகளைத் தேடுங்கள்.</string>
     <string name="the_app_is_up_to_date">பயன்பாடு புதுப்பித்த நிலையில் உள்ளது</string>
     <string name="update_title">புதுப்பிப்பு கிடைக்கிறது</string>
-    <string name="release_date">வெளியீட்டு தேதி: %s</string>
-    <string name="download_size">பதிவிறக்க அளவு: %s</string>
     <string name="download_action">பதிவிறக்க Tamil</string>
     <string name="more_info_action">மேலும் தகவல்.</string>
     <string name="downloading_update">WhatSave புதுப்பிப்பைப் பதிவிறக்குகிறது</string>

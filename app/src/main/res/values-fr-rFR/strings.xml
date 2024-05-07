@@ -163,8 +163,6 @@
     <string name="only_wifi_summary">Recherchez des mises a jour uniquement lorsque le Wi-Fi est connecte.</string>
     <string name="the_app_is_up_to_date">L\'application est a jour</string>
     <string name="update_title">Mise a jour disponible</string>
-    <string name="release_date">Date de sortie: %s</string>
-    <string name="download_size">Taille du telechargement: %s</string>
     <string name="download_action">Telecharger</string>
     <string name="more_info_action">Plus d\'informations.</string>
     <string name="downloading_update">Téléchargement de la mise à jour WhatSave</string>

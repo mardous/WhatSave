@@ -13,23 +13,27 @@
  */
 package com.simplified.wsstatussaver.dialogs
 
+import android.annotation.SuppressLint
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
 import androidx.core.os.BundleCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.fragment.app.DialogFragment
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogUpdateInfoBinding
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.lastUpdateSearch
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.logUpdateRequest
 import com.simplified.wsstatussaver.update.GitHubRelease
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
-class UpdateDialog : DialogFragment() {
+class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
     private var _binding: DialogUpdateInfoBinding? = null
     private val binding get() = _binding!!
@@ -41,28 +45,15 @@ class UpdateDialog : DialogFragment() {
         release = BundleCompat.getParcelable(requireArguments(), EXTRA_RELEASE, GitHubRelease::class.java)!!
         if (release.isNewer(requireContext())) {
             _binding = DialogUpdateInfoBinding.inflate(layoutInflater)
+            binding.downloadAction.setOnClickListener(this)
+            binding.cancelAction.setOnClickListener(this)
             fillVersionInfo()
-            return MaterialAlertDialogBuilder(requireContext())
-                .setTitle(R.string.update_title)
-                .setView(binding.root)
-                .setCancelable(false)
-                .setPositiveButton(R.string.download_action) { _: DialogInterface, _: Int ->
-                    viewModel.downloadUpdate(requireContext(), release)
-                    showToast(R.string.downloading_update)
-                    logUpdateRequest(release.name, true)
+            return BottomSheetDialog(requireContext()).also {
+                it.setContentView(binding.root)
+                it.setOnShowListener {
+                    preferences().lastUpdateSearch = System.currentTimeMillis()
                 }
-                .setNegativeButton(android.R.string.cancel) { _: DialogInterface, _: Int ->
-                    release.setIgnored(requireContext())
-                    logUpdateRequest(release.name, false)
-                }
-                .setNeutralButton(R.string.more_info_action) { _: DialogInterface, _: Int ->
-                    context?.openWeb(release.url)
-                }
-                .create().also { dialog ->
-                    dialog.setOnShowListener {
-                        preferences().lastUpdateSearch = System.currentTimeMillis()
-                    }
-                }
+            }
         }
         return MaterialAlertDialogBuilder(requireContext())
             .setMessage(R.string.the_app_is_up_to_date)
@@ -70,24 +61,40 @@ class UpdateDialog : DialogFragment() {
             .create()
     }
 
+    override fun onClick(view: View) {
+        when (view) {
+            binding.downloadAction -> {
+                viewModel.downloadUpdate(requireContext(), release)
+                showToast(R.string.downloading_update)
+                logUpdateRequest(release.name, true)
+            }
+
+            binding.cancelAction -> {
+                release.setIgnored(requireContext())
+                logUpdateRequest(release.name, false)
+            }
+        }
+        dismiss()
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun fillVersionInfo() {
-        binding.versionName.text = release.tag
+        binding.versionName.text = release.name
         if (release.body.isNotEmpty()) {
             binding.versionInfo.text = release.body
         } else {
             binding.versionInfo.isVisible = false
         }
         val date = release.getFormattedDate()
-        if (date != null) {
-            binding.releaseDate.text = getString(R.string.release_date, date)
-        } else {
-            binding.releaseDate.isVisible = false
-        }
         val size = release.getDownloadSize()
-        if (size != null) {
-            binding.downloadSize.text = getString(R.string.download_size, size)
+        if (date != null && size != null) {
+            binding.versionDetail.text = "$date • $size"
+        } else if (date != null) {
+            binding.versionDetail.text = date
+        } else if (size != null) {
+            binding.versionDetail.text = size
         } else {
-            binding.downloadSize.isVisible = false
+            binding.versionDetail.isVisible = false
         }
     }
 

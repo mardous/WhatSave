@@ -163,8 +163,6 @@
     <string name="only_wifi_summary">Wi-Fi қосылған кезде ғана жаңартуларды іздеңіз.</string>
     <string name="the_app_is_up_to_date">Қолданба жаңартылған</string>
     <string name="update_title">Жаңарту қолжетімді</string>
-    <string name="release_date">Шығарылған күні: %s</string>
-    <string name="download_size">Жүктеп алу өлшемі: %s</string>
     <string name="download_action">Жүктеп алу</string>
     <string name="more_info_action">Қосымша ақпарат.</string>
     <string name="downloading_update">WhatSave жаңартуы жүктелуде</string>
