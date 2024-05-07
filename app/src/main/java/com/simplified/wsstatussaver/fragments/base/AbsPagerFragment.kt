@@ -33,7 +33,6 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
-import com.simplified.wsstatussaver.extensions.createFastScroller
 import com.simplified.wsstatussaver.extensions.createProgressDialog
 import com.simplified.wsstatussaver.extensions.doOnPageSelected
 import com.simplified.wsstatussaver.extensions.getPreferredClient
