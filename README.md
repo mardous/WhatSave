@@ -21,6 +21,9 @@ This application is really basic; here its features:
 #### Disclaimer
 This application and its developer do not have any relationship or agreement with other companies or trademarks.
 
+#### Privacy and Terms
+Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy and Terms of Use.
+
 #### License details
 
 WhatSave is licensed under the [GNU General Public License, Version 3.0](http://www.gnu.org/licenses/#GPL). Any fork of
