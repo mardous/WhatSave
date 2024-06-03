@@ -34,7 +34,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
-import com.simplified.wsstatussaver.dialogs.PrivacyDialog
+import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.IClientCallback
@@ -165,7 +165,10 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 }
             }
 
-            binding.privacyPolicyButton -> PrivacyDialog().show(childFragmentManager, "PRIVACY_POLICY")
+            binding.privacyPolicyButton -> {
+                requireContext().openWeb(AboutDialog.PRIVACY_POLICY)
+            }
+
             binding.continueButton -> {
                 getOnBackPressedDispatcher().onBackPressed()
             }

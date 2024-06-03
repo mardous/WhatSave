@@ -79,5 +79,6 @@ class AboutDialog : DialogFragment() {
         private const val WHATSAVE_GITHUB = "$MARDOUS_GITHUB/WhatSave"
         private const val GITHUB_RELEASES = "$WHATSAVE_GITHUB/releases"
         private const val GITHUB_LATEST_RELEASE = "$GITHUB_RELEASES/latest"
+        const val PRIVACY_POLICY = "$WHATSAVE_GITHUB/blob/master/PRIVACY.md"
     }
 }
