@@ -15,6 +15,7 @@ package com.simplified.wsstatussaver.dialogs
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import androidx.core.os.BundleCompat
@@ -46,7 +47,6 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
         if (release.isNewer(requireContext())) {
             _binding = DialogUpdateInfoBinding.inflate(layoutInflater)
             binding.downloadAction.setOnClickListener(this)
-            binding.cancelAction.setOnClickListener(this)
             fillVersionInfo()
             return BottomSheetDialog(requireContext()).also {
                 it.setContentView(binding.root)
@@ -61,20 +61,21 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
             .create()
     }
 
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        release.setIgnored(requireContext())
+        logUpdateRequest(release.name, false)
+    }
+
     override fun onClick(view: View) {
         when (view) {
             binding.downloadAction -> {
                 viewModel.downloadUpdate(requireContext(), release)
                 showToast(R.string.downloading_update)
                 logUpdateRequest(release.name, true)
-            }
-
-            binding.cancelAction -> {
-                release.setIgnored(requireContext())
-                logUpdateRequest(release.name, false)
+                dismiss()
             }
         }
-        dismiss()
     }
 
     @SuppressLint("SetTextI18n")

@@ -56,8 +56,8 @@
             android:id="@+id/version_info"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="?dialogPreferredPadding"
-            android:layout_marginEnd="?dialogPreferredPadding"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:textAlignment="center"
@@ -94,16 +94,6 @@
             app:icon="@drawable/ic_save_alt_24dp"
             app:iconTint="?colorOnPrimary"
             app:layout_constraintTop_toBottomOf="@+id/version_detail"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/cancel_action"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@android:string/cancel"
-            app:layout_constraintTop_toBottomOf="@+id/download_action"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
