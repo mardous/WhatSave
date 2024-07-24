@@ -21,8 +21,6 @@ import android.view.*
 import android.view.View.OnLongClickListener
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ActionMode
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
@@ -31,6 +29,7 @@ import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
@@ -49,10 +48,7 @@ open class StatusAdapter(
     private var isSaveEnabled: Boolean,
     private var isDeleteEnabled: Boolean,
     isWhatsAppIconEnabled: Boolean
-) : RecyclerView.Adapter<StatusAdapter.ViewHolder>(), ActionMode.Callback {
-
-    var actionMode: ActionMode? = null
-    private val checked = ArrayList<Status>()
+) : AbsMultiSelectionAdapter<Status, StatusAdapter.ViewHolder>(activity, R.menu.menu_statuses_selection) {
 
     var statuses: List<Status> by Delegates.observable(ArrayList()) { _: KProperty<*>, _: List<Status>, _: List<Status> ->
         notifyDataSetChanged()
@@ -110,10 +106,8 @@ open class StatusAdapter(
         return statuses.size
     }
 
-    override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
-        val menuInflater = mode.menuInflater
-        menuInflater.inflate(R.menu.menu_statuses_selection, menu)
-        return true
+    override fun getIdentifier(position: Int): Status {
+        return statuses[position]
     }
 
     override fun onPrepareActionMode(mode: ActionMode, menu: Menu): Boolean {
@@ -126,74 +120,8 @@ open class StatusAdapter(
         return false
     }
 
-    override fun onActionItemClicked(mode: ActionMode, item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_select_all) {
-            checkAll()
-        } else {
-            callback.multiSelectionItemClick(item, ArrayList(checked))
-            finishActionMode()
-        }
-        return true
-    }
-
-    override fun onDestroyActionMode(mode: ActionMode?) {
-        clearChecked()
-        actionMode = null
-        onBackPressedCallback.remove()
-    }
-
-    private fun isItemSelected(status: Status) = actionMode != null && checked.contains(status)
-
-    private fun isMultiSelectionMode() = actionMode != null
-
-    private fun toggleItemChecked(position: Int): Boolean {
-        val identifier = statuses[position]
-        if (!checked.remove(identifier)) {
-            checked.add(identifier)
-        }
-        notifyItemChanged(position)
-        updateCab()
-        return true
-    }
-
-    private fun checkAll() {
-        if (actionMode != null) {
-            checked.clear()
-            for (i in statuses) {
-                checked.add(i)
-            }
-            notifyDataSetChanged()
-            updateCab()
-        }
-    }
-
-    private fun clearChecked() {
-        checked.clear()
-        notifyDataSetChanged()
-    }
-
-    private fun updateCab() {
-        if (actionMode == null) {
-            actionMode = (activity as AppCompatActivity).startSupportActionMode(this)
-            activity.onBackPressedDispatcher.addCallback(onBackPressedCallback)
-        }
-        val size = checked.size
-        if (size <= 0) actionMode?.finish()
-        else actionMode?.title = activity.getString(R.string.x_selected, size)
-    }
-
-    fun finishActionMode() {
-        actionMode?.finish()
-        clearChecked()
-    }
-
-    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            if (actionMode != null) {
-                actionMode?.finish()
-                remove()
-            }
-        }
+    override fun onMultiSelectionItemClick(menuItem: MenuItem, selection: List<Status>) {
+        callback.multiSelectionItemClick(menuItem, selection)
     }
 
     @SuppressLint("ClickableViewAccessibility")
