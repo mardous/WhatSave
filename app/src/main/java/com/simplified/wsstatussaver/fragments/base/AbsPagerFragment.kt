@@ -198,7 +198,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         viewModel.reloadAll()
     }
 
-    override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) {
+    override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) = requestView {
         when (item.itemId) {
             R.id.action_share -> {
                 viewModel.shareStatuses(selection).observe(viewLifecycleOwner) {
@@ -277,7 +277,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun shareStatusClick(status: Status) = requestContext {
+    override fun shareStatusClick(status: Status) = requestView {
         viewModel.shareStatus(status).observe(viewLifecycleOwner) { result ->
             if (result.isLoading) {
                 progressDialog.show()
@@ -291,7 +291,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     @SuppressLint("CheckResult")
-    private fun saveStatus(status: Status) {
+    private fun saveStatus(status: Status) = requestView {
         viewModel.saveStatus(status).observe(viewLifecycleOwner) {
             processSaveResult(it)
         }
