@@ -13,9 +13,11 @@
  */
 package com.simplified.wsstatussaver.interfaces
 
+import android.view.MenuItem
 import com.simplified.wsstatussaver.database.Conversation
 
 interface IConversationCallback {
     fun conversationClick(conversation: Conversation)
-    fun conversationLongClick(conversation: Conversation)
+    fun conversationSwiped(conversation: Conversation)
+    fun conversationMultiSelectionClick(item: MenuItem, selection: List<Conversation>)
 }

@@ -13,9 +13,11 @@
  */
 package com.simplified.wsstatussaver.interfaces
 
+import android.view.MenuItem
 import com.simplified.wsstatussaver.database.MessageEntity
 
 interface IMessageCallback {
     fun messageClick(message: MessageEntity)
-    fun messageLongClick(message: MessageEntity)
+    fun messageSwiped(message: MessageEntity)
+    fun messageMultiSelectionClick(item: MenuItem, selection: List<MessageEntity>)
 }

@@ -131,8 +131,6 @@
     <string name="disable_message_view_confirmation">Quando disattivi la visualizzazione messaggi, tutti i messaggi salvati qui saranno eliminati. Sei sicuro?</string>
     <string name="delete_conversation_title">Elimina conversazione</string>
     <string name="delete_conversation_confirmation">Questo eliminerà tutti i messaggi da questa conversazione.</string>
-    <string name="delete_message_title">Elimina messaggio</string>
-    <string name="delete_message_confirmation">Vuoi eliminare questo messaggio?</string>
     <string name="blacklist_sender">Non salvare i messaggi da questo mittente</string>
     <string name="blacklisted_senders">Mittenti in lista nera</string>
     <string name="no_blacklisted_senders">Qui saranno mostrate le persone di cui non vuoi salvare i messaggi.</string>

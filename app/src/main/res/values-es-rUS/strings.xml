@@ -131,8 +131,6 @@
     <string name="disable_message_view_confirmation">Al desactivar Vista rápida, todos los mensajes guardados serán eliminados. ¿Continuar?</string>
     <string name="delete_conversation_title">Eliminar conversación</string>
     <string name="delete_conversation_confirmation">Esto eliminará todos los mensajes de esta conversación.</string>
-    <string name="delete_message_title">Eliminar mensaje</string>
-    <string name="delete_message_confirmation">¿Quieres eliminar este mensaje?</string>
     <string name="blacklist_sender">No guardar mensajes de este remitente en el futuro</string>
     <string name="blacklisted_senders">Emisores no mostrados</string>
     <string name="no_blacklisted_senders">Aquí se mostrarán los emisores cuyos mensajes no quieres que se guarden.</string>

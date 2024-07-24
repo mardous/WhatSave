@@ -132,8 +132,6 @@
     <string name="disable_message_view_confirmation">जब आप संदेश दृश्य को निष्क्रिय करते हैं, तो सभी यहाँ सहेजे गए संदेश हटा दिए जाएंगे। क्या आप सुनिश्चित हैं?</string>
     <string name="delete_conversation_title">बातचीत हटाएं</string>
     <string name="delete_conversation_confirmation">इससे इस बातचीत से सभी संदेश हटा दिए जाएंगे।</string>
-    <string name="delete_message_title">संदेश हटाएं</string>
-    <string name="delete_message_confirmation">क्या आप इस संदेश को हटाना चाहते हैं?</string>
     <string name="blacklist_sender">इस प्रेषक से संदेश सहेजना नहीं</string>
     <string name="blacklisted_senders">काली सूची में होने वाले प्रेषक</string>
     <string name="no_blacklisted_senders">यहाँ उन लोगों को दिखाया जाएगा जिनसे आप चाहते हैं कि उनके संदेश सहेजे ना जाएं।</string>

@@ -26,6 +26,7 @@
     <string name="share_app">Share app</string>
     <string name="app_share">I invite you to try this interesting app: WhatSave. Download it here: %s</string>
     <string name="open_action">Open</string>
+    <string name="copy_action">Copy</string>
     <string name="more_label">More</string>
     <string name="home_label">Statuses</string>
     <string name="saved_label">Saved</string>
@@ -132,8 +133,8 @@
     <string name="disable_message_view_confirmation">When you deactivate Message view, all saved messages here will be deleted. Are you sure?</string>
     <string name="delete_conversation_title">Delete conversation</string>
     <string name="delete_conversation_confirmation">This will delete all messages from this conversation.</string>
-    <string name="delete_message_title">Delete message</string>
-    <string name="delete_message_confirmation">Do you want to delete this message?</string>
+    <string name="delete_conversations_title">Delete conversations</string>
+    <string name="delete_x_conversations_confirmation">%d conversations will be permanently deleted.</string>
     <string name="blacklist_sender">Don\'t save messages from this sender</string>
     <string name="blacklisted_senders">Blacklisted senders</string>
     <string name="no_blacklisted_senders">Here will be shown the people from whom you do not what their messages to be saved.</string>

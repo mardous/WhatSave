@@ -132,8 +132,6 @@
     <string name="disable_message_view_confirmation">Wanneer je Berichtweergave uitschakelt, worden alle hier opgeslagen berichten verwijderd. Weet je het zeker?</string>
     <string name="delete_conversation_title">Verwijder gesprek</string>
     <string name="delete_conversation_confirmation">Dit zal alle berichten uit dit gesprek verwijderen.</string>
-    <string name="delete_message_title">Verwijder bericht</string>
-    <string name="delete_message_confirmation">Wil je dit bericht verwijderen?</string>
     <string name="blacklist_sender">Sla geen berichten op van deze afzender</string>
     <string name="blacklisted_senders">Afzenders op zwarte lijst</string>
     <string name="no_blacklisted_senders">Hier worden de mensen getoond van wie je niet wilt dat hun berichten worden opgeslagen.</string>

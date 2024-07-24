@@ -132,8 +132,6 @@
     <string name="disable_message_view_confirmation">Калі вы адключыце прагляд паведамленняў, усе захаваныя паведамленні будуць выдаленыя. Вы ўпэўненыя?</string>
     <string name="delete_conversation_title">Выдаліць размову</string>
     <string name="delete_conversation_confirmation">Гэта выдаліць усе паведамленні з гэтай размовы.</string>
-    <string name="delete_message_title">Выдаліць паведамленне</string>
-    <string name="delete_message_confirmation">Вы хочаце выдаліць гэта паведамленне?</string>
     <string name="blacklist_sender">Не захоўваць паведамленні ад гэтага адпраўніка</string>
     <string name="blacklisted_senders">Адпраўнікі ў чарным спісе</string>
     <string name="no_blacklisted_senders">Тут будуць паказаныя людзі, ад якіх вы не хочаце захоўваць іхнія паведамленні.</string>

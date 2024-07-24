@@ -127,6 +127,7 @@ dependencies {
     implementation("io.github.g00fy2:versioncompare:1.5.0")
     implementation("io.michaelrocks:libphonenumber-android:8.13.35")
     implementation("org.ocpsoft.prettytime:prettytime:5.0.4.Final")
+    implementation("com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:1.0.0")
 
     // Kotlin
     val kotlinCoroutinesVersion = "1.8.0"

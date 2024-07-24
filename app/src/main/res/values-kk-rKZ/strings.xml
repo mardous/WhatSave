@@ -132,8 +132,6 @@
     <string name="disable_message_view_confirmation">Хабарлама көрінісін ажыратудан кейін бұл жерде сақталған барлық хабарламалар жойылады. Сіз сенімдісіз бе?</string>
     <string name="delete_conversation_title">Жақты алып тастау</string>
     <string name="delete_conversation_confirmation">Бұл жақтынан барлық хабарламалар жойылады.</string>
-    <string name="delete_message_title">Хабарламаны алып тастау</string>
-    <string name="delete_message_confirmation">Сіз бұл хабарламаны алып тастау келісімінен өтінеміз ме?</string>
     <string name="blacklist_sender">Бұл жіберушіден хабарламаларды сақтау</string>
     <string name="blacklisted_senders">Қара тізімге алып тасталған жіберушілер</string>
     <string name="no_blacklisted_senders">Сіздің хабарламаларыңызды сақтауға қалайтыныңызды білмейді мейлімдейтін адамдарды көрсетеді.</string>

@@ -132,8 +132,6 @@
     <string name="disable_message_view_confirmation">Quando você desativa a visualização de mensagens, todas as mensagens salvas aqui serão excluídas. Tem certeza?</string>
     <string name="delete_conversation_title">Excluir conversa</string>
     <string name="delete_conversation_confirmation">Isso excluirá todas as mensagens desta conversa.</string>
-    <string name="delete_message_title">Excluir mensagem</string>
-    <string name="delete_message_confirmation">Você deseja excluir esta mensagem?</string>
     <string name="blacklist_sender">Não salvar mensagens deste remetente</string>
     <string name="blacklisted_senders">Remetentes na lista negra</string>
     <string name="no_blacklisted_senders">Aqui serão mostradas as pessoas das quais você não deseja salvar as mensagens.</string>

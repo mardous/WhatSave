@@ -20,14 +20,19 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
+import androidx.core.app.ShareCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.recyclerview.widget.RecyclerView.OVER_SCROLL_NEVER
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.transition.MaterialFadeThrough
+import com.h6ah4i.android.widget.advrecyclerview.animator.RefactoredDefaultItemAnimator
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager
+import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ConversationAdapter
@@ -50,6 +55,8 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     private val binding get() = _binding!!
 
     private var adapter: ConversationAdapter? = null
+    private var swipeManager: RecyclerViewSwipeManager? = null
+    private var wrappedAdapter: RecyclerView.Adapter<*>? = null
     private var blockSwitchListener: Boolean = false
 
     private var isMessageViewEnabled: Boolean
@@ -109,11 +116,16 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     }
 
     private fun setupRecyclerView() {
+        swipeManager = RecyclerViewSwipeManager().also {
+            wrappedAdapter = it.createWrappedAdapter(adapter!!)
+        }
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext()).apply {
             recycleChildrenOnDetach = true
         }
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = wrappedAdapter
+        binding.recyclerView.itemAnimator = RefactoredDefaultItemAnimator()
+        swipeManager!!.attachRecyclerView(binding.recyclerView)
     }
 
     private fun updateEmptyView() {
@@ -194,7 +206,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         findNavController().navigate(R.id.messagesFragment, arguments)
     }
 
-    override fun conversationLongClick(conversation: Conversation) {
+    override fun conversationSwiped(conversation: Conversation) {
         val binding = DialogDeleteConversationBinding.inflate(layoutInflater)
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(R.string.delete_conversation_title)
@@ -206,10 +218,46 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
             .show()
     }
 
+    override fun conversationMultiSelectionClick(item: MenuItem, selection: List<Conversation>) {
+        when (item.itemId) {
+            R.id.action_copy -> {
+                viewModel.copyConversations(selection).observe(viewLifecycleOwner) { result ->
+                    ShareCompat.IntentBuilder(requireContext())
+                        .setText(result)
+                        .setType("text/plain")
+                        .createChooserIntent().let {
+                            startActivitySafe(it)
+                        }
+                }
+            }
+
+            R.id.action_delete -> {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.delete_conversations_title)
+                    .setMessage(getString(R.string.delete_x_conversations_confirmation, selection.size))
+                    .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
+                        viewModel.deleteConversations(selection)
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+            }
+        }
+    }
+
+    override fun onPause() {
+        swipeManager?.cancelSwipe()
+        super.onPause()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.recyclerView.itemAnimator = null
         binding.recyclerView.layoutManager = null
         adapter?.unregisterAdapterDataObserver(adapterDataObserver)
+        swipeManager?.release()
+        swipeManager = null
+        WrapperAdapterUtils.releaseAll(wrappedAdapter)
+        wrappedAdapter = null
         adapter = null
     }
 }

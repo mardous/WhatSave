@@ -131,8 +131,6 @@
     <string name="disable_message_view_confirmation">Когда вы отключаете просмотр сообщений, все сохраненные здесь сообщения будут удалены. Вы уверены?</string>
     <string name="delete_conversation_title">Удалить беседу</string>
     <string name="delete_conversation_confirmation">Это удалит все сообщения из этой беседы.</string>
-    <string name="delete_message_title">Удалить сообщение</string>
-    <string name="delete_message_confirmation">Вы хотите удалить это сообщение?</string>
     <string name="blacklist_sender">Не сохранять сообщения от этого отправителя</string>
     <string name="blacklisted_senders">В черном списке отправителей</string>
     <string name="no_blacklisted_senders">Здесь будут показаны люди, от которых вы не хотите, чтобы их сообщения сохранялись.</string>
