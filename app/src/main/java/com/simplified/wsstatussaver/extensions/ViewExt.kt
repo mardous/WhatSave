@@ -142,6 +142,7 @@ fun ViewPager2.doOnPageSelected(lifecycleOwner: LifecycleOwner, onSelected: (pos
             if (event == Lifecycle.Event.ON_DESTROY) {
                 unregisterOnPageChangeCallback(callback)
             }
+            lifecycle.removeObserver(this)
         }
     })
 }
