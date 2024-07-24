@@ -41,7 +41,9 @@ interface Repository {
     suspend fun textFromMessages(messages: List<MessageEntity>): String
     suspend fun insertMessage(message: MessageEntity): Long
     suspend fun removeMessage(message: MessageEntity)
+    suspend fun removeMessages(messages: List<MessageEntity>)
     suspend fun deleteConversation(sender: Conversation)
+    suspend fun deleteConversations(conversations: List<Conversation>)
     suspend fun clearMessages()
 }
 
@@ -88,7 +90,12 @@ class RepositoryImpl(
 
     override suspend fun removeMessage(message: MessageEntity) = messageRepository.removeMessage(message)
 
+    override suspend fun removeMessages(messages: List<MessageEntity>) = messageRepository.removeMessages(messages)
+
     override suspend fun deleteConversation(sender: Conversation) = messageRepository.deleteConversation(sender.name)
+
+    override suspend fun deleteConversations(senders: List<Conversation>) =
+        messageRepository.deleteConversations(senders.map { it.name })
 
     override suspend fun clearMessages() = messageRepository.clearMessages()
 }

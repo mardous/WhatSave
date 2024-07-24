@@ -194,6 +194,17 @@ class WhatSaveViewModel(
         }
     }
 
+    fun deleteConversations(conversations: List<Conversation>, addToBlacklist: Boolean = false) = viewModelScope.launch(IO) {
+        repository.deleteConversations(conversations)
+        if (addToBlacklist) conversations.forEach {
+            getApp().preferences().blacklistMessageSender(it.name)
+        }
+    }
+
+    fun deleteMessages(messages: List<MessageEntity>) = viewModelScope.launch(IO) {
+        repository.removeMessages(messages)
+    }
+
     fun deleteAllMessages() = viewModelScope.launch(IO) {
         repository.clearMessages()
     }

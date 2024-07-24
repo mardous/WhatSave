@@ -24,6 +24,9 @@ interface MessageDao {
     @Delete
     fun removeMessage(messageEntity: MessageEntity)
 
+    @Delete
+    fun removeMessages(messages: List<MessageEntity>)
+
     @Query("DELETE FROM received_messages WHERE received_from = :sender")
     fun deleteConversation(sender: String)
 
