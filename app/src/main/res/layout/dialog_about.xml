@@ -13,156 +13,162 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/dialog_preferred_padding_small">
+    android:overScrollMode="@integer/overScrollMode">
 
-    <LinearLayout
-        android:id="@+id/app_version"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/default_item_margin"
-        android:paddingBottom="@dimen/default_item_margin"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="64dp"
-        android:orientation="vertical"
-        android:background="?rectSelector"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingTop="@dimen/dialog_preferred_padding_small">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/app_version"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceCaption"
-            android:text="@string/app_name"/>
+            android:minHeight="?actionBarSize"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="64dp"
+            android:orientation="vertical"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="@string/app_name" />
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceBody2"
+                tools:text="Version 1.0.0" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/author"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            tools:text="Version 1.0.0"/>
+            android:minHeight="?actionBarSize"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:orientation="vertical"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toBottomOf="@+id/app_version">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="@string/author_title" />
 
-    <LinearLayout
-        android:id="@+id/author"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/default_item_margin"
-        android:paddingBottom="@dimen/default_item_margin"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:orientation="vertical"
-        android:background="?rectSelector"
-        app:layout_constraintTop_toBottomOf="@+id/app_version">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceBody2"
+                android:text="@string/developer_name" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/fork_on_github"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceCaption"
-            android:text="@string/author_title"/>
+            android:minHeight="?actionBarSize"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:orientation="vertical"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toBottomOf="@+id/author">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="@string/fork_on_github_title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceBody2"
+                android:text="@string/fork_on_github_summary" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/contact"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            android:text="@string/developer_name"/>
+            android:minHeight="?actionBarSize"
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/default_item_margin"
+            android:paddingBottom="@dimen/default_item_margin"
+            android:paddingStart="?dialogPreferredPadding"
+            android:paddingEnd="?dialogPreferredPadding"
+            android:orientation="vertical"
+            android:background="?rectSelector"
+            app:layout_constraintTop_toBottomOf="@+id/fork_on_github">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceCaption"
+                android:text="@string/contact_title" />
 
-    <LinearLayout
-        android:id="@+id/fork_on_github"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/default_item_margin"
-        android:paddingBottom="@dimen/default_item_margin"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:orientation="vertical"
-        android:background="?rectSelector"
-        app:layout_constraintTop_toBottomOf="@+id/author">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:textAppearance="?textAppearanceBody2"
+                android:text="@string/contact_summary" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceCaption"
-            android:text="@string/fork_on_github_title"/>
+        </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            android:text="@string/fork_on_github_summary"/>
+        <ImageView
+            android:id="@+id/share_app"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:padding="14dp"
+            android:background="?roundSelector"
+            app:srcCompat="@drawable/ic_share_24dp"
+            app:tint="?colorControlNormal"
+            app:layout_constraintTop_toTopOf="@+id/app_version"
+            app:layout_constraintBottom_toBottomOf="@+id/app_version"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/contact"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?actionBarSize"
-        android:gravity="center_vertical"
-        android:paddingTop="@dimen/default_item_margin"
-        android:paddingBottom="@dimen/default_item_margin"
-        android:paddingStart="?dialogPreferredPadding"
-        android:paddingEnd="?dialogPreferredPadding"
-        android:orientation="vertical"
-        android:background="?rectSelector"
-        app:layout_constraintTop_toBottomOf="@+id/fork_on_github">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceCaption"
-            android:text="@string/contact_title"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textAppearance="?textAppearanceBody2"
-            android:text="@string/contact_summary"/>
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/share_app"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:scaleType="fitCenter"
-        android:padding="14dp"
-        android:background="?roundSelector"
-        app:srcCompat="@drawable/ic_share_24dp"
-        app:tint="?colorControlNormal"
-        app:layout_constraintTop_toTopOf="@+id/app_version"
-        app:layout_constraintBottom_toBottomOf="@+id/app_version"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
