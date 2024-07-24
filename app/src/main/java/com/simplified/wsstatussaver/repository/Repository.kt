@@ -37,6 +37,8 @@ interface Repository {
     fun defaultCountry(country: Country)
     fun listConversations(): LiveData<List<Conversation>>
     fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>>
+    suspend fun textFromConversations(conversations: List<Conversation>): String
+    suspend fun textFromMessages(messages: List<MessageEntity>): String
     suspend fun insertMessage(message: MessageEntity): Long
     suspend fun removeMessage(message: MessageEntity)
     suspend fun deleteConversation(sender: Conversation)
@@ -77,6 +79,10 @@ class RepositoryImpl(
     override fun receivedMessages(sender: Conversation): LiveData<List<MessageEntity>> {
         return messageRepository.listMessages(sender.name)
     }
+
+    override suspend fun textFromConversations(conversations: List<Conversation>) = messageRepository.textFromConversations(conversations)
+
+    override suspend fun textFromMessages(messages: List<MessageEntity>) = messageRepository.textFromMessages(messages)
 
     override suspend fun insertMessage(message: MessageEntity) = messageRepository.insertMessage(message)
 

@@ -37,6 +37,9 @@ interface MessageDao {
     @Query("SELECT * FROM received_messages WHERE received_from = :sender ORDER BY received_time DESC")
     fun queryMessages(sender: String): LiveData<List<MessageEntity>>
 
+    @Query("SELECT * FROM received_messages WHERE received_from = :sender ORDER BY received_time DESC")
+    fun listMessages(sender: String): List<MessageEntity>
+
     @Query("DELETE FROM received_messages")
     fun clearMessages()
 }
