@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerSmall"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerMedium"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
