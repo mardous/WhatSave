@@ -182,14 +182,16 @@ class StatusesRepositoryImpl(
             }
             val temp = File(cacheDir, status.type.getDefaultSaveName(Date().time, 0))
             if (!temp.exists() || temp.delete()) {
-                val inputStream = contentResolver.openInputStream(status.fileUri)
-                if (inputStream != null) try {
-                    inputStream.use {
-                        temp.outputStream().use { outputStream ->
-                            it.copyTo(outputStream)
+                try {
+                    val inputStream = contentResolver.openInputStream(status.fileUri)
+                    if (inputStream != null) {
+                        inputStream.use {
+                            temp.outputStream().use { outputStream ->
+                                it.copyTo(outputStream)
+                            }
                         }
+                        return ShareData(temp.getUri(), status.type.mimeType)
                     }
-                    return ShareData(temp.getUri(), status.type.mimeType)
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -216,14 +218,16 @@ class StatusesRepositoryImpl(
                 for ((i, status) in unsavedStatuses.withIndex()) {
                     val temp = File(cacheDir, status.type.getDefaultSaveName(currentTime, i + 1))
                     if (!temp.exists() || temp.delete()) {
-                        val inputStream = contentResolver.openInputStream(status.fileUri)
-                        if (inputStream != null) try {
-                            inputStream.use {
-                                temp.outputStream().use { outputStream ->
-                                    it.copyTo(outputStream)
+                        try {
+                            val inputStream = contentResolver.openInputStream(status.fileUri)
+                            if (inputStream != null) {
+                                inputStream.use {
+                                    temp.outputStream().use { outputStream ->
+                                        it.copyTo(outputStream)
+                                    }
                                 }
+                                data[temp.getUri()] = status.type.mimeType
                             }
-                            data[temp.getUri()] = status.type.mimeType
                         } catch (e: IOException) {
                             e.printStackTrace()
                         }
