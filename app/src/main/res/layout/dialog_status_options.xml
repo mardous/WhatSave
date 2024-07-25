@@ -81,7 +81,7 @@
         android:maxLines="1"
         android:gravity="center_horizontal"
         android:background="?rectSelector"
-        android:drawableTop="@drawable/ic_save_24dp"
+        android:drawableTop="@drawable/ic_save_alt_24dp"
         android:drawablePadding="16dp"
 		app:drawableTint="?colorControlNormal"
         android:textColor="?android:textColorPrimary"

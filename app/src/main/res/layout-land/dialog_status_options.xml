@@ -80,7 +80,7 @@
         android:maxLines="1"
         android:gravity="center_vertical"
         android:background="?rectSelector"
-        android:drawableStart="@drawable/ic_save_24dp"
+        android:drawableStart="@drawable/ic_save_alt_24dp"
         android:drawablePadding="32dp"
         android:textColor="?android:textColorPrimary"
         android:text="@string/save_action"
