@@ -26,6 +26,7 @@
     <string name="share_app">Compartir app</string>
     <string name="app_share">Te invito a probar esta interesante aplicación: WhatSave. Descárgalo aquí: %s</string>
     <string name="open_action">Abrir</string>
+    <string name="copy_action">Copiar</string>
     <string name="more_label">Más</string>
     <string name="home_label">Estados</string>
     <string name="saved_label">Guardado</string>
@@ -131,6 +132,8 @@
     <string name="disable_message_view_confirmation">Al desactivar Vista rápida, todos los mensajes guardados serán eliminados. ¿Continuar?</string>
     <string name="delete_conversation_title">Eliminar conversación</string>
     <string name="delete_conversation_confirmation">Esto eliminará todos los mensajes de esta conversación.</string>
+    <string name="delete_conversations_title">Eliminar conversaciones</string>
+    <string name="delete_x_conversations_confirmation">Se eliminarán los mensajes de %d conversaciones.</string>
     <string name="blacklist_sender">No guardar mensajes de este remitente en el futuro</string>
     <string name="blacklisted_senders">Emisores no mostrados</string>
     <string name="no_blacklisted_senders">Aquí se mostrarán los emisores cuyos mensajes no quieres que se guarden.</string>

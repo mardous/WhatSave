@@ -26,6 +26,7 @@
     <string name="share_app">பயன்பாட்டைப் பகிரவும்</string>
     <string name="app_share">இந்த சுவாரஸ்யமான பயன்பாட்டை முயற்சிக்க உங்களை அழைக்கிறேன்: WhatSave. அதை இங்கே பதிவிறக்கவும்: %s</string>
     <string name="open_action">திற</string>
+    <string name="copy_action">நகலெடுக்கவும்</string>
     <string name="more_label">மேலும்</string>
     <string name="home_label">நிலைகள்</string>
     <string name="saved_label">சேமிக்கப்பட்டது</string>
@@ -132,6 +133,8 @@
     <string name="disable_message_view_confirmation">நீங்கள் செய்தி காண்பியை முடக்கும்போது, இங்கு சேமிக்கப்பட்ட அனைத்து செய்திகளும் நீக்கப்படும். நீங்கள் உறுதியாக இருக்கின்றீர்களா?</string>
     <string name="delete_conversation_title">உரைநர நீக்கு</string>
     <string name="delete_conversation_confirmation">இது இந்த உரைநரில் உள்ள அனைத்து செய்திகளையும் நீக்கும்.</string>
+    <string name="delete_conversations_title">உரையாடல்களை நீக்கு</string>
+    <string name="delete_x_conversations_confirmation">%d உரையாடல்கள் நிரந்தரமாக நீக்கப்படும்.</string>
     <string name="blacklist_sender">இந்த அனுப்புநரின் செய்திகளைச் சேமிக்க விரும்பாதே</string>
     <string name="blacklisted_senders">கருத்துப் படுத்தப்பட்ட அனுப்புநர்கள்</string>
     <string name="no_blacklisted_senders">இங்கு நீங்கள் அவர்களிடமிருந்து அவர்கள் செய்திகளை சேமிக்க விரும்பாது என்று காட்டப்படும்.</string>

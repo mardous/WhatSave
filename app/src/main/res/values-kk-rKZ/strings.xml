@@ -26,6 +26,7 @@
     <string name="share_app">Қолданбаны бөлісу</string>
     <string name="app_share">Мен сізді осы қызықты қолданбаны қолдануға шақырамын: WhatSave. Оны мына жерден жүктеп алыңыз: %s</string>
     <string name="open_action">Ашық</string>
+    <string name="copy_action">Көшіру</string>
     <string name="more_label">Көбірек</string>
     <string name="home_label">Күйлер</string>
     <string name="saved_label">Сақталды</string>
@@ -132,6 +133,8 @@
     <string name="disable_message_view_confirmation">Хабарлама көрінісін ажыратудан кейін бұл жерде сақталған барлық хабарламалар жойылады. Сіз сенімдісіз бе?</string>
     <string name="delete_conversation_title">Жақты алып тастау</string>
     <string name="delete_conversation_confirmation">Бұл жақтынан барлық хабарламалар жойылады.</string>
+    <string name="delete_conversations_title">Әңгімелерді жою</string>
+    <string name="delete_x_conversations_confirmation">%d әңгіме мәңгілікке жойылады.</string>
     <string name="blacklist_sender">Бұл жіберушіден хабарламаларды сақтау</string>
     <string name="blacklisted_senders">Қара тізімге алып тасталған жіберушілер</string>
     <string name="no_blacklisted_senders">Сіздің хабарламаларыңызды сақтауға қалайтыныңызды білмейді мейлімдейтін адамдарды көрсетеді.</string>

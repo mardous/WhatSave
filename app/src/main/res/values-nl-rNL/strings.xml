@@ -26,6 +26,7 @@
     <string name="share_app">Deel app</string>
     <string name="app_share">Ik nodig je uit om deze interessante app te proberen: WhatSave. Download het hier: %s</string>
     <string name="open_action">Open</string>
+    <string name="copy_action">Kopiëren</string>
     <string name="more_label">Meer</string>
     <string name="home_label">Statussen</string>
     <string name="saved_label">Opgeslagen</string>
@@ -132,6 +133,8 @@
     <string name="disable_message_view_confirmation">Wanneer je Berichtweergave uitschakelt, worden alle hier opgeslagen berichten verwijderd. Weet je het zeker?</string>
     <string name="delete_conversation_title">Verwijder gesprek</string>
     <string name="delete_conversation_confirmation">Dit zal alle berichten uit dit gesprek verwijderen.</string>
+    <string name="delete_conversations_title">Gesprekken verwijderen</string>
+    <string name="delete_x_conversations_confirmation">%d gesprekken worden permanent verwijderd.</string>
     <string name="blacklist_sender">Sla geen berichten op van deze afzender</string>
     <string name="blacklisted_senders">Afzenders op zwarte lijst</string>
     <string name="no_blacklisted_senders">Hier worden de mensen getoond van wie je niet wilt dat hun berichten worden opgeslagen.</string>

@@ -24,6 +24,7 @@
     <string name="share_app">Compartir app</string>
     <string name="app_share">Te invito a probar esta interesante aplicación: WhatSave. Descárgalo aquí: %s</string>
     <string name="open_action">Abrir</string>
+    <string name="copy_action">Copiar</string>
     <string name="more_label">Más</string>
     <string name="home_label">Estados</string>
     <string name="saved_label">Guardado</string>

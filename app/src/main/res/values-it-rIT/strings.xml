@@ -26,6 +26,7 @@
     <string name="share_app">Condividi app</string>
     <string name="app_share">Ti invito a provare questa interessante app: WhatSave. Scaricalo qui: %s</string>
     <string name="open_action">Aprire</string>
+    <string name="copy_action">Copia</string>
     <string name="more_label">Di più</string>
     <string name="home_label">Stati</string>
     <string name="saved_label">Salvato</string>
@@ -131,6 +132,8 @@
     <string name="disable_message_view_confirmation">Quando disattivi la visualizzazione messaggi, tutti i messaggi salvati qui saranno eliminati. Sei sicuro?</string>
     <string name="delete_conversation_title">Elimina conversazione</string>
     <string name="delete_conversation_confirmation">Questo eliminerà tutti i messaggi da questa conversazione.</string>
+    <string name="delete_conversations_title">Elimina conversazioni</string>
+    <string name="delete_x_conversations_confirmation">%d conversazioni saranno eliminate definitivamente.</string>
     <string name="blacklist_sender">Non salvare i messaggi da questo mittente</string>
     <string name="blacklisted_senders">Mittenti in lista nera</string>
     <string name="no_blacklisted_senders">Qui saranno mostrate le persone di cui non vuoi salvare i messaggi.</string>
