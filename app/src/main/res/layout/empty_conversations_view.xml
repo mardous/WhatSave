@@ -16,7 +16,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="28dp"
@@ -30,7 +29,7 @@
         android:ellipsize="end"
         android:textAlignment="center"
         android:textAppearance="?textAppearanceHeadline6"
-        tools:text="@string/message_view_is_disabled"
+        android:text="@string/loading"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -44,9 +43,18 @@
         android:textAlignment="center"
         android:textAppearance="?textAppearanceSubtitle2"
         android:textColor="?android:textColorSecondary"
-        android:text="@string/you_wont_be_able_to_see_messages_here"
+        android:text="@string/please_wait_a_second"
         app:layout_constraintTop_toBottomOf="@android:id/text1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:indeterminate="true"
+        app:trackCornerRadius="16dp"
+        app:layout_constraintTop_toBottomOf="@android:id/text2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

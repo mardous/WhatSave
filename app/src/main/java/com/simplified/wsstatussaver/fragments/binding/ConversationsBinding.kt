@@ -22,4 +22,5 @@ class ConversationsBinding(binding: FragmentConversationsBinding) {
     val emptyView = binding.conversationsContent.emptyConversationsView.root
     val emptyTitle = binding.conversationsContent.emptyConversationsView.text1
     val emptyText = binding.conversationsContent.emptyConversationsView.text2
+    val progressIndicator = binding.conversationsContent.emptyConversationsView.progressIndicator
 }

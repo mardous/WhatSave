@@ -85,6 +85,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
 
         viewModel.messageSenders().observe(viewLifecycleOwner) {
             adapter?.data(it)
+            updateEmptyView()
         }
     }
 
@@ -100,7 +101,6 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     private val adapterDataObserver = object : AdapterDataObserver() {
         override fun onChanged() {
             if (adapter.isNullOrEmpty()) {
-                updateEmptyView()
                 binding.emptyView.isVisible = true
                 binding.recyclerView.overScrollMode = OVER_SCROLL_NEVER
             } else {
@@ -111,7 +111,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     }
 
     private fun setupSwitch() {
-        binding.switchWithContainer.isChecked = preferences().isMessageViewEnabled
+        binding.switchWithContainer.isChecked = isMessageViewEnabled
         binding.switchWithContainer.setOnCheckedChangeListener(this)
     }
 
@@ -129,13 +129,9 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     }
 
     private fun updateEmptyView() {
-        if (isMessageViewEnabled) {
-            binding.emptyTitle.setText(R.string.empty)
-            binding.emptyText.setText(R.string.no_conversations)
-        } else {
-            binding.emptyTitle.setText(R.string.message_view_is_disabled)
-            binding.emptyText.setText(R.string.you_wont_be_able_to_see_messages_here)
-        }
+        binding.emptyTitle.setText(R.string.empty)
+        binding.emptyText.setText(R.string.no_conversations)
+        binding.progressIndicator.hide()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -172,7 +168,6 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
                 .setMessage(R.string.disable_message_view_confirmation)
                 .setPositiveButton(R.string.yes_action) { _: DialogInterface, _: Int ->
                     isMessageViewEnabled = false
-                    updateEmptyView()
                     viewModel.deleteAllMessages()
                 }
                 .setNegativeButton(R.string.no_action) { _: DialogInterface, _: Int ->
@@ -184,7 +179,6 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
                 .show()
         } else {
             isMessageViewEnabled = true
-            updateEmptyView()
             requestContext {
                 if (!it.bindNotificationListener()) {
                     setStateManually(buttonView, false)
