@@ -26,7 +26,7 @@ android {
 
         applicationId = namespace
         versionCode = 114
-        versionName = "1.3.4"
+        versionName = "1.4.0"
     }
 
     signingConfigs {
