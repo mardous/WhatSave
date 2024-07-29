@@ -192,7 +192,7 @@ class StatusesRepositoryImpl(
                         }
                         return ShareData(temp.getUri(), status.type.mimeType)
                     }
-                } catch (e: IOException) {
+                } catch (e: Exception) {
                     e.printStackTrace()
                 }
             }
@@ -228,7 +228,7 @@ class StatusesRepositoryImpl(
                                 }
                                 data[temp.getUri()] = status.type.mimeType
                             }
-                        } catch (e: IOException) {
+                        } catch (e: Exception) {
                             e.printStackTrace()
                         }
                     }
