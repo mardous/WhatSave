@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">Gesprekken verwijderen</string>
     <string name="delete_x_conversations_confirmation">%d gesprekken worden permanent verwijderd.</string>
     <string name="blacklist_sender">Sla geen berichten op van deze afzender</string>
+    <string name="blacklist_senders">Bewaar geen berichten van deze afzenders</string>
     <string name="blacklisted_senders">Afzenders op zwarte lijst</string>
     <string name="no_blacklisted_senders">Hier worden de mensen getoond van wie je niet wilt dat hun berichten worden opgeslagen.</string>
     <string name="remove_x_from_the_blacklist">Wil je <b>%s</b> uit deze zwarte lijst verwijderen?</string>

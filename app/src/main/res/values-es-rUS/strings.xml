@@ -135,6 +135,7 @@
     <string name="delete_conversations_title">Eliminar conversaciones</string>
     <string name="delete_x_conversations_confirmation">Se eliminarán los mensajes de %d conversaciones.</string>
     <string name="blacklist_sender">No guardar mensajes de este remitente en el futuro</string>
+    <string name="blacklist_senders">No guardar mensajes de estos remitentes en el futuro</string>
     <string name="blacklisted_senders">Emisores no mostrados</string>
     <string name="no_blacklisted_senders">Aquí se mostrarán los emisores cuyos mensajes no quieres que se guarden.</string>
     <string name="remove_x_from_the_blacklist"><![CDATA[¿Quieres remover a <b>%s</b> de está lista?]]></string>

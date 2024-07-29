@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">Delete conversations</string>
     <string name="delete_x_conversations_confirmation">%d conversations will be permanently deleted.</string>
     <string name="blacklist_sender">Don\'t save messages from this sender</string>
+    <string name="blacklist_senders">Don\'t save messages from this senders</string>
     <string name="blacklisted_senders">Blacklisted senders</string>
     <string name="no_blacklisted_senders">Here will be shown the people from whom you do not what their messages to be saved.</string>
     <string name="remove_x_from_the_blacklist"><![CDATA[Do you want to remove <b>%s</b> from this blacklist?]]></string>

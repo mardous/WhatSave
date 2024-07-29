@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">वार्तालाप हटाएँ</string>
     <string name="delete_x_conversations_confirmation">%d वार्तालाप स्थायी रूप से हटा दिए जाएंगे.</string>
     <string name="blacklist_sender">इस प्रेषक से संदेश सहेजना नहीं</string>
+    <string name="blacklist_senders">भविष्य में इन प्रेषकों के संदेशों को सहेजें नहीं</string>
     <string name="blacklisted_senders">काली सूची में होने वाले प्रेषक</string>
     <string name="no_blacklisted_senders">यहाँ उन लोगों को दिखाया जाएगा जिनसे आप चाहते हैं कि उनके संदेश सहेजे ना जाएं।</string>
     <string name="remove_x_from_the_blacklist">%s को इस काली सूची से हटाना चाहते हैं?</string>

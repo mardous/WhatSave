@@ -25,6 +25,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Parcelable
 import android.service.notification.NotificationListenerService
 import android.view.View
 import android.widget.Toast
@@ -34,6 +35,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
+import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
 import com.simplified.wsstatussaver.logUrlView
@@ -117,6 +119,9 @@ fun Context.isOnline(requestOnlyWifi: Boolean): Boolean {
     }
     return false
 }
+
+inline fun <reified T : Parcelable> Bundle.parcelableList(key: String, clazz: KClass<T>) =
+    BundleCompat.getParcelableArrayList(this, key, clazz.java)
 
 @Suppress("DEPRECATION")
 inline fun <reified T : Serializable> Bundle.serializable(key: String, clazz: KClass<T>): T? =

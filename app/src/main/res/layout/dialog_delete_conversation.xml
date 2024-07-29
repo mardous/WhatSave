@@ -15,6 +15,7 @@
 
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -23,11 +24,12 @@
     android:paddingEnd="?dialogPreferredPadding">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@android:id/message"
         style="?materialAlertDialogBodyTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:text="@string/delete_conversation_confirmation"/>
+        tools:text="@string/delete_conversation_confirmation"/>
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/blacklist_sender"
@@ -37,6 +39,6 @@
         android:paddingStart="16dp"
         android:background="?rectSelector"
         android:textAppearance="?textAppearanceBody2"
-        android:text="@string/blacklist_sender"/>
+        tools:text="@string/blacklist_sender"/>
 
 </LinearLayout>

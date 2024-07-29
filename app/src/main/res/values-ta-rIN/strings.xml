@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">உரையாடல்களை நீக்கு</string>
     <string name="delete_x_conversations_confirmation">%d உரையாடல்கள் நிரந்தரமாக நீக்கப்படும்.</string>
     <string name="blacklist_sender">இந்த அனுப்புநரின் செய்திகளைச் சேமிக்க விரும்பாதே</string>
+    <string name="blacklist_senders">இந்த அனுப்புநர்களிடமிருந்து செய்திகளைச் சேமிக்க வேண்டாம்</string>
     <string name="blacklisted_senders">கருத்துப் படுத்தப்பட்ட அனுப்புநர்கள்</string>
     <string name="no_blacklisted_senders">இங்கு நீங்கள் அவர்களிடமிருந்து அவர்கள் செய்திகளை சேமிக்க விரும்பாது என்று காட்டப்படும்.</string>
     <string name="remove_x_from_the_blacklist">நீங்கள் <b>%s</b> ஐ இந்த கருத்துப் படத்திலிருந்து நீக்க விரும்புகின்றீர்களா?</string>

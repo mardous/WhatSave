@@ -135,6 +135,7 @@
     <string name="delete_conversations_title">Удалить диалоги</string>
     <string name="delete_x_conversations_confirmation">%d диалога будут удалены безвозвратно.</string>
     <string name="blacklist_sender">Не сохранять сообщения от этого отправителя</string>
+    <string name="blacklist_senders">Не сохранять сообщения от этих отправителей</string>
     <string name="blacklisted_senders">В черном списке отправителей</string>
     <string name="no_blacklisted_senders">Здесь будут показаны люди, от которых вы не хотите, чтобы их сообщения сохранялись.</string>
     <string name="remove_x_from_the_blacklist">Вы хотите удалить <b>%s</b> из этого черного списка?</string>

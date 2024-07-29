@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">Әңгімелерді жою</string>
     <string name="delete_x_conversations_confirmation">%d әңгіме мәңгілікке жойылады.</string>
     <string name="blacklist_sender">Бұл жіберушіден хабарламаларды сақтау</string>
+    <string name="blacklist_senders">Бұл жіберушілерден келген хабарларды сақтамаңыз</string>
     <string name="blacklisted_senders">Қара тізімге алып тасталған жіберушілер</string>
     <string name="no_blacklisted_senders">Сіздің хабарламаларыңызды сақтауға қалайтыныңызды білмейді мейлімдейтін адамдарды көрсетеді.</string>
     <string name="remove_x_from_the_blacklist">%s бұл қара тізімнен аластату келісімінен өтінеміз ме?</string>

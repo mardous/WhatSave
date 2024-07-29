@@ -136,6 +136,7 @@
     <string name="delete_conversations_title">Выдаліць размовы</string>
     <string name="delete_x_conversations_confirmation">%d размовы будуць выдалены назаўжды.</string>
     <string name="blacklist_sender">Не захоўваць паведамленні ад гэтага адпраўніка</string>
+    <string name="blacklist_senders">Не захоўвайце паведамленні ад гэтых адпраўнікоў</string>
     <string name="blacklisted_senders">Адпраўнікі ў чарным спісе</string>
     <string name="no_blacklisted_senders">Тут будуць паказаныя людзі, ад якіх вы не хочаце захоўваць іхнія паведамленні.</string>
     <string name="remove_x_from_the_blacklist">Вы хочаце выдаліць <b>%s</b> з гэтага чарнага спісу?</string>

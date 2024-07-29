@@ -135,6 +135,7 @@
     <string name="delete_conversations_title">Elimina conversazioni</string>
     <string name="delete_x_conversations_confirmation">%d conversazioni saranno eliminate definitivamente.</string>
     <string name="blacklist_sender">Non salvare i messaggi da questo mittente</string>
+    <string name="blacklist_senders">Non salvare i messaggi provenienti da questi mittenti</string>
     <string name="blacklisted_senders">Mittenti in lista nera</string>
     <string name="no_blacklisted_senders">Qui saranno mostrate le persone di cui non vuoi salvare i messaggi.</string>
     <string name="remove_x_from_the_blacklist">Vuoi rimuovere <b>%s</b> da questa lista nera?</string>

@@ -40,6 +40,7 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.databinding.DialogDeleteConversationBinding
 import com.simplified.wsstatussaver.databinding.FragmentConversationsBinding
 import com.simplified.wsstatussaver.dialogs.BlacklistedSenderDialog
+import com.simplified.wsstatussaver.dialogs.DeleteConversationDialog
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.ConversationsBinding
@@ -201,15 +202,8 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
     }
 
     override fun conversationSwiped(conversation: Conversation) {
-        val binding = DialogDeleteConversationBinding.inflate(layoutInflater)
-        MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.delete_conversation_title)
-            .setView(binding.root)
-            .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
-                viewModel.deleteConversation(conversation, addToBlacklist = binding.blacklistSender.isChecked)
-            }
-            .setNegativeButton(android.R.string.cancel, null)
-            .show()
+        DeleteConversationDialog.create(conversation)
+            .show(childFragmentManager, "DELETE_CONVERSATION")
     }
 
     override fun conversationMultiSelectionClick(item: MenuItem, selection: List<Conversation>) {
@@ -226,14 +220,8 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
             }
 
             R.id.action_delete -> {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(R.string.delete_conversations_title)
-                    .setMessage(getString(R.string.delete_x_conversations_confirmation, selection.size))
-                    .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
-                        viewModel.deleteConversations(selection)
-                    }
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .show()
+                DeleteConversationDialog.create(selection)
+                    .show(childFragmentManager, "DELETE_CONVERSATION")
             }
         }
     }
