@@ -94,13 +94,18 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
         }
     }
 
-    override fun messageClick(message: MessageEntity) {
+    private fun sendText(content: String) {
         startActivitySafe(
-            Intent(Intent.ACTION_SEND)
+            ShareCompat.IntentBuilder(requireContext())
                 .setType("text/plain")
-                .putExtra(Intent.EXTRA_TEXT, message.content)
-                .toChooser(getString(R.string.share_with))
+                .setText(content)
+                .setChooserTitle(R.string.share_with)
+                .createChooserIntent()
         )
+    }
+
+    override fun messageClick(message: MessageEntity) {
+        sendText(message.content)
     }
 
     override fun messageSwiped(message: MessageEntity) {
@@ -111,12 +116,7 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
         when (item.itemId) {
             R.id.action_copy -> {
                 viewModel.copyMessages(selection).observe(viewLifecycleOwner) { result ->
-                    ShareCompat.IntentBuilder(requireContext())
-                        .setType("text/plain")
-                        .setText(result)
-                        .createChooserIntent().let { intent ->
-                            startActivitySafe(intent)
-                        }
+                    sendText(result)
                 }
             }
 
