@@ -20,7 +20,7 @@ import com.google.gson.reflect.TypeToken
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.model.Country
 import java.io.InputStream
-import java.util.*
+import java.util.Locale
 
 interface CountryRepository {
     suspend fun allCountries(): List<Country>

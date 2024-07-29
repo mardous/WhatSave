@@ -16,12 +16,12 @@ package com.simplified.wsstatussaver.activities
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
+import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import com.simplified.wsstatussaver.databinding.ActivityLicenseBinding
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
 import com.simplified.wsstatussaver.extensions.lightenColor
 import com.simplified.wsstatussaver.extensions.primaryColor
 import com.simplified.wsstatussaver.extensions.surfaceColor
-import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets

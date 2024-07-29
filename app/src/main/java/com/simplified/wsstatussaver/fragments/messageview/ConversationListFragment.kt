@@ -37,7 +37,6 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ConversationAdapter
 import com.simplified.wsstatussaver.database.Conversation
-import com.simplified.wsstatussaver.databinding.DialogDeleteConversationBinding
 import com.simplified.wsstatussaver.databinding.FragmentConversationsBinding
 import com.simplified.wsstatussaver.dialogs.BlacklistedSenderDialog
 import com.simplified.wsstatussaver.dialogs.DeleteConversationDialog

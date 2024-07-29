@@ -16,7 +16,12 @@ package com.simplified.wsstatussaver.update
 import android.content.Context
 import com.google.gson.GsonBuilder
 import com.simplified.wsstatussaver.BuildConfig
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.UpdateSearchMode
+import com.simplified.wsstatussaver.extensions.getUpdateSearchMode
+import com.simplified.wsstatussaver.extensions.isOnline
+import com.simplified.wsstatussaver.extensions.isUpdateOnlyWifi
+import com.simplified.wsstatussaver.extensions.lastUpdateSearch
+import com.simplified.wsstatussaver.extensions.preferences
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

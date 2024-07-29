@@ -27,7 +27,16 @@ import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.STORAGE_PERMISSION_REQUEST
+import com.simplified.wsstatussaver.extensions.getGeneralThemeRes
+import com.simplified.wsstatussaver.extensions.hasStoragePermissions
+import com.simplified.wsstatussaver.extensions.isColorLight
+import com.simplified.wsstatussaver.extensions.isShownOnboard
+import com.simplified.wsstatussaver.extensions.openSettings
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.requestPermissions
+import com.simplified.wsstatussaver.extensions.requestWithoutOnboard
+import com.simplified.wsstatussaver.extensions.surfaceColor
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 
 /**

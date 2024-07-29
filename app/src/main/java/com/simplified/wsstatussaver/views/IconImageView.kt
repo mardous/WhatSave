@@ -7,7 +7,11 @@ import android.util.AttributeSet
 import androidx.annotation.ColorInt
 import androidx.appcompat.widget.AppCompatImageView
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.adjustAlpha
+import com.simplified.wsstatussaver.extensions.desaturateColor
+import com.simplified.wsstatussaver.extensions.isNightModeEnabled
+import com.simplified.wsstatussaver.extensions.surfaceColor
+import com.simplified.wsstatussaver.extensions.toColorStateList
 
 /**
  * @author Christians Martínez Alvarado (mardous)

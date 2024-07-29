@@ -22,7 +22,11 @@ import android.service.notification.StatusBarNotification
 import androidx.core.os.BundleCompat.getParcelable
 import androidx.core.os.BundleCompat.getParcelableArrayList
 import com.simplified.wsstatussaver.database.MessageEntity
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.getClientIfInstalled
+import com.simplified.wsstatussaver.extensions.hasP
+import com.simplified.wsstatussaver.extensions.isBlacklistedMessageSender
+import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
+import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.repository.Repository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO

@@ -16,7 +16,7 @@ package com.simplified.wsstatussaver.extensions
 import org.ocpsoft.prettytime.PrettyTime
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
 fun Long.time(maxPrettyTime: Long = 1, maxPrettyTimeUnit: TimeUnit = TimeUnit.HOURS, useTimeFormat: Boolean = false): String {

@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.fragments.messageview
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -36,7 +35,6 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.databinding.FragmentMessagesBinding
 import com.simplified.wsstatussaver.extensions.startActivitySafe
-import com.simplified.wsstatussaver.extensions.toChooser
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.IMessageCallback
 import org.koin.androidx.viewmodel.ext.android.activityViewModel

@@ -30,7 +30,6 @@ import com.simplified.wsstatussaver.database.*
 import com.simplified.wsstatussaver.extensions.*
 import com.simplified.wsstatussaver.model.*
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
-import com.simplified.wsstatussaver.recordException
 import com.simplified.wsstatussaver.storage.Storage
 import java.io.*
 import java.util.Date

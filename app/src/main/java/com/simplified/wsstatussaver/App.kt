@@ -15,7 +15,11 @@ package com.simplified.wsstatussaver
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
+import com.simplified.wsstatussaver.extensions.isAnalyticsEnabled
+import com.simplified.wsstatussaver.extensions.packageInfo
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.versionCode
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

@@ -18,8 +18,8 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
+import com.simplified.wsstatussaver.model.StatusType
 
 /**
  * @author Christians Martínez Alvarado (mardous)

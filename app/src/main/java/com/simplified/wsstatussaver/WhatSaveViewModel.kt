@@ -20,15 +20,23 @@ import android.os.Build
 import android.provider.MediaStore
 import androidx.annotation.RequiresApi
 import androidx.core.content.getSystemService
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.extensions.blacklistMessageSender
 import com.simplified.wsstatussaver.extensions.getAllInstalledClients
 import com.simplified.wsstatussaver.extensions.lastUpdateId
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.model.*
+import com.simplified.wsstatussaver.model.Country
+import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
+import com.simplified.wsstatussaver.model.StatusType
+import com.simplified.wsstatussaver.model.WaClient
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.mvvm.ShareResult
@@ -42,7 +50,14 @@ import com.simplified.wsstatussaver.update.UpdateService
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
-import java.util.*
+import java.util.EnumMap
+import kotlin.collections.List
+import kotlin.collections.arrayListOf
+import kotlin.collections.forEach
+import kotlin.collections.isNotEmpty
+import kotlin.collections.map
+import kotlin.collections.set
+import kotlin.collections.toList
 
 class WhatSaveViewModel(
     private val repository: Repository,

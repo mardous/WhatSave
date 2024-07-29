@@ -28,7 +28,7 @@ import com.simplified.wsstatussaver.extensions.toFileSize
 import io.github.g00fy2.versioncompare.Version
 import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 @Parcelize
 class GitHubRelease(

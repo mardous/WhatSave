@@ -18,7 +18,13 @@ import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.adapter.StatusAdapter
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
+import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_OLD_STATUSES
+import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_SAVED_STATUSES
+import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
+import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
+import com.simplified.wsstatussaver.extensions.isWhatsappIcon
+import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
