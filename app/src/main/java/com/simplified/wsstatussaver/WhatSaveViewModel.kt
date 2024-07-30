@@ -217,14 +217,6 @@ class WhatSaveViewModel(
         repository.clearMessages()
     }
 
-    fun copyConversations(conversations: List<Conversation>): LiveData<String> = liveData(IO) {
-        emit(repository.textFromConversations(conversations))
-    }
-
-    fun copyMessages(messages: List<MessageEntity>): LiveData<String> = liveData(IO) {
-        emit(repository.textFromMessages(messages))
-    }
-
     @RequiresApi(Build.VERSION_CODES.R)
     fun createDeleteRequest(context: Context, statuses: List<Status>): LiveData<PendingIntent> = liveData(IO) {
         val uris = statuses.map { it.fileUri }

@@ -26,7 +26,6 @@
     <string name="share_app">Қолданбаны бөлісу</string>
     <string name="app_share">Мен сізді осы қызықты қолданбаны қолдануға шақырамын: WhatSave. Оны мына жерден жүктеп алыңыз: %s</string>
     <string name="open_action">Ашық</string>
-    <string name="copy_action">Көшіру</string>
     <string name="more_label">Көбірек</string>
     <string name="home_label">Күйлер</string>
     <string name="saved_label">Сақталды</string>

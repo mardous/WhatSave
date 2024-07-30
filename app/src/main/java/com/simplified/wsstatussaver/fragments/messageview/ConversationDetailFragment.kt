@@ -112,12 +112,6 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
 
     override fun messageMultiSelectionClick(item: MenuItem, selection: List<MessageEntity>) {
         when (item.itemId) {
-            R.id.action_copy -> {
-                viewModel.copyMessages(selection).observe(viewLifecycleOwner) { result ->
-                    sendText(result)
-                }
-            }
-
             R.id.action_delete -> {
                 viewModel.deleteMessages(selection)
             }

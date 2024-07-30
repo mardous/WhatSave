@@ -17,13 +17,10 @@ import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageDao
 import com.simplified.wsstatussaver.database.MessageEntity
-import com.simplified.wsstatussaver.extensions.time
 
 interface MessageRepository {
     fun listConversations(): LiveData<List<Conversation>>
     fun listMessages(sender: String): LiveData<List<MessageEntity>>
-    fun textFromConversations(conversations: List<Conversation>): String
-    fun textFromMessages(messages: List<MessageEntity>): String
     suspend fun insertMessage(message: MessageEntity): Long
     suspend fun removeMessage(message: MessageEntity)
     suspend fun removeMessages(messages: List<MessageEntity>)
@@ -38,32 +35,6 @@ class MessageRepositoryImpl(private val messageDao: MessageDao) : MessageReposit
 
     override fun listMessages(sender: String): LiveData<List<MessageEntity>> =
         messageDao.queryMessages(sender)
-
-    override fun textFromConversations(conversations: List<Conversation>): String {
-        val messages = conversations.flatMap {
-            messageDao.listMessages(it.name)
-        }
-        return textFromMessages(messages)
-    }
-
-    override fun textFromMessages(messages: List<MessageEntity>): String {
-        val sb = StringBuilder()
-        val groups = messages.groupBy { it.senderName }
-        for (group in groups) {
-            val sortedMessages = group.value.sortedByDescending { it.time }
-            sb.appendLine()
-                .append(group.key.uppercase())
-                .append(":")
-                .append("\n\n")
-            for (message in sortedMessages) {
-                sb.append(message.time.time(maxPrettyTime = 0, useTimeFormat = true))
-                    .append(": ")
-                    .append(message.content.trim())
-                    .append("\n\n")
-            }
-        }
-        return sb.toString()
-    }
 
     override suspend fun insertMessage(message: MessageEntity) =
         messageDao.insetMessage(message)

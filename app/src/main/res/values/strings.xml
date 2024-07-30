@@ -26,7 +26,6 @@
     <string name="share_app">Share app</string>
     <string name="app_share">I invite you to try this interesting app: WhatSave. Download it here: %s</string>
     <string name="open_action">Open</string>
-    <string name="copy_action">Copy</string>
     <string name="more_label">More</string>
     <string name="home_label">Statuses</string>
     <string name="saved_label">Saved</string>

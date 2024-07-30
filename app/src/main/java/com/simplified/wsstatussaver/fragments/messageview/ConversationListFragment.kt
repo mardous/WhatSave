@@ -20,7 +20,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.CompoundButton
-import androidx.core.app.ShareCompat
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -40,7 +39,13 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.databinding.FragmentConversationsBinding
 import com.simplified.wsstatussaver.dialogs.BlacklistedSenderDialog
 import com.simplified.wsstatussaver.dialogs.DeleteConversationDialog
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.bindNotificationListener
+import com.simplified.wsstatussaver.extensions.getIntRes
+import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
+import com.simplified.wsstatussaver.extensions.isNotificationListener
+import com.simplified.wsstatussaver.extensions.isNullOrEmpty
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.requestContext
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.ConversationsBinding
 import com.simplified.wsstatussaver.interfaces.IConversationCallback
@@ -207,17 +212,6 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
 
     override fun conversationMultiSelectionClick(item: MenuItem, selection: List<Conversation>) {
         when (item.itemId) {
-            R.id.action_copy -> {
-                viewModel.copyConversations(selection).observe(viewLifecycleOwner) { result ->
-                    ShareCompat.IntentBuilder(requireContext())
-                        .setText(result)
-                        .setType("text/plain")
-                        .createChooserIntent().let {
-                            startActivitySafe(it)
-                        }
-                }
-            }
-
             R.id.action_delete -> {
                 DeleteConversationDialog.create(selection)
                     .show(childFragmentManager, "DELETE_CONVERSATION")
