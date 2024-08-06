@@ -22,7 +22,7 @@
 
 A simple application that allows you to save WA statuses (image and video).
 
-#### Basic Features:
+#### 📃 Basic Features:
 
 This application is really basic; here its features:
 
@@ -36,17 +36,17 @@ This application is really basic; here its features:
 * No watermark
 * It's free!
 
-#### Contributing
+#### 🤝 Contributing
 If you are interested in contributing to this project, thank you! You can read the [CONTRIBUTING](CONTRIBUTING.md) file for details.
 
-#### Privacy and Terms
+#### 🔏 Privacy and Terms
 Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy and Terms of Use.
 
-#### Disclaimer
-This application and its developer do not have any relationship or agreement with other companies or trademarks.
-
-#### License details
+#### ⚖️ License details
 WhatSave is licensed under the [GNU General Public License, Version 3.0](http://www.gnu.org/licenses/#GPL). Any fork of
 this project is requested to maintain the same license as per the law.
 
 Please see the [LICENSE](LICENSE.md) file for full reference.
+
+#### ⚠️ Disclaimer
+This application and its developer do not have any relationship or agreement with other companies or trademarks.
