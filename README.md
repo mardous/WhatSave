@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/github/v/release/mardous/WhatSave" alt="latest-release-badge">
   </a>
   <a href="https://github.com/mardous/WhatSave/blob/master/LICENSE.md" style="text-decoration:none" aria-label="License: GPL v3">
-    <img src="https://img.shields.io/badge/License-GPL_v3-blue.svg" alt="license-badge">
+    <img src="https://img.shields.io/github/license/mardous/WhatSave?color=blue" alt="license-badge">
   </a>
   <a href="https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md" style="text-decoration:none" aria-label="Code of Conduct">
     <img src="https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg" alt="contributor-covenant-badge">
