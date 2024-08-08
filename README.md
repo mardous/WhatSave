@@ -1,4 +1,14 @@
-## WhatSave: Status Saver
+<div style="text-align: center;">
+
+# WhatSave
+
+### An application that helps you save WA statuses in the easiest way.
+
+![Screenshots](./art/art.jpg?raw=true)
+
+English
+&nbsp;&nbsp;|&nbsp;&nbsp;
+[Español](README-es.md)
 
 <p style="text-align: center;">
   <a href="https://github.com/mardous/WhatSave" style="text-decoration:none" aria-label="Platform: Android">
@@ -18,13 +28,9 @@
   </a>
 </p>
 
-![Screenshots](./art/art.jpg?raw=true)
+</div>
 
-A simple application that allows you to save WA statuses (image and video).
-
-#### 📃 Basic Features:
-
-This application is really basic; here its features:
+## 📃 Features:
 
 * Supports all Android versions starting from 7.0 Nougat
 * Material You on Android 12+
@@ -36,17 +42,17 @@ This application is really basic; here its features:
 * No watermark
 * It's free!
 
-#### 🤝 Contributing
+## 🤝 Contributing
 If you are interested in contributing to this project, thank you! You can read the [CONTRIBUTING](CONTRIBUTING.md) file for details.
 
-#### 🔏 Privacy and Terms
+## 🔏 Privacy and Terms
 Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy and Terms of Use.
 
-#### ⚖️ License details
+## ⚖️ License details
 WhatSave is licensed under the [GNU General Public License, Version 3.0](http://www.gnu.org/licenses/#GPL). Any fork of
 this project is requested to maintain the same license as per the law.
 
 Please see the [LICENSE](LICENSE.md) file for full reference.
 
-#### ⚠️ Disclaimer
+## ⚠️ Disclaimer
 This application and its developer do not have any relationship or agreement with other companies or trademarks.
