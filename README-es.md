@@ -32,8 +32,6 @@ Español
 
 ## 📃 Características:
 
-La aplicación es realmente básica, algunas de sus características son:
-
 * Soporte para todas las versiones de Android desde 7.0 Nougat
 * Material You en Android 12 y superiores
 * Previsualiza y guarda archivos
