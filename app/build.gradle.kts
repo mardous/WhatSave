@@ -1,5 +1,4 @@
 import java.util.Properties
-import java.io.FileInputStream
 
 plugins {
     id("com.android.application")
@@ -10,12 +9,6 @@ plugins {
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
     id("androidx.navigation.safeargs")
-}
-
-val keystorePropertiesFile = rootProject.file("keystore.properties")
-val keystoreProperties = Properties()
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -31,28 +24,28 @@ android {
         versionName = "1.4.0"
     }
 
-    if (!keystoreProperties.isEmpty) {
-        signingConfigs {
-            create("release") {
-                keyAlias = keystoreProperties["keyAlias"] as String
-                keyPassword = keystoreProperties["keyPassword"] as String
-                storeFile = file(keystoreProperties["storeFile"] as String)
-                storePassword = keystoreProperties["storePassword"] as String
-            }
+    val signingProperties = getProperties("keystore.properties")
+    val releaseSigning = if (signingProperties != null) {
+        signingConfigs.create("release") {
+            keyAlias = signingProperties.property("keyAlias")
+            keyPassword = signingProperties.property("keyPassword")
+            storePassword = signingProperties.property("storePassword")
+            storeFile = file(signingProperties.property("storeFile"))
         }
+    } else {
+        signingConfigs.getByName("debug")
     }
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-            if (signingConfigs.names.contains("release")) {
-                signingConfig = signingConfigs.getByName("release")
-            }
+            signingConfig = releaseSigning
         }
         debug {
             versionNameSuffix = " DEBUG"
             applicationIdSuffix = ".debug"
+            signingConfig = releaseSigning
         }
     }
     buildFeatures {
@@ -81,6 +74,18 @@ android {
         includeInBundle = false
     }
 }
+
+fun getProperties(fileName: String): Properties? {
+    val file = rootProject.file(fileName)
+    return if (file.exists()) {
+        Properties().also { properties ->
+            file.inputStream().use { properties.load(it) }
+        }
+    } else null
+}
+
+fun Properties.property(key: String) =
+    this.getProperty(key) ?: "$key missing"
 
 dependencies {
     // Google/JetPack
