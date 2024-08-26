@@ -151,6 +151,7 @@
             android:title="@string/analytics_enabled_title"
             android:summary="@string/analytics_enabled_summary"
             android:defaultValue="true"
+            app:isPreferenceVisible="@bool/analyticsEnabled"
             android:key="analytics_enabled"/>
 
     </PreferenceCategory>

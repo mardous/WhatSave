@@ -1,3 +1,4 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import java.util.Properties
 
 plugins {
@@ -46,6 +47,21 @@ android {
             versionNameSuffix = " DEBUG"
             applicationIdSuffix = ".debug"
             signingConfig = releaseSigning
+        }
+    }
+    flavorDimensions += "version"
+    productFlavors {
+        create("normal") {
+            dimension = "version"
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = true
+            }
+        }
+        create("fdroid") {
+            dimension = "version"
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = false
+            }
         }
     }
     buildFeatures {
@@ -120,9 +136,9 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
 
     //Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
-    implementation("com.google.firebase:firebase-analytics-ktx")
-    implementation("com.google.firebase:firebase-crashlytics-ktx")
+    "normalImplementation"(platform("com.google.firebase:firebase-bom:33.1.2"))
+    "normalImplementation"("com.google.firebase:firebase-analytics-ktx")
+    "normalImplementation"("com.google.firebase:firebase-crashlytics-ktx")
 
     val koinVersion = "3.5.6"
     implementation("io.insert-koin:koin-core:$koinVersion")

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Christians Martínez Alvarado
+ * Copyright (C) 2024 Christians Martínez Alvarado
  *
  * Licensed under the GNU General Public License v3
  *

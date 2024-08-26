@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2024 Christians Martínez Alvarado
   ~
   ~ Licensed under the GNU General Public License v3
@@ -14,6 +13,5 @@
   -->
 
 <resources>
-    <bool name="allowBackup">true</bool>
-    <bool name="analyticsEnabled">true</bool>
+    <bool name="analyticsEnabled">false</bool>
 </resources>

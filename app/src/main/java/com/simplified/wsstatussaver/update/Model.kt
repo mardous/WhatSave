@@ -21,6 +21,7 @@ import android.os.Parcelable
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import com.google.gson.annotations.SerializedName
+import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
@@ -127,7 +128,7 @@ class ReleaseAsset(
 ) : Parcelable {
 
     val isApk: Boolean
-        get() = contentType == APK_MIME_TYPE
+        get() = contentType == APK_MIME_TYPE && name.contains(BuildConfig.FLAVOR)
 
     companion object {
         const val APK_MIME_TYPE = "application/vnd.android.package-archive"
