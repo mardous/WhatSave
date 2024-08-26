@@ -1,0 +1,9 @@
+* Multi-selection of conversations and messages for deletion
+* Ability to delete conversations or messages by swiping them out
+* New design for the "Update available" dialog
+* Send the user to GitHub to read the privacy policy
+* Added progress indicator to messages view
+* Updated some icons
+* Fixed a bug that affected some users when sharing statuses
+* Fix inability to swipe contents of "About" dialog
+* Fix writing error in Spanish translation
