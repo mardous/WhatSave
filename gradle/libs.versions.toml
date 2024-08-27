@@ -31,6 +31,7 @@ advrecyclerview = "1.0.0"
 glideVersion = "4.16.0"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
+markdown = "4.6.2"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -77,6 +78,9 @@ advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyc
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libphonenumberAndroid" }
 prettytime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "prettytime" }
 versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "versioncompare" }
+
+markdown-core = { module = "io.noties.markwon:core", version.ref = "markdown" }
+markdown-html = { module = "io.noties.markwon:html", version.ref = "markdown" }
 
 gms-plugin = { module = "com.google.gms:google-services", version.ref = "gmsPluginVersion" }
 firebase-crashlytics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlyticsPluginVersion" }

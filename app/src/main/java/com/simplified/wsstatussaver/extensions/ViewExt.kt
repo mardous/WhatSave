@@ -19,6 +19,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
 import androidx.core.view.drawToBitmap
@@ -33,6 +34,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
+import io.noties.markwon.Markwon
+import io.noties.markwon.html.HtmlPlugin
 
 const val WHATSAVE_ANIM_TIME = 350L
 
@@ -149,4 +152,12 @@ fun ViewPager2.doOnPageSelected(lifecycleOwner: LifecycleOwner, onSelected: (pos
 
 fun ViewPager2.findCurrentFragment(fragmentManager: FragmentManager): Fragment? {
     return fragmentManager.findFragmentByTag("f$currentItem")
+}
+
+fun TextView.setMarkdownText(str: String) {
+    val markwon = Markwon.builder(context)
+        .usePlugin(HtmlPlugin.create())
+        .build()
+
+    markwon.setMarkdown(this, str)
 }

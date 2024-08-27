@@ -149,6 +149,9 @@ dependencies {
     implementation(libs.prettytime)
     implementation(libs.advrecyclerview)
 
+    implementation(libs.markdown.core)
+    implementation(libs.markdown.html)
+
     // Kotlin
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)

@@ -21,7 +21,6 @@ import androidx.core.net.toUri
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.activities.LicenseActivity
 import com.simplified.wsstatussaver.databinding.DialogAboutBinding
 import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.extensions.toChooser
@@ -61,7 +60,7 @@ class AboutDialog : DialogFragment() {
             .setView(binding.root)
             .setPositiveButton(R.string.close_action, null)
             .setNeutralButton(R.string.legal_notices) { _, _ ->
-                startActivity(Intent(requireContext(), LicenseActivity::class.java))
+                LicensesDialog().show(parentFragmentManager, "LICENSES_DIALOG") // attach to parent
             }
             .create()
     }
