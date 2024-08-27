@@ -15,6 +15,7 @@ package com.simplified.wsstatussaver.update
 
 import android.content.Context
 import com.google.gson.GsonBuilder
+import com.google.gson.Strictness
 import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.extensions.UpdateSearchMode
 import com.simplified.wsstatussaver.extensions.getUpdateSearchMode
@@ -63,7 +64,7 @@ fun provideOkHttp(context: Context): OkHttpClient {
 
 fun provideUpdateService(client: OkHttpClient): UpdateService {
     val gson = GsonBuilder()
-        .setLenient()
+        .setStrictness(Strictness.LENIENT)
         .create()
 
     val retrofit = Retrofit.Builder()
