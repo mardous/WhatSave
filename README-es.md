@@ -42,6 +42,14 @@ Español
 * Sin marca de agua
 * ¡Es gratis!
 
+## ⬇️ Descargar
+Puedes descargar la última versión desde [aquí](https://github.com/mardous/WhatSave/releases/latest).
+Por lo general, habrán dos archivos APK; uno para F-Droid y el otro para el resto de lugares donde la
+app esté publicada y, además, éste último es el preferido para descargas que no provengan de F-Droid.
+
+Ten en cuenta que podría existir una variación en el tamaño de ambos APK, siendo la versión de F-Droid
+más ligera debido a que no contiene dependencias de Firebase.
+
 ## 🤝 Contribuciones
 Si estás interesado en contribuir a este proyecto, ¡gracias! Puedes leer [este texto (en inglés)](CONTRIBUTING.md) para obtener más detalles.
 
