@@ -27,6 +27,7 @@
 -dontwarn java.lang.invoke.*
 -dontwarn **$$Lambda$*
 -dontwarn javax.annotation.**
+-dontwarn org.commonmark.ext.gfm.strikethrough.**
 
 # RetroFit
 -dontwarn retrofit.**
