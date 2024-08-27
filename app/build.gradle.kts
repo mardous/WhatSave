@@ -1,5 +1,6 @@
-import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
 import java.util.Properties
+
+val isNormalBuild: Boolean by rootProject.extra
 
 plugins {
     id("com.android.application")
@@ -7,10 +8,14 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.devtools.ksp")
-    id("com.google.gms.google-services")
-    id("com.google.firebase.crashlytics")
     id("androidx.navigation.safeargs")
 }
+
+if (isNormalBuild) {
+    apply(plugin = "com.google.gms.google-services")
+    apply(plugin = "com.google.firebase.crashlytics")
+}
+
 
 android {
     compileSdk = 34
@@ -53,15 +58,9 @@ android {
     productFlavors {
         create("normal") {
             dimension = "version"
-            configure<CrashlyticsExtension> {
-                mappingFileUploadEnabled = true
-            }
         }
         create("fdroid") {
             dimension = "version"
-            configure<CrashlyticsExtension> {
-                mappingFileUploadEnabled = false
-            }
         }
     }
     buildFeatures {
