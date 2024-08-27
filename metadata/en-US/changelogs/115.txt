@@ -1,0 +1,4 @@
+* Added a preferences option to disable the Manrope font
+* Improved the design and behavior of the Update dialog
+* Show licenses in a Markdown-formatted dialog
+* Minor improvements
