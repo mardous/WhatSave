@@ -45,9 +45,7 @@ import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 abstract class AbsBaseActivity : AppCompatActivity() {
 
     private val permissionsChangeListeners: MutableList<IPermissionChangeListener?> = ArrayList()
-
     private var hadPermissions = false
-    private var lastThemeUpdate: Long = -1
 
     private lateinit var windowInsetsController: WindowInsetsControllerCompat
 
@@ -55,7 +53,6 @@ abstract class AbsBaseActivity : AppCompatActivity() {
         setTheme(getGeneralThemeRes())
         super.onCreate(savedInstanceState)
         hadPermissions = hasStoragePermissions()
-        lastThemeUpdate = System.currentTimeMillis()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
 
         val navigationBarColor = surfaceColor()
