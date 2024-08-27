@@ -154,6 +154,7 @@
     <string name="system_default">Predet. del sistema</string>
     <string name="language_name">Idioma</string>
     <string name="advanced">Avanzado</string>
+    <string name="use_custom_font_title">Usar fuente Manrope</string>
     <string name="auto_update_title">Búsqueda auto. de actualización</string>
     <string name="every_day">Diariamente</string>
     <string name="weekly">Semanalmente</string>

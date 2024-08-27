@@ -79,6 +79,7 @@
     <string name="settings_statuses">Statuses</string>
     <string name="settings_other">Other</string>
     <string name="advanced">Advanced</string>
+    <string name="use_custom_font_title">Use Manrope font</string>
     <string name="night_mode_title">Night mode</string>
     <string name="night_mode_yes">Yes</string>
     <string name="night_mode_no">No</string>

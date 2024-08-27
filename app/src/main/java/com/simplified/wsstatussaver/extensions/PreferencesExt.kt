@@ -25,6 +25,8 @@ fun Context.preferences(): SharedPreferences = PreferenceManager.getDefaultShare
 
 fun Fragment.preferences() = requireContext().preferences()
 
+fun SharedPreferences.useCustomFont() = getBoolean(PREFERENCE_USE_CUSTOM_FONT, true)
+
 fun SharedPreferences.getDefaultDayNightMode() = getDefaultDayNightMode(getString(PREFERENCE_NIGHT_MODE, null))
 
 fun getDefaultDayNightMode(nightMode: String?): Int {
@@ -143,6 +145,7 @@ class UpdateSearchMode {
 }
 
 const val SHOULD_SHOW_ONBOARD = "should_show_onboard"
+const val PREFERENCE_USE_CUSTOM_FONT = "use_custom_font"
 const val PREFERENCE_NIGHT_MODE = "night_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"

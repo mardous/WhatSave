@@ -37,6 +37,7 @@ import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.requestPermissions
 import com.simplified.wsstatussaver.extensions.requestWithoutOnboard
 import com.simplified.wsstatussaver.extensions.surfaceColor
+import com.simplified.wsstatussaver.extensions.useCustomFont
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 
 /**
@@ -50,13 +51,20 @@ abstract class AbsBaseActivity : AppCompatActivity() {
     private lateinit var windowInsetsController: WindowInsetsControllerCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(getGeneralThemeRes())
+        setupTheme()
         super.onCreate(savedInstanceState)
         hadPermissions = hasStoragePermissions()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
 
         val navigationBarColor = surfaceColor()
         onSetupSystemBars(navigationBarColor, navigationBarColor)
+    }
+
+    private fun setupTheme() {
+        setTheme(getGeneralThemeRes())
+        if (preferences().useCustomFont()) {
+            setTheme(R.style.CustomFontThemeOverlay)
+        }
     }
 
     @Suppress("DEPRECATION")

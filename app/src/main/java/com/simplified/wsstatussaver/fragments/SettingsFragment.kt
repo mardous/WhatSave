@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_LONG_PRESS_ACTION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_NIGHT_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
+import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
@@ -126,6 +127,11 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                         requireActivity().recreate()
                         true
                     }
+                }
+            findPreference<Preference>(PREFERENCE_USE_CUSTOM_FONT)
+                ?.setOnPreferenceChangeListener { _, _ ->
+                    requireActivity().recreate()
+                    true
                 }
             findPreference<Preference>(PREFERENCE_LONG_PRESS_ACTION)
                 ?.setOnPreferenceChangeListener { _: Preference?, o: Any ->

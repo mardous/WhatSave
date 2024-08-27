@@ -19,8 +19,6 @@
     <style name="Base.Theme.WhatSave" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:windowActionModeOverlay">true</item>
         <item name="windowActionModeOverlay">true</item>
-        <item name="android:fontFamily">@font/manrope</item>
-        <item name="fontFamily">@font/manrope</item>
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryFixed">@color/primary_color_fixed</item>
         <item name="colorOnPrimaryFixed">@color/primary_color_fixed_on</item>
@@ -88,6 +86,11 @@
     <style name="MaterialPreferenceCategory" parent="Preference.Category.Material">
         <item name="allowDividerAbove">false</item>
         <item name="allowDividerBelow">false</item>
+    </style>
+
+    <style name="CustomFontThemeOverlay">
+        <item name="fontFamily">@font/manrope</item>
+        <item name="android:fontFamily">@font/manrope</item>
     </style>
 
 </resources>
