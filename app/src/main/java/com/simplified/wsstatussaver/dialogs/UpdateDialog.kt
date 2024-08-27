@@ -28,7 +28,9 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.DialogUpdateInfoBinding
 import com.simplified.wsstatussaver.extensions.lastUpdateSearch
+import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.setMarkdownText
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.logUpdateRequest
 import com.simplified.wsstatussaver.update.GitHubRelease
@@ -46,6 +48,7 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
         release = BundleCompat.getParcelable(requireArguments(), EXTRA_RELEASE, GitHubRelease::class.java)!!
         if (release.isNewer(requireContext())) {
             _binding = DialogUpdateInfoBinding.inflate(layoutInflater)
+            binding.infoAction.setOnClickListener(this)
             binding.downloadAction.setOnClickListener(this)
             fillVersionInfo()
             return BottomSheetDialog(requireContext()).also {
@@ -69,6 +72,10 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
 
     override fun onClick(view: View) {
         when (view) {
+            binding.infoAction -> {
+                requireContext().openWeb(release.url)
+            }
+
             binding.downloadAction -> {
                 viewModel.downloadUpdate(requireContext(), release)
                 showToast(R.string.downloading_update)
@@ -82,20 +89,9 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
     private fun fillVersionInfo() {
         binding.versionName.text = release.name
         if (release.body.isNotEmpty()) {
-            binding.versionInfo.text = release.body
+            binding.versionInfo.setMarkdownText(release.body)
         } else {
             binding.versionInfo.isVisible = false
-        }
-        val date = release.getFormattedDate()
-        val size = release.getDownloadSize()
-        if (date != null && size != null) {
-            binding.versionDetail.text = "$date • $size"
-        } else if (date != null) {
-            binding.versionDetail.text = date
-        } else if (size != null) {
-            binding.versionDetail.text = size
-        } else {
-            binding.versionDetail.isVisible = false
         }
     }
 
