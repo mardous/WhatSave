@@ -60,10 +60,10 @@
 
             <meta-data
                 android:name="android.service.notification.default_filter_types"
-                android:value="conversations"></meta-data>
+                android:value="conversations"/>
             <meta-data
                 android:name="android.service.notification.disabled_filter_types"
-                android:value="ongoing|silent"></meta-data>
+                android:value="ongoing|silent"/>
         </service>
 
         <!-- For auto-storage of locale on Android 12 and lower -->
