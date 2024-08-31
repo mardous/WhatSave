@@ -51,13 +51,6 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import java.util.EnumMap
-import kotlin.collections.List
-import kotlin.collections.arrayListOf
-import kotlin.collections.forEach
-import kotlin.collections.isNotEmpty
-import kotlin.collections.map
-import kotlin.collections.set
-import kotlin.collections.toList
 
 class WhatSaveViewModel(
     private val repository: Repository,
@@ -251,12 +244,5 @@ internal typealias StatusesLiveDataMap = EnumMap<StatusType, StatusesLiveData>
 
 internal fun newStatusesLiveDataMap() = StatusesLiveDataMap(StatusType::class.java)
 
-internal fun StatusesLiveDataMap.getOrCreateLiveData(type: StatusType): StatusesLiveData {
-    var liveData = this[type]
-    if (liveData == null) {
-        liveData = StatusesLiveData(StatusQueryResult.Idle).also {
-            this[type] = it
-        }
-    }
-    return liveData
-}
+internal fun StatusesLiveDataMap.getOrCreateLiveData(type: StatusType): StatusesLiveData =
+    getOrPut(type) { StatusesLiveData(StatusQueryResult.Idle) }
