@@ -84,7 +84,7 @@ fun Context.isAbleToUpdate(): Boolean {
         else -> -1
     }
     val elapsedMillis = System.currentTimeMillis() - preferences().lastUpdateSearch
-    if ((minElapsedMillis >= -1) && elapsedMillis >= minElapsedMillis) {
+    if ((minElapsedMillis > -1) && elapsedMillis >= minElapsedMillis) {
         return isOnline(preferences().isUpdateOnlyWifi())
     }
     return false

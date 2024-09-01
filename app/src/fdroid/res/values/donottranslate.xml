@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (C) 2023 Christians Martínez Alvarado
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2024 Christians Martínez Alvarado
   ~
   ~ Licensed under the GNU General Public License v3
   ~
@@ -14,8 +13,5 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">WhatSave</string>
-    <string name="developer_name" translatable="false">Droids\' Anatomy</string>
-    <string name="auto_update_policy" translatable="false">weekly</string>
-    <string name="transition_toolbar" translatable="false">toolbar_transition</string>
+    <string name="auto_update_policy" translatable="false">never</string>
 </resources>

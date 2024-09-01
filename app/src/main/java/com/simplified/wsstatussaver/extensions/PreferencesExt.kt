@@ -20,6 +20,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.getApp
+
+private fun appStr(resId: Int) = getApp().applicationContext.getString(resId)
 
 fun Context.preferences(): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
 
@@ -87,7 +91,7 @@ fun SharedPreferences.isWhatsappIcon() = getBoolean(PREFERENCE_WHATSAPP_ICON, fa
 
 fun SharedPreferences.isQuickDeletion() = getBoolean(PREFERENCE_QUICK_DELETION, false)
 
-fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH_MODE, UpdateSearchMode.WEEKLY)
+fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH_MODE, appStr(R.string.auto_update_policy))
 
 fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIFI, false)
 
