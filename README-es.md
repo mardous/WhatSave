@@ -53,6 +53,10 @@ más ligera debido a que no contiene dependencias de Firebase.
 ## 🤝 Contribuciones
 Si estás interesado en contribuir a este proyecto, ¡gracias! Puedes leer [este texto (en inglés)](CONTRIBUTING.md) para obtener más detalles.
 
+Las [traducciones de esta app](https://hosted.weblate.org/projects/whatsave/) son posibles gracias a [Hosted Weblate](https://hosted.weblate.org/about/).
+
+[![Translation status](https://hosted.weblate.org/widget/whatsave/multi-green.svg)](https://hosted.weblate.org/engage/whatsave/)
+
 ## 🔏 Privacidad y términos
 Por favor, lee [este texto (en inglés)](PRIVACY.md) si quieres saber más acerca de nuestra Política de Privacidad y Términos de Uso.
 
