@@ -180,4 +180,5 @@
     <string name="revoke_action">Revocar</string>
     <string name="permissions_revoked_successfully">Permisos revocados correctamente.</string>
     <string name="grant_permissions">Conceder permisos</string>
+    <string name="use_custom_font_title">Utilizar fuente Manrope</string>
 </resources>
