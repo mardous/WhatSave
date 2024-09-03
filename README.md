@@ -53,6 +53,10 @@ does not contain Firebase dependencies.
 ## 🤝 Contributing
 If you are interested in contributing to this project, thank you! You can read the [CONTRIBUTING](CONTRIBUTING.md) file for details.
 
+Translations for this project are made possible by [Hosted Weblate](https://hosted.weblate.org/about/). Feel free to visit the project there to support the translation!
+
+[![Translation state](https://hosted.weblate.org/widget/whatsave/multi-green.svg)](https://hosted.weblate.org/engage/whatsave/)
+
 ## 🔏 Privacy and Terms
 Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy and Terms of Use.
 
