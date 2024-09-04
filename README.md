@@ -64,14 +64,5 @@ Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy
 WhatSave is licensed under the [GNU General Public License, Version 3.0](LICENSE.md). Any fork of
 this project is requested to maintain the same license as per the law.
 
-As additional points, you should take into account:
-- You **CANNOT** simply change the name and icon of the app and then proceed to publish it elsewhere.
-- In relation to the previous point, it is **strictly prohibited** for you to publish WhatSave anywhere
-simply by adding advertising or any paid subscription method to profit. You can do this in a derivative project
-that has appropriately changed its identity and has enough visual or functional changes to allow it to be
-considered a different application than WhatSave.
-- Although not required, we would greatly appreciate receiving credit for our work from you, whether
-you create a derivative project or use specific parts of WhatSave.
-
 ## ⚠️ Disclaimer
 This application and its developer do not have any relationship or agreement with other companies or trademarks.

@@ -64,15 +64,5 @@ Por favor, lee [este texto (en inglés)](PRIVACY.md) si quieres saber más acerc
 WhatSave está licenciado bajo los términos de la [Licencia Pública General de GNU, Versión 3.0](LICENSE.md).
 Cualquier proyecto derivado debe mantener esta misma licencia por obligaciones legales.
 
-Como puntos adicionales, debe tener en cuenta:
-- Usted **NO PUEDE** simplemente cambiar el nombre y el icono de la aplicación y luego proceder a publicarla en otro lugar.
-- En relación con el punto anterior, está **estrictamente prohibido** que publique WhatSave en cualquier
-lugar simplemente añadiendo publicidad o cualquier método de compra o suscripción de pago para obtener
-beneficios. Usted podrá hacerlo en un proyecto derivado al cual haya cambiado adecuadamente su identidad
-y tenga además suficientes cambios visuales o funcionales para que pueda ser considerado como una
-aplicación diferente a WhatSave.
-- Aunque no es obligatorio, apreciaríamos mucho recibir de su parte créditos por nuestro trabajo, bien
-sea que cree un proyecto derivado o utilice partes específicas de WhatSave.
-
 ## ⚠️ Aclaración
 Esta aplicación y/o su desarrollador no están relacionados de ninguna manera con otras compañias o marcas comerciales.
