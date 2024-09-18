@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="type_image">صور</string>
+    <string name="type_video">فيديوهات</string>
+    <string name="close_action">إغلاق</string>
+    <string name="preview_action">استعراض</string>
+    <string name="view_image_action">عرض الصورة</string>
+    <string name="play_video_action">تشغيل الفيديو</string>
+    <string name="save_action">حفظ</string>
+    <string name="share_action">مشاركة</string>
+    <string name="share_with">مشاركة مع…</string>
+    <string name="share_app">‎مشاركة البرنامج</string>
+    <string name="app_share">أدعوك لتجربة هذا التطبيق الممتاز والرائع: WhatSave. قم بتنزيله هنا: %s</string>
+    <string name="open_action">فتح</string>
+    <string name="more_label">المزيد</string>
+    <string name="home_label">الحالات</string>
+    <string name="saved_label">المحفوظات</string>
+    <string name="tools_label">الأدوات</string>
+    <string name="loading">جار التحميل</string>
+    <string name="please_wait_a_second">من فضلك انتظر لحظة…</string>
+    <string name="could_not_load_statuses">لا يمكن تحميل الحالات</string>
+    <string name="no_statuses_title">لا حالات</string>
+    <string name="save_some_statuses">حفظ المزيد من الحالات</string>
+    <string name="open_wa_action">فتح الواتس</string>
+    <string name="could_not_open_wa">لا يمكن فتح الواتس</string>
+    <string name="saved_successfully">تم حفظ الحالة.</string>
+    <string name="failed_to_save">فشل حفظ الحالة.</string>
+    <string name="saving_status">يتم حفظ الحالة…</string>
+    <string name="saved_x_statuses">تم حفظ %d من الحالات</string>
+    <string name="save_again_title">حفظ مرة أخرى؟</string>
+    <string name="you_saved_this_status_previously">لقد قمت بحفظ هذه الحالة من قبل. هل تريد حفظها مرة أخرى؟</string>
+    <string name="status_unsaved">ليس محفوظة</string>
+    <string name="status_saved">تم حفظها</string>
+    <string name="action_select_all">تحديد الكل</string>
+</resources>
