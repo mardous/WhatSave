@@ -26,6 +26,9 @@ English
   <a href="https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md" style="text-decoration:none" aria-label="Code of Conduct">
     <img src="https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg" alt="contributor-covenant-badge">
   </a>
+  <a href="https://f-droid.org/packages/com.simplified.wsstatussaver/" style="text-decoration:none" aria-label="F-Droid version">
+    <img src="https://img.shields.io/f-droid/v/com.simplified.wsstatussaver" alt="fdroid-version-badge">
+  </a>
 </p>
 
 </div>
@@ -43,12 +46,8 @@ English
 * It's free!
 
 ## ⬇️ Download
-You can download the latest version from [here](https://github.com/mardous/WhatSave/releases/latest).
-Typically, there are two APK files; one for F-Droid and the other for the rest of the stores where
-the app is usually available and is the preferred one for downloads not from F-Droid.
-
-There could be a size variation between both files, with the F-Droid file being lighter because it
-does not contain Firebase dependencies.
+You can download WhatSave from F-Droid or from [GitHub Releases](https://github.com/mardous/WhatSave/releases/latest).
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.simplified.wsstatussaver)
 
 ## 🤝 Contributing
 If you are interested in contributing to this project, thank you! You can read the [CONTRIBUTING](CONTRIBUTING.md) file for details.
