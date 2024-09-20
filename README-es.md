@@ -10,27 +10,11 @@
 &nbsp;&nbsp;|&nbsp;&nbsp;
 Español
 
-<p style="text-align: center;">
-  <a href="https://github.com/mardous/WhatSave" style="text-decoration:none" aria-label="Platform: Android">
-    <img src="https://img.shields.io/badge/Platform-Android-green.svg" alt="platform-badge">
-  </a>
-  <a href="https://github.com/mardous/WhatSave" style="text-decoration:none" aria-label="Min API: 21">
-    <img src="https://img.shields.io/badge/Min_API-24-yellow.svg" alt="min-api-badge">
-  </a>
-  <a href="https://github.com/mardous/WhatSave/releases/latest" style="text-decoration:none" aria-label="Latest Release">
-    <img src="https://img.shields.io/github/v/release/mardous/WhatSave" alt="latest-release-badge">
-  </a>
-  <a href="https://github.com/mardous/WhatSave/blob/master/LICENSE.md" style="text-decoration:none" aria-label="License: GPL v3">
-    <img src="https://img.shields.io/github/license/mardous/WhatSave?color=blue" alt="license-badge">
-  </a>
-  <a href="https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md" style="text-decoration:none" aria-label="Code of Conduct">
-    <img src="https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg" alt="contributor-covenant-badge">
-  </a>
-  <a href="https://f-droid.org/packages/com.simplified.wsstatussaver/" style="text-decoration:none" aria-label="F-Droid version">
-    <img src="https://img.shields.io/f-droid/v/com.simplified.wsstatussaver" alt="fdroid-version-badge">
-  </a>
-</p>
-
+[![GitHub Releases](https://img.shields.io/github/v/release/mardous/WhatSave?label=GitHub%20Releases&logo=github)](https://github.com/mardous/WhatSave/releases/latest)
+[![F-Droid version](https://img.shields.io/f-droid/v/com.simplified.wsstatussaver?label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.simplified.wsstatussaver/)
+[![Platform](https://img.shields.io/badge/Platform-Android-green.svg?logo=android)](https://github.com/mardous/WhatSave)
+[![License](https://img.shields.io/github/license/mardous/WhatSave?color=blue&label=License)](https://github.com/mardous/WhatSave/blob/master/LICENSE.md)
+[![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
 </div>
 
 ## 📃 Características:
@@ -46,8 +30,7 @@ Español
 * ¡Es gratis!
 
 ## ⬇️ Descargar
-Puedes descargar WhatSave desde F-Droid o desde [GitHub Releases](https://github.com/mardous/WhatSave/releases/latest).
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.simplified.wsstatussaver)
+Puedes descargar WhatSave desde [F-Droid](https://f-droid.org/packages/com.simplified.wsstatussaver) y también desde [GitHub Releases](https://github.com/mardous/WhatSave/releases/latest).
 
 ## 🤝 Contribuciones
 Si estás interesado en contribuir a este proyecto, ¡gracias! Puedes leer [este texto (en inglés)](CONTRIBUTING.md) para obtener más detalles.
