@@ -183,4 +183,17 @@
     <string name="grant_permissions">Conceder permisos</string>
     <string name="privacy_and_terms">Términos y privacidad</string>
     <string name="privacy_notice">Al presionar \"Continuar\", asumiremos que has leído y aceptado nuestra Política de privacidad y Términos de uso.</string>
+    <string name="language_arabic">Árabe</string>
+    <string name="language_belarusian">Bielorruso</string>
+    <string name="language_dutch">Holandés</string>
+    <string name="language_english">Inglés</string>
+    <string name="language_spanish_spain">Español (España)</string>
+    <string name="language_spanish_latam">Español (América Latina)</string>
+    <string name="language_french">Francés</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_kazakh">Kazajo</string>
+    <string name="language_portuguese_brazil">Portugués (Brasil)</string>
+    <string name="language_russian">Ruso</string>
+    <string name="language_tamil">Tamil</string>
 </resources>

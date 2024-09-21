@@ -69,22 +69,24 @@
 
     <string-array name="pref_language_entries">
         <item>@string/system_default</item>
-        <item>Belarusian</item>
-        <item>Dutch</item>
-        <item>English</item>
-        <item>Spanish (Spain)</item>
-        <item>Spanish (Latin America)</item>
-        <item>French</item>
-        <item>Hindi</item>
-        <item>Italian</item>
-        <item>Kazakh</item>
-        <item>Portuguese (Brazil)</item>
-        <item>Russian</item>
-        <item>Tamil</item>
+        <item>@string/language_arabic</item>
+        <item>@string/language_belarusian</item>
+        <item>@string/language_dutch</item>
+        <item>@string/language_english</item>
+        <item>@string/language_spanish_spain</item>
+        <item>@string/language_spanish_latam</item>
+        <item>@string/language_french</item>
+        <item>@string/language_hindi</item>
+        <item>@string/language_italian</item>
+        <item>@string/language_kazakh</item>
+        <item>@string/language_portuguese_brazil</item>
+        <item>@string/language_russian</item>
+        <item>@string/language_tamil</item>
     </string-array>
 
     <string-array name="pref_language_values">
         <item>auto</item>
+        <item>ar</item>
         <item>be</item>
         <item>nl-NL</item>
         <item>en</item>
