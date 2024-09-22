@@ -64,10 +64,8 @@
 
     <style name="Theme.WhatSave.Splash" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
-        <item name="android:statusBarColor">@color/surface_color_adaptive</item>
-        <item name="android:navigationBarColor">@color/surface_color_adaptive</item>
-        <item name="android:windowLightStatusBar" tools:ignore="NewApi">?isLightTheme</item>
-        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">?isLightTheme</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="ToolbarPopupTheme" parent="ThemeOverlay.Material3.Light"/>

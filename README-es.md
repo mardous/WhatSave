@@ -1,10 +1,8 @@
-<div style="text-align: center;">
+<div align="center">
 
 # WhatSave
 
 ### Una aplicación que te ayuda a guardar los estados de WA de la forma más sencilla.
-
-![Screenshots](./art/art.jpg?raw=true)
 
 [English](README.md)
 &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -15,6 +13,18 @@ Español
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?logo=android)](https://github.com/mardous/WhatSave)
 [![License](https://img.shields.io/github/license/mardous/WhatSave?color=blue&label=License)](https://github.com/mardous/WhatSave/blob/master/LICENSE.md)
 [![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
+</div>
+
+## 📱 Screenshots
+
+<div align="center">
+<div>
+<img src="metadata/en-US/images/phoneScreenshots/1.jpg" width="30%" />
+<img src="metadata/en-US/images/phoneScreenshots/2.jpg" width="30%" />
+<img src="metadata/en-US/images/phoneScreenshots/3.jpg" width="30%" />
+<img src="metadata/en-US/images/phoneScreenshots/4.jpg" width="30%" />
+<img src="metadata/en-US/images/phoneScreenshots/5.jpg" width="30%" />
+</div>
 </div>
 
 ## 📃 Características:
