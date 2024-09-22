@@ -47,8 +47,7 @@
     </style>
 
     <style name="Theme.WhatSave.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenAnimatedIcon">@drawable/avd_splash</item>
-        <item name="windowSplashScreenAnimationDuration">800</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
     </style>
 
     <style name="AlertDialogTheme.DynamicColors" parent="ThemeOverlay.Material3.MaterialAlertDialog">
