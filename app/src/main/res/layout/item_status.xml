@@ -61,8 +61,9 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
+            android:textAlignment="viewStart"
             android:textAppearance="?textAppearanceSubtitle2"
-            tools:text="Abr. 22, 2022 10:42"/>
+            tools:text="@tools:sample/lorem"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/state"
@@ -70,8 +71,9 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
+            android:textAlignment="viewStart"
             android:textAppearance="?textAppearanceCaption"
-            tools:text="Saved"/>
+            tools:text="@tools:sample/lorem"/>
 
     </LinearLayout>
 

@@ -53,6 +53,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:ellipsize="end"
+                android:textAlignment="viewStart"
                 android:textAppearance="?textAppearanceBody2"
                 tools:text="Version 1.0.0" />
 
@@ -85,6 +86,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:ellipsize="end"
+                android:textAlignment="viewStart"
                 android:textAppearance="?textAppearanceBody2"
                 android:text="@string/developer_name" />
 
@@ -117,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:ellipsize="end"
+                android:textAlignment="viewStart"
                 android:textAppearance="?textAppearanceBody2"
                 android:text="@string/fork_on_github_summary" />
 
@@ -149,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:ellipsize="end"
+                android:textAlignment="viewStart"
                 android:textAppearance="?textAppearanceBody2"
                 android:text="@string/contact_summary" />
 

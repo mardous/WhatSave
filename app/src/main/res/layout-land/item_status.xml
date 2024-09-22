@@ -63,6 +63,7 @@
         android:paddingEnd="2dp"
         android:maxLines="1"
         android:ellipsize="end"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceCaption"
         android:textColor="@color/md_white_1000"
         app:layout_constraintBottom_toBottomOf="@+id/imageCard"

@@ -27,6 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
+        android:textAlignment="viewStart"
         android:text="@string/please_wait_a_second" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator

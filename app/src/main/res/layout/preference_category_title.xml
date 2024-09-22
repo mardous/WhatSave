@@ -25,6 +25,7 @@
         android:paddingStart="@dimen/pref_title_padding"
         android:paddingTop="16dp"
         android:paddingEnd="16dp"
+        android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceOverline"
         android:textColor="?colorPrimary"
         tools:text="@tools:sample/full_names" />

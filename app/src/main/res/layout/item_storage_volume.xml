@@ -48,6 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:textAlignment="viewStart"
             android:textAppearance="?textAppearanceBody1"
             android:textSize="18sp"
             tools:text="Device"/>
