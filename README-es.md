@@ -1,4 +1,4 @@
-<div style="text-align: center;">
+<div align="center">
 
 # WhatSave
 
@@ -17,7 +17,7 @@ Español
 
 ## 📱 Screenshots
 
-<div style="text-align: center;">
+<div align="center">
 <div>
 <img src="metadata/en-US/images/phoneScreenshots/1.jpg" width="30%" />
 <img src="metadata/en-US/images/phoneScreenshots/2.jpg" width="30%" />
