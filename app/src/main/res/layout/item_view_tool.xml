@@ -32,7 +32,7 @@
         app:iconViewColor="?colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/ic_round_message_24dp"/>
+        tools:src="@drawable/ic_send_24dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/title"

@@ -23,7 +23,7 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
-            android:icon="@drawable/ic_mode_night_24dp"
+            android:icon="@drawable/ic_dark_mode_24dp"
             android:title="@string/night_mode_title"
             android:entries="@array/night_mode_titles"
             android:entryValues="@array/night_mode_values"
@@ -58,7 +58,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
-            android:icon="@drawable/ic_access_time_filled_24dp"
+            android:icon="@drawable/ic_schedule_24dp"
             android:title="@string/exclude_old_statuses_title"
             android:summary="@string/exclude_old_statuses_summary"
             android:defaultValue="false"
@@ -153,7 +153,7 @@
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
-            android:icon="@drawable/ic_tips_and_updates_24dp"
+            android:icon="@drawable/ic_analytics_24dp"
             android:title="@string/analytics_enabled_title"
             android:summary="@string/analytics_enabled_summary"
             android:defaultValue="true"

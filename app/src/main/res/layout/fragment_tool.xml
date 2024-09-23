@@ -59,7 +59,7 @@
                 android:id="@+id/msg_a_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_round_message_24dp"
+                app:toolIcon="@drawable/ic_send_24dp"
                 app:toolName="@string/msg_a_number"
                 app:toolDescription="@string/msg_a_number_description"/>
 
@@ -67,7 +67,7 @@
                 android:id="@+id/message_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:toolIcon="@drawable/ic_subject_24dp"
+                app:toolIcon="@drawable/ic_chat_24dp"
                 app:toolName="@string/message_view"
                 app:toolDescription="@string/message_view_description"/>
 

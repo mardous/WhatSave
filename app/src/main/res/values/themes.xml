@@ -38,7 +38,7 @@
         <item name="rectSelector">@drawable/rect_selector</item>
         <item name="roundSelector">@drawable/round_selector</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
-        <item name="homeAsUpIndicator">@drawable/ic_keyboard_backspace_24dp</item>
+        <item name="homeAsUpIndicator">@drawable/ic_arrow_back_24dp</item>
         <item name="toolbarPopupTheme">@style/ToolbarPopupTheme</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme</item>
