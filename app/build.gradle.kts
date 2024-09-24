@@ -6,7 +6,6 @@ plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
-    id("kotlin-kapt")
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.safeargs)
 }
@@ -65,7 +64,6 @@ android {
     }
     buildFeatures {
         buildConfig = true
-        dataBinding = true
         viewBinding = true
     }
     packaging {
@@ -77,17 +75,17 @@ android {
         abortOnError = true
         warning += listOf("ImpliedQuantity", "Instantiatable", "MissingQuantity", "MissingTranslation")
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
     kotlinOptions {
-        jvmTarget = "1.8"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
     }
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
     }
+}
+
+kotlin {
+    jvmToolchain(21)
 }
 
 fun getProperties(fileName: String): Properties? {
