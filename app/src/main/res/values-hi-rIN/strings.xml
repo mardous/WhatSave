@@ -101,7 +101,7 @@
     <string name="default_client_summary">यदि आपके पास एकाधिक व्हाट्सएप क्लाइंट इंस्टॉल हैं, तो आप उनमें से एक का चयन कर सकते हैं जिसमें से स्टेटस लोड करना है।</string>
     <string name="analytics_enabled_title">उपयोग के आँकड़े भेजें</string>
     <string name="analytics_enabled_summary">यदि सक्षम किया गया है, तो यह ऐप गुमनाम उपयोग के आँकड़े भेज सकता है जो हमें यह समझने में मदद करते हैं कि उपयोगकर्ता ऐप का उपयोग कैसे करते हैं।</string>
-    <string name="about_label">के बारे में</string>
+    <string name="about_title">के बारे में</string>
     <string name="version_x">संस्करण %s</string>
     <string name="author_title">लेखक</string>
     <string name="contact_title">संपर्क</string>

@@ -103,7 +103,6 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateMenu(menu, menuInflater)
         menu.removeItem(R.id.action_settings)
-        menu.removeItem(R.id.action_about)
     }
 
     override fun countryClick(country: Country) {

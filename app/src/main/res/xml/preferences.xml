@@ -162,4 +162,18 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:layout="@layout/preference_category_title"
+        android:title="@string/information">
+
+        <Preference
+            android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_info_24dp"
+            android:title="@string/about_title"
+            android:summary="@string/about_summary"
+            android:key="about"
+            android:persistent="false"/>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

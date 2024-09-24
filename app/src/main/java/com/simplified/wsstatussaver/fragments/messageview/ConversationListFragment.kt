@@ -143,7 +143,6 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         super.onCreateMenu(menu, menuInflater)
         menuInflater.inflate(R.menu.menu_conversations, menu)
         menu.removeItem(R.id.action_settings)
-        menu.removeItem(R.id.action_about)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {

@@ -101,7 +101,7 @@
     <string name="default_client_summary">Калі ў вас усталявана некалькі кліентаў WA, вы можаце выбраць той, з якога загружаць статусы.</string>
     <string name="analytics_enabled_title">Адправіць статыстыку выкарыстання</string>
     <string name="analytics_enabled_summary">Калі гэта ўключана, WhatSave можа адпраўляць ананімную статыстыку выкарыстання, якая дапамагае нам зразумець, як карыстальнікі выкарыстоўваюць прыкладанне.</string>
-    <string name="about_label">Аб</string>
+    <string name="about_title">Аб</string>
     <string name="version_x">Версія %s</string>
     <string name="author_title">Аўтар</string>
     <string name="contact_title">Кантакт</string>

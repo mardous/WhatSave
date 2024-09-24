@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnPreDraw
+import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
@@ -94,6 +95,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            findPreference<Preference>("about")?.setOnPreferenceClickListener {
+                findNavController().navigate(R.id.aboutFragment)
+                true
+            }
             invalidatePreferences()
         }
 

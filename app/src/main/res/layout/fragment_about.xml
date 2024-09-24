@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (C) 2024 Christians Martínez Alvarado
+  ~
+  ~ Licensed under the GNU General Public License v3
+  ~
+  ~ This is free software: you can redistribute it and/or modify it under
+  ~ the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            style="?collapsingToolbarLayoutLargeStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?collapsingToolbarLayoutLargeSize"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="?homeAsUpIndicator"
+                tools:title="@string/about_title"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="@integer/overScrollMode"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/app_version"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/share_app">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/app_name" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    tools:text="Version 1.0.0" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/app_version">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/author_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/developer_name" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/author">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/contact_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/contact_summary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/latest_release"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/contact">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/latest_release_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/latest_release_summary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/translations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/latest_release">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/translations_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/translations_summary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/issue_tracker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/translations">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/report_bugs_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/report_bugs_summary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/fork_on_github"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="72dp"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/m3_list_padding_vertical"
+                android:paddingBottom="@dimen/m3_list_padding_vertical"
+                android:paddingStart="@dimen/m3_list_padding_horizontal"
+                android:paddingEnd="@dimen/m3_list_padding_horizontal"
+                android:orientation="vertical"
+                android:background="?rectSelector"
+                app:layout_constraintTop_toBottomOf="@+id/issue_tracker">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textAppearance="?textAppearanceBody1"
+                    android:text="@string/fork_on_github_title" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textAlignment="viewStart"
+                    android:textAppearance="?textAppearanceBody2"
+                    android:textColor="?android:textColorSecondary"
+                    android:text="@string/fork_on_github_summary" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/share_app"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:scaleType="fitCenter"
+                android:padding="14dp"
+                android:background="?roundSelector"
+                android:contentDescription="@string/share_app"
+                app:srcCompat="@drawable/ic_share_24dp"
+                app:tint="?colorControlNormal"
+                app:layout_constraintTop_toTopOf="@+id/app_version"
+                app:layout_constraintBottom_toBottomOf="@+id/app_version"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

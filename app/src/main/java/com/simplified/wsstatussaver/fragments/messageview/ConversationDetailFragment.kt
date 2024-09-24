@@ -121,7 +121,6 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateMenu(menu, menuInflater)
         menu.removeItem(R.id.action_settings)
-        menu.removeItem(R.id.action_about)
     }
 
     override fun onDestroyView() {

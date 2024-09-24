@@ -33,7 +33,6 @@ import com.google.android.material.navigation.NavigationBarView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
-import com.simplified.wsstatussaver.dialogs.AboutDialog
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
 import com.simplified.wsstatussaver.extensions.WHATSAVE_ANIM_TIME
 import com.simplified.wsstatussaver.extensions.currentFragment
@@ -104,11 +103,6 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
         when (item.itemId) {
             R.id.action_settings -> {
                 findNavController(R.id.main_container).navigate(R.id.settingsFragment)
-                return true
-            }
-
-            R.id.action_about -> {
-                AboutDialog().show(supportFragmentManager, "ABOUT")
                 return true
             }
         }

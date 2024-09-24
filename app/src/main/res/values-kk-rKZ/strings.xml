@@ -101,7 +101,7 @@
     <string name="default_client_summary">Егер сізде бірнеше WA клиенті орнатылған болса, күйлерді жүктейтін біреуін таңдауға болады.</string>
     <string name="analytics_enabled_title">Пайдалану статистикасын жіберіңіз</string>
     <string name="analytics_enabled_summary">Бұл қосылған кезде, WhatSave пайдаланушылардың қолданбаны қалай пайдаланатынын түсінуге көмектесетін анонимді пайдалану статистикасын жіберуі мүмкін.</string>
-    <string name="about_label">туралы</string>
+    <string name="about_title">туралы</string>
     <string name="version_x">%s нұсқасы</string>
     <string name="author_title">Автор</string>
     <string name="contact_title">Байланыс</string>

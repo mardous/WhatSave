@@ -83,7 +83,7 @@
     <string name="quick_deletion_title">Eliminación rápida</string>
     <string name="analytics_enabled_title">Compartir estadísticas de uso</string>
     <string name="analytics_enabled_summary">Cuando esta opción está activada, WhatSave puede enviar estadísticas de uso anónimas que nos ayudan a entender cómo los usuarios utilizan la aplicación.</string>
-    <string name="about_label">Acerca de</string>
+    <string name="about_title">Acerca de</string>
     <string name="version_x">Versión %s</string>
     <string name="author_title">Autor</string>
     <string name="contact_title">Contacto</string>

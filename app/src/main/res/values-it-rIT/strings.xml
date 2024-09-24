@@ -101,7 +101,7 @@
     <string name="default_client_summary">Se hai installato più client WA, puoi selezionare quello da cui caricare gli stati.</string>
     <string name="analytics_enabled_title">Invia statistiche di utilizzo</string>
     <string name="analytics_enabled_summary">Quando questa opzione è abilitata, WhatSave può inviare statistiche di utilizzo anonime che ci aiutano a capire come gli utenti utilizzano l\'app.</string>
-    <string name="about_label">Di</string>
+    <string name="about_title">Di</string>
     <string name="version_x">Versione %s</string>
     <string name="author_title">Autore</string>
     <string name="contact_title">Contatto</string>

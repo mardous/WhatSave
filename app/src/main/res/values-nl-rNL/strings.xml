@@ -101,7 +101,7 @@
     <string name="default_client_summary">Als je meerdere WA-clients hebt geïnstalleerd, kun je degene selecteren waaruit je de statussen wilt laden.</string>
     <string name="analytics_enabled_title">Gebruiksstatistieken verzenden</string>
     <string name="analytics_enabled_summary">Wanneer dit is ingeschakeld, kan WhatSave anonieme gebruiksstatistieken verzenden die ons helpen begrijpen hoe gebruikers de app gebruiken.</string>
-    <string name="about_label">Over</string>
+    <string name="about_title">Over</string>
     <string name="version_x">Versie %s</string>
     <string name="author_title">Auteur</string>
     <string name="contact_title">Contact</string>
