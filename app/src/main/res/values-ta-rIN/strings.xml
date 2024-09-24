@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">வெறும் கருப்பு</string>
     <string name="statuses_location_title">நிலைகள் இடம்</string>
     <string name="statuses_location_summary">நிலைகளைக் கண்டறிய வேண்டிய இடம். ஆப்ஸால் இயல்புநிலை இடத்திலிருந்து நிலைகளை ஏற்ற முடியவில்லை என்றால் மட்டுமே இந்த அமைப்பை மாற்ற வேண்டும்.</string>
-    <string name="statuses_location_device">சாதனம்</string>
-    <string name="statuses_location_sd_card">பாதுகாப்பான எண்ணியல் அட்டை</string>
-    <string name="statuses_location_default">இயல்புநிலை இடம்</string>
     <string name="no_storage_device_found">சேமிப்பக சாதனம் இல்லை</string>
     <string name="exclude_old_statuses_title">பழைய நிலைகளை விலக்கு</string>
     <string name="exclude_old_statuses_summary">இந்தப் பயன்பாட்டில் பழைய நிலைகளைப் பார்க்கிறீர்கள் என்றால்.</string>

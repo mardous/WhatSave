@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Apenas preto</string>
     <string name="statuses_location_title">Localização dos status</string>
     <string name="statuses_location_summary">Local onde os status devem ser encontrados. Você deverá alterar essa configuração somente se o aplicativo não conseguir carregar status do local padrão.</string>
-    <string name="statuses_location_device">Dispositivo</string>
-    <string name="statuses_location_sd_card">Cartão SD</string>
-    <string name="statuses_location_default">Localização padrão</string>
     <string name="no_storage_device_found">Nenhum dispositivo de armazenamento encontrado</string>
     <string name="exclude_old_statuses_title">Excluir status antigos</string>
     <string name="exclude_old_statuses_summary">Se você estiver visualizando status antigos neste aplicativo.</string>

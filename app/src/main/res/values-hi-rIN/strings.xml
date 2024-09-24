@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">बस काला</string>
     <string name="statuses_location_title">स्थितियाँ स्थान</string>
     <string name="statuses_location_summary">वह स्थान जहाँ स्थितियाँ मिलनी चाहिए। आपको यह सेटिंग केवल तभी बदलनी चाहिए जब ऐप डिफ़ॉल्ट स्थान से स्टेटस लोड करने में असमर्थ हो।</string>
-    <string name="statuses_location_device">उपकरण</string>
-    <string name="statuses_location_sd_card">एसडी कार्ड</string>
-    <string name="statuses_location_default">अकरण स्थान</string>
     <string name="no_storage_device_found">कोई संग्रहण उपकरण नहीं मिला</string>
     <string name="exclude_old_statuses_title">पुरानी स्थितियाँ बहिष्कृत करें</string>
     <string name="exclude_old_statuses_summary">यदि आप इस एप्लिकेशन में पुराने स्टेटस देख रहे हैं।</string>

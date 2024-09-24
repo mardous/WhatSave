@@ -72,9 +72,6 @@
     <string name="night_mode_auto">Automático</string>
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>
-    <string name="statuses_location_device">Dispositivo</string>
-    <string name="statuses_location_sd_card">Tarjeta SD</string>
-    <string name="statuses_location_default">Ubicación predeterminada</string>
     <string name="no_storage_device_found">No se encontró ningún dispositivo de almacenamiento</string>
     <string name="exclude_old_statuses_title">Excluir estados antiguos</string>
     <string name="exclude_old_statuses_summary">Si está viendo estados antiguos en esta aplicación.</string>

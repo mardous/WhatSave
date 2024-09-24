@@ -106,8 +106,7 @@ class WhatSaveViewModel(
     }
 
     fun loadStorageDevices() = viewModelScope.launch(IO) {
-        val result = storage.getStorageVolumes()
-        storageDevices.postValue(result)
+        storageDevices.postValue(storage.storageVolumes)
     }
 
     fun loadCountries() = viewModelScope.launch(IO) {

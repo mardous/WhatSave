@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Solo nero</string>
     <string name="statuses_location_title">Posizione degli stati</string>
     <string name="statuses_location_summary">Posizione in cui dovrebbero essere trovati gli stati. Dovresti modificare questa impostazione solo se l\'app non è in grado di caricare gli stati dalla posizione predefinita.</string>
-    <string name="statuses_location_device">Dispositivo</string>
-    <string name="statuses_location_sd_card">Scheda SD</string>
-    <string name="statuses_location_default">Posizione predefinita</string>
     <string name="no_storage_device_found">Nessun dispositivo di archiviazione trovato</string>
     <string name="exclude_old_statuses_title">Escludi vecchi stati</string>
     <string name="exclude_old_statuses_summary">Se stai visualizzando i vecchi stati in questa applicazione.</string>

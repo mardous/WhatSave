@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Gewoon zwart</string>
     <string name="statuses_location_title">Statussen locatie</string>
     <string name="statuses_location_summary">Locatie waar statussen moeten worden gevonden. U moet deze instelling alleen wijzigen als de app geen statussen kan laden vanaf de standaardlocatie.</string>
-    <string name="statuses_location_device">Apparaat</string>
-    <string name="statuses_location_sd_card">SD-kaart</string>
-    <string name="statuses_location_default">Standaardlocatie</string>
     <string name="no_storage_device_found">Geen opslagapparaat gevonden</string>
     <string name="exclude_old_statuses_title">Sluit oude statussen uit</string>
     <string name="exclude_old_statuses_summary">Als u oude statussen bekijkt in deze applicatie.</string>

@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Тек Қара</string>
     <string name="statuses_location_title">Күйлердің орналасуы</string>
     <string name="statuses_location_summary">Күйлерді табу керек орын. Бұл параметрді қолданба күйлерді әдепкі орыннан жүктей алмаса ғана өзгертуіңіз керек.</string>
-    <string name="statuses_location_device">Құрылғы</string>
-    <string name="statuses_location_sd_card">SD картасы</string>
-    <string name="statuses_location_default">Әдепкі орын</string>
     <string name="no_storage_device_found">Ешбір сақтау құрылғысы табылмады</string>
     <string name="exclude_old_statuses_title">Ескі күйлерді алып тастаңыз</string>
     <string name="exclude_old_statuses_summary">Егер сіз осы қолданбадағы ескі күйлерді көріп жатсаңыз.</string>

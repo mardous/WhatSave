@@ -19,9 +19,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.RadioButton
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -69,7 +67,7 @@ class StoragePreferenceDialog : DialogFragment() {
             }
     }
 
-    private class Adapter constructor(private val context: Context, private val storageVolumes: List<StorageDevice>) :
+    private class Adapter(private val context: Context, private val storageVolumes: List<StorageDevice>) :
         RecyclerView.Adapter<Adapter.ViewHolder>(), KoinComponent {
 
         private val storage: Storage by inject()
@@ -80,24 +78,14 @@ class StoragePreferenceDialog : DialogFragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val storageVolume = storageVolumes[position]
-
-            holder.icon?.setImageResource(storageVolume.iconRes)
-            holder.name?.setText(storageVolume.nameRes)
-
-            if (storage.isDefaultStatusesLocation(storageVolume)) {
-                holder.info?.setText(R.string.statuses_location_default)
-            } else holder.info?.visibility = View.GONE
-
+            holder.radioButton?.text = storageVolume.name
             holder.radioButton?.isChecked = storage.isStatusesLocation(storageVolume)
         }
 
         override fun getItemCount(): Int = storageVolumes.size
 
-        inner class ViewHolder(binding: ItemStorageVolumeBinding) : RecyclerView.ViewHolder(binding.root),
+        inner class ViewHolder(binding: ItemStorageVolumeBinding) :RecyclerView.ViewHolder(binding.root),
             View.OnClickListener {
-            var icon: ImageView? = binding.icon
-            var name: TextView? = binding.name
-            var info: TextView? = binding.info
             var radioButton: RadioButton? = binding.radioButton
 
             override fun onClick(view: View) {

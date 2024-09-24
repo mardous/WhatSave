@@ -15,14 +15,17 @@ package com.simplified.wsstatussaver.storage
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Build
 import android.os.Environment
 import android.os.storage.StorageManager
 import android.os.storage.StorageVolume
 import androidx.core.content.edit
 import androidx.core.content.getSystemService
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
+import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.getApp
+import com.simplified.wsstatussaver.recordException
+import java.lang.reflect.InvocationTargetException
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -32,26 +35,30 @@ class Storage(context: Context) {
 
     private val preferences = context.preferences()
     private val storageManager = context.getSystemService<StorageManager>()!!
-    private val storageVolumes = mutableListOf<StorageDevice>()
-    private var storageVolumesLoaded = false
 
     val externalStoragePath: String
         get() = Environment.getExternalStorageDirectory().absolutePath
 
-    private fun getStorageVolume(path: String): StorageDevice? {
-        return getStorageVolumes().filterNot { it.path == null }.firstOrNull { it.path == path }
+    val storageVolumes: List<StorageDevice> by lazy {
+        arrayListOf<StorageDevice>().also { newList ->
+            try {
+                for (sv in storageManager.storageVolumes) {
+                    newList.add(
+                        StorageDevice(
+                            sv.getPath(),
+                            sv.getDescription(getApp().applicationContext),
+                            sv.state
+                        )
+                    )
+                }
+            } catch (t: Throwable) {
+                recordException(t)
+            }
+        }
     }
 
-    fun getStorageVolumes(): List<StorageDevice> {
-        if (storageVolumes.isEmpty() && !storageVolumesLoaded) {
-            storageManager.storageVolumes.forEach { volume ->
-                createStorageDevice(volume)?.let {
-                    storageVolumes.add(it)
-                }
-            }
-            storageVolumesLoaded = true
-        }
-        return storageVolumes
+    private fun getStorageVolume(path: String): StorageDevice? {
+        return storageVolumes.filterNot { it.path == null }.firstOrNull { it.path == path }
     }
 
     fun getStatusesLocation(): StorageDevice? {
@@ -76,19 +83,17 @@ class Storage(context: Context) {
         }
     }
 
-    fun isDefaultStatusesLocation(storageDevice: StorageDevice): Boolean {
-        val devicePath = storageDevice.path
-        return if (devicePath.isNullOrEmpty()) false else externalStoragePath == devicePath
-    }
-
-    private fun createStorageDevice(any: StorageVolume): StorageDevice? {
-        val result = runCatching {
-            val path = when {
-                Build.VERSION.SDK_INT >= Build.VERSION_CODES.R -> any.directory?.absolutePath
-                else -> StorageVolume::class.java.getDeclaredMethod("getPath").invoke(any) as? String
-            }
-            StorageDevice(path, any.uuid, any.isRemovable, any.isPrimary, any.isEmulated, any.state)
+    @Throws(
+        NoSuchMethodException::class,
+        InvocationTargetException::class,
+        IllegalAccessException::class
+    )
+    @SuppressLint("DiscouragedPrivateApi")
+    private fun StorageVolume.getPath(): String? {
+        return if (hasR()) {
+            this.directory?.absolutePath
+        } else {
+            StorageVolume::class.java.getDeclaredMethod("getPath").invoke(this) as? String
         }
-        return result.getOrNull()
     }
 }

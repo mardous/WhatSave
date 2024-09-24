@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Juste noir</string>
     <string name="statuses_location_title">Localisation des statuts</string>
     <string name="statuses_location_summary">Emplacement ou les statuts doivent etre trouves. Vous ne devez modifier ce parametre que si l\'application ne parvient pas a charger les statuts a partir de l\'emplacement par defaut.</string>
-    <string name="statuses_location_device">Appareil</string>
-    <string name="statuses_location_sd_card">Carte SD</string>
-    <string name="statuses_location_default">Emplacement par defaut</string>
     <string name="no_storage_device_found">Aucun peripherique de stockage trouve</string>
     <string name="exclude_old_statuses_title">Exclure les anciens statuts</string>
     <string name="exclude_old_statuses_summary">Si vous consultez d\'anciens statuts dans cette application.</string>

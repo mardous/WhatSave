@@ -86,9 +86,6 @@
     <string name="just_black_theme_title">Проста чорны</string>
     <string name="statuses_location_title">Размяшчэнне статусаў</string>
     <string name="statuses_location_summary">Месца, дзе павінны знаходзіцца статусы. Вы павінны змяніць гэты параметр, толькі калі праграма не можа загружаць статусы са стандартнага месцазнаходжання.</string>
-    <string name="statuses_location_device">прылада</string>
-    <string name="statuses_location_sd_card">SD-карта</string>
-    <string name="statuses_location_default">Размяшчэнне па змаўчанні</string>
     <string name="no_storage_device_found">Назапашвальнік не знойдзены</string>
     <string name="exclude_old_statuses_title">Выключыць старыя статусы</string>
     <string name="exclude_old_statuses_summary">Калі вы праглядаеце старыя статусы ў гэтым дадатку.</string>

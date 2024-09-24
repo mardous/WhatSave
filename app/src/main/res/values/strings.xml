@@ -87,9 +87,6 @@
     <string name="just_black_theme_title">Just Black</string>
     <string name="statuses_location_title">Statuses location</string>
     <string name="statuses_location_summary">Location where statuses should be found. You should change this setting only if the app is unable to load statuses from the default location.</string>
-    <string name="statuses_location_device">Device</string>
-    <string name="statuses_location_sd_card">SD Card</string>
-    <string name="statuses_location_default">Default location</string>
     <string name="no_storage_device_found">No storage device found</string>
     <string name="exclude_old_statuses_title">Exclude old statuses</string>
     <string name="exclude_old_statuses_summary">If you\'re viewing old statuses in this application.</string>

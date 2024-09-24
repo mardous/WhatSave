@@ -85,9 +85,6 @@
     <string name="just_black_theme_title">Просто черный</string>
     <string name="statuses_location_title">Расположение статусов</string>
     <string name="statuses_location_summary">Место, где должны быть найдены статусы. Вам следует изменить этот параметр только в том случае, если приложение не может загружать статусы из местоположения по умолчанию.</string>
-    <string name="statuses_location_device">Устройство</string>
-    <string name="statuses_location_sd_card">SD Card</string>
-    <string name="statuses_location_default">Местоположение по умолчанию</string>
     <string name="no_storage_device_found">Устройство хранения данных не найдено</string>
     <string name="exclude_old_statuses_title">Исключить старые статусы</string>
     <string name="exclude_old_statuses_summary">Если вы просматриваете старые статусы в этом приложении.</string>
