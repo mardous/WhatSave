@@ -17,7 +17,7 @@ if (isNormalBuild) {
 
 
 android {
-    compileSdk = 34
+    compileSdk = 35
     namespace = "com.simplified.wsstatussaver"
 
     defaultConfig {
