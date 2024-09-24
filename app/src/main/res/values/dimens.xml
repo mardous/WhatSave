@@ -20,24 +20,8 @@
     <dimen name="tab_height">48dp</dimen>
     <dimen name="bottom_nav_height">80dp</dimen>
 
-    <dimen name="text_size_small">12sp</dimen>
-    <dimen name="text_size_normal">14sp</dimen>
-    <dimen name="text_size_medium">16sp</dimen>
-    <dimen name="text_size_large">20sp</dimen>
-    <dimen name="text_size_extra_large">24sp</dimen>
-
-    <dimen name="dialog_preferred_padding">24dp</dimen>
-    <dimen name="dialog_preferred_padding_small">12dp</dimen>
-    <dimen name="dialog_corner_radius">24dp</dimen>
-
-    <dimen name="card_corner_radius">8dp</dimen>
-    <dimen name="card_elevation">2dp</dimen>
-
-    <dimen name="button_corner_radius">8dp</dimen>
     <dimen name="button_padding_vertical">10dp</dimen>
     <dimen name="switch_horizontal_padding">16dp</dimen>
-
-    <dimen name="toolbar_elevation">2dp</dimen>
 
     <dimen name="pref_title_padding">72dp</dimen>
     <dimen name="list_pref_guideline_begin">56dp</dimen>

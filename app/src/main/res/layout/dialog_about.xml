@@ -23,7 +23,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dialog_preferred_padding_small">
+        android:paddingTop="12dp">
 
         <LinearLayout
             android:id="@+id/app_version"
