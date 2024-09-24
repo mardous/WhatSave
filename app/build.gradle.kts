@@ -66,6 +66,9 @@ android {
         buildConfig = true
         viewBinding = true
     }
+    androidResources {
+        generateLocaleConfig = true
+    }
     packaging {
         resources {
             excludes += listOf("META-INF/LICENSE", "META-INF/NOTICE", "META-INF/java.properties")
