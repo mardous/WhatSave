@@ -49,8 +49,6 @@
     <string name="x_selected">%d seleccionado(s)</string>
     <string name="x_is_the_default_client_now">%s es el cliente predeterminado ahora.</string>
     <string name="default_client_cleared">Se limpió el cliente predeterminado.</string>
-    <string name="client_info"><![CDATA[Versión <b>%s</b>]]></string>
-    <string name="client_info_unknown">No se pudo cargar la info. del cliente.</string>
     <string name="saf_tutorial"><![CDATA[En la siguiente pantalla, asegúrese de seleccionar la ubicación \"<b>%s</b>\". Una vez hecho, presione el botón \"Usar esta carpeta\" de la parte inferior para confirmar.]]></string>
     <string name="installed_clients_empty">No hay clientes de WA instalados.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Deberías abrir WA y descargar algunos estados</string>

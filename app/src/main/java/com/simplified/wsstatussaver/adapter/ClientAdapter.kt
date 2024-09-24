@@ -18,41 +18,38 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.simplified.wsstatussaver.databinding.ItemClientBinding
-import com.simplified.wsstatussaver.extensions.animateAlpha
+import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.interfaces.IClientCallback
 import com.simplified.wsstatussaver.model.WaClient
 
-class ClientAdapter(private val context: Context, private val callback: IClientCallback) :
+class ClientAdapter(
+    private val context: Context,
+    private val itemLayoutRes: Int,
+    private val callback: IClientCallback
+) :
     RecyclerView.Adapter<ClientAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
     private var clients: List<WaClient> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemClientBinding.inflate(layoutInflater, parent, false))
+        return ViewHolder(layoutInflater.inflate(itemLayoutRes, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val client = clients[position]
         holder.icon?.setImageDrawable(client.getIcon(context))
         holder.name?.text = client.displayName
-        holder.description?.text = client.getDescription(context)
         configureCheckIcon(holder, client)
     }
 
     private fun configureCheckIcon(holder: ViewHolder, client: WaClient) {
         val checkMode = callback.checkModeForClient(client)
-        if (checkMode == IClientCallback.MODE_UNCHECKABLE) {
-            holder.check?.isVisible = false
-        } else {
-            holder.check?.isVisible = true
-            holder.check?.animateAlpha(if (checkMode == IClientCallback.MODE_CHECKED) 1f else 0.35f)
-        }
+        holder.check?.isChecked = checkMode == IClientCallback.MODE_CHECKED
     }
 
     override fun getItemCount(): Int = clients.size
@@ -63,12 +60,11 @@ class ClientAdapter(private val context: Context, private val callback: IClientC
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(binding: ItemClientBinding) : RecyclerView.ViewHolder(binding.root),
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
-        var icon: ImageView? = binding.icon
-        var name: TextView? = binding.name
-        var description: TextView? = binding.description
-        var check: ImageView? = binding.check
+        var icon: ImageView? = itemView.findViewById(R.id.icon)
+        var name: TextView? = itemView.findViewById(R.id.name)
+        var check: CompoundButton? = itemView.findViewById(R.id.check)
 
         init {
             itemView.setOnClickListener(this)

@@ -14,7 +14,9 @@
   -->
 
 <resources>
+    <dimen name="m3_list_icon_size">24dp</dimen>
     <dimen name="m3_list_padding_horizontal">16dp</dimen>
+    <dimen name="m3_list_padding_vertical">8dp</dimen>
     <dimen name="m3_one_line_list_height">56dp</dimen>
     <dimen name="m3_dialog_corner_radius">28dp</dimen>
     <dimen name="tab_height">48dp</dimen>
@@ -26,14 +28,12 @@
     <dimen name="pref_title_padding">72dp</dimen>
     <dimen name="list_pref_guideline_begin">56dp</dimen>
     <dimen name="empty_view_content_padding">24dp</dimen>
-    <dimen name="default_item_margin_large">24dp</dimen>
-    <dimen name="default_item_margin_medium">16dp</dimen>
     <dimen name="default_item_margin">8dp</dimen>
 
     <dimen name="status_item_margin">4dp</dimen>
 
     <dimen name="onboard_titles_vertical_padding">24dp</dimen>
-    <dimen name="onboard_titles_horizontal_padding">24dp</dimen>
+    <dimen name="onboard_titles_horizontal_padding">16dp</dimen>
     <dimen name="msg_a_number_padding_horizontal">16dp</dimen>
     <dimen name="msg_a_number_padding_vertical">16dp</dimen>
 </resources>

@@ -104,7 +104,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
 
     private fun setupClientPermissions() {
         if (hasQ()) {
-            clientAdapter = ClientAdapter(requireContext(), this)
+            clientAdapter = ClientAdapter(requireContext(), R.layout.item_client_onboard, this)
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerView.adapter = clientAdapter
         } else {
@@ -147,7 +147,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         if (client.hasPermissions(requireContext())) {
             return IClientCallback.MODE_CHECKED
         }
-        return IClientCallback.MODE_UNCHECKABLE
+        return IClientCallback.MODE_UNCHECKED
     }
 
     override fun permissionsStateChanged(hasPermissions: Boolean) {

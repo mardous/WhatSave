@@ -49,8 +49,6 @@
     <string name="x_selected">%d geselecteerd</string>
     <string name="x_is_the_default_client_now">%s is nu de standaardclient.</string>
     <string name="default_client_cleared">Standaardclient gewist.</string>
-    <string name="client_info"><![CDATA[Versie <b>%s</b>]]></string>
-    <string name="client_info_unknown">Kan klantinformatie niet laden.</string>
     <string name="saf_tutorial"><![CDATA[Zorg ervoor dat u op het volgende scherm de locatie \"<b>%s</b>\" selecteert. Als u klaar bent, drukt u onderaan op de knop \"Deze map gebruiken\" om te bevestigen.]]></string>
     <string name="installed_clients_empty">Er zijn geen geïnstalleerde WA-clients.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Je moet naar WA gaan en enkele statussen downloaden</string>

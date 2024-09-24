@@ -18,48 +18,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="@dimen/m3_list_padding_vertical"
-    android:paddingBottom="@dimen/m3_list_padding_vertical"
+    android:layout_height="@dimen/m3_one_line_list_height"
+    android:background="?selectableItemBackground"
     android:paddingStart="@dimen/m3_list_padding_horizontal"
     android:paddingEnd="@dimen/m3_list_padding_horizontal"
-    android:background="?rectSelector">
+    android:descendantFocusability="beforeDescendants">
 
     <ImageView
         android:id="@+id/icon"
         android:layout_width="@dimen/m3_list_icon_size"
         android:layout_height="@dimen/m3_list_icon_size"
         android:importantForAccessibility="no"
-        android:scaleType="center"
-        app:tint="?colorOnSurfaceVariant"
-        app:srcCompat="@drawable/ic_person_24dp"
+        android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@drawable/icon_wa"/>
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/title"
+        android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:ellipsize="marquee"
-        android:layout_marginStart="@dimen/m3_list_padding_horizontal"
-        android:textAlignment="viewStart"
-        android:textAppearance="?textAppearanceBody1"
-        app:layout_constraintTop_toTopOf="@+id/icon"
-        app:layout_constraintStart_toEndOf="@+id/icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="@tools:sample/lorem"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/m3_list_padding_horizontal"
+        android:paddingEnd="@dimen/m3_list_padding_horizontal"
+        android:maxLines="1"
         android:ellipsize="end"
         android:textAlignment="viewStart"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?android:textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="@+id/title"
-        tools:text="@tools:sample/lorem/random"/>
+        android:textAppearance="?textAppearanceBody1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/icon"
+        app:layout_constraintEnd_toStartOf="@+id/check"
+        tools:text="@tools:sample/lorem"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/check"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

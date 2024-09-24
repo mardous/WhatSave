@@ -17,12 +17,10 @@ import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
 import android.content.UriPermission
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Build
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.getDrawableCompat
 import com.simplified.wsstatussaver.extensions.isFromClient
 import com.simplified.wsstatussaver.extensions.packageInfo
@@ -38,14 +36,6 @@ enum class WaClient(
     OGWhatsApp("OGWhatsApp", "OGWhatsApp", "com.gbwhatsapp3", R.drawable.icon_gb);
 
     fun getIcon(context: Context): Drawable? = context.getDrawableCompat(iconRes)
-
-    fun getDescription(context: Context): CharSequence {
-        val versionName = resolvePackageValue(context) { it?.versionName }
-        if (versionName == null) {
-            return context.getString(R.string.client_info_unknown)
-        }
-        return context.getString(R.string.client_info, versionName).formattedAsHtml()
-    }
 
     fun isInstalled(context: Context): Boolean {
         return try {
@@ -91,16 +81,5 @@ enum class WaClient(
     @TargetApi(Build.VERSION_CODES.Q)
     fun getSAFDirectoryPath(): String {
         return "Android/media/$packageName/$internalName/Media/.Statuses"
-    }
-
-    private fun <T> resolvePackageValue(context: Context, resolver: (PackageInfo?) -> T): T? {
-        if (packageName.isEmpty()) {
-            return null
-        }
-        val packageInfo = runCatching { context.packageManager.packageInfo(packageName) }
-        if (packageInfo.isSuccess) {
-            return resolver(packageInfo.getOrThrow())
-        }
-        return resolver(null)
     }
 }

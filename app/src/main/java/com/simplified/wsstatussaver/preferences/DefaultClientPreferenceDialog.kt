@@ -51,7 +51,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
         _binding = DialogRecyclerviewBinding.inflate(layoutInflater)
         binding.empty.setText(R.string.installed_clients_empty)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = ClientAdapter(binding.root.context, this).apply {
+        binding.recyclerView.adapter = ClientAdapter(binding.root.context, R.layout.item_client_dialog, this).apply {
             registerAdapterDataObserver(adapterDataObserver)
         }.also {
             clientAdapter = it

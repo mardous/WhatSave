@@ -18,66 +18,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="?listPreferredItemHeightSmall"
+    android:layout_height="@dimen/m3_one_line_list_height"
     android:background="?selectableItemBackground"
-    android:paddingTop="@dimen/default_item_margin_medium"
-    android:paddingBottom="@dimen/default_item_margin_medium"
-    android:paddingStart="@dimen/default_item_margin_large"
-    android:paddingEnd="@dimen/default_item_margin_medium"
+    android:paddingStart="?dialogPreferredPadding"
+    android:paddingEnd="?dialogPreferredPadding"
     android:descendantFocusability="beforeDescendants">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/m3_list_icon_size"
+        android:layout_height="@dimen/m3_list_icon_size"
+        android:importantForAccessibility="no"
         android:scaleType="fitCenter"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@drawable/icon_wa"
-        tools:ignore="ContentDescription"/>
+        tools:src="@drawable/icon_wa"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_item_margin_medium"
-        android:layout_marginEnd="@dimen/default_item_margin"
+        android:paddingStart="@dimen/m3_list_padding_horizontal"
+        android:paddingEnd="@dimen/m3_list_padding_horizontal"
         android:maxLines="1"
         android:ellipsize="end"
         android:textAlignment="viewStart"
         android:textAppearance="?textAppearanceBody1"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/icon"
         app:layout_constraintEnd_toStartOf="@+id/check"
-        tools:text="Client name"/>
+        tools:text="@tools:sample/lorem"/>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:textAlignment="viewStart"
-        android:textAppearance="?textAppearanceBody2"
-        android:textColor="?android:textColorSecondary"
-        app:layout_constraintTop_toBottomOf="@+id/name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintEnd_toEndOf="@+id/name"
-        tools:text="@string/client_info"/>
-
-    <ImageView
+    <com.google.android.material.radiobutton.MaterialRadioButton
         android:id="@+id/check"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:scaleType="center"
-        android:alpha="0"
-        app:srcCompat="@drawable/ic_check_circle_24dp"
-        app:tint="?colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

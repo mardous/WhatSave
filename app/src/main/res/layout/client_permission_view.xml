@@ -54,7 +54,7 @@
         android:scrollbars="none"
         android:overScrollMode="@integer/overScrollMode"
         app:layout_constraintTop_toBottomOf="@+id/clientsLabel"
-        tools:listitem="@layout/item_client"
+        tools:listitem="@layout/item_client_onboard"
         tools:itemCount="3"/>
 
 </LinearLayout>

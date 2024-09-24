@@ -49,8 +49,6 @@
     <string name="x_selected">%d таңдалды</string>
     <string name="x_is_the_default_client_now">%s қазір әдепкі клиент болып табылады.</string>
     <string name="default_client_cleared">Әдепкі клиент тазартылды.</string>
-    <string name="client_info"><![CDATA[<b>%s</b> нұсқасы]]></string>
-    <string name="client_info_unknown">Клиент ақпаратын жүктеу мүмкін емес.</string>
     <string name="saf_tutorial"><![CDATA[Келесі экранда \"<b>%s</b>\" орнын таңдағаныңызға көз жеткізіңіз. Аяқтағаннан кейін растау үшін төменгі жағындағы \"Осы қалтаны пайдалану\" түймесін басыңыз.]]></string>
     <string name="installed_clients_empty">WA клиенттері орнатылмаған.</string>
     <string name="you_should_open_wa_and_download_some_statuses">WA-қа кіріп, бірнеше мәртебелерді жүктеп алу керек</string>
