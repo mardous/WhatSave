@@ -29,7 +29,7 @@ import com.simplified.wsstatussaver.update.provideOkHttp
 import com.simplified.wsstatussaver.update.provideUpdateService
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.bind
 import org.koin.dsl.module
 
