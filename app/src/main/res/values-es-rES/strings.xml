@@ -176,4 +176,12 @@
     <string name="permissions_revoked_successfully">Permisos revocados correctamente.</string>
     <string name="grant_permissions">Conceder permisos</string>
     <string name="use_custom_font_title">Utilizar fuente Manrope</string>
+    <string name="information">Información</string>
+    <string name="latest_release_title">Último lanzamiento</string>
+    <string name="latest_release_summary">Ver la última versión de la aplicación y los cambios recientes.</string>
+    <string name="translations_title">Traducciones</string>
+    <string name="translations_summary">Puedes ayudarnos traduciendo esta aplicación a tu idioma.</string>
+    <string name="report_bugs_title">Informar errores</string>
+    <string name="report_bugs_summary">Abrir la página de seguimiento de problemas en GitHub.</string>
+    <string name="about_summary">Versión, enlaces, contacto.</string>
 </resources>
