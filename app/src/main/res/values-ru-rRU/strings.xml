@@ -84,8 +84,6 @@
     <string name="statuses_location_title">Расположение статусов</string>
     <string name="statuses_location_summary">Место, где должны быть найдены статусы. Вам следует изменить этот параметр только в том случае, если приложение не может загружать статусы из местоположения по умолчанию.</string>
     <string name="no_storage_device_found">Устройство хранения данных не найдено</string>
-    <string name="exclude_old_statuses_title">Исключить старые статусы</string>
-    <string name="exclude_old_statuses_summary">Если вы просматриваете старые статусы в этом приложении.</string>
     <string name="exclude_saved_statuses_title">Исключить сохраненные статусы</string>
     <string name="exclude_saved_statuses_summary">Если этот параметр включен, сохраненные статусы не будут отображаться на главной странице. Доступ к ним будет только со страницы «Сохраненные».</string>
     <string name="multi_selection_title">Множественный выбор</string>

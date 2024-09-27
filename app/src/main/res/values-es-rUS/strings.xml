@@ -84,8 +84,6 @@
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>
     <string name="no_storage_device_found">No se encontró ningún dispositivo de almacenamiento</string>
-    <string name="exclude_old_statuses_title">Excluir estados antiguos</string>
-    <string name="exclude_old_statuses_summary">Si está viendo estados antiguos en esta aplicación.</string>
     <string name="exclude_saved_statuses_title">Excluir estados guardados</string>
     <string name="exclude_saved_statuses_summary">Si se activa, los estados guardados no aparecerán en la página principal. Serán visibles sólo en la página \"Guardado\".</string>
     <string name="save_location_title">Ubicación de guardado</string>

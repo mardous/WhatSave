@@ -85,8 +85,6 @@
     <string name="statuses_location_title">स्थितियाँ स्थान</string>
     <string name="statuses_location_summary">वह स्थान जहाँ स्थितियाँ मिलनी चाहिए। आपको यह सेटिंग केवल तभी बदलनी चाहिए जब ऐप डिफ़ॉल्ट स्थान से स्टेटस लोड करने में असमर्थ हो।</string>
     <string name="no_storage_device_found">कोई संग्रहण उपकरण नहीं मिला</string>
-    <string name="exclude_old_statuses_title">पुरानी स्थितियाँ बहिष्कृत करें</string>
-    <string name="exclude_old_statuses_summary">यदि आप इस एप्लिकेशन में पुराने स्टेटस देख रहे हैं।</string>
     <string name="exclude_saved_statuses_title">सहेजी गई स्थितियाँ बहिष्कृत करें</string>
     <string name="exclude_saved_statuses_summary">यदि सक्षम किया गया है, तो सहेजी गई स्थितियाँ मुख्य पृष्ठ पर दिखाई नहीं देंगी। वे केवल \"सहेजे गए\" पृष्ठ से पहुंच योग्य होंगे।</string>
     <string name="multi_selection_title">मल्टी चयन</string>

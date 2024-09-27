@@ -85,8 +85,6 @@
     <string name="statuses_location_title">Күйлердің орналасуы</string>
     <string name="statuses_location_summary">Күйлерді табу керек орын. Бұл параметрді қолданба күйлерді әдепкі орыннан жүктей алмаса ғана өзгертуіңіз керек.</string>
     <string name="no_storage_device_found">Ешбір сақтау құрылғысы табылмады</string>
-    <string name="exclude_old_statuses_title">Ескі күйлерді алып тастаңыз</string>
-    <string name="exclude_old_statuses_summary">Егер сіз осы қолданбадағы ескі күйлерді көріп жатсаңыз.</string>
     <string name="exclude_saved_statuses_title">Сақталған күйлерді қоспаңыз</string>
     <string name="exclude_saved_statuses_summary">Қосылған болса, сақталған күйлер негізгі бетте көрсетілмейді. Оларға тек \"Сақталған\" бетінен қол жеткізуге болады.</string>
     <string name="multi_selection_title">Көп таңдау</string>

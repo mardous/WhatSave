@@ -19,7 +19,6 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
-import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_OLD_STATUSES
 import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_SAVED_STATUSES
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
@@ -69,7 +68,6 @@ class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPrefe
         when (key) {
             PREFERENCE_DEFAULT_CLIENT,
             PREFERENCE_STATUSES_LOCATION,
-            PREFERENCE_EXCLUDE_OLD_STATUSES,
             PREFERENCE_EXCLUDE_SAVED_STATUSES -> onLoadStatuses(statusType)
 
             PREFERENCE_WHATSAPP_ICON -> statusAdapter?.isWhatsAppIconEnabled = preferences.isWhatsappIcon()

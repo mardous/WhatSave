@@ -85,8 +85,6 @@
     <string name="statuses_location_title">Localização dos status</string>
     <string name="statuses_location_summary">Local onde os status devem ser encontrados. Você deverá alterar essa configuração somente se o aplicativo não conseguir carregar status do local padrão.</string>
     <string name="no_storage_device_found">Nenhum dispositivo de armazenamento encontrado</string>
-    <string name="exclude_old_statuses_title">Excluir status antigos</string>
-    <string name="exclude_old_statuses_summary">Se você estiver visualizando status antigos neste aplicativo.</string>
     <string name="exclude_saved_statuses_title">Excluir status salvos</string>
     <string name="exclude_saved_statuses_summary">Se ativado, os status salvos não aparecerão na página principal. Eles estarão acessíveis somente na página \"Salvos\".</string>
     <string name="multi_selection_title">Seleção múltipla</string>

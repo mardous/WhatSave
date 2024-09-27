@@ -64,7 +64,6 @@ class StatusesRepositoryImpl(
 
     override suspend fun statuses(type: StatusType): StatusQueryResult {
         val statusList = arrayListOf<Status>()
-        val isExcludeOld = preferences.isExcludeOldStatuses()
         val isExcludeSaved = preferences.isExcludeSavedStatuses()
         val installedClients = context.getAllInstalledClients()
         if (installedClients.isEmpty()) {
@@ -103,7 +102,7 @@ class StatusesRepositoryImpl(
                         if (type.acceptFileName(fileName)) {
                             val isOld = lastModified.hasElapsedTwentyFourHours()
                             val isSaved = statusDao.statusSaved(uri, fileName)
-                            if ((isOld && isExcludeOld) || (isSaved && isExcludeSaved))
+                            if (isOld || (isSaved && isExcludeSaved))
                                 continue
 
                             statusList.add(Status(type, fileName, uri, lastModified, size, client?.packageName, isSaved))
@@ -121,7 +120,7 @@ class StatusesRepositoryImpl(
                         if (!statuses.isNullOrEmpty()) for (file in statuses) {
                             val fileUri = file.getUri()
                             val isSaved = statusDao.statusSaved(fileUri, file.name)
-                            if ((file.isOldFile() && isExcludeOld) || (isSaved && isExcludeSaved))
+                            if (file.isOldFile() || (isSaved && isExcludeSaved))
                                 continue
 
                             statusList.add(Status(type, file.name, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))

@@ -85,8 +85,6 @@
     <string name="statuses_location_title">நிலைகள் இடம்</string>
     <string name="statuses_location_summary">நிலைகளைக் கண்டறிய வேண்டிய இடம். ஆப்ஸால் இயல்புநிலை இடத்திலிருந்து நிலைகளை ஏற்ற முடியவில்லை என்றால் மட்டுமே இந்த அமைப்பை மாற்ற வேண்டும்.</string>
     <string name="no_storage_device_found">சேமிப்பக சாதனம் இல்லை</string>
-    <string name="exclude_old_statuses_title">பழைய நிலைகளை விலக்கு</string>
-    <string name="exclude_old_statuses_summary">இந்தப் பயன்பாட்டில் பழைய நிலைகளைப் பார்க்கிறீர்கள் என்றால்.</string>
     <string name="exclude_saved_statuses_title">சேமித்த நிலைகளை விலக்கு</string>
     <string name="exclude_saved_statuses_summary">இயக்கப்பட்டால், சேமித்த நிலைகள் முதன்மைப் பக்கத்தில் தோன்றாது. \"சேமிக்கப்பட்ட\" பக்கத்திலிருந்து மட்டுமே அவற்றை அணுக முடியும்.</string>
     <string name="multi_selection_title">பல தேர்வு</string>

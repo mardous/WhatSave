@@ -82,8 +82,6 @@ var SharedPreferences.isMessageViewEnabled
         putBoolean(PREFERENCE_ENABLE_MESSAGE_VIEW, value)
     }
 
-fun SharedPreferences.isExcludeOldStatuses() = getBoolean(PREFERENCE_EXCLUDE_OLD_STATUSES, false)
-
 fun SharedPreferences.isExcludeSavedStatuses() = getBoolean(PREFERENCE_EXCLUDE_SAVED_STATUSES, false)
 
 fun SharedPreferences.getLongPressAction() = getString(PREFERENCE_LONG_PRESS_ACTION, LongPressAction.VALUE_MULTI_SELECTION)!!
@@ -162,7 +160,6 @@ const val PREFERENCE_LONG_PRESS_ACTION = "long_press_action"
 const val PREFERENCE_LANGUAGE = "language_name"
 const val PREFERENCE_WHATSAPP_ICON = "whatsapp_icon"
 const val PREFERENCE_EXCLUDE_SAVED_STATUSES = "exclude_saved_statuses"
-const val PREFERENCE_EXCLUDE_OLD_STATUSES = "exclude_old_statuses"
 const val PREFERENCE_SAVE_LOCATION = "preferred_save_location"
 const val PREFERENCE_QUICK_DELETION = "quick_deletion"
 const val PREFERENCE_DEFAULT_CLIENT = "default_client"

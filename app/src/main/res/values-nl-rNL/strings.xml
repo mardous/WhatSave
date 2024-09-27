@@ -85,8 +85,6 @@
     <string name="statuses_location_title">Statussen locatie</string>
     <string name="statuses_location_summary">Locatie waar statussen moeten worden gevonden. U moet deze instelling alleen wijzigen als de app geen statussen kan laden vanaf de standaardlocatie.</string>
     <string name="no_storage_device_found">Geen opslagapparaat gevonden</string>
-    <string name="exclude_old_statuses_title">Sluit oude statussen uit</string>
-    <string name="exclude_old_statuses_summary">Als u oude statussen bekijkt in deze applicatie.</string>
     <string name="exclude_saved_statuses_title">Sluit opgeslagen statussen uit</string>
     <string name="exclude_saved_statuses_summary">Indien ingeschakeld, verschijnen opgeslagen statussen niet op de hoofdpagina. Ze zijn alleen toegankelijk via de pagina \"Opgeslagen\".</string>
     <string name="multi_selection_title">Multi-selectie</string>

@@ -85,8 +85,6 @@
     <string name="statuses_location_title">Размяшчэнне статусаў</string>
     <string name="statuses_location_summary">Месца, дзе павінны знаходзіцца статусы. Вы павінны змяніць гэты параметр, толькі калі праграма не можа загружаць статусы са стандартнага месцазнаходжання.</string>
     <string name="no_storage_device_found">Назапашвальнік не знойдзены</string>
-    <string name="exclude_old_statuses_title">Выключыць старыя статусы</string>
-    <string name="exclude_old_statuses_summary">Калі вы праглядаеце старыя статусы ў гэтым дадатку.</string>
     <string name="exclude_saved_statuses_title">Выключыць захаваныя статусы</string>
     <string name="exclude_saved_statuses_summary">Калі ўключана, захаваныя статусы не будуць адлюстроўвацца на галоўнай старонцы. Яны будуць даступныя толькі са старонкі \"Захаваныя\".</string>
     <string name="multi_selection_title">Множны выбар</string>

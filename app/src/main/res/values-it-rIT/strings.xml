@@ -85,8 +85,6 @@
     <string name="statuses_location_title">Posizione degli stati</string>
     <string name="statuses_location_summary">Posizione in cui dovrebbero essere trovati gli stati. Dovresti modificare questa impostazione solo se l\'app non è in grado di caricare gli stati dalla posizione predefinita.</string>
     <string name="no_storage_device_found">Nessun dispositivo di archiviazione trovato</string>
-    <string name="exclude_old_statuses_title">Escludi vecchi stati</string>
-    <string name="exclude_old_statuses_summary">Se stai visualizzando i vecchi stati in questa applicazione.</string>
     <string name="exclude_saved_statuses_title">Escludi stati salvati</string>
     <string name="exclude_saved_statuses_summary">Se abilitato, gli stati salvati non verranno visualizzati nella pagina principale. Saranno accessibili solo dalla pagina \"Salvati\".</string>
     <string name="multi_selection_title">Selezione multipla</string>

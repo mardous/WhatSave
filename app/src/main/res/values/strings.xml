@@ -87,8 +87,6 @@
     <string name="statuses_location_title">Statuses location</string>
     <string name="statuses_location_summary">Location where statuses should be found. You should change this setting only if the app is unable to load statuses from the default location.</string>
     <string name="no_storage_device_found">No storage device found</string>
-    <string name="exclude_old_statuses_title">Exclude old statuses</string>
-    <string name="exclude_old_statuses_summary">If you\'re viewing old statuses in this application.</string>
     <string name="exclude_saved_statuses_title">Exclude saved statuses</string>
     <string name="exclude_saved_statuses_summary">If enabled, saved statuses won\'t appear in the main page. Them will be accessible only from the \"Saved\" page.</string>
     <string name="save_location_title">Save location</string>
