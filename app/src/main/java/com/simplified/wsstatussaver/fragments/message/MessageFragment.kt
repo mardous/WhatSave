@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.fragments.message
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
@@ -38,6 +37,7 @@ import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.model.Country
+import com.simplified.wsstatussaver.views.PhoneNumberFormattingTextWatcher
 import io.michaelrocks.libphonenumber.android.NumberParseException
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.android.inject
