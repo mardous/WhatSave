@@ -178,4 +178,27 @@
     <string name="report_bugs_title">Informar errores</string>
     <string name="report_bugs_summary">Abrir la página de seguimiento de problemas en GitHub.</string>
     <string name="about_summary">Versión, enlaces, contacto.</string>
+    <string name="save_location_title">Ubicación de guardado</string>
+    <string name="always_save_in_dcim_title">Guardar siempre en DCIM</string>
+    <string name="always_save_in_dcim_summary">Todos los archivos guardados se almacenan en la misma ubicación que las fotos de la cámara.</string>
+    <string name="according_to_the_file_type_title">Según el tipo de archivo</string>
+    <string name="according_to_the_file_type_summary">Las imágenes se guardarán en Fotos y los vídeos en Películas.</string>
+    <string name="language_arabic">Árabe</string>
+    <string name="language_dutch">Holandés</string>
+    <string name="language_english">Inglés</string>
+    <string name="language_spanish_spain">Español (España)</string>
+    <string name="language_spanish_latam">Español (América Latina)</string>
+    <string name="language_french">Francés</string>
+    <string name="language_hindi">Hindi</string>
+    <string name="language_italian">Italiano</string>
+    <string name="language_kazakh">Kazajo</string>
+    <string name="language_portuguese_brazil">Portugués (Brasil)</string>
+    <string name="language_russian">Ruso</string>
+    <string name="language_tamil">Tamil</string>
+    <string name="theme_mode_title">Modo del tema</string>
+    <string name="dark_theme">Oscuro</string>
+    <string name="follow_system">Sistema</string>
+    <string name="light_theme">Claro</string>
+    <string name="language_belarusian">Bielorruso</string>
+    <string name="save_location_summary">Seleccione la ubicación en la que desea almacenar los estados guardados.</string>
 </resources>
