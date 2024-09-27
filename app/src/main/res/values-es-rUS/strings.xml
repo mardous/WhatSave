@@ -88,6 +88,8 @@
     <string name="exclude_old_statuses_summary">Si está viendo estados antiguos en esta aplicación.</string>
     <string name="exclude_saved_statuses_title">Excluir estados guardados</string>
     <string name="exclude_saved_statuses_summary">Si se activa, los estados guardados no aparecerán en la página principal. Serán visibles sólo en la página \"Guardado\".</string>
+    <string name="save_location_title">Ubicación de guardado</string>
+    <string name="save_location_summary">Elija la ubicación donde desea almacenar sus estados guardados.</string>
     <string name="multi_selection_title">Multiselección</string>
     <string name="long_press_action_title">Acción de toque largo</string>
     <string name="whatsapp_icon_title">Pequeño icono de WA</string>
@@ -186,6 +188,10 @@
     <string name="grant_permissions">Conceder permisos</string>
     <string name="privacy_and_terms">Términos y privacidad</string>
     <string name="privacy_notice">Al presionar \"Continuar\", asumiremos que has leído y aceptado nuestra Política de privacidad y Términos de uso.</string>
+    <string name="always_save_in_dcim_title">Guardar siempre en DCIM</string>
+    <string name="always_save_in_dcim_summary">Todos los archivos guardados se almacenan junto a las fotos de la cámara.</string>
+    <string name="according_to_the_file_type_title">De acuerdo al tipo de archivo</string>
+    <string name="according_to_the_file_type_summary">Las imágenes se guardarán en Pictures y los videos se guardarán en Movies.</string>
     <string name="language_arabic">Árabe</string>
     <string name="language_belarusian">Bielorruso</string>
     <string name="language_dutch">Holandés</string>

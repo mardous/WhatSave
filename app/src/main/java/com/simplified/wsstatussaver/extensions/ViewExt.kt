@@ -19,6 +19,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
@@ -160,4 +161,8 @@ fun TextView.setMarkdownText(str: String) {
         .build()
 
     markwon.setMarkdown(this, str)
+}
+
+fun CompoundButton.check(isChecked: Boolean) {
+    post { this.isChecked = isChecked }
 }

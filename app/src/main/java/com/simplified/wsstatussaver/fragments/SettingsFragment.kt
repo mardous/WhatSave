@@ -52,6 +52,8 @@ import com.simplified.wsstatussaver.logLongPressActionSelected
 import com.simplified.wsstatussaver.logThemeSelected
 import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
+import com.simplified.wsstatussaver.preferences.SaveLocationPreference
+import com.simplified.wsstatussaver.preferences.SaveLocationPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
 import com.simplified.wsstatussaver.setAnalyticsEnabled
@@ -104,6 +106,11 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         override fun onDisplayPreferenceDialog(preference: Preference) {
             when (preference) {
+                is SaveLocationPreference -> {
+                    SaveLocationPreferenceDialog().show(childFragmentManager, "SAVE_LOCATION")
+                    return
+                }
+
                 is DefaultClientPreference -> {
                     DefaultClientPreferenceDialog().show(childFragmentManager, "INSTALLED_CLIENTS")
                     return

@@ -56,6 +56,13 @@
             android:summary="@string/statuses_location_summary"
             android:key="statuses_location"/>
 
+        <com.simplified.wsstatussaver.preferences.SaveLocationPreference
+            android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_save_alt_24dp"
+            android:title="@string/save_location_title"
+            android:summary="@string/save_location_summary"
+            android:key="preferred_save_location"/>
+
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"
             android:icon="@drawable/ic_schedule_24dp"

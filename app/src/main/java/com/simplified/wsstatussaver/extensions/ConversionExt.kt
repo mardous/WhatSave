@@ -34,3 +34,6 @@ fun Long.time(maxPrettyTime: Long = 1, maxPrettyTimeUnit: TimeUnit = TimeUnit.HO
 }
 
 fun Long.prettyTime(): String = PrettyTime().format(Date(this))
+
+inline fun <reified T : Enum<T>> String.toEnum() =
+    enumValues<T>().firstOrNull { it.name.equals(this, ignoreCase = true) }

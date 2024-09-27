@@ -91,6 +91,8 @@
     <string name="exclude_old_statuses_summary">If you\'re viewing old statuses in this application.</string>
     <string name="exclude_saved_statuses_title">Exclude saved statuses</string>
     <string name="exclude_saved_statuses_summary">If enabled, saved statuses won\'t appear in the main page. Them will be accessible only from the \"Saved\" page.</string>
+    <string name="save_location_title">Save location</string>
+    <string name="save_location_summary">Select the location where you want to store your saved statuses.</string>
     <string name="multi_selection_title">Multi-selection</string>
     <string name="long_press_action_title">Long press action</string>
     <string name="whatsapp_icon_title">Small WA icon</string>
@@ -186,6 +188,10 @@
     <string name="grant_permissions">Grant permissions</string>
     <string name="privacy_and_terms">Privacy and terms</string>
     <string name="privacy_notice">By pressing \"Continue\", we will assume that you have read and accepted our Privacy Policy and Terms of Use.</string>
+    <string name="always_save_in_dcim_title">Always save in DCIM</string>
+    <string name="always_save_in_dcim_summary">All saved files are stored in the same location as your camera photos.</string>
+    <string name="according_to_the_file_type_title">According to the file type</string>
+    <string name="according_to_the_file_type_summary">Images will be saved in Pictures and videos will be saved in Movies.</string>
     <string name="language_arabic">Arabic</string>
     <string name="language_belarusian">Belarusian</string>
     <string name="language_dutch">Dutch</string>

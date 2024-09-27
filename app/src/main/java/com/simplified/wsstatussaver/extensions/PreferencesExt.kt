@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.getApp
+import com.simplified.wsstatussaver.model.SaveLocation
 
 private fun appStr(resId: Int) = getApp().applicationContext.getString(resId)
 
@@ -121,6 +122,10 @@ var SharedPreferences.defaultClientPackageName: String?
         putString(PREFERENCE_DEFAULT_CLIENT, packageName)
     }
 
+var SharedPreferences.saveLocation
+    get() = getString(PREFERENCE_SAVE_LOCATION, null)?.toEnum<SaveLocation>() ?: SaveLocation.DCIM
+    set(value) = edit { putString(PREFERENCE_SAVE_LOCATION, value.name) }
+
 class NightMode {
     companion object {
         const val VALUE_YES = "yes"
@@ -158,6 +163,7 @@ const val PREFERENCE_LANGUAGE = "language_name"
 const val PREFERENCE_WHATSAPP_ICON = "whatsapp_icon"
 const val PREFERENCE_EXCLUDE_SAVED_STATUSES = "exclude_saved_statuses"
 const val PREFERENCE_EXCLUDE_OLD_STATUSES = "exclude_old_statuses"
+const val PREFERENCE_SAVE_LOCATION = "preferred_save_location"
 const val PREFERENCE_QUICK_DELETION = "quick_deletion"
 const val PREFERENCE_DEFAULT_CLIENT = "default_client"
 const val PREFERENCE_GRANT_PERMISSIONS = "grant_permissions"

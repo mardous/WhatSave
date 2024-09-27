@@ -19,6 +19,7 @@ import android.os.Build
 import android.os.Environment
 import androidx.annotation.StringRes
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.extensions.acceptFileName
 import com.simplified.wsstatussaver.extensions.getNewSaveName
 import java.io.File
 
@@ -35,10 +36,15 @@ enum class StatusType(@StringRes val nameRes: Int, val format: String, private v
 
     val mimeType: String get() = saveType.fileMimeType
 
-    @get:TargetApi(Build.VERSION_CODES.Q)
-    val relativePath: String
-        get() = String.format("%s/%s", saveType.dirType, saveType.dirName)
+    @TargetApi(Build.VERSION_CODES.Q)
+    fun getRelativePath(location: SaveLocation): String =
+        String.format("%s/%s", saveType.getDirType(location), saveType.dirName)
 
-    val savesDirectory: File
-        get() = File(Environment.getExternalStoragePublicDirectory(saveType.dirType), saveType.dirName)
+    fun getSavesDirectory(location: SaveLocation): File =
+        File(Environment.getExternalStoragePublicDirectory(saveType.getDirType(location)), saveType.dirName)
+
+    fun getSavedContentFiles(location: SaveLocation): Array<File> {
+        val directory = getSavesDirectory(location)
+        return directory.listFiles { _, name -> acceptFileName(name) } ?: emptyArray()
+    }
 }

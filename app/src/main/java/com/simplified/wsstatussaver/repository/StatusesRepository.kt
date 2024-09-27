@@ -54,6 +54,8 @@ class StatusesRepositoryImpl(
 
     private val contentResolver: ContentResolver = context.contentResolver
     private val preferences = context.preferences()
+    private val statusSaveLocation: SaveLocation
+        get() = preferences.saveLocation
     private val statusesLocationPath: String
         get() {
             val statusesLocation = storage.getStatusesLocation()
@@ -147,8 +149,9 @@ class StatusesRepositoryImpl(
                 MediaColumns.SIZE,
                 MediaColumns.RELATIVE_PATH
             )
-            val selection = "${MediaColumns.RELATIVE_PATH} LIKE ?"
-            val arguments = arrayOf("%${type.relativePath}%")
+            val entries = SaveLocation.entries
+            val selection = entries.joinToString(" OR ") { "${MediaColumns.RELATIVE_PATH} LIKE ?" }
+            val arguments = entries.map { "%${type.getRelativePath(it)}%" }.toTypedArray()
             contentResolver.query(type.contentUri, projection, selection, arguments, null).use { cursor ->
                 if (cursor != null && cursor.moveToFirst()) do {
                     val mediaUri = ContentUris.withAppendedId(type.contentUri, cursor.getLong(0))
@@ -159,8 +162,10 @@ class StatusesRepositoryImpl(
                 } while (cursor.moveToNext())
             }
         } else {
-            val files = type.savesDirectory.listFiles { _, name -> type.acceptFileName(name) }
-            if (files != null) for (file in files) {
+            val files = SaveLocation.entries.flatMap {
+                type.getSavedContentFiles(it).toList()
+            }
+            if (files.isNotEmpty()) for (file in files) {
                 statuses.add(SavedStatus(type, file.name, file.getUri(), file.lastModified(), file.length(), file.absolutePath))
             }
         }
@@ -333,7 +338,7 @@ class StatusesRepositoryImpl(
             return saveQ(status, inputStream)
         }
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
-            val destDirectory = status.type.savesDirectory
+            val destDirectory = status.type.getSavesDirectory(statusSaveLocation)
             if (destDirectory.isDirectory || destDirectory.mkdirs()) {
                 val statusSaveFile = File(destDirectory, status.saveName)
                 if (!statusSaveFile.exists() && statusSaveFile.createNewFile()) {
@@ -353,7 +358,7 @@ class StatusesRepositoryImpl(
 
         val values = ContentValues().apply {
             put(MediaColumns.DISPLAY_NAME, status.saveName)
-            put(MediaColumns.RELATIVE_PATH, status.type.relativePath)
+            put(MediaColumns.RELATIVE_PATH, status.type.getRelativePath(statusSaveLocation))
             put(MediaColumns.MIME_TYPE, status.type.mimeType)
         }
 
@@ -382,7 +387,7 @@ class StatusesRepositoryImpl(
 
     private fun scanSavedStatuses(statusType: StatusType) {
         if (!hasQ()) {
-            val files = statusType.savesDirectory.listFiles { _, name -> name.endsWith(statusType.format) }
+            val files = statusType.getSavesDirectory(statusSaveLocation).listFiles { _, name -> name.endsWith(statusType.format) }
                 ?.map { it.absolutePath }
                 ?.toTypedArray()
             if (!files.isNullOrEmpty()) {

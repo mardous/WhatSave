@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.model
 
 import android.net.Uri
-import android.os.Environment
 import android.provider.MediaStore
 
 /**
@@ -22,10 +21,25 @@ import android.provider.MediaStore
  *
  * @author Christians Martínez Alvarado (mardous)
  */
-internal enum class StatusSaveType(internal val dirType: String, internal val dirName: String,
-                          internal val fileMimeType: String, internal val contentUri: Uri) {
-    IMAGE_SAVE(Environment.DIRECTORY_DCIM, "Saved Image Statuses", "image/jpeg",
-        MediaStore.Images.Media.EXTERNAL_CONTENT_URI),
-    VIDEO_SAVE(Environment.DIRECTORY_DCIM, "Saved Video Statuses", "video/mp4",
-        MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+internal enum class StatusSaveType(
+    internal val dirName: String,
+    internal val fileMimeType: String,
+    internal val contentUri: Uri
+) {
+    IMAGE_SAVE(
+        "Saved Image Statuses",
+        "image/jpeg",
+        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    ),
+    VIDEO_SAVE(
+        "Saved Video Statuses",
+        "video/mp4",
+        MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+    );
+
+    internal fun getDirType(location: SaveLocation) =
+        when (this) {
+            IMAGE_SAVE -> location.imageDir
+            VIDEO_SAVE -> location.videoDir
+        }
 }
