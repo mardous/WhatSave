@@ -21,6 +21,7 @@ class OnboardBinding(binding: FragmentOnboardBinding) {
     val storagePermissionView = binding.storagePermissionView.root
     val clientPermissionView = binding.clientPermissionView.root
     val recyclerView = binding.clientPermissionView.recyclerView
+    val noClientText = binding.clientPermissionView.empty
     val grantStorageButton = binding.storagePermissionView.grantButton
     val continueButton = binding.continueButton
     val privacyPolicyButton = binding.privacyPolicyButton

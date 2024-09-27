@@ -57,4 +57,16 @@
         tools:listitem="@layout/item_client_onboard"
         tools:itemCount="3"/>
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/onboard_titles_vertical_padding"
+        android:ellipsize="end"
+        android:paddingStart="@dimen/onboard_titles_horizontal_padding"
+        android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
+        android:textAlignment="viewStart"
+        android:textAppearance="?textAppearanceBody2"
+        android:text="@string/installed_clients_empty"/>
+
 </LinearLayout>

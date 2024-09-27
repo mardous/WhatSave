@@ -82,6 +82,13 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         setupGrantButtonIcon()
 
         viewModel.getInstalledClients().observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.noClientText.isVisible = true
+                binding.recyclerView.isVisible = false
+            } else {
+                binding.noClientText.isVisible = false
+                binding.recyclerView.isVisible = true
+            }
             clientAdapter?.setClients(it)
         }
 
@@ -192,6 +199,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         // For now, we only have to manually check the state of the fragment and cancel the
         // callback by returning 'true' when it is not visible.
         if (!isVisible) return true
+        if (clientAdapter?.isNullOrEmpty() == true) return false
         if (!hasPermissions()) {
             MaterialAlertDialogBuilder(requireContext())
                 .setMessage(R.string.permissions_denied_message)
