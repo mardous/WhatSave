@@ -36,15 +36,11 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enterTransition = MaterialSharedAxis(MaterialSharedAxis.X, true)
-        returnTransition = MaterialSharedAxis(MaterialSharedAxis.X, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
         view.doOnPreDraw { startPostponedEnterTransition() }
 
         _binding = FragmentAboutBinding.bind(view)
