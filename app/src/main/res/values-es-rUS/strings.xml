@@ -11,9 +11,7 @@
   ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
-  -->
-
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="type_image">Imagen</string>
     <string name="type_video">Video</string>
     <string name="close_action">Cerrar</string>
@@ -42,7 +40,7 @@
     <string name="saved_successfully">Guardado con éxito.</string>
     <string name="saved_x_statuses">Guardados %d estados</string>
     <string name="save_again_title">¿Guardar otra vez?</string>
-    <string name="you_saved_this_status_previously">Este estado ya se guardó antes.</string>
+    <string name="you_saved_this_status_previously">Este estado ya se guardó antes. ¿Quieres guardarlo de nuevo?</string>
     <string name="status_unsaved">Sin guardar</string>
     <string name="status_saved">Guardado</string>
     <string name="action_select_all">Seleccionar todo</string>
@@ -100,7 +98,7 @@
     <string name="default_client_summary">Si tienes varios clientes de WA instalados, puedes elegir desde cuál cargar los estados.</string>
     <string name="analytics_enabled_title">Enviar estadísticas de uso</string>
     <string name="analytics_enabled_summary">Cuando esto está activado, WhatSave puede enviar estadísticas de uso anónimas que nos ayudan a comprender cómo los usuarios usan la app.</string>
-    <string name="about_title">Acerca de…</string>
+    <string name="about_title">Acerca de</string>
     <string name="about_summary">Versión, enlaces, contacto.</string>
     <string name="version_x">Versión %s</string>
     <string name="author_title">Autor</string>
