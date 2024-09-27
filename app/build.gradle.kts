@@ -25,8 +25,8 @@ android {
         targetSdk = 34
 
         applicationId = namespace
-        versionCode = 115
-        versionName = "1.4.1"
+        versionCode = 116
+        versionName = "1.4.2"
     }
 
     val signingProperties = getProperties("keystore.properties")
