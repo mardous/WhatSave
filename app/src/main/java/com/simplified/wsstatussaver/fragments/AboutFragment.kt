@@ -19,17 +19,17 @@ import android.view.View
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.core.view.doOnPreDraw
-import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialSharedAxis
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentAboutBinding
 import com.simplified.wsstatussaver.extensions.openWeb
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.getApp
 
 /**
  * @author Christians M. A. (mardous)
  */
-class AboutFragment : Fragment(R.layout.fragment_about), View.OnClickListener {
+class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListener {
 
     private var _binding: FragmentAboutBinding? = null
     private val binding get() = _binding!!
@@ -55,6 +55,7 @@ class AboutFragment : Fragment(R.layout.fragment_about), View.OnClickListener {
         binding.forkOnGithub.setOnClickListener(this)
         binding.translations.setOnClickListener(this)
         binding.issueTracker.setOnClickListener(this)
+        statusesActivity.setSupportActionBar(binding.toolbar)
     }
 
     override fun onClick(v: View) {
