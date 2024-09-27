@@ -77,10 +77,6 @@
     <string name="settings_statuses">Statussen</string>
     <string name="settings_other">Ander</string>
     <string name="advanced">Geavanceerd</string>
-    <string name="night_mode_title">Nachtstand</string>
-    <string name="night_mode_yes">Ja</string>
-    <string name="night_mode_no">Nee</string>
-    <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Gewoon zwart</string>
     <string name="statuses_location_title">Statussen locatie</string>
     <string name="statuses_location_summary">Locatie waar statussen moeten worden gevonden. U moet deze instelling alleen wijzigen als de app geen statussen kan laden vanaf de standaardlocatie.</string>

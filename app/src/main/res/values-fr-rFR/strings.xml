@@ -77,10 +77,6 @@
     <string name="settings_statuses">Statuts</string>
     <string name="settings_other">Autre</string>
     <string name="advanced">Avance</string>
-    <string name="night_mode_title">Mode nuit</string>
-    <string name="night_mode_yes">Oui</string>
-    <string name="night_mode_no">Non</string>
-    <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Juste noir</string>
     <string name="statuses_location_title">Localisation des statuts</string>
     <string name="statuses_location_summary">Emplacement ou les statuts doivent etre trouves. Vous ne devez modifier ce parametre que si l\'application ne parvient pas a charger les statuts a partir de l\'emplacement par defaut.</string>

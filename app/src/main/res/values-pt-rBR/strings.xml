@@ -77,10 +77,6 @@
     <string name="settings_statuses">Status</string>
     <string name="settings_other">Outro</string>
     <string name="advanced">Avançado</string>
-    <string name="night_mode_title">Modo noturno</string>
-    <string name="night_mode_yes">Sim</string>
-    <string name="night_mode_no">Não</string>
-    <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Apenas preto</string>
     <string name="statuses_location_title">Localização dos status</string>
     <string name="statuses_location_summary">Local onde os status devem ser encontrados. Você deverá alterar essa configuração somente se o aplicativo não conseguir carregar status do local padrão.</string>

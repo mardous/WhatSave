@@ -23,13 +23,13 @@
 
         <ListPreference
             android:layout="@layout/list_item_view"
-            android:icon="@drawable/ic_dark_mode_24dp"
-            android:title="@string/night_mode_title"
-            android:entries="@array/night_mode_titles"
-            android:entryValues="@array/night_mode_values"
+            android:icon="@drawable/ic_contrast_24dp"
+            android:title="@string/theme_mode_title"
+            android:entries="@array/theme_mode_titles"
+            android:entryValues="@array/theme_mode_values"
             android:defaultValue="auto"
             app:useSimpleSummaryProvider="true"
-            android:key="night_mode"/>
+            android:key="theme_mode"/>
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch_no_title"

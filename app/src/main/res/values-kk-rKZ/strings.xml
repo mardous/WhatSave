@@ -77,10 +77,6 @@
     <string name="settings_statuses">Күйлер</string>
     <string name="settings_other">Басқа</string>
     <string name="advanced">Озат</string>
-    <string name="night_mode_title">Түнгі режим</string>
-    <string name="night_mode_yes">Иә</string>
-    <string name="night_mode_no">Жоқ</string>
-    <string name="night_mode_auto">Автоматты.</string>
     <string name="just_black_theme_title">Тек Қара</string>
     <string name="statuses_location_title">Күйлердің орналасуы</string>
     <string name="statuses_location_summary">Күйлерді табу керек орын. Бұл параметрді қолданба күйлерді әдепкі орыннан жүктей алмаса ғана өзгертуіңіз керек.</string>

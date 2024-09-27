@@ -37,7 +37,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_GRANT_PERMISSIONS
 import com.simplified.wsstatussaver.extensions.PREFERENCE_JUST_BLACK_THEME
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LANGUAGE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LONG_PRESS_ACTION
-import com.simplified.wsstatussaver.extensions.PREFERENCE_NIGHT_MODE
+import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
@@ -125,7 +125,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         }
 
         fun invalidatePreferences() {
-            findPreference<Preference>(PREFERENCE_NIGHT_MODE)
+            findPreference<Preference>(PREFERENCE_THEME_MODE)
                 ?.setOnPreferenceChangeListener { _: Preference?, newValue: Any? ->
                     val themeName = newValue as String
                     AppCompatDelegate.setDefaultNightMode(getDefaultDayNightMode(themeName))

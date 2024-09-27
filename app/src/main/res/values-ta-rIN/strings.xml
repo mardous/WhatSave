@@ -77,10 +77,6 @@
     <string name="settings_statuses">நிலைகள்</string>
     <string name="settings_other">மற்றவை</string>
     <string name="advanced">மேம்படுத்தபட்ட</string>
-    <string name="night_mode_title">இரவு நிலை</string>
-    <string name="night_mode_yes">ஆம்</string>
-    <string name="night_mode_no">இல்லை</string>
-    <string name="night_mode_auto">ஆட்டோ.</string>
     <string name="just_black_theme_title">வெறும் கருப்பு</string>
     <string name="statuses_location_title">நிலைகள் இடம்</string>
     <string name="statuses_location_summary">நிலைகளைக் கண்டறிய வேண்டிய இடம். ஆப்ஸால் இயல்புநிலை இடத்திலிருந்து நிலைகளை ஏற்ற முடியவில்லை என்றால் மட்டுமே இந்த அமைப்பை மாற்ற வேண்டும்.</string>

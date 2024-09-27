@@ -76,10 +76,10 @@
     <string name="settings_interface">Interfaz</string>
     <string name="settings_statuses">Estados</string>
     <string name="settings_other">Otros</string>
-    <string name="night_mode_title">Modo nocturno</string>
-    <string name="night_mode_yes">Sí</string>
-    <string name="night_mode_no">No</string>
-    <string name="night_mode_auto">Automático</string>
+    <string name="theme_mode_title">Modo del tema</string>
+    <string name="dark_theme">Oscuro</string>
+    <string name="light_theme">Claro</string>
+    <string name="follow_system">Seguir al sistema</string>
     <string name="just_black_theme_title">Completamente negro</string>
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>

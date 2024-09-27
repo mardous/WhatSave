@@ -77,10 +77,6 @@
     <string name="settings_statuses">Статусы</string>
     <string name="settings_other">Іншае</string>
     <string name="advanced">Пашыраны</string>
-    <string name="night_mode_title">Начны рэжым</string>
-    <string name="night_mode_yes">так</string>
-    <string name="night_mode_no">няма</string>
-    <string name="night_mode_auto">Аўто.</string>
     <string name="just_black_theme_title">Проста чорны</string>
     <string name="statuses_location_title">Размяшчэнне статусаў</string>
     <string name="statuses_location_summary">Месца, дзе павінны знаходзіцца статусы. Вы павінны змяніць гэты параметр, толькі калі праграма не можа загружаць статусы са стандартнага месцазнаходжання.</string>

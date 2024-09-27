@@ -17,6 +17,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isAnalyticsEnabled
+import com.simplified.wsstatussaver.extensions.migratePreferences
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.versionCode
@@ -33,6 +34,8 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        preferences().migratePreferences()
 
         // Disable Analytics/Crashlytics for debug builds
         setAnalyticsEnabled(preferences().isAnalyticsEnabled())

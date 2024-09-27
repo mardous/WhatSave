@@ -76,10 +76,6 @@
     <string name="settings_statuses">Статусы</string>
     <string name="settings_other">Другой</string>
     <string name="advanced">Передовой</string>
-    <string name="night_mode_title">Ночной режим</string>
-    <string name="night_mode_yes">Да</string>
-    <string name="night_mode_no">Нет</string>
-    <string name="night_mode_auto">Авто.</string>
     <string name="just_black_theme_title">Просто черный</string>
     <string name="statuses_location_title">Расположение статусов</string>
     <string name="statuses_location_summary">Место, где должны быть найдены статусы. Вам следует изменить этот параметр только в том случае, если приложение не может загружать статусы из местоположения по умолчанию.</string>

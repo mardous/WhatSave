@@ -32,12 +32,12 @@ fun Fragment.preferences() = requireContext().preferences()
 
 fun SharedPreferences.useCustomFont() = getBoolean(PREFERENCE_USE_CUSTOM_FONT, true)
 
-fun SharedPreferences.getDefaultDayNightMode() = getDefaultDayNightMode(getString(PREFERENCE_NIGHT_MODE, null))
+fun SharedPreferences.getDefaultDayNightMode() = getDefaultDayNightMode(getString(PREFERENCE_THEME_MODE, null))
 
 fun getDefaultDayNightMode(nightMode: String?): Int {
     if (nightMode != null) when (nightMode) {
-        NightMode.VALUE_YES -> return AppCompatDelegate.MODE_NIGHT_YES
-        NightMode.VALUE_NO -> return AppCompatDelegate.MODE_NIGHT_NO
+        NightMode.VALUE_DARK -> return AppCompatDelegate.MODE_NIGHT_YES
+        NightMode.VALUE_LIGHT -> return AppCompatDelegate.MODE_NIGHT_NO
     }
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
@@ -124,10 +124,25 @@ var SharedPreferences.saveLocation
     get() = getString(PREFERENCE_SAVE_LOCATION, null)?.toEnum<SaveLocation>() ?: SaveLocation.DCIM
     set(value) = edit { putString(PREFERENCE_SAVE_LOCATION, value.name) }
 
+fun SharedPreferences.migratePreferences() {
+    if (contains("night_mode")) {
+        val oldValue = getString("night_mode", null)
+        edit {
+            val newValue = when (oldValue) {
+                "yes" -> NightMode.VALUE_DARK
+                "no" -> NightMode.VALUE_LIGHT
+                else -> null
+            }
+            putString(PREFERENCE_THEME_MODE, newValue)
+            remove("night_mode")
+        }
+    }
+}
+
 class NightMode {
     companion object {
-        const val VALUE_YES = "yes"
-        const val VALUE_NO = "no"
+        const val VALUE_DARK = "dark"
+        const val VALUE_LIGHT = "light"
     }
 }
 
@@ -153,7 +168,7 @@ class UpdateSearchMode {
 
 const val SHOULD_SHOW_ONBOARD = "should_show_onboard"
 const val PREFERENCE_USE_CUSTOM_FONT = "use_custom_font"
-const val PREFERENCE_NIGHT_MODE = "night_mode"
+const val PREFERENCE_THEME_MODE = "theme_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"
 const val PREFERENCE_LONG_PRESS_ACTION = "long_press_action"

@@ -77,10 +77,6 @@
     <string name="settings_statuses">वे स्थितियां</string>
     <string name="settings_other">अन्य</string>
     <string name="advanced">विकसित</string>
-    <string name="night_mode_title">रात का मोड</string>
-    <string name="night_mode_yes">हाँ</string>
-    <string name="night_mode_no">नहीं</string>
-    <string name="night_mode_auto">ऑटो.</string>
     <string name="just_black_theme_title">बस काला</string>
     <string name="statuses_location_title">स्थितियाँ स्थान</string>
     <string name="statuses_location_summary">वह स्थान जहाँ स्थितियाँ मिलनी चाहिए। आपको यह सेटिंग केवल तभी बदलनी चाहिए जब ऐप डिफ़ॉल्ट स्थान से स्टेटस लोड करने में असमर्थ हो।</string>

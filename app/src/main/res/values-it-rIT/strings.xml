@@ -77,10 +77,6 @@
     <string name="settings_statuses">Stati</string>
     <string name="settings_other">Altro</string>
     <string name="advanced">Avanzate</string>
-    <string name="night_mode_title">Modalità notturna</string>
-    <string name="night_mode_yes">SÌ</string>
-    <string name="night_mode_no">NO</string>
-    <string name="night_mode_auto">Auto.</string>
     <string name="just_black_theme_title">Solo nero</string>
     <string name="statuses_location_title">Posizione degli stati</string>
     <string name="statuses_location_summary">Posizione in cui dovrebbero essere trovati gli stati. Dovresti modificare questa impostazione solo se l\'app non è in grado di caricare gli stati dalla posizione predefinita.</string>

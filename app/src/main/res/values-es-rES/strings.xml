@@ -65,10 +65,6 @@
     <string name="settings_interface">Interfaz</string>
     <string name="settings_statuses">Estados</string>
     <string name="settings_other">Otros</string>
-    <string name="night_mode_title">Modo nocturno</string>
-    <string name="night_mode_yes">Sí</string>
-    <string name="night_mode_no">No</string>
-    <string name="night_mode_auto">Automático</string>
     <string name="statuses_location_title">Ubicación de los estados</string>
     <string name="statuses_location_summary">Ubicación donde deberían encontrarse los estados. Cambie esto únicamente si la aplicación es incapaz de cargar los estados desde la ubicación predeterminada.</string>
     <string name="no_storage_device_found">No se encontró ningún dispositivo de almacenamiento</string>
