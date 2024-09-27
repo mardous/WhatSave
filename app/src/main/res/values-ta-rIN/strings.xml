@@ -102,7 +102,6 @@
     <string name="contact_summary">உங்களுக்கு உதவி அல்லது ஆதரவு தேவைப்பட்டால்.</string>
     <string name="fork_on_github_title">கிட்ஹப்பில் ஃபோர்க்</string>
     <string name="fork_on_github_summary">ஆப்ஸ் ஆதாரங்களைப் பார்க்கவும், ஃபோர்க் செய்யவும் அல்லது பதிவிறக்கவும்.</string>
-    <string name="legal_notices">சட்ட அறிவிப்புகள்</string>
     <string name="message_view_is_disabled">செய்தி காண்பித்தல் முடக்கப்பட்டுள்ளது</string>
     <string name="you_wont_be_able_to_see_messages_here">இங்கு நீக்கப்பட்ட அல்லாத அல்லது பெறப்பட்ட WA செய்திகளை நீங்கள் காண இயலாது.</string>
     <string name="message_view">செய்தி காண்பி</string>

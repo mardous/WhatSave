@@ -102,7 +102,6 @@
     <string name="contact_summary">यदि आपको सहायता या समर्थन की आवश्यकता है।</string>
     <string name="fork_on_github_title">GitHub पर कांटा</string>
     <string name="fork_on_github_summary">ऐप स्रोत देखें, फोर्क करें या डाउनलोड करें।</string>
-    <string name="legal_notices">कानूनी नोटिस</string>
     <string name="message_view_is_disabled">संदेश दृश्य निष्क्रिय है</string>
     <string name="you_wont_be_able_to_see_messages_here">यहाँ WA संदेशों को हटाए गए या प्राप्त किए गए देखने की क्षमता नहीं होगी।</string>
     <string name="message_view">संदेश दृश्य</string>

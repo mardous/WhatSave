@@ -102,7 +102,6 @@
     <string name="contact_summary">Si vous avez besoin d\'aide ou de soutien.</string>
     <string name="fork_on_github_title">Fork sur GitHub</string>
     <string name="fork_on_github_summary">Afficher, creer ou telecharger des sources d\'applications.</string>
-    <string name="legal_notices">Mentions legales</string>
     <string name="message_view_is_disabled">La vue des messages est désactivée</string>
     <string name="you_wont_be_able_to_see_messages_here">Vous ne pourrez pas voir les messages WA supprimés ou reçus ici.</string>
     <string name="message_view">Vue des messages</string>

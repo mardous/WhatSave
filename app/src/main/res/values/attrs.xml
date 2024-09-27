@@ -19,6 +19,11 @@
     <attr name="rectSelector" format="reference"/>
     <attr name="roundSelector" format="reference"/>
     <attr name="toolbarPopupTheme" format="reference"/>
+    <declare-styleable name="ListItemView">
+        <attr name="listItemIcon" format="reference" />
+        <attr name="listItemTitle" format="string" />
+        <attr name="listItemSummary" format="string" />
+    </declare-styleable>
     <declare-styleable name="ToolView">
         <attr format="string" name="toolName"/>
         <attr format="string" name="toolDescription"/>

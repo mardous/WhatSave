@@ -50,273 +50,76 @@
         android:overScrollMode="@integer/overScrollMode"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/app_version"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/share_app">
+                app:listItemIcon="@drawable/ic_info_24dp"
+                app:listItemTitle="@string/app_name"
+                tools:listItemSummary="@tools:sample/lorem"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/app_name" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/version"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    tools:text="Version 1.0.0" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/app_version">
+                app:listItemIcon="@drawable/ic_person_24dp"
+                app:listItemTitle="@string/author_title"
+                app:listItemSummary="@string/developer_name"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/author_title" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/developer_name" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/author">
+                app:listItemIcon="@drawable/ic_mail_24dp"
+                app:listItemTitle="@string/contact_title"
+                app:listItemSummary="@string/contact_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/contact_title" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/contact_summary" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/latest_release"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/contact">
+                app:listItemIcon="@drawable/ic_new_releases_24dp"
+                app:listItemTitle="@string/latest_release_title"
+                app:listItemSummary="@string/latest_release_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/latest_release_title" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/latest_release_summary" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/translations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/latest_release">
+                app:listItemIcon="@drawable/ic_translate_24dp"
+                app:listItemTitle="@string/translations_title"
+                app:listItemSummary="@string/translations_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/translations_title" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/translations_summary" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/issue_tracker"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/translations">
+                app:listItemIcon="@drawable/ic_bug_report_24dp"
+                app:listItemTitle="@string/report_bugs_title"
+                app:listItemSummary="@string/report_bugs_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/report_bugs_title" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/report_bugs_summary" />
-
-            </LinearLayout>
-
-            <LinearLayout
+            <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/fork_on_github"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="72dp"
-                android:gravity="center_vertical"
-                android:paddingTop="@dimen/m3_list_padding_vertical"
-                android:paddingBottom="@dimen/m3_list_padding_vertical"
-                android:paddingStart="@dimen/m3_list_padding_horizontal"
-                android:paddingEnd="@dimen/m3_list_padding_horizontal"
-                android:orientation="vertical"
-                android:background="?rectSelector"
-                app:layout_constraintTop_toBottomOf="@+id/issue_tracker">
+                app:listItemIcon="@drawable/ic_github_circle_24dp"
+                app:listItemTitle="@string/fork_on_github_title"
+                app:listItemSummary="@string/fork_on_github_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textAppearance="?textAppearanceBody1"
-                    android:text="@string/fork_on_github_title" />
+            <com.simplified.wsstatussaver.views.ListItemView
+                android:id="@+id/legal_notices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:listItemIcon="@drawable/ic_description_24dp"
+                app:listItemTitle="@string/oss_licenses_title"
+                app:listItemSummary="@string/oss_licenses_summary"/>
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="2"
-                    android:ellipsize="end"
-                    android:textAlignment="viewStart"
-                    android:textAppearance="?textAppearanceBody2"
-                    android:textColor="?android:textColorSecondary"
-                    android:text="@string/fork_on_github_summary" />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/share_app"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="16dp"
-                android:scaleType="fitCenter"
-                android:padding="14dp"
-                android:background="?roundSelector"
-                android:contentDescription="@string/share_app"
-                app:srcCompat="@drawable/ic_share_24dp"
-                app:tint="?colorControlNormal"
-                app:layout_constraintTop_toTopOf="@+id/app_version"
-                app:layout_constraintBottom_toBottomOf="@+id/app_version"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

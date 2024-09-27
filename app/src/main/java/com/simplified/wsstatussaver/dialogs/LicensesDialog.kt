@@ -35,7 +35,7 @@ class LicensesDialog : DialogFragment() {
         val binding = DialogMarkdownBinding.inflate(layoutInflater)
         binding.message.setMarkdownText(licenses)
         return MaterialAlertDialogBuilder(requireContext())
-            .setTitle(R.string.legal_notices)
+            .setTitle(R.string.oss_licenses_title)
             .setView(binding.root)
             .setPositiveButton(R.string.close_action, null)
             .create()

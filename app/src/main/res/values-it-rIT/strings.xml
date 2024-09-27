@@ -133,7 +133,6 @@
     <string name="no_action">No</string>
     <string name="clear_messages">Pulisci tutti i messaggi</string>
     <string name="accept_and_continue">Accetta e continua</string>
-    <string name="legal_notices">Note legali</string>
     <string name="msg_a_number">Invia un messaggio a un numero</string>
     <string name="msg_a_number_description">Inizia una conversazione con qualcuno che non è nel tuo elenco di contatti, utilizzando il suo numero di telefono.</string>
     <string name="phone_number_invalid">Il numero di telefono inserito non è valido</string>

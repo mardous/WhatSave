@@ -101,7 +101,6 @@
     <string name="contact_summary">Если вам нужна помощь или поддержка.</string>
     <string name="fork_on_github_title">Форк на Github</string>
     <string name="fork_on_github_summary">Просматривайте, разветвляйте или загружайте исходные коды приложений..</string>
-    <string name="legal_notices">Юридические уведомления</string>
     <string name="message_view_is_disabled">Просмотр сообщений отключен</string>
     <string name="you_wont_be_able_to_see_messages_here">Вы не сможете видеть удаленные или полученные сообщения WA здесь.</string>
     <string name="message_view">Просмотр сообщений</string>

@@ -17,13 +17,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.core.view.doOnPreDraw
-import com.google.android.material.transition.MaterialSharedAxis
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentAboutBinding
+import com.simplified.wsstatussaver.dialogs.LicensesDialog
 import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.getApp
@@ -45,32 +47,40 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
 
         _binding = FragmentAboutBinding.bind(view)
         binding.toolbar.setTitle(R.string.about_title)
-        binding.version.text = getString(R.string.version_x, getApp().versionName)
-        binding.shareApp.setOnClickListener(this)
+        binding.appVersion.setSummary(getString(R.string.version_x, getApp().versionName))
         binding.contact.setOnClickListener(this)
         binding.author.setOnClickListener(this)
         binding.latestRelease.setOnClickListener(this)
         binding.forkOnGithub.setOnClickListener(this)
         binding.translations.setOnClickListener(this)
         binding.issueTracker.setOnClickListener(this)
+        binding.legalNotices.setOnClickListener(this)
         statusesActivity.setSupportActionBar(binding.toolbar)
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateMenu(menu, menuInflater)
-        menu.clear()
+        menuInflater.inflate(R.menu.menu_about, menu)
+        menu.removeItem(R.id.action_settings)
     }
 
-    override fun onClick(v: View) {
-        when (v) {
-            binding.shareApp -> {
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.action_share_app -> {
                 ShareCompat.IntentBuilder(requireContext())
                     .setChooserTitle(R.string.share_app)
                     .setText(getString(R.string.app_share, LATEST_RELEASE_URL))
                     .setType("text/plain")
                     .startChooser()
+                true
             }
 
+            else -> super.onMenuItemSelected(menuItem)
+        }
+    }
+
+    override fun onClick(v: View) {
+        when (v) {
             binding.contact -> {
                 val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
                     data = "mailto:".toUri()
@@ -85,6 +95,7 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
             binding.translations -> requireContext().openWeb(TRANSLATIONS_URL)
             binding.forkOnGithub -> requireContext().openWeb(APP_GITHUB_URL)
             binding.issueTracker -> requireContext().openWeb(ISSUE_TRACKER_URL)
+            binding.legalNotices -> LicensesDialog().show(childFragmentManager, "OSS_LICENSES")
         }
     }
 
