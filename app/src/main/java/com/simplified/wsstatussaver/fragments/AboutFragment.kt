@@ -15,6 +15,8 @@ package com.simplified.wsstatussaver.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
@@ -56,6 +58,11 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
         binding.translations.setOnClickListener(this)
         binding.issueTracker.setOnClickListener(this)
         statusesActivity.setSupportActionBar(binding.toolbar)
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        super.onCreateMenu(menu, menuInflater)
+        menu.clear()
     }
 
     override fun onClick(v: View) {
