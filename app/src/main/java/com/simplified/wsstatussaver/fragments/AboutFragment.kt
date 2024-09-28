@@ -60,8 +60,8 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         super.onCreateMenu(menu, menuInflater)
+        menu.clear()
         menuInflater.inflate(R.menu.menu_about, menu)
-        menu.removeItem(R.id.action_settings)
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
