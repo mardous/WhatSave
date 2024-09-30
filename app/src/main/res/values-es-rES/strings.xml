@@ -200,4 +200,6 @@
     <string name="light_theme">Claro</string>
     <string name="language_belarusian">Bielorruso</string>
     <string name="save_location_summary">Seleccione la ubicación en la que desea almacenar los estados guardados.</string>
+    <string name="oss_licenses_title">Licencias de código abierto</string>
+    <string name="oss_licenses_summary">Consulta las licencias de las bibliotecas de código abierto utilizadas en esta aplicación.</string>
 </resources>
