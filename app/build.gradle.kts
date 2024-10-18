@@ -62,6 +62,12 @@ android {
             dimension = "version"
         }
     }
+    applicationVariants.all {
+        outputs.all {
+            (this as com.android.build.gradle.internal.api.BaseVariantOutputImpl).outputFileName =
+                "WhatSave-v${defaultConfig.versionName}-${name}.apk"
+        }
+    }
     buildFeatures {
         buildConfig = true
         viewBinding = true
