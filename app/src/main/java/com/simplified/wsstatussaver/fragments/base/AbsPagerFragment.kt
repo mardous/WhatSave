@@ -40,6 +40,7 @@ import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNullOrEmpty
 import com.simplified.wsstatussaver.extensions.isQuickDeletion
 import com.simplified.wsstatussaver.extensions.isVideo
+import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.primaryColor
 import com.simplified.wsstatussaver.extensions.requestContext
@@ -222,7 +223,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
             R.id.action_delete -> {
                 if (hasR()) {
                     viewModel.createDeleteRequest(requireContext(), selection).observe(viewLifecycleOwner) {
-                        deletionRequestLauncher.launch(IntentSenderRequest.Builder(it).build())
+                        deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
                     }
                 } else {
                     if (!preferences().isQuickDeletion()) {

@@ -23,6 +23,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isQuickDeletion
+import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.requestContext
 import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
@@ -66,7 +67,7 @@ class SavedStatusesFragment : AbsPagerFragment() {
         requestContext { context ->
             if (hasR()) {
                 viewModel.createDeleteRequest(requireContext(), listOf(status)).observe(viewLifecycleOwner) {
-                    deletionRequestLauncher.launch(IntentSenderRequest.Builder(it).build())
+                    deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
                 }
             } else {
                 if (!preferences().isQuickDeletion()) {

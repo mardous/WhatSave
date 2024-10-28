@@ -29,8 +29,10 @@ import android.os.Parcelable
 import android.service.notification.NotificationListenerService
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.ChecksSdkIntAtLeast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
 import androidx.core.content.pm.PackageInfoCompat
@@ -39,6 +41,7 @@ import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
 import com.simplified.wsstatussaver.logUrlView
+import com.simplified.wsstatussaver.recordException
 import com.simplified.wsstatussaver.service.MessageCatcherService
 import java.io.Serializable
 import java.io.UnsupportedEncodingException
@@ -180,6 +183,14 @@ internal fun Intent?.doWithIntent(onError: ExceptionConsumer?, doAction: (Intent
         }.onFailure {
             onError?.invoke(it, it is ActivityNotFoundException)
         }
+    }
+}
+
+fun <T> ActivityResultLauncher<T>.launchSafe(input: T, options: ActivityOptionsCompat? = null) {
+    try {
+        launch(input, options)
+    } catch (e: ActivityNotFoundException) {
+        recordException(e)
     }
 }
 

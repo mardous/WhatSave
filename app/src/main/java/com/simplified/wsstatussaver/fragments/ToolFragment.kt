@@ -30,6 +30,7 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
 import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
 import com.simplified.wsstatussaver.extensions.isNotificationListener
+import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.logToolView
@@ -89,7 +90,7 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
                 getString(R.string.confirm_device_credentials)
             )
             if (credentialsRequestIntel != null) {
-                credentialsRequestLauncher.launch(credentialsRequestIntel)
+                credentialsRequestLauncher.launchSafe(credentialsRequestIntel)
             } else {
                 viewModel.unlockMessageView()
             }

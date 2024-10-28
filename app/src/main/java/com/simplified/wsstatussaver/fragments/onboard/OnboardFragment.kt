@@ -34,7 +34,18 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
-import com.simplified.wsstatussaver.extensions.*
+import com.simplified.wsstatussaver.extensions.formattedAsHtml
+import com.simplified.wsstatussaver.extensions.getClientSAFIntent
+import com.simplified.wsstatussaver.extensions.getOnBackPressedDispatcher
+import com.simplified.wsstatussaver.extensions.hasPermissions
+import com.simplified.wsstatussaver.extensions.hasQ
+import com.simplified.wsstatussaver.extensions.hasStoragePermissions
+import com.simplified.wsstatussaver.extensions.isNullOrEmpty
+import com.simplified.wsstatussaver.extensions.launchSafe
+import com.simplified.wsstatussaver.extensions.openWeb
+import com.simplified.wsstatussaver.extensions.requestWithoutOnboard
+import com.simplified.wsstatussaver.extensions.showToast
+import com.simplified.wsstatussaver.extensions.takePermissions
 import com.simplified.wsstatussaver.fragments.AboutFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.IClientCallback
@@ -144,7 +155,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                 .setMessage(getString(R.string.saf_tutorial, client.getSAFDirectoryPath()).formattedAsHtml())
                 .setPositiveButton(android.R.string.ok) { _: DialogInterface, _: Int ->
                     this.selectedClient = client
-                    permissionRequest.launch(requireContext().getClientSAFIntent(client))
+                    permissionRequest.launchSafe(requireContext().getClientSAFIntent(client))
                 }
                 .show()
         }
