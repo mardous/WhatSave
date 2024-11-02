@@ -82,7 +82,6 @@ open class StatusAdapter(
         if (holder.image != null) {
             requestManager.load(status.fileUri)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .format(DecodeFormat.PREFER_RGB_565)
                 .centerCrop()
                 .into(holder.image)
         }
