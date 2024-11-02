@@ -26,7 +26,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
-import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentSettingsBinding
@@ -37,9 +36,9 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_GRANT_PERMISSIONS
 import com.simplified.wsstatussaver.extensions.PREFERENCE_JUST_BLACK_THEME
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LANGUAGE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LONG_PRESS_ACTION
-import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
+import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
