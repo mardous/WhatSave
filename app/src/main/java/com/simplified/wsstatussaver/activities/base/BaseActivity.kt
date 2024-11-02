@@ -16,12 +16,10 @@ package com.simplified.wsstatussaver.activities.base
 import android.Manifest
 import android.content.DialogInterface
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
-import android.view.View
-import androidx.annotation.ColorInt
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.view.WindowInsetsControllerCompat
@@ -30,13 +28,11 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.STORAGE_PERMISSION_REQUEST
 import com.simplified.wsstatussaver.extensions.getGeneralThemeRes
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
-import com.simplified.wsstatussaver.extensions.isColorLight
 import com.simplified.wsstatussaver.extensions.isShownOnboard
 import com.simplified.wsstatussaver.extensions.openSettings
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.requestPermissions
 import com.simplified.wsstatussaver.extensions.requestWithoutOnboard
-import com.simplified.wsstatussaver.extensions.surfaceColor
 import com.simplified.wsstatussaver.extensions.useCustomFont
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 
@@ -52,32 +48,16 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setupTheme()
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         hadPermissions = hasStoragePermissions()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
-
-        val navigationBarColor = surfaceColor()
-        onSetupSystemBars(navigationBarColor, navigationBarColor)
     }
 
     private fun setupTheme() {
         setTheme(getGeneralThemeRes())
         if (preferences().useCustomFont()) {
             setTheme(R.style.CustomFontThemeOverlay)
-        }
-    }
-
-    @Suppress("DEPRECATION")
-    protected open fun onSetupSystemBars(@ColorInt statusBarColor: Int, @ColorInt navigationBarColor: Int) {
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-        windowInsetsController.isAppearanceLightStatusBars = statusBarColor.isColorLight
-        setNavigationBarColor(navigationBarColor)
-    }
-
-    protected fun setNavigationBarColor(navigationBarColor: Int) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            window.navigationBarColor = navigationBarColor
-            windowInsetsController.isAppearanceLightNavigationBars = navigationBarColor.isColorLight
         }
     }
 

@@ -32,6 +32,7 @@ glideVersion = "4.16.0"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
+insetterVersion = "0.6.1"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -63,6 +64,7 @@ lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx",
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 
+insetter = { module = "dev.chrisbanes.insetter:insetter", version.ref = "insetterVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }

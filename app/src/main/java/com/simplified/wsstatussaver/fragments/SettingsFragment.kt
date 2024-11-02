@@ -57,6 +57,7 @@ import com.simplified.wsstatussaver.preferences.SaveLocationPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
 import com.simplified.wsstatussaver.setAnalyticsEnabled
+import dev.chrisbanes.insetter.applyInsetter
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -70,7 +71,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         enterTransition = MaterialFadeThrough().addTarget(view)
         reenterTransition = MaterialFadeThrough().addTarget(view)
         view.doOnPreDraw { startPostponedEnterTransition() }
-        binding.appBar.statusBarForeground = MaterialShapeDrawable.createWithElevationOverlay(requireContext())
         statusesActivity.setSupportActionBar(binding.toolbar)
 
         var settingsFragment: SettingsFragment? = whichFragment(R.id.settings_container)
@@ -97,6 +97,12 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+            listView.applyInsetter {
+                type(navigationBars = true) {
+                    padding(vertical = true)
+                }
+            }
+
             findPreference<Preference>("about")?.setOnPreferenceClickListener {
                 findNavController().navigate(R.id.aboutFragment)
                 true

@@ -44,7 +44,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <com.simplified.wsstatussaver.views.InsetsNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="@integer/overScrollMode"
@@ -121,6 +121,6 @@
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </com.simplified.wsstatussaver.views.InsetsNestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

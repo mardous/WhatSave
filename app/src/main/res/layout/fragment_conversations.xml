@@ -43,7 +43,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <com.simplified.wsstatussaver.views.InsetsNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:descendantFocusability="beforeDescendants"
@@ -58,6 +58,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-    </androidx.core.widget.NestedScrollView>
+    </com.simplified.wsstatussaver.views.InsetsNestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

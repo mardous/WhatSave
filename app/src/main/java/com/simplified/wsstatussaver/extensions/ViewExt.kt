@@ -15,6 +15,7 @@ package com.simplified.wsstatussaver.extensions
 
 import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
+import android.content.res.Configuration
 import android.graphics.drawable.BitmapDrawable
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +40,8 @@ import io.noties.markwon.Markwon
 import io.noties.markwon.html.HtmlPlugin
 
 const val WHATSAVE_ANIM_TIME = 350L
+
+fun View.isLandscape() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
 
 fun View.animateAlpha(value: Float) {
     if (value == alpha)
