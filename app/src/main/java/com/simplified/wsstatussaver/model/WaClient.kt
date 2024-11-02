@@ -32,8 +32,7 @@ enum class WaClient(
     private val iconRes: Int
 ) {
     WhatsApp("WA Messenger", "WhatsApp", "com.whatsapp", R.drawable.icon_wa),
-    Business("WA Business", "WhatsApp Business", "com.whatsapp.w4b", R.drawable.icon_business),
-    OGWhatsApp("OGWhatsApp", "OGWhatsApp", "com.gbwhatsapp3", R.drawable.icon_gb);
+    Business("WA Business", "WhatsApp Business", "com.whatsapp.w4b", R.drawable.icon_business);
 
     fun getIcon(context: Context): Drawable? = context.getDrawableCompat(iconRes)
 
