@@ -14,13 +14,11 @@
   -->
 
 <resources>
-    <style name="Base.Theme.WhatSave" parent="Theme.Material3.DynamicColors.DayNight">
+    <style name="Base.Theme.WhatSave.DynamicColors" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="android:windowActionModeOverlay">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">?colorSurface</item>
-        <item name="android:colorBackground">?colorSurface</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/black</item>
         <item name="defaultIconColor">@color/icon_tint_color</item>
@@ -29,9 +27,8 @@
         <item name="roundSelector">@drawable/round_selector</item>
         <item name="popupMenuBackground">@drawable/popupmenu_background</item>
         <item name="homeAsUpIndicator">@drawable/ic_arrow_back_24dp</item>
-        <item name="toolbarPopupTheme">@style/ToolbarPopupTheme</item>
-        <item name="alertDialogTheme">@style/AlertDialogTheme.DynamicColors</item>
-        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme.DynamicColors</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.WhatSave.Adaptive</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="bottomNavigationStyle">@style/BottomNavigationStyle</item>
         <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
@@ -39,22 +36,20 @@
         <item name="collapsingToolbarLayoutLargeStyle">@style/CollapsingToolbarLargeStyle</item>
     </style>
 
+    <style name="Theme.WhatSave" parent="Base.Theme.WhatSave.DynamicColors"/>
+
     <style name="Theme.WhatSave.Black">
-        <item name="colorSurface">@color/surface_color_black</item>
-        <item name="android:windowBackground">?colorSurface</item>
-        <item name="elevationOverlayAccentColor">@color/md_black_1000</item>
-        <item name="dividerColor">@color/divider_color_black</item>
+        <item name="colorSurface">@color/blackSurfaceColor</item>
+        <item name="android:windowBackground">@color/blackSurfaceColor</item>
+        <item name="elevationOverlayAccentColor">@color/blackSurfaceColor</item>
+        <item name="dividerColor">@color/blackDividerColor</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme.Black</item>
+        <item name="materialAlertDialogTheme">@style/MaterialAlertDialogTheme.Black</item>
     </style>
 
     <style name="Theme.WhatSave.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
     </style>
 
-    <style name="AlertDialogTheme.DynamicColors" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="colorBackgroundFloating">@color/container_color_adaptive</item>
-        <item name="dialogCornerRadius">@dimen/m3_dialog_corner_radius</item>
-    </style>
-
-    <style name="MaterialAlertDialogTheme.DynamicColors" parent="ThemeOverlay.Material3.MaterialAlertDialog"/>
-
+    <style name="ThemeOverlay.WhatSave.Adaptive" parent="ThemeOverlay.Material3.Light"/>
 </resources>
