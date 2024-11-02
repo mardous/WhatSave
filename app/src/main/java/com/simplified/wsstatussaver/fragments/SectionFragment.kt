@@ -11,7 +11,7 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.fragments.base
+package com.simplified.wsstatussaver.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -30,13 +30,17 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.doOnPageSelected
 import com.simplified.wsstatussaver.extensions.findCurrentFragment
 import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.fragments.statuses.StatusesFragment
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.fragments.statuses.HomeStatusesFragment
+import com.simplified.wsstatussaver.fragments.statuses.SavedStatusesFragment
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.model.StatusType
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
+abstract class SectionFragment : BaseFragment(R.layout.fragment_statuses),
     SharedPreferences.OnSharedPreferenceChangeListener, IScrollable {
 
     private var _binding: FragmentStatusesBinding? = null
@@ -98,7 +102,7 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
 
     override fun scrollToTop() {
         val currentFragment = binding.viewPager.findCurrentFragment(childFragmentManager)
-        if (currentFragment is AbsPagerFragment) {
+        if (currentFragment is StatusesFragment) {
             currentFragment.scrollToTop()
         }
     }
@@ -109,5 +113,17 @@ abstract class AbsStatusesFragment : BaseFragment(R.layout.fragment_statuses),
         override fun handleOnBackPressed() {
             currentType = StatusType.IMAGE
         }
+    }
+}
+
+class HomeSectionFragment : SectionFragment() {
+    override fun onCreatePagerAdapter(): PagerAdapter {
+        return PagerAdapter(this, HomeStatusesFragment::class.java.name)
+    }
+}
+
+class SavedSectionFragment : SectionFragment() {
+    override fun onCreatePagerAdapter(): PagerAdapter {
+        return PagerAdapter(this, SavedStatusesFragment::class.java.name)
     }
 }

@@ -48,6 +48,7 @@ import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.takePermissions
 import com.simplified.wsstatussaver.fragments.AboutFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.fragments.binding.OnboardBinding
 import com.simplified.wsstatussaver.interfaces.IClientCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.model.WaClient

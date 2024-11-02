@@ -35,6 +35,7 @@ import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.fragments.binding.MessageBinding
 import com.simplified.wsstatussaver.interfaces.ICountryCallback
 import com.simplified.wsstatussaver.model.Country
 import com.simplified.wsstatussaver.views.PhoneNumberFormattingTextWatcher

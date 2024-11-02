@@ -11,7 +11,7 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.fragments.pager
+package com.simplified.wsstatussaver.fragments.statuses
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -26,7 +26,6 @@ import com.simplified.wsstatussaver.extensions.isQuickDeletion
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.requestContext
-import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
@@ -34,7 +33,7 @@ import com.simplified.wsstatussaver.model.StatusType
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class SavedStatusesFragment : AbsPagerFragment() {
+class SavedStatusesFragment : StatusesFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

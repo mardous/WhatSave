@@ -18,7 +18,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
+import com.simplified.wsstatussaver.fragments.statuses.StatusesFragment
 import com.simplified.wsstatussaver.model.StatusType
 
 /**
@@ -57,7 +57,7 @@ class PagerAdapter(private val fragment: Fragment, private val fragmentClassName
         for (type in StatusType.values()) {
             val holder = FragmentHolder().apply {
                 className = fragmentClassName
-                arguments = bundleOf(AbsPagerFragment.EXTRA_TYPE to type)
+                arguments = bundleOf(StatusesFragment.EXTRA_TYPE to type)
                 title = fragment.getString(type.nameRes)
             }
             mFragments.add(holder)

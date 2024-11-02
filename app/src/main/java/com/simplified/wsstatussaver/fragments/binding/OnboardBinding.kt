@@ -11,7 +11,7 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.fragments.onboard
+package com.simplified.wsstatussaver.fragments.binding
 
 import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
 

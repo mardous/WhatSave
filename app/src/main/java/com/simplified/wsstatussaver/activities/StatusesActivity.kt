@@ -32,7 +32,7 @@ import com.google.android.material.color.MaterialColors
 import com.google.android.material.navigation.NavigationBarView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
-import com.simplified.wsstatussaver.activities.base.AbsBaseActivity
+import com.simplified.wsstatussaver.activities.base.BaseActivity
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
 import com.simplified.wsstatussaver.extensions.WHATSAVE_ANIM_TIME
 import com.simplified.wsstatussaver.extensions.currentFragment
@@ -41,14 +41,14 @@ import com.simplified.wsstatussaver.extensions.hide
 import com.simplified.wsstatussaver.extensions.show
 import com.simplified.wsstatussaver.extensions.surfaceColor
 import com.simplified.wsstatussaver.extensions.whichFragment
-import com.simplified.wsstatussaver.fragments.base.AbsStatusesFragment
+import com.simplified.wsstatussaver.fragments.SectionFragment
 import com.simplified.wsstatussaver.update.isAbleToUpdate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedListener,
+class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListener,
     NavController.OnDestinationChangedListener {
 
     private val viewModel by viewModel<WhatSaveViewModel>()
@@ -120,7 +120,7 @@ class StatusesActivity : AbsBaseActivity(), NavigationBarView.OnItemReselectedLi
 
     override fun onNavigationItemReselected(item: MenuItem) {
         val currentFragment = currentFragment(R.id.main_container)
-        if (currentFragment is AbsStatusesFragment) {
+        if (currentFragment is SectionFragment) {
             currentFragment.scrollToTop()
         }
     }

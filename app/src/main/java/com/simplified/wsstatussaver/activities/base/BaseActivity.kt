@@ -43,7 +43,7 @@ import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-abstract class AbsBaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     private val permissionsChangeListeners: MutableList<IPermissionChangeListener?> = ArrayList()
     private var hadPermissions = false

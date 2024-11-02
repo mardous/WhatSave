@@ -11,7 +11,7 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.fragments.pager
+package com.simplified.wsstatussaver.fragments.statuses
 
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -24,7 +24,6 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
 import com.simplified.wsstatussaver.extensions.isWhatsappIcon
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.fragments.base.AbsPagerFragment
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
@@ -32,7 +31,7 @@ import com.simplified.wsstatussaver.model.StatusType
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class HomeStatusesFragment : AbsPagerFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
+class HomeStatusesFragment : StatusesFragment(), SharedPreferences.OnSharedPreferenceChangeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

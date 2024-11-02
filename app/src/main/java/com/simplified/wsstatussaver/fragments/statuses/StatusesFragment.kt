@@ -11,7 +11,7 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver.fragments.base
+package com.simplified.wsstatussaver.fragments.statuses
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -50,7 +50,9 @@ import com.simplified.wsstatussaver.extensions.serializable
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.extensions.toPreviewIntent
+import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.StatusesPageBinding
+import com.simplified.wsstatussaver.fragments.SectionFragment
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
@@ -64,7 +66,7 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
+abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
     View.OnClickListener,
     OnRefreshListener,
     IScrollable,
@@ -80,8 +82,8 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     protected var statusAdapter: StatusAdapter? = null
 
     private val progressDialog by lazy { requireContext().createProgressDialog() }
-    private val statusesFragment: AbsStatusesFragment
-        get() = parentFragment as AbsStatusesFragment
+    private val sectionFragment: SectionFragment
+        get() = parentFragment as SectionFragment
 
     private val lastResult: StatusQueryResult?
         get() = viewModel.getStatuses(statusType).value
@@ -97,7 +99,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = StatusesPageBinding(FragmentStatusesPageBinding.bind(view)).apply {
-            swipeRefreshLayout.setOnRefreshListener(this@AbsPagerFragment)
+            swipeRefreshLayout.setOnRefreshListener(this@StatusesFragment)
             swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())
 
             recyclerView.setPadding(resources.displayMetrics.density.toInt() * 4)
@@ -118,7 +120,7 @@ abstract class AbsPagerFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
 
         binding.emptyButton.setOnClickListener(this)
-        statusesFragment.getViewPager().doOnPageSelected(viewLifecycleOwner) {
+        sectionFragment.getViewPager().doOnPageSelected(viewLifecycleOwner) {
             statusAdapter?.finishActionMode()
         }
     }
