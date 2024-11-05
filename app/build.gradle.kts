@@ -129,6 +129,8 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.loader)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.recyclerview)
@@ -146,6 +148,7 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 
+    implementation(libs.photoview)
     implementation(libs.insetter)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
