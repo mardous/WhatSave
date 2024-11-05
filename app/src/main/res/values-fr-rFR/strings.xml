@@ -11,9 +11,7 @@
   ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
-  -->
-
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="type_image">Image</string>
     <string name="type_video">Video</string>
     <string name="close_action">Fermer</string>
