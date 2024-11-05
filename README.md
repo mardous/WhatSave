@@ -32,6 +32,7 @@ English
 * Supports all Android versions starting from 7.0 Nougat
 * Material You on Android 12+
 * Preview and save files
+* Chat without saving the number
 * Recover deleted messages
 * Night mode
 * Black theme

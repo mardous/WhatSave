@@ -1,8 +1,9 @@
-A simple app with Material 3 UI that helps you save WA statuses in the easiest way, along with other cool features:
+A simple app with Material 3 UI that helps you save WhatsApp statuses in the easiest way, along with other cool features:
 
 * Supports all Android versions starting from 7.0 Nougat
 * Material You on Android 12+
 * Preview and save files
+* Chat without saving the number
 * Recover deleted messages
 * Night mode
 * Black theme
