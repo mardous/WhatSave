@@ -18,6 +18,7 @@
     android:id="@+id/playerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:keepScreenOn="true"
     app:animation_enabled="false"
     app:use_controller="true"
     app:controller_layout_id="@layout/video_player_controller"
