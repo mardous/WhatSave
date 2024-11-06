@@ -15,7 +15,6 @@
 <com.simplified.wsstatussaver.views.InsetsConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/actions"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp">
@@ -34,6 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/saveView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -43,6 +43,7 @@
             android:gravity="center_vertical"
             android:text="@string/save_action"
             android:textColor="@android:color/white"
+            android:background="?rectSelector"
             app:drawableTint="@android:color/white"
             android:drawablePadding="16dp"
             android:drawableStart="@drawable/ic_save_alt_24dp" />
@@ -63,6 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/shareView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -72,6 +74,7 @@
             android:gravity="center_vertical"
             android:text="@string/share_action"
             android:textColor="@android:color/white"
+            android:background="?rectSelector"
             app:drawableTint="@android:color/white"
             android:drawablePadding="16dp"
             android:drawableStart="@drawable/ic_share_24dp" />

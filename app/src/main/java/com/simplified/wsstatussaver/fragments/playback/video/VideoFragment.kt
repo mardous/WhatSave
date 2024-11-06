@@ -15,9 +15,8 @@ package com.simplified.wsstatussaver.fragments.playback.video
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.OptIn
-import androidx.core.os.BundleCompat
-import androidx.fragment.app.Fragment
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
@@ -26,26 +25,24 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentVideoBinding
-import com.simplified.wsstatussaver.fragments.playback.PlaybackFragment.Companion.EXTRA_STATUS
-import com.simplified.wsstatussaver.model.Status
-import kotlin.properties.Delegates
+import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
 
 /**
  * @author Christians M. A. (mardous)
  */
-class VideoFragment : Fragment(R.layout.fragment_video), Player.Listener {
+class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Listener {
 
     private var _binding: FragmentVideoBinding? = null
     private val binding get() = _binding!!
     private val playerView get() = binding.playerView
 
-    private var status: Status by Delegates.notNull()
     private var player: ExoPlayer? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        status = BundleCompat.getParcelable(requireArguments(), EXTRA_STATUS, Status::class.java)!!
-    }
+    override val saveButton: TextView
+        get() = playerView.findViewById(R.id.saveView)
+
+    override val shareButton: TextView
+        get() = playerView.findViewById(R.id.shareView)
 
     @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -35,6 +35,7 @@ import java.io.*
 import java.util.Date
 
 interface StatusesRepository {
+    fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>>
@@ -61,6 +62,9 @@ class StatusesRepositoryImpl(
             val statusesLocation = storage.getStatusesLocation()
             return statusesLocation?.path ?: storage.externalStoragePath
         }
+
+    override fun statusIsSaved(status: Status): LiveData<Boolean> =
+        statusDao.statusSavedObservable(status.fileUri, status.name)
 
     override suspend fun statuses(type: StatusType): StatusQueryResult {
         val statusList = arrayListOf<Status>()

@@ -146,6 +146,8 @@ class WhatSaveViewModel(
         }
     }
 
+    fun statusIsSaved(status: Status): LiveData<Boolean> = repository.statusIsSaved(status)
+
     fun shareStatus(status: Status): LiveData<ShareResult> = liveData(IO) {
         emit(ShareResult(isLoading = true))
         val data = repository.shareStatus(status)

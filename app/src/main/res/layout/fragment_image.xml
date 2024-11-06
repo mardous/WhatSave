@@ -32,7 +32,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
-        <include layout="@layout/playback_action_button" />
+        <include
+            android:id="@+id/playback_action_button"
+            layout="@layout/playback_action_button" />
 
     </FrameLayout>
 

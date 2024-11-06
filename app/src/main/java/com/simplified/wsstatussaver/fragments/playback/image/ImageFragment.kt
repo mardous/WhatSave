@@ -16,35 +16,31 @@ package com.simplified.wsstatussaver.fragments.playback.image
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.BundleCompat
-import androidx.fragment.app.Fragment
+import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentImageBinding
-import com.simplified.wsstatussaver.fragments.playback.PlaybackFragment.Companion.EXTRA_STATUS
-import com.simplified.wsstatussaver.model.Status
-import kotlin.properties.Delegates
+import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
 
 /**
  * @author Christians M. A. (mardous)
  */
-class ImageFragment : Fragment(R.layout.fragment_image) {
+class ImageFragment : PlaybackChildFragment(R.layout.fragment_image) {
 
     private var _binding: FragmentImageBinding? = null
-    private val imageView get() = _binding!!.image
+    private val binding get() = _binding!!
+    private val imageView get() = binding.image
 
-    private var status: Status by Delegates.notNull()
+    override val saveButton: TextView
+        get() = binding.playbackActionButton.saveView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        status = BundleCompat.getParcelable(requireArguments(), EXTRA_STATUS, Status::class.java)!!
-    }
+    override val shareButton: TextView
+        get() = binding.playbackActionButton.shareView
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentImageBinding.bind(view)
-
         Glide.with(this)
             .asBitmap()
             .load(status.fileUri)

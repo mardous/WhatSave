@@ -24,6 +24,7 @@ import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 
 interface Repository {
+    fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun shareStatus(status: Status): ShareData
@@ -49,6 +50,8 @@ class RepositoryImpl(
     private val countryRepository: CountryRepository,
     private val messageRepository: MessageRepository
 ) : Repository {
+
+    override fun statusIsSaved(status: Status): LiveData<Boolean> = statusesRepository.statusIsSaved(status)
 
     override suspend fun statuses(type: StatusType): StatusQueryResult = statusesRepository.statuses(type)
 
