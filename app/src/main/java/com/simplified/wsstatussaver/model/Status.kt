@@ -14,16 +14,19 @@
 package com.simplified.wsstatussaver.model
 
 import android.net.Uri
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
+@Parcelize
 open class Status(
-    val type: StatusType,
-    val name: String?,
-    val fileUri: Uri,
-    val dateModified: Long,
-    val size: Long,
-    val clientPackage: String?,
-    val isSaved: Boolean
-)
+    open val type: StatusType,
+    open val name: String,
+    open val fileUri: Uri,
+    open val dateModified: Long,
+    open val size: Long,
+    open val clientPackage: String?,
+    open val isSaved: Boolean
+) : Parcelable

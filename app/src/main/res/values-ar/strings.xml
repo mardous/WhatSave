@@ -4,8 +4,6 @@
     <string name="type_video">فيديوهات</string>
     <string name="close_action">إغلاق</string>
     <string name="preview_action">استعراض</string>
-    <string name="view_image_action">عرض الصورة</string>
-    <string name="play_video_action">تشغيل الفيديو</string>
     <string name="save_action">حفظ</string>
     <string name="share_action">مشاركة</string>
     <string name="share_with">مشاركة مع…</string>

@@ -58,8 +58,6 @@
     <string name="permissions_denied_title">Permisos denegados</string>
     <string name="grant_action">Conceder</string>
     <string name="open_settings_action">Abrir ajustes</string>
-    <string name="there_is_not_an_app_available_to_open_this_video">No hay una app disponible para abrir este vídeo</string>
-    <string name="there_is_not_an_app_available_to_open_this_image">No hay una app disponible para abrir esta imagen</string>
     <string name="play_store_is_not_installed">Play Store no está instalado.</string>
     <string name="action_settings">Ajustes</string>
     <string name="settings_interface">Interfaz</string>
@@ -103,9 +101,7 @@
     <string name="downloading_update">Descargando actualización de WhatSave</string>
     <string name="privacy_and_terms">Términos y privacidad</string>
     <string name="privacy_notice">Al presionar \"Continuar\", asumiremos que has leído y aceptado nuestra Política de privacidad y Términos de uso.</string>
-    <string name="view_image_action">Ver imagen</string>
     <string name="there_may_be_no_saved_files">Puede que no haya archivos guardados</string>
-    <string name="play_video_action">Reproducir vídeo</string>
     <string name="installed_clients_empty">No hay clientes WA instalados.</string>
     <string name="x_is_the_default_client_now">%s es ahora el cliente predeterminado.</string>
     <string name="saf_tutorial">En la siguiente pantalla, asegúrate de seleccionar la ubicación \"<b>%s</b>\". Una vez hecho esto, pulsa el botón \"Usar esta carpeta\" en la parte inferior para confirmar.</string>

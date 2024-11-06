@@ -24,6 +24,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
@@ -39,7 +40,6 @@ import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNullOrEmpty
 import com.simplified.wsstatussaver.extensions.isQuickDeletion
-import com.simplified.wsstatussaver.extensions.isVideo
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.primaryColor
@@ -49,10 +49,10 @@ import com.simplified.wsstatussaver.extensions.requestView
 import com.simplified.wsstatussaver.extensions.serializable
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
-import com.simplified.wsstatussaver.extensions.toPreviewIntent
+import com.simplified.wsstatussaver.fragments.SectionFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.StatusesPageBinding
-import com.simplified.wsstatussaver.fragments.SectionFragment
+import com.simplified.wsstatussaver.fragments.playback.PlaybackFragmentArgs
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
@@ -251,18 +251,12 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    override fun previewStatusClick(status: Status) = requestContext {
-        startActivitySafe(status.toPreviewIntent()) { _: Throwable, activityNotFound: Boolean ->
-            if (activityNotFound) {
-                requestView { view ->
-                    val messageRes = when {
-                        status.isVideo -> R.string.there_is_not_an_app_available_to_open_this_video
-                        else -> R.string.there_is_not_an_app_available_to_open_this_image
-                    }
-                    Snackbar.make(view, messageRes, Snackbar.LENGTH_LONG).show()
-                }
-            }
-        }
+    override fun previewStatusesClick(statuses: List<Status>, startPosition: Int) {
+        findNavController().navigate(
+            R.id.playbackFragment,
+            PlaybackFragmentArgs.Builder(statuses.toTypedArray(), startPosition).build()
+                .toBundle()
+        )
     }
 
     override fun saveStatusClick(status: Status) = requestContext { context ->
@@ -308,11 +302,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         } else {
             if (result.isSuccess) {
                 if (result.saved == 1) {
-                    Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT)
-                        .setAction(R.string.open_action) {
-                            previewStatusClick(result.statuses.single())
-                        }
-                        .show()
+                    Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT).show()
                 } else {
                     Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
                         .show()

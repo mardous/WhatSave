@@ -16,8 +16,6 @@
     <string name="type_video">видео</string>
     <string name="close_action">Закрывать</string>
     <string name="preview_action">Предварительный просмотр</string>
-    <string name="view_image_action">Посмотреть изображение</string>
-    <string name="play_video_action">Проиграть видео</string>
     <string name="save_action">Сохранять</string>
     <string name="share_action">Делиться</string>
     <string name="share_with">Поделиться с…</string>
@@ -67,8 +65,6 @@
     <string name="permissions_denied_message">Вы должны предоставить необходимые разрешения. Это приложение не будет работать должным образом без этих разрешений.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Открыть настройки</string>
-    <string name="there_is_not_an_app_available_to_open_this_video">Не существует приложения, позволяющего открыть это видео.</string>
-    <string name="there_is_not_an_app_available_to_open_this_image">Не существует приложения, позволяющего открыть это изображение.</string>
     <string name="play_store_is_not_installed">Play Store не установлен.</string>
     <string name="action_settings">Настройки</string>
     <string name="settings_interface">Интерфейс</string>

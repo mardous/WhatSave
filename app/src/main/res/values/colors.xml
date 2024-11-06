@@ -18,6 +18,7 @@
     <color name="blackSurfaceColor">#000000</color>
     <color name="blackContainerColor">#101010</color>
     <color name="blackDividerColor">#262629</color>
+    <color name="blackTranslucentColor">#4D000000</color>
 
     <color name="client_icon_tint_color">#617F42</color>
     <color name="client_icon_background_color">#CBEDA5</color>

@@ -119,11 +119,12 @@ class StatusesRepositoryImpl(
                         val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
                         if (!statuses.isNullOrEmpty()) for (file in statuses) {
                             val fileUri = file.getUri()
+                            val fileName = file.name
                             val isSaved = statusDao.statusSaved(fileUri, file.name)
-                            if (file.isOldFile() || (isSaved && isExcludeSaved))
+                            if (fileName.isNullOrEmpty() || file.isOldFile() || (isSaved && isExcludeSaved))
                                 continue
 
-                            statusList.add(Status(type, file.name, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
+                            statusList.add(Status(type, fileName, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
                         }
                     }
                 }
@@ -313,7 +314,7 @@ class StatusesRepositoryImpl(
         }
         if (success) {
             if (autoNotify) contentResolver.notifyChange(status.type.contentUri, null)
-            if (!status.name.isNullOrEmpty()) statusDao.removeSave(status.name)
+            statusDao.removeSave(status.name)
         }
         return success
     }

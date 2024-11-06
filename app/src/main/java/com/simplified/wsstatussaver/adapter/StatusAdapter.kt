@@ -30,7 +30,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
-import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
@@ -41,7 +40,6 @@ import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getLongPressAction
 import com.simplified.wsstatussaver.extensions.getState
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.showStatusOptions
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import kotlin.properties.Delegates
@@ -161,7 +159,7 @@ open class StatusAdapter(
                 if (isMultiSelectionMode()) {
                     toggleItemChecked(layoutPosition)
                 } else {
-                    activity.showStatusOptions(status, isSaveEnabled, isDeleteEnabled, callback)
+                    callback.previewStatusesClick(statuses, layoutPosition)
                 }
             }
         }
@@ -174,7 +172,7 @@ open class StatusAdapter(
                     }
 
                     LongPressAction.VALUE_PREVIEW -> {
-                        callback.previewStatusClick(status)
+                        callback.previewStatusesClick(statuses, layoutPosition)
                         return true
                     }
 

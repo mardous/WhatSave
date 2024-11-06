@@ -14,17 +14,20 @@
 package com.simplified.wsstatussaver.model
 
 import android.net.Uri
+import android.os.Parcelable
 import com.simplified.wsstatussaver.extensions.canonicalOrAbsolutePath
+import kotlinx.parcelize.Parcelize
 import java.io.File
 
+@Parcelize
 class SavedStatus(
-    type: StatusType,
-    name: String,
-    fileUri: Uri,
-    dateModified: Long,
-    size: Long,
+    override val type: StatusType,
+    override val name: String,
+    override val fileUri: Uri,
+    override val dateModified: Long,
+    override val size: Long,
     private val path: String?
-) : Status(type, name, fileUri, dateModified, size, null, true) {
+) : Status(type, name, fileUri, dateModified, size, null, true), Parcelable {
 
     fun hasFile(): Boolean = !path.isNullOrBlank()
 

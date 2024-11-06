@@ -16,8 +16,6 @@
     <string name="type_video">Video</string>
     <string name="close_action">Dichtbij</string>
     <string name="preview_action">Voorbeeld</string>
-    <string name="view_image_action">Bekijk afbeelding</string>
-    <string name="play_video_action">Video afspelen</string>
     <string name="save_action">Redden</string>
     <string name="share_action">Deel</string>
     <string name="share_with">Delen met…</string>
@@ -67,8 +65,6 @@
     <string name="permissions_denied_message">U moet de vereiste machtigingen verlenen. Deze applicatie werkt niet correct zonder deze machtigingen.</string>
     <string name="grant_action">Studiebeurs</string>
     <string name="open_settings_action">Open instellingen</string>
-    <string name="there_is_not_an_app_available_to_open_this_video">Er is geen app beschikbaar om deze video te openen</string>
-    <string name="there_is_not_an_app_available_to_open_this_image">Er is geen app beschikbaar om deze afbeelding te openen</string>
     <string name="play_store_is_not_installed">Play Store is niet geïnstalleerd.</string>
     <string name="action_settings">Instellingen</string>
     <string name="settings_interface">Koppel</string>

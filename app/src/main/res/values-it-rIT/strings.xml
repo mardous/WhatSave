@@ -16,8 +16,6 @@
     <string name="type_video">video</string>
     <string name="close_action">Vicino</string>
     <string name="preview_action">Anteprima</string>
-    <string name="view_image_action">Guarda l\'immagine</string>
-    <string name="play_video_action">Riproduci video</string>
     <string name="save_action">Salva</string>
     <string name="share_action">Condividere</string>
     <string name="share_with">Condividi con…</string>
@@ -67,8 +65,6 @@
     <string name="permissions_denied_message">Devi concedere le autorizzazioni richieste. Questa applicazione non funzionerà correttamente senza queste autorizzazioni.</string>
     <string name="grant_action">Concessione</string>
     <string name="open_settings_action">Apri le impostazioni</string>
-    <string name="there_is_not_an_app_available_to_open_this_video">Non è disponibile un\'app per aprire questo video</string>
-    <string name="there_is_not_an_app_available_to_open_this_image">Non è disponibile un\'app per aprire questa immagine</string>
     <string name="play_store_is_not_installed">Play Store non è installato.</string>
     <string name="action_settings">Impostazioni</string>
     <string name="settings_interface">Interfaccia</string>

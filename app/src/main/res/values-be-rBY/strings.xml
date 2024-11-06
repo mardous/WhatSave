@@ -16,8 +16,6 @@
     <string name="type_video">Відэа</string>
     <string name="close_action">Блізка</string>
     <string name="preview_action">Папярэдні прагляд</string>
-    <string name="view_image_action">Прагляд выявы</string>
-    <string name="play_video_action">Прайграць відэа</string>
     <string name="save_action">Захаваць</string>
     <string name="share_action">падзяліцца</string>
     <string name="share_with">Падзяліцца з…</string>
@@ -67,8 +65,6 @@
     <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы. Без гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Адкрыйце налады</string>
-    <string name="there_is_not_an_app_available_to_open_this_video">Няма даступнай праграмы для адкрыцця гэтага відэа</string>
-    <string name="there_is_not_an_app_available_to_open_this_image">Няма даступнай праграмы для адкрыцця гэтага відарыса</string>
     <string name="play_store_is_not_installed">Play Store не ўсталяваны.</string>
     <string name="action_settings">Налады</string>
     <string name="settings_interface">Інтэрфейс</string>
