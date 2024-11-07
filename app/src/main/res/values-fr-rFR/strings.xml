@@ -75,7 +75,7 @@
     <string name="exclude_saved_statuses_title">Exclure les statuts enregistres</string>
     <string name="exclude_saved_statuses_summary">S\'ils sont actives, les statuts enregistres n\'apparaitront pas sur la page principale. Ils seront accessibles uniquement depuis la page \"Enregistres\".</string>
     <string name="whatsapp_icon_title">Petite icone WA</string>
-    <string name="whatsapp_icon_summary">Affichez une petite icone sous chaque statut pour identifier de quel client il a ete obtenu.</string>
+    <string name="whatsapp_icon_summary">Affichez une petite icône sous chaque statut pour identifier de quel client il a été obtenu.</string>
     <string name="quick_deletion_title">Suppression rapide</string>
     <string name="quick_deletion_summary">Permet la suppression des statuts enregistres sans afficher de fenetre de confirmation. Non recommande.</string>
     <string name="review_permissions_title">Vérifier les autorisations</string>
