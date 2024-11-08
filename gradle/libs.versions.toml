@@ -6,6 +6,7 @@ gmsPluginVersion = "4.4.2"
 crashlyticsPluginVersion = "3.0.2"
 kotlinVersion = "2.0.20"
 kotlinCoroutinesVersion = "1.9.0"
+composeBom = "2024.10.01"
 constraintlayout = "2.2.0"
 media3 = "1.4.1"
 cardview = "1.0.0"
@@ -30,6 +31,7 @@ koinVersion = "4.0.0"
 swiperefreshlayout = "1.1.0"
 advrecyclerview = "1.0.0"
 glideVersion = "4.16.0"
+glideComposeVersion = "1.0.0-beta01"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
@@ -52,6 +54,11 @@ androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.re
 androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
+
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+compose-material = { group = "androidx.compose.material3", name = "material3" }
+compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
@@ -81,6 +88,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVers
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
+glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideComposeVersion" }
 advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview", version.ref = "advrecyclerview" }
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libphonenumberAndroid" }
 prettytime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "prettytime" }
@@ -95,5 +103,6 @@ firebase-crashlytics-plugin = { module = "com.google.firebase:firebase-crashlyti
 [plugins]
 agp = { id = "com.android.application", version.ref = "androidPluginVersion" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlinVersion" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "kspPluginVersion" }
 androidx-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationVersion" }

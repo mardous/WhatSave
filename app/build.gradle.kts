@@ -5,6 +5,7 @@ val isNormalBuild: Boolean by rootProject.extra
 plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
     id("kotlin-parcelize")
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.safeargs)
@@ -69,6 +70,7 @@ android {
         }
     }
     buildFeatures {
+        compose = true
         buildConfig = true
         viewBinding = true
     }
@@ -110,6 +112,11 @@ fun Properties.property(key: String) =
     this.getProperty(key) ?: "$key missing"
 
 dependencies {
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.material)
+    implementation(libs.compose.tooling.preview)
+    "debugImplementation"(libs.compose.tooling)
+
     // Google/JetPack
     //https://developer.android.com/jetpack/androidx/versions
     implementation(libs.androidx.core.ktx)
@@ -155,6 +162,7 @@ dependencies {
     implementation(libs.okhttp3.logging)
     implementation(libs.gson)
     implementation(libs.glide)
+    implementation(libs.glide.compose)
     implementation(libs.versioncompare)
     implementation(libs.libphonenumber)
     implementation(libs.prettytime)
