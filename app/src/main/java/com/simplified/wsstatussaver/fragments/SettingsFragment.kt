@@ -29,13 +29,11 @@ import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentSettingsBinding
-import com.simplified.wsstatussaver.extensions.LongPressAction
 import com.simplified.wsstatussaver.extensions.PREFERENCE_ANALYTICS_ENABLED
 import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.PREFERENCE_GRANT_PERMISSIONS
 import com.simplified.wsstatussaver.extensions.PREFERENCE_JUST_BLACK_THEME
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LANGUAGE
-import com.simplified.wsstatussaver.extensions.PREFERENCE_LONG_PRESS_ACTION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
@@ -43,11 +41,9 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
-import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.logLanguageSelected
-import com.simplified.wsstatussaver.logLongPressActionSelected
 import com.simplified.wsstatussaver.logThemeSelected
 import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
@@ -148,15 +144,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             findPreference<Preference>(PREFERENCE_USE_CUSTOM_FONT)
                 ?.setOnPreferenceChangeListener { _, _ ->
                     requireActivity().recreate()
-                    true
-                }
-            findPreference<Preference>(PREFERENCE_LONG_PRESS_ACTION)
-                ?.setOnPreferenceChangeListener { _: Preference?, o: Any ->
-                    val actionName = o as String
-                    if (LongPressAction.VALUE_DELETE == actionName) {
-                        showToast(R.string.statuses_deletion_is_not_permitted)
-                    }
-                    logLongPressActionSelected(actionName)
                     true
                 }
             findPreference<Preference>(PREFERENCE_LANGUAGE)?.setOnPreferenceChangeListener { _, newValue ->

@@ -58,7 +58,7 @@
 
         <com.simplified.wsstatussaver.preferences.SaveLocationPreference
             android:layout="@layout/list_item_view"
-            android:icon="@drawable/ic_save_alt_24dp"
+            android:icon="@drawable/ic_folder_24dp"
             android:title="@string/save_location_title"
             android:summary="@string/save_location_summary"
             android:key="preferred_save_location"/>
@@ -92,22 +92,6 @@
             android:key="grant_permissions"
             android:persistent="false"
             app:isPreferenceVisible="false"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:layout="@layout/preference_category_title"
-        android:title="@string/settings_other">
-
-        <ListPreference
-            android:layout="@layout/list_item_view"
-            android:icon="@drawable/ic_touch_app_24dp"
-            android:title="@string/long_press_action_title"
-            android:entries="@array/long_press_action_titles"
-            android:entryValues="@array/long_press_action_values"
-            app:useSimpleSummaryProvider="true"
-            android:defaultValue="multi-selection"
-            android:key="long_press_action"/>
 
         <SwitchPreferenceCompat
             android:layout="@layout/list_item_view_switch"

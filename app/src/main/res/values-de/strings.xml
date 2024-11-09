@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="multi_selection_title">Mehrfachauswahl</string>
     <string name="analytics_enabled_title">Nutzungsstatistiken senden</string>
     <string name="about_summary">Version, Links, Kontakt.</string>
     <string name="version_x">Version %s</string>
@@ -11,7 +10,6 @@
     <string name="type_image">Bild</string>
     <string name="type_video">Video</string>
     <string name="close_action">Schließen</string>
-    <string name="preview_action">Vorschau</string>
     <string name="save_action">Speichern</string>
     <string name="share_action">Teilen</string>
     <string name="share_with">Teilen mit…</string>
@@ -59,7 +57,6 @@
     <string name="no_storage_device_found">Kein Speichergerät gefunden</string>
     <string name="exclude_saved_statuses_title">Gespeicherte Status auslassen</string>
     <string name="save_location_summary">Ordner, in dem die gespeicherten Status abgelegt werden sollen.</string>
-    <string name="long_press_action_title">Aktion bei langem Tastendruck</string>
     <string name="whatsapp_icon_title">Kleines WA-Symbol</string>
     <string name="quick_deletion_title">Schnelllöschen</string>
     <string name="review_permissions_title">Berechtigungen prüfen</string>
@@ -151,7 +148,6 @@
     <string name="x_selected">%d ausgewählt</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d gespeicherte Status werden für immer gelöscht.</string>
     <string name="permissions_denied_title">Zugriff verweigert</string>
-    <string name="statuses_deletion_is_not_permitted">Nur gespeicherte Status können gelöscht werden</string>
     <string name="installed_clients_empty">Es gibt keine installierten WA-Clients.</string>
     <string name="this_application_will_not_work">Dieses Programm wird nicht funktionieren</string>
     <string name="play_store_is_not_installed">Play Store ist nicht installiert.</string>

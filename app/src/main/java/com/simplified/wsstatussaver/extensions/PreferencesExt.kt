@@ -84,8 +84,6 @@ var SharedPreferences.isMessageViewEnabled
 
 fun SharedPreferences.isExcludeSavedStatuses() = getBoolean(PREFERENCE_EXCLUDE_SAVED_STATUSES, false)
 
-fun SharedPreferences.getLongPressAction() = getString(PREFERENCE_LONG_PRESS_ACTION, LongPressAction.VALUE_MULTI_SELECTION)!!
-
 fun SharedPreferences.isWhatsappIcon() = getBoolean(PREFERENCE_WHATSAPP_ICON, false)
 
 fun SharedPreferences.isQuickDeletion() = getBoolean(PREFERENCE_QUICK_DELETION, false)
@@ -146,16 +144,6 @@ class NightMode {
     }
 }
 
-class LongPressAction {
-    companion object {
-        const val VALUE_MULTI_SELECTION = "multi-selection"
-        const val VALUE_PREVIEW = "preview"
-        const val VALUE_SAVE = "save"
-        const val VALUE_SHARE = "share"
-        const val VALUE_DELETE = "delete"
-    }
-}
-
 class UpdateSearchMode {
     companion object {
         const val EVERY_DAY = "every_day"
@@ -171,7 +159,6 @@ const val PREFERENCE_USE_CUSTOM_FONT = "use_custom_font"
 const val PREFERENCE_THEME_MODE = "theme_mode"
 const val PREFERENCE_JUST_BLACK_THEME = "just_black_theme"
 const val PREFERENCE_STATUSES_LOCATION = "statuses_location"
-const val PREFERENCE_LONG_PRESS_ACTION = "long_press_action"
 const val PREFERENCE_LANGUAGE = "language_name"
 const val PREFERENCE_WHATSAPP_ICON = "whatsapp_icon"
 const val PREFERENCE_EXCLUDE_SAVED_STATUSES = "exclude_saved_statuses"

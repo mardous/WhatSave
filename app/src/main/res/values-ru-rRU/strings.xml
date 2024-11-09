@@ -15,7 +15,6 @@
     <string name="type_image">Изображение</string>
     <string name="type_video">видео</string>
     <string name="close_action">Закрывать</string>
-    <string name="preview_action">Предварительный просмотр</string>
     <string name="save_action">Сохранять</string>
     <string name="share_action">Делиться</string>
     <string name="share_with">Поделиться с…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Удалить сохраненные статусы</string>
     <string name="this_saved_status_will_be_permanently_deleted">Этот сохраненный статус будет удален без возможности восстановления.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d сохраненных статусов будут удалены без возможности восстановления.</string>
-    <string name="statuses_deletion_is_not_permitted">Учтите, что удалять можно только сохраненные статусы.</string>
     <string name="deleting_please_wait">Удаление, подождите…</string>
     <string name="deletion_success">Удаление успешно.</string>
     <string name="deletion_failed">Удаление не удалось.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">Устройство хранения данных не найдено</string>
     <string name="exclude_saved_statuses_title">Исключить сохраненные статусы</string>
     <string name="exclude_saved_statuses_summary">Если этот параметр включен, сохраненные статусы не будут отображаться на главной странице. Доступ к ним будет только со страницы «Сохраненные».</string>
-    <string name="multi_selection_title">Множественный выбор</string>
-    <string name="long_press_action_title">Длительное нажатие</string>
     <string name="whatsapp_icon_title">Маленький значок WA</string>
     <string name="whatsapp_icon_summary">Отобразите небольшой значок под каждым статусом, чтобы определить, от какого клиента он был получен.</string>
     <string name="quick_deletion_title">Быстрое удаление</string>

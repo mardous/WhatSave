@@ -15,7 +15,6 @@
     <string name="type_image">Малюнак</string>
     <string name="type_video">Відэа</string>
     <string name="close_action">Блізка</string>
-    <string name="preview_action">Папярэдні прагляд</string>
     <string name="save_action">Захаваць</string>
     <string name="share_action">падзяліцца</string>
     <string name="share_with">Падзяліцца з…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Выдаліць захаваныя статусы</string>
     <string name="this_saved_status_will_be_permanently_deleted">Гэты захаваны статус будзе выдалены назаўсёды.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d захаваных статусаў будуць выдалены назаўсёды.</string>
-    <string name="statuses_deletion_is_not_permitted">Улічыце, што выдаляць можна толькі захаваныя статусы</string>
     <string name="deleting_please_wait">Выдаленне, пачакайце…</string>
     <string name="deletion_success">Паспяховае выдаленне.</string>
     <string name="deletion_failed">Не атрымалася выдаліць.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">Назапашвальнік не знойдзены</string>
     <string name="exclude_saved_statuses_title">Выключыць захаваныя статусы</string>
     <string name="exclude_saved_statuses_summary">Калі ўключана, захаваныя статусы не будуць адлюстроўвацца на галоўнай старонцы. Яны будуць даступныя толькі са старонкі \"Захаваныя\".</string>
-    <string name="multi_selection_title">Множны выбар</string>
-    <string name="long_press_action_title">Доўгі націск</string>
     <string name="whatsapp_icon_title">Маленькі значок WA</string>
     <string name="whatsapp_icon_summary">Адлюстроўвайце невялікі значок пад кожным статусам, каб вызначыць, ад якога кліента ён быў атрыманы.</string>
     <string name="quick_deletion_title">Хуткае выдаленне</string>

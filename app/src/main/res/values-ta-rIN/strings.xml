@@ -15,7 +15,6 @@
     <string name="type_image">படம்</string>
     <string name="type_video">காணொளி</string>
     <string name="close_action">நெருக்கமான</string>
-    <string name="preview_action">முன்னோட்ட</string>
     <string name="save_action">சேமிக்கவும்</string>
     <string name="share_action">பகிர்</string>
     <string name="share_with">பங்கு…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">சேமித்த நிலைகளை நீக்கவும்</string>
     <string name="this_saved_status_will_be_permanently_deleted">இந்தச் சேமிக்கப்பட்ட நிலை நிரந்தரமாக நீக்கப்படும். நிச்சயமா?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d சேமிக்கப்பட்ட நிலைகள் நிரந்தரமாக நீக்கப்படும். நிச்சயமா?</string>
-    <string name="statuses_deletion_is_not_permitted">சேமிக்கப்பட்ட நிலைகளை மட்டுமே நீக்க முடியும் என்பதை கணக்கில் எடுத்துக் கொள்ளுங்கள்</string>
     <string name="deleting_please_wait">நீக்குகிறது, காத்திருக்கவும்…</string>
     <string name="deletion_success">நீக்குதல் வெற்றி.</string>
     <string name="deletion_failed">நீக்குவதில் தோல்வி.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">சேமிப்பக சாதனம் இல்லை</string>
     <string name="exclude_saved_statuses_title">சேமித்த நிலைகளை விலக்கு</string>
     <string name="exclude_saved_statuses_summary">இயக்கப்பட்டால், சேமித்த நிலைகள் முதன்மைப் பக்கத்தில் தோன்றாது. \"சேமிக்கப்பட்ட\" பக்கத்திலிருந்து மட்டுமே அவற்றை அணுக முடியும்.</string>
-    <string name="multi_selection_title">பல தேர்வு</string>
-    <string name="long_press_action_title">நீண்ட அழுத்த நடவடிக்கை</string>
     <string name="whatsapp_icon_title">சிறிய வாட்ஸ்அப் ஐகான்</string>
     <string name="whatsapp_icon_summary">எந்த வாடிக்கையாளரிடமிருந்து பெறப்பட்டது என்பதைக் கண்டறிய, ஒவ்வொரு நிலைக்கும் கீழே ஒரு சிறிய ஐகானைக் காண்பிக்கவும்.</string>
     <string name="quick_deletion_title">விரைவான நீக்கம்</string>

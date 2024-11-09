@@ -15,7 +15,6 @@
     <string name="type_image">छवि</string>
     <string name="type_video">वीडियो</string>
     <string name="close_action">बंद करना</string>
-    <string name="preview_action">पूर्व दर्शन</string>
     <string name="save_action">बचाना</string>
     <string name="share_action">शेयर करना</string>
     <string name="share_with">के साथ शेयर करें…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">फाइलों को नष्ट</string>
     <string name="this_saved_status_will_be_permanently_deleted">क्या आप सचमुच इस फ़ाइल को हटाना चाहते हैं?</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">क्या आप सचमुच %d फ़ाइलें हटाना चाहते हैं?</string>
-    <string name="statuses_deletion_is_not_permitted">ध्यान रखें कि केवल सहेजे गए स्टेटस को ही हटाया जा सकता है</string>
     <string name="deleting_please_wait">हटाया जा रहा है, कृपया प्रतीक्षा करें…</string>
     <string name="deletion_success">विलोपन सफलता.</string>
     <string name="deletion_failed">हटाना विफल रहा.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">कोई संग्रहण उपकरण नहीं मिला</string>
     <string name="exclude_saved_statuses_title">सहेजी गई स्थितियाँ बहिष्कृत करें</string>
     <string name="exclude_saved_statuses_summary">यदि सक्षम किया गया है, तो सहेजी गई स्थितियाँ मुख्य पृष्ठ पर दिखाई नहीं देंगी। वे केवल \"सहेजे गए\" पृष्ठ से पहुंच योग्य होंगे।</string>
-    <string name="multi_selection_title">मल्टी चयन</string>
-    <string name="long_press_action_title">लंबी प्रेस कार्रवाई</string>
     <string name="whatsapp_icon_title">छोटा व्हाट्सएप आइकन</string>
     <string name="whatsapp_icon_summary">यह पहचानने के लिए कि यह किस ग्राहक से प्राप्त किया गया था, प्रत्येक स्थिति के नीचे एक छोटा आइकन प्रदर्शित करें।</string>
     <string name="quick_deletion_title">त्वरित विलोपन</string>

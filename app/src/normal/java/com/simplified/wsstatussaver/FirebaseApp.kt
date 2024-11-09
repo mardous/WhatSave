@@ -58,13 +58,6 @@ fun logLanguageSelected(languageName: String) {
     }
 }
 
-fun logLongPressActionSelected(actionName: String) {
-    firebaseAnalytics.logEvent(Event.SELECT_CONTENT) {
-        param(Param.CONTENT_TYPE, "long_press_action")
-        param(Param.ITEM_ID, actionName)
-    }
-}
-
 fun logDefaultClient(packageName: String) {
     firebaseAnalytics.logEvent("select_default_client") {
         param("client_id", packageName)

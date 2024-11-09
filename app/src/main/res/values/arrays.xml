@@ -35,22 +35,6 @@
         <item>auto</item>
     </string-array>
 
-    <string-array name="long_press_action_titles">
-        <item>@string/multi_selection_title</item>
-        <item>@string/preview_action</item>
-        <item>@string/save_action</item>
-        <item>@string/share_action</item>
-        <item>@string/delete_action</item>
-    </string-array>
-
-    <string-array name="long_press_action_values">
-        <item>multi-selection</item>
-        <item>preview</item>
-        <item>save</item>
-        <item>share</item>
-        <item>delete</item>
-    </string-array>
-
     <string-array name="update_mode_titles">
         <item>@string/every_day</item>
         <item>@string/weekly</item>
