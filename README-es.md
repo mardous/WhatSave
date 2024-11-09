@@ -32,6 +32,7 @@ Español
 * Soporte para todas las versiones de Android desde 7.0 Nougat
 * Material You en Android 12 y superiores
 * Previsualiza y guarda archivos
+* Chat sin guardar el número
 * Recupera mensajes eliminados
 * Modo nocturno
 * Tema completamente negro
