@@ -23,8 +23,6 @@ fun logThemeSelected(themeName: String) {}
 
 fun logLanguageSelected(languageName: String) {}
 
-fun logLongPressActionSelected(actionName: String) {}
-
 fun logDefaultClient(packageName: String) {}
 
 fun logUrlView(url: String) {}

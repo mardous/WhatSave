@@ -15,7 +15,6 @@
     <string name="type_image">Imagen</string>
     <string name="type_video">Video</string>
     <string name="close_action">Cerrar</string>
-    <string name="preview_action">Previsualizar</string>
     <string name="save_action">Guardar</string>
     <string name="share_action">Compartir</string>
     <string name="share_with">Compartir con…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Eliminar estados guardados</string>
     <string name="this_saved_status_will_be_permanently_deleted">Se eliminará este estado guardado de forma permanente.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">Se eliminarán %d estados guardados permanentemente.</string>
-    <string name="statuses_deletion_is_not_permitted">Aviso: solo es posible eliminar los estados guardados</string>
     <string name="deleting_please_wait">Eliminando, espere un momento…</string>
     <string name="deletion_success">Eliminación exitosa.</string>
     <string name="deletion_failed">Eliminación fallida.</string>
@@ -82,8 +80,6 @@
     <string name="exclude_saved_statuses_summary">Si se activa, los estados guardados no aparecerán en la página principal. Serán visibles sólo en la página \"Guardado\".</string>
     <string name="save_location_title">Ubicación de guardado</string>
     <string name="save_location_summary">Elija la ubicación donde desea almacenar sus estados guardados.</string>
-    <string name="multi_selection_title">Multiselección</string>
-    <string name="long_press_action_title">Acción de toque largo</string>
     <string name="whatsapp_icon_title">Pequeño icono de WA</string>
     <string name="whatsapp_icon_summary">Muestra debajo de los estados un pequeño icono para identificar desde cuál cliente se cargó un estado.</string>
     <string name="quick_deletion_title">Eliminación rápida</string>

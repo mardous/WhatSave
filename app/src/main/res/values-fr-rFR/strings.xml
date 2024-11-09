@@ -15,7 +15,6 @@
     <string name="type_image">Image</string>
     <string name="type_video">Video</string>
     <string name="close_action">Fermer</string>
-    <string name="preview_action">Apercu</string>
     <string name="save_action">Sauvegarder</string>
     <string name="share_action">Partager</string>
     <string name="share_with">Partager avec…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Supprimer les fichiers</string>
     <string name="this_saved_status_will_be_permanently_deleted">Ce fichier sera supprimé définitivement.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d fichiers seront supprimés définitivement.</string>
-    <string name="statuses_deletion_is_not_permitted">Tenez compte du fait que seuls les statuts enregistres peuvent etre supprimes</string>
     <string name="deleting_please_wait">Suppression, veuillez patienter…</string>
     <string name="deletion_success">Succes de la suppression.</string>
     <string name="deletion_failed">La suppression a echoue.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">Aucun peripherique de stockage trouve</string>
     <string name="exclude_saved_statuses_title">Exclure les statuts enregistres</string>
     <string name="exclude_saved_statuses_summary">S\'ils sont actives, les statuts enregistres n\'apparaitront pas sur la page principale. Ils seront accessibles uniquement depuis la page \"Enregistres\".</string>
-    <string name="multi_selection_title">Multi-selection</string>
-    <string name="long_press_action_title">Action de pression longue</string>
     <string name="whatsapp_icon_title">Petite icone WA</string>
     <string name="whatsapp_icon_summary">Affichez une petite icone sous chaque statut pour identifier de quel client il a ete obtenu.</string>
     <string name="quick_deletion_title">Suppression rapide</string>

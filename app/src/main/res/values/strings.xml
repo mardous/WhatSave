@@ -15,7 +15,6 @@
     <string name="type_image">Image</string>
     <string name="type_video">Video</string>
     <string name="close_action">Close</string>
-    <string name="preview_action">Preview</string>
     <string name="save_action">Save</string>
     <string name="share_action">Share</string>
     <string name="share_with">Share with…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Delete saved statuses</string>
     <string name="this_saved_status_will_be_permanently_deleted">This saved status will be permanently deleted.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d saved statuses will be permanently deleted.</string>
-    <string name="statuses_deletion_is_not_permitted">Take into account that can delete only saved statuses</string>
     <string name="deleting_please_wait">Deleting, please wait…</string>
     <string name="deletion_success">Deletion success.</string>
     <string name="deletion_failed">Deletion failed.</string>
@@ -85,8 +83,6 @@
     <string name="exclude_saved_statuses_summary">If enabled, saved statuses won\'t appear in the main page. Them will be accessible only from the \"Saved\" page.</string>
     <string name="save_location_title">Save location</string>
     <string name="save_location_summary">Select the location where you want to store your saved statuses.</string>
-    <string name="multi_selection_title">Multi-selection</string>
-    <string name="long_press_action_title">Long press action</string>
     <string name="whatsapp_icon_title">Small WA icon</string>
     <string name="whatsapp_icon_summary">Display a small icon below each status to identify from which client it was obtained.</string>
     <string name="quick_deletion_title">Quick deletion</string>

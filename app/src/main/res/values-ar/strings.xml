@@ -3,7 +3,6 @@
     <string name="type_image">صور</string>
     <string name="type_video">فيديوهات</string>
     <string name="close_action">إغلاق</string>
-    <string name="preview_action">استعراض</string>
     <string name="save_action">حفظ</string>
     <string name="share_action">مشاركة</string>
     <string name="share_with">مشاركة مع…</string>
@@ -33,7 +32,6 @@
     <string name="delete_saved_statuses_title">حذف الحالات التي تم حفظها</string>
     <string name="this_saved_status_will_be_permanently_deleted">سيتم حذف هذه الحالة المحفوظة نهائيًا.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d سيتم حذف الحالات المحفوظة نهائيًا.</string>
-    <string name="statuses_deletion_is_not_permitted">ضع في اعتبارك أنه يمكنك حذف الحالات المحفوظة فقط</string>
     <string name="deleting_please_wait">جاري الحذف، الرجاء الانتظار…</string>
     <string name="open_settings_action">فتح الاعدادات</string>
     <string name="message_view_is_disabled">تم تعطيل استعراض الرسالة</string>

@@ -15,7 +15,6 @@
     <string name="type_image">Immagine</string>
     <string name="type_video">video</string>
     <string name="close_action">Vicino</string>
-    <string name="preview_action">Anteprima</string>
     <string name="save_action">Salva</string>
     <string name="share_action">Condividere</string>
     <string name="share_with">Condividi con…</string>
@@ -57,7 +56,6 @@
     <string name="delete_saved_statuses_title">Elimina gli stati salvati</string>
     <string name="this_saved_status_will_be_permanently_deleted">Questo stato salvato verrà eliminato definitivamente.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d stati salvati verranno eliminati definitivamente.</string>
-    <string name="statuses_deletion_is_not_permitted">Tieni presente che è possibile eliminare solo gli stati salvati</string>
     <string name="deleting_please_wait">Eliminazione in corso, attendere…</string>
     <string name="deletion_success">Eliminazione riuscita.</string>
     <string name="deletion_failed">Eliminazione non riuscita.</string>
@@ -77,8 +75,6 @@
     <string name="no_storage_device_found">Nessun dispositivo di archiviazione trovato</string>
     <string name="exclude_saved_statuses_title">Escludi stati salvati</string>
     <string name="exclude_saved_statuses_summary">Se abilitato, gli stati salvati non verranno visualizzati nella pagina principale. Saranno accessibili solo dalla pagina \"Salvati\".</string>
-    <string name="multi_selection_title">Selezione multipla</string>
-    <string name="long_press_action_title">Azione di pressione prolungata</string>
     <string name="whatsapp_icon_title">Piccola icona WA</string>
     <string name="whatsapp_icon_summary">Visualizza una piccola icona sotto ogni stato per identificare da quale client è stato ottenuto.</string>
     <string name="quick_deletion_title">Cancellazione rapida</string>

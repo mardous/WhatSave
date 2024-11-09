@@ -34,12 +34,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
-import com.simplified.wsstatussaver.extensions.LongPressAction
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getFormattedDate
-import com.simplified.wsstatussaver.extensions.getLongPressAction
 import com.simplified.wsstatussaver.extensions.getState
-import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import kotlin.properties.Delegates
@@ -166,35 +163,7 @@ open class StatusAdapter(
 
         override fun onLongClick(view: View): Boolean {
             if (!isSavingContent) {
-                when (activity.preferences().getLongPressAction()) {
-                    LongPressAction.VALUE_MULTI_SELECTION -> {
-                        return toggleItemChecked(layoutPosition)
-                    }
-
-                    LongPressAction.VALUE_PREVIEW -> {
-                        callback.previewStatusesClick(statuses, layoutPosition)
-                        return true
-                    }
-
-                    LongPressAction.VALUE_SAVE -> {
-                        if (isSaveEnabled) {
-                            callback.saveStatusClick(status)
-                        }
-                        return true
-                    }
-
-                    LongPressAction.VALUE_SHARE -> {
-                        callback.shareStatusClick(status)
-                        return true
-                    }
-
-                    LongPressAction.VALUE_DELETE -> {
-                        if (isDeleteEnabled) {
-                            callback.deleteStatusClick(status)
-                        }
-                        return true
-                    }
-                }
+                return toggleItemChecked(layoutPosition)
             }
             return false
         }
