@@ -31,7 +31,7 @@ koinVersion = "4.0.0"
 swiperefreshlayout = "1.1.0"
 advrecyclerview = "1.0.0"
 glideVersion = "4.16.0"
-glideComposeVersion = "1.0.0-beta01"
+coilVersion = "3.0.1"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
@@ -69,6 +69,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 
 lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycleVersion" }
 lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleVersion" }
+lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleVersion" }
 lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleVersion" }
 lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleVersion" }
 
@@ -87,8 +88,8 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 
+coil = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
-glide-compose = { module = "com.github.bumptech.glide:compose", version.ref = "glideComposeVersion" }
 advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview", version.ref = "advrecyclerview" }
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libphonenumberAndroid" }
 prettytime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "prettytime" }

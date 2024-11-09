@@ -127,6 +127,7 @@ dependencies {
 
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.lifecycle.common.java8)
 
@@ -162,7 +163,7 @@ dependencies {
     implementation(libs.okhttp3.logging)
     implementation(libs.gson)
     implementation(libs.glide)
-    implementation(libs.glide.compose)
+    implementation(libs.coil)
     implementation(libs.versioncompare)
     implementation(libs.libphonenumber)
     implementation(libs.prettytime)
