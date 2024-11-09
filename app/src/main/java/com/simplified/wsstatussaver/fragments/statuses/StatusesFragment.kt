@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.fragments.statuses
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.DialogInterface
 import android.os.Bundle
@@ -43,7 +42,6 @@ import com.simplified.wsstatussaver.extensions.isQuickDeletion
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.primaryColor
-import com.simplified.wsstatussaver.extensions.requestContext
 import com.simplified.wsstatussaver.extensions.requestPermissions
 import com.simplified.wsstatussaver.extensions.requestView
 import com.simplified.wsstatussaver.extensions.serializable
@@ -53,9 +51,9 @@ import com.simplified.wsstatussaver.fragments.SectionFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.StatusesPageBinding
 import com.simplified.wsstatussaver.fragments.playback.PlaybackFragmentArgs
-import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
+import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
@@ -71,7 +69,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
     OnRefreshListener,
     IScrollable,
     IPermissionChangeListener,
-    IMultiStatusCallback {
+    IStatusCallback {
 
     private var _binding: StatusesPageBinding? = null
     protected val binding get() = _binding!!
@@ -259,41 +257,6 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         )
     }
 
-    override fun saveStatusClick(status: Status) = requestContext { context ->
-        if (status.isSaved) {
-            MaterialAlertDialogBuilder(context)
-                .setTitle(R.string.save_again_title)
-                .setMessage(R.string.you_saved_this_status_previously)
-                .setPositiveButton(R.string.save_action) { _, _ ->
-                    saveStatus(status)
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-        } else {
-            saveStatus(status)
-        }
-    }
-
-    override fun shareStatusClick(status: Status) = requestView {
-        viewModel.shareStatus(status).observe(viewLifecycleOwner) { result ->
-            if (result.isLoading) {
-                progressDialog.show()
-            } else {
-                progressDialog.dismiss()
-                if (result.isSuccess) {
-                    startActivitySafe(result.data.createIntent(requireContext()))
-                }
-            }
-        }
-    }
-
-    @SuppressLint("CheckResult")
-    private fun saveStatus(status: Status) = requestView {
-        viewModel.saveStatus(status).observe(viewLifecycleOwner) {
-            processSaveResult(it)
-        }
-    }
-
     protected abstract fun onLoadStatuses(type: StatusType)
 
     private fun processSaveResult(result: SaveResult) = requestView { view ->
@@ -315,7 +278,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         statusAdapter?.isSavingContent = result.isSaving
     }
 
-    protected fun processDeletionResult(result: DeletionResult) = requestView { view ->
+    private fun processDeletionResult(result: DeletionResult) = requestView { view ->
         if (result.isDeleting) {
             Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
         } else if (result.isSuccess) {

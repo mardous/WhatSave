@@ -37,7 +37,7 @@ import com.simplified.wsstatussaver.databinding.ItemStatusBinding
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
-import com.simplified.wsstatussaver.interfaces.IMultiStatusCallback
+import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
@@ -49,7 +49,7 @@ import kotlin.reflect.KProperty
 open class StatusAdapter(
     protected val activity: FragmentActivity,
     private val requestManager: RequestManager,
-    private val callback: IMultiStatusCallback,
+    private val callback: IStatusCallback,
     private var isSaveEnabled: Boolean,
     private var isDeleteEnabled: Boolean,
     isWhatsAppIconEnabled: Boolean

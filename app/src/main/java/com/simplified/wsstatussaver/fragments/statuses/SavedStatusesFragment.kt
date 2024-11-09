@@ -13,20 +13,10 @@
  */
 package com.simplified.wsstatussaver.fragments.statuses
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.IntentSenderRequest
 import com.bumptech.glide.Glide
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.StatusAdapter
-import com.simplified.wsstatussaver.extensions.hasR
-import com.simplified.wsstatussaver.extensions.isQuickDeletion
-import com.simplified.wsstatussaver.extensions.launchSafe
-import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.requestContext
-import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 
@@ -58,38 +48,7 @@ class SavedStatusesFragment : StatusesFragment() {
             isWhatsAppIconEnabled = false
         )
 
-    override fun saveStatusClick(status: Status) {
-        // do nothing
-    }
-
-    override fun deleteStatusClick(status: Status) {
-        requestContext { context ->
-            if (hasR()) {
-                viewModel.createDeleteRequest(requireContext(), listOf(status)).observe(viewLifecycleOwner) {
-                    deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
-                }
-            } else {
-                if (!preferences().isQuickDeletion()) {
-                    MaterialAlertDialogBuilder(context).setTitle(R.string.delete_saved_status_title)
-                        .setMessage(R.string.this_saved_status_will_be_permanently_deleted)
-                        .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
-                            viewModel.deleteStatus(status).observe(viewLifecycleOwner) {
-                                processDeletionResult(it)
-                            }
-                        }
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .show()
-                } else {
-                    viewModel.deleteStatus(status).observe(viewLifecycleOwner) {
-                        processDeletionResult(it)
-                    }
-                }
-            }
-        }
-    }
-
     override fun onLoadStatuses(type: StatusType) {
         viewModel.loadSavedStatuses(type)
     }
-
 }
