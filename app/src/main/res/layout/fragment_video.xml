@@ -22,7 +22,7 @@
     app:animation_enabled="false"
     app:use_controller="true"
     app:controller_layout_id="@layout/video_player_controller"
-    app:pause_icon="@drawable/ic_pause_circle_24dp"
-    app:play_icon="@drawable/ic_play_circle_24dp"
+    app:pause_icon="@drawable/ic_pause_24dp"
+    app:play_icon="@drawable/ic_play_24dp"
     app:shutter_background_color="@android:color/transparent"
     app:surface_type="surface_view"/>
