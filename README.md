@@ -2,7 +2,7 @@
 
 # WhatSave
 
-### An application that helps you save WA statuses in the easiest way.
+### An application that helps you save Whatsapp & Business statuses in the easiest way.
 
 English
 &nbsp;&nbsp;|&nbsp;&nbsp;

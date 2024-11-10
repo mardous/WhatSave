@@ -1,5 +1,6 @@
 package com.simplified.wsstatussaver.interfaces
 
+import android.view.MenuItem
 import com.simplified.wsstatussaver.model.Status
 
 /**
@@ -7,7 +8,5 @@ import com.simplified.wsstatussaver.model.Status
  */
 interface IStatusCallback {
     fun previewStatusesClick(statuses: List<Status>, startPosition: Int)
-    fun saveStatusClick(status: Status)
-    fun shareStatusClick(status: Status)
-    fun deleteStatusClick(status: Status)
+    fun multiSelectionItemClick(item: MenuItem, selection: List<Status>)
 }

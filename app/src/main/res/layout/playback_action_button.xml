@@ -12,73 +12,67 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<com.simplified.wsstatussaver.views.InsetsConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.simplified.wsstatussaver.views.InsetsConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/save"
-        style="@style/Widget.Material3.CardView.Filled"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        app:cardBackgroundColor="@color/blackTranslucentColor"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/save_action"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_save_alt_24dp"
+        app:iconGravity="textTop"
+        app:iconPadding="16dp"
+        app:iconTint="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/share"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/saveView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:padding="16dp"
-            android:gravity="center_vertical"
-            android:text="@string/save_action"
-            android:textColor="@android:color/white"
-            android:background="?rectSelector"
-            app:drawableTint="@android:color/white"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/ic_save_alt_24dp" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
-        style="@style/Widget.Material3.CardView.Filled"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/share_action"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_share_24dp"
+        app:iconGravity="textTop"
+        app:iconPadding="16dp"
+        app:iconTint="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/save"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/delete"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
-        app:cardBackgroundColor="@color/blackTranslucentColor"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
-        app:layout_constraintStart_toEndOf="@+id/save"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/delete_action"
+        android:textColor="@android:color/white"
+        app:icon="@drawable/ic_delete_24dp"
+        app:iconGravity="textTop"
+        app:iconPadding="16dp"
+        app:iconTint="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/share"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/shareView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:padding="16dp"
-            android:gravity="center_vertical"
-            android:text="@string/share_action"
-            android:textColor="@android:color/white"
-            android:background="?rectSelector"
-            app:drawableTint="@android:color/white"
-            android:drawablePadding="16dp"
-            android:drawableStart="@drawable/ic_share_24dp" />
-
-    </com.google.android.material.card.MaterialCardView>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </com.simplified.wsstatussaver.views.InsetsConstraintLayout>

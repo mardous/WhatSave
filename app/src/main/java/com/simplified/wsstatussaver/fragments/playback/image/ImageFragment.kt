@@ -16,8 +16,8 @@ package com.simplified.wsstatussaver.fragments.playback.image
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentImageBinding
 import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
@@ -31,11 +31,14 @@ class ImageFragment : PlaybackChildFragment(R.layout.fragment_image) {
     private val binding get() = _binding!!
     private val imageView get() = binding.image
 
-    override val saveButton: TextView
-        get() = binding.playbackActionButton.saveView
+    override val saveButton: MaterialButton
+        get() = binding.playbackActionButton.save
 
-    override val shareButton: TextView
-        get() = binding.playbackActionButton.shareView
+    override val shareButton: MaterialButton
+        get() = binding.playbackActionButton.share
+
+    override val deleteButton: MaterialButton
+        get() = binding.playbackActionButton.delete
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

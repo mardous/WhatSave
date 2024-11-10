@@ -24,7 +24,6 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
 import com.simplified.wsstatussaver.extensions.isWhatsappIcon
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
 
@@ -72,8 +71,6 @@ class HomeStatusesFragment : StatusesFragment(), SharedPreferences.OnSharedPrefe
             PREFERENCE_WHATSAPP_ICON -> statusAdapter?.isWhatsAppIconEnabled = preferences.isWhatsappIcon()
         }
     }
-
-    override fun deleteStatusClick(status: Status) {}
 
     override fun onLoadStatuses(type: StatusType) {
         viewModel.loadStatuses(type)

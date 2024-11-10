@@ -15,7 +15,6 @@ package com.simplified.wsstatussaver.fragments.playback.video
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -23,6 +22,7 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import com.google.android.material.button.MaterialButton
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentVideoBinding
 import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
@@ -38,11 +38,14 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
 
     private var player: ExoPlayer? = null
 
-    override val saveButton: TextView
-        get() = playerView.findViewById(R.id.saveView)
+    override val saveButton: MaterialButton
+        get() = playerView.findViewById(R.id.save)
 
-    override val shareButton: TextView
-        get() = playerView.findViewById(R.id.shareView)
+    override val shareButton: MaterialButton
+        get() = playerView.findViewById(R.id.share)
+
+    override val deleteButton: MaterialButton
+        get() = playerView.findViewById(R.id.share)
 
     @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
