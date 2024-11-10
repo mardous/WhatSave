@@ -2,7 +2,7 @@
 
 # WhatSave
 
-### Una aplicación que te ayuda a guardar los estados de WA de la forma más sencilla.
+### Una aplicación que te ayuda a guardar los estados de Whatsapp y Business de la forma más sencilla.
 
 [English](README.md)
 &nbsp;&nbsp;|&nbsp;&nbsp;
