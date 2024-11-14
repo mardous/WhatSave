@@ -17,6 +17,7 @@
     <string name="close_action">Cerrar</string>
     <string name="save_action">Guardar</string>
     <string name="share_action">Compartir</string>
+    <string name="share_link_action">Compartir enlace</string>
     <string name="share_with">Compartir con…</string>
     <string name="share_app">Compartir app</string>
     <string name="app_share">Te invito a probar esta interesante aplicación: WhatSave. Descárgalo aquí: %s</string>

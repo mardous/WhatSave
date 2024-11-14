@@ -19,6 +19,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
+import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.core.view.doOnPreDraw
 import androidx.navigation.fragment.findNavController
@@ -69,6 +70,9 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
         binding.phoneInputLayout.setEndIconOnClickListener {
             countriesDialog?.show()
         }
+        binding.shareButton.setOnClickListener {
+            shareLink()
+        }
         binding.sendButton.setOnClickListener {
             sendMessage()
         }
@@ -116,7 +120,31 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
         _binding = null
     }
 
+    private fun shareLink() {
+        createApiRequest { result ->
+            ShareCompat.IntentBuilder(requireContext())
+                .setChooserTitle(R.string.share_link_action)
+                .setText(result)
+                .setType("text/plain")
+                .startChooser()
+        }
+    }
+
     private fun sendMessage() {
+        createApiRequest { result ->
+            val intent = Intent(Intent.ACTION_VIEW, result.toUri())
+            val whatsappClient = requireContext().getPreferredClient()
+            if (whatsappClient != null) {
+                intent.setPackage(whatsappClient.packageName)
+            }
+            startActivitySafe(intent) { _: Throwable, activityNotFound: Boolean ->
+                if (activityNotFound) showToast(R.string.wa_is_not_installed_title)
+            }
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun createApiRequest(onComplete: (String) -> Unit) {
         val entered = binding.phoneNumber.text?.toString()
         val country = viewModel.getSelectedCountry() ?: return
         val formattedNumber = formatInput(entered, country)
@@ -130,15 +158,7 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
         if (!encodedMessage.isNullOrBlank()) {
             apiRequest.append("&text=").append(encodedMessage)
         }
-        val intent = Intent(Intent.ACTION_VIEW, apiRequest.toString().toUri())
-        val whatsappClient = requireContext().getPreferredClient()
-        if (whatsappClient != null) {
-            intent.setPackage(whatsappClient.packageName)
-        }
-        startActivitySafe(intent) { _: Throwable, activityNotFound: Boolean ->
-            if (activityNotFound) showToast(R.string.wa_is_not_installed_title)
-        }
-        findNavController().popBackStack()
+        onComplete(apiRequest.toString())
     }
 
     private fun formatInput(input: String?, country: Country): String? {
