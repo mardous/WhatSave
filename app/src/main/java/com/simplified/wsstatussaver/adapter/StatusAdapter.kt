@@ -31,11 +31,11 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
-import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
@@ -72,17 +72,17 @@ open class StatusAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val status = statuses[position]
 
-        holder.itemView.isActivated = isItemSelected(status)
+        if (holder.cardView != null) {
+            holder.cardView.isChecked = isItemSelected(status)
+        } else {
+            holder.itemView.isActivated = isItemSelected(status)
+        }
 
         if (holder.image != null) {
             requestManager.load(status.fileUri)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .centerCrop()
                 .into(holder.image)
-        }
-
-        if (holder.date != null && holder.date.isVisible) {
-            holder.date.text = status.getFormattedDate(activity)
         }
 
         if (holder.state != null && holder.state.isVisible) {
@@ -132,9 +132,9 @@ open class StatusAdapter(
     open inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener,
         OnLongClickListener {
         val image: ImageView?
-        val date: TextView?
         val state: TextView?
         val clientIcon: ImageView?
+        val cardView: MaterialCardView?
 
         private val status: Status
             get() = statuses[layoutPosition]
@@ -142,9 +142,10 @@ open class StatusAdapter(
         init {
             val binding = ItemStatusBinding.bind(itemView)
             image = binding.image
-            date = binding.date
             state = binding.state
             state.isVisible = isSaveEnabled
+            cardView = itemView as? MaterialCardView
+            cardView?.isCheckable = true
             clientIcon = binding.clientIcon
 
             itemView.setOnClickListener(this)

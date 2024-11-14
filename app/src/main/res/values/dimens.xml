@@ -19,6 +19,7 @@
     <dimen name="m3_list_padding_vertical">12dp</dimen>
     <dimen name="m3_one_line_list_height">56dp</dimen>
     <dimen name="m3_dialog_corner_radius">28dp</dimen>
+    <dimen name="m3_card_corner_radius">8dp</dimen>
     <dimen name="tab_height">48dp</dimen>
     <dimen name="bottom_nav_height">80dp</dimen>
 
