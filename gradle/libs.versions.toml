@@ -57,6 +57,8 @@ material-components = { module = "com.google.android.material:material", version
 
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 compose-material = { group = "androidx.compose.material3", name = "material3" }
+compose-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts" }
+compose-icons = { group = "androidx.compose.material", name = "material-icons-extended" }
 compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 

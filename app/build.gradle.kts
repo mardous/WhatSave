@@ -114,6 +114,8 @@ fun Properties.property(key: String) =
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.material)
+    implementation(libs.compose.fonts)
+    implementation(libs.compose.icons)
     implementation(libs.compose.tooling.preview)
     "debugImplementation"(libs.compose.tooling)
 
