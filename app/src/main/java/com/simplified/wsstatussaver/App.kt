@@ -58,6 +58,8 @@ class App : Application() {
         internal lateinit var instance: App
             private set
 
+        fun isFDroidBuild() = BuildConfig.FLAVOR.equals("fdroid", ignoreCase = true)
+
         fun getFileProviderAuthority(): String = instance.packageName + ".file_provider"
     }
 }
