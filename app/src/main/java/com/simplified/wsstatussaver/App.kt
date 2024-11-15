@@ -20,7 +20,6 @@ import com.simplified.wsstatussaver.extensions.isAnalyticsEnabled
 import com.simplified.wsstatussaver.extensions.migratePreferences
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.versionCode
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -50,9 +49,6 @@ class App : Application() {
 
     val versionName: String
         get() = packageManager.packageInfo().versionName ?: "0"
-
-    val versionCode: Int
-        get() = packageManager.packageInfo().versionCode()
 
     companion object {
         internal lateinit var instance: App

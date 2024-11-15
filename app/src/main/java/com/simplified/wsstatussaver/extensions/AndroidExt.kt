@@ -35,7 +35,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
-import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
 import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
@@ -131,8 +130,6 @@ fun PackageManager.packageInfo(packageName: String = getApp().packageName): Pack
     if (hasT()) {
         getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
     } else getPackageInfo(packageName, 0)
-
-fun PackageInfo.versionCode() = PackageInfoCompat.getLongVersionCode(this).toInt()
 
 fun Context.startActivitySafe(intent: Intent?, onError: ExceptionConsumer? = null) {
     intent.doWithIntent(onError) { startActivity(it) }
