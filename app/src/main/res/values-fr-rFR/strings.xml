@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">Vous devez accorder les autorisations requises. Cette application ne fonctionnera pas correctement sans ces autorisations.</string>
     <string name="grant_action">Accorder</string>
     <string name="open_settings_action">Ouvrir les parametres</string>
-    <string name="play_store_is_not_installed">Play Store n\'est pas installe.</string>
     <string name="action_settings">Parametres</string>
     <string name="settings_interface">Interface</string>
     <string name="settings_statuses">Statuts</string>

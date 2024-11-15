@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">Você deve conceder as permissões necessárias. Este aplicativo não funcionará corretamente sem essas permissões.</string>
     <string name="grant_action">Conceder</string>
     <string name="open_settings_action">Abrir configurações</string>
-    <string name="play_store_is_not_installed">A Play Store não está instalada.</string>
     <string name="action_settings">Configurações</string>
     <string name="settings_interface">Interface</string>
     <string name="settings_statuses">Status</string>

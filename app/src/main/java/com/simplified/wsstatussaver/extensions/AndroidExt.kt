@@ -64,15 +64,6 @@ fun Context.openWeb(url: String) {
     )
 }
 
-fun Context.openGooglePlay(appPackage: String = packageName) {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackage"))
-    if (intent.resolveActivity(packageManager) != null) {
-        startActivity(intent)
-        return
-    }
-    startActivitySafe(Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$appPackage".toUri()))
-}
-
 fun Context.bindNotificationListener(): Boolean {
     if (isNotificationListener()) {
         return try {
@@ -153,11 +144,6 @@ fun Context.showToast(messageRes: Int, duration: Int = Toast.LENGTH_SHORT) {
 
 fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
-}
-
-fun Intent?.toChooser(title: CharSequence? = null): Intent? {
-    if (this == null) return null
-    return Intent.createChooser(this, title)
 }
 
 fun String.formattedAsHtml() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)

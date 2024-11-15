@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">Вы павінны даць неабходныя дазволы. Без гэтых дазволаў гэта дадатак не будзе працаваць належным чынам.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Адкрыйце налады</string>
-    <string name="play_store_is_not_installed">Play Store не ўсталяваны.</string>
     <string name="action_settings">Налады</string>
     <string name="settings_interface">Інтэрфейс</string>
     <string name="settings_statuses">Статусы</string>

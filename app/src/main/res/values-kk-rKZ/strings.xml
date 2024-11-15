@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">Қажетті рұқсаттарды беруіңіз керек. Бұл қолданба осы рұқсаттарсыз дұрыс жұмыс істемейді.</string>
     <string name="grant_action">Грант</string>
     <string name="open_settings_action">Параметрлерді ашыңыз</string>
-    <string name="play_store_is_not_installed">Play Store орнатылмаған.</string>
     <string name="action_settings">Параметрлер</string>
     <string name="settings_interface">Интерфейс</string>
     <string name="settings_statuses">Күйлер</string>

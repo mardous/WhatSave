@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">आपको आवश्यक अनुमतियाँ देनी होंगी. इन अनुमतियों के बिना यह एप्लिकेशन ठीक से काम नहीं करेगा.</string>
     <string name="grant_action">अनुदान</string>
     <string name="open_settings_action">खुली सेटिंग</string>
-    <string name="play_store_is_not_installed">प्ले स्टोर स्थापित नहीं है.</string>
     <string name="action_settings">समायोजन</string>
     <string name="settings_interface">इंटरफेस</string>
     <string name="settings_statuses">वे स्थितियां</string>
