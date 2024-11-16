@@ -24,22 +24,19 @@ import android.provider.MediaStore
 internal enum class StatusSaveType(
     internal val dirName: String,
     internal val fileMimeType: String,
-    internal val contentUri: Uri
+    internal val contentUri: Uri,
+    internal val dirTypeProvider: (SaveLocation) -> String
 ) {
     IMAGE_SAVE(
-        "Saved Image Statuses",
-        "image/jpeg",
-        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+        dirName = "Saved Image Statuses",
+        fileMimeType = "image/jpeg",
+        contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+        dirTypeProvider = { it.imageDir }
     ),
     VIDEO_SAVE(
-        "Saved Video Statuses",
-        "video/mp4",
-        MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+        dirName = "Saved Video Statuses",
+        fileMimeType = "video/mp4",
+        contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+        dirTypeProvider = { it.videoDir }
     );
-
-    internal fun getDirType(location: SaveLocation) =
-        when (this) {
-            IMAGE_SAVE -> location.imageDir
-            VIDEO_SAVE -> location.videoDir
-        }
 }
