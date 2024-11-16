@@ -15,7 +15,6 @@ package com.simplified.wsstatussaver.fragments.statuses
 
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusType
@@ -41,7 +40,6 @@ class SavedStatusesFragment : StatusesFragment() {
     override fun onCreateAdapter(): StatusAdapter =
         StatusAdapter(
             requireActivity(),
-            Glide.with(this),
             this,
             isSaveEnabled = false,
             isDeleteEnabled = true,

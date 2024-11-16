@@ -29,7 +29,7 @@ roomVersion = "2.6.1"
 koinVersion = "4.0.0"
 swiperefreshlayout = "1.1.0"
 advrecyclerview = "1.0.0"
-glideVersion = "4.16.0"
+coilVersion = "3.0.2"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
@@ -80,7 +80,9 @@ room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVersion" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 
-glide = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coilVersion" }
+coil-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coilVersion" }
+
 advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview", version.ref = "advrecyclerview" }
 libphonenumber = { module = "io.michaelrocks:libphonenumber-android", version.ref = "libphonenumberAndroid" }
 prettytime = { module = "org.ocpsoft.prettytime:prettytime", version.ref = "prettytime" }

@@ -149,13 +149,15 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.android)
 
+    implementation(libs.coil)
+    implementation(libs.coil.video)
+
     implementation(libs.photoview)
     implementation(libs.insetter)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.logging)
     implementation(libs.gson)
-    implementation(libs.glide)
     implementation(libs.versioncompare)
     implementation(libs.libphonenumber)
     implementation(libs.prettytime)

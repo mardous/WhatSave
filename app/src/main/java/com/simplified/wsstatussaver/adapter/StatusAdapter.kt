@@ -29,8 +29,8 @@ import androidx.appcompat.view.ActionMode
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.RequestManager
-import com.bumptech.glide.load.engine.DiskCacheStrategy
+import coil3.load
+import coil3.video.VideoFrameDecoder
 import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getState
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusType
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
@@ -48,7 +49,6 @@ import kotlin.reflect.KProperty
 @SuppressLint("NotifyDataSetChanged")
 open class StatusAdapter(
     protected val activity: FragmentActivity,
-    private val requestManager: RequestManager,
     private val callback: IStatusCallback,
     private var isSaveEnabled: Boolean,
     private var isDeleteEnabled: Boolean,
@@ -78,11 +78,12 @@ open class StatusAdapter(
             holder.itemView.isActivated = isItemSelected(status)
         }
 
-        if (holder.image != null) {
-            requestManager.load(status.fileUri)
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                .centerCrop()
-                .into(holder.image)
+        if (status.type == StatusType.VIDEO) {
+            holder.image?.load(status.fileUri) {
+                decoderFactory { result, options, _ -> VideoFrameDecoder(result.source, options) }
+            }
+        } else {
+            holder.image?.load(status.fileUri)
         }
 
         if (holder.state != null && holder.state.isVisible) {

@@ -16,7 +16,6 @@ package com.simplified.wsstatussaver.fragments.statuses
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_SAVED_STATUSES
@@ -49,7 +48,6 @@ class HomeStatusesFragment : StatusesFragment(), SharedPreferences.OnSharedPrefe
     override fun onCreateAdapter(): StatusAdapter {
         return StatusAdapter(
             requireActivity(),
-            Glide.with(this),
             this,
             isSaveEnabled = true,
             isDeleteEnabled = false,

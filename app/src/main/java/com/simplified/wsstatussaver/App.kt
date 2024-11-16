@@ -15,6 +15,11 @@ package com.simplified.wsstatussaver
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import coil3.video.VideoFrameDecoder
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isAnalyticsEnabled
 import com.simplified.wsstatussaver.extensions.migratePreferences
@@ -28,7 +33,7 @@ fun getApp(): App = App.instance
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class App : Application() {
+class App : Application(), SingletonImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
@@ -45,6 +50,15 @@ class App : Application() {
         }
 
         AppCompatDelegate.setDefaultNightMode(preferences().getDefaultDayNightMode())
+    }
+
+    override fun newImageLoader(context: PlatformContext): ImageLoader {
+        return ImageLoader.Builder(context)
+            .crossfade(true)
+            .components {
+                add(VideoFrameDecoder.Factory())
+            }
+            .build()
     }
 
     val versionName: String
