@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.extensions
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.DimenRes
 import androidx.annotation.IdRes
 import androidx.annotation.IntegerRes
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+
+fun Fragment.dip(@DimenRes res: Int) = resources.getDimensionPixelSize(res)
 
 fun Fragment.getIntRes(@IntegerRes int: Int): Int {
     return resources.getInteger(int)

@@ -32,7 +32,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            tools:viewBindingType="android.widget.ImageView"
             tools:src="@tools:sample/backgrounds/scenic"
             tools:ignore="ContentDescription" />
 

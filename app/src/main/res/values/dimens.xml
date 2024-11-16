@@ -31,7 +31,7 @@
     <dimen name="empty_view_content_padding">24dp</dimen>
     <dimen name="default_item_margin">8dp</dimen>
 
-    <dimen name="status_item_margin">4dp</dimen>
+    <dimen name="status_item_margin">8dp</dimen>
 
     <dimen name="onboard_titles_vertical_padding">24dp</dimen>
     <dimen name="onboard_titles_horizontal_padding">16dp</dimen>
