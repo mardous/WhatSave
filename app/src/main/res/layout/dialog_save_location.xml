@@ -42,24 +42,23 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/dcim_title"
-            style="?materialAlertDialogBodyTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:ellipsize="end"
             android:textAlignment="viewStart"
+            android:textAppearance="?textAppearanceBodyLarge"
             android:text="@string/always_save_in_dcim_title"
-            app:layout_constraintTop_toTopOf="@+id/dcim_radio"
-            app:layout_constraintBottom_toBottomOf="@+id/dcim_radio"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/dcim_radio"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
+            style="?materialAlertDialogBodyTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceCaption"
             android:textColor="?android:textColorSecondary"
             android:text="@string/always_save_in_dcim_summary"
             app:layout_constraintTop_toBottomOf="@+id/dcim_title"
@@ -92,24 +91,23 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/file_type_title"
-            style="?materialAlertDialogBodyTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:ellipsize="end"
             android:textAlignment="viewStart"
+            android:textAppearance="?textAppearanceBodyLarge"
             android:text="@string/according_to_the_file_type_title"
-            app:layout_constraintTop_toTopOf="@+id/file_type_radio"
-            app:layout_constraintBottom_toBottomOf="@+id/file_type_radio"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/file_type_radio"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.google.android.material.textview.MaterialTextView
+            style="?materialAlertDialogBodyTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceCaption"
             android:textColor="?android:textColorSecondary"
             android:text="@string/according_to_the_file_type_summary"
             app:layout_constraintTop_toBottomOf="@+id/file_type_title"
