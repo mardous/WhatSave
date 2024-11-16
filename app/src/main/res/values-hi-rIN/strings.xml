@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">छवि</string>
-    <string name="type_video">वीडियो</string>
+    <string name="type_images">छवि</string>
+    <string name="type_videos">वीडियो</string>
     <string name="close_action">बंद करना</string>
     <string name="save_action">बचाना</string>
     <string name="share_action">शेयर करना</string>

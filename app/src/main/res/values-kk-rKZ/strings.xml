@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">Кескін</string>
-    <string name="type_video">Бейне</string>
+    <string name="type_images">Кескін</string>
+    <string name="type_videos">Бейне</string>
     <string name="close_action">Жабық</string>
     <string name="save_action">Сақтау</string>
     <string name="share_action">Бөлісу</string>

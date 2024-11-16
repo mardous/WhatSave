@@ -7,8 +7,8 @@
     <string name="translations_summary">Du kannst uns helfen, indem du die App in deine Sprache übersetzt.</string>
     <string name="fork_on_github_title">Auf Github forken</string>
     <string name="oss_licenses_title">Open-Source-Lizenzen</string>
-    <string name="type_image">Bild</string>
-    <string name="type_video">Video</string>
+    <string name="type_images">Bild</string>
+    <string name="type_videos">Video</string>
     <string name="close_action">Schließen</string>
     <string name="save_action">Speichern</string>
     <string name="share_action">Teilen</string>

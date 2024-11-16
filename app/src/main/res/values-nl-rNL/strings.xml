@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">Afbeelding</string>
-    <string name="type_video">Video</string>
+    <string name="type_images">Afbeelding</string>
+    <string name="type_videos">Video</string>
     <string name="close_action">Dichtbij</string>
     <string name="save_action">Redden</string>
     <string name="share_action">Deel</string>

@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">Immagine</string>
-    <string name="type_video">video</string>
+    <string name="type_images">Immagine</string>
+    <string name="type_videos">video</string>
     <string name="close_action">Vicino</string>
     <string name="save_action">Salva</string>
     <string name="share_action">Condividere</string>

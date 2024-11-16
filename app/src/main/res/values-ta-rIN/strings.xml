@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">படம்</string>
-    <string name="type_video">காணொளி</string>
+    <string name="type_images">படம்</string>
+    <string name="type_videos">காணொளி</string>
     <string name="close_action">நெருக்கமான</string>
     <string name="save_action">சேமிக்கவும்</string>
     <string name="share_action">பகிர்</string>

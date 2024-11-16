@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="type_image">Imagen</string>
-    <string name="type_video">Vídeo</string>
+    <string name="type_images">Imagen</string>
+    <string name="type_videos">Vídeo</string>
     <string name="close_action">Cerrar</string>
     <string name="save_action">Guardar</string>
     <string name="share_action">Compartir</string>

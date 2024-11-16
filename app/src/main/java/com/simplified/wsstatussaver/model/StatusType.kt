@@ -27,8 +27,8 @@ import java.io.File
  * @author Christians Martínez Alvarado (mardous)
  */
 enum class StatusType(@StringRes val nameRes: Int, val format: String, private val saveType: StatusSaveType) {
-    IMAGE(R.string.type_image, ".jpg", StatusSaveType.IMAGE_SAVE),
-    VIDEO(R.string.type_video, ".mp4", StatusSaveType.VIDEO_SAVE);
+    IMAGE(R.string.type_images, ".jpg", StatusSaveType.IMAGE_SAVE),
+    VIDEO(R.string.type_videos, ".mp4", StatusSaveType.VIDEO_SAVE);
 
     fun getDefaultSaveName(timeMillis: Long, delta: Int): String = getNewSaveName(this, timeMillis, delta = delta)
 

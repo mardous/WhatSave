@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">Малюнак</string>
-    <string name="type_video">Відэа</string>
+    <string name="type_images">Малюнак</string>
+    <string name="type_videos">Відэа</string>
     <string name="close_action">Блізка</string>
     <string name="save_action">Захаваць</string>
     <string name="share_action">падзяліцца</string>
