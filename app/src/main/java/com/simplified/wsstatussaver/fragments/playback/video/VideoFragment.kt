@@ -45,7 +45,7 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
         get() = playerView.findViewById(R.id.share)
 
     override val deleteButton: MaterialButton
-        get() = playerView.findViewById(R.id.share)
+        get() = playerView.findViewById(R.id.delete)
 
     @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
