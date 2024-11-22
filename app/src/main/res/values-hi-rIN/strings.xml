@@ -146,7 +146,7 @@
     <string name="downloading_update">अपडेट डाउनलोड हो रहा है</string>
     <string name="special_permissions_title">विशेष पहुंच अनुमतियाँ</string>
     <string name="special_permissions_description">कृपया, चयन करें कि आप किस ग्राहक से स्थितियों को लोड करना चाहते हैं।:</string>
-    <string name="storage_permission_label">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।</string>
+    <string name="storage_permission_label">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।:</string>
     <string name="storage_access_title">स्टोरेज एक्सेस</string>
     <string name="storage_access_description">स्थितियों को एक्सेस और सेव करने के लिए स्टोरेज अनुमति की आवश्यकता है।</string>
     <string name="permissions_granted_successfully">अनुमतियाँ सफलतापूर्वक प्रदान की गईं।</string>
