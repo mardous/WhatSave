@@ -99,7 +99,7 @@
     <string name="there_may_be_no_saved_files">Puede que no haya archivos guardados</string>
     <string name="installed_clients_empty">No hay clientes WA instalados.</string>
     <string name="x_is_the_default_client_now">%s es ahora el cliente predeterminado.</string>
-    <string name="saf_tutorial">En la siguiente pantalla, asegúrate de seleccionar la ubicación \"<b>%s</b>\". Una vez hecho esto, pulsa el botón \"Usar esta carpeta\" en la parte inferior para confirmar.</string>
+    <string name="saf_tutorial"><![CDATA[En la siguiente pantalla, asegúrese de seleccionar la ubicación «<b> %s </b>». Una vez hecho esto, presione el botón «Usar esta carpeta» en la parte inferior para confirmar.]]></string>
     <string name="delete_saved_statuses_title">Borrar los estados guardados</string>
     <string name="permissions_denied_message">Debes conceder los permisos necesarios. Esta aplicación no funcionará correctamente sin estos permisos.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">Los %d estados guardados serán borrados permanentemente.</string>
@@ -117,7 +117,7 @@
     <string name="no_action">No</string>
     <string name="permissions_granted_successfully">Permisos concedidos.</string>
     <string name="accept_and_continue">Aceptar y continuar</string>
-    <string name="revoke_permissions_message">Al eliminar estos permisos, esta aplicación no podrá cargar ni guardar los estados <b>%s</b> hasta que vuelvas a conceder los permisos.</string>
+    <string name="revoke_permissions_message"><![CDATA[Al eliminar estos permisos, esta aplicación no podrá cargar ni guardar <b> %s </b> estados hasta que vuelva a conceder los permisos.]]></string>
     <string name="just_black_theme_title">Solo negro</string>
     <string name="review_permissions_title">Revisar los permisos</string>
     <string name="default_client_title">Cliente predeterminado</string>
@@ -140,7 +140,7 @@
     <string name="blacklist_sender">No guardar los mensajes de este remitente</string>
     <string name="blacklist_senders">No guardar los mensajes de estos remitentes</string>
     <string name="blacklisted_senders">Lista negra de remitentes</string>
-    <string name="remove_x_from_the_blacklist">¿Deseas eliminar <b>%s</b> de esta lista negra?</string>
+    <string name="remove_x_from_the_blacklist"><![CDATA[¿Desea eliminar <b> %s </b> de esta lista negra?]]></string>
     <string name="no_conversations">No hay conversaciones que mostrar</string>
     <string name="empty">Vacío</string>
     <string name="msg_a_number_description">Inicia una conversación con alguien que no está en tu lista de contactos, utilizando su número de teléfono.</string>
@@ -193,4 +193,5 @@
     <string name="save_location_summary">Seleccione la ubicación en la que desea almacenar los estados guardados.</string>
     <string name="oss_licenses_title">Licencias de código abierto</string>
     <string name="oss_licenses_summary">Consulta las licencias de las bibliotecas de código abierto utilizadas en esta aplicación.</string>
+    <string name="share_link_action">Compartir enlace</string>
 </resources>
