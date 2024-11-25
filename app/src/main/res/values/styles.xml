@@ -27,7 +27,6 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="popupTheme">?toolbarPopupTheme</item>
         <item name="titleMarginStart">16dp</item>
-        <item name="buttonGravity">center_vertical</item>
     </style>
 
     <style name="CollapsingToolbarLargeStyle" parent="Widget.Material3.CollapsingToolbar.Large">
