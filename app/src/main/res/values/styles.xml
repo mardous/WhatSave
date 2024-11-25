@@ -38,6 +38,10 @@
 
     <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView"/>
 
+    <style name="ToolCardViewStyle" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/m3_card_corner_radius</item>
+    </style>
+
     <style name="ShapeAppearanceOverlay.Circular" parent="">
         <item name="cornerSize">50%</item>
     </style>

@@ -16,13 +16,16 @@ package com.simplified.wsstatussaver.views
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
 
-class ToolView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    FrameLayout(context, attrs, defStyleAttr) {
+class ToolView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = com.google.android.material.R.attr.materialCardViewStyle
+) : MaterialCardView(context, attrs, defStyleAttr) {
 
     private var titleView: TextView? = null
     private var descView: TextView? = null

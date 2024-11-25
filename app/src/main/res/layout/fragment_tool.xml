@@ -48,6 +48,8 @@
     <com.simplified.wsstatussaver.views.InsetsNestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="16dp"
+        android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -57,6 +59,7 @@
 
             <com.simplified.wsstatussaver.views.ToolView
                 android:id="@+id/msg_a_number"
+                style="@style/ToolCardViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:toolIcon="@drawable/ic_send_24dp"
@@ -65,8 +68,10 @@
 
             <com.simplified.wsstatussaver.views.ToolView
                 android:id="@+id/message_view"
+                style="@style/ToolCardViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 app:toolIcon="@drawable/ic_chat_24dp"
                 app:toolName="@string/message_view"
                 app:toolDescription="@string/message_view_description"/>
