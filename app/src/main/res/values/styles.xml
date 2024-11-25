@@ -17,7 +17,6 @@
     <!-- WIDGETS STYLES -->
     <style name="MaterialButtonStyle" parent="Widget.Material3.Button">
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">?attr/colorControlNormal</item>
         <item name="android:paddingTop">@dimen/button_padding_vertical</item>
         <item name="android:paddingBottom">@dimen/button_padding_vertical</item>
     </style>
