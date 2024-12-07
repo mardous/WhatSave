@@ -16,7 +16,7 @@ package com.simplified.wsstatussaver.fragments.playback.image
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
-import com.bumptech.glide.Glide
+import coil3.load
 import com.google.android.material.button.MaterialButton
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentImageBinding
@@ -44,10 +44,7 @@ class ImageFragment : PlaybackChildFragment(R.layout.fragment_image) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentImageBinding.bind(view)
-        Glide.with(this)
-            .asBitmap()
-            .load(status.fileUri)
-            .into(imageView)
+        imageView.load(status.fileUri)
     }
 
     override fun onDestroyView() {

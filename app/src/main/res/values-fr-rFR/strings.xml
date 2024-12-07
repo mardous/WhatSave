@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="type_image">Image</string>
-    <string name="type_video">Video</string>
+    <string name="type_images">Image</string>
+    <string name="type_videos">Video</string>
     <string name="close_action">Fermer</string>
     <string name="save_action">Sauvegarder</string>
     <string name="share_action">Partager</string>
@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">Vous devez accorder les autorisations requises. Cette application ne fonctionnera pas correctement sans ces autorisations.</string>
     <string name="grant_action">Accorder</string>
     <string name="open_settings_action">Ouvrir les parametres</string>
-    <string name="play_store_is_not_installed">Play Store n\'est pas installe.</string>
     <string name="action_settings">Parametres</string>
     <string name="settings_interface">Interface</string>
     <string name="settings_statuses">Statuts</string>
@@ -76,7 +75,7 @@
     <string name="exclude_saved_statuses_title">Exclure les statuts enregistres</string>
     <string name="exclude_saved_statuses_summary">S\'ils sont actives, les statuts enregistres n\'apparaitront pas sur la page principale. Ils seront accessibles uniquement depuis la page \"Enregistres\".</string>
     <string name="whatsapp_icon_title">Petite icone WA</string>
-    <string name="whatsapp_icon_summary">Affichez une petite icone sous chaque statut pour identifier de quel client il a ete obtenu.</string>
+    <string name="whatsapp_icon_summary">Affichez une petite icône sous chaque statut pour identifier de quel client il a été obtenu.</string>
     <string name="quick_deletion_title">Suppression rapide</string>
     <string name="quick_deletion_summary">Permet la suppression des statuts enregistres sans afficher de fenetre de confirmation. Non recommande.</string>
     <string name="review_permissions_title">Vérifier les autorisations</string>

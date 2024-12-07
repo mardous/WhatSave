@@ -17,7 +17,6 @@
     <!-- WIDGETS STYLES -->
     <style name="MaterialButtonStyle" parent="Widget.Material3.Button">
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">?attr/colorControlNormal</item>
         <item name="android:paddingTop">@dimen/button_padding_vertical</item>
         <item name="android:paddingBottom">@dimen/button_padding_vertical</item>
     </style>
@@ -28,7 +27,6 @@
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="popupTheme">?toolbarPopupTheme</item>
         <item name="titleMarginStart">16dp</item>
-        <item name="buttonGravity">center_vertical</item>
     </style>
 
     <style name="CollapsingToolbarLargeStyle" parent="Widget.Material3.CollapsingToolbar.Large">
@@ -39,6 +37,10 @@
     </style>
 
     <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView"/>
+
+    <style name="ToolCardViewStyle" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/m3_card_corner_radius</item>
+    </style>
 
     <style name="ShapeAppearanceOverlay.Circular" parent="">
         <item name="cornerSize">50%</item>

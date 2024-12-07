@@ -23,5 +23,6 @@ class MessageBinding(binding: FragmentMessageANumberBinding) {
     val messageInputLayout = binding.messageANumberContent.messageInputLayout
     val phoneNumber = binding.messageANumberContent.phoneNumber
     val message = binding.messageANumberContent.message
+    val shareButton = binding.messageANumberContent.shareButton
     val sendButton = binding.messageANumberContent.sendButton
 }

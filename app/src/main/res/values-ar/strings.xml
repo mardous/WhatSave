@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="type_image">صور</string>
-    <string name="type_video">فيديوهات</string>
+    <string name="type_images">صور</string>
+    <string name="type_videos">فيديوهات</string>
     <string name="close_action">إغلاق</string>
     <string name="save_action">حفظ</string>
     <string name="share_action">مشاركة</string>

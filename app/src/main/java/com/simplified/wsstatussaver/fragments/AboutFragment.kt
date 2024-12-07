@@ -23,6 +23,8 @@ import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.core.view.doOnPreDraw
 import com.google.android.material.transition.MaterialFadeThrough
+import com.simplified.wsstatussaver.App
+import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentAboutBinding
 import com.simplified.wsstatussaver.dialogs.LicensesDialog
@@ -48,6 +50,7 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
         _binding = FragmentAboutBinding.bind(view)
         binding.toolbar.setTitle(R.string.about_title)
         binding.appVersion.setSummary(getString(R.string.version_x, getApp().versionName))
+        binding.appVersion.setOnClickListener(this)
         binding.contact.setOnClickListener(this)
         binding.author.setOnClickListener(this)
         binding.latestRelease.setOnClickListener(this)
@@ -90,6 +93,12 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
                 startActivity(Intent.createChooser(emailIntent, getString(R.string.contact_title)))
             }
 
+            binding.appVersion -> {
+                if (App.isFDroidBuild()) {
+                    requireContext().openWeb(APP_FDROID_URL)
+                }
+            }
+
             binding.author -> requireContext().openWeb(MARDOUS_URL)
             binding.latestRelease -> requireContext().openWeb(LATEST_RELEASE_URL)
             binding.translations -> requireContext().openWeb(TRANSLATIONS_URL)
@@ -103,6 +112,7 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
         private const val TRANSLATIONS_URL = "https://hosted.weblate.org/projects/whatsave/"
         private const val MARDOUS_URL = "https://github.com/mardous"
         private const val APP_GITHUB_URL = "$MARDOUS_URL/WhatSave"
+        private const val APP_FDROID_URL = "https://f-droid.org/packages/${BuildConfig.APPLICATION_ID}"
         private const val LATEST_RELEASE_URL = "$APP_GITHUB_URL/releases/latest"
         private const val ISSUE_TRACKER_URL = "$APP_GITHUB_URL/issues"
         const val PRIVACY_POLICY = "$APP_GITHUB_URL/blob/master/PRIVACY.md"

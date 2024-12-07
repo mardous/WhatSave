@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">छवि</string>
-    <string name="type_video">वीडियो</string>
+    <string name="type_images">छवि</string>
+    <string name="type_videos">वीडियो</string>
     <string name="close_action">बंद करना</string>
     <string name="save_action">बचाना</string>
     <string name="share_action">शेयर करना</string>
@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">आपको आवश्यक अनुमतियाँ देनी होंगी. इन अनुमतियों के बिना यह एप्लिकेशन ठीक से काम नहीं करेगा.</string>
     <string name="grant_action">अनुदान</string>
     <string name="open_settings_action">खुली सेटिंग</string>
-    <string name="play_store_is_not_installed">प्ले स्टोर स्थापित नहीं है.</string>
     <string name="action_settings">समायोजन</string>
     <string name="settings_interface">इंटरफेस</string>
     <string name="settings_statuses">वे स्थितियां</string>
@@ -147,7 +146,7 @@
     <string name="downloading_update">अपडेट डाउनलोड हो रहा है</string>
     <string name="special_permissions_title">विशेष पहुंच अनुमतियाँ</string>
     <string name="special_permissions_description">कृपया, चयन करें कि आप किस ग्राहक से स्थितियों को लोड करना चाहते हैं।:</string>
-    <string name="storage_permission_label">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।</string>
+    <string name="storage_permission_label">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।:</string>
     <string name="storage_access_title">स्टोरेज एक्सेस</string>
     <string name="storage_access_description">स्थितियों को एक्सेस और सेव करने के लिए स्टोरेज अनुमति की आवश्यकता है।</string>
     <string name="permissions_granted_successfully">अनुमतियाँ सफलतापूर्वक प्रदान की गईं।</string>

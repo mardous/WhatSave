@@ -15,12 +15,16 @@ package com.simplified.wsstatussaver
 
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
+import coil3.ImageLoader
+import coil3.PlatformContext
+import coil3.SingletonImageLoader
+import coil3.request.crossfade
+import coil3.video.VideoFrameDecoder
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isAnalyticsEnabled
 import com.simplified.wsstatussaver.extensions.migratePreferences
 import com.simplified.wsstatussaver.extensions.packageInfo
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.versionCode
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -29,7 +33,7 @@ fun getApp(): App = App.instance
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class App : Application() {
+class App : Application(), SingletonImageLoader.Factory {
 
     override fun onCreate() {
         super.onCreate()
@@ -48,15 +52,23 @@ class App : Application() {
         AppCompatDelegate.setDefaultNightMode(preferences().getDefaultDayNightMode())
     }
 
+    override fun newImageLoader(context: PlatformContext): ImageLoader {
+        return ImageLoader.Builder(context)
+            .crossfade(true)
+            .components {
+                add(VideoFrameDecoder.Factory())
+            }
+            .build()
+    }
+
     val versionName: String
         get() = packageManager.packageInfo().versionName ?: "0"
-
-    val versionCode: Int
-        get() = packageManager.packageInfo().versionCode()
 
     companion object {
         internal lateinit var instance: App
             private set
+
+        fun isFDroidBuild() = BuildConfig.FLAVOR.equals("fdroid", ignoreCase = true)
 
         fun getFileProviderAuthority(): String = instance.packageName + ".file_provider"
     }

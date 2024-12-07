@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.extensions
 
-import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.res.Configuration
 import android.graphics.drawable.BitmapDrawable
@@ -23,7 +22,6 @@ import android.view.animation.AnimationUtils
 import android.widget.CompoundButton
 import android.widget.TextView
 import androidx.core.animation.doOnEnd
-import androidx.core.animation.doOnStart
 import androidx.core.view.drawToBitmap
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -42,17 +40,6 @@ import io.noties.markwon.html.HtmlPlugin
 const val WHATSAVE_ANIM_TIME = 350L
 
 fun View.isLandscape() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
-
-fun View.animateAlpha(value: Float) {
-    if (value == alpha)
-        return
-
-    val animator = ObjectAnimator.ofFloat(this, View.ALPHA, alpha, value)
-        .setDuration(WHATSAVE_ANIM_TIME)
-    animator.doOnStart { setLayerType(View.LAYER_TYPE_HARDWARE, null) }
-    animator.doOnEnd { setLayerType(View.LAYER_TYPE_NONE, null) }
-    animator.start()
-}
 
 /**
  * Potentially animate showing a [NavigationBarView].

@@ -34,6 +34,7 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
 import com.simplified.wsstatussaver.extensions.createProgressDialog
+import com.simplified.wsstatussaver.extensions.dip
 import com.simplified.wsstatussaver.extensions.doOnPageSelected
 import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.hasR
@@ -100,7 +101,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
             swipeRefreshLayout.setOnRefreshListener(this@StatusesFragment)
             swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())
 
-            recyclerView.setPadding(resources.displayMetrics.density.toInt() * 4)
+            recyclerView.setPadding(dip(R.dimen.status_item_margin))
             recyclerView.layoutManager =
                 GridLayoutManager(requireActivity(), resources.getInteger(R.integer.statuses_grid_span_count))
             recyclerView.adapter = onCreateAdapter().apply {

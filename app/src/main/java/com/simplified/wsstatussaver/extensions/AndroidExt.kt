@@ -35,7 +35,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.getSystemService
-import androidx.core.content.pm.PackageInfoCompat
 import androidx.core.net.toUri
 import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
@@ -62,15 +61,6 @@ fun Context.openWeb(url: String) {
         Intent(Intent.ACTION_VIEW, url.toUri())
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
     )
-}
-
-fun Context.openGooglePlay(appPackage: String = packageName) {
-    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackage"))
-    if (intent.resolveActivity(packageManager) != null) {
-        startActivity(intent)
-        return
-    }
-    startActivitySafe(Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$appPackage".toUri()))
 }
 
 fun Context.bindNotificationListener(): Boolean {
@@ -141,8 +131,6 @@ fun PackageManager.packageInfo(packageName: String = getApp().packageName): Pack
         getPackageInfo(packageName, PackageManager.PackageInfoFlags.of(0))
     } else getPackageInfo(packageName, 0)
 
-fun PackageInfo.versionCode() = PackageInfoCompat.getLongVersionCode(this).toInt()
-
 fun Context.startActivitySafe(intent: Intent?, onError: ExceptionConsumer? = null) {
     intent.doWithIntent(onError) { startActivity(it) }
 }
@@ -153,11 +141,6 @@ fun Context.showToast(messageRes: Int, duration: Int = Toast.LENGTH_SHORT) {
 
 fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()
-}
-
-fun Intent?.toChooser(title: CharSequence? = null): Intent? {
-    if (this == null) return null
-    return Intent.createChooser(this, title)
 }
 
 fun String.formattedAsHtml() = HtmlCompat.fromHtml(this, HtmlCompat.FROM_HTML_MODE_COMPACT)

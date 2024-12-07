@@ -12,8 +12,8 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   --><resources>
-    <string name="type_image">Afbeelding</string>
-    <string name="type_video">Video</string>
+    <string name="type_images">Afbeelding</string>
+    <string name="type_videos">Video</string>
     <string name="close_action">Dichtbij</string>
     <string name="save_action">Redden</string>
     <string name="share_action">Deel</string>
@@ -63,7 +63,6 @@
     <string name="permissions_denied_message">U moet de vereiste machtigingen verlenen. Deze applicatie werkt niet correct zonder deze machtigingen.</string>
     <string name="grant_action">Studiebeurs</string>
     <string name="open_settings_action">Open instellingen</string>
-    <string name="play_store_is_not_installed">Play Store is niet geïnstalleerd.</string>
     <string name="action_settings">Instellingen</string>
     <string name="settings_interface">Koppel</string>
     <string name="settings_statuses">Statussen</string>

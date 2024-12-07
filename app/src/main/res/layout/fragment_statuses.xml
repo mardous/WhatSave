@@ -39,7 +39,7 @@
             android:id="@+id/tab_layout"
             style="@style/Widget.Material3.TabLayout.OnSurface"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/tab_height"
+            android:layout_height="wrap_content"
             app:tabMode="fixed"/>
 
     </com.google.android.material.appbar.AppBarLayout>
