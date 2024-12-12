@@ -160,6 +160,7 @@ dependencies {
     implementation(libs.koin.android)
 
     implementation(libs.coil)
+    implementation(libs.coil.compose)
     implementation(libs.coil.video)
 
     implementation(libs.photoview)

@@ -90,6 +90,7 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinVers
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinVersion" }
 
 coil = { module = "io.coil-kt.coil3:coil", version.ref = "coilVersion" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilVersion" }
 coil-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coilVersion" }
 
 advrecyclerview = { module = "com.h6ah4i.android.widget.advrecyclerview:advrecyclerview", version.ref = "advrecyclerview" }
