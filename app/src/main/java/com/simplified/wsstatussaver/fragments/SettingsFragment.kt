@@ -38,6 +38,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
+import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
@@ -52,7 +53,6 @@ import com.simplified.wsstatussaver.preferences.SaveLocationPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
 import com.simplified.wsstatussaver.setAnalyticsEnabled
-import dev.chrisbanes.insetter.applyInsetter
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -92,7 +92,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            listView.applyInsetter {
+            listView.applyPortraitInsetter {
                 type(navigationBars = true) {
                     padding(vertical = true)
                 }

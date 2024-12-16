@@ -16,7 +16,7 @@ package com.simplified.wsstatussaver.views
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
-import dev.chrisbanes.insetter.applyInsetter
+import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
 
 /**
  * @author Christians M. A. (mardous)
@@ -39,7 +39,7 @@ class InsetsConstraintLayout @JvmOverloads constructor(
             parent = parent.parent
         }
         if (!hasInsetsParent) {
-            applyInsetter {
+            applyPortraitInsetter {
                 type(navigationBars = true) {
                     padding()
                 }

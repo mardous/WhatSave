@@ -16,7 +16,7 @@ package com.simplified.wsstatussaver.views
 import android.content.Context
 import android.util.AttributeSet
 import androidx.core.widget.NestedScrollView
-import dev.chrisbanes.insetter.applyInsetter
+import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
 
 /**
  * @author Christians M. A. (mardous)
@@ -28,7 +28,7 @@ class InsetsNestedScrollView @JvmOverloads constructor(
 ) : NestedScrollView(context, attrs, defStyleAttr) {
 
     init {
-        applyInsetter {
+        applyPortraitInsetter {
             type(navigationBars = true) {
                 padding()
             }

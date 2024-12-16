@@ -34,7 +34,7 @@ import com.simplified.wsstatussaver.adapter.MessageAdapter
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.databinding.FragmentMessagesBinding
-import com.simplified.wsstatussaver.extensions.drawAboveSystemBarsWithPadding
+import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.interfaces.IMessageCallback
@@ -57,7 +57,11 @@ class ConversationDetailFragment : BaseFragment(R.layout.fragment_messages), IMe
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMessagesBinding.bind(view)
-        binding.recyclerView.drawAboveSystemBarsWithPadding()
+        binding.recyclerView.applyPortraitInsetter {
+            type(navigationBars = true) {
+                padding()
+            }
+        }
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }

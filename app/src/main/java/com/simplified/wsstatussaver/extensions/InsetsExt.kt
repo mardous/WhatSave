@@ -17,6 +17,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import androidx.core.view.WindowInsetsCompat
 import com.simplified.wsstatussaver.getApp
+import dev.chrisbanes.insetter.InsetterDsl
 import dev.chrisbanes.insetter.applyInsetter
 
 @SuppressLint("DiscouragedApi", "InternalInsetResource")
@@ -31,25 +32,14 @@ fun WindowInsetsCompat?.getBottomInsets(): Int {
     return bottomInsets ?: 0
 }
 
-/**
- * This will draw our view above the navigation bar instead of behind it by adding margins.
- */
-fun View.drawAboveSystemBars(onlyPortrait: Boolean = true) {
-    if (onlyPortrait && isLandscape()) return
-    applyInsetter {
-        type(navigationBars = true) {
-            margin()
-        }
+fun View.applyPortraitInsetter(build: InsetterDsl.() -> Unit) {
+    if (!isLandscape()) {
+        applyInsetter(build)
     }
 }
 
-/**
- * This will draw our view above the navigation bar instead of behind it by adding padding.
- */
-fun View.drawAboveSystemBarsWithPadding() {
-    applyInsetter {
-        type(navigationBars = true) {
-            padding()
-        }
+fun View.applyLandscapeInsetter(build: InsetterDsl.() -> Unit) {
+    if (isLandscape()) {
+        applyInsetter(build)
     }
 }

@@ -31,6 +31,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.BaseActivity
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
+import com.simplified.wsstatussaver.extensions.applyLandscapeInsetter
 import com.simplified.wsstatussaver.extensions.currentFragment
 import com.simplified.wsstatussaver.extensions.getBottomInsets
 import com.simplified.wsstatussaver.extensions.getPreferredClient
@@ -58,6 +59,11 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         contentView = findViewById(R.id.main_container)
+        contentView.applyLandscapeInsetter {
+            type(navigationBars = true, displayCutout = true) {
+                padding(horizontal = true)
+            }
+        }
         navigationView = findViewById(R.id.navigation_view)
         navigationView.setOnItemReselectedListener(this)
         if (navigationView is BottomNavigationView) {
