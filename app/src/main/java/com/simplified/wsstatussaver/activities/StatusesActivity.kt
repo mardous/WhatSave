@@ -27,6 +27,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.navigationrail.NavigationRailView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.BaseActivity
@@ -60,7 +61,7 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
         setContentView(R.layout.activity_main)
         contentView = findViewById(R.id.main_container)
         contentView.applyLandscapeInsetter {
-            type(navigationBars = true, displayCutout = true) {
+            type(navigationBars = true) {
                 padding(horizontal = true)
             }
         }
@@ -71,6 +72,12 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
                 type(navigationBars = true) {
                     padding(vertical = true)
                     margin(horizontal = true)
+                }
+            }
+        } else if (navigationView is NavigationRailView) {
+            navigationView.applyInsetter {
+                type(displayCutout = true) {
+                    padding(horizontal = true)
                 }
             }
         }
@@ -143,6 +150,7 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
 
     private fun hideBottomBar(hide: Boolean) {
         if (hide) navigationView.hide() else navigationView.show()
+        if (navigationView is NavigationRailView) return
         val navHeight = resources.getDimensionPixelSize(R.dimen.bottom_nav_height)
         val navHeightWithInsets = navHeight + windowInsets.getBottomInsets()
         contentView.updatePadding(bottom = if (!hide) navHeightWithInsets else 0)
