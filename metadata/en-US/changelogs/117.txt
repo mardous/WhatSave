@@ -1,0 +1,4 @@
+* Fixed rare crash when trying to request access to a directory using SAF
+* Removed support for GBWhatsapp
+* Some translations were updated
+* Minor improvements
