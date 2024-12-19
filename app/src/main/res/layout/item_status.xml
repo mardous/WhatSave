@@ -30,28 +30,38 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/state"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textAppearance="?textAppearanceBodyLarge"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/client_icon"
-        tools:text="@tools:sample/lorem" />
-
     <ImageView
         android:id="@+id/client_icon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintTop_toTopOf="@+id/state"
-        app:layout_constraintBottom_toBottomOf="@+id/state"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/icon_business"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintEnd_toEndOf="@+id/image"
+        tools:src="@drawable/icon_wa"
+        tools:visibility="visible"
         tools:ignore="ContentDescription" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/state"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="2dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical|start"
+        android:textAlignment="viewStart"
+        android:textAppearance="?textAppearanceCaption"
+        android:textColor="@color/md_white_1000"
+        android:shadowDx="2.5"
+        android:shadowDy="2.5"
+        android:shadowRadius="6"
+        android:shadowColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintEnd_toStartOf="@+id/client_icon"
+        tools:text="@string/status_saved"
+        tools:ignore="RtlSymmetry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
