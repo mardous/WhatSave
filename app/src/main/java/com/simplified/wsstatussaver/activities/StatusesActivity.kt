@@ -61,8 +61,8 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
         setContentView(R.layout.activity_main)
         contentView = findViewById(R.id.main_container)
         contentView.applyLandscapeInsetter {
-            type(navigationBars = true) {
-                padding(horizontal = true)
+            type(navigationBars = true, displayCutout = true) {
+                padding(right = true)
             }
         }
         navigationView = findViewById(R.id.navigation_view)
@@ -76,8 +76,8 @@ class StatusesActivity : BaseActivity(), NavigationBarView.OnItemReselectedListe
             }
         } else if (navigationView is NavigationRailView) {
             navigationView.applyInsetter {
-                type(displayCutout = true) {
-                    padding(horizontal = true)
+                type(navigationBars = true, displayCutout = true) {
+                    padding(left = true)
                 }
             }
         }
