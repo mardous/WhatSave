@@ -17,6 +17,7 @@ import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.media.MediaScannerConnection
 import android.net.Uri
 import android.os.Build
@@ -37,6 +38,7 @@ import java.util.Date
 interface StatusesRepository {
     fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
+    suspend fun savedStatuses(): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>>
     suspend fun share(status: Status): ShareData
@@ -140,29 +142,47 @@ class StatusesRepositoryImpl(
         return StatusQueryResult(ResultCode.NoStatuses)
     }
 
+    override suspend fun savedStatuses(): StatusQueryResult {
+        if (!context.hasStoragePermissions()) {
+            return StatusQueryResult(ResultCode.PermissionError)
+        }
+        val statuses = arrayListOf<SavedStatus>()
+        if (hasQ()) {
+            for (type in StatusType.entries) {
+                type.getSavedMedia(contentResolver).use { cursor ->
+                    if (cursor != null && cursor.moveToFirst()) do {
+                        statuses.add(cursor.getSavedStatus(type))
+                    } while (cursor.moveToNext())
+                }
+            }
+        } else {
+            val files = StatusType.entries.flatMap { type ->
+                SaveLocation.entries.flatMap { location ->
+                    type.getSavedContentFiles(location).toList()
+                }
+            }
+            if (files.isNotEmpty()) for (file in files) {
+                val type = file.getStatusType() ?: continue
+                statuses.add(
+                    SavedStatus(type, file.name, file.getUri(), file.lastModified(), file.length(), file.absolutePath)
+                )
+            }
+        }
+        if (statuses.isEmpty()) {
+            return StatusQueryResult(ResultCode.NoSavedStatuses)
+        }
+        return StatusQueryResult(ResultCode.Success, statuses.sortedByDescending { it.dateModified })
+    }
+
     override suspend fun savedStatuses(type: StatusType): StatusQueryResult {
         if (!context.hasStoragePermissions()) {
             return StatusQueryResult(ResultCode.PermissionError)
         }
         val statuses = arrayListOf<SavedStatus>()
         if (hasQ()) {
-            val projection = arrayOf(
-                MediaColumns._ID,
-                MediaColumns.DISPLAY_NAME,
-                MediaColumns.DATE_MODIFIED,
-                MediaColumns.SIZE,
-                MediaColumns.RELATIVE_PATH
-            )
-            val entries = SaveLocation.entries
-            val selection = entries.joinToString(" OR ") { "${MediaColumns.RELATIVE_PATH} LIKE ?" }
-            val arguments = entries.map { "%${type.getRelativePath(it)}%" }.toTypedArray()
-            contentResolver.query(type.contentUri, projection, selection, arguments, null).use { cursor ->
+            type.getSavedMedia(contentResolver).use { cursor ->
                 if (cursor != null && cursor.moveToFirst()) do {
-                    val mediaUri = ContentUris.withAppendedId(type.contentUri, cursor.getLong(0))
-                    val name = cursor.getString(1)
-                    val dateModified = cursor.getLong(2)
-                    val size = cursor.getLong(3)
-                    statuses.add(SavedStatus(type, name, mediaUri, dateModified * 1000, size, null))
+                    statuses.add(cursor.getSavedStatus(type))
                 } while (cursor.moveToNext())
             }
         } else {
@@ -181,6 +201,14 @@ class StatusesRepositoryImpl(
 
     override suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>> =
         statusDao.savedStatuses(type.ordinal)
+
+    private fun Cursor.getSavedStatus(type: StatusType): SavedStatus {
+        val mediaUri = ContentUris.withAppendedId(type.contentUri, getLong(0))
+        val name = getString(1)
+        val dateModified = getLong(2)
+        val size = getLong(3)
+        return SavedStatus(type, name, mediaUri, dateModified * 1000, size, null)
+    }
 
     override suspend fun share(status: Status): ShareData {
         if (hasQ() && status !is SavedStatus) {

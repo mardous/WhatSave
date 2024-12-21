@@ -27,7 +27,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         app:navGraph="@navigation/main_graph"
-        tools:layout="@layout/fragment_statuses_page"/>
+        tools:layout="@layout/fragment_statuses"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation_view"
@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/menu_navigation"
-        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:viewBindingType="com.google.android.material.navigation.NavigationBarView"/>
 

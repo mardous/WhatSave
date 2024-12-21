@@ -13,26 +13,26 @@
  */
 package com.simplified.wsstatussaver.fragments.statuses
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
-import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.adapter.StatusAdapter
 import com.simplified.wsstatussaver.model.StatusQueryResult
+import com.simplified.wsstatussaver.model.StatusType
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class SavedStatusesFragment : StatusesFragment() {
+class ImageStatusesFragment : StatusesFragment() {
+
+    private val imageType: StatusType = StatusType.IMAGE
 
     override val lastResult: StatusQueryResult?
-        get() = viewModel.getSavedStatuses().value
+        get() = viewModel.getStatuses(imageType).value
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         statusesActivity.setSupportActionBar(binding.toolbar)
-        binding.collapsingToolbar.setTitle(getString(R.string.saved_label))
-        viewModel.getSavedStatuses().apply {
+        binding.collapsingToolbar.setTitle(getString(imageType.nameRes))
+        viewModel.getStatuses(imageType).apply {
             observe(viewLifecycleOwner) { result ->
                 data(result)
             }
@@ -43,18 +43,8 @@ class SavedStatusesFragment : StatusesFragment() {
         }
     }
 
-    override fun createAdapter(): StatusAdapter =
-        StatusAdapter(
-            requireActivity(),
-            this,
-            isSaveEnabled = false,
-            isDeleteEnabled = true,
-            isWhatsAppIconEnabled = false
-        )
-
     override fun onRefresh() {
-        viewModel.loadSavedStatuses()
+        viewModel.loadStatuses(imageType)
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {}
 }

@@ -26,6 +26,7 @@ import com.simplified.wsstatussaver.model.StatusType
 interface Repository {
     fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
+    suspend fun savedStatuses(): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun shareStatus(status: Status): ShareData
     suspend fun shareStatuses(statuses: List<Status>): ShareData
@@ -54,6 +55,8 @@ class RepositoryImpl(
     override fun statusIsSaved(status: Status): LiveData<Boolean> = statusesRepository.statusIsSaved(status)
 
     override suspend fun statuses(type: StatusType): StatusQueryResult = statusesRepository.statuses(type)
+
+    override suspend fun savedStatuses(): StatusQueryResult = statusesRepository.savedStatuses()
 
     override suspend fun savedStatuses(type: StatusType): StatusQueryResult = statusesRepository.savedStatuses(type)
 

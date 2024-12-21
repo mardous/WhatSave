@@ -15,51 +15,53 @@ package com.simplified.wsstatussaver.fragments.statuses
 
 import android.app.Activity
 import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.StatusAdapter
-import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
+import com.simplified.wsstatussaver.databinding.FragmentStatusesBinding
+import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
+import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_SAVED_STATUSES
+import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
+import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
 import com.simplified.wsstatussaver.extensions.createProgressDialog
 import com.simplified.wsstatussaver.extensions.dip
-import com.simplified.wsstatussaver.extensions.doOnPageSelected
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNullOrEmpty
 import com.simplified.wsstatussaver.extensions.isQuickDeletion
+import com.simplified.wsstatussaver.extensions.isWhatsappIcon
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.primaryColor
 import com.simplified.wsstatussaver.extensions.requestPermissions
 import com.simplified.wsstatussaver.extensions.requestView
-import com.simplified.wsstatussaver.extensions.serializable
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
-import com.simplified.wsstatussaver.fragments.SectionFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
-import com.simplified.wsstatussaver.fragments.binding.StatusesPageBinding
+import com.simplified.wsstatussaver.fragments.binding.StatusesBinding
 import com.simplified.wsstatussaver.fragments.playback.PlaybackFragmentArgs
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
-import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
@@ -67,96 +69,61 @@ import org.koin.androidx.viewmodel.ext.android.activityViewModel
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
-    View.OnClickListener,
-    OnRefreshListener,
-    IScrollable,
-    IPermissionChangeListener,
-    IStatusCallback {
+abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
+    View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener,
+    OnRefreshListener, IScrollable, IPermissionChangeListener, IStatusCallback {
 
-    private var _binding: StatusesPageBinding? = null
+    private var _binding: StatusesBinding? = null
+    private lateinit var deletionRequestLauncher: ActivityResultLauncher<IntentSenderRequest>
+    private val progressDialog by lazy { requireContext().createProgressDialog() }
+
     protected val binding get() = _binding!!
-
     protected val viewModel by activityViewModel<WhatSaveViewModel>()
-    protected lateinit var deletionRequestLauncher: ActivityResultLauncher<IntentSenderRequest>
-    protected lateinit var statusType: StatusType
     protected var statusAdapter: StatusAdapter? = null
 
-    private val progressDialog by lazy { requireContext().createProgressDialog() }
-    private val sectionFragment: SectionFragment
-        get() = parentFragment as SectionFragment
-
-    private val lastResult: StatusQueryResult?
-        get() = viewModel.getStatuses(statusType).value
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val arguments = arguments
-        if (arguments != null) {
-            statusType = arguments.serializable(EXTRA_TYPE, StatusType::class)!!
-        }
-    }
+    protected abstract val lastResult: StatusQueryResult?
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = StatusesPageBinding(FragmentStatusesPageBinding.bind(view)).apply {
+        postponeEnterTransition()
+        view.doOnPreDraw { startPostponedEnterTransition() }
+        enterTransition = MaterialFadeThrough().addTarget(view)
+        reenterTransition = MaterialFadeThrough().addTarget(view)
+        _binding = StatusesBinding(FragmentStatusesBinding.bind(view)).apply {
             swipeRefreshLayout.setOnRefreshListener(this@StatusesFragment)
             swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())
 
             recyclerView.setPadding(dip(R.dimen.status_item_margin))
-            recyclerView.layoutManager =
-                GridLayoutManager(requireActivity(), resources.getInteger(R.integer.statuses_grid_span_count))
-            recyclerView.adapter = onCreateAdapter().apply {
+            recyclerView.layoutManager = GridLayoutManager(requireActivity(), resources.getInteger(R.integer.statuses_grid_span_count))
+            recyclerView.adapter = createAdapter().apply {
                 registerAdapterDataObserver(adapterDataObserver)
             }.also { newStatusAdapter ->
                 statusAdapter = newStatusAdapter
             }
-        }
 
+            emptyButton.setOnClickListener(this@StatusesFragment)
+        }
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
                 viewModel.reloadAll()
                 showToast(R.string.deletion_success)
             }
         }
-
-        binding.emptyButton.setOnClickListener(this)
-        sectionFragment.getViewPager().doOnPageSelected(viewLifecycleOwner) {
-            statusAdapter?.finishActionMode()
-        }
+        preferences().registerOnSharedPreferenceChangeListener(this)
     }
 
-    protected fun data(result: StatusQueryResult) {
-        statusAdapter?.statuses = result.statuses
-        binding.swipeRefreshLayout.isRefreshing = result.isLoading
-        if (result.code.titleRes != 0) {
-            binding.emptyTitle.text = getString(result.code.titleRes)
-            binding.emptyTitle.isVisible = true
-        } else {
-            binding.emptyTitle.isVisible = false
-        }
-        if (result.code.descriptionRes != 0) {
-            binding.emptyText.text = getString(result.code.descriptionRes)
-            binding.emptyText.isVisible = true
-        } else {
-            binding.emptyText.isVisible = false
-        }
-        if (result.code.buttonTextRes != 0) {
-            binding.emptyButton.text = getString(result.code.buttonTextRes)
-            binding.emptyButton.isVisible = true
-        } else {
-            binding.emptyButton.isVisible = false
-        }
+    protected open fun createAdapter(): StatusAdapter {
+        return StatusAdapter(
+            requireActivity(),
+            this,
+            isSaveEnabled = true,
+            isDeleteEnabled = false,
+            isWhatsAppIconEnabled = preferences().isWhatsappIcon()
+        )
     }
-
-    protected abstract fun onCreateAdapter(): StatusAdapter
 
     override fun scrollToTop() {
         binding.recyclerView.scrollToPosition(0)
-    }
-
-    override fun onRefresh() {
-        onLoadStatuses(statusType)
     }
 
     override fun onStart() {
@@ -180,21 +147,9 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
                         startActivitySafe(it.getLaunchIntent(requireContext().packageManager))
                     }
 
-                    else -> onLoadStatuses(statusType)
+                    else -> onRefresh()
                 }
             }
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        statusAdapter?.unregisterAdapterDataObserver(adapterDataObserver)
-        statusAdapter = null
-    }
-
-    private val adapterDataObserver = object : AdapterDataObserver() {
-        override fun onChanged() {
-            binding.emptyView.isVisible = statusAdapter.isNullOrEmpty()
         }
     }
 
@@ -260,7 +215,28 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         )
     }
 
-    protected abstract fun onLoadStatuses(type: StatusType)
+    protected fun data(result: StatusQueryResult) {
+        statusAdapter?.statuses = result.statuses
+        binding.swipeRefreshLayout.isRefreshing = result.isLoading
+        if (result.code.titleRes != 0) {
+            binding.emptyTitle.text = getString(result.code.titleRes)
+            binding.emptyTitle.isVisible = true
+        } else {
+            binding.emptyTitle.isVisible = false
+        }
+        if (result.code.descriptionRes != 0) {
+            binding.emptyText.text = getString(result.code.descriptionRes)
+            binding.emptyText.isVisible = true
+        } else {
+            binding.emptyText.isVisible = false
+        }
+        if (result.code.buttonTextRes != 0) {
+            binding.emptyButton.text = getString(result.code.buttonTextRes)
+            binding.emptyButton.isVisible = true
+        } else {
+            binding.emptyButton.isVisible = false
+        }
+    }
 
     private fun processSaveResult(result: SaveResult) = requestView { view ->
         if (result.isSaving) {
@@ -292,7 +268,26 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
         }
     }
 
-    companion object {
-        const val EXTRA_TYPE = "extra_type"
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
+        when (key) {
+            PREFERENCE_DEFAULT_CLIENT,
+            PREFERENCE_STATUSES_LOCATION,
+            PREFERENCE_EXCLUDE_SAVED_STATUSES -> onRefresh()
+
+            PREFERENCE_WHATSAPP_ICON -> statusAdapter?.isWhatsAppIconEnabled = sharedPreferences.isWhatsappIcon()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        preferences().unregisterOnSharedPreferenceChangeListener(this)
+        statusAdapter?.unregisterAdapterDataObserver(adapterDataObserver)
+        statusAdapter = null
+    }
+
+    private val adapterDataObserver = object : AdapterDataObserver() {
+        override fun onChanged() {
+            binding.emptyView.isVisible = statusAdapter.isNullOrEmpty()
+        }
     }
 }

@@ -15,9 +15,13 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_rounded_art_track_24"
-        android:title="@string/home_label"/>
+        android:id="@+id/imagesFragment"
+        android:icon="@drawable/ic_image_24dp"
+        android:title="@string/type_images"/>
+    <item
+        android:id="@+id/videosFragment"
+        android:icon="@drawable/ic_slideshow_24dp"
+        android:title="@string/type_videos"/>
     <item
         android:id="@+id/savedFragment"
         android:icon="@drawable/ic_save_alt_24dp"

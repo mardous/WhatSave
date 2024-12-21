@@ -17,6 +17,7 @@ import android.content.Context
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
+import java.io.File
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -45,3 +46,5 @@ fun Status.getState(context: Context): String =
     if (isSaved) context.getString(R.string.status_saved) else context.getString(R.string.status_unsaved)
 
 fun StatusType.acceptFileName(fileName: String): Boolean = !fileName.startsWith(".") && fileName.endsWith(this.format)
+
+fun File.getStatusType() = StatusType.entries.firstOrNull { it.acceptFileName(name) }

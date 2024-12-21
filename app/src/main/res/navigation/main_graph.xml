@@ -17,16 +17,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/imagesFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.simplified.wsstatussaver.fragments.HomeSectionFragment"
+        android:id="@+id/imagesFragment"
+        android:name="com.simplified.wsstatussaver.fragments.statuses.ImageStatusesFragment"
+        android:label="HomeFragment"/>
+
+    <fragment
+        android:id="@+id/videosFragment"
+        android:name="com.simplified.wsstatussaver.fragments.statuses.VideoStatusesFragment"
         android:label="HomeFragment"/>
 
     <fragment
         android:id="@+id/savedFragment"
-        android:name="com.simplified.wsstatussaver.fragments.SavedSectionFragment"
+        android:name="com.simplified.wsstatussaver.fragments.statuses.SavedStatusesFragment"
         android:label="SavedFragment"/>
 
     <fragment

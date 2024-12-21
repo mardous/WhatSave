@@ -59,8 +59,8 @@ class WhatSaveViewModel(
 ) : ViewModel() {
 
     private val liveDataMap = newStatusesLiveDataMap()
-    private val savedLiveDataMap = newStatusesLiveDataMap()
 
+    private val savedStatuses = MutableLiveData<StatusQueryResult>(StatusQueryResult.Idle)
     private val installedClients = MutableLiveData<List<WaClient>>()
     private val storageDevices = MutableLiveData<List<StorageDevice>>()
     private val countries = MutableLiveData<List<Country>>()
@@ -71,7 +71,6 @@ class WhatSaveViewModel(
     override fun onCleared() {
         super.onCleared()
         liveDataMap.clear()
-        savedLiveDataMap.clear()
     }
 
     fun unlockMessageView() {
@@ -92,12 +91,10 @@ class WhatSaveViewModel(
 
     fun getSelectedCountry() = selectedCountry.value
 
+    fun getSavedStatuses(): LiveData<StatusQueryResult> = savedStatuses
+
     fun getStatuses(type: StatusType): LiveData<StatusQueryResult> {
         return liveDataMap.getOrCreateLiveData(type)
-    }
-
-    fun getSavedStatuses(type: StatusType): LiveData<StatusQueryResult> {
-        return savedLiveDataMap.getOrCreateLiveData(type)
     }
 
     fun loadClients() = viewModelScope.launch(IO) {
@@ -131,19 +128,16 @@ class WhatSaveViewModel(
         }
     }
 
-    fun loadSavedStatuses(type: StatusType) = viewModelScope.launch(IO) {
-        val liveData = savedLiveDataMap[type]
-        if (liveData != null) {
-            liveData.postValue(liveData.value?.copy(code = ResultCode.Loading) ?: StatusQueryResult(ResultCode.Loading))
-            liveData.postValue(repository.savedStatuses(type))
-        }
+    fun loadSavedStatuses() = viewModelScope.launch(IO) {
+        savedStatuses.postValue(savedStatuses.value?.copy(code = ResultCode.Loading) ?: StatusQueryResult(ResultCode.Loading))
+        savedStatuses.postValue(repository.savedStatuses())
     }
 
     fun reloadAll() {
         StatusType.entries.forEach {
             loadStatuses(it)
-            loadSavedStatuses(it)
         }
+        loadSavedStatuses()
     }
 
     fun statusIsSaved(status: Status): LiveData<Boolean> = repository.statusIsSaved(status)

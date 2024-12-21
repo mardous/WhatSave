@@ -35,6 +35,7 @@ import com.simplified.wsstatussaver.extensions.hide
 import com.simplified.wsstatussaver.extensions.requireWindow
 import com.simplified.wsstatussaver.extensions.show
 import com.simplified.wsstatussaver.extensions.whichFragment
+import com.simplified.wsstatussaver.fragments.statuses.StatusesFragment
 import dev.chrisbanes.insetter.applyInsetter
 
 /**
@@ -87,7 +88,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onDestinationChanged(controller: NavController, destination: NavDestination, arguments: Bundle?) {
         when (destination.id) {
-            R.id.homeFragment,
+            R.id.imagesFragment,
+            R.id.videosFragment,
             R.id.savedFragment,
             R.id.toolsFragment -> hideBottomBar(false)
             else -> hideBottomBar(true)
@@ -96,7 +98,7 @@ class MainFragment : Fragment(R.layout.fragment_main),
 
     override fun onNavigationItemReselected(item: MenuItem) {
         val currentFragment = currentFragment(R.id.main_container)
-        if (currentFragment is SectionFragment) {
+        if (currentFragment is StatusesFragment) {
             currentFragment.scrollToTop()
         }
     }

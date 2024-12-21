@@ -13,9 +13,11 @@
  */
 package com.simplified.wsstatussaver.fragments.binding
 
-import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
+import com.simplified.wsstatussaver.databinding.FragmentStatusesBinding
 
-class StatusesPageBinding(private val binding: FragmentStatusesPageBinding) {
+class StatusesBinding(binding: FragmentStatusesBinding) {
+    val toolbar = binding.toolbar
+    val collapsingToolbar = binding.collapsingToolbarLayout
     val swipeRefreshLayout = binding.swipeRefreshLayout
     val recyclerView = binding.recyclerView
     val emptyView = binding.emptyView.root
