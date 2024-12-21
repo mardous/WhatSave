@@ -23,6 +23,7 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.core.view.setPadding
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
@@ -36,6 +37,7 @@ import com.simplified.wsstatussaver.databinding.FragmentStatusesPageBinding
 import com.simplified.wsstatussaver.extensions.createProgressDialog
 import com.simplified.wsstatussaver.extensions.dip
 import com.simplified.wsstatussaver.extensions.doOnPageSelected
+import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNullOrEmpty
@@ -251,7 +253,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses_page),
     }
 
     override fun previewStatusesClick(statuses: List<Status>, startPosition: Int) {
-        findNavController().navigate(
+        findActivityNavController(R.id.global_container).navigate(
             R.id.playbackFragment,
             PlaybackFragmentArgs.Builder(statuses.toTypedArray(), startPosition).build()
                 .toBundle()

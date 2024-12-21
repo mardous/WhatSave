@@ -78,15 +78,4 @@
             android:defaultValue="false"/>
     </fragment>
 
-    <fragment
-        android:id="@+id/playbackFragment"
-        android:name="com.simplified.wsstatussaver.fragments.playback.PlaybackFragment"
-        android:label="PlaybackFragment">
-        <argument
-            android:name="statuses"
-            app:argType="com.simplified.wsstatussaver.model.Status[]" />
-        <argument
-            android:name="position"
-            app:argType="integer" />
-    </fragment>
 </navigation>

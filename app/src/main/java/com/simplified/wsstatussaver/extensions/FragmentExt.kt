@@ -15,6 +15,7 @@ package com.simplified.wsstatussaver.extensions
 
 import android.content.Intent
 import android.view.View
+import android.view.Window
 import android.widget.Toast
 import androidx.annotation.DimenRes
 import androidx.annotation.IdRes
@@ -24,6 +25,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+
+fun Fragment.requireWindow(): Window = requireActivity().window
 
 fun Fragment.dip(@DimenRes res: Int) = resources.getDimensionPixelSize(res)
 
@@ -74,6 +77,12 @@ fun Fragment.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
 }
 
 fun Fragment.getOnBackPressedDispatcher() = requireActivity().onBackPressedDispatcher
+
+fun Fragment.currentFragment(navHostId: Int): Fragment? {
+    val navHostFragment: NavHostFragment =
+        childFragmentManager.findFragmentById(navHostId) as NavHostFragment
+    return navHostFragment.childFragmentManager.fragments.firstOrNull()
+}
 
 fun AppCompatActivity.currentFragment(navHostId: Int): Fragment? {
     val navHostFragment: NavHostFragment =
