@@ -26,6 +26,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.ActionMode
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
+import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
@@ -86,9 +88,15 @@ open class StatusAdapter(
             holder.image?.load(status.fileUri)
         }
 
-        if (holder.state != null && holder.state.isVisible) {
-            holder.state.text = status.getState(activity)
+        if (holder.state != null) {
+            if (isSaveEnabled) {
+                holder.state.text = status.getState(activity)
+            } else {
+                holder.state.text = status.getFormattedDate(activity)
+            }
         }
+
+        holder.playIcon?.isGone = isSaveEnabled || status.type == StatusType.IMAGE
 
         if (holder.clientIcon != null) {
             holder.clientIcon.isVisible = false
@@ -135,6 +143,7 @@ open class StatusAdapter(
         val image: ImageView?
         val state: TextView?
         val clientIcon: ImageView?
+        val playIcon: ImageView?
         val cardView: MaterialCardView?
 
         private val status: Status
@@ -144,10 +153,10 @@ open class StatusAdapter(
             val binding = ItemStatusBinding.bind(itemView)
             image = binding.image
             state = binding.state
-            state.isVisible = isSaveEnabled
             cardView = itemView as? MaterialCardView
             cardView?.isCheckable = true
             clientIcon = binding.clientIcon
+            playIcon = binding.playIcon
 
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)

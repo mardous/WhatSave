@@ -27,6 +27,12 @@ val fileDateFormat: DateFormat by lazy {
     SimpleDateFormat("MMM_d_yyyy_HH.mm.ss", Locale.ENGLISH)
 }
 
+fun Status.getFormattedDate(context: Context): String {
+    val date = Date(dateModified)
+    val resLocale = context.resources.configuration.locales[0]
+    return DateFormat.getDateInstance(DateFormat.MEDIUM, resLocale).format(date)
+}
+
 /**
  * Generates and returns a new save name depending on the
  * given [StatusType] format and the current time.

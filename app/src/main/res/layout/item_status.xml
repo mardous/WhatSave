@@ -25,16 +25,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
-        app:shapeAppearanceOverlay="?shapeAppearanceCornerLarge"
+        app:shapeAppearanceOverlay="?shapeAppearanceCornerMedium"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <ImageView
+        android:id="@+id/play_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/ic_videocam_24dp"
+        app:tint="@android:color/white"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
         android:id="@+id/client_icon"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/image"
         app:layout_constraintEnd_toEndOf="@+id/image"
