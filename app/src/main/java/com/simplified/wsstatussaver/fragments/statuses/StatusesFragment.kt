@@ -30,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView.AdapterDataObserver
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.StatusAdapter
@@ -88,8 +88,8 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
         super.onViewCreated(view, savedInstanceState)
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(view)
-        reenterTransition = MaterialFadeThrough().addTarget(view)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
         _binding = StatusesBinding(FragmentStatusesBinding.bind(view)).apply {
             swipeRefreshLayout.setOnRefreshListener(this@StatusesFragment)
             swipeRefreshLayout.setColorSchemeColors(view.context.primaryColor())

@@ -24,7 +24,7 @@ import androidx.core.content.getSystemService
 import androidx.core.view.doOnPreDraw
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
@@ -72,8 +72,8 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
 
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
-        enterTransition = MaterialFadeThrough().addTarget(view)
-        reenterTransition = MaterialFadeThrough().addTarget(view)
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
+        reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Y, true)
     }
 
     private fun openMessageView() {
