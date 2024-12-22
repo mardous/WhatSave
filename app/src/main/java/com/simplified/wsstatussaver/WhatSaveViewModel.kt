@@ -60,7 +60,7 @@ class WhatSaveViewModel(
 
     private val liveDataMap = newStatusesLiveDataMap()
 
-    private val savedStatuses = MutableLiveData<StatusQueryResult>(StatusQueryResult.Idle)
+    private val savedStatuses = MutableLiveData(StatusQueryResult.Idle)
     private val installedClients = MutableLiveData<List<WaClient>>()
     private val storageDevices = MutableLiveData<List<StorageDevice>>()
     private val countries = MutableLiveData<List<Country>>()
