@@ -181,4 +181,6 @@
     <string name="monthly">Monatlich</string>
     <string name="special_permissions_title">Spezielle Zugriffsberechtigungen</string>
     <string name="permissions_revoked_successfully">Berechtigungen erfolgreich zurückgezogen.</string>
+    <string name="share_link_action">Link teilen</string>
+    <string name="language_german">Deutsch</string>
 </resources>
