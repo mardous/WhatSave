@@ -34,6 +34,8 @@ interface Repository {
     suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri>
     suspend fun deleteStatus(status: Status): Boolean
     suspend fun deleteStatuses(statuses: List<Status>): Int
+    suspend fun removeStatus(status: Status)
+    suspend fun removeStatuses(statuses: List<Status>)
     suspend fun allCountries(): List<Country>
     suspend fun defaultCountry(): Country
     fun defaultCountry(country: Country)
@@ -72,6 +74,10 @@ class RepositoryImpl(
     override suspend fun deleteStatus(status: Status): Boolean = statusesRepository.delete(status)
 
     override suspend fun deleteStatuses(statuses: List<Status>): Int = statusesRepository.delete(statuses)
+
+    override suspend fun removeStatus(status: Status) = statusesRepository.removeFromDatabase(status)
+
+    override suspend fun removeStatuses(statuses: List<Status>) = statusesRepository.removeFromDatabase(statuses)
 
     override suspend fun allCountries(): List<Country> = countryRepository.allCountries()
 

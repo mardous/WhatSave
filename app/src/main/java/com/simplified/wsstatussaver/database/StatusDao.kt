@@ -27,6 +27,9 @@ interface StatusDao {
     @Query("DELETE FROM saved_statuses WHERE save_name = :name")
     fun removeSave(name: String)
 
+    @Query("DELETE FROM saved_statuses WHERE save_name IN (:names)")
+    fun removeSaves(names: Set<String>)
+
     @Query("DELETE FROM saved_statuses WHERE status_type = :type")
     suspend fun removeSaves(type: Int)
 

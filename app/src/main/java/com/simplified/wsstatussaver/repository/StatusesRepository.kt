@@ -41,6 +41,8 @@ interface StatusesRepository {
     suspend fun savedStatuses(): StatusQueryResult
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>>
+    suspend fun removeFromDatabase(status: Status)
+    suspend fun removeFromDatabase(statuses: List<Status>)
     suspend fun share(status: Status): ShareData
     suspend fun share(statuses: List<Status>): ShareData
     suspend fun save(status: Status, saveName: String?): Uri?
@@ -201,6 +203,14 @@ class StatusesRepositoryImpl(
 
     override suspend fun savedStatusesObservable(type: StatusType): LiveData<List<StatusEntity>> =
         statusDao.savedStatuses(type.ordinal)
+
+    override suspend fun removeFromDatabase(status: Status) {
+        statusDao.removeSave(status.name)
+    }
+
+    override suspend fun removeFromDatabase(statuses: List<Status>) {
+        statusDao.removeSaves(statuses.map { it.name }.toSet())
+    }
 
     private fun Cursor.getSavedStatus(type: StatusType): SavedStatus {
         val mediaUri = ContentUris.withAppendedId(type.contentUri, getLong(0))

@@ -180,6 +180,16 @@ class WhatSaveViewModel(
         emit(DeletionResult(statuses = statuses, deleted = result))
     }
 
+    fun removeStatus(status: Status) = viewModelScope.launch(IO) {
+        repository.removeStatus(status)
+        reloadAll()
+    }
+
+    fun removeStatuses(statuses: List<Status>) = viewModelScope.launch(IO) {
+        repository.removeStatuses(statuses)
+        reloadAll()
+    }
+
     fun messageSenders(): LiveData<List<Conversation>> =
         repository.listConversations()
 

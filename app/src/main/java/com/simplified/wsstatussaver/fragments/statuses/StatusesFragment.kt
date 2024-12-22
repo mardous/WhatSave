@@ -76,6 +76,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
     private var _binding: StatusesBinding? = null
     private lateinit var deletionRequestLauncher: ActivityResultLauncher<IntentSenderRequest>
     private val progressDialog by lazy { requireContext().createProgressDialog() }
+    private var deletedStatuses = mutableListOf<Status>()
 
     protected val binding get() = _binding!!
     protected val viewModel by activityViewModel<WhatSaveViewModel>()
@@ -105,7 +106,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
         }
         deletionRequestLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
             if (it.resultCode == Activity.RESULT_OK) {
-                viewModel.reloadAll()
+                viewModel.removeStatuses(deletedStatuses)
                 showToast(R.string.deletion_success)
             }
         }
@@ -181,6 +182,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
             R.id.action_delete -> {
                 if (hasR()) {
                     viewModel.createDeleteRequest(requireContext(), selection).observe(viewLifecycleOwner) {
+                        deletedStatuses = selection.toMutableList()
                         deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
                     }
                 } else {
@@ -281,6 +283,7 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
     override fun onDestroyView() {
         super.onDestroyView()
         preferences().unregisterOnSharedPreferenceChangeListener(this)
+        deletedStatuses.clear()
         statusAdapter?.unregisterAdapterDataObserver(adapterDataObserver)
         statusAdapter = null
     }
