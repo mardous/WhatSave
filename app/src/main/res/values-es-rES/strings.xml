@@ -194,4 +194,5 @@
     <string name="oss_licenses_title">Licencias de código abierto</string>
     <string name="oss_licenses_summary">Consulta las licencias de las bibliotecas de código abierto utilizadas en esta aplicación.</string>
     <string name="share_link_action">Compartir enlace</string>
+    <string name="language_german">Alemán</string>
 </resources>
