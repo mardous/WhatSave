@@ -29,11 +29,13 @@
         <item name="titleMarginStart">16dp</item>
     </style>
 
-    <style name="CollapsingToolbarLargeStyle" parent="Widget.Material3.CollapsingToolbar.Large">
-        <item name="expandedTitleMarginBottom">24dp</item>
-        <item name="expandedTitleMarginEnd">24dp</item>
+    <style name="CollapsingToolbarMediumStyle" parent="Widget.Material3.CollapsingToolbar.Medium">
+        <item name="collapsedTitleTextAppearance">?textAppearanceTitleLarge</item>
+        <item name="collapsedTitleTextColor">?attr/colorOnSurface</item>
+        <item name="expandedTitleTextAppearance">?textAppearanceHeadlineLarge</item>
+        <item name="expandedTitleTextColor">?attr/colorOnSurface</item>
         <item name="expandedTitleMarginStart">24dp</item>
-        <item name="expandedTitleTextAppearance">?textAppearanceHeadline4</item>
+        <item name="titleCollapseMode">scale</item>
     </style>
 
     <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView"/>

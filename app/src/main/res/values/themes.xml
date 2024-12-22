@@ -82,7 +82,7 @@
         <item name="materialButtonStyle">@style/MaterialButtonStyle</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
         <item name="preferenceCategoryStyle">@style/MaterialPreferenceCategory</item>
-        <item name="collapsingToolbarLayoutLargeStyle">@style/CollapsingToolbarLargeStyle</item>
+        <item name="collapsingToolbarLayoutMediumStyle">@style/CollapsingToolbarMediumStyle</item>
     </style>
 
     <style name="Theme.WhatSave" parent="Base.Theme.WhatSave"/>
