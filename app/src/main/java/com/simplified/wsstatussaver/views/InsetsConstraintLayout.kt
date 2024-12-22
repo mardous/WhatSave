@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.views
 import android.content.Context
 import android.util.AttributeSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.simplified.wsstatussaver.extensions.applyLandscapeInsetter
 import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
 
 /**
@@ -42,6 +43,11 @@ class InsetsConstraintLayout @JvmOverloads constructor(
             applyPortraitInsetter {
                 type(navigationBars = true) {
                     padding()
+                }
+            }
+            applyLandscapeInsetter {
+                type(navigationBars = true, displayCutout = true) {
+                    padding(horizontal = true)
                 }
             }
         }
