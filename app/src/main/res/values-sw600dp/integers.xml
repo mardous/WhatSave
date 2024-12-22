@@ -14,5 +14,6 @@
   -->
 
 <resources>
+    <integer name="railMenuGravity">81</integer>
     <integer name="statuses_grid_span_count">4</integer>
 </resources>

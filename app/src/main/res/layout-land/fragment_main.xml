@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             app:menu="@menu/menu_navigation"
-            app:menuGravity="center"
+            app:menuGravity="@integer/railMenuGravity"
             tools:viewBindingType="com.google.android.material.navigation.NavigationBarView" />
 
         <androidx.fragment.app.FragmentContainerView

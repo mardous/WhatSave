@@ -14,6 +14,7 @@
   -->
 
 <resources>
+    <integer name="railMenuGravity">17</integer>
     <integer name="overScrollMode">2</integer>
     <integer name="statuses_grid_span_count">2</integer>
 </resources>
