@@ -41,13 +41,13 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/exo_settings"
+            android:id="@+id/exo_speed_btn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:importantForAccessibility="no"
             android:scaleType="center"
             android:background="?roundSelector"
-            app:srcCompat="@drawable/ic_tune_24dp"
+            android:contentDescription="@string/playback_speed"
+            app:srcCompat="@drawable/ic_speed_1x_24dp"
             app:tint="@android:color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +85,7 @@
             android:textColor="@android:color/white"
             app:layout_constraintTop_toTopOf="@+id/exo_progress"
             app:layout_constraintBottom_toBottomOf="@+id/exo_progress"
-            app:layout_constraintEnd_toStartOf="@+id/exo_settings"
+            app:layout_constraintEnd_toStartOf="@+id/exo_speed_btn"
             tools:text="0:45" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

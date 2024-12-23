@@ -195,4 +195,12 @@
     <string name="language_portuguese_brazil">Portugués (Brasil)</string>
     <string name="language_russian">Ruso</string>
     <string name="language_tamil">Tamil</string>
+    <string name="playback_speed">Velocidad de reproducción</string>
+    <string name="ultra_fast">Ultra rápido</string>
+    <string name="ultra_slow">Ultra lento</string>
+    <string name="very_slow">Muy lento</string>
+    <string name="slow">Lento</string>
+    <string name="fast">Rápido</string>
+    <string name="very_fast">Muy rápido</string>
+    <string name="normal_speed">Normal</string>
 </resources>

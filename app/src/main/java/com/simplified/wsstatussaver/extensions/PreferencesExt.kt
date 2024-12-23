@@ -22,6 +22,7 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.getApp
+import com.simplified.wsstatussaver.model.PlaybackSpeed
 import com.simplified.wsstatussaver.model.SaveLocation
 
 private fun appStr(resId: Int) = getApp().applicationContext.getString(resId)
@@ -122,6 +123,18 @@ var SharedPreferences.saveLocation
     get() = getString(PREFERENCE_SAVE_LOCATION, null)?.toEnum<SaveLocation>() ?: SaveLocation.DCIM
     set(value) = edit { putString(PREFERENCE_SAVE_LOCATION, value.name) }
 
+var SharedPreferences.playbackSpeed
+    get() = getString(PREFERENCE_PLAYBACK_SPEED, null)?.toEnum<PlaybackSpeed>() ?: PlaybackSpeed.Normal
+    set(value) = edit { putString(PREFERENCE_PLAYBACK_SPEED, value.name) }
+
+fun SharedPreferences.bumpPlaybackSpeed(): PlaybackSpeed {
+    return playbackSpeed.next().also { playbackSpeed = it }
+}
+
+fun SharedPreferences.resetPlaybackSpeed(): PlaybackSpeed {
+    return PlaybackSpeed.Normal.also { playbackSpeed = it }
+}
+
 fun SharedPreferences.migratePreferences() {
     if (contains("night_mode")) {
         val oldValue = getString("night_mode", null)
@@ -173,3 +186,4 @@ const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
 const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
 const val BLACKLISTED_MESSAGE_SENDERS = "blacklisted_message_senders"
 const val PREFERENCE_ENABLE_MESSAGE_VIEW = "enable_message_view"
+const val PREFERENCE_PLAYBACK_SPEED = "playback_speed"
