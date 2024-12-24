@@ -50,10 +50,6 @@ private val dataModule = module {
     }
 
     factory {
-        androidContext().contentResolver
-    }
-
-    factory {
         get<StatusDatabase>().statusDao()
     }
 

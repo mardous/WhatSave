@@ -13,11 +13,8 @@
  */
 package com.simplified.wsstatussaver.extensions
 
-import android.content.ContentResolver
 import android.content.Context
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.model.SavedContentState
-import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
 import java.io.File
@@ -55,25 +52,5 @@ fun Status.getState(context: Context): String =
     if (isSaved) context.getString(R.string.status_saved) else context.getString(R.string.status_unsaved)
 
 fun StatusType.acceptFileName(fileName: String): Boolean = !fileName.startsWith(".") && fileName.endsWith(this.format)
-
-fun Status.getSavedContentState(contentResolver: ContentResolver): SavedContentState {
-    if (this is SavedStatus) {
-        if (hasFile()) {
-            return if (getFile().exists()) {
-                SavedContentState.HasSavedContent
-            } else {
-                SavedContentState.HasNotSavedContent
-            }
-        }
-        val isInMediaStore = contentResolver.query(fileUri, null,null,null,null)
-            .use { it != null && it.moveToFirst() }
-        return if (isInMediaStore) {
-            SavedContentState.HasSavedContent
-        } else {
-            SavedContentState.HasNotSavedContent
-        }
-    }
-    return SavedContentState.UnknownState
-}
 
 fun File.getStatusType() = StatusType.entries.firstOrNull { it.acceptFileName(name) }

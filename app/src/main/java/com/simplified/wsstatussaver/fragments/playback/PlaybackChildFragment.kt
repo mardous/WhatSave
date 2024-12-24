@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.fragments.playback
 
 import android.app.Activity
-import android.content.ContentResolver
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
@@ -30,15 +29,12 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.extensions.createProgressDialog
 import com.simplified.wsstatussaver.extensions.hasR
-import com.simplified.wsstatussaver.extensions.getSavedContentState
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.playback.PlaybackFragment.Companion.EXTRA_STATUS
-import com.simplified.wsstatussaver.model.SavedContentState
 import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.Status
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 import kotlin.properties.Delegates
 
@@ -48,7 +44,6 @@ import kotlin.properties.Delegates
 abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View.OnClickListener {
 
     protected val viewModel: WhatSaveViewModel by activityViewModel()
-    private val contentResolver: ContentResolver by inject()
 
     protected abstract val saveButton: MaterialButton
     protected abstract val shareButton: MaterialButton
@@ -71,6 +66,7 @@ abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View
                 if (it.resultCode == Activity.RESULT_OK) {
                     viewModel.removeStatus(status)
                     showToast(R.string.deletion_success)
+                    findNavController().popBackStack()
                 }
             }
     }
@@ -78,11 +74,7 @@ abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View
     override fun onStart() {
         super.onStart()
         viewModel.statusIsSaved(status).observe(viewLifecycleOwner) { isSaved ->
-            when (status.getSavedContentState(contentResolver)) {
-                SavedContentState.UnknownState -> this.isSaved = isSaved
-                SavedContentState.HasSavedContent -> this.isSaved = true
-                SavedContentState.HasNotSavedContent -> findNavController().popBackStack()
-            }
+            this.isSaved = isSaved || (status is SavedStatus)
         }
         saveButton.setOnClickListener(this)
         shareButton.setOnClickListener(this)
@@ -146,6 +138,7 @@ abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View
                                 if (result.isSuccess) {
                                     showToast(R.string.deletion_success)
                                     viewModel.reloadAll()
+                                    findNavController().popBackStack()
                                 } else {
                                     showToast(R.string.deletion_failed)
                                 }
