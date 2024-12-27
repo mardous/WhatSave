@@ -20,6 +20,7 @@ import androidx.annotation.DimenRes
 import androidx.annotation.IdRes
 import androidx.annotation.IntegerRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 
@@ -32,6 +33,11 @@ fun Fragment.getIntRes(@IntegerRes int: Int): Int {
 }
 
 fun Fragment.findActivityNavController(id: Int) = requireActivity().findNavController(id)
+
+@Suppress("UNCHECKED_CAST")
+fun <T> FragmentActivity.whichFragment(@IdRes id: Int): T {
+    return supportFragmentManager.findFragmentById(id) as T
+}
 
 @Suppress("UNCHECKED_CAST")
 fun <T> Fragment.whichFragment(@IdRes id: Int): T {

@@ -17,25 +17,36 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.activities.base.BaseActivity
 import com.simplified.wsstatussaver.dialogs.UpdateDialog
 import com.simplified.wsstatussaver.extensions.getPreferredClient
+import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.update.isAbleToUpdate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-class StatusesActivity : BaseActivity() {
+class StatusesActivity : BaseActivity(), NavController.OnDestinationChangedListener {
 
     private val viewModel by viewModel<WhatSaveViewModel>()
+    private var globalNavController: NavController? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val navigationHost = whichFragment<NavHostFragment>(R.id.global_container)
+        globalNavController = navigationHost.navController.also {
+            it.addOnDestinationChangedListener(this)
+        }
+
         if (savedInstanceState == null) {
             searchUpdate()
         }
@@ -48,6 +59,17 @@ class StatusesActivity : BaseActivity() {
                     UpdateDialog.create(updateInfo).show(supportFragmentManager, "UPDATE_FOUND")
                 }
             }
+        }
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        when (destination.id) {
+            R.id.mainFragment -> lightSystemBars()
+            R.id.playbackFragment -> lightSystemBars(false)
         }
     }
 
@@ -69,6 +91,11 @@ class StatusesActivity : BaseActivity() {
 
     override fun onSupportNavigateUp(): Boolean =
         findNavController(R.id.main_container).navigateUp()
+
+    override fun onDestroy() {
+        globalNavController?.removeOnDestinationChangedListener(this)
+        super.onDestroy()
+    }
 }
 
 fun Menu.setupWhatsAppMenuItem(activity: FragmentActivity) {

@@ -28,6 +28,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.STORAGE_PERMISSION_REQUEST
 import com.simplified.wsstatussaver.extensions.getGeneralThemeRes
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
+import com.simplified.wsstatussaver.extensions.isNightModeEnabled
 import com.simplified.wsstatussaver.extensions.isShownOnboard
 import com.simplified.wsstatussaver.extensions.openSettings
 import com.simplified.wsstatussaver.extensions.preferences
@@ -59,6 +60,11 @@ abstract class BaseActivity : AppCompatActivity() {
         if (preferences().useCustomFont()) {
             setTheme(R.style.CustomFontThemeOverlay)
         }
+    }
+
+    protected fun lightSystemBars(isLight: Boolean = !isNightModeEnabled) {
+        windowInsetsController.isAppearanceLightStatusBars = isLight
+        windowInsetsController.isAppearanceLightNavigationBars = isLight
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
