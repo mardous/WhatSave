@@ -84,7 +84,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         _binding = OnboardBinding(FragmentOnboardBinding.bind(view))
         binding.agreementText.applyPortraitInsetter {
             type(navigationBars = true) {
-                margin()
+                margin(vertical = true)
             }
         }
 
