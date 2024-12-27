@@ -62,7 +62,7 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentVideoBinding.bind(view)
         playerView.setShowBuffering(PlayerView.SHOW_BUFFERING_NEVER)
-        playerView.controllerAutoShow = false
+        //playerView.controllerAutoShow = false
         playerView.controllerShowTimeoutMs = 3000
         setupSpeedButton()
         initPlayer()
