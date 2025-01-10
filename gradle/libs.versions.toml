@@ -1,5 +1,5 @@
 [versions]
-androidPluginVersion = "8.7.3"
+androidPluginVersion = "8.8.0"
 annotation = "1.9.1"
 kspPluginVersion = "2.1.0-1.0.29"
 gmsPluginVersion = "4.4.2"
