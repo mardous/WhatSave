@@ -39,4 +39,20 @@ class SavedStatus(
     fun getFilePath(): String {
         return getFile().canonicalOrAbsolutePath()
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is SavedStatus) return false
+        if (!super.equals(other)) return false
+
+        if (path != other.path) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + (path?.hashCode() ?: 0)
+        return result
+    }
 }
