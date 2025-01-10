@@ -27,7 +27,7 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.PlaybackAdapter
 import com.simplified.wsstatussaver.databinding.FragmentPlaybackBinding
-import com.simplified.wsstatussaver.extensions.applyLandscapeInsetter
+import com.simplified.wsstatussaver.extensions.applyHorizontalWindowInsets
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 
 /**
@@ -55,11 +55,7 @@ class PlaybackFragment : BaseFragment(R.layout.fragment_playback), Player.Listen
         enterTransition = MaterialFadeThrough().addTarget(view)
         reenterTransition = MaterialFadeThrough().addTarget(view)
 
-        binding.toolbar.applyLandscapeInsetter {
-            type(navigationBars = true, displayCutout = true) {
-                margin(horizontal = true)
-            }
-        }
+        binding.toolbar.applyHorizontalWindowInsets(padding = false)
         statusesActivity.setSupportActionBar(binding.toolbar)
         statusesActivity.supportActionBar?.title = null
 

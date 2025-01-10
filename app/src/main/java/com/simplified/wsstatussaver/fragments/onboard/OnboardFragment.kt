@@ -34,7 +34,7 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.ClientAdapter
 import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
-import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
+import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.getClientSAFIntent
 import com.simplified.wsstatussaver.extensions.getOnBackPressedDispatcher
@@ -82,11 +82,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = OnboardBinding(FragmentOnboardBinding.bind(view))
-        binding.agreementText.applyPortraitInsetter {
-            type(navigationBars = true) {
-                margin(vertical = true)
-            }
-        }
+        binding.agreementText.applyWindowInsets(bottom = true, padding = false)
 
         postponeEnterTransition()
         enterTransition = MaterialFadeThrough().addTarget(view)

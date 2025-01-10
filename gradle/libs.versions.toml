@@ -33,7 +33,6 @@ coilVersion = "3.0.4"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
-insetterVersion = "0.6.1"
 photoviewVersion = "1.0.2"
 
 [libraries]
@@ -69,7 +68,6 @@ navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-kt
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 
 photoview = { module = "io.getstream:photoview", version.ref = "photoviewVersion" }
-insetter = { module = "dev.chrisbanes.insetter:insetter", version.ref = "insetterVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }

@@ -153,7 +153,6 @@ dependencies {
     implementation(libs.coil.video)
 
     implementation(libs.photoview)
-    implementation(libs.insetter)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
     implementation(libs.okhttp3.logging)

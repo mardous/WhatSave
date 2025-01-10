@@ -45,10 +45,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.simplified.wsstatussaver.views.InsetsNestedScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
+        android:overScrollMode="@integer/overScrollMode"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,6 +84,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.simplified.wsstatussaver.views.InsetsNestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

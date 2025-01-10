@@ -38,7 +38,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_QUICK_DELETION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_THEME_MODE
 import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
-import com.simplified.wsstatussaver.extensions.applyPortraitInsetter
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
@@ -92,11 +92,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            listView.applyPortraitInsetter {
-                type(navigationBars = true) {
-                    padding(vertical = true)
-                }
-            }
+            listView.applyBottomWindowInsets()
 
             findPreference<Preference>("about")?.setOnPreferenceClickListener {
                 findNavController().navigate(R.id.aboutFragment)

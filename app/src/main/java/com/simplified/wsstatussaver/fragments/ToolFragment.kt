@@ -28,6 +28,7 @@ import com.google.android.material.transition.MaterialSharedAxis
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.databinding.FragmentToolBinding
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
 import com.simplified.wsstatussaver.extensions.isNotificationListener
 import com.simplified.wsstatussaver.extensions.launchSafe
@@ -48,6 +49,7 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentToolBinding.bind(view)
+        binding.scrollView.applyBottomWindowInsets()
         binding.msgANumber.setOnClickListener {
             logToolView("MessageFragment", "Message a number")
             findNavController().navigate(R.id.messageFragment)

@@ -28,6 +28,7 @@ import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentAboutBinding
 import com.simplified.wsstatussaver.dialogs.LicensesDialog
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.getApp
@@ -48,6 +49,7 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
         view.doOnPreDraw { startPostponedEnterTransition() }
 
         _binding = FragmentAboutBinding.bind(view)
+        binding.scrollView.applyBottomWindowInsets()
         binding.toolbar.setTitle(R.string.about_title)
         binding.appVersion.setSummary(getString(R.string.version_x, getApp().versionName))
         binding.appVersion.setOnClickListener(this)

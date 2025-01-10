@@ -24,11 +24,11 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigationrail.NavigationRailView
 import com.simplified.wsstatussaver.R
-import com.simplified.wsstatussaver.extensions.applyLandscapeInsetter
+import com.simplified.wsstatussaver.extensions.applyHorizontalWindowInsets
+import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.currentFragment
 import com.simplified.wsstatussaver.extensions.getBottomInsets
 import com.simplified.wsstatussaver.extensions.hide
@@ -36,7 +36,6 @@ import com.simplified.wsstatussaver.extensions.requireWindow
 import com.simplified.wsstatussaver.extensions.show
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.statuses.StatusesFragment
-import dev.chrisbanes.insetter.applyInsetter
 
 /**
  * @author Christians M. A. (mardous)
@@ -54,26 +53,11 @@ class MainFragment : Fragment(R.layout.fragment_main),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         contentView = view.findViewById(R.id.main_container)
-        contentView.applyLandscapeInsetter {
-            type(navigationBars = true, displayCutout = true) {
-                padding(right = true)
-            }
-        }
+        contentView.applyHorizontalWindowInsets(left = false)
         navigationView = view.findViewById(R.id.navigation_view)
         navigationView.setOnItemReselectedListener(this)
-        if (navigationView is BottomNavigationView) {
-            navigationView.applyInsetter {
-                type(navigationBars = true) {
-                    padding(vertical = true)
-                    margin(horizontal = true)
-                }
-            }
-        } else if (navigationView is NavigationRailView) {
-            navigationView.applyInsetter {
-                type(navigationBars = true, displayCutout = true) {
-                    padding(left = true)
-                }
-            }
+        if (navigationView is NavigationRailView) {
+            navigationView.applyWindowInsets(top = true, left = true)
         }
 
         requireWindow().decorView.setOnApplyWindowInsetsListener { _, insets ->

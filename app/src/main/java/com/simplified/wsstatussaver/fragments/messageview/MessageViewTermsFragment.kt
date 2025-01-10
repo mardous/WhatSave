@@ -24,6 +24,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialSharedAxis
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentMessageviewTermsBinding
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.openSettings
@@ -55,6 +56,7 @@ class MessageViewTermsFragment : BaseFragment(R.layout.fragment_messageview_term
             }
             findNavController().popBackStack()
         }
+        binding.scrollView.applyBottomWindowInsets()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {

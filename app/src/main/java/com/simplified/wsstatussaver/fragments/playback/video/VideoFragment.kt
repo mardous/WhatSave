@@ -28,7 +28,9 @@ import androidx.media3.ui.PlayerView
 import com.google.android.material.button.MaterialButton
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentVideoBinding
+import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.bumpPlaybackSpeed
+import com.simplified.wsstatussaver.extensions.paddingSpace
 import com.simplified.wsstatussaver.extensions.playbackSpeed
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.resetPlaybackSpeed
@@ -64,6 +66,7 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
         playerView.setShowBuffering(PlayerView.SHOW_BUFFERING_NEVER)
         //playerView.controllerAutoShow = false
         playerView.controllerShowTimeoutMs = 3000
+        setupControllerInsets()
         setupSpeedButton()
         initPlayer()
     }
@@ -123,6 +126,13 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
         player?.setMediaItem(MediaItem.fromUri(status.fileUri))
         player?.repeatMode = Player.REPEAT_MODE_ONE
         player?.prepare()
+    }
+
+    private fun setupControllerInsets() {
+        val controllerView = playerView.findViewById<View>(R.id.controllerView)
+        controllerView.applyWindowInsets(
+            left = true, right = true, bottom = true, addedSpace = controllerView.paddingSpace()
+        )
     }
 
     private fun setupSpeedButton() {

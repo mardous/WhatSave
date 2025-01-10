@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.databinding.FragmentConversationsBinding
 import com.simplified.wsstatussaver.dialogs.BlacklistedSenderDialog
 import com.simplified.wsstatussaver.dialogs.DeleteConversationDialog
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.bindNotificationListener
 import com.simplified.wsstatussaver.extensions.getIntRes
 import com.simplified.wsstatussaver.extensions.isMessageViewEnabled
@@ -74,6 +75,7 @@ class ConversationListFragment : BaseFragment(R.layout.fragment_conversations), 
         super.onViewCreated(view, savedInstanceState)
         val viewBinding = FragmentConversationsBinding.bind(view)
         _binding = ConversationsBinding(viewBinding)
+        binding.scrollView.applyBottomWindowInsets()
         postponeEnterTransition()
         view.doOnPreDraw { startPostponedEnterTransition() }
         enterTransition = MaterialFadeThrough().addTarget(view)

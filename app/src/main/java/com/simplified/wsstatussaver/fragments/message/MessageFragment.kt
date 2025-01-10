@@ -31,6 +31,7 @@ import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.CountryAdapter
 import com.simplified.wsstatussaver.databinding.DialogRecyclerviewBinding
 import com.simplified.wsstatussaver.databinding.FragmentMessageANumberBinding
+import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.encodedUrl
 import com.simplified.wsstatussaver.extensions.getPreferredClient
 import com.simplified.wsstatussaver.extensions.showToast
@@ -60,6 +61,7 @@ class MessageFragment : BaseFragment(R.layout.fragment_message_a_number), ICount
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = MessageBinding(FragmentMessageANumberBinding.bind(view))
+        binding.scrollView.applyBottomWindowInsets()
         postponeEnterTransition()
         enterTransition = MaterialFadeThrough().addTarget(view)
         reenterTransition = MaterialFadeThrough().addTarget(view)
