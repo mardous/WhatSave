@@ -33,7 +33,7 @@ abstract class AbsMultiSelectionAdapter<Data, VH : ViewHolder>(
     private val multiMenuRes: Int,
 ) : RecyclerView.Adapter<VH>(), ActionMode.Callback {
 
-    var actionMode: ActionMode? = null
+    private var actionMode: ActionMode? = null
     private val checked = ArrayList<Data>()
 
     override fun onCreateActionMode(mode: ActionMode, menu: Menu): Boolean {
