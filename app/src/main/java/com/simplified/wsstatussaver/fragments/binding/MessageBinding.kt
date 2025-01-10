@@ -16,12 +16,9 @@ package com.simplified.wsstatussaver.fragments.binding
 import com.simplified.wsstatussaver.databinding.FragmentMessageANumberBinding
 
 class MessageBinding(binding: FragmentMessageANumberBinding) {
-    val appBar = binding.appBar
     val toolbar = binding.toolbar
-    val collapsingToolbarLayout = binding.collapsingToolbarLayout
     val scrollView = binding.scrollView
     val phoneInputLayout = binding.messageANumberContent.phoneNumberInputLayout
-    val messageInputLayout = binding.messageANumberContent.messageInputLayout
     val phoneNumber = binding.messageANumberContent.phoneNumber
     val message = binding.messageANumberContent.message
     val shareButton = binding.messageANumberContent.shareButton
