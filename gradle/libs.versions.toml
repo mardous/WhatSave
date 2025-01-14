@@ -17,14 +17,12 @@ fragmentKtx = "1.8.5"
 libphonenumberAndroid = "8.13.48"
 lifecycleVersion = "2.8.7"
 loader = "1.1.0"
-loggingInterceptor = "4.12.0"
 material = "1.12.0"
 navigationVersion = "2.8.5"
 preferenceKtx = "1.2.1"
 prettytime = "5.0.4.Final"
 recyclerview = "1.3.2"
 gson = "2.11.0"
-retrofitVersion = "2.11.0"
 roomVersion = "2.6.1"
 koinVersion = "4.0.1"
 swiperefreshlayout = "1.1.0"
@@ -34,6 +32,7 @@ versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
 photoviewVersion = "1.0.2"
+ktor = "3.0.3"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -64,14 +63,17 @@ lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx
 lifecycle-common-java8 = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "lifecycleVersion" }
 lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleVersion" }
 
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-okhttp = { group = "io.ktor", name = "ktor-client-okhttp", version.ref = "ktor" }
+ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-client-encoding = { group = "io.ktor", name = "ktor-client-encoding", version.ref = "ktor" }
+ktor-serialization-json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationVersion" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 
 photoview = { module = "io.getstream:photoview", version.ref = "photoviewVersion" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
-okhttp3-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
-retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 
@@ -92,8 +94,12 @@ markdown-html = { module = "io.noties.markwon:html", version.ref = "markdown" }
 gms-plugin = { module = "com.google.gms:google-services", version.ref = "gmsPluginVersion" }
 firebase-crashlytics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlyticsPluginVersion" }
 
+[bundles]
+ktor = ["ktor-client-core", "ktor-client-okhttp", "ktor-serialization-json", "ktor-client-content-negotiation", "ktor-client-encoding"]
+
 [plugins]
 agp = { id = "com.android.application", version.ref = "androidPluginVersion" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "kspPluginVersion" }
 androidx-safeargs = { id = "androidx.navigation.safeargs", version.ref = "navigationVersion" }

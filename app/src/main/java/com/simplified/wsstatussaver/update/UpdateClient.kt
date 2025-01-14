@@ -14,66 +14,13 @@
 package com.simplified.wsstatussaver.update
 
 import android.content.Context
-import com.google.gson.GsonBuilder
-import com.google.gson.Strictness
-import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.extensions.UpdateSearchMode
 import com.simplified.wsstatussaver.extensions.getUpdateSearchMode
 import com.simplified.wsstatussaver.extensions.isOnline
 import com.simplified.wsstatussaver.extensions.isUpdateOnlyWifi
 import com.simplified.wsstatussaver.extensions.lastUpdateSearch
 import com.simplified.wsstatussaver.extensions.preferences
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
-private fun logInterceptor(): Interceptor {
-    val loggingInterceptor = HttpLoggingInterceptor()
-    if (BuildConfig.DEBUG) {
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-    } else {
-        // disable retrofit log on release
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
-    }
-    return loggingInterceptor
-}
-
-private fun headerInterceptor(context: Context): Interceptor {
-    return Interceptor {
-        val original = it.request()
-        val request = original.newBuilder()
-            .header("User-Agent", context.packageName)
-            .addHeader("Content-Type", "application/json; charset=utf-8")
-            .method(original.method, original.body)
-            .build()
-        it.proceed(request)
-    }
-}
-
-fun provideOkHttp(context: Context): OkHttpClient {
-    return OkHttpClient.Builder()
-        .addNetworkInterceptor(logInterceptor())
-        .addInterceptor(headerInterceptor(context))
-        .connectTimeout(5, TimeUnit.SECONDS)
-        .readTimeout(5, TimeUnit.SECONDS)
-        .build()
-}
-
-fun provideUpdateService(client: OkHttpClient): UpdateService {
-    val gson = GsonBuilder()
-        .setStrictness(Strictness.LENIENT)
-        .create()
-
-    val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/repos/")
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .callFactory { request -> client.newCall(request) }
-        .build()
-    return retrofit.create(UpdateService::class.java)
-}
 
 fun Context.isAbleToUpdate(): Boolean {
     val minElapsedMillis = when (preferences().getUpdateSearchMode()) {

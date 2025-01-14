@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver
 import androidx.room.Room
 import com.simplified.wsstatussaver.database.MIGRATION_1_2
 import com.simplified.wsstatussaver.database.StatusDatabase
+import com.simplified.wsstatussaver.network.ktorHttpClient
 import com.simplified.wsstatussaver.repository.CountryRepository
 import com.simplified.wsstatussaver.repository.CountryRepositoryImpl
 import com.simplified.wsstatussaver.repository.MessageRepository
@@ -25,8 +26,6 @@ import com.simplified.wsstatussaver.repository.RepositoryImpl
 import com.simplified.wsstatussaver.repository.StatusesRepository
 import com.simplified.wsstatussaver.repository.StatusesRepositoryImpl
 import com.simplified.wsstatussaver.storage.Storage
-import com.simplified.wsstatussaver.update.provideOkHttp
-import com.simplified.wsstatussaver.update.provideUpdateService
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
@@ -34,11 +33,8 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 private val networkModule = module {
-    factory {
-        provideOkHttp(get())
-    }
     single {
-        provideUpdateService(get())
+        ktorHttpClient()
     }
 }
 

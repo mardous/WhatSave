@@ -46,7 +46,10 @@ import com.simplified.wsstatussaver.storage.StorageDevice
 import com.simplified.wsstatussaver.update.DEFAULT_REPO
 import com.simplified.wsstatussaver.update.DEFAULT_USER
 import com.simplified.wsstatussaver.update.GitHubRelease
-import com.simplified.wsstatussaver.update.UpdateService
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.http.isSuccess
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -54,7 +57,7 @@ import java.util.EnumMap
 
 class WhatSaveViewModel(
     private val repository: Repository,
-    private val updateService: UpdateService,
+    private val httpClient: HttpClient,
     private val storage: Storage
 ) : ViewModel() {
 
@@ -224,7 +227,10 @@ class WhatSaveViewModel(
     }
 
     fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + SilentHandler) {
-        emit(updateService.latestRelease(DEFAULT_USER, DEFAULT_REPO))
+        val result = httpClient.get("https://api.github.com/repos/$DEFAULT_USER/$DEFAULT_REPO/releases/latest")
+        if (result.status.isSuccess()) {
+            emit(result.body())
+        }
     }
 
     fun downloadUpdate(context: Context, release: GitHubRelease) = viewModelScope.launch(IO + SilentHandler) {

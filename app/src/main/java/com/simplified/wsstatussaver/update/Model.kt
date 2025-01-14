@@ -20,7 +20,6 @@ import android.os.Environment
 import android.os.Parcelable
 import androidx.core.content.edit
 import androidx.core.net.toUri
-import com.google.gson.annotations.SerializedName
 import com.simplified.wsstatussaver.BuildConfig
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.packageInfo
@@ -28,24 +27,25 @@ import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.toFileSize
 import io.github.g00fy2.versioncompare.Version
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 @Parcelize
+@Serializable
 class GitHubRelease(
-    @SerializedName("name")
     val name: String,
-    @SerializedName("tag_name")
+    @SerialName("tag_name")
     val tag: String,
-    @SerializedName("html_url")
+    @SerialName("html_url")
     val url: String,
-    @SerializedName("published_at")
+    @SerialName("published_at")
     val date: String,
-    @SerializedName("body")
     val body: String,
-    @SerializedName("prerelease")
+    @SerialName("prerelease")
     val isPrerelease: Boolean,
-    @SerializedName("assets")
+    @SerialName("assets")
     val downloads: List<ReleaseAsset>
 ) : Parcelable {
 
@@ -114,16 +114,14 @@ class GitHubRelease(
 }
 
 @Parcelize
+@Serializable
 class ReleaseAsset(
-    @SerializedName("name")
     val name: String,
-    @SerializedName("content_type")
+    @SerialName("content_type")
     val contentType: String,
-    @SerializedName("state")
     val state: String,
-    @SerializedName("size")
     val size: Long,
-    @SerializedName("browser_download_url")
+    @SerialName("browser_download_url")
     val downloadUrl: String
 ) : Parcelable {
 
