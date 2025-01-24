@@ -56,7 +56,7 @@
     <string name="report_bugs_title">تقارير الاخطاء</string>
     <string name="received_messages_listener">مستمع الرسائل المستلمة</string>
     <string name="report_bugs_summary">افتح صفحة تعقب المشكلة على GitHub.</string>
-    <string name="you_wont_be_able_to_see_messages_here">لن تتمكن من رؤية رسائل WA المحذوفة أو المستلمة هنا.</string>
+    <string name="you_wont_be_able_to_see_messages_here">لن تتمكن من رؤية رسائل WhatsApp المحذوفة أو المستلمة هنا.</string>
     <string name="confirm_device_credentials">يجب عليك تأكيد بيانات الاعتماد الخاصة بك قبل استخدام هذه الأداة.</string>
     <string name="conversations_title">المحادثات</string>
     <string name="messages_from_x">المحادثات %s</string>
@@ -69,7 +69,7 @@
     <string name="language_tamil">التاميلية</string>
     <string name="x_selected">%d محدد</string>
     <string name="there_may_be_no_saved_files">قد لا يكون هناك ملفات محفوظة</string>
-    <string name="wa_is_not_installed_title">لم يتم تثبيت WA</string>
+    <string name="wa_is_not_installed_title">لم يتم تثبيت WhatsApp</string>
     <string name="this_application_will_not_work">هذا التطبيق لن يعمل</string>
     <string name="launch_x_client">%s فتح</string>
     <string name="delete_saved_status_title">حذف الحالات المحفوظة</string>
@@ -77,8 +77,8 @@
     <string name="x_is_the_default_client_now">%s هو العميل الافتراضي الآن.</string>
     <string name="default_client_cleared">تم مسح العميل الافتراضي.</string>
     <string name="saf_tutorial">في الشاشة التالية، تأكد من تحديد الموقع \"<b>%s</b>\". بمجرد الانتهاء، اضغط على زر \"استخدام هذا المجلد\" في الأسفل للتأكيد.</string>
-    <string name="installed_clients_empty">لم يتم تثبيت عملاء WA.</string>
-    <string name="you_should_open_wa_and_download_some_statuses">يجب عليك الذهاب إلى WA وتنزيل بعض الحالات</string>
+    <string name="installed_clients_empty">لم يتم تثبيت عملاء WhatsApp.</string>
+    <string name="you_should_open_wa_and_download_some_statuses">يجب عليك الذهاب إلى WhatsApp وتنزيل بعض الحالات</string>
     <string name="just_black_theme_title">طابع اسود فقط</string>
     <string name="action_settings">الاعدادات</string>
     <string name="settings_interface">الواجهة</string>
