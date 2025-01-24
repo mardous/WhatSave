@@ -99,6 +99,7 @@ abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View
             saveButton -> {
                 if (!isSaved) {
                     viewModel.saveStatus(status).observe(viewLifecycleOwner) { result ->
+                        saveButton.isEnabled = !result.isSaving
                         if (result.isSuccess) {
                             showToast(R.string.saved_successfully)
                             viewModel.reloadAll()
@@ -111,6 +112,7 @@ abstract class PlaybackChildFragment(layoutRes: Int) : Fragment(layoutRes), View
 
             shareButton -> {
                 viewModel.shareStatus(status).observe(viewLifecycleOwner) { result ->
+                    shareButton.isEnabled = !result.isLoading
                     if (result.isLoading) {
                         progressDialog.show()
                     } else {
