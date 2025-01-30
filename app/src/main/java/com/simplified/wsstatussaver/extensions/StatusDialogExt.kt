@@ -99,14 +99,14 @@ class StatusMenu(
         get() = listOf(selection)
 
     fun createClick(
-        onPreviewClick: StatusCallback? = this.onPreviewClick,
-        onSaveClick: StatusCallback? = this.onSaveClick,
-        onShareClick: StatusCallback? = this.onShareClick,
-        onDeleteClick: StatusCallback? = this.onDeleteClick
-    ) = apply {
-        this.onPreviewClick = onPreviewClick
-        this.onSaveClick = onSaveClick
-        this.onDeleteClick = onDeleteClick
-        this.onShareClick = onShareClick
+        onPreviewClick: StatusCallback? = null,
+        onSaveClick: StatusCallback? = null,
+        onShareClick: StatusCallback? = null,
+        onDeleteClick: StatusCallback? = null
+    ) = also {
+        this.onPreviewClick = onPreviewClick ?: this.onPreviewClick
+        this.onSaveClick = onSaveClick ?: this.onSaveClick
+        this.onDeleteClick = onDeleteClick ?: this.onDeleteClick
+        this.onShareClick = onShareClick ?: this.onShareClick
     }
 }
