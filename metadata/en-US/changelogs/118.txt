@@ -1,0 +1,13 @@
+* Edge-to-edge design support
+* The layout of the main screen has been redesigned
+* A navigation rail is now used on the home screen when the device is in landscape mode
+* The tool list views have been redesigned
+* The status list now looks cleaner and more simplified
+* Images and videos are now played within the app
+* The app color scheme on devices running Android 11 and below has been improved
+* New transitions when navigating between main sections
+* You can now share a link to start a chat
+* Added German translation (by Christian Weiske)
+* Now the app targets Android 15
+* Many more UI improvements
+* Many internal changes to improve performance
