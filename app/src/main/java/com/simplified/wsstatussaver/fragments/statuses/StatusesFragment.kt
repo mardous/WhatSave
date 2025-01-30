@@ -301,6 +301,11 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        statusAdapter?.finishActionMode()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         preferences().unregisterOnSharedPreferenceChangeListener(this)
