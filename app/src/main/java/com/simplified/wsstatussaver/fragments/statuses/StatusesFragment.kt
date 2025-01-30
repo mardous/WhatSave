@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.PREFERENCE_EXCLUDE_SAVED_STATUSES
 import com.simplified.wsstatussaver.extensions.PREFERENCE_STATUSES_LOCATION
 import com.simplified.wsstatussaver.extensions.PREFERENCE_WHATSAPP_ICON
+import com.simplified.wsstatussaver.extensions.StatusMenu
 import com.simplified.wsstatussaver.extensions.createProgressDialog
 import com.simplified.wsstatussaver.extensions.dip
 import com.simplified.wsstatussaver.extensions.findActivityNavController
@@ -50,8 +51,10 @@ import com.simplified.wsstatussaver.extensions.isWhatsappIcon
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.primaryColor
+import com.simplified.wsstatussaver.extensions.requestContext
 import com.simplified.wsstatussaver.extensions.requestPermissions
 import com.simplified.wsstatussaver.extensions.requestView
+import com.simplified.wsstatussaver.extensions.showStatusOptions
 import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
@@ -63,7 +66,6 @@ import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.mvvm.DeletionResult
-import com.simplified.wsstatussaver.mvvm.SaveResult
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
@@ -158,54 +160,11 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
         viewModel.reloadAll()
     }
 
-    override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) = requestView {
+    override fun multiSelectionItemClick(item: MenuItem, selection: List<Status>) {
         when (item.itemId) {
-            R.id.action_share -> {
-                viewModel.shareStatuses(selection).observe(viewLifecycleOwner) {
-                    if (it.isLoading) {
-                        progressDialog.show()
-                    } else {
-                        progressDialog.dismiss()
-                        if (it.isSuccess) {
-                            startActivitySafe(it.data.createIntent(requireContext()))
-                        }
-                    }
-                }
-            }
-
-            R.id.action_save -> {
-                viewModel.saveStatuses(selection).observe(viewLifecycleOwner) {
-                    processSaveResult(it)
-                }
-            }
-
-            R.id.action_delete -> {
-                if (hasR()) {
-                    viewModel.createDeleteRequest(requireContext(), selection).observe(viewLifecycleOwner) {
-                        deletedStatuses = selection.toMutableList()
-                        deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
-                    }
-                } else {
-                    if (!preferences().isQuickDeletion()) {
-                        MaterialAlertDialogBuilder(requireContext())
-                            .setTitle(R.string.delete_saved_statuses_title)
-                            .setMessage(
-                                getString(R.string.x_saved_statuses_will_be_permanently_deleted, selection.size)
-                            )
-                            .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
-                                viewModel.deleteStatuses(selection).observe(viewLifecycleOwner) {
-                                    processDeletionResult(it)
-                                }
-                            }
-                            .setNegativeButton(android.R.string.cancel, null)
-                            .show()
-                    } else {
-                        viewModel.deleteStatuses(selection).observe(viewLifecycleOwner) {
-                            processDeletionResult(it)
-                        }
-                    }
-                }
-            }
+            R.id.action_share -> shareStatuses(selection)
+            R.id.action_save -> saveStatuses(selection)
+            R.id.action_delete -> deleteStatuses(selection)
         }
     }
 
@@ -214,6 +173,25 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
             R.id.playbackFragment,
             PlaybackFragmentArgs.Builder(statuses.toTypedArray(), startPosition).build()
                 .toBundle()
+        )
+    }
+
+    override fun showStatusMenu(menu: StatusMenu) = requestContext { context ->
+        context.showStatusOptions(
+            menu.createClick(
+                onPreviewClick = {
+                    previewStatusesClick(menu.statuses, menu.selectedPosition)
+                },
+                onSaveClick = {
+                    saveStatuses(menu.selectionAsList)
+                },
+                onShareClick = {
+                    shareStatuses(menu.selectionAsList)
+                },
+                onDeleteClick = {
+                    deleteStatuses(menu.selectionAsList)
+                }
+            )
         )
     }
 
@@ -240,29 +218,72 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
         }
     }
 
-    private fun processSaveResult(result: SaveResult) = requestView { view ->
-        if (result.isSaving) {
-            Snackbar.make(view, R.string.saving_status, Snackbar.LENGTH_SHORT).show()
-        } else {
-            if (result.isSuccess) {
-                if (result.saved == 1) {
-                    Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT).show()
-                } else {
-                    Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
-                        .show()
-                }
-                viewModel.reloadAll()
+    private fun shareStatuses(statuses: List<Status>) = requestView {
+        viewModel.shareStatuses(statuses).observe(viewLifecycleOwner) {
+            if (it.isLoading) {
+                progressDialog.show()
             } else {
-                Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
+                progressDialog.dismiss()
+                if (it.isSuccess) {
+                    startActivitySafe(it.data.createIntent(requireContext()))
+                }
             }
         }
-        statusAdapter?.isSavingContent = result.isSaving
     }
 
-    private fun processDeletionResult(result: DeletionResult) = requestView { view ->
-        if (result.isDeleting) {
+    private fun saveStatuses(statuses: List<Status>) = requestView { view ->
+        viewModel.saveStatuses(statuses).observe(viewLifecycleOwner) { result ->
+            if (result.isSaving) {
+                Snackbar.make(view, R.string.saving_status, Snackbar.LENGTH_SHORT).show()
+            } else {
+                if (result.isSuccess) {
+                    if (result.saved == 1) {
+                        Snackbar.make(view, R.string.saved_successfully, Snackbar.LENGTH_SHORT).show()
+                    } else {
+                        Snackbar.make(view, getString(R.string.saved_x_statuses, result.saved), Snackbar.LENGTH_SHORT)
+                            .show()
+                    }
+                    viewModel.reloadAll()
+                } else {
+                    Snackbar.make(view, R.string.failed_to_save, Snackbar.LENGTH_SHORT).show()
+                }
+            }
+            statusAdapter?.isSavingContent = result.isSaving
+        }
+    }
+
+    private fun deleteStatuses(statuses: List<Status>) = requestView { view ->
+        if (hasR()) {
+            viewModel.createDeleteRequest(requireContext(), statuses).observe(viewLifecycleOwner) {
+                deletedStatuses = statuses.toMutableList()
+                deletionRequestLauncher.launchSafe(IntentSenderRequest.Builder(it).build())
+            }
+        } else {
+            if (!preferences().isQuickDeletion()) {
+                MaterialAlertDialogBuilder(requireContext())
+                    .setTitle(R.string.delete_saved_statuses_title)
+                    .setMessage(
+                        getString(R.string.x_saved_statuses_will_be_permanently_deleted, statuses.size)
+                    )
+                    .setPositiveButton(R.string.delete_action) { _: DialogInterface, _: Int ->
+                        viewModel.deleteStatuses(statuses).observe(viewLifecycleOwner) {
+                            it.processDeletionResult()
+                        }
+                    }
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show()
+            } else {
+                viewModel.deleteStatuses(statuses).observe(viewLifecycleOwner) {
+                    it.processDeletionResult()
+                }
+            }
+        }
+    }
+
+    private fun DeletionResult.processDeletionResult() = requestView { view ->
+        if (isDeleting) {
             Snackbar.make(view, R.string.deleting_please_wait, Snackbar.LENGTH_SHORT).show()
-        } else if (result.isSuccess) {
+        } else if (isSuccess) {
             Snackbar.make(view, R.string.deletion_success, Snackbar.LENGTH_SHORT).show()
             viewModel.reloadAll()
         } else {

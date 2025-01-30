@@ -23,6 +23,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.view.ActionMode
@@ -36,6 +37,7 @@ import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
 import com.simplified.wsstatussaver.databinding.ItemStatusBinding
+import com.simplified.wsstatussaver.extensions.StatusMenu
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
@@ -74,11 +76,14 @@ open class StatusAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val status = statuses[position]
 
+        val isSelected = isItemSelected(status)
         if (holder.cardView != null) {
-            holder.cardView.isChecked = isItemSelected(status)
+            holder.cardView.isChecked = isSelected
         } else {
-            holder.itemView.isActivated = isItemSelected(status)
+            holder.itemView.isActivated = isSelected
         }
+
+        holder.menu?.isGone = isSelected
 
         if (status.type == StatusType.VIDEO) {
             holder.image?.load(status.fileUri) {
@@ -144,10 +149,11 @@ open class StatusAdapter(
         val state: TextView?
         val clientIcon: ImageView?
         val playIcon: ImageView?
+        val menu: Button?
         val cardView: MaterialCardView?
 
-        private val status: Status
-            get() = statuses[layoutPosition]
+        private val currentMenu: StatusMenu
+            get() = StatusMenu(statuses, layoutPosition, isSaveEnabled, isDeleteEnabled)
 
         init {
             val binding = ItemStatusBinding.bind(itemView)
@@ -157,17 +163,26 @@ open class StatusAdapter(
             cardView?.isCheckable = true
             clientIcon = binding.clientIcon
             playIcon = binding.playIcon
+            menu = binding.menu
+            menu.setOnClickListener(this)
 
             itemView.setOnClickListener(this)
             itemView.setOnLongClickListener(this)
         }
 
         override fun onClick(view: View) {
-            if (!isSavingContent) {
-                if (isMultiSelectionMode()) {
-                    toggleItemChecked(layoutPosition)
-                } else {
-                    callback.previewStatusesClick(statuses, layoutPosition)
+            when (view) {
+                itemView -> {
+                    if (!isSavingContent) {
+                        if (isMultiSelectionMode()) {
+                            toggleItemChecked(layoutPosition)
+                        } else {
+                            callback.previewStatusesClick(statuses, layoutPosition)
+                        }
+                    }
+                }
+                menu -> {
+                    callback.showStatusMenu(currentMenu)
                 }
             }
         }

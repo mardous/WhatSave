@@ -13,7 +13,7 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="Base.Theme.WhatSave" parent="Theme.Material3.DayNight.NoActionBar">
@@ -67,7 +67,7 @@
         <item name="android:windowActionModeOverlay">true</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="defaultIconColor">?colorControlNormal</item>
         <item name="defaultIconBackgroundColor">?colorSurfaceContainer</item>
         <item name="rectSelector">@drawable/rect_selector</item>
@@ -110,6 +110,11 @@
     </style>
 
     <style name="MaterialAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog"/>
+
+    <style name="BottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">?isLightTheme</item>
+        <item name="enableEdgeToEdge">true</item>
+    </style>
 
     <style name="MaterialPreferenceCategory" parent="Preference.Category.Material">
         <item name="allowDividerAbove">false</item>
