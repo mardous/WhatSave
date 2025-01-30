@@ -31,6 +31,7 @@ import com.simplified.wsstatussaver.extensions.applyHorizontalWindowInsets
 import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.currentFragment
 import com.simplified.wsstatussaver.extensions.getBottomInsets
+import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.hide
 import com.simplified.wsstatussaver.extensions.requireWindow
 import com.simplified.wsstatussaver.extensions.show
@@ -95,8 +96,10 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun hideBottomBar(hide: Boolean) {
         if (hide) navigationView.hide() else navigationView.show()
         if (navigationView is NavigationRailView) return
+        val bottomInsets = windowInsets.getBottomInsets()
         val navHeight = resources.getDimensionPixelSize(R.dimen.bottom_nav_height)
-        val navHeightWithInsets = navHeight + windowInsets.getBottomInsets()
-        contentView.updatePadding(bottom = if (!hide) navHeightWithInsets else 0)
+        val navHeightWithInsets = navHeight + bottomInsets
+        // workaround for https://issuetracker.google.com/issues/282790626
+        contentView.updatePadding(bottom = if (!hide) navHeightWithInsets else if (!hasR()) bottomInsets else 0)
     }
 }
