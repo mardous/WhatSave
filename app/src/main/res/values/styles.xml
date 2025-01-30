@@ -40,7 +40,7 @@
 
     <style name="BottomNavigationStyle" parent="Widget.Material3.BottomNavigationView"/>
 
-    <style name="ToolCardViewStyle" parent="Widget.Material3.CardView.Filled">
+    <style name="ToolCardViewStyle" parent="Widget.Material3.CardView.Outlined">
         <item name="cardCornerRadius">@dimen/m3_card_corner_radius</item>
     </style>
 
