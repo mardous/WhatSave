@@ -167,6 +167,7 @@
     <string name="storage_permission_label">Debes conceder los siguientes permisos requeridos antes de continuar:</string>
     <string name="storage_access_title">Acceso al almacenamiento</string>
     <string name="storage_access_description">El permiso de acceso al almacenamiento es esencial para cargar y guardar estados.</string>
+    <string name="permission_granted">Permiso concedido</string>
     <string name="permissions_granted_successfully">Permisos concedidos correctamente.</string>
     <string name="select_the_correct_location">Por favor, elija la ubicación correcta.</string>
     <string name="continue_action">Continuar</string>

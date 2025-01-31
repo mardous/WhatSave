@@ -167,6 +167,7 @@
     <string name="storage_permission_label">You must grant the following required permissions before continuing:</string>
     <string name="storage_access_title">Storage access</string>
     <string name="storage_access_description">The storage access permission is essential for loading and saving statuses.</string>
+    <string name="permission_granted">Permission granted</string>
     <string name="permissions_granted_successfully">Permissions granted successfully.</string>
     <string name="select_the_correct_location">Please, select the correct location.</string>
     <string name="continue_action">Continue</string>

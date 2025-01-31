@@ -94,7 +94,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         binding.privacyPolicyButton.setOnClickListener(this)
         setupViews()
         setupClientPermissions()
-        setupGrantButtonIcon()
+        setupGrantButton()
 
         viewModel.getInstalledClients().observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
@@ -119,9 +119,15 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         }
     }
 
-    private fun setupGrantButtonIcon() {
-        val iconRes = if (hasStoragePermissions()) R.drawable.ic_round_check_24dp else R.drawable.ic_storage_24dp
-        binding.grantStorageButton.setIconResource(iconRes)
+    private fun setupGrantButton(hasPermissions: Boolean = hasStoragePermissions()) {
+        if (hasPermissions) {
+            binding.grantStorageButton.setIconResource(R.drawable.ic_round_check_24dp)
+            binding.grantStorageButton.setText(R.string.permission_granted)
+        } else {
+            binding.grantStorageButton.setIconResource(R.drawable.ic_storage_24dp)
+            binding.grantStorageButton.setText(R.string.grant_permissions)
+        }
+        binding.grantStorageButton.isEnabled = !hasPermissions
     }
 
     private fun setupClientPermissions() {
@@ -173,7 +179,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
     }
 
     override fun permissionsStateChanged(hasPermissions: Boolean) {
-        setupGrantButtonIcon()
+        setupGrantButton(hasPermissions)
         if (hasPermissions) {
             viewModel.reloadAll()
         }
