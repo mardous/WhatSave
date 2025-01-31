@@ -31,8 +31,6 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import coil3.load
-import coil3.video.VideoFrameDecoder
 import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.adapter.base.AbsMultiSelectionAdapter
@@ -41,7 +39,6 @@ import com.simplified.wsstatussaver.extensions.StatusMenu
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
-import com.simplified.wsstatussaver.extensions.load
 import com.simplified.wsstatussaver.extensions.loadImage
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
