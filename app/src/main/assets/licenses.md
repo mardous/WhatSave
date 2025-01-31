@@ -52,6 +52,12 @@
 - License: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 - URL: [Homepage](https://square.github.io/okhttp/) - [Sources](https://github.com/square/okhttp)
 
+### Ktor
+
+- Author: JetBrains, Inc.
+- License: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+- URL: [Homepage](https://ktor.io) - [Sources](https://github.com/ktorio/ktor)
+
 ### koin
 
 - Author: Arnaud Giuliani
