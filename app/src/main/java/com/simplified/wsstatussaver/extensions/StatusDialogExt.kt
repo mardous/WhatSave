@@ -18,13 +18,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import androidx.core.view.isGone
-import coil3.load
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.DialogProgressBinding
 import com.simplified.wsstatussaver.databinding.DialogStatusOptionsBinding
 import com.simplified.wsstatussaver.model.Status
-import com.simplified.wsstatussaver.R
 
 private typealias StatusBinding = DialogStatusOptionsBinding
 private typealias ViewCallback = (View) -> Unit
@@ -42,7 +41,7 @@ fun Context.showStatusOptions(menu: StatusMenu): Dialog {
     val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheetDialogTheme)
     bottomSheetDialog.setContentView(binding.root)
     bottomSheetDialog.setOnShowListener {
-        binding.image.load(status.fileUri)
+        binding.image.loadImage(status)
         binding.setupSave(menu.isSaveEnabled) {
             bottomSheetDialog.dismiss()
             menu.onSaveClick?.invoke(status)

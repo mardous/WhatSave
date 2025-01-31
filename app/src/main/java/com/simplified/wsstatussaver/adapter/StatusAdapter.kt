@@ -41,6 +41,8 @@ import com.simplified.wsstatussaver.extensions.StatusMenu
 import com.simplified.wsstatussaver.extensions.getClientIfInstalled
 import com.simplified.wsstatussaver.extensions.getFormattedDate
 import com.simplified.wsstatussaver.extensions.getState
+import com.simplified.wsstatussaver.extensions.load
+import com.simplified.wsstatussaver.extensions.loadImage
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusType
@@ -85,13 +87,7 @@ open class StatusAdapter(
 
         holder.menu?.isGone = isSelected
 
-        if (status.type == StatusType.VIDEO) {
-            holder.image?.load(status.fileUri) {
-                decoderFactory { result, options, _ -> VideoFrameDecoder(result.source, options) }
-            }
-        } else {
-            holder.image?.load(status.fileUri)
-        }
+        holder.image?.loadImage(status)
 
         if (holder.state != null) {
             if (isSaveEnabled) {
