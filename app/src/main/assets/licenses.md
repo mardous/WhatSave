@@ -58,12 +58,6 @@
 - License: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 - URL: [Homepage](https://insert-koin.io/) - [Sources](https://github.com/InsertKoinIO/koin)
 
-### Gson
-
-- Author: Google
-- License: [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
-- URL: [Sources](https://github.com/google/gson)
-
 ### Advanced RecyclerView
 
 - Author: Haruki Hasegawa

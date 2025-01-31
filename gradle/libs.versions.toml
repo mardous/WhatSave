@@ -22,7 +22,6 @@ navigationVersion = "2.8.5"
 preferenceKtx = "1.2.1"
 prettytime = "5.0.4.Final"
 recyclerview = "1.4.0"
-gson = "2.12.1"
 roomVersion = "2.6.1"
 koinVersion = "4.0.2"
 swiperefreshlayout = "1.1.0"
@@ -73,7 +72,6 @@ navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-kt
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationVersion" }
 
 photoview = { module = "io.getstream:photoview", version.ref = "photoviewVersion" }
-gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
 

@@ -155,7 +155,6 @@ dependencies {
 
     implementation(libs.photoview)
     implementation(libs.bundles.ktor)
-    implementation(libs.gson)
     implementation(libs.versioncompare)
     implementation(libs.libphonenumber)
     implementation(libs.prettytime)
