@@ -16,6 +16,7 @@ package com.simplified.wsstatussaver.fragments.playback.video
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.C
@@ -34,7 +35,6 @@ import com.simplified.wsstatussaver.extensions.paddingSpace
 import com.simplified.wsstatussaver.extensions.playbackSpeed
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.resetPlaybackSpeed
-import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
 import com.simplified.wsstatussaver.model.PlaybackSpeed
 
@@ -49,6 +49,7 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
     private val speedButton get() = playerView.findViewById<ImageView>(R.id.exo_speed_btn)
 
     private var player: ExoPlayer? = null
+    private var toast: Toast? = null
 
     override val saveButton: MaterialButton
         get() = playerView.findViewById(R.id.save)
@@ -150,7 +151,12 @@ class VideoFragment : PlaybackChildFragment(R.layout.fragment_video), Player.Lis
             speedButton.setImageResource(currentSpeed.iconRes)
             player?.playbackParameters = PlaybackParameters(currentSpeed.speed, currentSpeed.speed)
             if (showToast) {
-                showToast("${getString(currentSpeed.labelRes)} (${currentSpeed.speed}x)")
+                toast?.cancel()
+                toast = Toast.makeText(
+                    requireContext(),
+                    "${getString(currentSpeed.labelRes)} (${currentSpeed.speed}x)",
+                    Toast.LENGTH_SHORT
+                ).also { it.show() }
             }
         }
     }
