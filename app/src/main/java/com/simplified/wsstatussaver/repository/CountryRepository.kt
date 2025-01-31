@@ -15,11 +15,11 @@ package com.simplified.wsstatussaver.repository
 
 import android.content.Context
 import androidx.core.content.edit
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.model.Country
-import java.io.InputStream
+import kotlinx.serialization.SerializationException
+import kotlinx.serialization.json.Json
+import java.io.IOException
 import java.util.Locale
 
 interface CountryRepository {
@@ -36,17 +36,21 @@ class CountryRepositoryImpl(private val context: Context) :
     private var countries: List<Country>? = null
 
     override suspend fun allCountries(): List<Country> {
-        if (countries == null) {
-            countries = context.assets.open("countries.json").use<InputStream, List<Country>?> {
-                it.bufferedReader().readText().let { content ->
-                    Gson().fromJson(content, object : TypeToken<List<Country>>() {}.type)
-                }
-            }?.sortedBy {
-                it.displayName
+        if (countries != null) {
+            return countries!!
+        }
+
+        countries = try {
+            context.assets.open("countries.json").use { inputStream ->
+                val content = inputStream.bufferedReader().readText()
+                Json.decodeFromString<List<Country>>(content).sortedBy { it.displayName }
             }
-            if (countries == null) {
-                countries = arrayListOf()
-            }
+        } catch (e: IOException) {
+            println("Error reading countries.json: ${e.message}")
+            emptyList()
+        } catch (e: SerializationException) {
+            println("Error deserializing countries.json: ${e.message}")
+            emptyList()
         }
         return countries!!
     }
@@ -56,7 +60,13 @@ class CountryRepositoryImpl(private val context: Context) :
         if (defaultCountry.isNullOrEmpty()) {
             defaultCountry = Locale.getDefault().country
         }
-        return allCountries().firstOrNull { it.isoCode == defaultCountry } ?: allCountries().first()
+        val countries = allCountries()
+        return if (countries.isEmpty()) {
+            throw IllegalStateException("No countries available to set as default.")
+        } else {
+            countries.firstOrNull { it.isoCode == defaultCountry }
+                ?: allCountries().first()
+        }
     }
 
     override fun defaultCountry(country: Country) {

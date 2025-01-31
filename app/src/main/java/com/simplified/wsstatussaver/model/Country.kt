@@ -13,17 +13,17 @@
  */
 package com.simplified.wsstatussaver.model
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 class Country internal constructor(
-    @SerializedName("country_code")
+    @SerialName("country_code")
     val code: Int,
-    @SerializedName("iso_code")
+    @SerialName("iso_code")
     val isoCode: String,
-    @SerializedName("display_name")
-    val displayName: String,
-    @SerializedName("format")
-    val format: String?
+    @SerialName("display_name")
+    val displayName: String
 ) {
     fun getId(): String = String.format("%s %s", isoCode, getFormattedCode())
 
