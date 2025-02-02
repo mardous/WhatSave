@@ -85,4 +85,8 @@
     <string name="settings_statuses">الحالات</string>
     <string name="settings_other">شيء آخر</string>
     <string name="use_custom_font_title">استخدام خط Manrope</string>
+    <string name="share_link_action">شارك الرابط</string>
+    <string name="deletion_success">تم الحذف</string>
+    <string name="deletion_failed">فشل الحذف</string>
+    <string name="permissions_denied_title">تم رفض الاذونات</string>
 </resources>
