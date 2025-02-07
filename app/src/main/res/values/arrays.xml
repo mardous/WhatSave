@@ -62,6 +62,7 @@
         <item>@string/language_french</item>
         <item>@string/language_german</item>
         <item>@string/language_hindi</item>
+        <item>@string/language_indonesian</item>
         <item>@string/language_italian</item>
         <item>@string/language_kazakh</item>
         <item>@string/language_portuguese_brazil</item>
@@ -80,6 +81,7 @@
         <item>fr</item>
         <item>de</item>
         <item>hi</item>
+        <item>in</item>
         <item>it</item>
         <item>kk</item>
         <item>pt-BR</item>
