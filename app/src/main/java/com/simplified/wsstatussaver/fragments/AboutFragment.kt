@@ -51,7 +51,7 @@ class AboutFragment : BaseFragment(R.layout.fragment_about), View.OnClickListene
         _binding = FragmentAboutBinding.bind(view)
         binding.scrollView.applyBottomWindowInsets()
         binding.toolbar.setTitle(R.string.about_title)
-        binding.appVersion.setSummary(getString(R.string.version_x, getApp().versionName))
+        binding.appVersion.setSummary(getString(R.string.version_x, getApp().fullVersionName))
         binding.appVersion.setOnClickListener(this)
         binding.contact.setOnClickListener(this)
         binding.author.setOnClickListener(this)

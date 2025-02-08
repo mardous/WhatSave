@@ -64,6 +64,9 @@ class App : Application(), SingletonImageLoader.Factory {
     val versionName: String
         get() = packageManager.packageInfo().versionName ?: "0"
 
+    val fullVersionName: String
+        get() = versionName.let { if (isFDroidBuild()) "$it (F-Droid)" else it }
+
     companion object {
         internal lateinit var instance: App
             private set

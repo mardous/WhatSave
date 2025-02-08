@@ -61,7 +61,6 @@ android {
         }
         create("fdroid") {
             dimension = "version"
-            versionNameSuffix = " (F-Droid)"
         }
     }
     applicationVariants.all {
