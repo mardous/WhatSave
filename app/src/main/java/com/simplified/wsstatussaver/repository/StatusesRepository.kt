@@ -92,8 +92,8 @@ class StatusesRepositoryImpl(
                 if (!DocumentsContract.isTreeUri(permission.uri))
                     continue
 
-                val client = WaClient.entries.firstOrNull {
-                    permission.uri.path?.contains(it.getSAFDirectoryPath()) == true
+                val client = WaClient.entries.firstOrNull { waClient ->
+                    permission.uri?.path?.contains(waClient.pathRegex) ?: false
                 }
                 val documentUri = DocumentsContract.buildChildDocumentsUriUsingTree(
                     permission.uri, DocumentsContract.getTreeDocumentId(permission.uri)

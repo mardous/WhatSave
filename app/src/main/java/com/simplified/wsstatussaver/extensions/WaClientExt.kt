@@ -30,6 +30,9 @@ import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.logDefaultClient
 import com.simplified.wsstatussaver.model.WaClient
 
+val REGEX_WHATSAPP = """^(?:Android/media/com\.whatsapp/WhatsApp/|WhatsApp/)(?:accounts/\d+/)?Media/\.Statuses$""".toRegex()
+val REGEX_BUSINESS = """^(?:Android/media/com\.whatsapp\.w4b/WhatsApp Business/|WhatsApp Business/)(?:accounts/\d+/)?Media/\.Statuses$""".toRegex()
+
 fun Context.getDefaultClient(): WaClient? {
     val clientPackageName = preferences().defaultClientPackageName
     if (!clientPackageName.isNullOrEmpty()) {
@@ -74,7 +77,7 @@ fun Uri.isFromClient(client: WaClient): Boolean {
     if (path.contains(":")) {
         val lastPart = path.split(":")
         if (lastPart.size == 2) {
-            return lastPart[1] == client.getSAFDirectoryPath()
+            return client.pathRegex.matches(lastPart[1])
         }
     }
     return false
