@@ -13,36 +13,29 @@
  */
 package com.simplified.wsstatussaver.model
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.content.Intent
-import android.content.UriPermission
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
-import android.os.Build
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.REGEX_BUSINESS
 import com.simplified.wsstatussaver.extensions.REGEX_WHATSAPP
 import com.simplified.wsstatussaver.extensions.getDrawableCompat
-import com.simplified.wsstatussaver.extensions.isFromClient
 import com.simplified.wsstatussaver.extensions.packageInfo
 
 enum class WaClient(
     val displayName: String,
-    private val internalName: String,
     val packageName: String,
     private val iconRes: Int,
     val pathRegex: Regex
 ) {
     WhatsApp(
         "WhatsApp",
-        "WhatsApp",
         "com.whatsapp",
         R.drawable.icon_wa,
         REGEX_WHATSAPP
     ),
     Business(
-        "WhatsApp Business",
         "WhatsApp Business",
         "com.whatsapp.w4b",
         R.drawable.icon_business,
@@ -60,40 +53,7 @@ enum class WaClient(
         }
     }
 
-    fun hasPermissions(context: Context): Boolean {
-        return hasPermissions(context.contentResolver.persistedUriPermissions)
-    }
-
-    fun hasPermissions(uriPermissions: List<UriPermission>): Boolean {
-        return uriPermissions.any { it.isReadPermission && it.uri.isFromClient(this) }
-    }
-
-    fun releasePermissions(context: Context): Boolean {
-        val uriPermissions = context.contentResolver.persistedUriPermissions
-        for (perm in uriPermissions) {
-            if (perm.uri.isFromClient(this)) {
-                val flags =
-                    Intent.FLAG_GRANT_WRITE_URI_PERMISSION or Intent.FLAG_GRANT_READ_URI_PERMISSION
-                context.contentResolver.releasePersistableUriPermission(perm.uri, flags)
-                return true
-            }
-        }
-        return false
-    }
-
     fun getLaunchIntent(packageManager: PackageManager): Intent? {
         return packageManager.getLaunchIntentForPackage(packageName)
-    }
-
-    fun getDirectoryPath(): Array<String> {
-        return arrayOf(
-            "$internalName/Media/.Statuses",
-            "Android/media/$packageName/$internalName/Media/.Statuses"
-        )
-    }
-
-    @TargetApi(Build.VERSION_CODES.Q)
-    fun getSAFDirectoryPath(): String {
-        return "Android/media/$packageName/$internalName/Media/.Statuses"
     }
 }

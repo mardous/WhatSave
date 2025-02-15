@@ -36,6 +36,8 @@ import java.io.*
 import java.util.Date
 
 interface StatusesRepository {
+    suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri>
+    suspend fun statusDirectoriesAsFiles(clients: List<WaClient>): Set<File>
     fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(): StatusQueryResult
@@ -67,20 +69,62 @@ class StatusesRepositoryImpl(
             return statusesLocation?.path ?: storage.externalStoragePath
         }
 
+    override suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri> {
+        val directories = mutableSetOf<WaDirectoryUri>()
+        val persistedPermissions = contentResolver.persistedUriPermissions
+        val readableDirectories = persistedPermissions.getReadableDirectories()
+        if (readableDirectories.isEmpty()) {
+            return directories
+        }
+        for (perm in persistedPermissions) {
+            if (!DocumentsContract.isTreeUri(perm.uri)) continue
+            val matchingDir = readableDirectories.firstOrNull { it.isThis(perm.uri) }
+            if (matchingDir != null) {
+                directories.addAll(matchingDir.getStatusesDirectories(context, clients, perm.uri))
+            }
+        }
+        return directories
+    }
+
+    override suspend fun statusDirectoriesAsFiles(clients: List<WaClient>): Set<File> {
+        val directories = mutableSetOf<File>()
+        val paths = WaClient.entries.flatMap { client ->
+            WaDirectory.entries.mapNotNull { dir ->
+                if (dir.supportsClient(client)) {
+                    val additionalSegments = dir.additionalSegments(client)
+                    if (additionalSegments.isNotEmpty())
+                        "${dir.path}/${additionalSegments.joinToString("/")}"
+                    else dir.path
+                } else {
+                    null
+                }
+            }
+        }
+        for (path in paths) {
+            File(statusesLocationPath, "${path}/accounts")
+                .takeIf { it.isDirectory }?.let { baseDirectory ->
+                    baseDirectory.list { file, _ -> file.isDirectory }?.forEach { accountName ->
+                        directories.add(File(baseDirectory, "$accountName/Media/.Statuses"))
+                    }
+                } ?: directories.add(File(statusesLocationPath, "${path}/Media/.Statuses"))
+        }
+        return directories
+    }
+
     override fun statusIsSaved(status: Status): LiveData<Boolean> =
         statusDao.statusSavedObservable(status.fileUri, status.name)
 
     override suspend fun statuses(type: StatusType): StatusQueryResult {
         val statusList = arrayListOf<Status>()
         val isExcludeSaved = preferences.isExcludeSavedStatuses()
-        val installedClients = context.getAllInstalledClients()
+        val installedClients = context.getAllInstalledClients().getPreferred(context)
         if (installedClients.isEmpty()) {
             return StatusQueryResult(ResultCode.NotInstalled)
         }
-        if (hasQ()) {
-            val persistedPermissions = contentResolver.persistedUriPermissions
-            if (!persistedPermissions.areValidPermissions()) {
-                return StatusQueryResult(code = ResultCode.PermissionError)
+        if (IsSAFRequired) {
+            val statusesDirectories = statusDirectories(installedClients)
+            if (statusesDirectories.isEmpty()) {
+                return StatusQueryResult(ResultCode.PermissionError)
             }
             val documentSelection = arrayOf(
                 Document.COLUMN_DOCUMENT_ID, //0
@@ -88,24 +132,15 @@ class StatusesRepositoryImpl(
                 Document.COLUMN_LAST_MODIFIED, //2
                 Document.COLUMN_SIZE //3
             )
-            for (permission in persistedPermissions) {
-                if (!DocumentsContract.isTreeUri(permission.uri))
-                    continue
-
-                val client = WaClient.entries.firstOrNull { waClient ->
-                    permission.uri?.path?.contains(waClient.pathRegex) ?: false
-                }
-                val documentUri = DocumentsContract.buildChildDocumentsUriUsingTree(
-                    permission.uri, DocumentsContract.getTreeDocumentId(permission.uri)
-                )
-                contentResolver.query(documentUri, documentSelection, null, null, null)?.use { cursor ->
+            for (directory in statusesDirectories) {
+                contentResolver.query(directory.uri, documentSelection, null, null, null)?.use { cursor ->
                     if (cursor.moveToFirst()) do {
                         val id = cursor.getString(0)
                         val fileName = cursor.getString(1)
                         val lastModified = cursor.getLong(2)
                         val size = cursor.getLong(3)
                         val uri = DocumentsContract.buildChildDocumentsUriUsingTree(
-                            permission.uri, id
+                            directory.uri, id
                         )
                         if (type.acceptFileName(fileName)) {
                             val isOld = lastModified.hasElapsedTwentyFourHours()
@@ -113,23 +148,22 @@ class StatusesRepositoryImpl(
                             if (isOld || (isSaved && isExcludeSaved))
                                 continue
 
-                            statusList.add(Status(type, fileName, uri, lastModified, size, client?.packageName, isSaved))
+                            statusList.add(Status(type, fileName, uri, lastModified, size, directory.client?.packageName, isSaved))
                         }
                     } while (cursor.moveToNext())
                 }
             }
         } else {
             if (context.hasStoragePermissions()) {
-                for (client in installedClients.getPreferred(context)) {
-                    for (path in client.getDirectoryPath()) {
-                        val directory = File(statusesLocationPath, path)
+                for (client in installedClients) {
+                    for (directory in statusDirectoriesAsFiles(installedClients)) {
                         if (!directory.isDirectory) continue
                         val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
                         if (!statuses.isNullOrEmpty()) for (file in statuses) {
                             val fileUri = file.getUri()
                             val fileName = file.name
                             val isSaved = statusDao.statusSaved(fileUri, file.name)
-                            if (fileName.isNullOrEmpty() || file.isOldFile() || (isSaved && isExcludeSaved))
+                            if (fileName.isNullOrEmpty() || (isSaved && isExcludeSaved))
                                 continue
 
                             statusList.add(Status(type, fileName, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
@@ -149,7 +183,7 @@ class StatusesRepositoryImpl(
             return StatusQueryResult(ResultCode.PermissionError)
         }
         val statuses = arrayListOf<SavedStatus>()
-        if (hasQ()) {
+        if (IsScopedStorageRequired) {
             for (type in StatusType.entries) {
                 type.getSavedMedia(contentResolver).use { cursor ->
                     if (cursor != null && cursor.moveToFirst()) do {
@@ -181,7 +215,7 @@ class StatusesRepositoryImpl(
             return StatusQueryResult(ResultCode.PermissionError)
         }
         val statuses = arrayListOf<SavedStatus>()
-        if (hasQ()) {
+        if (IsScopedStorageRequired) {
             type.getSavedMedia(contentResolver).use { cursor ->
                 if (cursor != null && cursor.moveToFirst()) do {
                     statuses.add(cursor.getSavedStatus(type))
@@ -221,7 +255,7 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun share(status: Status): ShareData {
-        if (hasQ() && status !is SavedStatus) {
+        if (IsSAFRequired && status !is SavedStatus) {
             val cacheDir = context.externalCacheDir
             if (cacheDir == null || (!cacheDir.exists() && !cacheDir.mkdirs())) {
                 return ShareData(status.fileUri, status.type.mimeType)
@@ -248,7 +282,7 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun share(statuses: List<Status>): ShareData {
-        if (hasQ()) {
+        if (IsSAFRequired) {
             val data = hashMapOf<Uri, String>()
             val savedStatuses = statuses.filterIsInstance<SavedStatus>().toSet()
             val unsavedStatuses = statuses.subtract(savedStatuses)
@@ -344,7 +378,7 @@ class StatusesRepositoryImpl(
             return false
         }
         val success = when {
-            hasQ() -> contentResolver.delete(status.fileUri, null, null) > 0
+            IsScopedStorageRequired -> contentResolver.delete(status.fileUri, null, null) > 0
             status.hasFile() -> {
                 val file = status.getFile()
                 if (!file.exists() || file.delete()) {
@@ -376,7 +410,7 @@ class StatusesRepositoryImpl(
 
     @Throws(IOException::class)
     private fun saveStatus(status: StatusEntity, inputStream: InputStream): Uri? {
-        if (hasQ()) {
+        if (IsScopedStorageRequired) {
             return saveQ(status, inputStream)
         }
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
@@ -428,7 +462,7 @@ class StatusesRepositoryImpl(
     }
 
     private fun scanSavedStatuses(statusType: StatusType) {
-        if (!hasQ()) {
+        if (!IsScopedStorageRequired) {
             val files = statusType.getSavesDirectory(statusSaveLocation).listFiles { _, name -> name.endsWith(statusType.format) }
                 ?.map { it.absolutePath }
                 ?.toTypedArray()

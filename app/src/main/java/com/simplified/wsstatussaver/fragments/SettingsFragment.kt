@@ -13,7 +13,6 @@
  */
 package com.simplified.wsstatussaver.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -29,8 +28,8 @@ import androidx.preference.SwitchPreferenceCompat
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentSettingsBinding
+import com.simplified.wsstatussaver.extensions.IsSAFRequired
 import com.simplified.wsstatussaver.extensions.PREFERENCE_ANALYTICS_ENABLED
-import com.simplified.wsstatussaver.extensions.PREFERENCE_DEFAULT_CLIENT
 import com.simplified.wsstatussaver.extensions.PREFERENCE_GRANT_PERMISSIONS
 import com.simplified.wsstatussaver.extensions.PREFERENCE_JUST_BLACK_THEME
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LANGUAGE
@@ -41,6 +40,7 @@ import com.simplified.wsstatussaver.extensions.PREFERENCE_USE_CUSTOM_FONT
 import com.simplified.wsstatussaver.extensions.applyBottomWindowInsets
 import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
+import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
@@ -156,9 +156,8 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 setAnalyticsEnabled((newValue as Boolean))
                 true
             }
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (IsSAFRequired) {
                 findPreference<Preference>(PREFERENCE_STATUSES_LOCATION)?.isVisible = false
-                findPreference<Preference>(PREFERENCE_DEFAULT_CLIENT)?.isVisible = false
                 findPreference<Preference>(PREFERENCE_GRANT_PERMISSIONS)?.apply {
                     isVisible = true
                     setOnPreferenceClickListener {
@@ -167,7 +166,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                         true
                     }
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (hasR()) {
                     findPreference<Preference>(PREFERENCE_QUICK_DELETION)?.isVisible = false
                 }
             }

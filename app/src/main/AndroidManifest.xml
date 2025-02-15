@@ -26,6 +26,7 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:name=".App"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatSave"
         tools:ignore="UnusedAttribute">
