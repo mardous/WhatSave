@@ -99,7 +99,6 @@
     <string name="there_may_be_no_saved_files">Puede que no haya archivos guardados</string>
     <string name="installed_clients_empty">No hay clientes WhatsApp instalados.</string>
     <string name="x_is_the_default_client_now">%s es ahora el cliente predeterminado.</string>
-    <string name="saf_tutorial"><![CDATA[En la siguiente pantalla, asegúrese de seleccionar la ubicación «<b> %s </b>». Una vez hecho esto, presione el botón «Usar esta carpeta» en la parte inferior para confirmar.]]></string>
     <string name="delete_saved_statuses_title">Borrar los estados guardados</string>
     <string name="permissions_denied_message">Debes conceder los permisos necesarios. Esta aplicación no funcionará correctamente sin estos permisos.</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">Los %d estados guardados serán borrados permanentemente.</string>

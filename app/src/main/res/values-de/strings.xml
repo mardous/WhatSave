@@ -35,7 +35,6 @@
     <string name="action_select_all">Alle auswählen</string>
     <string name="x_is_the_default_client_now">%s ist jetzt der Standardclient.</string>
     <string name="default_client_cleared">Standardclient gelöscht.</string>
-    <string name="saf_tutorial"><![CDATA[Wähle auf der nächsten Ansicht \"<b>%s</b>\". Klicke dann zur Bestätigung auf \"Diesen Ordner nutzen\".]]></string>
     <string name="you_should_open_wa_and_download_some_statuses">Du solltest zu WhatsApp gehen und einige Status herunterladen</string>
     <string name="wa_is_not_installed_title">WhatsApp ist nicht installiert</string>
     <string name="launch_x_client">%s starten</string>

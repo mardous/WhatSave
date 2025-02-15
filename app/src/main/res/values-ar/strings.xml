@@ -76,7 +76,6 @@
     <string name="delete_action">حذف</string>
     <string name="x_is_the_default_client_now">%s هو العميل الافتراضي الآن.</string>
     <string name="default_client_cleared">تم مسح العميل الافتراضي.</string>
-    <string name="saf_tutorial">في الشاشة التالية، تأكد من تحديد الموقع \"<b>%s</b>\". بمجرد الانتهاء، اضغط على زر \"استخدام هذا المجلد\" في الأسفل للتأكيد.</string>
     <string name="installed_clients_empty">لم يتم تثبيت عملاء WhatsApp.</string>
     <string name="you_should_open_wa_and_download_some_statuses">يجب عليك الذهاب إلى WhatsApp وتنزيل بعض الحالات</string>
     <string name="just_black_theme_title">طابع اسود فقط</string>

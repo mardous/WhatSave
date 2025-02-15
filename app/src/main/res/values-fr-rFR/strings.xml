@@ -44,7 +44,6 @@
     <string name="x_selected">%d selectionne</string>
     <string name="x_is_the_default_client_now">%s est desormais le client par defaut.</string>
     <string name="default_client_cleared">Client par defaut efface.</string>
-    <string name="saf_tutorial"><![CDATA[Sur l\'écran suivant, assurez-vous de sélectionner l\'emplacement \"<b>%s</b>\". Une fois terminé, appuyez sur le bouton \"Utiliser ce dossier\" en bas pour confirmer.]]></string>
     <string name="installed_clients_empty">Aucun client WhatsApp n\'est installe.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Vous devriez aller sur WhatsApp et telecharger certains statuts</string>
     <string name="there_may_be_no_saved_files">Il se peut qu\'il n\'y ait pas de fichiers enregistrés</string>

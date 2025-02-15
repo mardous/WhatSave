@@ -45,7 +45,8 @@
     <string name="x_selected">%d selected</string>
     <string name="x_is_the_default_client_now">%s is the default client now.</string>
     <string name="default_client_cleared">Default client cleared.</string>
-    <string name="saf_tutorial"><![CDATA[On the next screen, make sure to select the location \"<b>%s</b>\". Once done, press the \"Use this folder\" button at the bottom to confirm.]]></string>
+    <string name="saf_tutorial_1"><![CDATA[A folder selection window will appear. Please make sure you choose the right path, which is usually <b>%s</b>, as demonstrated in the example image:]]></string>
+    <string name="saf_tutorial_2">Once you have selected the appropriate folder, press \"Use this folder\" at the bottom to confirm.</string>
     <string name="installed_clients_empty">There are not installed WhatsApp clients.</string>
     <string name="you_should_open_wa_and_download_some_statuses">You should go to WhatsApp and download some statuses</string>
     <string name="there_may_be_no_saved_files">There may be no saved files</string>

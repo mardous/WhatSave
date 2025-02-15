@@ -45,7 +45,8 @@
     <string name="x_selected">%d seleccionado(s)</string>
     <string name="x_is_the_default_client_now">%s es el cliente predeterminado ahora.</string>
     <string name="default_client_cleared">Se limpió el cliente predeterminado.</string>
-    <string name="saf_tutorial"><![CDATA[En la siguiente pantalla, asegúrese de seleccionar la ubicación \"<b>%s</b>\". Una vez hecho, presione el botón \"Usar esta carpeta\" de la parte inferior para confirmar.]]></string>
+    <string name="saf_tutorial_1"><![CDATA[Se abrirá un selector de carpeta. Por favor, asegúrese de elegir la ruta correcta, la cual es comúnmente <b>%s</b>, como se muestra en la imagen de ejemplo:]]></string>
+    <string name="saf_tutorial_2">Una vez que haya seleccionado la carpeta, presione \"Usar esta carpeta\" en la parte inferior para confirmar.</string>
     <string name="installed_clients_empty">No hay clientes de WhatsApp instalados.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Deberías abrir WhatsApp y descargar algunos estados</string>
     <string name="there_may_be_no_saved_files">Puede que no hayan archivos guardados</string>

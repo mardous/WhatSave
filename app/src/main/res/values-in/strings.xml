@@ -164,7 +164,6 @@
     <string name="according_to_the_file_type_title">Menurut jenis berkas</string>
     <string name="according_to_the_file_type_summary">Gambar akan disimpan di Pictures (Gambar) dan video akan disimpan di Movies (Film).</string>
     <string name="language_arabic">Arab</string>
-    <string name="saf_tutorial"><![CDATA[Pada halaman berikutnya, pastikan untuk memilih lokasi \"<b>%s</b>\". Setelah selesai, tekan tombol \"Gunakan folder ini\" di bagian bawah untuk mengonfirmasi.]]></string>
     <string name="yes_action">Ya</string>
     <string name="review_permissions_summary">Memberikan atau menghapus izin untuk klien WhatsApp yang terpasang.</string>
     <string name="storage_permission_label">Anda harus memberikan perizinan-perizinan yang diperlukan berikut ini sebelum melanjutkan:</string>

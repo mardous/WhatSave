@@ -44,7 +44,6 @@
     <string name="x_selected">%d выбрано</string>
     <string name="x_is_the_default_client_now">%s теперь является клиентом по умолчанию.</string>
     <string name="default_client_cleared">Клиент по умолчанию удален.</string>
-    <string name="saf_tutorial"><![CDATA[На следующем экране обязательно выберите местоположение \"<b>%s</b>\". После этого нажмите кнопку "Использовать эту папку" внизу для подтверждения.]]></string>
     <string name="installed_clients_empty">Не установлены клиенты WhatsApp.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Вам следует зайти в WhatsApp и скачать несколько статусов.</string>
     <string name="there_may_be_no_saved_files">Возможно, сохраненных файлов нет</string>

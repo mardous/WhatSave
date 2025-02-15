@@ -44,7 +44,6 @@
     <string name="x_selected">%d चयनित</string>
     <string name="x_is_the_default_client_now">%s अब डिफ़ॉल्ट क्लाइंट है.</string>
     <string name="default_client_cleared">डिफ़ॉल्ट क्लाइंट साफ़ किया गया.</string>
-    <string name="saf_tutorial"><![CDATA[अगली स्क्रीन पर, स्थान \"<b>%s</b>\" का चयन करना सुनिश्चित करें। एक बार हो जाने पर, पुष्टि करने के लिए नीचे दिए गए \"यह फ़ोल्डर इस्तेमाल करें\" बटन दबाएं।]]></string>
     <string name="installed_clients_empty">व्हाट्सएप क्लाइंट स्थापित नहीं हैं।</string>
     <string name="you_should_open_wa_and_download_some_statuses">आपको WhatsApp पर जाकर कुछ स्टेटस डाउनलोड करने चाहिए</string>
     <string name="there_may_be_no_saved_files">शायद कोई फ़ाइलें सहेजी नहीं गई हों</string>
