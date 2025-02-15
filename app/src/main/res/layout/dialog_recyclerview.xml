@@ -37,7 +37,7 @@
         android:layout_height="match_parent"
         android:scrollbars="none"
         android:overScrollMode="@integer/overScrollMode"
-        tools:listitem="@layout/item_client_onboard"
+        tools:listitem="@layout/item_client"
         tools:itemCount="5"/>
 
 </FrameLayout>
