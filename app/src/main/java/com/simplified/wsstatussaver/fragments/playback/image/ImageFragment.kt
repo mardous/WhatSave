@@ -20,8 +20,8 @@ import coil3.load
 import com.google.android.material.button.MaterialButton
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentImageBinding
+import com.simplified.wsstatussaver.extensions.Space
 import com.simplified.wsstatussaver.extensions.applyWindowInsets
-import com.simplified.wsstatussaver.extensions.paddingSpace
 import com.simplified.wsstatussaver.fragments.playback.PlaybackChildFragment
 
 /**
@@ -47,7 +47,7 @@ class ImageFragment : PlaybackChildFragment(R.layout.fragment_image) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentImageBinding.bind(view)
         binding.playbackActionButton.root.apply {
-            applyWindowInsets(left = true, right = true, bottom = true, addedSpace = paddingSpace())
+            applyWindowInsets(left = true, right = true, bottom = true, addedSpace = Space.viewPadding())
         }
         imageView.load(status.fileUri)
     }

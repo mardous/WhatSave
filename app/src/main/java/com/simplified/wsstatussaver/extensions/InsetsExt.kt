@@ -31,6 +31,8 @@ import androidx.core.view.updateLayoutParams
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.simplified.wsstatussaver.getApp
 
+private const val INSETS_TAG = "[view_insets_applied]"
+
 @SuppressLint("DiscouragedApi", "InternalInsetResource")
 fun WindowInsetsCompat?.getBottomInsets(): Int {
     var bottomInsets = this?.getInsets(Type.systemBars())?.bottom
@@ -95,21 +97,23 @@ fun View.applyWindowInsets(
         val i = insets.getInsets(mask)
         val start = if (layoutDirection == LAYOUT_DIRECTION_RTL) i.right else i.left
         val end = if (layoutDirection == LAYOUT_DIRECTION_RTL) i.left else i.right
+        val currentValues = currentSpace(padding)
+        val userAddedSpace = addedSpace.resolve(this)
         if (!padding) {
             if (v.layoutParams is MarginLayoutParams) {
                 v.updateLayoutParams<MarginLayoutParams> {
-                    marginStart = (if (left) start else marginStart(false)) + addedSpace.left
-                    topMargin = (if (top) i.top else marginTop(false)) + addedSpace.top
-                    marginEnd = (if (right) end else marginEnd(false)) + addedSpace.right
-                    bottomMargin = (if (bottom) i.bottom else marginBottom(false)) + addedSpace.bottom
+                    marginStart = (if (left) start else currentValues.left) + userAddedSpace.left
+                    topMargin = (if (top) i.top else currentValues.top) + userAddedSpace.top
+                    marginEnd = (if (right) end else currentValues.right) + userAddedSpace.right
+                    bottomMargin = (if (bottom) i.bottom else currentValues.bottom) + userAddedSpace.bottom
                 }
             }
         } else {
             v.setPaddingRelative(
-                (if (left) start else marginStart(true)) + addedSpace.left,
-                (if (top) i.top else marginTop(true)) + addedSpace.top,
-                (if (right) end else marginEnd(true)) + addedSpace.right,
-                (if (bottom) i.bottom else marginBottom(true)) + addedSpace.bottom
+                (if (left) start else currentValues.left) + userAddedSpace.left,
+                (if (top) i.top else currentValues.top) + userAddedSpace.top,
+                (if (right) end else currentValues.right) + userAddedSpace.right,
+                (if (bottom) i.bottom else currentValues.bottom) + userAddedSpace.bottom
             )
         }
         tag = INSETS_TAG
@@ -118,14 +122,13 @@ fun View.applyWindowInsets(
     }
 }
 
-private const val INSETS_TAG = "[view_insets_applied]"
-
-fun View.paddingSpace() = Space(paddingTop, paddingBottom, paddingStart, paddingEnd)
-
-private fun View.marginTop(padding: Boolean) = if (padding) paddingTop else marginTop
-private fun View.marginBottom(padding: Boolean) = if (padding) paddingBottom else marginBottom
-private fun View.marginStart(padding: Boolean) = if (padding) paddingStart else marginStart
-private fun View.marginEnd(padding: Boolean) = if (padding) paddingEnd else marginEnd
+private fun View.currentSpace(padding: Boolean): Space {
+    val currentValues = when {
+        padding -> Space.viewPadding()
+        else -> Space.viewMargin()
+    }
+    return currentValues.resolve(this)
+}
 
 class Space internal constructor(
     val top: Int = 0,
@@ -133,7 +136,48 @@ class Space internal constructor(
     val left: Int = 0,
     val right: Int = 0
 ) {
+    fun resolve(view: View): Space {
+        val definedTop = when (top) {
+            USE_VIEW_MARGIN -> view.marginTop
+            USE_VIEW_PADDING -> view.paddingTop
+            else -> top
+        }
+        val definedBottom = when (bottom) {
+            USE_VIEW_MARGIN -> view.marginBottom
+            USE_VIEW_PADDING -> view.paddingBottom
+            else -> bottom
+        }
+        val definedLeft = when (left) {
+            USE_VIEW_MARGIN -> view.marginStart
+            USE_VIEW_PADDING -> view.paddingStart
+            else -> left
+        }
+        val definedRight = when (right) {
+            USE_VIEW_MARGIN -> view.marginEnd
+            USE_VIEW_PADDING -> view.paddingEnd
+            else -> right
+        }
+        return Space(definedTop, definedBottom, definedLeft, definedRight)
+    }
+
     companion object {
+        private const val USE_VIEW_MARGIN = Int.MIN_VALUE
+        private const val USE_VIEW_PADDING = USE_VIEW_MARGIN + 1
+
+        fun viewMargin(
+            top: Int = USE_VIEW_MARGIN,
+            bottom: Int = USE_VIEW_MARGIN,
+            left: Int = USE_VIEW_MARGIN,
+            right: Int = USE_VIEW_MARGIN
+        ) = Space(top, bottom, left, right)
+
+        fun viewPadding(
+            top: Int = USE_VIEW_PADDING,
+            bottom: Int = USE_VIEW_PADDING,
+            left: Int = USE_VIEW_PADDING,
+            right: Int = USE_VIEW_PADDING
+        ) = Space(top, bottom, left, right)
+
         fun horizontal(margin: Int) = Space(left = margin, right = margin)
         fun vertical(margin: Int) = Space(top = margin, bottom = margin)
         fun top(margin: Int) = Space(top = margin)
