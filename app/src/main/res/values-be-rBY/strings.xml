@@ -143,8 +143,6 @@
     <string name="download_action">Спампаваць</string>
     <string name="more_info_action">Дадатковая інфармацыя.</string>
     <string name="downloading_update">Спампоўка абнаўлення WhatSave</string>
-    <string name="special_permissions_title">Дазволы на спецыяльны доступ</string>
-    <string name="special_permissions_description">Калі ласка, выберыце кліентоў, з якіх вы хочаце загружаць статусы:</string>
     <string name="storage_permission_label">Вы павінны дазволіць наступныя патрэбныя дазволы перш, чым працягваць:</string>
     <string name="storage_access_title">Доступ да памяці</string>
     <string name="storage_access_description">Дазвол на доступ да памяці неабходны для доступу і захавання статусаў на вашым прыладзе.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Калі ласка, выберыце правільнае месца.</string>
     <string name="continue_action">Працягнуць</string>
     <string name="revoke_permissions_title">Адмяніць дазволы</string>
-    <string name="revoke_permissions_message"><![CDATA[Скасаванне гэтых дазволаў прывядзе да таго, што гэта прыкладанне не зможа загружаць і захоўваць статусы <b>%s</b> да тых паракоў, пакуль вы зноў не надасце дазволы.]]></string>
     <string name="revoke_action">Адмяніць</string>
     <string name="permissions_revoked_successfully">Дазволы паспяхова аднятыя.</string>
     <string name="grant_permissions">Надаць дазволы</string>
     <string name="privacy_and_terms">Канфідэнцыяльнасць і ўмовы</string>
-    <string name="privacy_notice">Націскаючы \"Працягнуць\", мы будзем лічыць, што вы прачыталі і прынялі нашу Палітыку прыватнасці і Умовы выкарыстання.</string>
 </resources>

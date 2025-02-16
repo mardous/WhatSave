@@ -143,8 +143,6 @@
     <string name="download_action">Жүктеп алу</string>
     <string name="more_info_action">Қосымша ақпарат.</string>
     <string name="downloading_update">WhatSave жаңартуы жүктелуде</string>
-    <string name="special_permissions_title">Арнайы кіру рұқсаттары</string>
-    <string name="special_permissions_description">Сіздің статустарын жүктеу үшін келесі клиенттерді таңдауыңызды сұрау едіміз:</string>
     <string name="storage_permission_label">Жалғастырудан бұрын келесі қажетті рұқсаттарды беруіңіз келеді:</string>
     <string name="storage_access_title">Сақтау қолдану</string>
     <string name="storage_access_description">Сіздің құрылғыңыздағы статустарға қолдану және сақтау үшін сақтау рұқсаты қажет.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Өтініш, дұрыс орнын таңдауыңыз.</string>
     <string name="continue_action">Жалғастыру</string>
     <string name="revoke_permissions_title">Рұқсаттарды тастау</string>
-    <string name="revoke_permissions_message"><![CDATA[Бұл рұқсаттарды алып тастайымы, бұл қолданба <b>%s</b> статустарын жүктеу және сақтау мүмкін болмайды, сіз қайтадан рұқсат бергенге дейін.]]></string>
     <string name="revoke_action">Тастау</string>
     <string name="permissions_revoked_successfully">Рұқсаттар сәтті тасталды.</string>
     <string name="grant_permissions">Рұқсат беру</string>
     <string name="privacy_and_terms">Құпиялық және шарттар</string>
-    <string name="privacy_notice">\"Жалғастыру\" түймесін басу арқылы сіз біздің Құпиялық саясаты мен пайдалану шарттарын оқып, қабылдадыңыз деп есептейміз.</string>
 </resources>

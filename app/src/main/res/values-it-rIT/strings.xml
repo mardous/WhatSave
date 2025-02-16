@@ -143,8 +143,6 @@
     <string name="download_action">Scaricamento</string>
     <string name="more_info_action">Ulteriori informazioni.</string>
     <string name="downloading_update">Download dell\'aggiornamento WhatSave</string>
-    <string name="special_permissions_title">Permessi di accesso speciale</string>
-    <string name="special_permissions_description">Per favore, seleziona i client da cui desideri caricare gli stati:</string>
     <string name="storage_permission_label">Devi concedere i seguenti permessi richiesti prima di continuare:</string>
     <string name="storage_access_title">Accesso al archivio</string>
     <string name="storage_access_description">È necessario il permesso di accesso all\'archivio per accedere e salvare gli stati nel tuo dispositivo.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Per favore, seleziona la posizione corretta.</string>
     <string name="continue_action">Continua</string>
     <string name="revoke_permissions_title">Revoca autorizzazioni</string>
-    <string name="revoke_permissions_message"><![CDATA[Rimuovendo queste autorizzazioni, questa app non potrà caricare e salvare gli stati di <b>%s</b> fino a quando non concedi nuovamente le autorizzazioni.]]></string>
     <string name="revoke_action">Revoca</string>
     <string name="permissions_revoked_successfully">Autorizzazioni revocate con successo.</string>
     <string name="grant_permissions">Concedi autorizzazioni</string>
     <string name="privacy_and_terms">Privacy e termini</string>
-    <string name="privacy_notice">Premendo \"Continua\", assumeremo che tu abbia letto e accettato la nostra Informativa sulla privacy e le Condizioni d\'uso.</string>
 </resources>

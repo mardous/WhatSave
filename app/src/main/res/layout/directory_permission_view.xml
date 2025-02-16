@@ -12,7 +12,8 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -25,41 +26,68 @@
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/permTitle"
+            android:id="@+id/directory_access_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:drawablePadding="8dp"
-            android:drawableStart="@drawable/ic_storage_24dp"
+            android:drawableStart="@drawable/ic_folder_24dp"
             android:textAppearance="?textAppearanceTitleMedium"
-            android:text="@string/storage_access_title"
+            android:text="@string/directory_access_title"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/permDescription"
-            android:layout_width="wrap_content"
+            android:id="@+id/directory_access_description"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:textAppearance="?textAppearanceLabelLarge"
             android:textColor="?android:textColorSecondary"
-            android:text="@string/storage_access_description"
-            app:layout_constraintTop_toBottomOf="@+id/permTitle"
+            android:text="@string/directory_access_description"
+            app:layout_constraintTop_toBottomOf="@+id/directory_access_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/grantButton"
+            android:id="@+id/revoke_access_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:contentDescription="@string/revoke_permissions_title"
+            app:backgroundTint="?colorErrorContainer"
+            app:icon="@drawable/ic_delete_24dp"
+            app:iconTint="?colorOnErrorContainer"
+            app:layout_constraintTop_toBottomOf="@+id/directory_access_description"
+            app:layout_constraintEnd_toStartOf="@+id/grant_access_button" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/grant_access_button"
             style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/grant_permissions"
-            app:layout_constraintTop_toBottomOf="@+id/permDescription"
+            android:layout_marginStart="4dp"
+            android:text="@string/grant_access_action"
+            app:layout_constraintTop_toBottomOf="@+id/directory_access_description"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/list_directories_button"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            app:icon="@drawable/ic_view_list_24dp"
+            app:iconTint="?colorTertiaryContainer"
+            app:layout_constraintTop_toBottomOf="@+id/directory_access_description"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

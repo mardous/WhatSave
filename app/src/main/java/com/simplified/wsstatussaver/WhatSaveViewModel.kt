@@ -29,6 +29,7 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.extensions.blacklistMessageSender
 import com.simplified.wsstatussaver.extensions.getAllInstalledClients
+import com.simplified.wsstatussaver.extensions.getReadableDirectories
 import com.simplified.wsstatussaver.extensions.lastUpdateId
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.model.Country
@@ -224,6 +225,14 @@ class WhatSaveViewModel(
         if (uris.isNotEmpty()) {
             emit(MediaStore.createDeleteRequest(context.contentResolver, uris))
         }
+    }
+
+    fun getReadableDirectoryPaths(context: Context): LiveData<Array<String>> = liveData(IO) {
+        val paths = context.getReadableDirectories()
+            .map { it.createPrettyPath(storage) }
+            .toTypedArray()
+
+        emit(paths)
     }
 
     fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + SilentHandler) {

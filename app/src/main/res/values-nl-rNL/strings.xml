@@ -143,8 +143,6 @@
     <string name="download_action">Downloaden</string>
     <string name="more_info_action">Meer informatie.</string>
     <string name="downloading_update">WhatSave-update downloaden</string>
-    <string name="special_permissions_title">Speciale toegangsmachtigingen</string>
-    <string name="special_permissions_description">Selecteer alsjeblieft de clients van waaruit je statussen wilt laden:</string>
     <string name="storage_permission_label">Je moet de volgende vereiste toestemmingen verlenen voordat je verder kunt gaan:</string>
     <string name="storage_access_title">Toegang tot opslag</string>
     <string name="storage_access_description">Toestemming voor toegang tot opslag is vereist om statussen op te slaan en te openen op je apparaat.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Selecteer de juiste locatie.</string>
     <string name="continue_action">Doorgaan</string>
     <string name="revoke_permissions_title">Rechten intrekken</string>
-    <string name="revoke_permissions_message"><![CDATA[Door deze rechten in te trekken, kan deze app de statussen van <b>%s</b> niet meer laden en opslaan totdat u de rechten opnieuw verleent.]]></string>
     <string name="revoke_action">Intrekken</string>
     <string name="permissions_revoked_successfully">Rechten succesvol ingetrokken.</string>
     <string name="grant_permissions">Machtigingen verlenen</string>
     <string name="privacy_and_terms">Privacy en voorwaarden</string>
-    <string name="privacy_notice">Door op \"Doorgaan\" te drukken, gaan we ervan uit dat u ons Privacybeleid en onze Gebruiksvoorwaarden hebt gelezen en geaccepteerd.</string>
 </resources>

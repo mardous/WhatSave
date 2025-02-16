@@ -143,8 +143,6 @@
     <string name="download_action">Скачать</string>
     <string name="more_info_action">Больше информации</string>
     <string name="downloading_update">Загрузка обновления WhatSave</string>
-    <string name="special_permissions_title">Специальные разрешения на доступ</string>
-    <string name="special_permissions_description">Пожалуйста, выберите клиентов, от которых вы хотите загружать статусы:</string>
     <string name="storage_permission_label">Вы должны предоставить следующие требуемые разрешения перед продолжением:</string>
     <string name="storage_access_title">Доступ к хранилищу</string>
     <string name="storage_access_description">Требуется разрешение на доступ и сохранение статусов на вашем устройстве.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Пожалуйста, выберите правильное местоположение.</string>
     <string name="continue_action">Продолжить</string>
     <string name="revoke_permissions_title">Отозвать разрешения</string>
-    <string name="revoke_permissions_message"><![CDATA[Удаление этих разрешений приведет к тому, что это приложение не сможет загружать и сохранять статусы <b>%s</b>, пока вы снова не предоставите разрешения.]]></string>
     <string name="revoke_action">Отозвать</string>
     <string name="permissions_revoked_successfully">Разрешения успешно отозваны.</string>
     <string name="grant_permissions">Предоставить разрешения</string>
     <string name="privacy_and_terms">Конфиденциальность и условия</string>
-    <string name="privacy_notice">Нажав \"Продолжить\", мы будем считать, что вы прочитали и приняли нашу Политику конфиденциальности и Условия использования.</string>
 </resources>

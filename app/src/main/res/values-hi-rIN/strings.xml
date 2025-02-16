@@ -143,8 +143,6 @@
     <string name="download_action">डाउनलोड करना</string>
     <string name="more_info_action">और जानकारी।</string>
     <string name="downloading_update">अपडेट डाउनलोड हो रहा है</string>
-    <string name="special_permissions_title">विशेष पहुंच अनुमतियाँ</string>
-    <string name="special_permissions_description">कृपया, चयन करें कि आप किस ग्राहक से स्थितियों को लोड करना चाहते हैं।:</string>
     <string name="storage_permission_label">आपको आगे बढ़ने से पहले निम्नलिखित आवश्यक अनुमतियाँ प्रदान करनी चाहिए।:</string>
     <string name="storage_access_title">स्टोरेज एक्सेस</string>
     <string name="storage_access_description">स्थितियों को एक्सेस और सेव करने के लिए स्टोरेज अनुमति की आवश्यकता है।</string>
@@ -152,11 +150,9 @@
     <string name="select_the_correct_location">कृपया, सही स्थान का चयन करें।</string>
     <string name="continue_action">जारी रखें</string>
     <string name="revoke_permissions_title">अनुमतियाँ वापस लें</string>
-    <string name="revoke_permissions_message"><![CDATA[इन अनुमतियों को हटा कर, इस एप्लिकेशन को <b>%s</b> स्थितियों को लोड और सेव करने की क्षमता नहीं होगी जब तक आप फिर से अनुमतियाँ नहीं देते।]]></string>
     <string name="revoke_action">वापस लें</string>
     <string name="permissions_revoked_successfully">अनुमतियाँ सफलतापूर्वक वापस ली गईं।</string>
     <string name="grant_permissions">अनुमतियाँ प्रदान करें</string>
     <string name="privacy_and_terms">गोपनीयता और शर्तें</string>
-    <string name="privacy_notice">\"जारी रखें\" दबाकर, हम मान लेंगे कि आपने हमारी गोपनीयता नीति और उपयोग की शर्तों को पढ़ लिया है और स्वीकार कर लिया है।</string>
     <string name="share_link_action">लिंक शेयर करें</string>
 </resources>

@@ -114,14 +114,11 @@
     <string name="download_action">Herunterladen</string>
     <string name="more_info_action">Mehr Informationen.</string>
     <string name="downloading_update">Lade WhatSave-Aktualisierung herunter</string>
-    <string name="special_permissions_description">Bitte wähle die Clients, von denen du die Status laden willst:</string>
     <string name="storage_permission_label">Du musst die folgenden erforderlichen Berechtigungen erteilen bevor du fortfährst:</string>
     <string name="storage_access_description">Die Speicherzugriffsberechtigung ist essentiell für das Laden und Speichern von Status.</string>
     <string name="revoke_permissions_title">Berechtigungen zurückziehen</string>
-    <string name="revoke_permissions_message"><![CDATA[Durch das Entfernen der Berechtigungen wird die App keine <b>%s</b> Status mehr laden und speichern können, bis die Berechtigungen wieder erteilt werden.]]></string>
     <string name="revoke_action">Zurückziehen</string>
     <string name="privacy_and_terms">Datenschutz und Nutzungsbedingungen</string>
-    <string name="privacy_notice">Wenn du \"Fortfahren\" klickst, gehen wir davon aus, daß du die Datenschutzerklärung und die Nutzungsbedingungen gelesen und akzeptiert hast.</string>
     <string name="according_to_the_file_type_summary">Bilder werden unter \"Pictures\" und Videos werden unter \"Movies\" gespeichert.</string>
     <string name="language_arabic">Arabisch</string>
     <string name="language_belarusian">Belarussisch</string>
@@ -178,7 +175,6 @@
     <string name="message_view_description">Lies gelöschte oder empfange Nachrichten, ohne daß die Kontakte davon erfahren.</string>
     <string name="msg_a_number">Einer Nummer schreiben</string>
     <string name="monthly">Monatlich</string>
-    <string name="special_permissions_title">Spezielle Zugriffsberechtigungen</string>
     <string name="permissions_revoked_successfully">Berechtigungen erfolgreich zurückgezogen.</string>
     <string name="share_link_action">Link teilen</string>
     <string name="language_german">Deutsch</string>

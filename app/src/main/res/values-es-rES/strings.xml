@@ -95,7 +95,6 @@
     <string name="more_info_action">Más info.</string>
     <string name="downloading_update">Descargando actualización de WhatSave</string>
     <string name="privacy_and_terms">Términos y privacidad</string>
-    <string name="privacy_notice">Al presionar \"Continuar\", asumiremos que has leído y aceptado nuestra Política de privacidad y Términos de uso.</string>
     <string name="there_may_be_no_saved_files">Puede que no haya archivos guardados</string>
     <string name="installed_clients_empty">No hay clientes WhatsApp instalados.</string>
     <string name="x_is_the_default_client_now">%s es ahora el cliente predeterminado.</string>
@@ -116,7 +115,6 @@
     <string name="no_action">No</string>
     <string name="permissions_granted_successfully">Permisos concedidos.</string>
     <string name="accept_and_continue">Aceptar y continuar</string>
-    <string name="revoke_permissions_message"><![CDATA[Al eliminar estos permisos, esta aplicación no podrá cargar ni guardar <b> %s </b> estados hasta que vuelva a conceder los permisos.]]></string>
     <string name="just_black_theme_title">Solo negro</string>
     <string name="review_permissions_title">Revisar los permisos</string>
     <string name="default_client_title">Cliente predeterminado</string>
@@ -148,8 +146,6 @@
     <string name="message_label">Mensaje</string>
     <string name="send_action">Enviar</string>
     <string name="select_a_country_title">Seleccionar un país</string>
-    <string name="special_permissions_title">Permisos especiales de acceso</string>
-    <string name="special_permissions_description">Por favor, selecciona los clientes de los que deseas cargar los estados:</string>
     <string name="storage_access_title">Acceso al almacenamiento</string>
     <string name="storage_access_description">El permiso de acceso al almacenamiento es esencial para cargar y guardar estados.</string>
     <string name="select_the_correct_location">Por favor, selecciona la ubicación correcta.</string>

@@ -17,12 +17,11 @@ import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
 
 class OnboardBinding(binding: FragmentOnboardBinding) {
     val subtitle = binding.subtitle
-    val agreementText = binding.agreementText
-    val storagePermissionView = binding.storagePermissionView.root
-    val clientPermissionView = binding.clientPermissionView.root
-    val recyclerView = binding.clientPermissionView.recyclerView
-    val noClientText = binding.clientPermissionView.empty
+    val directoryPermissionView = binding.directoryPermissionView.root
     val grantStorageButton = binding.storagePermissionView.grantButton
+    val grantDirectoryAccessButton = binding.directoryPermissionView.grantAccessButton
+    val revokeDirectoryAccessButton = binding.directoryPermissionView.revokeAccessButton
+    val listDirectoriesButton = binding.directoryPermissionView.listDirectoriesButton
     val continueButton = binding.continueButton
-    val privacyPolicyButton = binding.privacyPolicyButton
+    val nestedScrollView = binding.nestedScrollView
 }

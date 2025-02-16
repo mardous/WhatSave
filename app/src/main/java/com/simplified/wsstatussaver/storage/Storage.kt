@@ -47,7 +47,8 @@ class Storage(context: Context) {
                         StorageDevice(
                             sv.getPath(),
                             sv.getDescription(getApp().applicationContext),
-                            sv.state
+                            sv.state,
+                            sv.isPrimary
                         )
                     )
                 }
@@ -55,6 +56,10 @@ class Storage(context: Context) {
                 recordException(t)
             }
         }
+    }
+
+    val primaryStorageDevice: StorageDevice? by lazy {
+        storageVolumes.firstOrNull { it.isPrimary }
     }
 
     private fun getStorageVolume(path: String): StorageDevice? {

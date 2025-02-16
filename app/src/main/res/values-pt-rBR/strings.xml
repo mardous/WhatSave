@@ -143,8 +143,6 @@
     <string name="download_action">Download</string>
     <string name="more_info_action">Mais informações.</string>
     <string name="downloading_update">Baixando a atualização do WhatSave</string>
-    <string name="special_permissions_title">Permissões de acesso especial</string>
-    <string name="special_permissions_description">Por favor, selecione os clientes dos quais deseja carregar os status:</string>
     <string name="storage_permission_label">Você deve conceder as seguintes permissões necessárias antes de continuar:</string>
     <string name="storage_access_title">Acesso ao armazenamento</string>
     <string name="storage_access_description">É necessário permissão para acessar e salvar status em seu dispositivo.</string>
@@ -152,10 +150,8 @@
     <string name="select_the_correct_location">Por favor, selecione a localização correta.</string>
     <string name="continue_action">Continuar</string>
     <string name="revoke_permissions_title">Revogar permissões</string>
-    <string name="revoke_permissions_message"><![CDATA[Ao remover essas permissões, este aplicativo não poderá carregar e salvar os status de <b>%s</b> até que você conceda as permissões novamente.]]></string>
     <string name="revoke_action">Revogar</string>
     <string name="permissions_revoked_successfully">Permissões revogadas com sucesso.</string>
     <string name="grant_permissions">Conceder permissões</string>
     <string name="privacy_and_terms">Privacidade e termos</string>
-    <string name="privacy_notice">Ao pressionar \"Continuar\", assumiremos que você leu e aceitou nossa Política de Privacidade e Termos de Uso.</string>
 </resources>

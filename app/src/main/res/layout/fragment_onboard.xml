@@ -13,23 +13,24 @@
   ~ See the GNU General Public License for more details.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/privacyPolicyButton">
+        android:layout_height="wrap_content"
+        android:overScrollMode="@integer/overScrollMode"
+        android:scrollbars="none"
+        android:clipToPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
@@ -38,85 +39,50 @@
                 android:paddingTop="@dimen/onboard_titles_vertical_padding"
                 android:paddingStart="@dimen/onboard_titles_horizontal_padding"
                 android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
-                android:textAlignment="viewStart"
-                android:textAppearance="?textAppearanceHeadline4"
-                android:textColor="?android:textColorSecondary"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceHeadline5"
                 android:text="@string/grant_permissions"/>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
                 android:paddingStart="@dimen/onboard_titles_horizontal_padding"
                 android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
                 android:ellipsize="end"
-                android:textAlignment="viewStart"
-                android:textAppearance="?textAppearanceSubtitle2"
-                android:textColor="?android:textColorSecondary"
+                android:textAlignment="center"
+                android:textAppearance="?textAppearanceSubtitle1"
                 android:text="@string/storage_permission_label"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="?attr/dividerHorizontal"/>
 
             <include
                 android:id="@+id/storagePermissionView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/onboard_titles_vertical_padding"
+                android:layout_marginStart="@dimen/onboard_titles_horizontal_padding"
+                android:layout_marginEnd="@dimen/onboard_titles_horizontal_padding"
                 layout="@layout/storage_permission_view"/>
 
             <include
-                android:id="@+id/clientPermissionView"
+                android:id="@+id/directoryPermissionView"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                layout="@layout/client_permission_view"/>
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/onboard_titles_horizontal_padding"
+                android:layout_marginEnd="@dimen/onboard_titles_horizontal_padding"
+                layout="@layout/directory_permission_view"/>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/privacyPolicyButton"
-        style="?materialButtonOutlinedStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/privacy_and_terms"
-        app:layout_constraintBottom_toTopOf="@+id/agreementText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/continueButton"/>
-
-    <com.google.android.material.button.MaterialButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/continueButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="?colorOnPrimary"
-        android:text="@string/continue_action"
-        app:layout_constraintBottom_toTopOf="@+id/agreementText"
-        app:layout_constraintStart_toEndOf="@+id/privacyPolicyButton"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/agreementText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:paddingStart="@dimen/onboard_titles_horizontal_padding"
-        android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
-        android:paddingBottom="16dp"
-        android:textAlignment="center"
-        android:textAppearance="?textAppearanceCaption"
-        android:text="@string/privacy_notice"
-        app:layout_constrainedWidth="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        android:contentDescription="@string/continue_action"
+        app:srcCompat="@drawable/ic_round_check_24dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
