@@ -42,6 +42,7 @@ import com.simplified.wsstatussaver.extensions.findActivityNavController
 import com.simplified.wsstatussaver.extensions.getDefaultDayNightMode
 import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
+import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.logLanguageSelected
@@ -96,6 +97,10 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
             findPreference<Preference>("about")?.setOnPreferenceClickListener {
                 findNavController().navigate(R.id.aboutFragment)
+                true
+            }
+            findPreference<Preference>("privacy_policy")?.setOnPreferenceClickListener {
+                requireContext().openWeb(AboutFragment.PRIVACY_POLICY)
                 true
             }
             invalidatePreferences()

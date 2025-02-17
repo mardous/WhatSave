@@ -157,6 +157,14 @@
             android:key="about"
             android:persistent="false"/>
 
+        <Preference
+            android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_privacy_tip_24dp"
+            android:title="@string/privacy_and_terms"
+            android:summary="@string/privacy_and_terms_summary"
+            android:key="privacy_policy"
+            android:persistent="false"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

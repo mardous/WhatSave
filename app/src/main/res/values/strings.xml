@@ -110,6 +110,7 @@
     <string name="report_bugs_summary">Open the issue tracker page on GitHub.</string>
     <string name="oss_licenses_title">Open Source Licenses</string>
     <string name="oss_licenses_summary">View the licenses for the open source libraries used in this app.</string>
+    <string name="privacy_and_terms_summary">View our Privacy Policy and Terms of Use.</string>
     <string name="message_view_is_disabled">Message view is disabled</string>
     <string name="you_wont_be_able_to_see_messages_here">You won\'t be able to see deleted or received WhatsApp messages here.</string>
     <string name="message_view">Message view</string>

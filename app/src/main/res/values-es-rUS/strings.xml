@@ -107,6 +107,7 @@
     <string name="report_bugs_summary">Abrir la página del rastreador de problemas en GitHub.</string>
     <string name="oss_licenses_title">Licensias de código abierto</string>
     <string name="oss_licenses_summary">Consulta las licencias de código abierto usadas en esta app.</string>
+    <string name="privacy_and_terms_summary">Consulte nuestra Política de Privacidad y los Términos de Uso.</string>
     <string name="message_view_is_disabled">Vista rápida no está activado</string>
     <string name="you_wont_be_able_to_see_messages_here">No serás capaz de ver mensajes de WhatsApp recibidos o recuperados.</string>
     <string name="message_view">Vista rápida</string>
