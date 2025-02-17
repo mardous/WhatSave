@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
-            android:textAppearance="?textAppearanceLabelLarge"
+            android:textAppearance="?textAppearanceLabelMedium"
             android:textColor="?android:textColorSecondary"
             android:text="@string/storage_access_description"
             app:layout_constraintTop_toBottomOf="@+id/permTitle"
