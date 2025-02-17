@@ -27,6 +27,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.STORAGE_PERMISSION_REQUEST
 import com.simplified.wsstatussaver.extensions.getGeneralThemeRes
+import com.simplified.wsstatussaver.extensions.hasQ
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
 import com.simplified.wsstatussaver.extensions.isNightModeEnabled
 import com.simplified.wsstatussaver.extensions.isShownOnboard
@@ -53,6 +54,9 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         hadPermissions = hasStoragePermissions()
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
+        if (hasQ()) {
+            window.isNavigationBarContrastEnforced = false
+        }
     }
 
     private fun setupTheme() {
