@@ -29,9 +29,8 @@ import androidx.core.view.marginStart
 import androidx.core.view.marginTop
 import androidx.core.view.updateLayoutParams
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.getApp
-
-private const val INSETS_TAG = "[view_insets_applied]"
 
 @SuppressLint("DiscouragedApi", "InternalInsetResource")
 fun WindowInsetsCompat?.getBottomInsets(): Int {
@@ -89,16 +88,16 @@ fun View.applyWindowInsets(
     addedSpace: Space = Space(),
     consumer: InsetsConsumer? = null
 ) {
-    if (tag == INSETS_TAG)
-        return
-
     ViewCompat.setOnApplyWindowInsetsListener(this) { v: View, insets: WindowInsetsCompat ->
+        if (getTag(R.id.id_inset_consumed) == true)
+            return@setOnApplyWindowInsetsListener insets
+
         val mask = Type.systemBars() or Type.displayCutout() or if (ime) Type.ime() else 0
         val i = insets.getInsets(mask)
         val start = if (layoutDirection == LAYOUT_DIRECTION_RTL) i.right else i.left
         val end = if (layoutDirection == LAYOUT_DIRECTION_RTL) i.left else i.right
-        val currentValues = currentSpace(padding)
-        val userAddedSpace = addedSpace.resolve(this)
+        val currentValues = v.currentSpace(padding)
+        val userAddedSpace = addedSpace.resolve(v)
         if (!padding) {
             if (v.layoutParams is MarginLayoutParams) {
                 v.updateLayoutParams<MarginLayoutParams> {
@@ -116,7 +115,7 @@ fun View.applyWindowInsets(
                 (if (bottom) i.bottom else currentValues.bottom) + userAddedSpace.bottom
             )
         }
-        tag = INSETS_TAG
+        setTag(R.id.id_inset_consumed, true)
         consumer?.invoke(v, i)
         insets
     }
