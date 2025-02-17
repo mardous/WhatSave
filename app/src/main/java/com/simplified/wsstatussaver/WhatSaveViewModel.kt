@@ -29,7 +29,6 @@ import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.extensions.blacklistMessageSender
 import com.simplified.wsstatussaver.extensions.getAllInstalledClients
-import com.simplified.wsstatussaver.extensions.getReadableDirectories
 import com.simplified.wsstatussaver.extensions.lastUpdateId
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.model.Country
@@ -38,6 +37,7 @@ import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.model.WaClient
+import com.simplified.wsstatussaver.model.WaDirectory
 import com.simplified.wsstatussaver.mvvm.DeletionResult
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.mvvm.ShareResult
@@ -227,9 +227,8 @@ class WhatSaveViewModel(
         }
     }
 
-    fun getReadableDirectoryPaths(context: Context): LiveData<Array<String>> = liveData(IO) {
-        val paths = context.getReadableDirectories()
-            .map { it.createPrettyPath(storage) }
+    fun getReadableDirectoryPaths(directories: List<WaDirectory>): LiveData<Array<String>> = liveData(IO) {
+        val paths = directories.map { it.createPrettyPath(storage) }
             .toTypedArray()
 
         emit(paths)

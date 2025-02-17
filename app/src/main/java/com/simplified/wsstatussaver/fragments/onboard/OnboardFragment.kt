@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.directoryAccessRequestIntent
 import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.getOnBackPressedDispatcher
+import com.simplified.wsstatussaver.extensions.getReadableDirectories
 import com.simplified.wsstatussaver.extensions.hasPermissions
 import com.simplified.wsstatussaver.extensions.hasSAFPermissions
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
@@ -118,10 +119,26 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
         } else {
             updateButtons()
             binding.listDirectoriesButton.setOnClickListener {
-                viewModel.getReadableDirectoryPaths(requireContext()).observe(viewLifecycleOwner) {
+                val directories = getReadableDirectories()
+                viewModel.getReadableDirectoryPaths(directories).observe(viewLifecycleOwner) {
                     MaterialAlertDialogBuilder(requireContext())
                         .setTitle(R.string.accessible_directories)
-                        .setItems(it, null)
+                        .setItems(it) { _: DialogInterface, position: Int ->
+                            val selectedDir = directories[position]
+                            MaterialAlertDialogBuilder(requireContext())
+                                .setTitle(R.string.revoke_permissions_title)
+                                .setMessage(R.string.revoke_directory_access_message)
+                                .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->
+                                    if (selectedDir.releasePermissions(requireContext())) {
+                                        showToast(R.string.permissions_revoked_successfully)
+                                        if (getReadableDirectories().isEmpty()) {
+                                            updateButtons()
+                                        }
+                                    }
+                                }
+                                .setNegativeButton(android.R.string.cancel, null)
+                                .show()
+                        }
                         .setPositiveButton(R.string.close_action, null)
                         .show()
                 }
@@ -129,7 +146,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
             binding.revokeDirectoryAccessButton.setOnClickListener {
                 MaterialAlertDialogBuilder(requireContext())
                     .setTitle(R.string.revoke_permissions_title)
-                    .setMessage(R.string.revoke_directory_access_message)
+                    .setMessage(R.string.revoke_all_directories_access_message)
                     .setPositiveButton(R.string.revoke_action) { _: DialogInterface, _: Int ->
                         if (releasePermissions()) {
                             showToast(R.string.permissions_revoked_successfully)

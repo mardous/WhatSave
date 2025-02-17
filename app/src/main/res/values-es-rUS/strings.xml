@@ -177,7 +177,8 @@
     <string name="got_it_action">¡Lo tengo!</string>
     <string name="continue_action">Continuar</string>
     <string name="revoke_permissions_title">Revocar permisos</string>
-    <string name="revoke_directory_access_message">Si revocas el acceso a los directorios, esta app no podrá cargar archivos de estados hasta que concedas acceso nuevamente.</string>
+    <string name="revoke_directory_access_message">¿Quieres remover los permisos de acceso a esta carpeta?</string>
+    <string name="revoke_all_directories_access_message">Si revocas el acceso a los directorios, esta app no podrá cargar archivos de estados hasta que concedas acceso nuevamente.</string>
     <string name="revoke_action">Revocar</string>
     <string name="permissions_revoked_successfully">Permisos revocados con éxito.</string>
     <string name="grant_permissions">Conceder permisos</string>

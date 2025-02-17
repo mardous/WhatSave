@@ -91,6 +91,8 @@ fun FragmentActivity.requestPermissions(isShowOnboard: Boolean = false) {
     }
 }
 
+fun Fragment.getReadableDirectories() = requireContext().getReadableDirectories()
+
 fun Fragment.hasStoragePermissions() = requireContext().hasStoragePermissions()
 
 fun Fragment.hasSAFPermissions() = requireContext().hasSAFPermissions()

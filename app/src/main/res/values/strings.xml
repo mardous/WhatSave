@@ -177,7 +177,8 @@
     <string name="got_it_action">Got it!</string>
     <string name="continue_action">Continue</string>
     <string name="revoke_permissions_title">Revoke permissions</string>
-    <string name="revoke_directory_access_message">Revoking access to the directories will prevent this app from loading status files until access is granted again.</string>
+    <string name="revoke_directory_access_message">Do you want to remove access permissions to this directory?</string>
+    <string name="revoke_all_directories_access_message">Revoking access to the directories will prevent this app from loading status files until access is granted again.</string>
     <string name="revoke_action">Revoke</string>
     <string name="permissions_revoked_successfully">Permissions revoked successfully.</string>
     <string name="grant_permissions">Grant permissions</string>
