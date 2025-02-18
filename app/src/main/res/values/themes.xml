@@ -113,6 +113,7 @@
 
     <style name="BottomSheetDialogTheme" parent="ThemeOverlay.Material3.BottomSheetDialog">
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">?isLightTheme</item>
+        <item name="android:enforceNavigationBarContrast" tools:ignore="NewApi">false</item>
         <item name="enableEdgeToEdge">true</item>
     </style>
 
