@@ -161,7 +161,7 @@ class StatusesRepositoryImpl(
                             val fileUri = file.getUri()
                             val fileName = file.name
                             val isSaved = statusDao.statusSaved(fileUri, file.name)
-                            if (fileName.isNullOrEmpty() || (isSaved && isExcludeSaved))
+                            if (fileName.isNullOrEmpty() || file.isOldFile() || (isSaved && isExcludeSaved))
                                 continue
 
                             statusList.add(Status(type, fileName, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
