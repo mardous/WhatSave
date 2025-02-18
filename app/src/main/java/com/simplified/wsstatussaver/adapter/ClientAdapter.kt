@@ -49,7 +49,13 @@ class ClientAdapter(
 
     private fun configureCheckIcon(holder: ViewHolder, client: WaClient) {
         val checkMode = callback.checkModeForClient(client)
-        holder.check?.isChecked = checkMode == IClientCallback.MODE_CHECKED
+        if (itemCount == 1) {
+            holder.check?.isChecked = true
+            holder.check?.isEnabled = false
+            holder.itemView.isEnabled = false
+        } else {
+            holder.check?.isChecked = checkMode == IClientCallback.MODE_CHECKED
+        }
     }
 
     override fun getItemCount(): Int = clients.size
