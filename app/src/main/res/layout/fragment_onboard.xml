@@ -33,10 +33,17 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/onboard_titles_vertical_padding"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/ic_lock_open_24dp"/>
+
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/onboard_titles_vertical_padding"
+                android:paddingTop="16dp"
                 android:paddingStart="@dimen/onboard_titles_horizontal_padding"
                 android:paddingEnd="@dimen/onboard_titles_horizontal_padding"
                 android:textAlignment="center"
