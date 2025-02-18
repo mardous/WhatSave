@@ -37,7 +37,7 @@ import java.util.Date
 
 interface StatusesRepository {
     suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri>
-    suspend fun statusDirectoriesAsFiles(clients: List<WaClient>): Set<File>
+    suspend fun statusDirectoriesAsFiles(client: WaClient): Set<File>
     fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(): StatusQueryResult
@@ -86,18 +86,16 @@ class StatusesRepositoryImpl(
         return directories
     }
 
-    override suspend fun statusDirectoriesAsFiles(clients: List<WaClient>): Set<File> {
+    override suspend fun statusDirectoriesAsFiles(client: WaClient): Set<File> {
         val directories = mutableSetOf<File>()
-        val paths = WaClient.entries.flatMap { client ->
-            WaDirectory.entries.mapNotNull { dir ->
-                if (dir.supportsClient(client)) {
-                    val additionalSegments = dir.additionalSegments(client)
-                    if (additionalSegments.isNotEmpty())
-                        "${dir.path}/${additionalSegments.joinToString("/")}"
-                    else dir.path
-                } else {
-                    null
-                }
+        val paths = WaDirectory.entries.mapNotNull { dir ->
+            if (dir.supportsClient(client)) {
+                val additionalSegments = dir.additionalSegments(client)
+                if (additionalSegments.isNotEmpty())
+                    "${dir.path}/${additionalSegments.joinToString("/")}"
+                else dir.path
+            } else {
+                null
             }
         }
         for (path in paths) {
@@ -156,7 +154,7 @@ class StatusesRepositoryImpl(
         } else {
             if (context.hasStoragePermissions()) {
                 for (client in installedClients) {
-                    for (directory in statusDirectoriesAsFiles(installedClients)) {
+                    for (directory in statusDirectoriesAsFiles(client)) {
                         if (!directory.isDirectory) continue
                         val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
                         if (!statuses.isNullOrEmpty()) for (file in statuses) {
