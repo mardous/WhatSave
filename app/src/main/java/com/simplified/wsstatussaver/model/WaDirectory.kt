@@ -115,20 +115,13 @@ enum class WaDirectory(
                 for (account in accounts) {
                     val accountName = account.name
                     if (!accountName.isNullOrEmpty()) {
-                        addDirectory(
-                            context,
-                            treeUri,
-                            directories,
-                            account,
-                            listOf("Media", ".Statuses")
-                        )
+                        addDirectory(context, treeUri, directories, account, listOf("Media", ".Statuses"))
                     }
                 }
-            } else {
-                val statusesSegments = additionalSegments.toMutableList()
-                    .also { it.addAll(listOf("Media", ".Statuses")) }
-                addDirectory(context, treeUri, directories, rootDirectory, statusesSegments)
             }
+            val statusesSegments = additionalSegments.toMutableList()
+                .also { it.addAll(listOf("Media", ".Statuses")) }
+            addDirectory(context, treeUri, directories, rootDirectory, statusesSegments)
         }
 
         return directories
