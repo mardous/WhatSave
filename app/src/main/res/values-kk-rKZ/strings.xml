@@ -44,7 +44,6 @@
     <string name="x_selected">%d таңдалды</string>
     <string name="x_is_the_default_client_now">%s қазір әдепкі клиент болып табылады.</string>
     <string name="default_client_cleared">Әдепкі клиент тазартылды.</string>
-    <string name="installed_clients_empty">WhatsApp клиенттері орнатылмаған.</string>
     <string name="you_should_open_wa_and_download_some_statuses">WhatsApp-қа кіріп, бірнеше мәртебелерді жүктеп алу керек</string>
     <string name="there_may_be_no_saved_files">Сақталған файлдар болмаған болуы мүмкін</string>
     <string name="wa_is_not_installed_title">WhatsApp орнатылмаған</string>

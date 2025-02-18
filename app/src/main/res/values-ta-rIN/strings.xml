@@ -44,7 +44,6 @@
     <string name="x_selected">%d தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="x_is_the_default_client_now">%s இப்போது இயல்புநிலை கிளையன்ட்.</string>
     <string name="default_client_cleared">இயல்புநிலை கிளையன்ட் அழிக்கப்பட்டது.</string>
-    <string name="installed_clients_empty">வாட்ஸ்அப் கிளையண்டுகள் நிறுவப்படவில்லை.</string>
     <string name="you_should_open_wa_and_download_some_statuses">நீங்கள் WhatsApp சென்று சில நிலைகளை பதிவிறக்க வேண்டும்</string>
     <string name="there_may_be_no_saved_files">சேமிக்கப்பட்ட கோப்புகள் இல்லை என்று ஏதேனும் இருக்கலாம்</string>
     <string name="wa_is_not_installed_title">WhatsApp நிறுவப்படவில்லை</string>

@@ -46,7 +46,6 @@
     <string name="action_select_all">Pilih semua</string>
     <string name="x_is_the_default_client_now">%s adalah klien bawaan sekarang.</string>
     <string name="default_client_cleared">Klien bawaan dihapus.</string>
-    <string name="installed_clients_empty">Tidak ada klien WhatsApp yang terpasang.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Anda harus masuk ke WhatsApp dan mengunduh beberapa status</string>
     <string name="there_may_be_no_saved_files">Mungkin tidak ada berkas yang tersimpan</string>
     <string name="wa_is_not_installed_title">WhatsApp tidak terpasang</string>

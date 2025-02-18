@@ -144,7 +144,6 @@
     <string name="x_selected">%d ausgewählt</string>
     <string name="x_saved_statuses_will_be_permanently_deleted">%d gespeicherte Status werden für immer gelöscht.</string>
     <string name="permissions_denied_title">Zugriff verweigert</string>
-    <string name="installed_clients_empty">Es gibt keine installierten WhatsApp-Clients.</string>
     <string name="this_application_will_not_work">Dieses Programm wird nicht funktionieren</string>
     <string name="action_settings">Einstellungen</string>
     <string name="settings_other">Anderes</string>

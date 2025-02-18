@@ -44,7 +44,6 @@
     <string name="x_selected">%d selezionato</string>
     <string name="x_is_the_default_client_now">%s è ora il client predefinito.</string>
     <string name="default_client_cleared">Client predefinito cancellato.</string>
-    <string name="installed_clients_empty">Non ci sono client WhatsApp installati.</string>
     <string name="you_should_open_wa_and_download_some_statuses">Dovresti andare su WhatsApp e scaricare alcuni stati</string>
     <string name="there_may_be_no_saved_files">Potrebbe non esserci file salvati</string>
     <string name="wa_is_not_installed_title">WhatsApp non è installato</string>

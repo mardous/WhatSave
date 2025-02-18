@@ -49,7 +49,7 @@ class DefaultClientPreferenceDialog : DialogFragment(), OnShowListener, IClientC
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogRecyclerviewBinding.inflate(layoutInflater)
-        binding.empty.setText(R.string.installed_clients_empty)
+        binding.empty.setText(R.string.wa_is_not_installed_title)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = ClientAdapter(binding.root.context, R.layout.item_client, this).apply {
             registerAdapterDataObserver(adapterDataObserver)

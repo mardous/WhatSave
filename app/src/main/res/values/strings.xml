@@ -44,10 +44,9 @@
     <string name="action_select_all">Select all</string>
     <string name="x_selected">%d selected</string>
     <string name="x_is_the_default_client_now">%s is the default client now.</string>
-    <string name="default_client_cleared">Default client cleared.</string>
+    <string name="default_client_cleared">Loading statuses from all clients.</string>
     <string name="saf_tutorial_1"><![CDATA[A folder selection window will appear. Please make sure you choose the right path, which is usually <b>%s</b>, as demonstrated in the example image:]]></string>
     <string name="saf_tutorial_2">Once you have selected the appropriate folder, press \"Use this folder\" at the bottom to confirm.</string>
-    <string name="installed_clients_empty">There are not installed WhatsApp clients.</string>
     <string name="you_should_open_wa_and_download_some_statuses">You should go to WhatsApp and download some statuses</string>
     <string name="there_may_be_no_saved_files">There may be no saved files</string>
     <string name="wa_is_not_installed_title">WhatsApp isn\'t installed</string>
@@ -89,9 +88,9 @@
     <string name="quick_deletion_title">Quick deletion</string>
     <string name="quick_deletion_summary">Allows the deletion of saved statuses without displaying a confirmation window. Not recommended.</string>
     <string name="review_permissions_title">Review permissions</string>
-    <string name="review_permissions_summary">Grant or remove permissions for installed WhatsApp clients.</string>
+    <string name="review_permissions_summary">Grant or remove access permissions to WhatsApp directories.</string>
     <string name="default_client_title">Default client</string>
-    <string name="default_client_summary">If you have multiple WhatsApp clients installed, you can select the one from which to load statuses.</string>
+    <string name="default_client_summary">If you have WhatsApp and Business on your device, you can pick which one to get statuses from.</string>
     <string name="analytics_enabled_title">Send usage statistics</string>
     <string name="analytics_enabled_summary">When this is enabled, WhatSave may send anonymous usage statistics that help us understand how users use the app.</string>
     <string name="about_title">About</string>
