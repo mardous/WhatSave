@@ -47,10 +47,10 @@ sealed class Version(
         versionMajor * 1000 + versionMinor * 100 + versionPatch * 10 + versionBuild
 }
 
-val currentVersion: Version = Version.Alpha(
+val currentVersion: Version = Version.Beta(
     versionMajor = 2,
-    versionMinor = 0,
-    versionPatch = 1,
+    versionMinor = 1,
+    versionPatch = 0,
     versionBuild = 1
 )
 
