@@ -85,7 +85,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="4dp"
             app:icon="@drawable/ic_view_list_24dp"
-            app:iconTint="?colorTertiaryContainer"
+            app:iconTint="?colorSecondary"
             app:layout_constraintTop_toBottomOf="@+id/directory_access_description"
             app:layout_constraintStart_toStartOf="parent" />
 
