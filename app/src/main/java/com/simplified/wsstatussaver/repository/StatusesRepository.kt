@@ -88,7 +88,7 @@ class StatusesRepositoryImpl(
 
     override suspend fun statusDirectoriesAsFiles(client: WaClient): Set<File> {
         val directories = mutableSetOf<File>()
-        val paths = WaDirectory.entries.mapNotNull { dir ->
+        val paths = WaDirectory.entries.filterNot { it.isLegacy }.mapNotNull { dir ->
             if (dir.supportsClient(client)) {
                 val additionalSegments = dir.additionalSegments(client)
                 if (additionalSegments.isNotEmpty())

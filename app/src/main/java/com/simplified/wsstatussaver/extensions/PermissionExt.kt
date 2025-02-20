@@ -108,11 +108,12 @@ fun Fragment.takePermissions(result: ActivityResult, isShowToast: Boolean = true
     if (result.resultCode == Activity.RESULT_OK && context != null) {
         val uri = result.data?.data ?: return false
         val directory = uri.toWhatsAppDirectory()
-        if (directory != null) {
+        if (directory != null && !directory.isLegacy) {
             if (!directory.isReadable(context)) { // Check if access has not already been given previously
                 val mask = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
                 context.contentResolver.takePersistableUriPermission(uri, mask)
                 if (isShowToast) showToast(R.string.permissions_granted_successfully)
+                syncPermissions()
                 return true
             }
         } else {
@@ -126,6 +127,15 @@ fun Fragment.releasePermissions(): Boolean {
     val context = this.context ?: return false
     return context.getReadableDirectories().all {
         it.releasePermissions(context)
+    }
+}
+
+fun Fragment.syncPermissions() {
+    val directories = getReadableDirectories()
+    val legacyDirectories = directories.filter { it.isLegacy }
+    if (legacyDirectories.isNotEmpty()) for (dir in directories) {
+        legacyDirectories.firstOrNull { it.path == dir.path }
+            ?.releasePermissions(requireContext())
     }
 }
 

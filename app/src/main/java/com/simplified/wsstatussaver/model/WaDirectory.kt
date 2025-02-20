@@ -30,7 +30,8 @@ data class WaDirectoryUri(val client: WaClient?, val uri: Uri)
 enum class WaDirectory(
     val path: String,
     val additionalSegments: SegmentResolver = { emptyList() },
-    private val supportedClients: Array<WaClient>
+    private val supportedClients: Array<WaClient>,
+    val isLegacy: Boolean = false
 ) {
     Media(
         path = "Android/media",
@@ -44,6 +45,12 @@ enum class WaDirectory(
     WhatsAppBusiness(
         path = "WhatsApp Business",
         supportedClients = arrayOf(WaClient.Business)
+    ),
+    Legacy(
+        path = "Android/media",
+        additionalSegments = { listOf(it.packageName, it.displayName, "Media", ".Statuses") },
+        supportedClients = arrayOf(WaClient.WhatsApp, WaClient.Business),
+        isLegacy = true
     );
 
     fun createPrettyPath(st: Storage): String {
@@ -69,6 +76,11 @@ enum class WaDirectory(
         if (path.contains(":")) {
             val lastPart = path.split(":")
             if (lastPart.size == 2) {
+                if (isLegacy) {
+                    return WaClient.entries.any {
+                        supportsClient(it) && lastPart[1] == "${this.path}/${additionalSegments(it).joinToString("/")}"
+                    }
+                }
                 return lastPart[1] == this.path
             }
         }
@@ -108,20 +120,24 @@ enum class WaDirectory(
             if (additionalSegments.isEmpty() && !supportsClient(client))
                 continue
 
-            val accountsSegments = additionalSegments.toMutableList().also { it.add("accounts") }
-            val accountsDirectory = findSubdirectory(rootDirectory, accountsSegments)
-            if (accountsDirectory != null) {
-                val accounts = accountsDirectory.listFiles()
-                for (account in accounts) {
-                    val accountName = account.name
-                    if (!accountName.isNullOrEmpty()) {
-                        addDirectory(context, treeUri, directories, account, listOf("Media", ".Statuses"))
+            if (isLegacy) {
+                addDirectory(context, treeUri, directories, rootDirectory, additionalSegments.toMutableList())
+            } else {
+                val accountsSegments = additionalSegments.toMutableList().also { it.add("accounts") }
+                val accountsDirectory = findSubdirectory(rootDirectory, accountsSegments)
+                if (accountsDirectory != null) {
+                    val accounts = accountsDirectory.listFiles()
+                    for (account in accounts) {
+                        val accountName = account.name
+                        if (!accountName.isNullOrEmpty()) {
+                            addDirectory(context, treeUri, directories, account, listOf("Media", ".Statuses"))
+                        }
                     }
                 }
+                val statusesSegments = additionalSegments.toMutableList()
+                    .also { it.addAll(listOf("Media", ".Statuses")) }
+                addDirectory(context, treeUri, directories, rootDirectory, statusesSegments)
             }
-            val statusesSegments = additionalSegments.toMutableList()
-                .also { it.addAll(listOf("Media", ".Statuses")) }
-            addDirectory(context, treeUri, directories, rootDirectory, statusesSegments)
         }
 
         return directories
