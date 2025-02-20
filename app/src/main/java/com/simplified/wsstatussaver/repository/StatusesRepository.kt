@@ -104,7 +104,9 @@ class StatusesRepositoryImpl(
                     baseDirectory.list { file, _ -> file.isDirectory }?.forEach { accountName ->
                         directories.add(File(baseDirectory, "$accountName/Media/.Statuses"))
                     }
-                } ?: directories.add(File(statusesLocationPath, "${path}/Media/.Statuses"))
+                }
+
+            directories.add(File(statusesLocationPath, "${path}/Media/.Statuses"))
         }
         return directories
     }
