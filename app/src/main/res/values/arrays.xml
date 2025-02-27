@@ -61,6 +61,7 @@
         <item>@string/language_spanish_latam</item>
         <item>@string/language_french</item>
         <item>@string/language_german</item>
+        <item>@string/language_hebrew</item>
         <item>@string/language_hindi</item>
         <item>@string/language_indonesian</item>
         <item>@string/language_italian</item>
@@ -80,6 +81,7 @@
         <item>es-419</item>
         <item>fr</item>
         <item>de</item>
+        <item>he</item>
         <item>hi</item>
         <item>in</item>
         <item>it</item>
