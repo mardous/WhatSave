@@ -116,13 +116,13 @@ enum class WaDirectory(
         }
 
         for (client in installedClients) {
-            val additionalSegments = additionalSegments(client)
-            if (additionalSegments.isEmpty() && !supportsClient(client))
-                continue
-
             if (isLegacy) {
-                addDirectory(context, treeUri, directories, rootDirectory, additionalSegments.toMutableList())
+                addDirectory(context, treeUri, directories, rootDirectory, emptyList())
             } else {
+                val additionalSegments = additionalSegments(client)
+                if (additionalSegments.isEmpty() && !supportsClient(client))
+                    continue
+
                 val accountsSegments = additionalSegments.toMutableList().also { it.add("accounts") }
                 val accountsDirectory = findSubdirectory(rootDirectory, accountsSegments)
                 if (accountsDirectory != null) {
