@@ -47,9 +47,13 @@ enum class WaDirectory(
         supportedClients = arrayOf(WaClient.Business)
     ),
     Legacy(
-        path = "Android/media",
-        additionalSegments = { listOf(it.packageName, it.displayName, "Media", ".Statuses") },
-        supportedClients = arrayOf(WaClient.WhatsApp, WaClient.Business),
+        path = "Android/media/com.whatsapp/WhatsApp/Media/.Statuses",
+        supportedClients = arrayOf(WaClient.WhatsApp),
+        isLegacy = true
+    ),
+    LegacyBusiness(
+        path = "Android/media/com.whatsapp.w4b/WhatsApp Business/Media/.Statuses",
+        supportedClients = arrayOf(WaClient.Business),
         isLegacy = true
     );
 
@@ -76,11 +80,6 @@ enum class WaDirectory(
         if (path.contains(":")) {
             val lastPart = path.split(":")
             if (lastPart.size == 2) {
-                if (isLegacy) {
-                    return WaClient.entries.any {
-                        supportsClient(it) && lastPart[1] == "${this.path}/${additionalSegments(it).joinToString("/")}"
-                    }
-                }
                 return lastPart[1] == this.path
             }
         }
