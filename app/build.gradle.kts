@@ -51,7 +51,7 @@ val currentVersion: Version = Version.Beta(
     versionMajor = 2,
     versionMinor = 1,
     versionPatch = 0,
-    versionBuild = 2
+    versionBuild = 3
 )
 
 android {
