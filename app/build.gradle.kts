@@ -47,11 +47,10 @@ sealed class Version(
         versionMajor * 1000 + versionMinor * 100 + versionPatch * 10 + versionBuild
 }
 
-val currentVersion: Version = Version.Beta(
+val currentVersion: Version = Version.Stable(
     versionMajor = 2,
     versionMinor = 1,
-    versionPatch = 0,
-    versionBuild = 3
+    versionPatch = 0
 )
 
 android {
