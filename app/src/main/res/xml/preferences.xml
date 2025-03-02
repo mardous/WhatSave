@@ -87,6 +87,7 @@
 
         <Preference
             android:layout="@layout/list_item_view"
+            android:icon="@drawable/ic_lock_open_24dp"
             android:title="@string/review_permissions_title"
             android:summary="@string/review_permissions_summary"
             android:key="grant_permissions"
