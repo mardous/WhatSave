@@ -1,0 +1,5 @@
+* Added support for multi-account WhatsApp
+* New languages added: Indonesian and Hebrew
+* Onboard screen redesigned
+* Fixed inability to grant permissions on some devices
+* Minor UI improvements
