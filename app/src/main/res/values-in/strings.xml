@@ -198,4 +198,5 @@
     <string name="revoke_directory_access_message">Apakah Anda ingin menghapus izin akses ke direktori ini?</string>
     <string name="revoke_all_directories_access_message">Mencabut akses ke direktori akan mencegah aplikasi ini memuat berkas status sebelum akses diberikan lagi.</string>
     <string name="language_indonesian">Indonesia</string>
+    <string name="language_hebrew">Ibrani</string>
 </resources>
