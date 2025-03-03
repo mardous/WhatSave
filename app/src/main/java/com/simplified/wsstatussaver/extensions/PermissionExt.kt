@@ -133,9 +133,10 @@ fun Fragment.releasePermissions(): Boolean {
 fun Fragment.syncPermissions() {
     val directories = getReadableDirectories()
     val legacyDirectories = directories.filter { it.isLegacy }
-    if (legacyDirectories.isNotEmpty()) for (dir in directories) {
-        legacyDirectories.firstOrNull { it.path == dir.path }
-            ?.releasePermissions(requireContext())
+    if (legacyDirectories.isNotEmpty() && directories.any { it == WaDirectory.Media }) {
+        for (dir in legacyDirectories) {
+            dir.releasePermissions(requireContext())
+        }
     }
 }
 
