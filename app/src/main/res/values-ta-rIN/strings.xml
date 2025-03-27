@@ -113,7 +113,7 @@
     <string name="blacklist_senders">இந்த அனுப்புநர்களிடமிருந்து செய்திகளைச் சேமிக்க வேண்டாம்</string>
     <string name="blacklisted_senders">கருத்துப் படுத்தப்பட்ட அனுப்புநர்கள்</string>
     <string name="no_blacklisted_senders">இங்கு நீங்கள் அவர்களிடமிருந்து அவர்கள் செய்திகளை சேமிக்க விரும்பாது என்று காட்டப்படும்.</string>
-    <string name="remove_x_from_the_blacklist">&lt;! [CDATA [இந்த தடுப்புப்பட்டியிலிருந்து &lt;b&gt;%s &lt;/b&gt; ஐ அகற்ற விரும்புகிறீர்களா?]]&gt;</string>
+    <string name="remove_x_from_the_blacklist"><![CDATA[இந்தத் தடைப்பட்டியலிலிருந்து <b>%s</b> ஐ நீக்க விரும்புகிறீர்களா?]]></string>
     <string name="no_conversations">காண்பிக்க உரைநர்கள் இல்லை</string>
     <string name="empty">காலி</string>
     <string name="yes_action">ஆம்</string>
@@ -193,7 +193,7 @@
     <string name="report_bugs_title">பிழைகள் புகாரளிக்கவும்</string>
     <string name="language_dutch">டச்சு</string>
     <string name="language_german">செர்மன்</string>
-    <string name="saf_tutorial_1">&lt;! [சி.டி.ஏ.டி.ஏ [ஒரு கோப்புறை தேர்வு சாளரம் தோன்றும். எடுத்துக்காட்டு படத்தில் காட்டப்பட்டுள்ளபடி, சரியான பாதையை நீங்கள் தேர்வுசெய்கிறீர்கள் என்பதை உறுதிப்படுத்திக் கொள்ளுங்கள், இது வழக்கமாக &lt;b&gt;%s &lt;/b&gt;</string>
+    <string name="saf_tutorial_1"><![CDATA[ஒரு கோப்புறை தேர்வு சாளரம் தோன்றும். சரியான பாதையை நீங்கள் தேர்வு செய்வதை உறுதிசெய்க, பொதுவாக <b>%s</b>, எடுத்துக்காட்டுப் படத்தில் காட்டப்பட்டுள்ளது போல:]]></string>
     <string name="saf_tutorial_2">நீங்கள் பொருத்தமான கோப்புறையைத் தேர்ந்தெடுத்ததும், உறுதிப்படுத்த கீழே உள்ள \"இந்த கோப்புறையைப் பயன்படுத்தவும்\" என்பதை அழுத்தவும்.</string>
     <string name="save_location_title">இருப்பிடத்தை சேமிக்கவும்</string>
     <string name="save_location_summary">நீங்கள் சேமித்த நிலைகளை சேமிக்க விரும்பும் இடத்தைத் தேர்ந்தெடுக்கவும்.</string>
