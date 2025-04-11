@@ -22,6 +22,7 @@ import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.view.ViewGroupCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.simplified.wsstatussaver.R
@@ -53,6 +54,7 @@ abstract class BaseActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         hadPermissions = hasStoragePermissions()
+        ViewGroupCompat.installCompatInsetsDispatch(window.decorView)
         windowInsetsController = WindowInsetsControllerCompat(window, window.decorView)
         if (hasQ()) {
             window.isNavigationBarContrastEnforced = false

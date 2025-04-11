@@ -17,6 +17,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
@@ -31,7 +32,6 @@ import com.simplified.wsstatussaver.extensions.applyHorizontalWindowInsets
 import com.simplified.wsstatussaver.extensions.applyWindowInsets
 import com.simplified.wsstatussaver.extensions.currentFragment
 import com.simplified.wsstatussaver.extensions.getBottomInsets
-import com.simplified.wsstatussaver.extensions.hasR
 import com.simplified.wsstatussaver.extensions.hide
 import com.simplified.wsstatussaver.extensions.requireWindow
 import com.simplified.wsstatussaver.extensions.show
@@ -61,9 +61,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
             navigationView.applyWindowInsets(top = true, left = true)
         }
 
-        requireWindow().decorView.setOnApplyWindowInsetsListener { _, insets ->
-            windowInsets = WindowInsetsCompat.toWindowInsetsCompat(insets)
-            insets
+        ViewCompat.setOnApplyWindowInsetsListener(requireWindow().decorView) { _, insets ->
+            insets.also { windowInsets = it }
         }
 
         childNavController = whichFragment<NavHostFragment>(R.id.main_container).navController
@@ -96,10 +95,8 @@ class MainFragment : Fragment(R.layout.fragment_main),
     private fun hideBottomBar(hide: Boolean) {
         if (hide) navigationView.hide() else navigationView.show()
         if (navigationView is NavigationRailView) return
-        val bottomInsets = windowInsets.getBottomInsets()
         val navHeight = resources.getDimensionPixelSize(R.dimen.bottom_nav_height)
-        val navHeightWithInsets = navHeight + bottomInsets
-        // workaround for https://issuetracker.google.com/issues/282790626
-        contentView.updatePadding(bottom = if (!hide) navHeightWithInsets else if (!hasR()) bottomInsets else 0)
+        val navHeightWithInsets = navHeight + windowInsets.getBottomInsets()
+        contentView.updatePadding(bottom = if (!hide) navHeightWithInsets else 0)
     }
 }
