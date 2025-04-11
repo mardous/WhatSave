@@ -166,7 +166,7 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.bundles.media3)
     implementation(libs.androidx.media3.ui)
     implementation(libs.androidx.loader)
     implementation(libs.androidx.cardview)
