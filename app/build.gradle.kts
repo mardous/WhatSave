@@ -44,7 +44,7 @@ sealed class Version(
     }
 
     fun toVersionCode(): Int =
-        versionMajor * 1000 + versionMinor * 100 + versionPatch * 10 + versionBuild
+        (versionMajor * 1000 + versionMinor * 100 + versionPatch * 10) - versionBuild
 }
 
 val currentVersion: Version = Version.Stable(
@@ -52,6 +52,7 @@ val currentVersion: Version = Version.Stable(
     versionMinor = 1,
     versionPatch = 0
 )
+val currentVersionCode = currentVersion.toVersionCode()
 
 android {
     compileSdk = 35
@@ -62,8 +63,9 @@ android {
         targetSdk = 35
 
         applicationId = namespace
-        versionCode = currentVersion.toVersionCode()
+        versionCode = 2100
         versionName = currentVersion.toVersionName()
+        check(versionCode == currentVersionCode)
     }
 
     val signingProperties = getProperties("keystore.properties")
