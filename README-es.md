@@ -13,6 +13,12 @@ Español
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?logo=android)](https://github.com/mardous/WhatSave)
 [![License](https://img.shields.io/github/license/mardous/WhatSave?color=blue&label=License)](https://github.com/mardous/WhatSave/blob/master/LICENSE.md)
 [![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
+
+<a href="https://github.com/mardous/WhatSave/releases"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/c2a157695260588de04483998109fbf1bf6f0f2f/badge_github.png" height="80"></a>
+<a href="https://f-droid.org/es/packages/com.simplified.wsstatussaver/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>
+<a href="https://www.openapk.net/es/whatsave/com.simplified.wsstatussaver/"><img src="https://www.openapk.net/images/openapk-badge.png" height="80"></a>
+<a href="https://www.androidfreeware.net/es/download-whatsave-apk.html"><img src="https://www.androidfreeware.net/images/androidfreeware-badge.png" height="80"></a>
+
 </div>
 
 ## 📱 Screenshots
@@ -40,9 +46,6 @@ Español
 * Sin publicidad
 * Sin marca de agua
 * ¡Es gratis!
-
-## ⬇️ Descargar
-Puedes descargar WhatSave desde [F-Droid](https://f-droid.org/packages/com.simplified.wsstatussaver) y también desde [GitHub Releases](https://github.com/mardous/WhatSave/releases/latest).
 
 ## 🤝 Contribuciones
 Si estás interesado en contribuir a este proyecto, ¡gracias! Puedes leer [este texto (en inglés)](CONTRIBUTING.md) para obtener más detalles.
