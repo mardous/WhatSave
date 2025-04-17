@@ -85,8 +85,6 @@
     <string name="about_title">Аб</string>
     <string name="version_x">Версія %s</string>
     <string name="author_title">Аўтар</string>
-    <string name="contact_title">Кантакт</string>
-    <string name="contact_summary">Калі вам патрэбна дапамога або падтрымка.</string>
     <string name="fork_on_github_title">Форк на GitHub</string>
     <string name="fork_on_github_summary">Прагляд, разгалінаванне або загрузка зыходных кодаў праграм.</string>
     <string name="message_view_is_disabled">Прагляд паведамленняў адключаны</string>

@@ -85,8 +85,6 @@
     <string name="about_title">A propos</string>
     <string name="version_x">Version %s</string>
     <string name="author_title">Auteur</string>
-    <string name="contact_title">Contact</string>
-    <string name="contact_summary">Si vous avez besoin d\'aide ou de soutien.</string>
     <string name="fork_on_github_title">Fork sur GitHub</string>
     <string name="fork_on_github_summary">Afficher, creer ou telecharger des sources d\'applications.</string>
     <string name="message_view_is_disabled">La vue des messages est désactivée</string>

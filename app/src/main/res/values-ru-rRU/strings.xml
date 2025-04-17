@@ -85,8 +85,6 @@
     <string name="about_title">О</string>
     <string name="version_x">Версия %s</string>
     <string name="author_title">Автор</string>
-    <string name="contact_title">Контакт</string>
-    <string name="contact_summary">Если вам нужна помощь или поддержка.</string>
     <string name="fork_on_github_title">Форк на Github</string>
     <string name="fork_on_github_summary">Просматривайте, разветвляйте или загружайте исходные коды приложений..</string>
     <string name="message_view_is_disabled">Просмотр сообщений отключен</string>

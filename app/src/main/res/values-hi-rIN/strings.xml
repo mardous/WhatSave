@@ -85,8 +85,6 @@
     <string name="about_title">के बारे में</string>
     <string name="version_x">संस्करण %s</string>
     <string name="author_title">लेखक</string>
-    <string name="contact_title">संपर्क</string>
-    <string name="contact_summary">यदि आपको सहायता या समर्थन की आवश्यकता है।</string>
     <string name="fork_on_github_title">GitHub पर कांटा</string>
     <string name="fork_on_github_summary">ऐप स्रोत देखें, फोर्क करें या डाउनलोड करें।</string>
     <string name="message_view_is_disabled">संदेश दृश्य निष्क्रिय है</string>

@@ -91,8 +91,6 @@
     <string name="about_summary">Versi, tautan, kontak.</string>
     <string name="version_x">Versi %s</string>
     <string name="author_title">Pembuat</string>
-    <string name="contact_title">Kontak</string>
-    <string name="contact_summary">Jika Anda membutuhkan bantuan atau dukungan.</string>
     <string name="latest_release_title">Rilis terbaru</string>
     <string name="latest_release_summary">Lihat versi terbaru aplikasi dan perubahan terkini.</string>
     <string name="translations_title">Terjemahan</string>

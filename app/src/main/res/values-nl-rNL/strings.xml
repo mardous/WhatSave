@@ -85,8 +85,6 @@
     <string name="about_title">Over</string>
     <string name="version_x">Versie %s</string>
     <string name="author_title">Auteur</string>
-    <string name="contact_title">Contact</string>
-    <string name="contact_summary">Als u hulp of ondersteuning nodig heeft.</string>
     <string name="fork_on_github_title">Vork op GitHub</string>
     <string name="fork_on_github_summary">App-bronnen bekijken, splitsen of downloaden.</string>
     <string name="message_view_is_disabled">Berichtweergave is uitgeschakeld</string>

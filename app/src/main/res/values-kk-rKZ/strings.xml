@@ -85,8 +85,6 @@
     <string name="about_title">туралы</string>
     <string name="version_x">%s нұсқасы</string>
     <string name="author_title">Автор</string>
-    <string name="contact_title">Байланыс</string>
-    <string name="contact_summary">Егер сізге көмек немесе қолдау қажет болса.</string>
     <string name="fork_on_github_title">GitHub сайтындағы шанышқы</string>
     <string name="fork_on_github_summary">Қолданба көздерін қараңыз, ашыңыз немесе жүктеп алыңыз.</string>
     <string name="message_view_is_disabled">Хабарлама көрінісі өшірілді</string>

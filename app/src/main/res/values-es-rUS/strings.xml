@@ -94,8 +94,8 @@
     <string name="about_summary">Versión, enlaces, contacto.</string>
     <string name="version_x">Versión %s</string>
     <string name="author_title">Autor</string>
-    <string name="contact_title">Contacto</string>
-    <string name="contact_summary">Si necesitas ayuda o soporte.</string>
+    <string name="telegram_title">Unirse al chat</string>
+    <string name="telegram_summary">Únase al chat de WhatSave para recibir noticias, discutir sugerencias, informar errores y más.</string>
     <string name="latest_release_title">Último lanzamiento</string>
     <string name="latest_release_summary">Vea la versión más reciente de la app y la lista de cambios.</string>
     <string name="translations_title">Traducciones</string>

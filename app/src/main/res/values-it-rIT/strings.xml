@@ -85,8 +85,6 @@
     <string name="about_title">Di</string>
     <string name="version_x">Versione %s</string>
     <string name="author_title">Autore</string>
-    <string name="contact_title">Contatto</string>
-    <string name="contact_summary">Se hai bisogno di aiuto o supporto.</string>
     <string name="fork_on_github_title">Fork su GitHub</string>
     <string name="fork_on_github_summary">Visualizza, esegui il fork o scarica le fonti delle app.</string>
     <string name="message_view_is_disabled">La visualizzazione dei messaggi è disabilitata</string>

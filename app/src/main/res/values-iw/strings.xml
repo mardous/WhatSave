@@ -70,8 +70,6 @@
     <string name="about_summary">גרסה, קישורים, יצירת קשר.</string>
     <string name="version_x">גרסה %s</string>
     <string name="author_title">יוצר</string>
-    <string name="contact_title">יצירת קשר</string>
-    <string name="contact_summary">אם אתה צריך עזרה או תמיכה.</string>
     <string name="latest_release_title">העידכון האחרון</string>
     <string name="translations_title">תרגום</string>
     <string name="fork_on_github_title">קוד מקור</string>

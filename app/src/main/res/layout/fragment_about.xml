@@ -73,12 +73,12 @@
                 app:listItemSummary="@string/developer_name"/>
 
             <com.simplified.wsstatussaver.views.ListItemView
-                android:id="@+id/contact"
+                android:id="@+id/telegram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:listItemIcon="@drawable/ic_mail_24dp"
-                app:listItemTitle="@string/contact_title"
-                app:listItemSummary="@string/contact_summary"/>
+                app:listItemIcon="@drawable/ic_telegram_24dp"
+                app:listItemTitle="@string/telegram_title"
+                app:listItemSummary="@string/telegram_summary"/>
 
             <com.simplified.wsstatussaver.views.ListItemView
                 android:id="@+id/latest_release"

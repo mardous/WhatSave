@@ -85,8 +85,6 @@
     <string name="about_title">பற்றி</string>
     <string name="version_x">பதிப்பு %s</string>
     <string name="author_title">நூலாசிரியர்</string>
-    <string name="contact_title">தொடர்பு கொள்ளவும்</string>
-    <string name="contact_summary">உங்களுக்கு உதவி அல்லது ஆதரவு தேவைப்பட்டால்.</string>
     <string name="fork_on_github_title">கிட்ஹப்பில் ஃபோர்க்</string>
     <string name="fork_on_github_summary">ஆப்ஸ் ஆதாரங்களைப் பார்க்கவும், ஃபோர்க் செய்யவும் அல்லது பதிவிறக்கவும்.</string>
     <string name="message_view_is_disabled">செய்தி காண்பித்தல் முடக்கப்பட்டுள்ளது</string>

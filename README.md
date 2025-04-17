@@ -11,8 +11,9 @@ English
 [![GitHub Releases](https://img.shields.io/github/v/release/mardous/WhatSave?label=GitHub%20Releases&logo=github)](https://github.com/mardous/WhatSave/releases/latest)
 [![F-Droid version](https://img.shields.io/f-droid/v/com.simplified.wsstatussaver?label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.simplified.wsstatussaver/)
 [![Platform](https://img.shields.io/badge/Platform-Android-green.svg?logo=android)](https://github.com/mardous/WhatSave)
-[![License](https://img.shields.io/github/license/mardous/WhatSave?color=blue&label=License)](https://github.com/mardous/WhatSave/blob/master/LICENSE.md)
-[![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
+[![License](https://img.shields.io/github/license/mardous/WhatSave?color=blue&label=License&logo=gnu)](https://github.com/mardous/WhatSave/blob/master/LICENSE.md)
+[![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?logo=contributorcovenant)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
+[![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=flat&logo=telegram)](https://t.me/mardousdev)
 
 <a href="https://github.com/mardous/WhatSave/releases"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/c2a157695260588de04483998109fbf1bf6f0f2f/badge_github.png" height="80"></a>
 <a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>
@@ -53,6 +54,10 @@ If you are interested in contributing to this project, thank you! You can read t
 [Translations for this app](https://hosted.weblate.org/projects/whatsave/) are made possible by [Hosted Weblate](https://hosted.weblate.org/about/).
 
 [![Translation status](https://hosted.weblate.org/widget/whatsave/multi-green.svg)](https://hosted.weblate.org/engage/whatsave/)
+
+## 💬 Social
+Join the [Telegram chat](https://t.me/mardousdev) to stay up-to-date on new releases, discuss new features,
+report bugs, and engage with other community users.
 
 ## 🔏 Privacy and Terms
 Please see the [PRIVACY](PRIVACY.md) file to learn more about our Privacy Policy and Terms of Use.

@@ -108,7 +108,6 @@
     <string name="information">معلومة</string>
     <string name="about_title">عن</string>
     <string name="about_summary">الإصدار، الروابط، الاتصال.</string>
-    <string name="contact_title">اتصال</string>
     <string name="latest_release_summary">عرض أحدث إصدار من التطبيق والتغييرات الأخيرة.</string>
     <string name="message_view_term_1">تقوم هذه الوظيفة بقراءة محتوى إشعارات WhatsApp لحفظ الرسائل المستلمة.</string>
     <string name="clear_messages">مسح الرسائل</string>
@@ -117,7 +116,6 @@
     <string name="dark_theme">مظلم</string>
     <string name="light_theme">ضوء</string>
     <string name="follow_system">اتبع النظام</string>
-    <string name="contact_summary">إذا كنت بحاجة إلى مساعدة أو دعم.</string>
     <string name="latest_release_title">أحدث إصدار</string>
     <string name="translations_title">الترجمات</string>
     <string name="translations_summary">يمكنك مساعدتنا عن طريق ترجمة هذا التطبيق إلى لغتك.</string>

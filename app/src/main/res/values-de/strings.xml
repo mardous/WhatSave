@@ -64,8 +64,6 @@
     <string name="default_client_summary">Wenn mehrere WhatsApp-Clients installiert sind, kann hier eingestellt werden, von welchem die Status geladen werden.</string>
     <string name="analytics_enabled_summary">Wenn aktiviert kann WhatSave anonyme Nutzungsstatistiken senden, damit wir besser verstehen, wie Nutzer die App verwenden.</string>
     <string name="about_title">Über</string>
-    <string name="contact_title">Kontakt</string>
-    <string name="contact_summary">Wenn du Hilfe oder Unterstützung benötigst.</string>
     <string name="latest_release_title">Neueste Version</string>
     <string name="latest_release_summary">Neuest Version und Änderungen an der App anzeigen.</string>
     <string name="translations_title">Übersetzungen</string>
