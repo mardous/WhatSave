@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (C) 2025 Christians Martínez Alvarado
+  ~
+  ~ Licensed under the GNU General Public License v3
+  ~
+  ~ This is free software: you can redistribute it and/or modify it under
+  ~ the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation either version 3 of the License, or (at your option) any later version.
+  ~
+  ~ This software is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+  ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  ~ See the GNU General Public License for more details.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+  <path
+      android:pathData="M54,39.34c8.1,0 14.66,6.56 14.66,14.66 0,8.1 -6.56,14.66 -14.66,14.66 -8.1,0 -14.66,-6.56 -14.66,-14.66 0,-8.1 6.56,-14.66 14.66,-14.66zM55.11,57.47l2.09,-2.09c0.43,-0.43 1.13,-0.43 1.56,0 0.43,0.44 0.43,1.14 0,1.57l-3.98,3.98c-0.43,0.43 -1.13,0.43 -1.56,0l-3.98,-3.98c-0.43,-0.44 -0.43,-1.13 0,-1.57 0.43,-0.43 1.13,-0.43 1.56,0l2.1,2.09 0,-9.61c0,-0.61 0.5,-1.11 1.1,-1.11 0.62,0 1.11,0.5 1.11,1.11l0,9.61 0,0z"
+      android:fillColor="#ffffff"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M30.73,46.81c-0.74,2.42 -1.05,4.66 -1.08,7.19 0.12,10.79 6.77,19.92 17.05,23.24l1.05,-3.38c-8.68,-2.78 -14.56,-10.72 -14.56,-19.86 0,-2.11 0.31,-4.14 0.92,-6.16l-3.38,-1.03zM54,29.65c-9.39,0.11 -17.68,5.16 -21.86,13.61l3.18,1.56c3.62,-7.14 10.63,-11.63 18.68,-11.63 11.41,0 20.81,9.28 20.81,20.72l3.54,-0.02c0,-12.97 -10.46,-23.78 -23.41,-24.22l-0.94,-0.02zM50.41,78.09c1.24,0.16 2.34,0.25 3.59,0.26 7.56,-0.09 14.18,-3.23 18.98,-9.09 2.83,-3.6 4.31,-7.07 5.09,-11.57l-3.5,-0.53 -0.04,0.27c-1.68,10.03 -10.35,17.38 -20.53,17.38 -1.06,0 -2.02,-0.09 -3.07,-0.22l-0.52,3.5z"
+      android:fillColor="#ffffff"/>
+</vector>
