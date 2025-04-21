@@ -1,0 +1,53 @@
+name: Bug Report
+description: Report a problem you encountered with the app
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue. Please fill out the form below to help us understand the problem.
+
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: What version of WhatSave are you using?
+      placeholder: e.g. v2.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the issue
+      description: Provide a clear and concise description of what the bug is and how to reproduce it.
+      placeholder: |
+        1. Open the app
+        2. Tap on ...
+        3. See error or unexpected behavior
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device information
+      description: Device model and Android version
+      placeholder: e.g. Pixel 6, Android 13
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Crash logs (if any)
+      description: If the app crashed, paste the log here or attach it as a file.
+      placeholder: Paste logs here (you can use https://pastebin.com or GitHub Gist if it's long)
+
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Checklist
+      options:
+        - label: I have verified that this issue is not already reported
+        - label: I am using the latest version available
+        - label: I agree to follow this project's [Code of Conduct](/blob/master/CODE_OF_CONDUCT.md)
