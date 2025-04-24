@@ -16,44 +16,6 @@ if (isNormalBuild) {
     apply(plugin = "com.google.firebase.crashlytics")
 }
 
-sealed class Version(
-    private val versionMajor: Int,
-    private val versionMinor: Int,
-    private val versionPatch: Int,
-    private val versionBuild: Int = 0,
-    private val versionType: String = ""
-) {
-    class Alpha(versionMajor: Int, versionMinor: Int, versionPatch: Int, versionBuild: Int) :
-        Version(versionMajor, versionMinor, versionPatch, versionBuild, "alpha")
-
-    class Beta(versionMajor: Int, versionMinor: Int, versionPatch: Int, versionBuild: Int) :
-        Version(versionMajor, versionMinor, versionPatch, versionBuild, "beta")
-
-    class RC(versionMajor: Int, versionMinor: Int, versionPatch: Int, versionBuild: Int) :
-        Version(versionMajor, versionMinor, versionPatch, versionBuild, "rc")
-
-    class Stable(versionMajor: Int, versionMinor: Int, versionPatch: Int) :
-        Version(versionMajor, versionMinor, versionPatch)
-
-    fun toVersionName(): String {
-        val versionName = "${versionMajor}.${versionMinor}.${versionPatch}"
-        if (versionType.isNotEmpty()) {
-            return "$versionName-${versionType}.$versionBuild"
-        }
-        return versionName
-    }
-
-    fun toVersionCode(): Int =
-        (versionMajor * 1000 + versionMinor * 100 + versionPatch * 10) - versionBuild
-}
-
-val currentVersion: Version = Version.Stable(
-    versionMajor = 2,
-    versionMinor = 1,
-    versionPatch = 0
-)
-val currentVersionCode = currentVersion.toVersionCode()
-
 android {
     compileSdk = 35
     namespace = "com.simplified.wsstatussaver"
@@ -64,8 +26,7 @@ android {
 
         applicationId = namespace
         versionCode = 2100
-        versionName = currentVersion.toVersionName()
-        check(versionCode == currentVersionCode)
+        versionName = "2.1.0"
     }
 
     val signingProperties = getProperties("keystore.properties")
