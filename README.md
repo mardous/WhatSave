@@ -1,12 +1,10 @@
 <div align="center">
 
+<img src="metadata/en-US/images/icon.png"  width=160 height=160  align="center">
+
 # WhatSave
 
 ### An application that helps you save Whatsapp & Business statuses in the easiest way.
-
-English
-&nbsp;&nbsp;|&nbsp;&nbsp;
-[Español](README-es.md)
 
 [![GitHub Releases](https://img.shields.io/github/v/release/mardous/WhatSave?label=GitHub%20Releases&logo=github)](https://github.com/mardous/WhatSave/releases/latest)
 [![F-Droid version](https://img.shields.io/f-droid/v/com.simplified.wsstatussaver?label=F-Droid&logo=fdroid)](https://f-droid.org/packages/com.simplified.wsstatussaver/)
@@ -15,10 +13,11 @@ English
 [![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?logo=contributorcovenant)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=flat&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/mardous/WhatSave/releases"><img src="https://raw.githubusercontent.com/NeoApplications/Neo-Backup/c2a157695260588de04483998109fbf1bf6f0f2f/badge_github.png" height="80"></a>
-<a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" height="80"></a>
-<a href="https://www.openapk.net/whatsave/com.simplified.wsstatussaver/"><img src="https://www.openapk.net/images/openapk-badge.png" height="80"></a>
-<a href="https://www.androidfreeware.net/download-whatsave-apk.html"><img src="https://www.androidfreeware.net/images/androidfreeware-badge.png" height="80"></a>
+<a href="https://github.com/mardous/WhatSave/releases"><img src="assets/badge-github.png" height="80"></a>
+<a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="assets/badge-fdroid.png" height="80"></a>
+<a href="https://www.openapk.net/whatsave/com.simplified.wsstatussaver/"><img src="assets/badge-openapk.png" height="80"></a>
+<a href="https://www.androidfreeware.net/download-whatsave-apk.html"><img src="assets/badge-androidfreeware.png" height="80"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/WhatSave/"><img src="assets/badge-obtainium.png" height="80"></a>
 
 </div>
 
@@ -39,6 +38,7 @@ English
 
 * Supports all Android versions starting from 7.0 Nougat
 * Material You on Android 12+
+* Load statuses from multiple WhatsApp accounts
 * Preview and save files
 * Chat without saving the number
 * Recover deleted messages
