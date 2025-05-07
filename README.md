@@ -13,11 +13,11 @@
 [![Code of Conduct](https://img.shields.io/badge/Contributor_Covenant-2.1-4baaaa.svg?logo=contributorcovenant)](https://github.com/mardous/WhatSave/blob/master/CODE_OF_CONDUCT.md)
 [![Telegram Group](https://img.shields.io/badge/Telegram-Join_Chat-blue?style=flat&logo=telegram)](https://t.me/mardousdev)
 
-<a href="https://github.com/mardous/WhatSave/releases"><img src="assets/badge-github.png" height="80"></a>
-<a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="assets/badge-fdroid.png" height="80"></a>
-<a href="https://www.openapk.net/whatsave/com.simplified.wsstatussaver/"><img src="assets/badge-openapk.png" height="80"></a>
-<a href="https://www.androidfreeware.net/download-whatsave-apk.html"><img src="assets/badge-androidfreeware.png" height="80"></a>
-<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/WhatSave/"><img src="assets/badge-obtainium.png" height="80"></a>
+<a href="https://github.com/mardous/WhatSave/releases"><img src="assets/badge-github.png" height="60"></a>
+<a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="assets/badge-fdroid.png" height="60"></a>
+<a href="https://www.openapk.net/whatsave/com.simplified.wsstatussaver/"><img src="assets/badge-openapk.png" height="60"></a>
+<a href="https://www.androidfreeware.net/download-whatsave-apk.html"><img src="assets/badge-androidfreeware.png" height="60"></a>
+<a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/WhatSave/"><img src="assets/badge-obtainium.png" height="60"></a>
 
 </div>
 
