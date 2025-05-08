@@ -1,7 +1,11 @@
 name: Build Release APK
 
 on:
-  workflow_dispatch:
+  push:
+    tags: [ 'v*' ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -25,24 +29,33 @@ jobs:
           DATA: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: echo $DATA | base64 -di > ./app/google-services.json
 
+      - name: Create files for signing
+        env:
+          SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
+          SIGNING_PROPERTIES: ${{ secrets.SIGNING_PROPERTIES }}
+        run: |
+          echo $SIGNING_KEYSTORE | base64 -di > ./keystore.jks
+          echo $SIGNING_PROPERTIES | base64 -di > ./keystore.properties
+
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
       - name: Build app
-        run: gradle assembleNormalRelease
+        run: ./gradlew assembleNormalRelease
 
-      - name: Sign app APK
-        id: sign_app
-        uses: ilharp/sign-android-release@nightly
-        with:
-          releaseDir: app/build/outputs/apk/normal/release
-          signingKey: ${{ secrets.SIGNING_KEY }}
-          keyAlias: ${{ secrets.KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-          buildToolsVersion: 35.0.0
+      - name: Set prerelease flag
+        id: prerelease
+        run: |
+          TAG="${{ github.ref_name }}"
+          if [[ "$TAG" == *alpha* || "$TAG" == *beta* || "$TAG" == *rc* ]]; then
+            echo "value=true" >> $GITHUB_OUTPUT
+          else
+            echo "value=false" >> $GITHUB_OUTPUT
+          fi
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+      - name: Github Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: signed-apks
-          path: app/build/outputs/apk/normal/release/*-release-signed.apk
-          if-no-files-found: error
-          retention-days: 20
+          prerelease: ${{ steps.prerelease.outputs.value }}
+          generate_release_notes: true
+          files: app/build/outputs/apk/normal/release/*-normal-release.apk

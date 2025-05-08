@@ -108,15 +108,13 @@ class WaContentStorage(
             Document.COLUMN_SIZE //3
         )
         for (directory in directories) {
-            contentResolver.query(directory.getChildrenUri(), documentSelection, null, null, null)?.use { cursor ->
+            contentResolver.query(directory.childDocumentsUri, documentSelection, null, null, null)?.use { cursor ->
                 if (cursor.moveToFirst()) do {
                     val id = cursor.getString(0)
                     val fileName = cursor.getString(1)
                     val lastModified = cursor.getLong(2)
                     val size = cursor.getLong(3)
-                    val uri = DocumentsContract.buildChildDocumentsUriUsingTree(
-                        directory.getChildrenUri(), id
-                    )
+                    val uri = DocumentsContract.buildDocumentUriUsingTree(directory.treeUri, id)
                     fileConsumer(WaFile(id, directory.client, null, fileName, lastModified, size, uri))
                 } while (cursor.moveToNext())
             }
