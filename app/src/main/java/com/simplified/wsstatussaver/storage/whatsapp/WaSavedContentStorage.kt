@@ -53,7 +53,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
             ?: return type.saveType.dirName
 
         val nameSelection = arrayOf(DocumentsContract.Document.COLUMN_DISPLAY_NAME)
-        return contentResolver.query(saveDirectory.getDocumentUri(), nameSelection, null, null, null).use { cursor ->
+        return contentResolver.query(saveDirectory.documentUri, nameSelection, null, null, null).use { cursor ->
             cursor?.takeIf { it.moveToFirst() }
                 ?.getString(cursor.getColumnIndexOrThrow(DocumentsContract.Document.COLUMN_DISPLAY_NAME))
                 ?: type.saveType.dirName
@@ -83,7 +83,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
             if (!savedValue.isNullOrBlank()) {
                 val treeUri = savedValue.toUri()
                 if (DocumentsContract.isTreeUri(treeUri)) {
-                    return WaDirectoryUri(null, getTreeDocumentId(treeUri), treeUri)
+                    return WaDirectoryUri(null, treeUri, getTreeDocumentId(treeUri))
                 }
             }
         }

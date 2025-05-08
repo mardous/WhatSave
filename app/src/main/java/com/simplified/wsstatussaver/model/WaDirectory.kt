@@ -19,8 +19,6 @@ import android.content.UriPermission
 import android.net.Uri
 import android.os.Build
 import android.provider.DocumentsContract
-import android.provider.DocumentsContract.buildDocumentUriUsingTree
-import android.provider.DocumentsContract.getTreeDocumentId
 import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.extensions.decodedUrl
 import com.simplified.wsstatussaver.storage.Storage
@@ -28,8 +26,8 @@ import com.simplified.wsstatussaver.storage.Storage
 typealias SegmentResolver = (WaClient) -> List<String>
 
 data class WaDirectoryUri(val client: WaClient?, val treeUri: Uri, private val documentId: String) {
-    fun getDocumentUri(targetId: String = getTreeDocumentId(treeUri)): Uri =
-        buildDocumentUriUsingTree(treeUri, targetId)
+    val documentUri: Uri
+        get() = DocumentsContract.buildDocumentUriUsingTree(treeUri, documentId)
 
     val childDocumentsUri: Uri
         get() = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
