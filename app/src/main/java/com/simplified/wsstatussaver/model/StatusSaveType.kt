@@ -21,11 +21,11 @@ import android.provider.MediaStore
  *
  * @author Christians Martínez Alvarado (mardous)
  */
-internal enum class StatusSaveType(
-    internal val dirName: String,
-    internal val fileMimeType: String,
-    internal val contentUri: Uri,
-    internal val dirTypeProvider: (SaveLocation) -> String
+enum class StatusSaveType(
+    val dirName: String,
+    val fileMimeType: String,
+    val contentUri: Uri,
+    val dirTypeProvider: (SaveLocation) -> String
 ) {
     IMAGE_SAVE(
         dirName = "Saved Image Statuses",
@@ -39,4 +39,7 @@ internal enum class StatusSaveType(
         contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
         dirTypeProvider = { it.videoDir }
     );
+
+    val customDirectoryId: String
+        get() = "custom.${name.lowercase()}"
 }

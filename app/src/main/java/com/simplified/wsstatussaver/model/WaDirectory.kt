@@ -19,13 +19,22 @@ import android.content.UriPermission
 import android.net.Uri
 import android.os.Build
 import android.provider.DocumentsContract
+import android.provider.DocumentsContract.buildChildDocumentsUriUsingTree
+import android.provider.DocumentsContract.buildDocumentUriUsingTree
+import android.provider.DocumentsContract.getTreeDocumentId
 import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.extensions.decodedUrl
 import com.simplified.wsstatussaver.storage.Storage
 
 typealias SegmentResolver = (WaClient) -> List<String>
 
-data class WaDirectoryUri(val client: WaClient?, val uri: Uri)
+data class WaDirectoryUri(val client: WaClient?, val treeId: String, val treeUri: Uri) {
+    fun getDocumentUri(targetId: String = getTreeDocumentId(treeUri)): Uri =
+        buildDocumentUriUsingTree(treeUri, targetId)
+
+    fun getChildrenUri(targetId: String = treeId): Uri =
+        buildChildDocumentsUriUsingTree(treeUri, targetId)
+}
 
 enum class WaDirectory(
     val path: String,
@@ -160,12 +169,7 @@ enum class WaDirectory(
                             it.pathRegex.matches(parts[1])
                         }
                     }
-                directories.add(
-                    WaDirectoryUri(
-                        client,
-                        DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
-                    )
-                )
+                directories.add(WaDirectoryUri(client, documentId, treeUri))
             }
         }
     }

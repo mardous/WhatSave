@@ -26,6 +26,8 @@ import com.simplified.wsstatussaver.repository.RepositoryImpl
 import com.simplified.wsstatussaver.repository.StatusesRepository
 import com.simplified.wsstatussaver.repository.StatusesRepositoryImpl
 import com.simplified.wsstatussaver.storage.Storage
+import com.simplified.wsstatussaver.storage.whatsapp.WaContentStorage
+import com.simplified.wsstatussaver.storage.whatsapp.WaSavedContentStorage
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
@@ -39,6 +41,10 @@ private val networkModule = module {
 }
 
 private val dataModule = module {
+    single {
+        androidContext().contentResolver
+    }
+
     single {
         Room.databaseBuilder(androidContext(), StatusDatabase::class.java, "statuses.db")
             .addMigrations(MIGRATION_1_2)
@@ -59,6 +65,12 @@ private val managerModule = module {
         PhoneNumberUtil.createInstance(androidContext())
     }
     single {
+        WaContentStorage(androidContext(), get())
+    }
+    single {
+        WaSavedContentStorage(androidContext(), get())
+    }
+    single {
         Storage(androidContext())
     }
 }
@@ -69,7 +81,7 @@ private val statusesModule = module {
     } bind CountryRepository::class
 
     single {
-        StatusesRepositoryImpl(androidContext(), get(), get())
+        StatusesRepositoryImpl(androidContext(), get(), get(), get())
     } bind StatusesRepository::class
 
     single {
