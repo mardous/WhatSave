@@ -1,0 +1,5 @@
+* Added themed icon support for Android 13+
+* Added a link to the new Telegram group in the About section
+* Completed edge-to-edge mode implementation
+* Improved reliability when loading status files
+* Other minor fixes and internal improvements
