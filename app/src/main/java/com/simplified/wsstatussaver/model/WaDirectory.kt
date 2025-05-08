@@ -25,7 +25,10 @@ import com.simplified.wsstatussaver.storage.Storage
 
 typealias SegmentResolver = (WaClient) -> List<String>
 
-data class WaDirectoryUri(val client: WaClient?, val uri: Uri)
+data class WaDirectoryUri(val client: WaClient?, val treeUri: Uri, private val documentId: String) {
+    val childDocumentsUri: Uri
+        get() = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
+}
 
 enum class WaDirectory(
     val path: String,
@@ -160,12 +163,7 @@ enum class WaDirectory(
                             it.pathRegex.matches(parts[1])
                         }
                     }
-                directories.add(
-                    WaDirectoryUri(
-                        client,
-                        DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
-                    )
-                )
+                directories.add(WaDirectoryUri(client, treeUri, documentId))
             }
         }
     }

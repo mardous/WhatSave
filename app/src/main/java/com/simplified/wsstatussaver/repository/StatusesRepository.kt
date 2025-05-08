@@ -27,13 +27,38 @@ import android.provider.DocumentsContract.Document
 import android.provider.MediaStore.MediaColumns
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
-import com.simplified.wsstatussaver.database.*
-import com.simplified.wsstatussaver.extensions.*
-import com.simplified.wsstatussaver.model.*
+import com.simplified.wsstatussaver.database.StatusDao
+import com.simplified.wsstatussaver.database.StatusEntity
+import com.simplified.wsstatussaver.database.toStatusEntity
+import com.simplified.wsstatussaver.extensions.IsSAFRequired
+import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
+import com.simplified.wsstatussaver.extensions.acceptFileName
+import com.simplified.wsstatussaver.extensions.getAllInstalledClients
+import com.simplified.wsstatussaver.extensions.getPreferred
+import com.simplified.wsstatussaver.extensions.getReadableDirectories
+import com.simplified.wsstatussaver.extensions.getStatusType
+import com.simplified.wsstatussaver.extensions.getUri
+import com.simplified.wsstatussaver.extensions.hasElapsedTwentyFourHours
+import com.simplified.wsstatussaver.extensions.hasStoragePermissions
+import com.simplified.wsstatussaver.extensions.isExcludeSavedStatuses
+import com.simplified.wsstatussaver.extensions.isOldFile
+import com.simplified.wsstatussaver.extensions.preferences
+import com.simplified.wsstatussaver.extensions.saveLocation
+import com.simplified.wsstatussaver.model.SaveLocation
+import com.simplified.wsstatussaver.model.SavedStatus
+import com.simplified.wsstatussaver.model.ShareData
+import com.simplified.wsstatussaver.model.Status
+import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
+import com.simplified.wsstatussaver.model.StatusType
+import com.simplified.wsstatussaver.model.WaClient
+import com.simplified.wsstatussaver.model.WaDirectory
+import com.simplified.wsstatussaver.model.WaDirectoryUri
 import com.simplified.wsstatussaver.storage.Storage
-import java.io.*
-import java.util.Date
+import java.io.File
+import java.io.IOException
+import java.io.InputStream
+import java.io.OutputStream
 
 interface StatusesRepository {
     suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri>
@@ -133,15 +158,13 @@ class StatusesRepositoryImpl(
                 Document.COLUMN_SIZE //3
             )
             for (directory in statusesDirectories) {
-                contentResolver.query(directory.uri, documentSelection, null, null, null)?.use { cursor ->
+                contentResolver.query(directory.childDocumentsUri, documentSelection, null, null, null)?.use { cursor ->
                     if (cursor.moveToFirst()) do {
                         val id = cursor.getString(0)
                         val fileName = cursor.getString(1)
                         val lastModified = cursor.getLong(2)
                         val size = cursor.getLong(3)
-                        val uri = DocumentsContract.buildChildDocumentsUriUsingTree(
-                            directory.uri, id
-                        )
+                        val uri = DocumentsContract.buildDocumentUriUsingTree(directory.treeUri, id)
                         if (type.acceptFileName(fileName)) {
                             val isOld = lastModified.hasElapsedTwentyFourHours()
                             val isSaved = statusDao.statusSaved(uri, fileName)
@@ -255,73 +278,18 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun share(status: Status): ShareData {
-        if (IsSAFRequired && status !is SavedStatus) {
-            val cacheDir = context.externalCacheDir
-            if (cacheDir == null || (!cacheDir.exists() && !cacheDir.mkdirs())) {
-                return ShareData(status.fileUri, status.type.mimeType)
-            }
-            val temp = File(cacheDir, status.type.getDefaultSaveName(Date().time, 0))
-            if (!temp.exists() || temp.delete()) {
-                try {
-                    val inputStream = contentResolver.openInputStream(status.fileUri)
-                    if (inputStream != null) {
-                        inputStream.use {
-                            temp.outputStream().use { outputStream ->
-                                it.copyTo(outputStream)
-                            }
-                        }
-                        return ShareData(temp.getUri(), status.type.mimeType)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-            return ShareData.Empty
-        }
         return ShareData(status.fileUri, status.type.mimeType)
     }
 
     override suspend fun share(statuses: List<Status>): ShareData {
-        if (IsSAFRequired) {
-            val data = hashMapOf<Uri, String>()
-            val savedStatuses = statuses.filterIsInstance<SavedStatus>().toSet()
-            val unsavedStatuses = statuses.subtract(savedStatuses)
-            for (status in savedStatuses) {
-                data[status.fileUri] = status.type.mimeType
-            }
-            if (unsavedStatuses.isEmpty()) {
-                return ShareData(data.keys, data.values.toSet())
-            }
-            val cacheDir = context.externalCacheDir
-            if (cacheDir != null && (cacheDir.exists() || cacheDir.mkdirs())) {
-                val currentTime = Date().time
-                for ((i, status) in unsavedStatuses.withIndex()) {
-                    val temp = File(cacheDir, status.type.getDefaultSaveName(currentTime, i + 1))
-                    if (!temp.exists() || temp.delete()) {
-                        try {
-                            val inputStream = contentResolver.openInputStream(status.fileUri)
-                            if (inputStream != null) {
-                                inputStream.use {
-                                    temp.outputStream().use { outputStream ->
-                                        it.copyTo(outputStream)
-                                    }
-                                }
-                                data[temp.getUri()] = status.type.mimeType
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-                return ShareData(data.keys, data.values.toSet())
-            }
-            return ShareData.Empty
+        val data = hashMapOf<Uri, String>()
+        for (status in statuses) {
+            data[status.fileUri] = status.type.mimeType
+        }
+        return if (data.isEmpty()) {
+            ShareData.Empty
         } else {
-            val data = hashMapOf<Uri, String>()
-            for (status in statuses) {
-                data[status.fileUri] = status.type.mimeType
-            }
-            return ShareData(data.keys, data.values.toSet())
+            ShareData(data.keys, data.values.toSet())
         }
     }
 
