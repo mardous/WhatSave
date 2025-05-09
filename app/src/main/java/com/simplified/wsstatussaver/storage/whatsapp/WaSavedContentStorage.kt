@@ -135,7 +135,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
     fun toSavedFileUri(status: StatusEntity, inputStream: InputStream): Uri? {
         val customSaveDirectory = getCustomSaveDirectory(status.type)
         if (customSaveDirectory != null) {
-            return toUriLocation(status, inputStream, customSaveDirectory.treeUri)
+            return toCustomDirectory(status, inputStream, customSaveDirectory)
         }
         if (IsScopedStorageRequired) {
             return toMediaStore(status, inputStream)
@@ -191,10 +191,10 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
     fun toUriLocation(
         status: StatusEntity,
         inputStream: InputStream,
-        directoryUri: Uri
+        directory: WaDirectoryUri
     ): Uri? {
         val documentUri = try {
-            createDocument(contentResolver, directoryUri, status.type.mimeType, status.saveName)
+            createDocument(contentResolver, directory.documentUri, status.type.mimeType, status.saveName)
         } catch (e: FileNotFoundException) {
             e.printStackTrace()
             null
