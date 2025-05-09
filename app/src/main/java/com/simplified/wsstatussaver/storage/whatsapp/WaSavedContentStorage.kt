@@ -31,6 +31,7 @@ import androidx.core.net.toUri
 import com.simplified.wsstatussaver.database.StatusEntity
 import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
 import com.simplified.wsstatussaver.extensions.getUri
+import com.simplified.wsstatussaver.extensions.hasFullAccess
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.saveLocation
 import com.simplified.wsstatussaver.model.SaveLocation
@@ -86,7 +87,10 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
             val savedValue = preferences.getString(type.saveType.customDirectoryId, null)
             if (!savedValue.isNullOrBlank()) {
                 val treeUri = savedValue.toUri()
-                if (DocumentsContract.isTreeUri(treeUri)) {
+                val hasPermission = contentResolver.persistedUriPermissions.any {
+                    it.hasFullAccess(treeUri)
+                }
+                if (DocumentsContract.isTreeUri(treeUri) && hasPermission) {
                     return WaDirectoryUri(null, treeUri, getTreeDocumentId(treeUri))
                 } else {
                     setCustomDirectory(type, null)

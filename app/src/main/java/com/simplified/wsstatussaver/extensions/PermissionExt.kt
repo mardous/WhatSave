@@ -61,6 +61,8 @@ fun Uri.toWhatsAppDirectory() = WaDirectory.entries.firstOrNull { it.isThis(this
 
 fun Context.getReadableDirectories() = contentResolver.persistedUriPermissions.getReadableDirectories()
 
+fun UriPermission.hasFullAccess(against: Uri) = uri == against && isWritePermission && isReadPermission
+
 fun List<UriPermission>.getReadableDirectories() = WaDirectory.entries.filter { it.isReadable(this) }
 
 fun Context.hasStoragePermissions(): Boolean = doIHavePermissions(*getApplicablePermissions())
