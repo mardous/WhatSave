@@ -29,7 +29,6 @@ import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
 import com.simplified.wsstatussaver.extensions.acceptFileName
 import com.simplified.wsstatussaver.extensions.getAllInstalledClients
 import com.simplified.wsstatussaver.extensions.getPreferred
-import com.simplified.wsstatussaver.extensions.getUri
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
 import com.simplified.wsstatussaver.extensions.isExcludeSavedStatuses
 import com.simplified.wsstatussaver.extensions.preferences
@@ -39,10 +38,8 @@ import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
 import com.simplified.wsstatussaver.model.StatusType
-import com.simplified.wsstatussaver.storage.whatsapp.WaSavedContentStorage
 import com.simplified.wsstatussaver.storage.whatsapp.WaContentStorage
-import java.io.File
-import java.util.Date
+import com.simplified.wsstatussaver.storage.whatsapp.WaSavedContentStorage
 import java.util.concurrent.TimeUnit
 
 interface StatusesRepository {
@@ -196,73 +193,18 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun share(status: Status): ShareData {
-        if (IsSAFRequired && status !is SavedStatus) {
-            val cacheDir = context.externalCacheDir
-            if (cacheDir == null || (!cacheDir.exists() && !cacheDir.mkdirs())) {
-                return ShareData(status.fileUri, status.type.mimeType)
-            }
-            val temp = File(cacheDir, status.type.getDefaultSaveName(Date().time, 0))
-            if (!temp.exists() || temp.delete()) {
-                try {
-                    val inputStream = contentResolver.openInputStream(status.fileUri)
-                    if (inputStream != null) {
-                        inputStream.use {
-                            temp.outputStream().use { outputStream ->
-                                it.copyTo(outputStream)
-                            }
-                        }
-                        return ShareData(temp.getUri(), status.type.mimeType)
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                }
-            }
-            return ShareData.Empty
-        }
         return ShareData(status.fileUri, status.type.mimeType)
     }
 
     override suspend fun share(statuses: List<Status>): ShareData {
-        if (IsSAFRequired) {
-            val data = hashMapOf<Uri, String>()
-            val savedStatuses = statuses.filterIsInstance<SavedStatus>().toSet()
-            val unsavedStatuses = statuses.subtract(savedStatuses)
-            for (status in savedStatuses) {
-                data[status.fileUri] = status.type.mimeType
-            }
-            if (unsavedStatuses.isEmpty()) {
-                return ShareData(data.keys, data.values.toSet())
-            }
-            val cacheDir = context.externalCacheDir
-            if (cacheDir != null && (cacheDir.exists() || cacheDir.mkdirs())) {
-                val currentTime = Date().time
-                for ((i, status) in unsavedStatuses.withIndex()) {
-                    val temp = File(cacheDir, status.type.getDefaultSaveName(currentTime, i + 1))
-                    if (!temp.exists() || temp.delete()) {
-                        try {
-                            val inputStream = contentResolver.openInputStream(status.fileUri)
-                            if (inputStream != null) {
-                                inputStream.use {
-                                    temp.outputStream().use { outputStream ->
-                                        it.copyTo(outputStream)
-                                    }
-                                }
-                                data[temp.getUri()] = status.type.mimeType
-                            }
-                        } catch (e: Exception) {
-                            e.printStackTrace()
-                        }
-                    }
-                }
-                return ShareData(data.keys, data.values.toSet())
-            }
-            return ShareData.Empty
+        val data = hashMapOf<Uri, String>()
+        for (status in statuses) {
+            data[status.fileUri] = status.type.mimeType
+        }
+        return if (data.isEmpty()) {
+            ShareData.Empty
         } else {
-            val data = hashMapOf<Uri, String>()
-            for (status in statuses) {
-                data[status.fileUri] = status.type.mimeType
-            }
-            return ShareData(data.keys, data.values.toSet())
+            ShareData(data.keys, data.values.toSet())
         }
     }
 
