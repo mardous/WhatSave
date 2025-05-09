@@ -31,12 +31,15 @@ import androidx.core.net.toUri
 import com.simplified.wsstatussaver.database.StatusEntity
 import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
 import com.simplified.wsstatussaver.extensions.getUri
-import com.simplified.wsstatussaver.extensions.hasFullAccess
+import com.simplified.wsstatussaver.extensions.allPermissionsGranted
+import com.simplified.wsstatussaver.extensions.isCustomSaveDirectory
+import com.simplified.wsstatussaver.extensions.isTreeUri
+import com.simplified.wsstatussaver.extensions.isWhatsAppDirectory
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.saveLocation
+import com.simplified.wsstatussaver.extensions.takePermissions
 import com.simplified.wsstatussaver.model.SaveLocation
 import com.simplified.wsstatussaver.model.StatusType
-import com.simplified.wsstatussaver.model.WaDirectory
 import com.simplified.wsstatussaver.model.WaDirectoryUri
 import java.io.File
 import java.io.FileNotFoundException
@@ -61,24 +64,29 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
         }
     }
 
-    fun setCustomDirectory(type: StatusType, selectedUri: Uri?): Boolean {
-        if (selectedUri == null) {
-            preferences.edit { remove(type.saveType.customDirectoryId) }
-        } else {
-            if (DocumentsContract.isTreeUri(selectedUri)) {
-                if (WaDirectory.entries.any { it.isThis(selectedUri) }) {
-                    return false
-                }
-                contentResolver.takePersistableUriPermission(
-                    selectedUri,
-                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-                )
-                preferences.edit {
-                    putString(type.saveType.customDirectoryId, selectedUri.toString())
-                }
-                return true
+    fun setCustomDirectory(type: StatusType, selectedUri: Uri): Boolean {
+        if (!selectedUri.isTreeUri() || selectedUri.isWhatsAppDirectory()) return false
+
+        val key = type.saveType.customDirectoryId
+        val currentValue = preferences.getString(key, null)
+
+        val currentUri = currentValue?.toUri()?.takeIf { it.isTreeUri() }
+        if (currentUri != null && selectedUri == currentUri) {
+            if (!contentResolver.allPermissionsGranted(selectedUri)) {
+                return contentResolver.takePermissions(selectedUri, ACCESS_FLAGS)
             }
+            return false
         }
+
+        currentUri?.let {
+            contentResolver.releasePersistableUriPermission(it, ACCESS_FLAGS)
+        } ?: preferences.edit { remove(key) }
+
+        if (contentResolver.allPermissionsGranted(selectedUri) || contentResolver.takePermissions(selectedUri, ACCESS_FLAGS)) {
+            preferences.edit { putString(key, selectedUri.toString()) }
+            return true
+        }
+
         return false
     }
 
@@ -87,13 +95,10 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
             val savedValue = preferences.getString(type.saveType.customDirectoryId, null)
             if (!savedValue.isNullOrBlank()) {
                 val treeUri = savedValue.toUri()
-                val hasPermission = contentResolver.persistedUriPermissions.any {
-                    it.hasFullAccess(treeUri)
-                }
-                if (DocumentsContract.isTreeUri(treeUri) && hasPermission) {
+                if (treeUri.isCustomSaveDirectory(contentResolver)) {
                     return WaDirectoryUri(null, treeUri, getTreeDocumentId(treeUri))
                 } else {
-                    setCustomDirectory(type, null)
+                    preferences.edit { remove(type.saveType.customDirectoryId) }
                 }
             }
         }

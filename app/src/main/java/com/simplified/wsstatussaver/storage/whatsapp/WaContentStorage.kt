@@ -20,6 +20,7 @@ import android.provider.DocumentsContract.Document
 import androidx.core.net.toUri
 import com.simplified.wsstatussaver.extensions.acceptFileName
 import com.simplified.wsstatussaver.extensions.getReadableDirectories
+import com.simplified.wsstatussaver.extensions.isTreeUri
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.model.WaClient
 import com.simplified.wsstatussaver.model.WaDirectory
@@ -50,7 +51,7 @@ class WaContentStorage(
             return directories
         }
         for (perm in persistedPermissions) {
-            if (!DocumentsContract.isTreeUri(perm.uri)) continue
+            if (!perm.uri.isTreeUri()) continue
             val matchingDir = readableDirectories.firstOrNull { it.isThis(perm.uri) }
             if (matchingDir != null) {
                 directories.addAll(matchingDir.getStatusesDirectories(context, clients, perm.uri))
