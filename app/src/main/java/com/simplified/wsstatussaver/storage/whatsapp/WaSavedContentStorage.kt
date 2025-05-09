@@ -144,7 +144,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
-    fun toMediaStore(
+    private fun toMediaStore(
         status: StatusEntity,
         inputStream: InputStream
     ): Uri? {
@@ -172,7 +172,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
         return uri
     }
 
-    fun toFileLocation(status: StatusEntity, inputStream: InputStream): Uri? {
+    private fun toFileLocation(status: StatusEntity, inputStream: InputStream): Uri? {
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
             val destDirectory = getSaveDirectory(status.type)
             if (destDirectory.isDirectory || destDirectory.mkdirs()) {
@@ -188,7 +188,7 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
         return null
     }
 
-    fun toUriLocation(
+    private fun toCustomDirectory(
         status: StatusEntity,
         inputStream: InputStream,
         directory: WaDirectoryUri
