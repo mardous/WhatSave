@@ -20,14 +20,13 @@ import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
-import android.provider.DocumentsContract
-import android.provider.DocumentsContract.createDocument
 import android.provider.DocumentsContract.getTreeDocumentId
 import android.provider.MediaStore.MediaColumns
 import androidx.annotation.RequiresApi
 import androidx.core.content.contentValuesOf
 import androidx.core.content.edit
 import androidx.core.net.toUri
+import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.database.StatusEntity
 import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
 import com.simplified.wsstatussaver.extensions.getUri
@@ -42,26 +41,20 @@ import com.simplified.wsstatussaver.model.SaveLocation
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.model.WaDirectoryUri
 import java.io.File
-import java.io.FileNotFoundException
+import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 
-class WaSavedContentStorage(context: Context, private val contentResolver: ContentResolver) {
+class WaSavedContentStorage(private val context: Context, private val contentResolver: ContentResolver) {
 
     private val preferences = context.preferences()
     private val currentSaveLocation: SaveLocation
         get() = preferences.saveLocation
 
     fun getCustomDirectoryName(type: StatusType): String {
-        val saveDirectory = getCustomSaveDirectory(type, SaveLocation.Custom)
-            ?: return type.saveType.dirName
-
-        val nameSelection = arrayOf(DocumentsContract.Document.COLUMN_DISPLAY_NAME)
-        return contentResolver.query(saveDirectory.documentUri, nameSelection, null, null, null).use { cursor ->
-            cursor?.takeIf { it.moveToFirst() }
-                ?.getString(cursor.getColumnIndexOrThrow(DocumentsContract.Document.COLUMN_DISPLAY_NAME))
-                ?: type.saveType.dirName
-        }
+        return getCustomSaveDirectory(type, SaveLocation.Custom)?.let {
+            DocumentFile.fromTreeUri(context, it.treeUri)?.name
+        } ?: type.saveType.dirName
     }
 
     fun setCustomDirectory(type: StatusType, selectedUri: Uri): Boolean {
@@ -198,26 +191,27 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
         inputStream: InputStream,
         directory: WaDirectoryUri
     ): Uri? {
-        val documentUri = try {
-            createDocument(contentResolver, directory.documentUri, status.type.mimeType, status.saveName)
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-            null
-        }
-        if (documentUri != null) {
-            try {
-                contentResolver.openOutputStream(documentUri)?.use { outputStream ->
-                    inputStream.copyTo(outputStream, SAVE_BUFFER_SIZE)
+        val directory = DocumentFile.fromTreeUri(context, directory.treeUri) ?: return null
+        val newFile = directory.createFile(status.type.mimeType, status.saveName) ?: return null
+
+        return try {
+            contentResolver.openFileDescriptor(newFile.uri, "w")?.use { pfd ->
+                FileOutputStream(pfd.fileDescriptor).use {
+                    inputStream.copyTo(it)
                 }
-            } catch (e: IOException) {
-                DocumentsContract.deleteDocument(contentResolver, documentUri)
-                throw e
+            } ?: throw IOException("The descriptor could not be opened for writing!")
+
+            newFile.uri
+        } catch (e: IOException) {
+            if (newFile.exists()) {
+                newFile.delete()
             }
+            throw e
         }
-        return documentUri
     }
 
     companion object {
+        const val ACCESS_FLAGS = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
         const val SAVE_BUFFER_SIZE = 2048
     }
 }
