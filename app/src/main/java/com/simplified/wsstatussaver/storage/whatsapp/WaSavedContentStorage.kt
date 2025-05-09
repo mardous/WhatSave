@@ -60,19 +60,23 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
         }
     }
 
-    fun setCustomDirectory(type: StatusType, selectedUri: Uri): Boolean {
-        if (DocumentsContract.isTreeUri(selectedUri)) {
-            if (WaDirectory.entries.any { it.isThis(selectedUri) }) {
-                return false
+    fun setCustomDirectory(type: StatusType, selectedUri: Uri?): Boolean {
+        if (selectedUri == null) {
+            preferences.edit { remove(type.saveType.customDirectoryId) }
+        } else {
+            if (DocumentsContract.isTreeUri(selectedUri)) {
+                if (WaDirectory.entries.any { it.isThis(selectedUri) }) {
+                    return false
+                }
+                contentResolver.takePersistableUriPermission(
+                    selectedUri,
+                    Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
+                )
+                preferences.edit {
+                    putString(type.saveType.customDirectoryId, selectedUri.toString())
+                }
+                return true
             }
-            contentResolver.takePersistableUriPermission(
-                selectedUri,
-                Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
-            )
-            preferences.edit {
-                putString(type.saveType.customDirectoryId, selectedUri.toString())
-            }
-            return true
         }
         return false
     }
@@ -84,6 +88,8 @@ class WaSavedContentStorage(context: Context, private val contentResolver: Conte
                 val treeUri = savedValue.toUri()
                 if (DocumentsContract.isTreeUri(treeUri)) {
                     return WaDirectoryUri(null, treeUri, getTreeDocumentId(treeUri))
+                } else {
+                    setCustomDirectory(type, null)
                 }
             }
         }
