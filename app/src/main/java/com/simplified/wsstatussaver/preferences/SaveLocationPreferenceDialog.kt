@@ -88,8 +88,11 @@ class SaveLocationPreferenceDialog : DialogFragment(), View.OnClickListener {
     }
 
     private fun setCustomDirectoryLocation(type: StatusType, uri: Uri?) {
-        val isSuccess = uri?.let { waSavedContentStorage.setCustomDirectory(type, uri) }
-        if (isSuccess == true) {
+        if (uri == null)
+            return
+
+        val isSuccess = waSavedContentStorage.setCustomDirectory(type, uri)
+        if (isSuccess) {
             showToast(R.string.custom_save_directory_set)
             updateCustomDirectoryNames()
         } else {
