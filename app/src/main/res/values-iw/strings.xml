@@ -197,4 +197,6 @@
     <string name="revoke_action">לבטל הרשאה</string>
     <string name="language_spanish_latam">ספרדית (אמריקה הלטינית)</string>
     <string name="language_hebrew">עברית</string>
+    <string name="telegram_title">הצטרף לצא\'ט</string>
+    <string name="telegram_summary">הצטרף לצ\'אט של WhatSave כדי לקבל חדשות, לדון בהצעות, לדווח על באגים ועוד.</string>
 </resources>
