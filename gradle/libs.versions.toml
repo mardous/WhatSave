@@ -53,7 +53,6 @@ androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
