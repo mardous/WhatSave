@@ -42,6 +42,7 @@
     <string name="status_unsaved">Unsaved</string>
     <string name="status_saved">Saved</string>
     <string name="action_select_all">Select all</string>
+    <string name="unable_to_share_sharing_too_many_files">Unable to share: too many files.</string>
     <string name="x_selected">%d selected</string>
     <string name="x_is_the_default_client_now">%s is the default client now.</string>
     <string name="default_client_cleared">Loading statuses from all clients.</string>

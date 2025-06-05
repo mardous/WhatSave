@@ -17,6 +17,7 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.TransactionTooLargeException
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
@@ -225,7 +226,11 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
             } else {
                 progressDialog.dismiss()
                 if (it.isSuccess) {
-                    startActivitySafe(it.data.createIntent(requireContext()))
+                    startActivitySafe(it.data.createIntent(requireContext())) { t: Throwable, _ ->
+                        if (t is TransactionTooLargeException) {
+                            showToast(R.string.unable_to_share_sharing_too_many_files)
+                        }
+                    }
                 }
             }
         }
