@@ -56,7 +56,7 @@
     <string name="just_black_theme_title">רק שחור</string>
     <string name="statuses_location_title">מיקום סטטוסים</string>
     <string name="no_storage_device_found">לא נמצא התקן אחסון</string>
-    <string name="exclude_saved_statuses_title">אל תכלול סטטוסים שמורים</string>
+    <string name="exclude_saved_statuses_title">החרג סטטוסים שמורים</string>
     <string name="exclude_saved_statuses_summary">אם מופעל, סטטוסים שמורים לא יופיעו בעמוד הראשי. ניתן יהיה לגשת אליהם רק מהדף \"שמור\".</string>
     <string name="save_location_summary">בחר את המיקום שבו ברצונך לאחסן את הסטטוסים השמורים שלך.</string>
     <string name="whatsapp_icon_title">סמל וואטסאפ קטן</string>
