@@ -52,7 +52,7 @@
     <string name="theme_mode_title">עיצוב</string>
     <string name="dark_theme">כהה</string>
     <string name="light_theme">בהיר</string>
-    <string name="follow_system">כמו המערכת</string>
+    <string name="follow_system">מערכת</string>
     <string name="just_black_theme_title">רק שחור</string>
     <string name="statuses_location_title">מיקום סטטוסים</string>
     <string name="no_storage_device_found">לא נמצא התקן אחסון</string>
@@ -84,8 +84,8 @@
     <string name="conversations_title">שיחות</string>
     <string name="messages_from_x">הודעות מאת %s</string>
     <string name="message_view_description">קרא הודעות שנמחקו או שהתקבלו מבלי שאנשי הקשר שלך ידעו.</string>
-    <string name="message_view_term_2">לכן נדרשת הרשאה לגשת להודעות כדי שזה יפעל כראוי.</string>
-    <string name="message_view_term_3">רק הודעות ווטסאפ יעובדו. ההודעות נשמרות רק במכשיר זה.</string>
+    <string name="message_view_term_2">לכן נדרשת הרשאה לגשת להתראות כדי שהאפליקציה תיפעל כראוי.</string>
+    <string name="message_view_term_3">רק הודעות ווטסאפ ישמרו. שים לב ההודעות נשמרות רק במכשיר זה.</string>
     <string name="use_message_view">השתמש בתצוגת הודעה</string>
     <string name="disable_message_view_title">השבת את תצוגת ההודעה</string>
     <string name="disable_message_view_confirmation">אם תבטל את תצוגת ההודעות, כל ההודעות שנשמרו כאן יימחקו. אתה בטוח?</string>
@@ -112,9 +112,9 @@
     <string name="every_day">כל יום</string>
     <string name="weekly">שבועי</string>
     <string name="monthly">חודשי</string>
-    <string name="never">אף פעם לא</string>
+    <string name="never">לעולם לא</string>
     <string name="only_wifi_summary">חפש עדכונים רק כאשר Wi-Fi מחובר.</string>
-    <string name="only_wifi_title">רק וואי-פי</string>
+    <string name="only_wifi_title">רק Wi-Fi</string>
     <string name="the_app_is_up_to_date">האפליקציה מעודכנת</string>
     <string name="update_title">יש עידכון זמין</string>
     <string name="download_action">‍הורדה</string>
@@ -127,7 +127,7 @@
     <string name="how_to_title">איך?</string>
     <string name="accessible_directories">ספריות נגישות</string>
     <string name="got_it_action">הבנתי!</string>
-    <string name="continue_action">במשך</string>
+    <string name="continue_action">המשך</string>
     <string name="revoke_permissions_title">בטל הרשאות</string>
     <string name="revoke_directory_access_message">האם ברצונך להסיר הרשאות גישה לספרייה זו?</string>
     <string name="revoke_all_directories_access_message">ביטול הגישה לספריות ימנע מאפליקציה זו לטעון קבצי סטטוס עד שתינתן שוב גישה.</string>
@@ -175,9 +175,9 @@
     <string name="translations_summary">אתה יכול לעזור לנו על ידי תרגום אפליקציה זו לשפה שלך.</string>
     <string name="privacy_and_terms_summary">עיין במדיניות הפרטיות ובתנאי השימוש שלנו.</string>
     <string name="confirm_device_credentials">עליך לאמת את האישורים שלך לפני השימוש בכלי זה.</string>
-    <string name="message_view_term_1">פונקציה זו קוראת את התוכן של התראות ווטסאפ כדי לשמור הודעות שהתקבלו.</string>
+    <string name="message_view_term_1">פונקציה זו קוראת את תוכן התראות הווטסאפ שלך כדי לשמור הודעות שהתקבלו.</string>
     <string name="message_view_term_4">ההודעות שאנשי הקשר שלך שולחים ומוחקים בזמן שאתה במצב לא מקוון לא נשמרות על ידי WhatSave מכיוון שהטלפון שלך לא יקבל התראת ווטסאפ.</string>
-    <string name="message_view_term_5">זכור ש-WhatSave היא אפליקציית קוד פתוח, כך שאתה תמיד יכול לסקור את פעולתה הפנימית כדי להבטיח שהפרטיות שלך לא תיפגע.</string>
+    <string name="message_view_term_5">זכור ש-WhatSave היא אפליקציית קוד פתוח, כך שאתה תמיד יכול לסקור את קוד המקור כדי להבטיח שהפרטיות שלך לא תיפגע.</string>
     <string name="no_action">לא</string>
     <string name="language_portuguese_brazil">פורטוגזית (ברזיל)</string>
     <string name="send_action">שלח</string>
@@ -186,15 +186,17 @@
     <string name="more_info_action">מידע נוסף.</string>
     <string name="msg_a_number_description">התחל שיחה עם מישהו שאינו ברשימת אנשי הקשר שלך, באמצעות מספר הטלפון שלו.</string>
     <string name="downloading_update">מוריד עדכון WhatSave</string>
-    <string name="storage_permission_label">עליך להעניק את ההרשאות הנדרשות הבאות לפני שתמשיך:</string>
+    <string name="storage_permission_label">עליך להעניק את ההרשאות הנדרשות הבאות לפני שנוכל להמשיך:</string>
     <string name="blacklisted_senders">רשימה שחורה</string>
     <string name="language_arabic">ערבית</string>
     <string name="language_indonesian">אינדונזית</string>
     <string name="phone_number_invalid">מספר הטלפון שהוזן אינו חוקי</string>
     <string name="permissions_revoked_successfully">ההרשאות בוטלו בהצלחה.</string>
-    <string name="directory_access_description">עליך לאפשר לאפליקציה הזו לקרוא את הספריות שבהן ווטסאפ מאחסנת את הסטטוסים.</string>
+    <string name="directory_access_description">עליך לאפשר לאפליקציה הזו לקרוא את התקיות שבהן ווטסאפ מאחסנת את הסטטוסים.</string>
     <string name="language_german">גרמנית</string>
-    <string name="revoke_action">לבטל הרשאה</string>
+    <string name="revoke_action">בטל הרשאה</string>
     <string name="language_spanish_latam">ספרדית (אמריקה הלטינית)</string>
     <string name="language_hebrew">עברית</string>
+    <string name="telegram_title">הצטרף לצא\'ט</string>
+    <string name="telegram_summary">הצטרף לצ\'אט של WhatSave כדי לקבל חדשות, לדון בהצעות, לדווח על באגים ועוד.</string>
 </resources>
