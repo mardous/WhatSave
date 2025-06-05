@@ -39,14 +39,12 @@ import androidx.core.net.toUri
 import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
-import com.simplified.wsstatussaver.logUrlView
 import com.simplified.wsstatussaver.recordException
 import com.simplified.wsstatussaver.service.MessageCatcherService
 import java.io.Serializable
 import java.io.UnsupportedEncodingException
 import java.net.URLDecoder
 import java.net.URLEncoder
-import java.util.*
 import kotlin.reflect.KClass
 
 typealias ExceptionConsumer = (Throwable, activityNotFound: Boolean) -> Unit
@@ -56,7 +54,6 @@ typealias ViewConsumer = (View) -> Unit
 fun Context.getDrawableCompat(resId: Int) = AppCompatResources.getDrawable(this, resId)
 
 fun Context.openWeb(url: String) {
-    logUrlView(url)
     startActivitySafe(
         Intent(Intent.ACTION_VIEW, url.toUri())
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

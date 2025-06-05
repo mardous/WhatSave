@@ -15,16 +15,4 @@ package com.simplified.wsstatussaver
 
 fun setAnalyticsEnabled(enabled: Boolean) {}
 
-fun logToolView(clazz: String, name: String) {}
-
-fun logUpdateRequest(newVersion: String, accepted: Boolean) {}
-
-fun logThemeSelected(themeName: String) {}
-
-fun logLanguageSelected(languageName: String) {}
-
-fun logDefaultClient(packageName: String) {}
-
-fun logUrlView(url: String) {}
-
 fun recordException(throwable: Throwable) {}

@@ -32,7 +32,6 @@ import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.setMarkdownText
 import com.simplified.wsstatussaver.extensions.showToast
-import com.simplified.wsstatussaver.logUpdateRequest
 import com.simplified.wsstatussaver.update.GitHubRelease
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
@@ -67,7 +66,6 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
         release.setIgnored(requireContext())
-        logUpdateRequest(release.name, false)
     }
 
     override fun onClick(view: View) {
@@ -79,7 +77,6 @@ class UpdateDialog : BottomSheetDialogFragment(), View.OnClickListener {
             binding.downloadAction -> {
                 viewModel.downloadUpdate(requireContext(), release)
                 showToast(R.string.downloading_update)
-                logUpdateRequest(release.name, true)
                 dismiss()
             }
         }
