@@ -15,11 +15,43 @@
 
 <a href="https://github.com/mardous/WhatSave/releases"><img src="assets/badge-github.png" height="60"></a>
 <a href="https://f-droid.org/packages/com.simplified.wsstatussaver/"><img src="assets/badge-fdroid.png" height="60"></a>
+<a href="https://apt.izzysoft.de/fdroid/index/apk/com.simplified.wsstatussaver?repo=main"><img src="assets/badge-izzyondroid.png" height="60"></a>
 <a href="https://www.openapk.net/whatsave/com.simplified.wsstatussaver/"><img src="assets/badge-openapk.png" height="60"></a>
 <a href="https://www.androidfreeware.net/download-whatsave-apk.html"><img src="assets/badge-androidfreeware.png" height="60"></a>
 <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/mardous/WhatSave/"><img src="assets/badge-obtainium.png" height="60"></a>
 
 </div>
+
+## ⚠️ Important Notice
+
+A **fake version of WhatSave** has been found on the Google Play Store.
+
+This unauthorized version not only violates the **GPL-v3 license**, but also puts your **privacy and security at risk**.
+
+❌ **Do NOT download WhatSave from the Play Store.**  
+✅ **The only official download sources are the links listed above.**
+
+### 🔍 Fake App Information
+- **Package name**: `com.simplified.wsstatussaver`
+- **Violations**: License misuse, impersonation, inclusion of ads and trackers without permission
+
+### 🛡️ Help us take it down
+You can help protect other users by reporting the fake app to Google:
+
+- Open the app’s [Play Store page](https://play.google.com/store/apps/details?id=com.simplified.wsstatussaver)
+- Tap the three-dot menu (⋮) → **"Flag as inappropriate"**
+- Select **"App felt suspicious"** → **"Share feedback"**
+
+Or use the official form here:  
+👉 [Report a policy violation](https://support.google.com/googleplay/android-developer/contact/policy_violation_report)
+
+Suggested info to include:
+- **Package name**: `com.simplified.wsstatussaver`
+- **Violation**: **Impersonation**
+
+---
+
+Special thanks to [RohitKushvaha01](https://github.com/RohitKushvaha01) for [reporting](https://github.com/mardous/WhatSave/issues/20) this situation.
 
 ## 📱 Screenshots
 
