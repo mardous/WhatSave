@@ -60,7 +60,6 @@ import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.StatusesBinding
-import com.simplified.wsstatussaver.fragments.playback.PlaybackFragmentArgs
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
@@ -170,11 +169,8 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
     }
 
     override fun previewStatusesClick(statuses: List<Status>, startPosition: Int) {
-        findActivityNavController(R.id.global_container).navigate(
-            R.id.playbackFragment,
-            PlaybackFragmentArgs.Builder(statuses.toTypedArray(), startPosition).build()
-                .toBundle()
-        )
+        viewModel.preparePlayback(statuses, startPosition)
+        findActivityNavController(R.id.global_container).navigate(R.id.playbackFragment)
     }
 
     override fun showStatusMenu(menu: StatusMenu) = requestContext { context ->
