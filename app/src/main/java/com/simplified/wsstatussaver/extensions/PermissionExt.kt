@@ -33,7 +33,7 @@ import com.simplified.wsstatussaver.model.WaDirectory
 
 const val STORAGE_PERMISSION_REQUEST = 100
 
-val IsScopedStorageRequired = hasQ()
+val IsScopedStorageRequired = hasR()
 val IsSAFRequired = hasR()
 
 @SuppressLint("InlinedApi")

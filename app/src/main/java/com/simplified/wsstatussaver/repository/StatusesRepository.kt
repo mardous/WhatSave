@@ -346,13 +346,29 @@ class StatusesRepositoryImpl(
             return false
         }
         val success = when {
-            IsScopedStorageRequired -> contentResolver.delete(status.fileUri, null, null) > 0
+            IsScopedStorageRequired -> {
+                try {
+                    contentResolver.delete(status.fileUri, null, null) > 0
+                } catch (e: SecurityException) {
+                    false
+                }
+            }
             status.hasFile() -> {
-                val file = status.getFile()
-                if (!file.exists() || file.delete()) {
-                    contentResolver.delete(status.type.contentUri, "${MediaColumns.DATA}=?", arrayOf(status.getFilePath()))
-                    true
-                } else false
+                try {
+                    val file = status.getFile()
+                    if (!file.exists() || file.delete()) {
+                        contentResolver.delete(
+                            status.type.contentUri,
+                            "${MediaColumns.DATA}=?",
+                            arrayOf(status.getFilePath())
+                        )
+                        true
+                    } else {
+                        false
+                    }
+                } catch (e: SecurityException) {
+                    false
+                }
             }
             else -> false
         }
