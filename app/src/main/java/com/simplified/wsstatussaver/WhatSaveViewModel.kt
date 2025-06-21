@@ -39,6 +39,7 @@ import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.model.WaClient
 import com.simplified.wsstatussaver.model.WaDirectory
 import com.simplified.wsstatussaver.mvvm.DeletionResult
+import com.simplified.wsstatussaver.mvvm.PlaybackState
 import com.simplified.wsstatussaver.mvvm.SaveResult
 import com.simplified.wsstatussaver.mvvm.ShareResult
 import com.simplified.wsstatussaver.repository.Repository
@@ -53,6 +54,8 @@ import io.ktor.client.request.get
 import io.ktor.http.isSuccess
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import java.util.EnumMap
 
@@ -63,6 +66,9 @@ class WhatSaveViewModel(
 ) : ViewModel() {
 
     private val liveDataMap = newStatusesLiveDataMap()
+
+    private val _playbackState = MutableStateFlow(PlaybackState.Empty)
+    val playbackState = _playbackState.asStateFlow()
 
     private val savedStatuses = MutableLiveData(StatusQueryResult.Idle)
     private val installedClients = MutableLiveData<List<WaClient>>()
@@ -232,6 +238,16 @@ class WhatSaveViewModel(
             .toTypedArray()
 
         emit(paths)
+    }
+
+    fun preparePlayback(statuses: List<Status>, startPosition: Int) {
+        _playbackState.value = PlaybackState(statuses, startPosition)
+    }
+
+    fun updatePlayback(position: Int) {
+        _playbackState.value.takeUnless { it == PlaybackState.Empty }?.let { currentPlayback ->
+            _playbackState.value = currentPlayback.copy(startPosition = position)
+        }
     }
 
     fun getLatestUpdate(): LiveData<GitHubRelease> = liveData(IO + SilentHandler) {

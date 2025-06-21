@@ -17,6 +17,7 @@ import android.app.Activity
 import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.TransactionTooLargeException
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
@@ -59,7 +60,6 @@ import com.simplified.wsstatussaver.extensions.showToast
 import com.simplified.wsstatussaver.extensions.startActivitySafe
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
 import com.simplified.wsstatussaver.fragments.binding.StatusesBinding
-import com.simplified.wsstatussaver.fragments.playback.PlaybackFragmentArgs
 import com.simplified.wsstatussaver.interfaces.IPermissionChangeListener
 import com.simplified.wsstatussaver.interfaces.IScrollable
 import com.simplified.wsstatussaver.interfaces.IStatusCallback
@@ -169,11 +169,8 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
     }
 
     override fun previewStatusesClick(statuses: List<Status>, startPosition: Int) {
-        findActivityNavController(R.id.global_container).navigate(
-            R.id.playbackFragment,
-            PlaybackFragmentArgs.Builder(statuses.toTypedArray(), startPosition).build()
-                .toBundle()
-        )
+        viewModel.preparePlayback(statuses, startPosition)
+        findActivityNavController(R.id.global_container).navigate(R.id.playbackFragment)
     }
 
     override fun showStatusMenu(menu: StatusMenu) = requestContext { context ->
@@ -225,7 +222,11 @@ abstract class StatusesFragment : BaseFragment(R.layout.fragment_statuses),
             } else {
                 progressDialog.dismiss()
                 if (it.isSuccess) {
-                    startActivitySafe(it.data.createIntent(requireContext()))
+                    startActivitySafe(it.data.createIntent(requireContext())) { t: Throwable, _ ->
+                        if (t is TransactionTooLargeException) {
+                            showToast(R.string.unable_to_share_sharing_too_many_files)
+                        }
+                    }
                 }
             }
         }

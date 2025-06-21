@@ -142,7 +142,6 @@ dependencies {
 
     //Firebase
     "normalImplementation"(platform(libs.firebase.bom))
-    "normalImplementation"(libs.firebase.analytics)
     "normalImplementation"(libs.firebase.crashlytics)
 
     implementation(libs.koin.core)

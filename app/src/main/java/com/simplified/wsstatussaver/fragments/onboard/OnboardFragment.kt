@@ -15,11 +15,10 @@ package com.simplified.wsstatussaver.fragments.onboard
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.doOnPreDraw
@@ -36,7 +35,6 @@ import com.simplified.wsstatussaver.databinding.FragmentOnboardBinding
 import com.simplified.wsstatussaver.extensions.IsSAFRequired
 import com.simplified.wsstatussaver.extensions.Space
 import com.simplified.wsstatussaver.extensions.applyWindowInsets
-import com.simplified.wsstatussaver.extensions.directoryAccessRequestIntent
 import com.simplified.wsstatussaver.extensions.formattedAsHtml
 import com.simplified.wsstatussaver.extensions.getOnBackPressedDispatcher
 import com.simplified.wsstatussaver.extensions.getReadableDirectories
@@ -62,12 +60,12 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
 
     private val viewModel: WhatSaveViewModel by activityViewModel()
 
-    private lateinit var permissionRequest: ActivityResultLauncher<Intent>
+    private lateinit var permissionRequest: ActivityResultLauncher<Uri?>
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        permissionRequest = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult? ->
+        permissionRequest = registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { result: Uri? ->
             if (result != null && takePermissions(result)) {
                 viewModel.reloadAll()
                 updateButtons()
@@ -165,7 +163,7 @@ class OnboardFragment : BaseFragment(R.layout.fragment_onboard), View.OnClickLis
                         }.root
                     )
                     .setPositiveButton(R.string.got_it_action) { _: DialogInterface, _: Int ->
-                        permissionRequest.launch(directoryAccessRequestIntent())
+                        permissionRequest.launch(null)
                     }
                     .setNegativeButton(android.R.string.cancel, null)
                     .show()

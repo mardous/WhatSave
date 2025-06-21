@@ -17,35 +17,35 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.View
-import androidx.annotation.OptIn
 import androidx.core.view.doOnPreDraw
+import androidx.lifecycle.lifecycleScope
 import androidx.media3.common.Player
-import androidx.media3.common.util.UnstableApi
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
+import com.simplified.wsstatussaver.WhatSaveViewModel
 import com.simplified.wsstatussaver.adapter.PlaybackAdapter
 import com.simplified.wsstatussaver.databinding.FragmentPlaybackBinding
 import com.simplified.wsstatussaver.extensions.applyHorizontalWindowInsets
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
+import com.simplified.wsstatussaver.mvvm.PlaybackState
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 /**
  * @author Christians M. A. (mardous)
  */
 class PlaybackFragment : BaseFragment(R.layout.fragment_playback), Player.Listener {
 
-    private val navArgs: PlaybackFragmentArgs by navArgs()
+    private val viewModel: WhatSaveViewModel by activityViewModel()
 
     private var _binding: FragmentPlaybackBinding? = null
     private val binding get() = _binding!!
 
     private var adapter: PlaybackAdapter? = null
 
-    private val statuses get() = navArgs.statuses.toList()
-    private val startPosition get() = navArgs.position
-
-    @OptIn(UnstableApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentPlaybackBinding.bind(view)
@@ -59,7 +59,26 @@ class PlaybackFragment : BaseFragment(R.layout.fragment_playback), Player.Listen
         statusesActivity.setSupportActionBar(binding.toolbar)
         statusesActivity.supportActionBar?.title = null
 
-        initAdapter()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.playbackState.first().let { state ->
+                if (state != PlaybackState.Empty) {
+                    adapter = PlaybackAdapter(this@PlaybackFragment, state.statuses)
+                    binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+                    binding.viewPager.offscreenPageLimit = 1
+                    binding.viewPager.adapter = adapter
+                    binding.viewPager.setCurrentItem(state.startPosition, false)
+                    binding.viewPager.registerOnPageChangeCallback(pageChangeCallback)
+                } else {
+                    findNavController().popBackStack()
+                }
+            }
+        }
+    }
+
+    private val pageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            viewModel.updatePlayback(position)
+        }
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -67,16 +86,11 @@ class PlaybackFragment : BaseFragment(R.layout.fragment_playback), Player.Listen
     }
 
     override fun onDestroyView() {
+        binding.viewPager.unregisterOnPageChangeCallback(pageChangeCallback)
+        binding.viewPager.adapter = null
+        adapter = null
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun initAdapter() {
-        adapter = PlaybackAdapter(this, statuses)
-        binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-        binding.viewPager.offscreenPageLimit = 1
-        binding.viewPager.adapter = adapter
-        binding.viewPager.setCurrentItem(startPosition, false)
     }
 
     companion object {

@@ -14,7 +14,6 @@
 package com.simplified.wsstatussaver.extensions
 
 import android.content.Context
-import com.simplified.wsstatussaver.logDefaultClient
 import com.simplified.wsstatussaver.model.WaClient
 
 val REGEX_WHATSAPP = """^(?:Android/media/com\.whatsapp/WhatsApp/|WhatsApp/)(?:accounts/\d+/)?Media/\.Statuses$""".toRegex()
@@ -29,7 +28,6 @@ fun Context.getDefaultClient(): WaClient? {
 }
 
 fun Context.setDefaultClient(client: WaClient?) {
-    logDefaultClient(client?.packageName ?: "cleared")
     preferences().defaultClientPackageName = client?.packageName
 }
 

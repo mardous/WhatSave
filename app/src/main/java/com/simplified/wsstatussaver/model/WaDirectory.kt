@@ -20,7 +20,6 @@ import android.net.Uri
 import android.os.Build
 import android.provider.DocumentsContract
 import androidx.documentfile.provider.DocumentFile
-import com.simplified.wsstatussaver.extensions.decodedUrl
 import com.simplified.wsstatussaver.storage.Storage
 
 typealias SegmentResolver = (WaClient) -> List<String>
@@ -82,14 +81,9 @@ enum class WaDirectory(
     }
 
     fun isThis(uri: Uri): Boolean {
-        val path = uri.encodedPath?.decodedUrl() ?: return false
-        if (path.contains(":")) {
-            val lastPart = path.split(":")
-            if (lastPart.size == 2) {
-                return lastPart[1] == this.path
-            }
-        }
-        return false
+        val documentId = DocumentsContract.getTreeDocumentId(uri)
+        val relativePath = documentId.substringAfter(':').trim('/')
+        return relativePath.equals(this.path, ignoreCase = true)
     }
 
     fun releasePermissions(context: Context): Boolean {

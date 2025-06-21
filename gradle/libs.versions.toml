@@ -1,24 +1,24 @@
 [versions]
-androidPluginVersion = "8.9.2"
+androidPluginVersion = "8.10.1"
 annotation = "1.9.1"
 kspPluginVersion = "2.1.0-1.0.29"
 gmsPluginVersion = "4.4.2"
-crashlyticsPluginVersion = "3.0.3"
+crashlyticsPluginVersion = "3.0.4"
 kotlinVersion = "2.1.0"
 kotlinCoroutinesVersion = "1.10.2"
 constraintlayout = "2.2.1"
-media3 = "1.6.1"
+media3 = "1.7.1"
 cardview = "1.0.0"
-appcompat = "1.7.0"
+appcompat = "1.7.1"
 coreSplashscreen = "1.0.1"
 coreVersion = "1.16.0"
-firebaseBom = "33.13.0"
-fragmentKtx = "1.8.6"
+firebaseBom = "33.14.0"
+fragmentKtx = "1.8.8"
 libphonenumberAndroid = "8.13.52"
-lifecycleVersion = "2.8.7"
+lifecycleVersion = "2.9.1"
 loader = "1.1.0"
 material = "1.12.0"
-navigationVersion = "2.8.9"
+navigationVersion = "2.9.0"
 preferenceKtx = "1.2.1"
 prettytime = "5.0.4.Final"
 recyclerview = "1.4.0"
@@ -53,7 +53,6 @@ androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }

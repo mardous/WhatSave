@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Christians Martínez Alvarado
+ * Copyright (C) 2025 Christians Martínez Alvarado
  *
  * Licensed under the GNU General Public License v3
  *
@@ -11,8 +11,12 @@
  * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  */
-package com.simplified.wsstatussaver
+package com.simplified.wsstatussaver.mvvm
 
-fun setAnalyticsEnabled(enabled: Boolean) {}
+import com.simplified.wsstatussaver.model.Status
 
-fun recordException(throwable: Throwable) {}
+data class PlaybackState(val statuses: List<Status>, val startPosition: Int) {
+    companion object {
+        val Empty = PlaybackState(emptyList(), -1)
+    }
+}

@@ -45,8 +45,6 @@ import com.simplified.wsstatussaver.extensions.isNightModeEnabled
 import com.simplified.wsstatussaver.extensions.openWeb
 import com.simplified.wsstatussaver.extensions.whichFragment
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
-import com.simplified.wsstatussaver.logLanguageSelected
-import com.simplified.wsstatussaver.logThemeSelected
 import com.simplified.wsstatussaver.preferences.DefaultClientPreference
 import com.simplified.wsstatussaver.preferences.DefaultClientPreferenceDialog
 import com.simplified.wsstatussaver.preferences.SaveLocationPreference
@@ -131,7 +129,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 ?.setOnPreferenceChangeListener { _: Preference?, newValue: Any? ->
                     val themeName = newValue as String
                     AppCompatDelegate.setDefaultNightMode(getDefaultDayNightMode(themeName))
-                    logThemeSelected(themeName)
                     true
                 }
             findPreference<SwitchPreferenceCompat>(PREFERENCE_JUST_BLACK_THEME)
@@ -154,7 +151,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 } else {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageName))
                 }
-                logLanguageSelected(languageName)
                 true
             }
             findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->

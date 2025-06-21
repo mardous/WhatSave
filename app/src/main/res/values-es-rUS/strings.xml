@@ -42,6 +42,7 @@
     <string name="status_unsaved">Sin guardar</string>
     <string name="status_saved">Guardado</string>
     <string name="action_select_all">Seleccionar todo</string>
+    <string name="unable_to_share_sharing_too_many_files">Imposible compartir: muchos archivos.</string>
     <string name="x_selected">%d seleccionado(s)</string>
     <string name="x_is_the_default_client_now">%s es el cliente predeterminado ahora.</string>
     <string name="default_client_cleared">Se cargarán estados desde todos los clientes.</string>

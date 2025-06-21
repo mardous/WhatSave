@@ -1,4 +1,5 @@
 *.iml
+*.jks
 keystore.properties
 local.properties
 private.properties

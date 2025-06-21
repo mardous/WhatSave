@@ -29,30 +29,10 @@
 -dontwarn javax.annotation.**
 -dontwarn org.commonmark.ext.gfm.strikethrough.**
 
-# RetroFit
--dontwarn retrofit.**
--keep class retrofit.** { *; }
-# Keep generic signature of Call, Response (R8 full mode strips signatures from non-kept items). 
--keep,allowobfuscation,allowshrinking interface retrofit2.Call 
--keep,allowobfuscation,allowshrinking class retrofit2.Response 
-
 # With R8 full mode generic signatures are stripped for classes that are not 
 # kept. Suspend functions are wrapped in continuations where the type argument 
 # is used. 
 -keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation 
-
-# Glide
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep class * extends com.bumptech.glide.module.AppGlideModule {
- <init>(...);
-}
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
--keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
-  *** rewind();
-}
 
 # OkHttp
 -keepattributes Signature
@@ -63,10 +43,8 @@
 #-dontwarn
 #-ignorewarnings
 
-#Gson
--keep class com.google.gson.reflect.TypeToken
--keep class * extends com.google.gson.reflect.TypeToken
--keep public class * implements java.lang.reflect.Type
+# PrettyTime
+-keepnames class org.ocpsoft.prettytime.units.**
 
 -keepclassmembers enum * { *; }
 -keepattributes *Annotation*, Signature, Exception

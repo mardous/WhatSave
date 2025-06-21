@@ -34,7 +34,6 @@ import com.simplified.wsstatussaver.extensions.isNotificationListener
 import com.simplified.wsstatussaver.extensions.launchSafe
 import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.fragments.base.BaseFragment
-import com.simplified.wsstatussaver.logToolView
 import org.koin.androidx.viewmodel.ext.android.activityViewModel
 
 class ToolFragment : BaseFragment(R.layout.fragment_tool) {
@@ -51,11 +50,9 @@ class ToolFragment : BaseFragment(R.layout.fragment_tool) {
         _binding = FragmentToolBinding.bind(view)
         binding.scrollView.applyBottomWindowInsets()
         binding.msgANumber.setOnClickListener {
-            logToolView("MessageFragment", "Message a number")
             findNavController().navigate(R.id.messageFragment)
         }
         binding.messageView.setOnClickListener {
-            logToolView("ConversationListFragment", "Message view")
             if (requireContext().isNotificationListener()) {
                 openMessageView()
             } else {
