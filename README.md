@@ -52,7 +52,7 @@ If you trust the app:
 - You can skip the Play Protect warning and install the APK normally.
 - You can also check the open source code in this repo to verify how it works.
 
-Thanks for your trust and support — and for not letting Play Protect kill useful apps.
+Thanks for your trust and support.
 
 ## 📃 Features:
 
