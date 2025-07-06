@@ -35,6 +35,25 @@
 </div>
 </div>
 
+## ⚠️ A quick note about Play Protect warnings
+
+Due to recent policy changes from Google, you might see a warning from **Play Protect** when trying to install WhatSave, saying something like:  
+**“This app may access sensitive data.”**
+
+Let’s be clear:  
+👉 **WhatSave does *not* collect any personal information or share anything outside your device.**  
+The app uses notification access *only* to recover deleted WhatsApp messages — nothing more, nothing shady.
+
+Unfortunately, Google now flags many apps that access notifications as “potentially risky,” even if they don’t do anything wrong. This affects plenty of useful apps, including WhatSave.
+
+### What can you do?
+If you trust the app:
+
+- You can skip the Play Protect warning and install the APK normally.
+- You can also check the open source code in this repo to verify how it works.
+
+Thanks for your trust and support — and for not letting Play Protect kill useful apps.
+
 ## 📃 Features:
 
 * Supports all Android versions starting from 7.0 Nougat
