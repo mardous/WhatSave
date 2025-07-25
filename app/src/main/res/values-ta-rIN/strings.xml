@@ -209,4 +209,7 @@
     <string name="fast">வேகமாக</string>
     <string name="very_fast">மிக வேகமாக</string>
     <string name="normal_speed">சாதாரண</string>
+    <string name="unable_to_share_sharing_too_many_files">பகிர முடியவில்லை: மிக அதிகமான கோப்புகள்.</string>
+    <string name="telegram_title">அரட்டையில் சேரவும்</string>
+    <string name="telegram_summary">செய்திகளை பெற, பரிந்துரைகள் குறித்து பேச, பிழைகளை அறிவிக்க மற்றும் மேலும் பலவற்றுக்கு WhatSave அரட்டையில் சேரவும்.</string>
 </resources>
