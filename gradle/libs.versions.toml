@@ -1,9 +1,9 @@
 [versions]
-androidPluginVersion = "8.11.0"
+androidPluginVersion = "8.11.1"
 annotation = "1.9.1"
 kspPluginVersion = "2.2.0-2.0.2"
 gmsPluginVersion = "4.4.3"
-crashlyticsPluginVersion = "3.0.4"
+crashlyticsPluginVersion = "3.0.5"
 kotlinVersion = "2.2.0"
 kotlinCoroutinesVersion = "1.10.2"
 constraintlayout = "2.2.1"
@@ -12,13 +12,13 @@ cardview = "1.0.0"
 appcompat = "1.7.1"
 coreSplashscreen = "1.0.1"
 coreVersion = "1.16.0"
-firebaseBom = "33.16.0"
+firebaseBom = "34.0.0"
 fragmentKtx = "1.8.8"
 libphonenumberAndroid = "9.0.5"
-lifecycleVersion = "2.9.1"
+lifecycleVersion = "2.9.2"
 loader = "1.1.0"
 material = "1.12.0"
-navigationVersion = "2.9.1"
+navigationVersion = "2.9.2"
 preferenceKtx = "1.2.1"
 prettytime = "5.0.4.Final"
 recyclerview = "1.4.0"
@@ -26,12 +26,12 @@ roomVersion = "2.7.2"
 koinVersion = "4.1.0"
 swiperefreshlayout = "1.1.0"
 advrecyclerview = "1.0.0"
-coilVersion = "3.2.0"
+coilVersion = "3.3.0"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
 photoviewVersion = "1.0.3"
-ktor = "3.2.1"
+ktor = "3.2.2"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -53,7 +53,7 @@ androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
 
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutinesVersion" }

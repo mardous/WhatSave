@@ -13,14 +13,14 @@
  */
 package com.simplified.wsstatussaver
 
+import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.FirebaseCrashlytics
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.crashlytics.crashlytics
 
 private val firebaseCrashlytics: FirebaseCrashlytics by lazy { Firebase.crashlytics }
 
 fun setAnalyticsEnabled(enabled: Boolean) {
-    firebaseCrashlytics.setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG && enabled)
+    firebaseCrashlytics.isCrashlyticsCollectionEnabled = !BuildConfig.DEBUG && enabled
 }
 
 fun recordException(throwable: Throwable) {
