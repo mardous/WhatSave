@@ -17,7 +17,7 @@ if (isNormalBuild) {
 }
 
 android {
-    compileSdk = 35
+    compileSdk = 36
     namespace = "com.simplified.wsstatussaver"
 
     defaultConfig {
@@ -84,9 +84,6 @@ android {
         abortOnError = true
         warning += listOf("ImpliedQuantity", "Instantiatable", "MissingQuantity", "MissingTranslation")
     }
-    kotlinOptions {
-        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-    }
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
@@ -94,6 +91,9 @@ android {
 }
 
 kotlin {
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
+    }
     jvmToolchain(21)
 }
 
