@@ -158,11 +158,6 @@ open class StatusesActivity : AppCompatActivity(), NavController.OnDestinationCh
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressedDispatcher.onBackPressed()
-                return true
-            }
-
             R.id.action_settings -> {
                 findNavController(R.id.main_container).navigate(R.id.settingsFragment)
                 return true
@@ -173,7 +168,7 @@ open class StatusesActivity : AppCompatActivity(), NavController.OnDestinationCh
     }
 
     override fun onSupportNavigateUp(): Boolean =
-        findNavController(R.id.main_container).navigateUp()
+        findNavController(R.id.main_container).popBackStack()
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
