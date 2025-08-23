@@ -13,11 +13,11 @@
  */
 package com.simplified.wsstatussaver.repository
 
-import android.net.Uri
 import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.database.Conversation
 import com.simplified.wsstatussaver.database.MessageEntity
 import com.simplified.wsstatussaver.model.Country
+import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.ShareData
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
@@ -30,8 +30,8 @@ interface Repository {
     suspend fun savedStatuses(type: StatusType): StatusQueryResult
     suspend fun shareStatus(status: Status): ShareData
     suspend fun shareStatuses(statuses: List<Status>): ShareData
-    suspend fun saveStatus(status: Status, saveName: String?): Uri?
-    suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri>
+    suspend fun saveStatus(status: Status, saveName: String?): SavedStatus?
+    suspend fun saveStatuses(statuses: List<Status>): List<SavedStatus>
     suspend fun deleteStatus(status: Status): Boolean
     suspend fun deleteStatuses(statuses: List<Status>): Int
     suspend fun removeStatus(status: Status)
@@ -66,9 +66,9 @@ class RepositoryImpl(
 
     override suspend fun shareStatuses(statuses: List<Status>): ShareData = statusesRepository.share(statuses)
 
-    override suspend fun saveStatus(status: Status, saveName: String?): Uri? = statusesRepository.save(status, saveName)
+    override suspend fun saveStatus(status: Status, saveName: String?): SavedStatus? = statusesRepository.save(status, saveName)
 
-    override suspend fun saveStatuses(statuses: List<Status>): Map<Status, Uri> =
+    override suspend fun saveStatuses(statuses: List<Status>): List<SavedStatus> =
         statusesRepository.save(statuses)
 
     override suspend fun deleteStatus(status: Status): Boolean = statusesRepository.delete(status)

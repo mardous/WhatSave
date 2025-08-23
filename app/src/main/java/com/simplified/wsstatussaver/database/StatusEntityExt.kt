@@ -13,6 +13,8 @@
  */
 package com.simplified.wsstatussaver.database
 
+import android.net.Uri
+import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.Status
 
 private fun Status.getSaveName(i: String?, timeMillis: Long, delta: Int = 0): String {
@@ -29,7 +31,11 @@ private fun Status.getSaveName(i: String?, timeMillis: Long, delta: Int = 0): St
     return saveName
 }
 
-fun Status.toStatusEntity(saveName: String?, timeMillis: Long = System.currentTimeMillis(), delta: Int = 0) = StatusEntity(
+fun Status.toStatusEntity(
+    saveName: String?,
+    timeMillis: Long = System.currentTimeMillis(),
+    delta: Int = 0
+) = StatusEntity(
     type = type,
     name = name,
     origin = fileUri,
@@ -37,4 +43,13 @@ fun Status.toStatusEntity(saveName: String?, timeMillis: Long = System.currentTi
     size = size,
     client = clientPackage,
     saveName = getSaveName(saveName, timeMillis, delta)
+)
+
+fun StatusEntity.toSavedStatus(uri: Uri, path: String?) = SavedStatus(
+    type = type,
+    name = name!!,
+    fileUri = uri,
+    dateModified = dateModified,
+    size = size,
+    path = path
 )

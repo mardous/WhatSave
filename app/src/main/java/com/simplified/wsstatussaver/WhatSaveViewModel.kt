@@ -167,15 +167,14 @@ class WhatSaveViewModel(
     fun saveStatus(status: Status, saveName: String? = null): LiveData<SaveResult> = liveData(IO) {
         emit(SaveResult(isSaving = true))
         val result = repository.saveStatus(status, saveName)
-        emit(SaveResult.single(status, result))
+        emit(SaveResult.single(result))
     }
 
     fun saveStatuses(statuses: List<Status>): LiveData<SaveResult> = liveData(IO) {
         emit(SaveResult(isSaving = true))
-        val result = repository.saveStatuses(statuses)
-        val savedStatuses = result.keys.toList()
-        val savedUris = result.values.toList()
-        emit(SaveResult(statuses = savedStatuses, uris = savedUris, saved = result.size))
+        val savedStatuses = repository.saveStatuses(statuses)
+        val savedUris = savedStatuses.map { it.fileUri }
+        emit(SaveResult(statuses = savedStatuses, uris = savedUris, saved = savedStatuses.size))
     }
 
     fun deleteStatus(status: Status): LiveData<DeletionResult> = liveData(IO) {
