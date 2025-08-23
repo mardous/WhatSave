@@ -20,6 +20,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.simplified.wsstatussaver.R
+import androidx.core.content.withStyledAttributes
 
 class ToolView @JvmOverloads constructor(
     context: Context,
@@ -37,11 +38,11 @@ class ToolView @JvmOverloads constructor(
         descView = findViewById(R.id.description)
         iconView = findViewById(R.id.icon)
 
-        val a = context.obtainStyledAttributes(attrs, R.styleable.ToolView, defStyleAttr, 0)
-        setTitle(a.getString(R.styleable.ToolView_toolName))
-        setDescription(a.getString(R.styleable.ToolView_toolDescription))
-        setIcon(a.getDrawable(R.styleable.ToolView_toolIcon))
-        a.recycle()
+        context.withStyledAttributes(attrs, R.styleable.ToolView, defStyleAttr, 0) {
+            setTitle(getString(R.styleable.ToolView_toolName))
+            setDescription(getString(R.styleable.ToolView_toolDescription))
+            setIcon(getDrawable(R.styleable.ToolView_toolIcon))
+        }
     }
 
     fun setIcon(icon: Drawable?) {

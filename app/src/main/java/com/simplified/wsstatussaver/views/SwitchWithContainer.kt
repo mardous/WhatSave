@@ -20,6 +20,7 @@ import android.widget.FrameLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.simplified.wsstatussaver.R
+import androidx.core.content.withStyledAttributes
 
 class SwitchWithContainer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     FrameLayout(context, attrs, defStyleAttr), CompoundButton.OnCheckedChangeListener {
@@ -46,17 +47,17 @@ class SwitchWithContainer @JvmOverloads constructor(context: Context, attrs: Att
         switch = findViewById(R.id.switchWidget)
         switch?.setOnCheckedChangeListener(this)
 
-        val a = context.obtainStyledAttributes(attrs, R.styleable.SwitchWithContainer, defStyleAttr, 0)
-        text = a.getString(R.styleable.SwitchWithContainer_android_text)
-        isChecked = a.getBoolean(R.styleable.SwitchWithContainer_android_checked, false)
-        a.recycle()
+        context.withStyledAttributes(attrs, R.styleable.SwitchWithContainer, defStyleAttr, 0) {
+            text = getString(R.styleable.SwitchWithContainer_android_text)
+            isChecked = getBoolean(R.styleable.SwitchWithContainer_android_checked, false)
+        }
     }
 
     fun setOnCheckedChangeListener(listener: CompoundButton.OnCheckedChangeListener?) {
         this.onCheckedChangedListener = listener
     }
 
-    override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
+    override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
         cardView?.isChecked = isChecked
         onCheckedChangedListener?.onCheckedChanged(buttonView, isChecked)
     }
