@@ -13,14 +13,13 @@
  */
 package com.simplified.wsstatussaver.model
 
-import android.annotation.TargetApi
 import android.content.ContentResolver
-import android.content.ContentUris
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore.MediaColumns
+import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.extensions.acceptFileName
@@ -30,7 +29,11 @@ import java.io.File
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-enum class StatusType(@StringRes val nameRes: Int, val format: String, private val saveType: StatusSaveType) {
+enum class StatusType(
+    @param:StringRes val nameRes: Int,
+    val format: String,
+    private val saveType: StatusSaveType
+) {
     IMAGE(R.string.type_images, ".jpg", StatusSaveType.IMAGE_SAVE),
     VIDEO(R.string.type_videos, ".mp4", StatusSaveType.VIDEO_SAVE);
 
@@ -40,7 +43,7 @@ enum class StatusType(@StringRes val nameRes: Int, val format: String, private v
 
     val mimeType: String get() = saveType.fileMimeType
 
-    @TargetApi(Build.VERSION_CODES.Q)
+    @RequiresApi(Build.VERSION_CODES.Q)
     fun getRelativePath(location: SaveLocation): String =
         String.format("%s/%s", saveType.dirTypeProvider(location), saveType.dirName)
 
@@ -52,6 +55,7 @@ enum class StatusType(@StringRes val nameRes: Int, val format: String, private v
         return directory.listFiles { _, name -> acceptFileName(name) } ?: emptyArray()
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     fun getSavedMedia(contentResolver: ContentResolver): Cursor? {
         val projection = arrayOf(
             MediaColumns._ID,
