@@ -168,6 +168,11 @@ class WhatSaveViewModel(
         emit(SaveResult(isSaving = true))
         val result = repository.saveStatus(status, saveName)
         emit(SaveResult.single(result))
+        // After saving, we must manually refresh the "Saved" list
+        // so the user sees the new, correct data when they switch tabs.
+        if (result != null) {
+            loadSavedStatuses() //calls refresh function in the bg
+        }
     }
 
     fun saveStatuses(statuses: List<Status>): LiveData<SaveResult> = liveData(IO) {
@@ -175,6 +180,10 @@ class WhatSaveViewModel(
         val savedStatuses = repository.saveStatuses(statuses)
         val savedUris = savedStatuses.map { it.fileUri }
         emit(SaveResult(statuses = savedStatuses, uris = savedUris, saved = savedStatuses.size))
+        // Also refresh the "Saved" list here for consistency -- previously it worked by luck ig!
+        if (savedStatuses.isNotEmpty()) {
+            loadSavedStatuses()
+        }
     }
 
     fun deleteStatus(status: Status): LiveData<DeletionResult> = liveData(IO) {

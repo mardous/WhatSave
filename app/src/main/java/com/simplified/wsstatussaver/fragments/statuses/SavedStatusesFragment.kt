@@ -43,6 +43,13 @@ class SavedStatusesFragment : StatusesFragment() {
         }
     }
 
+    //Everytime the 'Saved' tab becomes visible -> Force reload
+    //So we beat the race condition that causing Unix time epoch
+    override fun onResume() {
+        super.onResume()
+        onRefresh()
+    }
+
     override fun createAdapter(): StatusAdapter =
         StatusAdapter(
             requireActivity(),
