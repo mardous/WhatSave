@@ -4,7 +4,6 @@
     <string name="no_conversations">Tidak ada percakapan untuk ditampilkan</string>
     <string name="settings_interface">Antarmuka</string>
     <string name="permissions_denied_message">Anda harus memberikan perizinan-perizinan yang diperlukan. Aplikasi ini tidak akan berfungsi dengan benar tanpa perizinan-perizinan ini.</string>
-    <string name="analytics_enabled_title">Kirim statistik penggunaan</string>
     <string name="no_action">Tidak</string>
     <string name="blacklisted_senders">Pengirim yang masuk daftar hitam</string>
     <string name="select_a_country_title">Pilih negara</string>
@@ -86,7 +85,6 @@
     <string name="review_permissions_title">Tinjau perizinan</string>
     <string name="default_client_title">Klien bawaan</string>
     <string name="default_client_summary">Jika Anda memiliki WhatsApp dan Business di perangkat Anda, Anda dapat memilih dari mana Anda akan mendapatkan status.</string>
-    <string name="analytics_enabled_summary">Ketika ini diaktifkan, WhatSave dapat mengirimkan statistik penggunaan anonim yang membantu kami memahami bagaimana pengguna menggunakan aplikasi.</string>
     <string name="about_title">Tentang</string>
     <string name="about_summary">Versi, tautan, kontak.</string>
     <string name="version_x">Versi %s</string>

@@ -1,7 +1,5 @@
 import java.util.Properties
 
-val isNormalBuild: Boolean by rootProject.extra
-
 plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kotlin.android)
@@ -9,11 +7,6 @@ plugins {
     id("kotlin-parcelize")
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.androidx.safeargs)
-}
-
-if (isNormalBuild) {
-    apply(plugin = "com.google.gms.google-services")
-    apply(plugin = "com.google.firebase.crashlytics")
 }
 
 android {
@@ -139,10 +132,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.preference.ktx)
     implementation(libs.material.components)
-
-    //Firebase
-    "normalImplementation"(platform(libs.firebase.bom))
-    "normalImplementation"(libs.firebase.crashlytics)
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)

@@ -80,8 +80,6 @@
     <string name="review_permissions_summary">வாட்ச்அப் கோப்பகங்களுக்கு அணுகல் அனுமதிகளை வழங்கவும் அல்லது அகற்றவும்.</string>
     <string name="default_client_title">இயல்புநிலை கிளையன்ட்</string>
     <string name="default_client_summary">உங்கள் சாதனத்தில் வாட்ச்அப் மற்றும் வணிகம் இருந்தால், எந்த நிலைகளைப் பெற வேண்டும் என்பதை நீங்கள் தேர்வு செய்யலாம்.</string>
-    <string name="analytics_enabled_title">பயன்பாட்டு புள்ளிவிவரங்களை அனுப்பவும்</string>
-    <string name="analytics_enabled_summary">இது இயக்கப்பட்டால், பயனர்கள் பயன்பாட்டை எவ்வாறு பயன்படுத்துகிறார்கள் என்பதைப் புரிந்துகொள்ள உதவும் அநாமதேய பயன்பாட்டு புள்ளிவிவரங்களை WhatSave அனுப்பலாம்.</string>
     <string name="about_title">பற்றி</string>
     <string name="version_x">பதிப்பு %s</string>
     <string name="author_title">நூலாசிரியர்</string>

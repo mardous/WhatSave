@@ -80,8 +80,6 @@
     <string name="review_permissions_summary">Accordez ou supprimez des autorisations pour les clients WhatsApp installés.</string>
     <string name="default_client_title">Client par defaut</string>
     <string name="default_client_summary">Si plusieurs clients WhatsApp sont installes, vous pouvez selectionner celui a partir duquel charger les statuts.</string>
-    <string name="analytics_enabled_title">Envoyer des statistiques d\'utilisation</string>
-    <string name="analytics_enabled_summary">Lorsque cette option est activee, WhatSave peut envoyer des statistiques d\'utilisation anonymes qui nous aident a comprendre comment les utilisateurs utilisent l\'application.</string>
     <string name="about_title">A propos</string>
     <string name="version_x">Version %s</string>
     <string name="author_title">Auteur</string>
