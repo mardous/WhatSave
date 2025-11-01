@@ -197,4 +197,5 @@
     <string name="language_hebrew">Ibrani</string>
     <string name="telegram_summary">Bergabunglah dengan obrolan WhatSave untuk menerima berita, mendiskusikan saran, melaporkan kesalahan, dan banyak lagi.</string>
     <string name="telegram_title">Gabung Obrolan</string>
+    <string name="unable_to_share_sharing_too_many_files">Tidak dapat berbagi: terlalu banyak berkas.</string>
 </resources>
