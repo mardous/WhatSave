@@ -65,7 +65,6 @@
     <string name="review_permissions_title">בדוק הרשאות</string>
     <string name="review_permissions_summary">הענק או הסר הרשאות גישה לספריות ווטסאפ.</string>
     <string name="default_client_title">לקוח ברירת מחדל</string>
-    <string name="analytics_enabled_title">שלח סטטיסטיקות שימוש</string>
     <string name="about_title">אודות</string>
     <string name="about_summary">גרסה, קישורים, יצירת קשר.</string>
     <string name="version_x">גרסה %s</string>
@@ -169,7 +168,6 @@
     <string name="statuses_location_summary">מיקום שבו יש למצוא סטטוסים. עליך לשנות הגדרה זו רק אם האפליקציה אינה מסוגלת לטעון סטטוסים ממיקום ברירת המחדל.</string>
     <string name="save_location_title">מיקום שמירה</string>
     <string name="quick_deletion_title">מחיקה מהירה</string>
-    <string name="analytics_enabled_summary">כאשר מופעל, WhatSave עשוי לשלוח סטטיסטיקות שימוש אנונימיות כדי לעזור לנו להבין כיצד נעשה שימוש באפליקציה.</string>
     <string name="latest_release_summary">הצג את הגרסה העדכנית ביותר של האפליקציה ואת השינויים האחרונים.</string>
     <string name="report_bugs_title">דווח באגים</string>
     <string name="translations_summary">אתה יכול לעזור לנו על ידי תרגום אפליקציה זו לשפה שלך.</string>

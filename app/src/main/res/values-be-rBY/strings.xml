@@ -80,8 +80,6 @@
     <string name="review_permissions_summary">Давайце або выдаляйце дазволы для ўсталяваных кліентаў WhatsApp.</string>
     <string name="default_client_title">Кліент па змаўчанні</string>
     <string name="default_client_summary">Калі ў вас усталявана некалькі кліентаў WhatsApp, вы можаце выбраць той, з якога загружаць статусы.</string>
-    <string name="analytics_enabled_title">Адправіць статыстыку выкарыстання</string>
-    <string name="analytics_enabled_summary">Калі гэта ўключана, WhatSave можа адпраўляць ананімную статыстыку выкарыстання, якая дапамагае нам зразумець, як карыстальнікі выкарыстоўваюць прыкладанне.</string>
     <string name="about_title">Аб</string>
     <string name="version_x">Версія %s</string>
     <string name="author_title">Аўтар</string>

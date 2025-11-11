@@ -6,17 +6,3 @@ plugins {
     alias(libs.plugins.google.ksp) apply false
     alias(libs.plugins.androidx.safeargs) apply false
 }
-
-buildscript {
-    val isNormalBuild by extra {
-        gradle.startParameter.taskNames.none { task ->
-            task.contains("fdroid", ignoreCase = true)
-        }
-    }
-    dependencies {
-        if (isNormalBuild) {
-            classpath(libs.gms.plugin)
-            classpath(libs.firebase.crashlytics.plugin)
-        }
-    }
-}

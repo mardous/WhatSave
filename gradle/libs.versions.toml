@@ -1,37 +1,35 @@
 [versions]
-androidPluginVersion = "8.10.1"
+androidPluginVersion = "8.11.1"
 annotation = "1.9.1"
-kspPluginVersion = "2.1.0-1.0.29"
-gmsPluginVersion = "4.4.2"
-crashlyticsPluginVersion = "3.0.4"
-kotlinVersion = "2.1.0"
+kspPluginVersion = "2.2.0-2.0.2"
+kotlinVersion = "2.2.0"
 kotlinCoroutinesVersion = "1.10.2"
 constraintlayout = "2.2.1"
-media3 = "1.7.1"
+media3 = "1.8.0"
 cardview = "1.0.0"
 appcompat = "1.7.1"
-coreSplashscreen = "1.0.1"
-coreVersion = "1.16.0"
-firebaseBom = "33.14.0"
-fragmentKtx = "1.8.8"
-libphonenumberAndroid = "8.13.52"
-lifecycleVersion = "2.9.1"
+coreSplashscreen = "1.2.0"
+coreVersion = "1.17.0"
+documentfile = "1.1.0"
+fragmentKtx = "1.8.9"
+libphonenumberAndroid = "9.0.17"
+lifecycleVersion = "2.9.4"
 loader = "1.1.0"
-material = "1.12.0"
-navigationVersion = "2.9.0"
+material = "1.13.0"
+navigationVersion = "2.9.6"
 preferenceKtx = "1.2.1"
 prettytime = "5.0.4.Final"
 recyclerview = "1.4.0"
-roomVersion = "2.7.1"
-koinVersion = "4.0.4"
+roomVersion = "2.8.3"
+koinVersion = "4.1.1"
 swiperefreshlayout = "1.1.0"
 advrecyclerview = "1.0.0"
-coilVersion = "3.1.0"
+coilVersion = "3.3.0"
 versioncompare = "1.5.0"
 viewpager2 = "1.1.0"
 markdown = "4.6.2"
 photoviewVersion = "1.0.3"
-ktor = "3.1.2"
+ktor = "3.3.2"
 
 [libraries]
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
@@ -50,10 +48,8 @@ androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", versi
 androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
 androidx-media3-transformer = { module = "androidx.media3:media3-transformer", version.ref = "media3" }
 androidx-media3-effect = { module = "androidx.media3:media3-effect", version.ref = "media3" }
+androidx-documentfile = { module = "androidx.documentfile:documentfile", version.ref = "documentfile" }
 material-components = { module = "com.google.android.material:material", version.ref = "material" }
-
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutinesVersion" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutinesVersion" }
@@ -89,9 +85,6 @@ versioncompare = { module = "io.github.g00fy2:versioncompare", version.ref = "ve
 
 markdown-core = { module = "io.noties.markwon:core", version.ref = "markdown" }
 markdown-html = { module = "io.noties.markwon:html", version.ref = "markdown" }
-
-gms-plugin = { module = "com.google.gms:google-services", version.ref = "gmsPluginVersion" }
-firebase-crashlytics-plugin = { module = "com.google.firebase:firebase-crashlytics-gradle", version.ref = "crashlyticsPluginVersion" }
 
 [bundles]
 ktor = ["ktor-client-core", "ktor-client-okhttp", "ktor-serialization-json", "ktor-client-content-negotiation", "ktor-client-encoding"]

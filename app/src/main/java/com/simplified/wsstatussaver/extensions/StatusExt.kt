@@ -28,7 +28,7 @@ val fileDateFormat: DateFormat by lazy {
 
 fun Status.getFormattedDate(context: Context): String {
     val date = Date(dateModified)
-    val resLocale = context.resources.configuration.locales[0]
+    val resLocale = context.resources.configuration.locales[0] ?: Locale.US
     return DateFormat.getDateInstance(DateFormat.MEDIUM, resLocale).format(date)
 }
 

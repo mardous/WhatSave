@@ -80,8 +80,6 @@
     <string name="review_permissions_summary">Verleen of verwijder rechten voor geïnstalleerde WhatsApp-clients.</string>
     <string name="default_client_title">Standaardklant</string>
     <string name="default_client_summary">Als je meerdere WhatsApp-clients hebt geïnstalleerd, kun je degene selecteren waaruit je de statussen wilt laden.</string>
-    <string name="analytics_enabled_title">Gebruiksstatistieken verzenden</string>
-    <string name="analytics_enabled_summary">Wanneer dit is ingeschakeld, kan WhatSave anonieme gebruiksstatistieken verzenden die ons helpen begrijpen hoe gebruikers de app gebruiken.</string>
     <string name="about_title">Over</string>
     <string name="version_x">Versie %s</string>
     <string name="author_title">Auteur</string>

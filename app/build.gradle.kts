@@ -1,7 +1,5 @@
 import java.util.Properties
 
-val isNormalBuild: Boolean by rootProject.extra
-
 plugins {
     alias(libs.plugins.agp)
     alias(libs.plugins.kotlin.android)
@@ -11,13 +9,8 @@ plugins {
     alias(libs.plugins.androidx.safeargs)
 }
 
-if (isNormalBuild) {
-    apply(plugin = "com.google.gms.google-services")
-    apply(plugin = "com.google.firebase.crashlytics")
-}
-
 android {
-    compileSdk = 35
+    compileSdk = 36
     namespace = "com.simplified.wsstatussaver"
 
     defaultConfig {
@@ -44,7 +37,7 @@ android {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = releaseSigning
         }
         debug {
@@ -84,9 +77,6 @@ android {
         abortOnError = true
         warning += listOf("ImpliedQuantity", "Instantiatable", "MissingQuantity", "MissingTranslation")
     }
-    kotlinOptions {
-        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-    }
     dependenciesInfo {
         includeInApk = false
         includeInBundle = false
@@ -94,6 +84,9 @@ android {
 }
 
 kotlin {
+    compilerOptions {
+        optIn.add("kotlin.RequiresOptIn")
+    }
     jvmToolchain(21)
 }
 
@@ -138,11 +131,8 @@ dependencies {
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.documentfile)
     implementation(libs.material.components)
-
-    //Firebase
-    "normalImplementation"(platform(libs.firebase.bom))
-    "normalImplementation"(libs.firebase.crashlytics)
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)

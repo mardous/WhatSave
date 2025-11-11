@@ -22,37 +22,6 @@
 
 </div>
 
-## ⚠️ Important Notice
-
-A **fake version of WhatSave** has been found on the Google Play Store.
-
-This unauthorized version not only violates the **GPL-v3 license**, but also puts your **privacy and security at risk**.
-
-❌ **Do NOT download WhatSave from the Play Store.**  
-✅ **The only official download sources are the links listed above.**
-
-### 🔍 Fake App Information
-- **Package name**: `com.simplified.wsstatussaver`
-- **Violations**: License misuse, impersonation, inclusion of ads and trackers without permission
-
-### 🛡️ Help us take it down
-You can help protect other users by reporting the fake app to Google:
-
-- Open the app’s [Play Store page](https://play.google.com/store/apps/details?id=com.simplified.wsstatussaver)
-- Tap the three-dot menu (⋮) → **"Flag as inappropriate"**
-- Select **"App felt suspicious"** → **"Share feedback"**
-
-Or use the official form here:  
-👉 [Report a policy violation](https://support.google.com/googleplay/android-developer/contact/policy_violation_report)
-
-Suggested info to include:
-- **Package name**: `com.simplified.wsstatussaver`
-- **Violation**: **Impersonation**
-
----
-
-Special thanks to [RohitKushvaha01](https://github.com/RohitKushvaha01) for [reporting](https://github.com/mardous/WhatSave/issues/20) this situation.
-
 ## 📱 Screenshots
 
 <div align="center">
@@ -65,6 +34,25 @@ Special thanks to [RohitKushvaha01](https://github.com/RohitKushvaha01) for [rep
 <img src="metadata/en-US/images/phoneScreenshots/6.jpg" width="30%" />
 </div>
 </div>
+
+## ⚠️ A quick note about Play Protect warnings
+
+Due to recent policy changes from Google, you might see a warning from **Play Protect** when trying to install WhatSave, saying something like:  
+**“This app may access sensitive data.”**
+
+Let’s be clear:  
+👉 **WhatSave does *not* collect any personal information or share anything outside your device.**  
+The app uses notification access *only* to recover deleted WhatsApp messages — nothing more, nothing shady.
+
+Unfortunately, Google now flags many apps that access notifications as “potentially risky,” even if they don’t do anything wrong. This affects plenty of useful apps, including WhatSave.
+
+### What can you do?
+If you trust the app:
+
+- You can skip the Play Protect warning and install the APK normally.
+- You can also check the open source code in this repo to verify how it works.
+
+Thanks for your trust and support.
 
 ## 📃 Features:
 

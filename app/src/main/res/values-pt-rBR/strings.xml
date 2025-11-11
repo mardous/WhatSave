@@ -80,8 +80,6 @@
     <string name="review_permissions_summary">Conceda ou remova permissões para clientes WhatsApp instalados.</string>
     <string name="default_client_title">Cliente padrão</string>
     <string name="default_client_summary">Se você tiver vários clientes WhatsApp instalados, poderá selecionar aquele para carregar os status.</string>
-    <string name="analytics_enabled_title">Enviar estatísticas de uso</string>
-    <string name="analytics_enabled_summary">Quando ativado, o WhatSave pode enviar estatísticas de uso anônimas que nos ajudam a entender como os usuários usam o aplicativo.</string>
     <string name="about_title">Sobre</string>
     <string name="version_x">Versão %s</string>
     <string name="author_title">Autor</string>

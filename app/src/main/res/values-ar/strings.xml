@@ -99,7 +99,6 @@
     <string name="statuses_location_title">موقع الحالات</string>
     <string name="no_storage_device_found">لم يتم العثور على جهاز تخزين</string>
     <string name="exclude_saved_statuses_title">استبعاد الحالات المحفوظة</string>
-    <string name="analytics_enabled_title">إرسال إحصائيات الاستخدام</string>
     <string name="version_x">الإصدار %s</string>
     <string name="author_title">مؤلف</string>
     <string name="delete_conversation_confirmation">سيؤدي هذا إلى حذف جميع الرسائل من هذه المحادثة.</string>
@@ -133,7 +132,6 @@
     <string name="disable_message_view_confirmation">عند إلغاء تفعيل عرض الرسائل، سيتم حذف جميع الرسائل المحفوظة هنا. هل أنت متأكد؟</string>
     <string name="blacklisted_senders">المرسلون المدرجون في القائمة السوداء</string>
     <string name="msg_a_number">أرسل رسالة إلى رقم</string>
-    <string name="analytics_enabled_summary">عندما يتم تمكين هذا، قد يرسل WhatSave إحصائيات استخدام مجهولة المصدر تساعدنا على فهم كيفية استخدام المستخدمين للتطبيق.</string>
     <string name="empty">فارغ</string>
     <string name="delete_conversation_title">حذف المحادثة</string>
     <string name="directory_access_title">وصول الدليل</string>

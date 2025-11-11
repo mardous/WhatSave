@@ -29,7 +29,6 @@ import com.google.android.material.transition.MaterialFadeThrough
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.databinding.FragmentSettingsBinding
 import com.simplified.wsstatussaver.extensions.IsSAFRequired
-import com.simplified.wsstatussaver.extensions.PREFERENCE_ANALYTICS_ENABLED
 import com.simplified.wsstatussaver.extensions.PREFERENCE_GRANT_PERMISSIONS
 import com.simplified.wsstatussaver.extensions.PREFERENCE_JUST_BLACK_THEME
 import com.simplified.wsstatussaver.extensions.PREFERENCE_LANGUAGE
@@ -51,7 +50,6 @@ import com.simplified.wsstatussaver.preferences.SaveLocationPreference
 import com.simplified.wsstatussaver.preferences.SaveLocationPreferenceDialog
 import com.simplified.wsstatussaver.preferences.StoragePreference
 import com.simplified.wsstatussaver.preferences.StoragePreferenceDialog
-import com.simplified.wsstatussaver.setAnalyticsEnabled
 
 /**
  * @author Christians Martínez Alvarado (mardous)
@@ -151,10 +149,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 } else {
                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageName))
                 }
-                true
-            }
-            findPreference<Preference>(PREFERENCE_ANALYTICS_ENABLED)?.setOnPreferenceChangeListener { _, newValue ->
-                setAnalyticsEnabled((newValue as Boolean))
                 true
             }
             if (IsSAFRequired) {

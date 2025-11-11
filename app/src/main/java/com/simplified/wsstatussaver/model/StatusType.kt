@@ -21,7 +21,9 @@ import com.simplified.wsstatussaver.extensions.getNewSaveName
 /**
  * @author Christians Martínez Alvarado (mardous)
  */
-enum class StatusType(@StringRes val nameRes: Int, val format: String, val saveType: StatusSaveType) {
+enum class StatusType(
+    @param:StringRes val nameRes: Int, val format: String, val saveType: StatusSaveType
+) {
     IMAGE(R.string.type_images, ".jpg", StatusSaveType.IMAGE_SAVE),
     VIDEO(R.string.type_videos, ".mp4", StatusSaveType.VIDEO_SAVE);
 

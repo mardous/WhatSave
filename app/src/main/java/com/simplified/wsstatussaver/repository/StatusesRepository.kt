@@ -41,6 +41,7 @@ import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.storage.whatsapp.WaContentStorage
 import com.simplified.wsstatussaver.storage.whatsapp.WaSavedContentStorage
 import java.util.concurrent.TimeUnit
+import kotlin.collections.filter
 
 interface StatusesRepository {
     fun statusIsSaved(status: Status): LiveData<Boolean>
@@ -52,8 +53,8 @@ interface StatusesRepository {
     suspend fun removeFromDatabase(statuses: List<Status>)
     suspend fun share(status: Status): ShareData
     suspend fun share(statuses: List<Status>): ShareData
-    suspend fun save(status: Status, saveName: String?): Uri?
-    suspend fun save(statuses: List<Status>): Map<Status, Uri>
+    suspend fun save(status: Status, saveName: String?): SavedStatus?
+    suspend fun save(statuses: List<Status>): List<SavedStatus>
     suspend fun delete(status: Status): Boolean
     suspend fun delete(statuses: List<Status>): Int
 }
@@ -208,33 +209,34 @@ class StatusesRepositoryImpl(
         }
     }
 
-    override suspend fun save(status: Status, saveName: String?): Uri? {
+    override suspend fun save(status: Status, saveName: String?): SavedStatus? {
         val savable = status.toStatusEntity(saveName)
-        val result = saveAndGetUri(savable).apply {
-            if (this != null) {
-                scanSavedStatuses(status.type)
-            }
+        val result = createSavedStatus(savable, true)?.also { status ->
+            scanSavedStatus(listOf(status))
         }
         return result
     }
 
-    override suspend fun save(statuses: List<Status>): Map<Status, Uri> {
+    override suspend fun save(statuses: List<Status>): List<SavedStatus> {
         if (statuses.isEmpty()) {
-            return hashMapOf()
+            return emptyList()
         }
-        val savedStatuses = HashMap<Status, Uri>()
+        val savedStatuses = mutableListOf<SavedStatus>()
         val unsavedStatuses = statuses.filterNot { it.isSaved }
         val currentTimeMillis = System.currentTimeMillis()
         for ((i, status) in unsavedStatuses.withIndex()) {
             val savable = status.toStatusEntity(null, currentTimeMillis, i)
-            val savedUri = saveAndGetUri(savable)
-            if (savedUri != null) {
-                savedStatuses[status] = savedUri
+            val savedStatus = createSavedStatus(savable, false)
+            if (savedStatus != null) {
+                savedStatuses.add(savedStatus)
             }
         }
-        val types = savedStatuses.keys.map { it.type }.toSet()
-        for (type in types) {
-            scanSavedStatuses(type)
+        if (savedStatuses.isNotEmpty()) {
+            savedStatuses.distinctBy { it.type.mimeType }
+                .forEach {
+                    contentResolver.notifyChange(it.type.contentUri, null)
+                }
+            scanSavedStatus(savedStatuses)
         }
         return savedStatuses
     }
@@ -256,20 +258,17 @@ class StatusesRepositoryImpl(
         return deletedMessages.size
     }
 
-    private fun execDeletion(status: SavedStatus, autoNotify: Boolean = true): Boolean {
+    private fun execDeletion(status: SavedStatus, notify: Boolean = true): Boolean {
         if (!context.hasStoragePermissions()) {
             return false
         }
         val success = when {
             IsScopedStorageRequired -> {
-                try {
-                    contentResolver.delete(status.fileUri, null, null) > 0
-                } catch (e: SecurityException) {
-                    false
-                }
+                runCatching {contentResolver.delete(status.fileUri, null, null) > 0 }
+                    .getOrDefault(false)
             }
             status.hasFile() -> {
-                try {
+                runCatching {
                     val file = status.getFile()
                     if (!file.exists() || file.delete()) {
                         contentResolver.delete(
@@ -281,24 +280,22 @@ class StatusesRepositoryImpl(
                     } else {
                         false
                     }
-                } catch (e: SecurityException) {
-                    false
-                }
+                }.getOrDefault(false)
             }
             else -> false
         }
         if (success) {
-            if (autoNotify) contentResolver.notifyChange(status.type.contentUri, null)
+            if (notify) contentResolver.notifyChange(status.type.contentUri, null)
             statusDao.removeSave(status.name)
         }
         return success
     }
 
-    private fun saveAndGetUri(status: StatusEntity): Uri? {
+    private fun createSavedStatus(status: StatusEntity, notify: Boolean): SavedStatus? {
         val result = runCatching {
             contentResolver.openInputStream(status.origin)?.use { stream ->
-                waSavedContentStorage.toSavedFileUri(status, stream).also { saveUri ->
-                    if (saveUri != null) {
+                waSavedContentStorage.toSavedStatus(status, stream, notify).also { savedStatus ->
+                    if (savedStatus != null) {
                         statusDao.saveStatus(status)
                     }
                 }
@@ -307,14 +304,13 @@ class StatusesRepositoryImpl(
         return result.getOrNull()
     }
 
-    private fun scanSavedStatuses(statusType: StatusType) {
+    private fun scanSavedStatus(statuses: List<SavedStatus>) {
         if (!IsScopedStorageRequired) {
-            waSavedContentStorage.getSaveDirectory(statusType).listFiles { _, name ->
-                name.endsWith(statusType.format)
-            }?.map { it.absolutePath }?.toTypedArray()?.let {
-                if (it.isNotEmpty()) {
-                    MediaScannerConnection.scanFile(context, it, arrayOf(statusType.mimeType), null)
-                }
+            val files = statuses.filter { status -> status.hasFile() }
+                .map { status -> status.getFilePath() }
+                .toTypedArray()
+            if (files.isNotEmpty()) {
+                MediaScannerConnection.scanFile(context, files, null, null)
             }
         }
     }

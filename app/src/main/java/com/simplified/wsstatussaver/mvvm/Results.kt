@@ -14,6 +14,7 @@
 package com.simplified.wsstatussaver.mvvm
 
 import android.net.Uri
+import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.ShareData
 import com.simplified.wsstatussaver.model.Status
 
@@ -41,10 +42,16 @@ data class SaveResult(
         get() = statuses.isNotEmpty() && uris.isNotEmpty() && statuses.size == uris.size
 
     companion object {
-        fun single(status: Status, uri: Uri?): SaveResult {
-            val statuses = if (uri != null) listOf(status) else arrayListOf()
-            val uris = if (uri != null) listOf(uri) else arrayListOf()
-            return SaveResult(false, statuses, uris, uris.size)
+        fun single(status: SavedStatus?): SaveResult {
+            if (status != null) {
+                return SaveResult(
+                    isSaving = false,
+                    statuses = listOf(status),
+                    uris = listOf(status.fileUri),
+                    saved = 1
+                )
+            }
+            return SaveResult()
         }
     }
 }

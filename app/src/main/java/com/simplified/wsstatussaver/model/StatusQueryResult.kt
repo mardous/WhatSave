@@ -7,7 +7,11 @@ data class StatusQueryResult(val code: ResultCode, val statuses: List<Status> = 
 
     val isLoading: Boolean get() = code == ResultCode.Loading
 
-    enum class ResultCode(@StringRes val titleRes: Int = 0, @StringRes val descriptionRes: Int = 0, @StringRes val buttonTextRes: Int = 0) {
+    enum class ResultCode(
+        @param:StringRes val titleRes: Int = 0,
+        @param:StringRes val descriptionRes: Int = 0,
+        @param:StringRes val buttonTextRes: Int = 0
+    ) {
         Idle,
         Success,
         Loading(R.string.loading, R.string.please_wait_a_second),

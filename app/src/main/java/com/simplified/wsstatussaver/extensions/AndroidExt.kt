@@ -39,7 +39,6 @@ import androidx.core.net.toUri
 import androidx.core.os.BundleCompat
 import androidx.core.text.HtmlCompat
 import com.simplified.wsstatussaver.getApp
-import com.simplified.wsstatussaver.recordException
 import com.simplified.wsstatussaver.service.MessageCatcherService
 import java.io.Serializable
 import java.io.UnsupportedEncodingException
@@ -170,7 +169,7 @@ fun <T> ActivityResultLauncher<T>.launchSafe(input: T, options: ActivityOptionsC
     try {
         launch(input, options)
     } catch (e: ActivityNotFoundException) {
-        recordException(e)
+        e.printStackTrace()
     }
 }
 

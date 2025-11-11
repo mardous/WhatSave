@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="analytics_enabled_title">Nutzungsstatistiken senden</string>
     <string name="about_summary">Version, Links, Kontakt.</string>
     <string name="version_x">Version %s</string>
     <string name="author_title">Autor</string>
@@ -62,7 +61,6 @@
     <string name="review_permissions_summary">Berechtigungen für installierte WhatsApp-Clients erteilen oder entfernen.</string>
     <string name="default_client_title">Standardclient</string>
     <string name="default_client_summary">Wenn mehrere WhatsApp-Clients installiert sind, kann hier eingestellt werden, von welchem die Status geladen werden.</string>
-    <string name="analytics_enabled_summary">Wenn aktiviert kann WhatSave anonyme Nutzungsstatistiken senden, damit wir besser verstehen, wie Nutzer die App verwenden.</string>
     <string name="about_title">Über</string>
     <string name="latest_release_title">Neueste Version</string>
     <string name="latest_release_summary">Neuest Version und Änderungen an der App anzeigen.</string>

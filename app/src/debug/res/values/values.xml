@@ -14,6 +14,8 @@
   -->
 
 <resources>
+    <string name="app_name" translatable="false">WhatSave (Debug)</string>
+
     <!-- Launcher Icon -->
     <bool name="allowBackup">false</bool>
 </resources>

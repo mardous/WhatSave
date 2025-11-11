@@ -22,15 +22,18 @@ import android.os.Build
 import android.os.Environment
 import android.provider.DocumentsContract.getTreeDocumentId
 import android.provider.MediaStore.MediaColumns
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.contentValuesOf
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import androidx.documentfile.provider.DocumentFile
 import com.simplified.wsstatussaver.database.StatusEntity
+import com.simplified.wsstatussaver.database.toSavedStatus
 import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
-import com.simplified.wsstatussaver.extensions.getUri
 import com.simplified.wsstatussaver.extensions.allPermissionsGranted
+import com.simplified.wsstatussaver.extensions.canonicalOrAbsolutePath
+import com.simplified.wsstatussaver.extensions.getUri
 import com.simplified.wsstatussaver.extensions.isCustomSaveDirectory
 import com.simplified.wsstatussaver.extensions.isTreeUri
 import com.simplified.wsstatussaver.extensions.isWhatsAppDirectory
@@ -38,6 +41,7 @@ import com.simplified.wsstatussaver.extensions.preferences
 import com.simplified.wsstatussaver.extensions.saveLocation
 import com.simplified.wsstatussaver.extensions.takePermissions
 import com.simplified.wsstatussaver.model.SaveLocation
+import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.StatusType
 import com.simplified.wsstatussaver.model.WaDirectoryUri
 import java.io.File
@@ -130,13 +134,13 @@ class WaSavedContentStorage(private val context: Context, private val contentRes
         return contentResolver.query(statusType.contentUri, projection, selection, arguments, null)
     }
 
-    fun toSavedFileUri(status: StatusEntity, inputStream: InputStream): Uri? {
+    fun toSavedStatus(status: StatusEntity, inputStream: InputStream, notify: Boolean): SavedStatus? {
         val customSaveDirectory = getCustomSaveDirectory(status.type)
         if (customSaveDirectory != null) {
             return toCustomDirectory(status, inputStream, customSaveDirectory)
         }
         if (IsScopedStorageRequired) {
-            return toMediaStore(status, inputStream)
+            return toMediaStore(status, inputStream, notify)
         }
         return toFileLocation(status, inputStream)
     }
@@ -144,33 +148,41 @@ class WaSavedContentStorage(private val context: Context, private val contentRes
     @RequiresApi(Build.VERSION_CODES.Q)
     private fun toMediaStore(
         status: StatusEntity,
-        inputStream: InputStream
-    ): Uri? {
+        inputStream: InputStream,
+        notify: Boolean
+    ): SavedStatus? {
         val contentUri = status.type.contentUri
-        val values = contentValuesOf(
+        val contentValues = contentValuesOf(
             MediaColumns.DISPLAY_NAME to status.saveName,
             MediaColumns.RELATIVE_PATH to getRelativePath(status.type),
             MediaColumns.MIME_TYPE to status.type.mimeType
         )
         var uri: Uri? = null
-        try {
-            uri = contentResolver.insert(contentUri, values)
-            if (uri != null) {
-                contentResolver.openOutputStream(uri)?.use { outputStream ->
-                    inputStream.copyTo(outputStream, SAVE_BUFFER_SIZE)
+        return try {
+            with(contentResolver) {
+                uri = insert(contentUri, contentValues)
+                if (uri != null) {
+                    openOutputStream(uri)?.use { outputStream ->
+                        inputStream.copyTo(outputStream,
+                            SAVE_BUFFER_SIZE
+                        )
+                    }
+                    if (notify) {
+                        notifyChange(contentUri, null)
+                    }
                 }
-                contentResolver.notifyChange(contentUri, null)
+                uri?.let { status.toSavedStatus(it, null) }
             }
         } catch (e: IOException) {
+            Log.e("StatusRepository", "Couldn't write content at $uri", e)
             if (uri != null) {
                 contentResolver.delete(uri, null, null)
             }
-            throw e
+            null
         }
-        return uri
     }
 
-    private fun toFileLocation(status: StatusEntity, inputStream: InputStream): Uri? {
+    private fun toFileLocation(status: StatusEntity, inputStream: InputStream): SavedStatus? {
         if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
             val destDirectory = getSaveDirectory(status.type)
             if (destDirectory.isDirectory || destDirectory.mkdirs()) {
@@ -179,7 +191,10 @@ class WaSavedContentStorage(private val context: Context, private val contentRes
                     statusSaveFile.outputStream().use { os ->
                         inputStream.copyTo(os, SAVE_BUFFER_SIZE)
                     }
-                    return statusSaveFile.getUri()
+                    return status.toSavedStatus(
+                        uri = statusSaveFile.getUri(),
+                        path = statusSaveFile.canonicalOrAbsolutePath()
+                    )
                 }
             }
         }
@@ -190,7 +205,7 @@ class WaSavedContentStorage(private val context: Context, private val contentRes
         status: StatusEntity,
         inputStream: InputStream,
         directory: WaDirectoryUri
-    ): Uri? {
+    ): SavedStatus? {
         val directory = DocumentFile.fromTreeUri(context, directory.treeUri) ?: return null
         val newFile = directory.createFile(status.type.mimeType, status.saveName) ?: return null
 
@@ -201,7 +216,7 @@ class WaSavedContentStorage(private val context: Context, private val contentRes
                 }
             } ?: throw IOException("The descriptor could not be opened for writing!")
 
-            newFile.uri
+            status.toSavedStatus(newFile.uri, null)
         } catch (e: IOException) {
             if (newFile.exists()) {
                 newFile.delete()
