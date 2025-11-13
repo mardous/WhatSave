@@ -19,50 +19,31 @@ import android.content.Context
 import android.database.Cursor
 import android.media.MediaScannerConnection
 import android.net.Uri
-import android.os.Environment
-import android.provider.DocumentsContract
-import android.provider.DocumentsContract.Document
 import android.provider.MediaStore.MediaColumns
-import android.util.Log
-import androidx.core.content.contentValuesOf
 import androidx.lifecycle.LiveData
 import com.simplified.wsstatussaver.database.StatusDao
 import com.simplified.wsstatussaver.database.StatusEntity
-import com.simplified.wsstatussaver.database.toSavedStatus
 import com.simplified.wsstatussaver.database.toStatusEntity
 import com.simplified.wsstatussaver.extensions.IsSAFRequired
 import com.simplified.wsstatussaver.extensions.IsScopedStorageRequired
 import com.simplified.wsstatussaver.extensions.acceptFileName
-import com.simplified.wsstatussaver.extensions.canonicalOrAbsolutePath
 import com.simplified.wsstatussaver.extensions.getAllInstalledClients
 import com.simplified.wsstatussaver.extensions.getPreferred
-import com.simplified.wsstatussaver.extensions.getReadableDirectories
-import com.simplified.wsstatussaver.extensions.getStatusType
-import com.simplified.wsstatussaver.extensions.getUri
-import com.simplified.wsstatussaver.extensions.hasElapsedTwentyFourHours
 import com.simplified.wsstatussaver.extensions.hasStoragePermissions
 import com.simplified.wsstatussaver.extensions.isExcludeSavedStatuses
-import com.simplified.wsstatussaver.extensions.isOldFile
 import com.simplified.wsstatussaver.extensions.preferences
-import com.simplified.wsstatussaver.extensions.saveLocation
-import com.simplified.wsstatussaver.model.SaveLocation
 import com.simplified.wsstatussaver.model.SavedStatus
 import com.simplified.wsstatussaver.model.ShareData
 import com.simplified.wsstatussaver.model.Status
 import com.simplified.wsstatussaver.model.StatusQueryResult
 import com.simplified.wsstatussaver.model.StatusQueryResult.ResultCode
 import com.simplified.wsstatussaver.model.StatusType
-import com.simplified.wsstatussaver.model.WaClient
-import com.simplified.wsstatussaver.model.WaDirectory
-import com.simplified.wsstatussaver.model.WaDirectoryUri
-import com.simplified.wsstatussaver.storage.Storage
-import java.io.File
-import java.io.IOException
-import java.io.InputStream
+import com.simplified.wsstatussaver.storage.whatsapp.WaContentStorage
+import com.simplified.wsstatussaver.storage.whatsapp.WaSavedContentStorage
+import java.util.concurrent.TimeUnit
+import kotlin.collections.filter
 
 interface StatusesRepository {
-    suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri>
-    suspend fun statusDirectoriesAsFiles(client: WaClient): Set<File>
     fun statusIsSaved(status: Status): LiveData<Boolean>
     suspend fun statuses(type: StatusType): StatusQueryResult
     suspend fun savedStatuses(): StatusQueryResult
@@ -81,60 +62,12 @@ interface StatusesRepository {
 class StatusesRepositoryImpl(
     private val context: Context,
     private val statusDao: StatusDao,
-    private val storage: Storage
+    private val waContentStorage: WaContentStorage,
+    private val waSavedContentStorage: WaSavedContentStorage
 ) : StatusesRepository {
 
     private val contentResolver: ContentResolver = context.contentResolver
     private val preferences = context.preferences()
-    private val statusSaveLocation: SaveLocation
-        get() = preferences.saveLocation
-    private val statusesLocationPath: String
-        get() {
-            val statusesLocation = storage.getStatusesLocation()
-            return statusesLocation?.path ?: storage.externalStoragePath
-        }
-
-    override suspend fun statusDirectories(clients: List<WaClient>): Set<WaDirectoryUri> {
-        val directories = mutableSetOf<WaDirectoryUri>()
-        val persistedPermissions = contentResolver.persistedUriPermissions
-        val readableDirectories = persistedPermissions.getReadableDirectories()
-        if (readableDirectories.isEmpty()) {
-            return directories
-        }
-        for (perm in persistedPermissions) {
-            if (!DocumentsContract.isTreeUri(perm.uri)) continue
-            val matchingDir = readableDirectories.firstOrNull { it.isThis(perm.uri) }
-            if (matchingDir != null) {
-                directories.addAll(matchingDir.getStatusesDirectories(context, clients, perm.uri))
-            }
-        }
-        return directories
-    }
-
-    override suspend fun statusDirectoriesAsFiles(client: WaClient): Set<File> {
-        val directories = mutableSetOf<File>()
-        val paths = WaDirectory.entries.filterNot { it.isLegacy }.mapNotNull { dir ->
-            if (dir.supportsClient(client)) {
-                val additionalSegments = dir.additionalSegments(client)
-                if (additionalSegments.isNotEmpty())
-                    "${dir.path}/${additionalSegments.joinToString("/")}"
-                else dir.path
-            } else {
-                null
-            }
-        }
-        for (path in paths) {
-            File(statusesLocationPath, "${path}/accounts")
-                .takeIf { it.isDirectory }?.let { baseDirectory ->
-                    baseDirectory.list { file, _ -> file.isDirectory }?.forEach { accountName ->
-                        directories.add(File(baseDirectory, "$accountName/Media/.Statuses"))
-                    }
-                }
-
-            directories.add(File(statusesLocationPath, "${path}/Media/.Statuses"))
-        }
-        return directories
-    }
 
     override fun statusIsSaved(status: Status): LiveData<Boolean> =
         statusDao.statusSavedObservable(status.fileUri, status.name)
@@ -147,49 +80,28 @@ class StatusesRepositoryImpl(
             return StatusQueryResult(ResultCode.NotInstalled)
         }
         if (IsSAFRequired) {
-            val statusesDirectories = statusDirectories(installedClients)
+            val statusesDirectories = waContentStorage.statusDirectories(installedClients)
             if (statusesDirectories.isEmpty()) {
                 return StatusQueryResult(ResultCode.PermissionError)
             }
-            val documentSelection = arrayOf(
-                Document.COLUMN_DOCUMENT_ID, //0
-                Document.COLUMN_DISPLAY_NAME, //1
-                Document.COLUMN_LAST_MODIFIED, //2
-                Document.COLUMN_SIZE //3
-            )
-            for (directory in statusesDirectories) {
-                contentResolver.query(directory.childDocumentsUri, documentSelection, null, null, null)?.use { cursor ->
-                    if (cursor.moveToFirst()) do {
-                        val id = cursor.getString(0)
-                        val fileName = cursor.getString(1)
-                        val lastModified = cursor.getLong(2)
-                        val size = cursor.getLong(3)
-                        val uri = DocumentsContract.buildDocumentUriUsingTree(directory.treeUri, id)
-                        if (type.acceptFileName(fileName)) {
-                            val isOld = lastModified.hasElapsedTwentyFourHours()
-                            val isSaved = statusDao.statusSaved(uri, fileName)
-                            if (isOld || (isSaved && isExcludeSaved))
-                                continue
-
-                            statusList.add(Status(type, fileName, uri, lastModified, size, directory.client?.packageName, isSaved))
-                        }
-                    } while (cursor.moveToNext())
+            waContentStorage.resolveFiles(statusesDirectories) { file ->
+                if (type.acceptFileName(file.name)) {
+                    val isOld = file.isOlderThan(TimeUnit.HOURS, 24)
+                    val isSaved = statusDao.statusSaved(file.uri, file.name)
+                    if (!isOld && (!isSaved || !isExcludeSaved)) {
+                        statusList.add(file.toStatus(type, isSaved))
+                    }
                 }
             }
         } else {
             if (context.hasStoragePermissions()) {
                 for (client in installedClients) {
-                    for (directory in statusDirectoriesAsFiles(client)) {
-                        if (!directory.isDirectory) continue
-                        val statuses = directory.listFiles { _, name -> type.acceptFileName(name) }
-                        if (!statuses.isNullOrEmpty()) for (file in statuses) {
-                            val fileUri = file.getUri()
-                            val fileName = file.name
-                            val isSaved = statusDao.statusSaved(fileUri, file.name)
-                            if (fileName.isNullOrEmpty() || file.isOldFile() || (isSaved && isExcludeSaved))
-                                continue
-
-                            statusList.add(Status(type, fileName, fileUri, file.lastModified(), file.length(), client.packageName, isSaved))
+                    val directories = waContentStorage.statusDirectoriesAsFiles(client)
+                    waContentStorage.resolveFiles(directories, type, client) { file ->
+                        val isOld = file.isOlderThan(TimeUnit.HOURS, 24)
+                        val isSaved = statusDao.statusSaved(file.uri, file.name)
+                        if (!isOld && (!isSaved || !isExcludeSaved)) {
+                            statusList.add(file.toStatus(type, isSaved))
                         }
                     }
                 }
@@ -206,25 +118,25 @@ class StatusesRepositoryImpl(
             return StatusQueryResult(ResultCode.PermissionError)
         }
         val statuses = arrayListOf<SavedStatus>()
-        if (IsScopedStorageRequired) {
-            for (type in StatusType.entries) {
-                type.getSavedMedia(contentResolver).use { cursor ->
-                    if (cursor != null && cursor.moveToFirst()) do {
-                        statuses.add(cursor.getSavedStatus(type))
-                    } while (cursor.moveToNext())
+        for (type in StatusType.entries) {
+            val customSaveDir = waSavedContentStorage.getCustomSaveDirectory(type)
+            if (customSaveDir != null) {
+                waContentStorage.resolveFiles(setOf(customSaveDir)) {
+                    statuses.add(it.toSavedStatus(type))
                 }
-            }
-        } else {
-            val files = StatusType.entries.flatMap { type ->
-                SaveLocation.entries.flatMap { location ->
-                    type.getSavedContentFiles(location).toList()
+            } else {
+                if (IsScopedStorageRequired) {
+                    waSavedContentStorage.getSavedMedia(type).use { cursor ->
+                        if (cursor != null && cursor.moveToFirst()) do {
+                            statuses.add(cursor.getSavedStatus(type))
+                        } while (cursor.moveToNext())
+                    }
+                } else {
+                    val directories = waSavedContentStorage.getSaveDirectories(type)
+                    waContentStorage.resolveFiles(directories, type, null) {
+                        statuses.add(it.toSavedStatus(type))
+                    }
                 }
-            }
-            if (files.isNotEmpty()) for (file in files) {
-                val type = file.getStatusType() ?: continue
-                statuses.add(
-                    SavedStatus(type, file.name, file.getUri(), file.lastModified(), file.length(), file.absolutePath)
-                )
             }
         }
         if (statuses.isEmpty()) {
@@ -238,18 +150,22 @@ class StatusesRepositoryImpl(
             return StatusQueryResult(ResultCode.PermissionError)
         }
         val statuses = arrayListOf<SavedStatus>()
-        if (IsScopedStorageRequired) {
-            type.getSavedMedia(contentResolver).use { cursor ->
-                if (cursor != null && cursor.moveToFirst()) do {
-                    statuses.add(cursor.getSavedStatus(type))
-                } while (cursor.moveToNext())
+        val customSaveDir = waSavedContentStorage.getCustomSaveDirectory(type)
+        if (customSaveDir != null) {
+            waContentStorage.resolveFiles(setOf(customSaveDir)) {
+                statuses.add(it.toSavedStatus(type))
             }
         } else {
-            val files = SaveLocation.entries.flatMap {
-                type.getSavedContentFiles(it).toList()
-            }
-            if (files.isNotEmpty()) for (file in files) {
-                statuses.add(SavedStatus(type, file.name, file.getUri(), file.lastModified(), file.length(), file.absolutePath))
+            if (IsScopedStorageRequired) {
+                waSavedContentStorage.getSavedMedia(type).use { cursor ->
+                    if (cursor != null && cursor.moveToFirst()) do {
+                        statuses.add(cursor.getSavedStatus(type))
+                    } while (cursor.moveToNext())
+                }
+            } else {
+                waContentStorage.resolveFiles(waSavedContentStorage.getSaveDirectories(type), type, null) {
+                    statuses.add(it.toSavedStatus(type))
+                }
             }
         }
         if (statuses.isEmpty()) {
@@ -382,63 +298,14 @@ class StatusesRepositoryImpl(
     private fun createSavedStatus(status: StatusEntity, notify: Boolean): SavedStatus? {
         val result = runCatching {
             contentResolver.openInputStream(status.origin)?.use { stream ->
-                saveStatus(status, stream, notify).also { saveUri ->
-                    if (saveUri != null) {
+                waSavedContentStorage.toSavedStatus(status, stream, notify).also { savedStatus ->
+                    if (savedStatus != null) {
                         statusDao.saveStatus(status)
                     }
                 }
             }
         }
         return result.getOrNull()
-    }
-
-    @Throws(IOException::class)
-    private fun saveStatus(status: StatusEntity, inputStream: InputStream, notify: Boolean): SavedStatus? {
-        if (IsScopedStorageRequired) {
-            val contentUri = status.type.contentUri
-            val contentValues = contentValuesOf(
-                MediaColumns.DISPLAY_NAME to status.saveName,
-                MediaColumns.RELATIVE_PATH to status.type.getRelativePath(statusSaveLocation),
-                MediaColumns.MIME_TYPE to status.type.mimeType
-            )
-            var uri: Uri? = null
-            return try {
-                with(contentResolver) {
-                    uri = insert(contentUri, contentValues)
-                    if (uri != null) {
-                        openOutputStream(uri)?.use { outputStream ->
-                            inputStream.copyTo(outputStream, SAVE_BUFFER_SIZE)
-                        }
-                        if (notify) {
-                            notifyChange(contentUri, null)
-                        }
-                    }
-                    uri?.let { status.toSavedStatus(it, null) }
-                }
-            } catch (e: IOException) {
-                Log.e("StatusRepository", "Couldn't write content at $uri", e)
-                if (uri != null) {
-                    contentResolver.delete(uri, null, null)
-                }
-                null
-            }
-        }
-        if (Environment.MEDIA_MOUNTED == Environment.getExternalStorageState()) {
-            val destDirectory = status.type.getSavesDirectory(statusSaveLocation)
-            if (destDirectory.isDirectory || destDirectory.mkdirs()) {
-                val statusSaveFile = File(destDirectory, status.saveName)
-                if (!statusSaveFile.exists() && statusSaveFile.createNewFile()) {
-                    statusSaveFile.outputStream().use { os ->
-                        inputStream.copyTo(os, SAVE_BUFFER_SIZE)
-                    }
-                    return status.toSavedStatus(
-                        uri = statusSaveFile.getUri(),
-                        path = statusSaveFile.canonicalOrAbsolutePath()
-                    )
-                }
-            }
-        }
-        return null
     }
 
     private fun scanSavedStatus(statuses: List<SavedStatus>) {
@@ -450,9 +317,5 @@ class StatusesRepositoryImpl(
                 MediaScannerConnection.scanFile(context, files, null, null)
             }
         }
-    }
-
-    companion object {
-        private const val SAVE_BUFFER_SIZE = 2048
     }
 }

@@ -186,6 +186,10 @@
     <string name="always_save_in_dcim_summary">All saved files are stored in the same location as your camera photos.</string>
     <string name="according_to_the_file_type_title">According to the file type</string>
     <string name="according_to_the_file_type_summary">Images will be saved in Pictures and videos will be saved in Movies.</string>
+    <string name="custom_save_location_title">Custom location</string>
+    <string name="custom_save_location_summary">Choose your own custom save directories.</string>
+    <string name="custom_save_directory_set">Custom save directory set.</string>
+    <string name="unable_to_set_custom_save_directory">Unable to set custom save directory.</string>
     <string name="language_arabic">Arabic</string>
     <string name="language_belarusian">Belarusian</string>
     <string name="language_dutch">Dutch</string>

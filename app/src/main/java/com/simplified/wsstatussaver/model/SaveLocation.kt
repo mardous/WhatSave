@@ -17,5 +17,10 @@ import android.os.Environment
 
 enum class SaveLocation(internal val videoDir: String, internal val imageDir: String) {
     DCIM(Environment.DIRECTORY_DCIM, Environment.DIRECTORY_DCIM),
-    ByFileType(Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_PICTURES);
+    ByFileType(Environment.DIRECTORY_MOVIES, Environment.DIRECTORY_PICTURES),
+    Custom(Environment.DIRECTORY_DCIM, Environment.DIRECTORY_DCIM);
+
+    companion object {
+        fun getWithoutCustom() = SaveLocation.entries.filterNot { it == Custom }
+    }
 }
