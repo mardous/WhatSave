@@ -1,12 +1,12 @@
 import java.util.Properties
 
 plugins {
-    alias(libs.plugins.agp)
+    alias(libs.plugins.android)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     id("kotlin-parcelize")
-    alias(libs.plugins.google.ksp)
-    alias(libs.plugins.androidx.safeargs)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.android.safeargs)
 }
 
 android {
@@ -105,51 +105,34 @@ fun Properties.property(key: String) =
 dependencies {
     // Google/JetPack
     //https://developer.android.com/jetpack/androidx/versions
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.splashscreen)
-    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.appcompat)
-    implementation(libs.androidx.fragment.ktx)
-
-    implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.common.java8)
-
-    implementation(libs.navigation.fragment.ktx)
-    implementation(libs.navigation.ui.ktx)
-
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
-
-    implementation(libs.bundles.media3)
-    implementation(libs.androidx.media3.ui)
-    implementation(libs.androidx.loader)
+    implementation(libs.androidx.fragment)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.viewpager2)
     implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.preference.ktx)
+    implementation(libs.androidx.documentfile)
+    implementation(libs.androidx.preference)
     implementation(libs.material.components)
 
-    implementation(libs.koin.core)
-    implementation(libs.koin.android)
+    implementation(libs.room)
+    ksp(libs.room.compiler)
 
-    implementation(libs.coil)
-    implementation(libs.coil.video)
+    implementation(libs.bundles.kotlinx)
+    implementation(libs.bundles.lifecycle)
+    implementation(libs.bundles.media3)
+    implementation(libs.bundles.navigation)
+    implementation(libs.bundles.koin)
+    implementation(libs.bundles.coil)
+    implementation(libs.bundles.ktor)
+    implementation(libs.bundles.markwon)
 
     implementation(libs.photoview)
-    implementation(libs.bundles.ktor)
     implementation(libs.versioncompare)
     implementation(libs.libphonenumber)
     implementation(libs.prettytime)
     implementation(libs.advrecyclerview)
-
-    implementation(libs.markdown.core)
-    implementation(libs.markdown.html)
-
-    // Kotlin
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.android)
 }
