@@ -294,7 +294,11 @@ class StatusesRepositoryImpl(
     }
 
     override suspend fun save(status: Status, saveName: String?): SavedStatus? {
-        val savable = status.toStatusEntity(saveName)
+        
+        //Timestamp issue fix!!
+        val currentTimeMillis = System.currentTimeMillis()
+        val savable = status.toStatusEntity(saveName, currentTimeMillis)
+
         val result = createSavedStatus(savable, true)?.also { status ->
             scanSavedStatus(listOf(status))
         }
