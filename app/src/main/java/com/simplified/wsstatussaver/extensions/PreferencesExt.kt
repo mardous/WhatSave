@@ -93,8 +93,6 @@ fun SharedPreferences.getUpdateSearchMode() = getString(PREFERENCE_UPDATE_SEARCH
 
 fun SharedPreferences.isUpdateOnlyWifi() = getBoolean(PREFERENCE_UPDATE_ONLY_WIFI, false)
 
-fun SharedPreferences.isAnalyticsEnabled() = getBoolean(PREFERENCE_ANALYTICS_ENABLED, true)
-
 var SharedPreferences.isShownOnboard: Boolean
     get() = getBoolean(SHOULD_SHOW_ONBOARD, true)
     set(value) = edit {
@@ -183,7 +181,6 @@ const val PREFERENCE_UPDATE_SEARCH_MODE = "update_search_mode"
 const val PREFERENCE_UPDATE_ONLY_WIFI = "update_only_wifi"
 const val PREFERENCE_LAST_UPDATE_SEARCH = "last_update_search"
 const val PREFERENCE_LAST_UPDATE_ID = "last_update_id"
-const val PREFERENCE_ANALYTICS_ENABLED = "analytics_enabled"
 const val BLACKLISTED_MESSAGE_SENDERS = "blacklisted_message_senders"
 const val PREFERENCE_ENABLE_MESSAGE_VIEW = "enable_message_view"
 const val PREFERENCE_PLAYBACK_SPEED = "playback_speed"

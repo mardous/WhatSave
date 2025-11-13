@@ -97,8 +97,8 @@ class RepositoryImpl(
 
     override suspend fun removeMessages(messages: List<MessageEntity>) = messageRepository.removeMessages(messages)
 
-    override suspend fun deleteConversations(senders: List<Conversation>) =
-        messageRepository.deleteConversations(senders.map { it.name })
+    override suspend fun deleteConversations(conversations: List<Conversation>) =
+        messageRepository.deleteConversations(conversations.map { it.name })
 
     override suspend fun clearMessages() = messageRepository.clearMessages()
 }

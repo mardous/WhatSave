@@ -15,5 +15,4 @@
 
 <resources>
     <bool name="allowBackup">true</bool>
-    <bool name="analyticsEnabled">true</bool>
 </resources>

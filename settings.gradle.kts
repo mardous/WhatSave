@@ -13,5 +13,5 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
     }
 }
-rootProject.name = "WhatSave Status Saver"
+rootProject.name = "WhatSave"
 include(":app")
