@@ -63,8 +63,6 @@
     <string name="quick_deletion_summary">Permite apagar estados gravados sem exibir janela de confirmação. Não recomendado.</string>
     <string name="review_permissions_title">Revise as permissões</string>
     <string name="default_client_title">Cliente padrão</string>
-    <string name="analytics_enabled_title">Enviar estatísticas de uso</string>
-    <string name="analytics_enabled_summary">Quando ativado, o WhatSave pode enviar estatísticas de uso anônimas que nos ajudam a perceber como os utilizadores usam a app.</string>
     <string name="about_title">Sobre</string>
     <string name="version_x">Versão %s</string>
     <string name="author_title">Autor</string>
