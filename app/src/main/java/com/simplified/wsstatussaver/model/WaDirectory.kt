@@ -25,6 +25,9 @@ import com.simplified.wsstatussaver.storage.Storage
 typealias SegmentResolver = (WaClient) -> List<String>
 
 data class WaDirectoryUri(val client: WaClient?, val treeUri: Uri, private val documentId: String) {
+    val documentUri: Uri
+        get() = DocumentsContract.buildDocumentUriUsingTree(treeUri, documentId)
+
     val childDocumentsUri: Uri
         get() = DocumentsContract.buildChildDocumentsUriUsingTree(treeUri, documentId)
 }

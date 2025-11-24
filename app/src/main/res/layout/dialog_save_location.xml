@@ -11,111 +11,202 @@
   ~ without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   ~ See the GNU General Public License for more details.
   -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="12dp"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/dcim_option"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/m3_list_padding_vertical"
-        android:paddingBottom="@dimen/m3_list_padding_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:background="?rectSelector"
-        android:descendantFocusability="beforeDescendants">
+        android:paddingTop="12dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/dcim_radio"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dcim_option"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:clickable="false"
-            android:focusable="false"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:paddingTop="@dimen/m3_list_padding_vertical"
+            android:paddingBottom="@dimen/m3_list_padding_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?rectSelector"
+            android:descendantFocusability="beforeDescendants">
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/dcim_title"
-            android:layout_width="0dp"
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/dcim_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/dcim_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textAppearance="?textAppearanceBodyLarge"
+                android:text="@string/always_save_in_dcim_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dcim_radio"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textColor="?android:textColorSecondary"
+                android:text="@string/always_save_in_dcim_summary"
+                app:layout_constraintTop_toBottomOf="@+id/dcim_title"
+                app:layout_constraintStart_toStartOf="@+id/dcim_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/file_type_option"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:ellipsize="end"
-            android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceBodyLarge"
-            android:text="@string/always_save_in_dcim_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/dcim_radio"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:paddingTop="@dimen/m3_list_padding_vertical"
+            android:paddingBottom="@dimen/m3_list_padding_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?rectSelector"
+            android:descendantFocusability="beforeDescendants">
 
-        <com.google.android.material.textview.MaterialTextView
-            style="?materialAlertDialogBodyTextStyle"
-            android:layout_width="0dp"
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/file_type_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/file_type_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textAppearance="?textAppearanceBodyLarge"
+                android:text="@string/according_to_the_file_type_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/file_type_radio"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textColor="?android:textColorSecondary"
+                android:text="@string/according_to_the_file_type_summary"
+                app:layout_constraintTop_toBottomOf="@+id/file_type_title"
+                app:layout_constraintStart_toStartOf="@+id/file_type_title"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/custom_location_option"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:textAlignment="viewStart"
-            android:textColor="?android:textColorSecondary"
-            android:text="@string/always_save_in_dcim_summary"
-            app:layout_constraintTop_toBottomOf="@+id/dcim_title"
-            app:layout_constraintStart_toStartOf="@+id/dcim_title"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:paddingTop="@dimen/m3_list_padding_vertical"
+            android:paddingBottom="@dimen/m3_list_padding_vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:background="?rectSelector"
+            android:descendantFocusability="beforeDescendants">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/custom_location_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/file_type_option"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/m3_list_padding_vertical"
-        android:paddingBottom="@dimen/m3_list_padding_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:background="?rectSelector"
-        android:descendantFocusability="beforeDescendants">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/custom_location_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textAppearance="?textAppearanceBodyLarge"
+                android:text="@string/custom_save_location_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/custom_location_radio"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/file_type_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:clickable="false"
-            android:focusable="false"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/custom_location_summary"
+                style="?materialAlertDialogBodyTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:textAlignment="viewStart"
+                android:textColor="?android:textColorSecondary"
+                android:text="@string/custom_save_location_summary"
+                app:layout_constraintTop_toBottomOf="@+id/custom_location_title"
+                app:layout_constraintStart_toStartOf="@+id/custom_location_title"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/file_type_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:ellipsize="end"
-            android:textAlignment="viewStart"
-            android:textAppearance="?textAppearanceBodyLarge"
-            android:text="@string/according_to_the_file_type_title"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/file_type_radio"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/images_location"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="36dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                app:icon="@drawable/ic_image_24dp"
+                app:iconPadding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/custom_location_summary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@tools:sample/lorem/random" />
 
-        <com.google.android.material.textview.MaterialTextView
-            style="?materialAlertDialogBodyTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:ellipsize="end"
-            android:textAlignment="viewStart"
-            android:textColor="?android:textColorSecondary"
-            android:text="@string/according_to_the_file_type_summary"
-            app:layout_constraintTop_toBottomOf="@+id/file_type_title"
-            app:layout_constraintStart_toStartOf="@+id/file_type_title"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/videos_location"
+                style="@style/Widget.Material3.Button.TextButton.Icon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                app:icon="@drawable/ic_videocam_24dp"
+                app:iconPadding="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/images_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="@tools:sample/lorem/random" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

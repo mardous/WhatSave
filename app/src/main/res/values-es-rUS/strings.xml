@@ -186,6 +186,10 @@
     <string name="always_save_in_dcim_summary">Todos los archivos guardados se almacenan junto a las fotos de la cámara.</string>
     <string name="according_to_the_file_type_title">De acuerdo al tipo de archivo</string>
     <string name="according_to_the_file_type_summary">Las imágenes se guardarán en Pictures y los videos se guardarán en Movies.</string>
+    <string name="custom_save_location_title">Ubicación personalizada</string>
+    <string name="custom_save_location_summary">Elija sus propios directorios de guardado personalizados.</string>
+    <string name="custom_save_directory_set">Se establecio el directorio de guardado personalizado.</string>
+    <string name="unable_to_set_custom_save_directory">No se pudo establecer el directorio de guardado personalizado.</string>
     <string name="language_arabic">Árabe</string>
     <string name="language_belarusian">Bielorruso</string>
     <string name="language_dutch">Holandés</string>

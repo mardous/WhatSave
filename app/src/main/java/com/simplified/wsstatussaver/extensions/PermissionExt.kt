@@ -18,11 +18,13 @@ import android.Manifest.permission.READ_MEDIA_IMAGES
 import android.Manifest.permission.READ_MEDIA_VIDEO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.annotation.SuppressLint
+import android.content.ContentResolver
 import android.content.Context
 import android.content.Intent
 import android.content.UriPermission
 import android.net.Uri
 import android.os.Build
+import android.provider.DocumentsContract
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -50,9 +52,33 @@ fun getApplicablePermissions() = getRequestedPermissions()
     .flatMap { it.permissions.asIterable() }
     .toTypedArray()
 
+fun Uri.isTreeUri() = DocumentsContract.isTreeUri(this)
+
+fun Uri.isWhatsAppDirectory() = WaDirectory.entries.any { it.isThis(this) }
+
 fun Uri.toWhatsAppDirectory() = WaDirectory.entries.firstOrNull { it.isThis(this) }
 
+fun Uri.isCustomSaveDirectory(contentResolver: ContentResolver): Boolean {
+    if (!isTreeUri() || isWhatsAppDirectory())
+        return false
+
+    return contentResolver.allPermissionsGranted(this)
+}
+
 fun Context.getReadableDirectories() = contentResolver.persistedUriPermissions.getReadableDirectories()
+
+fun ContentResolver.takePermissions(uri: Uri, flags: Int): Boolean {
+    val result = runCatching { takePersistableUriPermission(uri, flags) }
+    if (result.isFailure) {
+        result.exceptionOrNull()?.printStackTrace()
+    }
+    return result.isSuccess
+}
+
+fun ContentResolver.allPermissionsGranted(against: Uri) =
+    persistedUriPermissions.any { it.allPermissionsGranted(against) }
+
+fun UriPermission.allPermissionsGranted(against: Uri) = uri == against && isWritePermission && isReadPermission
 
 fun List<UriPermission>.getReadableDirectories() = WaDirectory.entries.filter { it.isReadable(this) }
 
