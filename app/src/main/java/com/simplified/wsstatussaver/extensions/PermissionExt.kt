@@ -32,7 +32,6 @@ import androidx.navigation.findNavController
 import com.simplified.wsstatussaver.R
 import com.simplified.wsstatussaver.model.RequestedPermissions
 import com.simplified.wsstatussaver.model.WaDirectory
-import com.simplified.wsstatussaver.recordException
 
 const val STORAGE_PERMISSION_REQUEST = 100
 
@@ -71,7 +70,7 @@ fun Context.getReadableDirectories() = contentResolver.persistedUriPermissions.g
 fun ContentResolver.takePermissions(uri: Uri, flags: Int): Boolean {
     val result = runCatching { takePersistableUriPermission(uri, flags) }
     if (result.isFailure) {
-        result.exceptionOrNull()?.let { recordException(it) }
+        result.exceptionOrNull()?.printStackTrace()
     }
     return result.isSuccess
 }
