@@ -396,9 +396,19 @@ class StatusesRepositoryImpl(
     private fun saveStatus(status: StatusEntity, inputStream: InputStream, notify: Boolean): SavedStatus? {
         if (IsScopedStorageRequired) {
             val contentUri = status.type.contentUri
+            // Fix: Android 10 'Failed to save' error due to path handling in Scoped storage
+            // Trailing '/' is trimmed
+            val rawOriginalPath = status.type.getRelativePath(statusSaveLocation).trim('/')
+            // Manually add the '/' between path parts to avoid '//'
+            val finalPath = if (statusSaveLocation == SaveLocation.DCIM) {
+                "$rawOriginalPath/$APP_SAVE_SUBFOLDER/" // Trailing slash is added!
+            } else {
+                "$rawOriginalPath/" // Trailing slash is added!
+            }
+
             val contentValues = contentValuesOf(
                 MediaColumns.DISPLAY_NAME to status.saveName,
-                MediaColumns.RELATIVE_PATH to status.type.getRelativePath(statusSaveLocation),
+                MediaColumns.RELATIVE_PATH to finalPath,
                 MediaColumns.MIME_TYPE to status.type.mimeType
             )
             var uri: Uri? = null
